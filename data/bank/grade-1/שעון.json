@@ -1,0 +1,2108 @@
+{
+  "grade": "א׳",
+  "gradeNum": 1,
+  "topic": "שעון",
+  "questions": [
+    {
+      "id": "q-0205df9785",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 2:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 2,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-3262cb1e21",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "4:50",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 4:50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 4,
+        "minute": 50,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-49f11ddd24",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 3:00, ובעוד שעה תהיה 4:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 3,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-e0ac0f54b9",
+      "text": "כוון/י את השעון לשעה 7:00 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "7:00",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-7:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 7,
+          "minute": 0
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-4ce32f44bc",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 1,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 2:00, ולפני שעה הייתה 1:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 2,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-77a607d982",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "9:10",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 9:10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 9,
+        "minute": 10,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-3e506bce80",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 9:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 9,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-f8b351a833",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "4:10",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 4:10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 4,
+        "minute": 10,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-5b662e38a9",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 7:00, ובעוד שעה תהיה 8:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-46085bdb71",
+      "text": "כוון/י את השעון לשעה 6:45 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "6:45",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-6:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 6,
+          "minute": 45
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-0854b2aa60",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 6:00, ובעוד שעה תהיה 7:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 6,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-055da5d7a2",
+      "text": "כוון/י את השעון לשעה 3:15 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "3:15",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-3:15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 3,
+          "minute": 15
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-5bdfd18f67",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 6:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 6,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-dd2833a11c",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "11:30",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 11:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 30,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-e5a4af47cf",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 11:00, ולפני שעה הייתה 10:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-ca4e7a9ced",
+      "text": "כוון/י את השעון לשעה 2:15 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "2:15",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-2:15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 2,
+          "minute": 15
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-4e849d48b6",
+      "text": "כוון/י את השעון לשעה 8:00 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "8:00",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-8:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 8,
+          "minute": 0
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-c4f5631789",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 3:00, ולפני שעה הייתה 2:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 3,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-a066f5fe11",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "6:30",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 6:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 6,
+        "minute": 30,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-0d6ed82b79",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 9:00, ובעוד שעה תהיה 10:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 9,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-086a40b62a",
+      "text": "כוון/י את השעון לשעה 11:00 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "11:00",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-11:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 11,
+          "minute": 0
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-f9d9fe6a97",
+      "text": "כוון/י את השעון לשעה 7:15 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "7:15",
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-7:15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 7,
+          "minute": 15
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-1d81461ced",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "11:10",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 11:10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 10,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-8706fc005f",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 12:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 12,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-2a7c4f432a",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "12:10",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 12:10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 12,
+        "minute": 10,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-f510e06366",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 11,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 10:00, ובעוד שעה תהיה 11:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 10,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-17deb74d6d",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 5:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 5,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-b76342bc9e",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 10:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 10,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-f686ada2ac",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "6:35",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 6:35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 6,
+        "minute": 35,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-867a3df056",
+      "text": "כוון/י את השעון לשעה 5:30 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "5:30",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-5:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 5,
+          "minute": 30
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-3e16d6dc18",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 9:00, ולפני שעה הייתה 8:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 9,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-299efe894f",
+      "text": "כוון/י את השעון לשעה 11:45 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "11:45",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-11:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 11,
+          "minute": 45
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-83fcc93005",
+      "text": "כוון/י את השעון לשעה 3:45 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "3:45",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-3:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 3,
+          "minute": 45
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-72a11b0cd7",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "7:10",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 7:10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 10,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-051822512e",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "4:30",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 4:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 4,
+        "minute": 30,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-d0e0f5aa3c",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "5:40",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 5:40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 5,
+        "minute": 40,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-c066618942",
+      "text": "כוון/י את השעון לשעה 9:30 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "9:30",
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-9:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 9,
+          "minute": 30
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-275cd7b1e2",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "1:45",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 1:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 1,
+        "minute": 45,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-302e2b66a0",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 3:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 3,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-38e8bcc13f",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "5:55",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 5:55.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 5,
+        "minute": 55,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-1e7154614c",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 1:00, ולפני שעה הייתה 12:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 1,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-082b47d920",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 4:00, ולפני שעה הייתה 3:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 4,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-dd5cf594b4",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 2:00, ובעוד שעה תהיה 3:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 2,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-54b824b1e6",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "10:45",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 10:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 10,
+        "minute": 45,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-94899a0ee8",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 8:00, ולפני שעה הייתה 7:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 8,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-44042d0aec",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 5:00, ובעוד שעה תהיה 6:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 5,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-e02151629d",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 1:00, ובעוד שעה תהיה 2:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 1,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-916ff6bbc4",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 8,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 8:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 8,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-bf23a72837",
+      "text": "כוון/י את השעון לשעה 4:45 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "4:45",
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-4:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 4,
+          "minute": 45
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-8e53be8f52",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "7:35",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 7:35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 35,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-f1fbac8921",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "7:20",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 7:20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 20,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-862f3a7fe9",
+      "text": "כוון/י את השעון לשעה 4:15 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "4:15",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-4:15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 4,
+          "minute": 15
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-1636610c64",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 4:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 4,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-524e2f1d00",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 9,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 10:00, ולפני שעה הייתה 9:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 10,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-33430edd69",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "4:25",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 4:25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 4,
+        "minute": 25,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-b42c104425",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 11,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 11:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-9431b47800",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "3:35",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 3:35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 3,
+        "minute": 35,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-715e308aa7",
+      "text": "כוון/י את השעון לשעה 8:30 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "8:30",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-8:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 8,
+          "minute": 30
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-8f5557c369",
+      "text": "כוון/י את השעון לשעה 8:15 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "8:15",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-8:15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 8,
+          "minute": 15
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-37abd19d60",
+      "text": "כוון/י את השעון לשעה 4:00 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "4:00",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-4:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 4,
+          "minute": 0
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-b3a32ad91d",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "3:20",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 3:20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 3,
+        "minute": 20,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-4ca7482477",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 7:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-04c4b4b2c3",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "11:35",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 11:35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 35,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-e92624a624",
+      "text": "כוון/י את השעון לשעה 2:45 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "2:45",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-2:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 2,
+          "minute": 45
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-e0296797ed",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "7:05",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 7:05.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 5,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-5aa0c724bb",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 5:00, ולפני שעה הייתה 4:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 5,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-4d234d153b",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "10:05",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 10:05.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 10,
+        "minute": 5,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-9c09ce8ddb",
+      "text": "כוון/י את השעון לשעה 8:45 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "8:45",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-8:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 8,
+          "minute": 45
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-038d9e009d",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "7:15",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 7:15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 15,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-f494f65d6a",
+      "text": "כוון/י את השעון לשעה 9:15 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "9:15",
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-9:15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 9,
+          "minute": 15
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-85f6241f43",
+      "text": "כוון/י את השעון לשעה 7:30 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "7:30",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-7:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 7,
+          "minute": 30
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-dcdbbe82bb",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "3:10",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 3:10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 3,
+        "minute": 10,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-39fa8efff0",
+      "text": "מה השעה? (כתוב/י את מספר השעה)",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "המחוג הקצר מצביע על השעה.",
+        "המחוג הארוך על 12 = שעה עגולה."
+      ],
+      "explanation": "השעה 1:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 1,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-018a3de051",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 9,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 8:00, ובעוד שעה תהיה 9:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 8,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-d3346ec391",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 7:00, ולפני שעה הייתה 6:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-b815189c01",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "11:20",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 11:20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 20,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-e75f0a913c",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "11:40",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 11:40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 40,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-48c4d62f99",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "7:25",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 7:25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 7,
+        "minute": 25,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-8cf80dc4e0",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "11:05",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 11:05.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 5,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-534d8c0210",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "12:30",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 12:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 12,
+        "minute": 30,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-077f44d4f9",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 11:00, ובעוד שעה תהיה 12:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 11,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-b27313c699",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "6:05",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 6:05.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 6,
+        "minute": 5,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-d9d8ad1f95",
+      "text": "השעון מראה את השעה עכשיו. לפני שעה — איזו שעה הייתה? (מספר)",
+      "answer": 11,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הורד/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 12:00, ולפני שעה הייתה 11:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 12,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-86cec762b4",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "12:20",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 12:20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 12,
+        "minute": 20,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-377a8b3a69",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "1:55",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 1:55.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 1,
+        "minute": 55,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-c911a6ce5e",
+      "text": "כוון/י את השעון לשעה 12:45 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "12:45",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-12:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 12,
+          "minute": 45
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-8e8799a231",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "4:20",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 4:20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 4,
+        "minute": 20,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-6426bda329",
+      "text": "כוון/י את השעון לשעה 5:15 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "5:15",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-5:15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 5,
+          "minute": 15
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-68ea1f781a",
+      "text": "השעון מראה את השעה עכשיו. בעוד שעה — איזו שעה תהיה? (מספר)",
+      "answer": 1,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "קרא/י קודם את השעה שמוצגת בשעון.",
+        "הוסף/י שעה אחת."
+      ],
+      "explanation": "השעון מראה 12:00, ובעוד שעה תהיה 1:00.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 12,
+        "minute": 0
+      }
+    },
+    {
+      "id": "q-ecd6fbb49c",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "9:20",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 9:20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 9,
+        "minute": 20,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-7e91fc1784",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "12:45",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 12:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 12,
+        "minute": 45,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-b64c0f8cd3",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "6:40",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 6:40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 6,
+        "minute": 40,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-0e960dfc95",
+      "text": "כוון/י את השעון לשעה 2:30 — הזז/י את המחוגים ולחצ/י \"סיימתי\".",
+      "answer": "2:30",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המחוג הקצר (הקטן) קובע את השעה.",
+        "המחוג הארוך (הגדול) קובע את הדקות — כל מספר = 5 דקות."
+      ],
+      "explanation": "צריך לכוון את השעון ל-2:30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock-set",
+        "target": {
+          "hour": 2,
+          "minute": 30
+        },
+        "showNumbers": true
+      },
+      "answerKind": "time",
+      "interactive": "clock-set"
+    },
+    {
+      "id": "q-ef71c10c5e",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "5:05",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 5:05.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 5,
+        "minute": 5,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-4df2b6e2cc",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "3:05",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 3:05.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 3,
+        "minute": 5,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-c37ea546e1",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "10:55",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 10:55.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 10,
+        "minute": 55,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-a7fdef8335",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "1:40",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 1:40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 1,
+        "minute": 40,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-2d2575b00f",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "4:40",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 4:40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 4,
+        "minute": 40,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-c0fad8df30",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "2:45",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 2:45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 2,
+        "minute": 45,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    },
+    {
+      "id": "q-a995fee8b2",
+      "text": "מה השעה? (מלא/י שעות ודקות)",
+      "answer": "2:10",
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "המחוג הקצר מראה את השעה.",
+        "המחוג הארוך מראה דקות — כל מספר על השעון = 5 דקות."
+      ],
+      "explanation": "השעה 2:10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "clock",
+        "hour": 2,
+        "minute": 10,
+        "showNumbers": true
+      },
+      "answerKind": "time"
+    }
+  ]
+}

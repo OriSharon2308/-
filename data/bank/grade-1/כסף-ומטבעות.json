@@ -1,0 +1,2278 @@
+{
+  "grade": "א׳",
+  "gradeNum": 1,
+  "topic": "כסף ומטבעות",
+  "questions": [
+    {
+      "id": "q-0d010b2f66",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 + 2 + 2 + 5 = 16 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5,
+          2,
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-974f8e2e64",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 5 = 15 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-be7ca9918c",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 1 = 2 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-82e320fd4c",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 24,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 10 + 10 + 2 = 24 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          10,
+          10,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-4bb69ba859",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 27,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 2 + 5 + 5 + 10 = 27 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          2,
+          5,
+          5,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-1b0342d70d",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 2 = 12 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-19dbe5059c",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 40,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 + 10 + 10 = 40 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10,
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-d61a1574f9",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 1 + 5 + 2 = 13 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          1,
+          5,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-01c4ed98f5",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 22,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 2 + 5 + 5 = 22 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          2,
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-c1b39e3644",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 1 + 5 + 5 + 5 = 18 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          1,
+          5,
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-18c06df207",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 1 = 3 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-9a2fc71c9c",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 1 + 1 + 10 = 14 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          1,
+          1,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-618c364520",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 35,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 5 + 10 + 10 = 35 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          5,
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-5a37233f6f",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 1 + 10 + 2 + 5 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          1,
+          10,
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-8ef7380d9c",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 2 + 1 + 10 = 15 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          2,
+          1,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-bd306cb4c5",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 22,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 5 + 2 + 10 = 22 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          5,
+          2,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-e071f0b34b",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 24,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 + 2 + 2 = 24 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-95520c341b",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 22,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 10 + 5 + 5 = 22 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          10,
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-915a26f378",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 = 7 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-252d542d21",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 5 = 6 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-9d94040fb7",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 2 + 2 + 1 + 5 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          2,
+          2,
+          1,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-e018c9bd44",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 2 + 5 = 17 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-7e0619ae2d",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 10 = 12 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-56f326db7c",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 5 = 16 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-89e6433bac",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 25,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 10 + 10 = 25 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-8f09272b45",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 1 = 12 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-a4689ea9d3",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 23,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 10 + 2 = 23 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          10,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-59c619a855",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 27,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 10 + 5 + 5 + 2 = 27 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          10,
+          5,
+          5,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-b8ac6a395e",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 24,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 1 + 2 + 10 + 10 = 24 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          1,
+          2,
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-36a87b069b",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 1 + 1 = 4 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-3fef39b9d5",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 10 + 5 + 2 = 19 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          10,
+          5,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-f3ae407b36",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 2 + 5 = 8 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-4cfd8de240",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 10 + 1 + 5 + 1 = 18 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          10,
+          1,
+          5,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-b8aee1d319",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 2 = 3 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-3e4e5ae908",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 5 + 1 = 11 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          5,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-5512d0195d",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 10 + 2 + 2 + 1 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          10,
+          2,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-8aa5641fca",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 26,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 10 + 10 + 5 = 26 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          10,
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-c6739a38cd",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 2 + 1 = 4 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-44aef496c9",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 + 10 = 17 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-1aae4b36d7",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 1 + 5 + 10 + 2 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          1,
+          5,
+          10,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-f083d205c8",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 2 + 1 + 1 = 15 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-a8e6afc23f",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 2 + 10 = 17 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          2,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-9a5a0025d2",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 22,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 1 + 5 + 10 + 1 = 22 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          1,
+          5,
+          10,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-59b9c1062a",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 1 + 1 = 13 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-ff2be7eefd",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 25,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 + 5 = 25 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-1d1109c8b5",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 36,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 + 10 + 1 + 5 = 36 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10,
+          10,
+          1,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-c54aa6cfa0",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 32,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 10 + 5 + 10 + 5 = 32 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          10,
+          5,
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-e16e8403f0",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 + 5 + 2 = 14 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5,
+          5,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-5cade4c26c",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 5 + 2 + 1 = 9 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          5,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-c286553111",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 2 + 2 = 15 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-1a21625d77",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 2 + 2 + 1 = 15 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          2,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-2401e03bea",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 + 1 = 8 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-28a0a8045d",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 5 = 10 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-70ae42008f",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 32,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 2 + 10 + 5 + 5 = 32 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          2,
+          10,
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-c98e0bec1d",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 5 + 1 + 1 = 17 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          5,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-e2c5b36b70",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 + 10 + 1 = 18 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5,
+          10,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-a3978cfb8a",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 10 + 5 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-13aebcdf67",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 1 + 5 = 7 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          1,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-defca086b1",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 1 + 5 + 5 = 13 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          1,
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-f0697e45be",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 2 + 1 + 1 + 1 = 7 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          2,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-0b44f179d1",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 1 + 5 + 1 + 2 = 10 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          1,
+          5,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-e9e79b526b",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 2 + 2 = 14 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-31a3edf5bf",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 21,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 10 = 21 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-5c90fcf297",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 5 + 1 + 1 = 8 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          5,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-87329002b6",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 31,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 10 + 10 = 31 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-03cb0b4c01",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 10 + 5 + 1 + 1 = 19 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          10,
+          5,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-e759391846",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 2 + 5 = 9 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-1cfef56790",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 27,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 + 10 + 10 = 27 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5,
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-489029e1b5",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-750732751e",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 22,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 + 1 + 1 = 22 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-592ae3ccd8",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 5 + 5 + 5 = 16 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          5,
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-043171e674",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 1 + 10 = 12 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          1,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-5ed94f120b",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 23,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 10 + 5 + 1 + 5 = 23 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          10,
+          5,
+          1,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-4216e9d44f",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 32,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 5 + 10 + 5 + 2 = 32 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          5,
+          10,
+          5,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-930df29c8d",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 2 + 10 + 2 = 19 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          2,
+          10,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-e74e3a4c06",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 + 5 + 1 = 17 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1,
+          5,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-32c74df15c",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 2 = 7 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-8a1825a22e",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 21,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 + 1 = 21 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-7a82e8ae0a",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 2 + 10 + 2 = 15 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          2,
+          10,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-e97c5e7663",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 28,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 5 + 10 + 2 + 1 = 28 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          5,
+          10,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-efbf01dc76",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 10 + 1 = 13 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          10,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-cc093d1e01",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 29,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 + 10 + 2 + 10 = 29 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5,
+          10,
+          2,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-22bf39b123",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 1 + 2 + 2 = 6 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          1,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-3d7d3bae90",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 1 = 6 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-4a48233da4",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 21,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 10 + 1 + 5 = 21 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          10,
+          1,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-789e4156af",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 1 = 11 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-dd2823cf63",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 1 + 10 = 13 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          1,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-5560d8adbb",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 1 + 2 + 1 = 9 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          1,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-d9b32046f6",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 10 + 5 = 16 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-626439b3ac",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 45,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 + 5 + 10 + 10 = 45 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10,
+          5,
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-2fe04f318d",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 2 = 4 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-9cc23709b7",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 32,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 10 + 2 + 10 = 32 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          10,
+          2,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-83e3069161",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 5 + 1 + 2 + 2 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          5,
+          1,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-1bd7116fd5",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 2 + 5 + 2 = 9 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          2,
+          5,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-ba10af6b43",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 5 + 10 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          5,
+          10
+        ]
+      }
+    },
+    {
+      "id": "q-18be34307f",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 2 + 1 = 8 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-896b636440",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 1 + 1 = 3 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "q-3678ccca79",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 10 + 5 + 5 = 20 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          10,
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "q-0f123a39ce",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 5 + 2 + 5 + 1 + 2 = 15 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          5,
+          2,
+          5,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "q-5a3fc46067",
+      "text": "כמה שקלים יש כאן?",
+      "answer": 23,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חבר/י את כל המטבעות.",
+        "התחל/י מהמטבע הגדול."
+      ],
+      "explanation": "סה״כ 1 + 10 + 1 + 10 + 1 = 23 שקלים.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "coins",
+        "coins": [
+          1,
+          10,
+          1,
+          10,
+          1
+        ]
+      }
+    }
+  ]
+}

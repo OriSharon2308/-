@@ -1,0 +1,1307 @@
+{
+  "grade": "א׳",
+  "gradeNum": 1,
+  "topic": "חיבור וחיסור עד 100",
+  "questions": [
+    {
+      "id": "q-3802b412da",
+      "text": "99 − 7 = ?",
+      "answer": 92,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "99 − 7."
+      ],
+      "explanation": "99 − 7 = 92.",
+      "source": "algo"
+    },
+    {
+      "id": "q-498921cee3",
+      "text": "70 − 4 = ?",
+      "answer": 66,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "70 − 4."
+      ],
+      "explanation": "70 − 4 = 66.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ac10195cce",
+      "text": "57 − 17 = ?",
+      "answer": 40,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "57 − 17."
+      ],
+      "explanation": "57 − 17 = 40.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1126580519",
+      "text": "45 − 14 = ?",
+      "answer": 31,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "45 − 14."
+      ],
+      "explanation": "45 − 14 = 31.",
+      "source": "algo"
+    },
+    {
+      "id": "q-981f066377",
+      "text": "95 − 0 = ?",
+      "answer": 95,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "95 − 0."
+      ],
+      "explanation": "95 − 0 = 95.",
+      "source": "algo"
+    },
+    {
+      "id": "q-24d0517d18",
+      "text": "24 + 20 = ?",
+      "answer": 44,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "24 + 20."
+      ],
+      "explanation": "24 + 20 = 44.",
+      "source": "algo"
+    },
+    {
+      "id": "q-65114bc11a",
+      "text": "95 + 2 = ?",
+      "answer": 97,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "95 + 2."
+      ],
+      "explanation": "95 + 2 = 97.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b9a48fe0e8",
+      "text": "3 + 55 = ?",
+      "answer": 58,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "3 + 55."
+      ],
+      "explanation": "3 + 55 = 58.",
+      "source": "algo"
+    },
+    {
+      "id": "q-54add9bab3",
+      "text": "61 − 33 = ?",
+      "answer": 28,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "61 − 33."
+      ],
+      "explanation": "61 − 33 = 28.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2f07b165f1",
+      "text": "60 + 15 = ?",
+      "answer": 75,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "60 + 15."
+      ],
+      "explanation": "60 + 15 = 75.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f5e69ef651",
+      "text": "29 − 3 = ?",
+      "answer": 26,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "29 − 3."
+      ],
+      "explanation": "29 − 3 = 26.",
+      "source": "algo"
+    },
+    {
+      "id": "q-09bb0f5796",
+      "text": "37 + 44 = ?",
+      "answer": 81,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "37 + 44."
+      ],
+      "explanation": "37 + 44 = 81.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5841d2fbf9",
+      "text": "49 + 42 = ?",
+      "answer": 91,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "49 + 42."
+      ],
+      "explanation": "49 + 42 = 91.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0e05143871",
+      "text": "50 + 25 = ?",
+      "answer": 75,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "50 + 25."
+      ],
+      "explanation": "50 + 25 = 75.",
+      "source": "algo"
+    },
+    {
+      "id": "q-afd9066da3",
+      "text": "95 − 58 = ?",
+      "answer": 37,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "95 − 58."
+      ],
+      "explanation": "95 − 58 = 37.",
+      "source": "algo"
+    },
+    {
+      "id": "q-de7c8da34a",
+      "text": "88 − 52 = ?",
+      "answer": 36,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "88 − 52."
+      ],
+      "explanation": "88 − 52 = 36.",
+      "source": "algo"
+    },
+    {
+      "id": "q-955bae2d0d",
+      "text": "39 − 13 = ?",
+      "answer": 26,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "39 − 13."
+      ],
+      "explanation": "39 − 13 = 26.",
+      "source": "algo"
+    },
+    {
+      "id": "q-85d64e0f6a",
+      "text": "48 − 6 = ?",
+      "answer": 42,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "48 − 6."
+      ],
+      "explanation": "48 − 6 = 42.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bcfae8ed18",
+      "text": "96 − 23 = ?",
+      "answer": 73,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "96 − 23."
+      ],
+      "explanation": "96 − 23 = 73.",
+      "source": "algo"
+    },
+    {
+      "id": "q-805f369b0c",
+      "text": "69 + 23 = ?",
+      "answer": 92,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "69 + 23."
+      ],
+      "explanation": "69 + 23 = 92.",
+      "source": "algo"
+    },
+    {
+      "id": "q-920be91d2f",
+      "text": "78 + 15 = ?",
+      "answer": 93,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "78 + 15."
+      ],
+      "explanation": "78 + 15 = 93.",
+      "source": "algo"
+    },
+    {
+      "id": "q-da6cd90062",
+      "text": "12 + 4 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "12 + 4."
+      ],
+      "explanation": "12 + 4 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a51d355ffb",
+      "text": "85 + 2 = ?",
+      "answer": 87,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "85 + 2."
+      ],
+      "explanation": "85 + 2 = 87.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2374cf4920",
+      "text": "94 − 42 = ?",
+      "answer": 52,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "94 − 42."
+      ],
+      "explanation": "94 − 42 = 52.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4bc8b92074",
+      "text": "41 + 0 = ?",
+      "answer": 41,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "41 + 0."
+      ],
+      "explanation": "41 + 0 = 41.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a484083d93",
+      "text": "21 + 25 = ?",
+      "answer": 46,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "21 + 25."
+      ],
+      "explanation": "21 + 25 = 46.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8cf59736f9",
+      "text": "64 + 28 = ?",
+      "answer": 92,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "64 + 28."
+      ],
+      "explanation": "64 + 28 = 92.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7d1c5d1205",
+      "text": "94 + 5 = ?",
+      "answer": 99,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "94 + 5."
+      ],
+      "explanation": "94 + 5 = 99.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a243f04e99",
+      "text": "91 − 7 = ?",
+      "answer": 84,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "91 − 7."
+      ],
+      "explanation": "91 − 7 = 84.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f4799459f8",
+      "text": "29 − 0 = ?",
+      "answer": 29,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "29 − 0."
+      ],
+      "explanation": "29 − 0 = 29.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f27306760c",
+      "text": "23 + 66 = ?",
+      "answer": 89,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "23 + 66."
+      ],
+      "explanation": "23 + 66 = 89.",
+      "source": "algo"
+    },
+    {
+      "id": "q-79e622bbd8",
+      "text": "74 − 47 = ?",
+      "answer": 27,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "74 − 47."
+      ],
+      "explanation": "74 − 47 = 27.",
+      "source": "algo"
+    },
+    {
+      "id": "q-05b18bad5d",
+      "text": "44 − 34 = ?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "44 − 34."
+      ],
+      "explanation": "44 − 34 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-360806a13a",
+      "text": "30 − 26 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "30 − 26."
+      ],
+      "explanation": "30 − 26 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-71aecec910",
+      "text": "39 − 14 = ?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "39 − 14."
+      ],
+      "explanation": "39 − 14 = 25.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d2608cca47",
+      "text": "84 − 73 = ?",
+      "answer": 11,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "84 − 73."
+      ],
+      "explanation": "84 − 73 = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-49e8413aaf",
+      "text": "38 + 26 = ?",
+      "answer": 64,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "38 + 26."
+      ],
+      "explanation": "38 + 26 = 64.",
+      "source": "algo"
+    },
+    {
+      "id": "q-38f0d45871",
+      "text": "79 − 22 = ?",
+      "answer": 57,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "79 − 22."
+      ],
+      "explanation": "79 − 22 = 57.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b6d13e3324",
+      "text": "71 − 64 = ?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "71 − 64."
+      ],
+      "explanation": "71 − 64 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-80e04b84d1",
+      "text": "20 − 19 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "20 − 19."
+      ],
+      "explanation": "20 − 19 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-501690f3f3",
+      "text": "69 − 48 = ?",
+      "answer": 21,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "69 − 48."
+      ],
+      "explanation": "69 − 48 = 21.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a43055ff57",
+      "text": "79 − 20 = ?",
+      "answer": 59,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "79 − 20."
+      ],
+      "explanation": "79 − 20 = 59.",
+      "source": "algo"
+    },
+    {
+      "id": "q-650b388e95",
+      "text": "77 − 56 = ?",
+      "answer": 21,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "77 − 56."
+      ],
+      "explanation": "77 − 56 = 21.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ce3ac6d6fa",
+      "text": "33 − 28 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "33 − 28."
+      ],
+      "explanation": "33 − 28 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e867a9afcf",
+      "text": "75 + 25 = ?",
+      "answer": 100,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "75 + 25."
+      ],
+      "explanation": "75 + 25 = 100.",
+      "source": "algo"
+    },
+    {
+      "id": "q-298c5e1051",
+      "text": "26 − 20 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "26 − 20."
+      ],
+      "explanation": "26 − 20 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bbc62d520a",
+      "text": "90 + 2 = ?",
+      "answer": 92,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "90 + 2."
+      ],
+      "explanation": "90 + 2 = 92.",
+      "source": "algo"
+    },
+    {
+      "id": "q-39c22e795b",
+      "text": "100 − 36 = ?",
+      "answer": 64,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "100 − 36."
+      ],
+      "explanation": "100 − 36 = 64.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c3ca86235b",
+      "text": "86 − 58 = ?",
+      "answer": 28,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "86 − 58."
+      ],
+      "explanation": "86 − 58 = 28.",
+      "source": "algo"
+    },
+    {
+      "id": "q-40b5965325",
+      "text": "28 + 37 = ?",
+      "answer": 65,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "28 + 37."
+      ],
+      "explanation": "28 + 37 = 65.",
+      "source": "algo"
+    },
+    {
+      "id": "q-aafb4dede9",
+      "text": "67 − 43 = ?",
+      "answer": 24,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "67 − 43."
+      ],
+      "explanation": "67 − 43 = 24.",
+      "source": "algo"
+    },
+    {
+      "id": "q-da9ecbb091",
+      "text": "39 + 30 = ?",
+      "answer": 69,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "39 + 30."
+      ],
+      "explanation": "39 + 30 = 69.",
+      "source": "algo"
+    },
+    {
+      "id": "q-71c7c9ca21",
+      "text": "56 − 7 = ?",
+      "answer": 49,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "56 − 7."
+      ],
+      "explanation": "56 − 7 = 49.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bfbb824829",
+      "text": "9 − 2 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "9 − 2."
+      ],
+      "explanation": "9 − 2 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5fe0bc96df",
+      "text": "55 + 28 = ?",
+      "answer": 83,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "55 + 28."
+      ],
+      "explanation": "55 + 28 = 83.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c3c4c1c66e",
+      "text": "39 − 2 = ?",
+      "answer": 37,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "39 − 2."
+      ],
+      "explanation": "39 − 2 = 37.",
+      "source": "algo"
+    },
+    {
+      "id": "q-86b7864ea5",
+      "text": "0 + 63 = ?",
+      "answer": 63,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "0 + 63."
+      ],
+      "explanation": "0 + 63 = 63.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cdd69ccf9b",
+      "text": "9 + 86 = ?",
+      "answer": 95,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "9 + 86."
+      ],
+      "explanation": "9 + 86 = 95.",
+      "source": "algo"
+    },
+    {
+      "id": "q-df22a921ea",
+      "text": "100 − 41 = ?",
+      "answer": 59,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "100 − 41."
+      ],
+      "explanation": "100 − 41 = 59.",
+      "source": "algo"
+    },
+    {
+      "id": "q-867b114de2",
+      "text": "73 − 9 = ?",
+      "answer": 64,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "73 − 9."
+      ],
+      "explanation": "73 − 9 = 64.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a9e62516d9",
+      "text": "78 − 70 = ?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "78 − 70."
+      ],
+      "explanation": "78 − 70 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4defdf07a9",
+      "text": "61 − 46 = ?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "61 − 46."
+      ],
+      "explanation": "61 − 46 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e337e8d209",
+      "text": "77 + 2 = ?",
+      "answer": 79,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "77 + 2."
+      ],
+      "explanation": "77 + 2 = 79.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c8a6b7fa9f",
+      "text": "83 − 51 = ?",
+      "answer": 32,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "83 − 51."
+      ],
+      "explanation": "83 − 51 = 32.",
+      "source": "algo"
+    },
+    {
+      "id": "q-22eecc52ca",
+      "text": "76 + 22 = ?",
+      "answer": 98,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "76 + 22."
+      ],
+      "explanation": "76 + 22 = 98.",
+      "source": "algo"
+    },
+    {
+      "id": "q-66e866e269",
+      "text": "64 − 8 = ?",
+      "answer": 56,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "64 − 8."
+      ],
+      "explanation": "64 − 8 = 56.",
+      "source": "algo"
+    },
+    {
+      "id": "q-90877de425",
+      "text": "90 + 1 = ?",
+      "answer": 91,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "90 + 1."
+      ],
+      "explanation": "90 + 1 = 91.",
+      "source": "algo"
+    },
+    {
+      "id": "q-73ab3be05b",
+      "text": "61 + 25 = ?",
+      "answer": 86,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "61 + 25."
+      ],
+      "explanation": "61 + 25 = 86.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c1d9cddc3d",
+      "text": "41 + 40 = ?",
+      "answer": 81,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "41 + 40."
+      ],
+      "explanation": "41 + 40 = 81.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e5dfe47e07",
+      "text": "92 − 45 = ?",
+      "answer": 47,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "92 − 45."
+      ],
+      "explanation": "92 − 45 = 47.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2de21174f1",
+      "text": "91 − 2 = ?",
+      "answer": 89,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "91 − 2."
+      ],
+      "explanation": "91 − 2 = 89.",
+      "source": "algo"
+    },
+    {
+      "id": "q-51edc3c986",
+      "text": "100 − 42 = ?",
+      "answer": 58,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "100 − 42."
+      ],
+      "explanation": "100 − 42 = 58.",
+      "source": "algo"
+    },
+    {
+      "id": "q-84b8f1bacc",
+      "text": "83 − 70 = ?",
+      "answer": 13,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "83 − 70."
+      ],
+      "explanation": "83 − 70 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9a1f7f1776",
+      "text": "62 + 25 = ?",
+      "answer": 87,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "62 + 25."
+      ],
+      "explanation": "62 + 25 = 87.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9d9c844521",
+      "text": "77 − 76 = ?",
+      "answer": 1,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "77 − 76."
+      ],
+      "explanation": "77 − 76 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b251d9f408",
+      "text": "10 + 84 = ?",
+      "answer": 94,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "10 + 84."
+      ],
+      "explanation": "10 + 84 = 94.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8a46938667",
+      "text": "51 + 36 = ?",
+      "answer": 87,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "51 + 36."
+      ],
+      "explanation": "51 + 36 = 87.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f935e8f320",
+      "text": "71 + 14 = ?",
+      "answer": 85,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "71 + 14."
+      ],
+      "explanation": "71 + 14 = 85.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cf2fe836c0",
+      "text": "92 − 62 = ?",
+      "answer": 30,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "92 − 62."
+      ],
+      "explanation": "92 − 62 = 30.",
+      "source": "algo"
+    },
+    {
+      "id": "q-417a015ca9",
+      "text": "26 − 10 = ?",
+      "answer": 16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "26 − 10."
+      ],
+      "explanation": "26 − 10 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-597b75cc43",
+      "text": "92 − 25 = ?",
+      "answer": 67,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "92 − 25."
+      ],
+      "explanation": "92 − 25 = 67.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3247bd5260",
+      "text": "82 + 1 = ?",
+      "answer": 83,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "82 + 1."
+      ],
+      "explanation": "82 + 1 = 83.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d969c2d451",
+      "text": "65 + 22 = ?",
+      "answer": 87,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "65 + 22."
+      ],
+      "explanation": "65 + 22 = 87.",
+      "source": "algo"
+    },
+    {
+      "id": "q-363945e29a",
+      "text": "71 − 55 = ?",
+      "answer": 16,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "71 − 55."
+      ],
+      "explanation": "71 − 55 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-94edb4e42b",
+      "text": "84 − 81 = ?",
+      "answer": 3,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "84 − 81."
+      ],
+      "explanation": "84 − 81 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-14486d0793",
+      "text": "91 + 2 = ?",
+      "answer": 93,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "91 + 2."
+      ],
+      "explanation": "91 + 2 = 93.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f69f3d27d8",
+      "text": "79 − 53 = ?",
+      "answer": 26,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "79 − 53."
+      ],
+      "explanation": "79 − 53 = 26.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b135c99737",
+      "text": "2 + 11 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "2 + 11."
+      ],
+      "explanation": "2 + 11 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dc1d66cc5b",
+      "text": "60 − 29 = ?",
+      "answer": 31,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "60 − 29."
+      ],
+      "explanation": "60 − 29 = 31.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a0efdd491a",
+      "text": "61 − 20 = ?",
+      "answer": 41,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "61 − 20."
+      ],
+      "explanation": "61 − 20 = 41.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b8dc71648c",
+      "text": "95 − 9 = ?",
+      "answer": 86,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "95 − 9."
+      ],
+      "explanation": "95 − 9 = 86.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c90008fa69",
+      "text": "95 + 1 = ?",
+      "answer": 96,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "95 + 1."
+      ],
+      "explanation": "95 + 1 = 96.",
+      "source": "algo"
+    },
+    {
+      "id": "q-29a12dd023",
+      "text": "52 − 40 = ?",
+      "answer": 12,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "52 − 40."
+      ],
+      "explanation": "52 − 40 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-18a85d853a",
+      "text": "51 − 15 = ?",
+      "answer": 36,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "51 − 15."
+      ],
+      "explanation": "51 − 15 = 36.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ce40780813",
+      "text": "47 + 48 = ?",
+      "answer": 95,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "47 + 48."
+      ],
+      "explanation": "47 + 48 = 95.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ea794f57c1",
+      "text": "86 − 50 = ?",
+      "answer": 36,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "86 − 50."
+      ],
+      "explanation": "86 − 50 = 36.",
+      "source": "algo"
+    },
+    {
+      "id": "q-80a1e60982",
+      "text": "79 − 64 = ?",
+      "answer": 15,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "79 − 64."
+      ],
+      "explanation": "79 − 64 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cb3f6ca1f6",
+      "text": "80 − 46 = ?",
+      "answer": 34,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "80 − 46."
+      ],
+      "explanation": "80 − 46 = 34.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f545509a9b",
+      "text": "33 + 45 = ?",
+      "answer": 78,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "33 + 45."
+      ],
+      "explanation": "33 + 45 = 78.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2427fb0e29",
+      "text": "91 − 58 = ?",
+      "answer": 33,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "91 − 58."
+      ],
+      "explanation": "91 − 58 = 33.",
+      "source": "algo"
+    }
+  ]
+}

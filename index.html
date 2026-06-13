@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>מערכת לימוד – אבטיפוס</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="appWord" aria-hidden="true">vela</div>
     <header class="topbar">
       <div class="topbar__left">
         <div class="brand">
@@ -18,10 +22,17 @@
         </div>
       </div>
       <div class="topbar__right">
+        <span id="userChip" class="userChip" hidden>
+          <span class="userChip__icon" aria-hidden="true">👤</span>
+          <span id="userChipName" class="userChip__name"></span>
+        </span>
+        <a href="/home" class="btn btn--ghost" id="homeBtn">🏠 בית</a>
         <button id="topicsBtn" class="iconBtn" type="button" aria-label="פתיחת תפריט נושאים" aria-haspopup="dialog" aria-expanded="false">
           <span class="iconBtn__icon" aria-hidden="true">☰</span>
         </button>
-        <button id="resetBtn" class="btn btn--ghost" type="button">איפוס</button>
+        <button id="resetBtn" class="btn btn--ghost" type="button">איפוס צ'אט</button>
+        <button id="logoutBtn" class="btn btn--ghost" type="button">יציאה</button>
+        <button id="deleteAccountBtn" class="btn btn--ghost btn--danger" type="button" title="מחיקת החשבון לצמיתות">מחיקת חשבון</button>
       </div>
     </header>
 
@@ -37,10 +48,22 @@
         </button>
       </div>
       <div class="drawer__content">
-        <div class="drawer__actions">
-          <button id="newTopicBtn" class="btn btn--primary" type="button">נושא חדש</button>
+        <!-- תצוגה 1: הנושאים שכבר נפתחו -->
+        <div id="topicsListView">
+          <div class="drawer__actions">
+            <button id="newTopicBtn" class="btn btn--primary" type="button">+ נושא חדש</button>
+          </div>
+          <div id="topicsList" class="topicsList" aria-label="רשימת נושאים"></div>
         </div>
-        <div id="topicsList" class="topicsList" aria-label="רשימת נושאים"></div>
+
+        <!-- תצוגה 2: בורר נושאי הכיתה (נפתח מ"נושא חדש") -->
+        <div id="topicPickerView" hidden>
+          <div class="drawer__actions">
+            <button id="pickerBackBtn" class="btn btn--secondary" type="button">→ חזרה</button>
+          </div>
+          <div class="pickerHint">בחר/י נושא מהכיתה שלך:</div>
+          <div id="topicPicker" class="topicsList" aria-label="נושאי הכיתה"></div>
+        </div>
       </div>
     </aside>
 
@@ -92,19 +115,42 @@
           <div class="pill" id="difficultyPill" title="רמת קושי">רמה: 1</div>
         </div>
 
-        <div class="card">
+        <div class="card" id="lessonCard">
           <div class="problem">
+            <div id="problemDiagram" class="problemDiagram" hidden aria-hidden="true"></div>
             <div class="problem__label">שאלה</div>
             <div class="problem__text" id="problemText">טוען…</div>
-            <div id="problemDiagram" class="problemDiagram" hidden aria-hidden="true"></div>
           </div>
 
-          <div class="answerRow">
+          <!-- קלט רגיל: מספר אחד -->
+          <div class="answerRow" id="answerRowNumeric">
             <label class="field">
               <span class="field__label">התשובה שלי</span>
               <input id="answerInput" class="input" inputmode="numeric" autocomplete="off" placeholder="לדוגמה: 12" />
             </label>
             <button id="checkBtn" class="btn btn--primary" type="button">בדוק</button>
+          </div>
+
+          <!-- קלט שעה: שעות : דקות -->
+          <div class="answerRow answerRow--time" id="answerRowTime" hidden>
+            <div class="timeInput">
+              <label class="field timeInput__field">
+                <span class="field__label">שעות</span>
+                <input id="timeHour" class="input input--time" inputmode="numeric" autocomplete="off" min="1" max="12" placeholder="3" />
+              </label>
+              <span class="timeInput__colon" aria-hidden="true">:</span>
+              <label class="field timeInput__field">
+                <span class="field__label">דקות</span>
+                <input id="timeMin" class="input input--time" inputmode="numeric" autocomplete="off" min="0" max="59" placeholder="30" />
+              </label>
+            </div>
+            <button id="checkTimeBtn" class="btn btn--primary" type="button">בדוק</button>
+          </div>
+
+          <!-- קלט אינטראקטיבי: גוררים מחוגים ולוחצים "סיימתי" -->
+          <div class="answerRow answerRow--interactive" id="answerRowInteractive" hidden>
+            <div class="interactiveHint" id="interactiveHint">הזיזו את המחוגים על השעון למעלה ולחצו "סיימתי"</div>
+            <button id="doneBtn" class="btn btn--primary" type="button">סיימתי</button>
           </div>
 
           <div class="actions">
@@ -117,6 +163,16 @@
           </div>
 
           <div class="feedback feedback--hidden" id="feedbackBox" role="status" aria-live="polite" hidden></div>
+        </div>
+
+        <!-- כרטיס יצירת צורות: לוח משבצות לציור עם העכבר (מחליף את הכרטיס הרגיל) -->
+        <div class="card shapeCreatorCard" id="shapeCreatorCard" hidden>
+          <div id="shapeBoard" class="shapeBoard" aria-label="לוח ציור צורות"></div>
+          <div class="shapeCreator__request" id="shapeRequest">צייר/י צורה</div>
+          <div class="shapeCreator__actions">
+            <button id="shapeDoneBtn" class="btn btn--primary" type="button">סיימתי</button>
+            <button id="shapeClearBtn" class="btn btn--secondary" type="button">נסה שוב</button>
+          </div>
         </div>
 
         <div class="card stats">

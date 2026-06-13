@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מערכת לימוד – בית</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="homeBody">
+    <main class="home">
+      <div class="home__bg" aria-hidden="true">vela</div>
+      <header class="home__top">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true">∑</div>
+          <div class="brand__text">
+            <div class="brand__title">מערכת לימוד</div>
+          </div>
+        </div>
+        <div class="home__topRight">
+          <span id="userChip" class="userChip" hidden>
+            <span class="userChip__icon" aria-hidden="true">👤</span>
+            <span id="homeName" class="userChip__name"></span>
+          </span>
+          <div class="menuWrap">
+            <button id="menuBtn" class="hamburger" type="button" aria-label="תפריט" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
+            <div id="menu" class="menu">
+              <button id="logoutItem" class="menu__item menu__item--danger" type="button">התנתקות</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="home__hero">
+        <h1 class="home__greeting">שלום<span id="greetName"></span>! 👋</h1>
+        <p class="home__subtitle">מה נעשה היום?</p>
+
+        <div class="home__cards">
+          <a class="homeCard homeCard--primary" href="/practice">
+            <div class="homeCard__icon" aria-hidden="true">📝</div>
+            <div class="homeCard__title">תרגול</div>
+            <div class="homeCard__desc">פותרים שאלות עם המורה</div>
+          </a>
+
+          <button class="homeCard homeCard--soon" type="button" id="learnCard">
+            <div class="homeCard__icon" aria-hidden="true">📚</div>
+            <div class="homeCard__title">למידה</div>
+            <div class="homeCard__desc">בקרוב</div>
+          </button>
+        </div>
+      </section>
+
+      <section class="home__stats" id="homeStats" aria-label="הנתונים שלי">
+        <h2 class="home__statsTitle">הנתונים שלי</h2>
+        <div class="home__statsGrid">
+          <div class="statCard">
+            <div class="statCard__value" id="statSolved">0</div>
+            <div class="statCard__label">תרגילים שפתרת</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statAccuracy">—</div>
+            <div class="statCard__label">דיוק</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statStreak">0</div>
+            <div class="statCard__label">רצף שיא</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statTopics">0</div>
+            <div class="statCard__label">נושאים</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (async function () {
+        try {
+          const res = await fetch("/api/me");
+          const data = res.ok ? await res.json() : null;
+          if (!data || !data.ok) {
+            window.location.href = "/auth";
+            return;
+          }
+          const name = data.user.username || "";
+          document.getElementById("homeName").textContent = name;
+          document.getElementById("greetName").textContent = name ? `, ${name}` : "";
+          document.getElementById("userChip").hidden = false;
+          renderHomeStats(data.user.id);
+        } catch {
+          window.location.href = "/auth";
+        }
+      })();
+
+      // קובע יעד למספר (data-target) ומציג 0 עד שנגלל אליו
+      function setStat(id, value, suffix) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (value === null) {
+          el.textContent = "—";
+          el.removeAttribute("data-target");
+          return;
+        }
+        el.setAttribute("data-target", String(value));
+        if (suffix) el.setAttribute("data-suffix", suffix);
+        el.textContent = "0" + (suffix || "");
+      }
+
+      // סטטיסטיקות — חישוב מהנתונים המקומיים של החשבון
+      function renderHomeStats(userId) {
+        const s = { attempts: 0, correct: 0, maxStreak: 0, topics: 0 };
+        try {
+          const raw = localStorage.getItem("learning-prototype-v1:" + userId);
+          if (raw) {
+            const st = JSON.parse(raw);
+            const topics = (st && st.topicsState && st.topicsState.topics) || [];
+            s.topics = topics.length;
+            for (const t of topics) {
+              s.attempts += t.attempts || 0;
+              s.correct += t.correct || 0;
+              s.maxStreak = Math.max(s.maxStreak, t.streak || 0);
+            }
+          }
+        } catch {
+          /* ignore */
+        }
+        setStat("statSolved", s.attempts);
+        setStat("statAccuracy", s.attempts ? Math.round((s.correct / s.attempts) * 100) : null, "%");
+        setStat("statStreak", s.maxStreak);
+        setStat("statTopics", s.topics);
+      }
+
+      // אנימציית ספירה מ-0 עד היעד
+      function animateValue(el) {
+        const target = parseFloat(el.getAttribute("data-target"));
+        if (isNaN(target)) return;
+        const suffix = el.getAttribute("data-suffix") || "";
+        const reduce =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) {
+          el.textContent = target + suffix;
+          return;
+        }
+        const dur = 900;
+        const start = performance.now();
+        function frame(now) {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(frame);
+          else el.textContent = target + suffix;
+        }
+        requestAnimationFrame(frame);
+      }
+
+      function animateStats() {
+        document.querySelectorAll(".statCard__value[data-target]").forEach(animateValue);
+      }
+
+      // חשיפה + ספירה כשגוללים אל הסטטיסטיקות
+      (function statsReveal() {
+        const stats = document.getElementById("homeStats");
+        if (!stats) return;
+        const reveal = () => {
+          stats.classList.add("is-visible");
+          animateStats();
+        };
+        if (!("IntersectionObserver" in window)) {
+          reveal();
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                reveal();
+                io.disconnect();
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        io.observe(stats);
+      })();
+
+      const menuBtn = document.getElementById("menuBtn");
+      const menu = document.getElementById("menu");
+      function setMenu(open) {
+        menu.classList.toggle("menu--open", open);
+        menuBtn.classList.toggle("hamburger--open", open);
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+      menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setMenu(!menu.classList.contains("menu--open"));
+      });
+      document.addEventListener("click", (e) => {
+        if (menu.classList.contains("menu--open") && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+          setMenu(false);
+        }
+      });
+      document.getElementById("logoutItem").addEventListener("click", async () => {
+        try {
+          await fetch("/api/logout", { method: "POST" });
+        } catch {
+          /* ignore */
+        }
+        window.location.href = "/auth";
+      });
+
+      // parallax עדין — הרקע (VELA) זז מעט עם העכבר, כמו מסך נעילה באייפון
+      (function parallax() {
+        const bg = document.querySelector(".home__bg");
+        if (!bg) return;
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const MAX = 18;
+        let tx = 0, ty = 0, cx = 0, cy = 0;
+        window.addEventListener("pointermove", (e) => {
+          tx = -(e.clientX / window.innerWidth - 0.5) * MAX;
+          ty = -(e.clientY / window.innerHeight - 0.5) * MAX;
+        });
+        (function tick() {
+          cx += (tx - cx) * 0.15;
+          cy += (ty - cy) * 0.15;
+          bg.style.setProperty("--px", cx.toFixed(2) + "px");
+          bg.style.setProperty("--py", cy.toFixed(2) + "px");
+          requestAnimationFrame(tick);
+        })();
+      })();
+    </script>
+  </body>
+</html>

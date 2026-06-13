@@ -1,3 +1,13 @@
 .env
 node_modules/
-data/memory/
+
+# כל data/ נשאר פרטי (חשבונות, sessions, זיכרון) — חוץ ממאגר השאלות המשותף
+/data/*
+!/data/bank/
+.design-backup/
+.DS_Store
+
+# הגדרות מקומיות של Claude Code (לא חלק מהאפליקציה)
+.claude/settings.local.json
+# ארכיון הפונט (כפול — הקבצים כבר ב-fonts/)
+arca-morphe.zip

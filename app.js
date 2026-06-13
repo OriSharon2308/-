@@ -2,6 +2,13 @@ const STORAGE_KEY = "learning-prototype-v1";
 const UI_KEY = "learning-prototype-ui-v1";
 const USER_KEY = "learning-prototype-user-id";
 
+// המשתמש המחובר (נטען מ-/api/me). מפתחות ה-localStorage מקבלים סיומת לפי החשבון
+// כדי ששני תלמידים שמתחברים מאותו דפדפן לא יראו זה את הנתונים של זה.
+let CURRENT_USER = null;
+function scopedKey(base) {
+  return CURRENT_USER ? `${base}:${CURRENT_USER.id}` : base;
+}
+
 /** מזהה תלמיד יציב — הבסיס לזיכרון המתמשך של הסוכנים */
 function getUserId() {
   try {
@@ -40,7 +47,7 @@ function formatPercent(n) {
 
 function saveState(state) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(scopedKey(STORAGE_KEY), JSON.stringify(state));
   } catch {
     // ignore
   }
@@ -48,7 +55,7 @@ function saveState(state) {
 
 function loadState() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(scopedKey(STORAGE_KEY));
     if (!raw) return null;
     const parsed = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object") return null;
@@ -60,7 +67,7 @@ function loadState() {
 
 function saveUi(uiState) {
   try {
-    localStorage.setItem(UI_KEY, JSON.stringify(uiState));
+    localStorage.setItem(scopedKey(UI_KEY), JSON.stringify(uiState));
   } catch {
     // ignore
   }
@@ -68,7 +75,7 @@ function saveUi(uiState) {
 
 function loadUi() {
   try {
-    const raw = localStorage.getItem(UI_KEY);
+    const raw = localStorage.getItem(scopedKey(UI_KEY));
     if (!raw) return null;
     const parsed = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object") return null;
@@ -215,8 +222,23 @@ function parseAnswerToNumberOrFraction(text) {
   return Number.isFinite(n) ? n : null;
 }
 
+// שעה "H:MM" → דקות מתחילת מחזור 12 שעות
+function parseTimeAnswer(s) {
+  const m = String(s ?? "").trim().match(/^(\d{1,2})\s*[:.]\s*(\d{1,2})$/);
+  if (!m) return null;
+  const h = parseInt(m[1], 10) % 12;
+  const min = parseInt(m[2], 10);
+  if (min > 59) return null;
+  return h * 60 + min;
+}
+
 function answersMatch(givenText, expected) {
   if (expected == null) return false;
+  const expTime = parseTimeAnswer(expected);
+  if (expTime != null) {
+    const gotTime = parseTimeAnswer(givenText);
+    return gotTime != null && gotTime === expTime;
+  }
   const expNum = typeof expected === "number" ? expected : parseAnswerToNumberOrFraction(String(expected));
   const gotNum = parseAnswerToNumberOrFraction(givenText);
   if (expNum != null && gotNum != null) return Math.abs(expNum - gotNum) < 1e-3;
@@ -331,10 +353,28 @@ function ui() {
     topicsCloseBtn: document.getElementById("topicsCloseBtn"),
     newTopicBtn: document.getElementById("newTopicBtn"),
     topicsList: document.getElementById("topicsList"),
+    topicsListView: document.getElementById("topicsListView"),
+    topicPickerView: document.getElementById("topicPickerView"),
+    topicPicker: document.getElementById("topicPicker"),
+    pickerBackBtn: document.getElementById("pickerBackBtn"),
     topicLabel: document.getElementById("topicLabel"),
     problemText: document.getElementById("problemText"),
     answerInput: document.getElementById("answerInput"),
     checkBtn: document.getElementById("checkBtn"),
+    answerRowNumeric: document.getElementById("answerRowNumeric"),
+    answerRowTime: document.getElementById("answerRowTime"),
+    timeHour: document.getElementById("timeHour"),
+    timeMin: document.getElementById("timeMin"),
+    checkTimeBtn: document.getElementById("checkTimeBtn"),
+    answerRowInteractive: document.getElementById("answerRowInteractive"),
+    interactiveHint: document.getElementById("interactiveHint"),
+    doneBtn: document.getElementById("doneBtn"),
+    lessonCard: document.getElementById("lessonCard"),
+    shapeCreatorCard: document.getElementById("shapeCreatorCard"),
+    shapeRequest: document.getElementById("shapeRequest"),
+    shapeBoard: document.getElementById("shapeBoard"),
+    shapeDoneBtn: document.getElementById("shapeDoneBtn"),
+    shapeClearBtn: document.getElementById("shapeClearBtn"),
     prevProblemBtn: document.getElementById("prevProblemBtn"),
     nextProblemBtn: document.getElementById("nextProblemBtn"),
     hint1Btn: document.getElementById("hint1Btn"),
@@ -359,6 +399,10 @@ function ui() {
     chatResizeHandle: document.getElementById("chatResizeHandle"),
     resetBtn: document.getElementById("resetBtn"),
     problemDiagram: document.getElementById("problemDiagram"),
+    userChip: document.getElementById("userChip"),
+    userChipName: document.getElementById("userChipName"),
+    logoutBtn: document.getElementById("logoutBtn"),
+    deleteAccountBtn: document.getElementById("deleteAccountBtn"),
   };
 }
 
@@ -375,6 +419,441 @@ function showProblemDiagram(u, svg, altText) {
   el.setAttribute("aria-hidden", "false");
   if (altText) el.setAttribute("aria-label", altText);
   el.innerHTML = svg;
+}
+
+/* ---------- הדמיית חפצים לחיבור/חיסור (עזרה ויזואלית לילד) ---------- */
+
+const VIZ_OBJECTS = ["🍎", "✏️", "⭐", "🍌", "🎈", "🌸", "🍪", "⚽", "🐠", "🧸"];
+
+function vizObjectFor(text) {
+  let h = 0;
+  for (const ch of String(text)) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return VIZ_OBJECTS[h % VIZ_OBJECTS.length];
+}
+
+function vizRepeat(emoji, n, cls) {
+  let s = "";
+  for (let i = 0; i < n; i++) s += `<span class="obj${cls ? ` ${cls}` : ""}">${emoji}</span>`;
+  return s;
+}
+
+/** בונה הדמיית חפצים מטקסט תרגיל חיבור/חיסור, או null אם לא מתאים. */
+function buildArithViz(text) {
+  const m = String(text ?? "").match(/(\d+)\s*([+\-−])\s*(\d+)/);
+  if (!m) return null;
+  const a = parseInt(m[1], 10);
+  const b = parseInt(m[3], 10);
+  const op = m[2];
+  const emoji = vizObjectFor(text);
+  if (op === "+") {
+    if (a + b > 50) return null;
+    return `<div class="objViz"><span class="objViz__group">${vizRepeat(emoji, a)}</span><span class="objViz__op">+</span><span class="objViz__group">${vizRepeat(emoji, b)}</span></div>`;
+  }
+  // חיסור אינטראקטיבי — כל החפצים מוצגים, התלמיד לוחץ כדי "להוריד" אותם בעצמו
+  if (a > 50) return null;
+  return `<div class="objViz objViz--interactive"><span class="objViz__group">${vizRepeat(emoji, a, "obj--clickable")}</span></div>`;
+}
+
+/** מציג איור שרת אם יש; הדמיית חפצים לא מוצגת אוטומטית (רק כשהתלמיד מתקשה). */
+function showProblemVisual(u, p) {
+  if (!p) return showProblemDiagram(u, null);
+  if (p.diagramSvg) return showProblemDiagram(u, p.diagramSvg, p.diagramAlt);
+  return showProblemDiagram(u, null);
+}
+
+/* ---------- שעון אינטראקטיבי: הילד גורר את המחוגים ---------- */
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+/** בונה שעון שניתן לגרור את מחוגיו לתוך container. השעה הנוכחית נשמרת ב-container._clockState. */
+function renderInteractiveClock(container) {
+  if (!container) return;
+  const cx = 100;
+  const cy = 100;
+  const r = 85;
+  const HOUR_LEN = 50;
+  const MIN_LEN = 70;
+  const state = { hour: 12, minute: 0 }; // מתחילים מ-12:00
+
+  container.hidden = false;
+  container.setAttribute("aria-hidden", "false");
+  container.innerHTML = "";
+
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("viewBox", "0 0 200 200");
+  svg.setAttribute("class", "interactiveClock");
+
+  const circle = document.createElementNS(SVG_NS, "circle");
+  circle.setAttribute("cx", cx);
+  circle.setAttribute("cy", cy);
+  circle.setAttribute("r", r);
+  circle.setAttribute("fill", "#fff");
+  circle.setAttribute("stroke", "#334155");
+  circle.setAttribute("stroke-width", "3");
+  svg.appendChild(circle);
+
+  for (let i = 1; i <= 12; i++) {
+    const a = ((i * 30 - 90) * Math.PI) / 180;
+    const t = document.createElementNS(SVG_NS, "text");
+    t.setAttribute("x", (cx + Math.cos(a) * (r - 20)).toFixed(1));
+    t.setAttribute("y", (cy + Math.sin(a) * (r - 20) + 6).toFixed(1));
+    t.setAttribute("text-anchor", "middle");
+    t.setAttribute("font-size", "18");
+    t.setAttribute("font-weight", "700");
+    t.setAttribute("fill", "#334155");
+    t.textContent = String(i);
+    svg.appendChild(t);
+  }
+
+  const hourHand = document.createElementNS(SVG_NS, "line");
+  hourHand.setAttribute("x1", cx);
+  hourHand.setAttribute("y1", cy);
+  hourHand.setAttribute("stroke", "#0f172a");
+  hourHand.setAttribute("stroke-width", "6");
+  hourHand.setAttribute("stroke-linecap", "round");
+  svg.appendChild(hourHand);
+
+  const minHand = document.createElementNS(SVG_NS, "line");
+  minHand.setAttribute("x1", cx);
+  minHand.setAttribute("y1", cy);
+  minHand.setAttribute("stroke", "#0d9488");
+  minHand.setAttribute("stroke-width", "4");
+  minHand.setAttribute("stroke-linecap", "round");
+  svg.appendChild(minHand);
+
+  const pin = document.createElementNS(SVG_NS, "circle");
+  pin.setAttribute("cx", cx);
+  pin.setAttribute("cy", cy);
+  pin.setAttribute("r", "5");
+  pin.setAttribute("fill", "#0f172a");
+  svg.appendChild(pin);
+
+  function draw() {
+    const ha = (((state.hour % 12) * 30 - 90) * Math.PI) / 180;
+    const ma = ((state.minute * 6 - 90) * Math.PI) / 180;
+    hourHand.setAttribute("x2", (cx + Math.cos(ha) * HOUR_LEN).toFixed(1));
+    hourHand.setAttribute("y2", (cy + Math.sin(ha) * HOUR_LEN).toFixed(1));
+    minHand.setAttribute("x2", (cx + Math.cos(ma) * MIN_LEN).toFixed(1));
+    minHand.setAttribute("y2", (cy + Math.sin(ma) * MIN_LEN).toFixed(1));
+    container._clockState = { hour: state.hour, minute: state.minute };
+  }
+
+  let active = null;
+  function toSvg(ev) {
+    const rect = svg.getBoundingClientRect();
+    return {
+      px: ((ev.clientX - rect.left) / rect.width) * 200,
+      py: ((ev.clientY - rect.top) / rect.height) * 200,
+    };
+  }
+  function update(px, py) {
+    const deg = (Math.atan2(py - cy, px - cx) * 180) / Math.PI;
+    if (active === "minute") {
+      let m = Math.round((deg + 90) / 6);
+      m = (((Math.round(m / 5) * 5) % 60) + 60) % 60;
+      state.minute = m;
+    } else {
+      let h = Math.round((deg + 90) / 30);
+      h = ((h % 12) + 12) % 12;
+      state.hour = h === 0 ? 12 : h;
+    }
+    draw();
+  }
+  function onDown(ev) {
+    ev.preventDefault();
+    const { px, py } = toSvg(ev);
+    const d = Math.hypot(px - cx, py - cy);
+    active = d < (HOUR_LEN + MIN_LEN) / 2 ? "hour" : "minute"; // קרוב למרכז = שעות
+    update(px, py);
+    if (svg.setPointerCapture && ev.pointerId != null) svg.setPointerCapture(ev.pointerId);
+  }
+  function onMove(ev) {
+    if (!active) return;
+    const { px, py } = toSvg(ev);
+    update(px, py);
+  }
+  function onUp() {
+    active = null;
+  }
+  svg.addEventListener("pointerdown", onDown);
+  svg.addEventListener("pointermove", onMove);
+  svg.addEventListener("pointerup", onUp);
+  svg.addEventListener("pointercancel", onUp);
+
+  container.appendChild(svg);
+  draw();
+}
+
+/* ---------- יצירת צורות: לוח משבצות לציור + ולידציה גאומטרית ---------- */
+
+const SHAPE_TYPE_HE = {
+  triangle: "משולש",
+  quad: "מרובע",
+  rectangle: "מלבן",
+  square: "ריבוע",
+  equilateral: "משולש שווה-צלעות",
+  pentagon: "מחומש",
+  hexagon: "משושה",
+};
+
+function segmentsIntersect(a, b, c, d) {
+  const ccw = (p, q, r) => (r[1] - p[1]) * (q[0] - p[0]) > (q[1] - p[1]) * (r[0] - p[0]);
+  return ccw(a, c, d) !== ccw(b, c, d) && ccw(a, b, c) !== ccw(a, b, d);
+}
+function polygonSelfIntersects(pts) {
+  const n = pts.length;
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) {
+      if (Math.abs(i - j) <= 1 || (i === 0 && j === n - 1)) continue;
+      if (segmentsIntersect(pts[i], pts[(i + 1) % n], pts[j], pts[(j + 1) % n])) return true;
+    }
+  }
+  return false;
+}
+function sideLengths(pts) {
+  const n = pts.length;
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const a = pts[i];
+    const b = pts[(i + 1) % n];
+    out.push(Math.hypot(a[0] - b[0], a[1] - b[1]));
+  }
+  return out;
+}
+function interiorAngles(pts) {
+  const n = pts.length;
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const a = pts[(i - 1 + n) % n];
+    const b = pts[i];
+    const c = pts[(i + 1) % n];
+    const v1 = [a[0] - b[0], a[1] - b[1]];
+    const v2 = [c[0] - b[0], c[1] - b[1]];
+    const dot = v1[0] * v2[0] + v1[1] * v2[1];
+    const m = Math.hypot(...v1) * Math.hypot(...v2) || 1;
+    out.push((Math.acos(Math.max(-1, Math.min(1, dot / m))) * 180) / Math.PI);
+  }
+  return out;
+}
+
+/**
+ * בודק את המצולע שצויר מול היעד. מחזיר { correct, summary, reason }.
+ * הוורדיקט דטרמיניסטי; ה-summary הוא תיאור בעברית למורה (כדי שיבין מה צויר).
+ */
+function analyzeDrawnShape(verts, target, closed) {
+  const want = target?.label || "צורה";
+  if (!verts || verts.length < 2) {
+    return { correct: false, reason: "empty", summary: `כמעט ולא סימנתי קודקודים. התבקשתי לצייר ${want}.` };
+  }
+  if (verts.length < 3) {
+    return { correct: false, reason: "too-few", summary: `סימנתי רק ${verts.length} קודקודים — אי אפשר לסגור צורה.` };
+  }
+  if (!closed) {
+    return { correct: false, reason: "open", summary: `סימנתי ${verts.length} קודקודים אבל לא סגרתי את הצורה (לא חיברתי בחזרה לנקודה הראשונה).` };
+  }
+  if (polygonSelfIntersects(verts)) {
+    return { correct: false, reason: "self-intersect", summary: "הקווים שציירתי מצטלבים זה עם זה — זו לא צורה פשוטה." };
+  }
+
+  const n = verts.length;
+  const sides = sideLengths(verts);
+  const mean = sides.reduce((s, x) => s + x, 0) / n;
+  const equalSides = (Math.max(...sides) - Math.min(...sides)) <= mean * 0.18;
+  const angles = interiorAngles(verts);
+  const rightAngles = angles.every((a) => Math.abs(a - 90) <= 12);
+  // צלעות נגדיות שוות (למלבן) — רק עבור 4 צלעות
+  const oppositeEqual =
+    n === 4 &&
+    Math.abs(sides[0] - sides[2]) <= mean * 0.2 &&
+    Math.abs(sides[1] - sides[3]) <= mean * 0.2;
+
+  const base = `ציירתי מצולע סגור עם ${n} צלעות`;
+  // התאמה למספר הצלעות
+  if (n !== target.sides) {
+    return {
+      correct: false,
+      reason: "sides",
+      summary: `${base}, אבל התבקשתי לצייר ${want} שיש לו ${target.sides} צלעות.`,
+    };
+  }
+  // אילוץ צלעות שוות (ריבוע / משולש שווה-צלעות)
+  if (target.equal && !equalSides) {
+    return {
+      correct: false,
+      reason: "not-equal",
+      summary: `${base} אבל הצלעות לא באותו אורך, ו${want} דורש שכל הצלעות יהיו שוות.`,
+    };
+  }
+  // אילוץ זוויות ישרות (ריבוע / מלבן)
+  if (target.right && !rightAngles) {
+    return {
+      correct: false,
+      reason: "not-right",
+      summary: `${base} אבל לא כל הזוויות ישרות (90°), ו${want} דורש זוויות ישרות.`,
+    };
+  }
+  if (target.type === "rectangle" && !oppositeEqual) {
+    return {
+      correct: false,
+      reason: "rect",
+      summary: `${base} עם זוויות ישרות, אבל הצלעות הנגדיות לא שוות — במלבן כל זוג צלעות נגדיות שוות.`,
+    };
+  }
+  // עבר את כל הבדיקות
+  const extras = [];
+  if (target.equal) extras.push("כל הצלעות שוות");
+  if (target.right) extras.push("כל הזוויות ישרות");
+  return {
+    correct: true,
+    reason: "ok",
+    summary: `${base}${extras.length ? " — " + extras.join(", ") : ""}. זה ${want}!`,
+  };
+}
+
+/** בונה לוח משבצות לציור צורה. המצב נשמר ב-container._shapeState. */
+function renderShapeBoard(container, target) {
+  if (!container) return;
+  // הלוח ממלא את כל הכרטיס; מודדים את הגודל בפיקסלים כדי שהמשבצות יהיו ריבועיות
+  const cell = 38; // גודל משבצת בפיקסלים
+  const rect = container.getBoundingClientRect();
+  const W = Math.max(240, Math.round(rect.width) || 640);
+  const H = Math.max(240, Math.round(rect.height) || 440);
+  const colsMax = Math.floor(W / cell);
+  const rowsMax = Math.floor(H / cell);
+  const SNAP = cell * 0.6; // מרחק סגירה אל הנקודה הראשונה
+  const state = { verts: [], closed: false, target };
+  container._shapeState = state;
+  container.innerHTML = "";
+
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("preserveAspectRatio", "none"); // 1 יחידה = 1 פיקסל → משבצות ריבועיות
+  svg.setAttribute("class", "shapeBoardSvg");
+
+  // משבצות — קווי תכלת עדינים על פני כל הלוח (כמו נייר משבצות)
+  for (let x = 0; x <= W; x += cell) {
+    const vline = document.createElementNS(SVG_NS, "line");
+    vline.setAttribute("x1", x); vline.setAttribute("y1", 0);
+    vline.setAttribute("x2", x); vline.setAttribute("y2", H);
+    vline.setAttribute("class", "shapeGrid");
+    svg.appendChild(vline);
+  }
+  for (let y = 0; y <= H; y += cell) {
+    const hline = document.createElementNS(SVG_NS, "line");
+    hline.setAttribute("x1", 0); hline.setAttribute("y1", y);
+    hline.setAttribute("x2", W); hline.setAttribute("y2", y);
+    hline.setAttribute("class", "shapeGrid");
+    svg.appendChild(hline);
+  }
+
+  const edges = document.createElementNS(SVG_NS, "polyline");
+  edges.setAttribute("class", "shapeEdges");
+  edges.setAttribute("fill", "none");
+  svg.appendChild(edges);
+
+  const fillPoly = document.createElementNS(SVG_NS, "polygon");
+  fillPoly.setAttribute("class", "shapeFill");
+  svg.appendChild(fillPoly);
+
+  const rubber = document.createElementNS(SVG_NS, "line");
+  rubber.setAttribute("class", "shapeRubber");
+  svg.appendChild(rubber);
+
+  const dotsLayer = document.createElementNS(SVG_NS, "g");
+  svg.appendChild(dotsLayer);
+
+  function toSvg(ev) {
+    const r = svg.getBoundingClientRect();
+    return {
+      x: ((ev.clientX - r.left) / r.width) * W,
+      y: ((ev.clientY - r.top) / r.height) * H,
+    };
+  }
+  function snapPt(x, y) {
+    return [
+      Math.max(0, Math.min(colsMax, Math.round(x / cell))) * cell,
+      Math.max(0, Math.min(rowsMax, Math.round(y / cell))) * cell,
+    ];
+  }
+  function redraw() {
+    const pts = state.verts;
+    const ptsStr = pts.map((p) => p.join(",")).join(" ");
+    const closed = state.closed && pts.length >= 3;
+    if (closed) {
+      // סוגרים את הקו (כולל הצלע האחרונה) ומסתירים את קו הגומייה
+      edges.setAttribute("points", `${ptsStr} ${pts[0].join(",")}`);
+      fillPoly.setAttribute("points", ptsStr);
+      fillPoly.style.display = "";
+      rubber.style.display = "none";
+    } else {
+      edges.setAttribute("points", ptsStr);
+      fillPoly.style.display = "none";
+      rubber.style.display = "";
+    }
+    dotsLayer.innerHTML = "";
+    pts.forEach((p, i) => {
+      // הקודקוד הראשון מודגש רק בזמן הציור (כדי לדעת איפה לסגור); אחרי סגירה — כמו כולם
+      const highlightFirst = i === 0 && !closed;
+      const c = document.createElementNS(SVG_NS, "circle");
+      c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]);
+      c.setAttribute("r", highlightFirst ? 7 : 5);
+      c.setAttribute("class", highlightFirst ? "shapeDot shapeDot--first" : "shapeDot");
+      dotsLayer.appendChild(c);
+    });
+    // המצב הנוכחי לציור הקודקודים בגריד (יחידות שלמות) — לוורדיקט
+    container._shapeState = {
+      ...state,
+      gridVerts: pts.map((p) => [p[0] / cell, p[1] / cell]),
+    };
+  }
+  function onClick(ev) {
+    if (state.closed) return;
+    const { x, y } = toSvg(ev);
+    const [sx, sy] = snapPt(x, y);
+    // סגירה: לחיצה על הנקודה הראשונה (אם יש לפחות 3 קודקודים)
+    if (state.verts.length >= 3) {
+      const f = state.verts[0];
+      if (Math.hypot(sx - f[0], sy - f[1]) <= SNAP) {
+        state.closed = true;
+        rubber.style.display = "none";
+        redraw();
+        return;
+      }
+    }
+    // לא מוסיפים קודקוד כפול באותו מקום
+    const last = state.verts[state.verts.length - 1];
+    if (last && last[0] === sx && last[1] === sy) return;
+    state.verts.push([sx, sy]);
+    redraw();
+  }
+  function onMove(ev) {
+    if (state.closed || !state.verts.length) {
+      rubber.removeAttribute("x1");
+      return;
+    }
+    const { x, y } = toSvg(ev);
+    const last = state.verts[state.verts.length - 1];
+    rubber.setAttribute("x1", last[0]);
+    rubber.setAttribute("y1", last[1]);
+    rubber.setAttribute("x2", x);
+    rubber.setAttribute("y2", y);
+  }
+  svg.addEventListener("click", onClick);
+  svg.addEventListener("pointermove", onMove);
+
+  container.appendChild(svg);
+  redraw();
+}
+
+/** חושף את הדמיית החפצים — נקרא רק כשהתלמיד מתקשה (תשובה שגויה / בקשת רמז). */
+function revealArithViz(u, p) {
+  const el = u && u.problemDiagram;
+  if (!el || !p || p.diagramSvg) return;
+  if (el.querySelector(".objViz")) return; // כבר מוצג
+  const viz = buildArithViz(p.text);
+  if (!viz) return;
+  el.hidden = false;
+  el.setAttribute("aria-hidden", "false");
+  el.innerHTML = viz;
 }
 
 function setFeedback(el, text, variant) {
@@ -405,6 +884,88 @@ function appendMsg(chatLogEl, { from, text, isError }) {
   chatLogEl.scrollTop = chatLogEl.scrollHeight;
 }
 
+/** מציג בועת "כותב…" עם שלוש נקודות מקפצות (כמו בוואטסאפ). */
+function showTyping(chatLogEl) {
+  if (!chatLogEl || chatLogEl.querySelector(".msg--typing")) return;
+  const el = document.createElement("div");
+  el.className = "msg msg--bot msg--typing";
+  el.setAttribute("aria-label", "המורה כותב…");
+  el.innerHTML =
+    '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+  chatLogEl.appendChild(el);
+  chatLogEl.scrollTop = chatLogEl.scrollHeight;
+}
+
+/** מסיר את בועת ההקלדה. */
+function hideTyping(chatLogEl) {
+  const el = chatLogEl?.querySelector(".msg--typing");
+  if (el) el.remove();
+}
+
+/** קונפטי חגיגי על תשובה נכונה 🎉 */
+function launchConfetti() {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let canvas = document.getElementById("confettiCanvas");
+  if (!canvas) {
+    canvas = document.createElement("canvas");
+    canvas.id = "confettiCanvas";
+    canvas.style.cssText =
+      "position:fixed;inset:0;pointer-events:none;z-index:9999;";
+    document.body.appendChild(canvas);
+  }
+  const ctx = canvas.getContext("2d");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const colors = ["#14b8a6", "#f59e0b", "#ef4444", "#6366f1", "#ec4899", "#22c55e"];
+  const parts = [];
+  for (let i = 0; i < 130; i++) {
+    parts.push({
+      x: W / 2 + (Math.random() - 0.5) * W * 0.35,
+      y: H * 0.32 + (Math.random() - 0.5) * 40,
+      vx: (Math.random() - 0.5) * 10,
+      vy: Math.random() * -10 - 3,
+      g: 0.22 + Math.random() * 0.12,
+      size: 6 + Math.random() * 6,
+      rot: Math.random() * Math.PI,
+      vr: (Math.random() - 0.5) * 0.35,
+      color: colors[(Math.random() * colors.length) | 0],
+      life: 1,
+    });
+  }
+
+  let frames = 0;
+  function tick() {
+    frames += 1;
+    ctx.clearRect(0, 0, W, H);
+    let alive = false;
+    for (const p of parts) {
+      p.vy += p.g;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+      if (frames > 55) p.life -= 0.02;
+      if (p.life > 0 && p.y < H + 40) {
+        alive = true;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        ctx.restore();
+      }
+    }
+    if (alive) requestAnimationFrame(tick);
+    else ctx.clearRect(0, 0, W, H);
+  }
+  requestAnimationFrame(tick);
+}
+
 const CANNED_BOT_PHRASES = [
   "את/ה בדרך הנכונה",
   "נתקדם צעד אחד בכל פעם",
@@ -418,9 +979,10 @@ const CANNED_BOT_PHRASES = [
   "מצא/י את x",
 ];
 
-function isCannedBotMessage(text) {
-  const t = String(text ?? "");
-  return CANNED_BOT_PHRASES.some((p) => t.includes(p));
+function isCannedBotMessage() {
+  // legacy: גלאי "שרת ישן" — כבר לא רלוונטי (יש מורה AI אמיתי).
+  // תמיד false כדי לא לחסום בטעות תשובות אמיתיות שמכילות ביטוי "חשוד".
+  return false;
 }
 
 function purgeCannedFromTopics(topicsState) {
@@ -464,6 +1026,39 @@ async function callTutorApi(payload) {
   }
 }
 
+/* ===== נושאי הכיתה + שאלות מהמאגר ===== */
+let GRADE_TOPICS = []; // [{ key, sub: [...] }]
+let GRADE_NUM = null;
+
+async function fetchGradeTopics() {
+  try {
+    const res = await fetch("/api/topics");
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data?.ok && Array.isArray(data.topics)) {
+      GRADE_TOPICS = data.topics.map((t) => (typeof t === "string" ? { key: t, sub: [] } : t));
+      GRADE_NUM = data.gradeNum || null;
+    }
+  } catch {
+    // ignore
+  }
+}
+
+async function fetchBankProblem(topicKey, level) {
+  try {
+    const res = await fetch("/api/problem", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ topic: topicKey, level: level || 1 }),
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data?.problem || null;
+  } catch {
+    return null;
+  }
+}
+
 function buildTutorPayload(topic, intent, messageText, history, extra = {}) {
   const p = topic.problems?.[topic.currentProblemIndex] ?? topic.problems?.[topic.problems.length - 1];
   return {
@@ -478,6 +1073,8 @@ function buildTutorPayload(topic, intent, messageText, history, extra = {}) {
           hints: p.hints,
           explanation: p.explanation,
           answer: p.answer,
+          bankTopic: p.bankTopic || null,
+          gradeNum: p.gradeNum || null,
         }
       : null,
     student: {
@@ -488,6 +1085,7 @@ function buildTutorPayload(topic, intent, messageText, history, extra = {}) {
       wrongStreak: topic.wrongStreak,
     },
     history,
+    shapeCheck: extra.shapeCheck || null,
   };
 }
 
@@ -552,32 +1150,83 @@ function renderStats(u, state) {
   u.accuracyValue.textContent = formatPercent(acc);
   u.streakValue.textContent = String(state.streak ?? 0);
   u.attemptsValue.textContent = String(attempts);
-  u.difficultyPill.textContent = `רמה: ${state.level ?? 1}`;
+  // דירוג הקושי מוצג ע"י renderDifficulty לפי השאלה הנוכחית (לא לפי רמת התלמיד)
 }
 
-function main() {
+async function main() {
   const u = ui();
+
+  // שער כניסה: חייבים להיות מחוברים
+  let me = null;
+  try {
+    const res = await fetch("/api/me");
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.ok) me = data.user;
+    }
+  } catch {
+    // נטפל למטה
+  }
+  if (!me) {
+    window.location.href = "/auth";
+    return;
+  }
+  CURRENT_USER = me;
+  if (u.userChipName) u.userChipName.textContent = me.username;
+  if (u.userChip) u.userChip.hidden = false;
+  u.logoutBtn?.addEventListener("click", async () => {
+    try {
+      await fetch("/api/logout", { method: "POST" });
+    } catch {
+      // ignore
+    }
+    window.location.href = "/auth";
+  });
+
+  u.deleteAccountBtn?.addEventListener("click", async () => {
+    const ok1 = confirm(
+      `למחוק את החשבון "${me.username}" לצמיתות?\n` +
+        "כל ההתקדמות, הזיכרון והנתונים יימחקו — אי אפשר לשחזר."
+    );
+    if (!ok1) return;
+    const typed = prompt("לאישור סופי, הקלד/י את שם המשתמש שלך:");
+    if (typed == null) return;
+    if (typed.trim().toLowerCase() !== String(me.username).toLowerCase()) {
+      alert("שם המשתמש לא תאם — המחיקה בוטלה.");
+      return;
+    }
+    try {
+      const res = await fetch("/api/delete-account", { method: "POST" });
+      if (!res.ok) throw new Error("failed");
+    } catch {
+      alert("המחיקה נכשלה. נסה/י שוב.");
+      return;
+    }
+    // ניקוי הנתונים המקומיים של החשבון שנמחק
+    try {
+      localStorage.removeItem(scopedKey(STORAGE_KEY));
+      localStorage.removeItem(scopedKey(UI_KEY));
+    } catch {
+      // ignore
+    }
+    window.location.href = "/auth";
+  });
+
+  // נושאי הכיתה של התלמיד (מהשרת)
+  await fetchGradeTopics();
+  // מפתחות תקפים = נושאי-אב + תתי-נושאים (כדי לא לסנן תת-נושא פתוח בטעינה מחדש)
+  const gradeKeys = GRADE_TOPICS.flatMap((t) => [t.key, ...(Array.isArray(t.sub) ? t.sub : [])]);
+
   const loaded = loadState();
   const uiLoaded = loadUi();
 
-  // Topics model (migrates old single-topic state)
+  // מודל נושאים מבוסס-כיתה: שומרים רק נושאים שתואמים לתכנית הכיתה
   /** @type {{ currentTopicId: string, topics: any[] }} */
-  let topicsState;
+  let topicsState = { currentTopicId: null, topics: [] };
   if (loaded?.topicsState?.topics?.length) {
     topicsState = loaded.topicsState;
-    if (purgeCannedFromTopics(topicsState)) saveState({ topicsState });
-  } else {
-    const t = createTopic("regular", "תרגילים רגילים");
-    // migrate old stats if exist
-    t.level = loaded?.level ?? 1;
-    t.attempts = loaded?.attempts ?? 0;
-    t.correct = loaded?.correct ?? 0;
-    t.streak = loaded?.streak ?? 0;
-    t.wrongStreak = loaded?.wrongStreak ?? 0;
-    const p = loaded?.problem ?? makeProblem(t.level);
-    t.problems = [p];
-    t.currentProblemIndex = 0;
-    topicsState = { currentTopicId: t.id, topics: [t] };
+    purgeCannedFromTopics(topicsState);
+    topicsState.topics = topicsState.topics.filter((t) => gradeKeys.includes(t.kind));
   }
 
   let uiState = {
@@ -628,9 +1277,84 @@ function main() {
   }
 
   function ensureTopicHasProblem(topic) {
-    if (!Array.isArray(topic.problems) || topic.problems.length === 0) {
-      topic.problems = [generateTopicProblem(topic.kind, topic.level)];
-      topic.currentProblemIndex = 0;
+    if (!Array.isArray(topic.problems)) topic.problems = [];
+  }
+
+  /** טוען שאלה חדשה מהמאגר לנושא הנוכחי (לפי הכיתה+נושא+רמה). */
+  async function loadBankProblem(topic, push = true) {
+    u.problemText.textContent = "טוען…";
+    showProblemDiagram(u, null);
+    const p = await fetchBankProblem(topic.kind, topic.level);
+    if (!p) {
+      u.problemText.textContent = "לא נמצאה שאלה לנושא הזה כרגע.";
+      return;
+    }
+    setProblemOnTopic(
+      topic,
+      {
+        id: p.id || String(Date.now()),
+        text: p.text,
+        answer: p.answer,
+        difficulty: p.difficulty || p.level || 1,
+        hints: p.hints || [],
+        explanation: p.explanation || "",
+        diagramSvg: p.diagramSvg || null,
+        diagramAlt: p.diagramAlt || null,
+        diagramData: p.diagramData || null,
+        answerKind: p.answerKind || null,
+        interactive: p.interactive || null,
+        shapeTarget: p.shapeTarget || null,
+        createdAt: Date.now(),
+      },
+      push
+    );
+  }
+
+  /** פותח נושא לפי מפתח (יוצר אם צריך, ומביא שאלה מהמאגר). */
+  async function openTopicByKey(key) {
+    let topic = topicsState.topics.find((t) => t.kind === key);
+    if (!topic) {
+      topic = createTopic(key, key);
+      topicsState.topics.unshift(topic);
+    }
+    topicsState.currentTopicId = topic.id;
+    switchToTopic(topic.id);
+    if (!getCurrentProblem(topic)) await loadBankProblem(topic, true);
+  }
+
+  /** מציג את דירוג הקושי של השאלה ככוכבים (1–10) עם חלונית הסבר. */
+  function renderDifficulty(diff) {
+    if (!u.difficultyPill) return;
+    const d = clamp(Math.round(diff || 1), 1, 10);
+    u.difficultyPill.title = `רמת קושי: ${d} מתוך 10 (1 = קל, 10 = קשה)`;
+    u.difficultyPill.innerHTML = `⭐ ${d}<span class="diffMax">/10</span>`;
+  }
+
+  // בוחר את מצב הקלט לפי סוג השאלה: ציור צורה / מספר / שעה / שעון אינטראקטיבי
+  function applyAnswerMode(p) {
+    const dd = p && p.diagramData;
+    const isShapeCreate = !!(p && p.interactive === "shape-create");
+    const isClockSet = !!(p && (p.interactive === "clock-set" || (dd && dd.type === "clock-set")));
+    const isTime = !isClockSet && !isShapeCreate && !!(p && p.answerKind === "time");
+
+    // ציור צורה — לוח גדול במקום הכרטיס הרגיל
+    if (u.lessonCard) u.lessonCard.hidden = isShapeCreate;
+    if (u.shapeCreatorCard) u.shapeCreatorCard.hidden = !isShapeCreate;
+    if (isShapeCreate) {
+      if (u.shapeRequest) u.shapeRequest.textContent = p.text;
+      renderShapeBoard(u.shapeBoard, p.shapeTarget || { label: "צורה", sides: 4 });
+      return;
+    }
+
+    if (u.answerRowNumeric) u.answerRowNumeric.hidden = isClockSet || isTime;
+    if (u.answerRowTime) u.answerRowTime.hidden = !isTime;
+    if (u.answerRowInteractive) u.answerRowInteractive.hidden = !isClockSet;
+    if (isTime) {
+      if (u.timeHour) u.timeHour.value = "";
+      if (u.timeMin) u.timeMin.value = "";
+    }
+    if (isClockSet) {
+      renderInteractiveClock(u.problemDiagram);
     }
   }
 
@@ -643,12 +1367,30 @@ function main() {
       topic.problems[topic.currentProblemIndex] = p;
     }
     u.problemText.textContent = p.text;
-    showProblemDiagram(u, p.diagramSvg || null, p.diagramAlt || null);
+    showProblemVisual(u, p);
+    applyAnswerMode(p);
+    renderDifficulty(p.difficulty);
     u.answerInput.value = "";
     setFeedback(u.feedbackBox, "", null);
+    u.feedbackBox.hidden = true;
+    u.feedbackBox.classList.add("feedback--hidden");
     renderStats(u, topic);
     renderTopicLabel();
     saveAll();
+  }
+
+  // משוב כן/לא על התשובה; אם נכון — מעבר אוטומטי לשאלה הבאה
+  function showAnswerFeedback(isCorrect) {
+    u.feedbackBox.classList.remove("feedback--hidden");
+    u.feedbackBox.hidden = false;
+    if (isCorrect) {
+      setFeedback(u.feedbackBox, "✅ נכון! עוברים לשאלה הבאה…", "feedback--ok");
+      launchConfetti();
+      // מעבר שקט לשאלה הבאה — בדיוק כמו כפתור "שאלה הבאה", בלי הודעה בצ'אט
+      window.setTimeout(() => u.nextProblemBtn?.click(), 1200);
+    } else {
+      setFeedback(u.feedbackBox, "❌ לא מדויק — נסה/י שוב, או בקש/י רמז.", "feedback--danger");
+    }
   }
 
   function renderTopicLabel() {
@@ -656,57 +1398,112 @@ function main() {
     if (u.topicLabel) u.topicLabel.textContent = `— ${topic.title}`;
   }
 
+  // רשימת הנושאים שכבר נפתחו — מעבר בלחיצה, מחיקה בנפרד
   function renderTopicsList() {
     if (!u.topicsList) return;
     u.topicsList.innerHTML = "";
-    for (const t of topicsState.topics) {
-      const el = document.createElement("div");
-      el.className = `topicItem ${t.id === topicsState.currentTopicId ? "topicItem--active" : ""}`;
-      const left = document.createElement("div");
-      const title = document.createElement("div");
-      title.className = "topicItem__title";
-      title.textContent = t.title;
-      const meta = document.createElement("div");
-      meta.className = "topicItem__meta";
-      meta.textContent = `${topicKindLabel(t.kind)} · רמה ${t.level ?? 1} · ${t.attempts ?? 0} ניסיונות`;
-      left.appendChild(title);
-      left.appendChild(meta);
+    const topics = topicsState.topics || [];
+    if (!topics.length) {
+      const empty = document.createElement("div");
+      empty.className = "topicItem__meta";
+      empty.textContent = 'עדיין לא פתחת נושאים. לחצ/י על "נושא חדש".';
+      u.topicsList.appendChild(empty);
+      return;
+    }
+    const currentId = topicsState.currentTopicId;
+    for (const t of topics) {
+      const row = document.createElement("div");
+      row.className = `topicItem${t.id === currentId ? " topicItem--active" : ""}`;
+
+      const main = document.createElement("button");
+      main.type = "button";
+      main.className = "topicItem__main";
+      main.innerHTML = `<span class="topicItem__title">${t.title}</span>`;
+      main.addEventListener("click", () => {
+        switchToTopic(t.id);
+        closeTopicsDrawer();
+      });
 
       const actions = document.createElement("div");
       actions.className = "topicItem__actions";
-
-      const openBtn = document.createElement("button");
-      openBtn.className = "miniBtn";
-      openBtn.type = "button";
-      openBtn.textContent = "פתח";
-      openBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        topicsState.currentTopicId = t.id;
-        switchToTopic(t.id);
-        closeTopicsDrawer();
-      });
-
-      const delBtn = document.createElement("button");
-      delBtn.className = "miniBtn miniBtn--danger";
-      delBtn.type = "button";
-      delBtn.textContent = "מחק";
-      delBtn.addEventListener("click", (e) => {
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "iconBtn iconBtn--danger";
+      del.setAttribute("aria-label", `מחיקת הנושא ${t.title}`);
+      del.innerHTML = '<span class="iconBtn__icon" aria-hidden="true">🗑</span>';
+      del.addEventListener("click", (e) => {
         e.stopPropagation();
         deleteTopic(t.id);
       });
+      actions.appendChild(del);
 
-      actions.appendChild(openBtn);
-      actions.appendChild(delBtn);
-
-      el.appendChild(left);
-      el.appendChild(actions);
-      el.addEventListener("click", () => {
-        topicsState.currentTopicId = t.id;
-        switchToTopic(t.id);
-        closeTopicsDrawer();
-      });
-      u.topicsList.appendChild(el);
+      row.appendChild(main);
+      row.appendChild(actions);
+      u.topicsList.appendChild(row);
     }
+  }
+
+  // בורר נושאי הכיתה — נפתח מ"נושא חדש". רק נושאי הכיתה, עם תתי-נושאים בעת הצורך.
+  function renderTopicPicker() {
+    if (!u.topicPicker) return;
+    u.topicPicker.innerHTML = "";
+    if (!GRADE_TOPICS.length) {
+      const empty = document.createElement("div");
+      empty.className = "topicItem__meta";
+      empty.textContent = "אין נושאים מוגדרים לכיתה שלך.";
+      u.topicPicker.appendChild(empty);
+      return;
+    }
+    const openedKeys = new Set((topicsState.topics || []).map((t) => t.kind));
+    for (const gt of GRADE_TOPICS) {
+      const key = gt.key;
+      const sub = Array.isArray(gt.sub) ? gt.sub : [];
+
+      const pickLeaf = (leafKey) => {
+        openTopicByKey(leafKey);
+        showTopicListView();
+        closeTopicsDrawer();
+      };
+
+      const item = document.createElement("button");
+      item.type = "button";
+      item.className = `catItem${openedKeys.has(key) ? " catItem--active" : ""}`;
+      item.innerHTML = `<span class="catItem__title">${key}</span>${
+        sub.length ? '<span class="catItem__chev" aria-hidden="true">▾</span>' : ""
+      }`;
+
+      if (sub.length) {
+        const subWrap = document.createElement("div");
+        subWrap.className = "catSub";
+        subWrap.hidden = true;
+        for (const sk of sub) {
+          const sb = document.createElement("button");
+          sb.type = "button";
+          sb.className = `catItem catItem--sub${openedKeys.has(sk) ? " catItem--active" : ""}`;
+          sb.textContent = sk;
+          sb.addEventListener("click", () => pickLeaf(sk));
+          subWrap.appendChild(sb);
+        }
+        item.addEventListener("click", () => {
+          subWrap.hidden = !subWrap.hidden;
+        });
+        u.topicPicker.appendChild(item);
+        u.topicPicker.appendChild(subWrap);
+      } else {
+        item.addEventListener("click", () => pickLeaf(key));
+        u.topicPicker.appendChild(item);
+      }
+    }
+  }
+
+  function showTopicPickerView() {
+    renderTopicPicker();
+    if (u.topicsListView) u.topicsListView.hidden = true;
+    if (u.topicPickerView) u.topicPickerView.hidden = false;
+  }
+  function showTopicListView() {
+    if (u.topicPickerView) u.topicPickerView.hidden = true;
+    if (u.topicsListView) u.topicsListView.hidden = false;
   }
 
   function deleteTopic(topicId) {
@@ -719,12 +1516,14 @@ function main() {
     topicsState.topics = topicsState.topics.filter((t) => t.id !== topicId);
 
     if (topicsState.topics.length === 0) {
-      const t = createTopic("regular", "תרגילים רגילים");
-      t.problems = [generateTopicProblem(t.kind, 1)];
-      t.currentProblemIndex = 0;
-      topicsState.topics = [t];
-      topicsState.currentTopicId = t.id;
-      switchToTopic(t.id);
+      // אין נושאים פתוחים — מצב ריק, פותחים נושא חדש מהבורר
+      topicsState.currentTopicId = null;
+      u.problemText.textContent = 'בחר/י נושא דרך "נושא חדש".';
+      showProblemDiagram(u, null);
+      renderStats(u, { attempts: 0, correct: 0, streak: 0 });
+      renderChatForTopic({ chatHistory: [] });
+      renderTopicsList();
+      saveAll();
       return;
     }
 
@@ -755,7 +1554,12 @@ function main() {
     const topic = getCurrentTopic();
     ensureTopicHasProblem(topic);
     const p = getCurrentProblem(topic);
-    if (p) u.problemText.textContent = p.text;
+    if (p) {
+      u.problemText.textContent = p.text;
+      showProblemVisual(u, p);
+      applyAnswerMode(p);
+      renderDifficulty(p.difficulty);
+    }
     renderStats(u, topic);
     renderTopicLabel();
     renderChatForTopic(topic);
@@ -778,6 +1582,8 @@ function main() {
         answer: api.newProblem.answer,
         hints: api.newProblem.hints || [],
         explanation: api.newProblem.explanation || "",
+        bankTopic: api.newProblem.bankTopic || null,
+        gradeNum: api.newProblem.gradeNum || null,
         diagramSvg: api.diagramSvg || api.newProblem.diagramSvg || null,
         diagramAlt: api.diagramAlt || null,
         createdAt: Date.now(),
@@ -798,7 +1604,7 @@ function main() {
     }
   }
 
-  async function requestAi({ messageText, messageKind, studentAnswer, showUserBubble = true }) {
+  async function requestAi({ messageText, messageKind, studentAnswer, showUserBubble = true, shapeCheck = null }) {
     const topic = getCurrentTopic();
     const text = String(messageText ?? "").trim();
     if (!text) return null;
@@ -812,14 +1618,20 @@ function main() {
     }
 
     setAiIndicator(u, "thinking");
+    showTyping(u.chatLog);
 
     const intent = { kind: messageKind };
     const payload = buildTutorPayload(topic, intent, text, topic.chatHistory.slice(-14), {
       studentAnswer,
+      shapeCheck,
     });
 
     const api = await callTutorApi(payload);
+    hideTyping(u.chatLog);
     renderAgentDebug(u, api?.agentDebug);
+
+    // המורה החליט שהתלמיד מתקשה → חושפים הדמיית חפצים
+    if (api?.showVisual) revealArithViz(u, getCurrentProblem(getCurrentTopic()));
 
     if (api?.reply && !isCannedBotMessage(api.reply)) {
       appendMsg(u.chatLog, { from: "bot", text: api.reply });
@@ -827,6 +1639,11 @@ function main() {
       topic.chatHistory = topic.chatHistory.slice(-40);
       applyApiSideEffects(topic, api);
       saveAll();
+      // בציור צורה — הקונפטי והמעבר מטופלים ע"י כפתור "סיימתי", לא כאן (מניעת כפילות)
+      const isShapeCreate = shapeCheck != null;
+      if (!isShapeCreate && messageKind === "CheckAnswer" && typeof api.checkAnswerCorrect === "boolean") {
+        showAnswerFeedback(api.checkAnswerCorrect);
+      }
     }
 
     if (api?.reply && isCannedBotMessage(api.reply)) {
@@ -901,22 +1718,19 @@ function main() {
     });
   }
 
-  // initial render
-  // Ensure at least 1 topic exists
-  if (!topicsState.topics?.length) {
-    const t = createTopic("regular", "תרגילים רגילים");
-    t.problems = [makeProblem(1)];
-    topicsState = { currentTopicId: t.id, topics: [t] };
-  }
+  // רינדור ראשוני — פותח את נושא הכיתה הנוכחי/הראשון מהמאגר
+  let startKey = null;
+  const curT = topicsState.topics.find((t) => t.id === topicsState.currentTopicId);
+  if (curT && gradeKeys.includes(curT.kind)) startKey = curT.kind;
+  else if (topicsState.topics[0]) startKey = topicsState.topics[0].kind;
+  else if (gradeKeys[0]) startKey = gradeKeys[0];
 
-  // Ensure topics have at least one problem
-  for (const t of topicsState.topics) ensureTopicHasProblem(t);
-  const current = getCurrentTopic();
-  u.problemText.textContent = getCurrentProblem(current)?.text ?? "טוען…";
-  renderStats(u, current);
-  renderTopicLabel();
-  renderChatForTopic(current);
   renderTopicsList();
+  if (startKey) {
+    await openTopicByKey(startKey);
+  } else {
+    u.problemText.textContent = "אין נושאים מוגדרים לכיתה שלך עדיין.";
+  }
   saveAll();
 
   setChatWidth(uiState.chatWidth);
@@ -940,10 +1754,75 @@ function main() {
     checkAnswerText(raw);
   });
 
+  // הדמיית חיסור אינטראקטיבית — לחיצה על חפץ "מורידה" אותו (ושוב מחזירה)
+  u.problemDiagram?.addEventListener("click", (e) => {
+    const obj = e.target.closest(".obj--clickable");
+    if (obj) obj.classList.toggle("obj--removed");
+  });
+
   u.answerInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       u.checkBtn.click();
+    }
+  });
+
+  // קלט שעה (שעות:דקות)
+  u.checkTimeBtn?.addEventListener("click", () => {
+    const h = String(u.timeHour?.value ?? "").trim();
+    const m = String(u.timeMin?.value ?? "").trim();
+    if (h === "" || m === "") return;
+    const mm = String(parseInt(m, 10)).padStart(2, "0");
+    checkAnswerText(`${parseInt(h, 10)}:${mm}`);
+  });
+  [u.timeHour, u.timeMin].forEach((inp) =>
+    inp?.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        u.checkTimeBtn.click();
+      }
+    })
+  );
+
+  // שעון אינטראקטיבי — "סיימתי" בודק את השעה שכוונן הילד
+  u.doneBtn?.addEventListener("click", () => {
+    const st = u.problemDiagram && u.problemDiagram._clockState;
+    if (!st) return;
+    const mm = String(st.minute).padStart(2, "0");
+    checkAnswerText(`${st.hour}:${mm}`);
+  });
+
+  // ציור צורות — "סיימתי" בודק את הצורה שצוירה; "התחלה מחדש" מנקה את הלוח
+  u.shapeClearBtn?.addEventListener("click", () => {
+    const topic = getCurrentTopic();
+    const p = getCurrentProblem(topic);
+    if (p) renderShapeBoard(u.shapeBoard, p.shapeTarget || { label: "צורה", sides: 4 });
+  });
+
+  u.shapeDoneBtn?.addEventListener("click", async () => {
+    const st = u.shapeBoard && u.shapeBoard._shapeState;
+    if (!st || !st.target) return;
+    const verts = st.gridVerts || (st.verts || []).map((v) => v);
+    const verdict = analyzeDrawnShape(verts, st.target, st.closed);
+    if (verdict.correct) launchConfetti();
+    await requestAi({
+      messageText: verdict.summary,
+      messageKind: "CheckAnswer",
+      studentAnswer: verdict.summary,
+      showUserBubble: true,
+      shapeCheck: {
+        correct: verdict.correct,
+        reason: verdict.reason,
+        requested: st.target.label,
+        summary: verdict.summary,
+      },
+    });
+    if (verdict.correct) {
+      // מעבר שקט לצורה הבאה
+      window.setTimeout(() => u.nextProblemBtn?.click(), 1500);
+    } else {
+      // נסה שוב — מנקים את הלוח
+      renderShapeBoard(u.shapeBoard, st.target);
     }
   });
 
@@ -956,7 +1835,12 @@ function main() {
     const topic = getCurrentTopic();
     topic.currentProblemIndex = clamp((topic.currentProblemIndex ?? 0) - 1, 0, (topic.problems?.length ?? 1) - 1);
     const p = getCurrentProblem(topic);
-    if (p) u.problemText.textContent = p.text;
+    if (p) {
+      u.problemText.textContent = p.text;
+      showProblemVisual(u, p);
+      applyAnswerMode(p);
+      renderDifficulty(p.difficulty);
+    }
     saveAll();
   });
 
@@ -966,11 +1850,17 @@ function main() {
     if (nextIndex < (topic.problems?.length ?? 0)) {
       topic.currentProblemIndex = nextIndex;
       const p = getCurrentProblem(topic);
-      if (p) u.problemText.textContent = p.text;
+      if (p) {
+        u.problemText.textContent = p.text;
+        showProblemVisual(u, p);
+        applyAnswerMode(p);
+        renderDifficulty(p.difficulty);
+      }
       saveAll();
       return;
     }
-    setProblemOnTopic(topic, generateTopicProblem(topic.kind, topic.level), true);
+    // אין עוד בהיסטוריה → טוען שאלה חדשה מהמאגר
+    loadBankProblem(topic, true);
   });
 
   u.sendBtn.addEventListener("click", handleChatSend);
@@ -982,23 +1872,11 @@ function main() {
   });
 
   u.resetBtn.addEventListener("click", () => {
-    // reset current topic only
+    // מאפס רק את הצ'אט של הנושא הנוכחי — כל ההתקדמות והנתונים נשמרים
     const topic = getCurrentTopic();
-    const keepId = topic.id;
-    const keepKind = topic.kind;
-    const keepTitle = topic.title;
-    const fresh = createTopic(keepKind, keepTitle);
-    Object.assign(topic, fresh);
-    topic.id = keepId; // keep id stable so currentTopicId stays valid
-    topic.kind = keepKind;
-    topic.title = keepTitle;
-    topic.problems = [generateTopicProblem(topic.kind, 1)];
-    topic.currentProblemIndex = 0;
+    if (!confirm("לאפס את הצ'אט בנושא הזה? (ההתקדמות, הרמה והניקוד יישמרו)")) return;
     topic.chatHistory = [];
-    renderStats(u, topic);
-    u.problemText.textContent = getCurrentProblem(topic)?.text ?? "טוען…";
     renderChatForTopic(topic);
-    renderTopicsList();
     saveAll();
   });
 
@@ -1012,6 +1890,7 @@ function main() {
     u.topicsOverlay.hidden = false;
     u.topicsDrawer.hidden = false;
     u.topicsBtn?.setAttribute("aria-expanded", "true");
+    showTopicListView();
     renderTopicsList();
   }
 
@@ -1025,28 +1904,9 @@ function main() {
   u.topicsCloseBtn?.addEventListener("click", closeTopicsDrawer);
   u.topicsOverlay?.addEventListener("click", closeTopicsDrawer);
 
-  u.newTopicBtn?.addEventListener("click", () => {
-    const kind = prompt("איזה נושא לפתוח?\nאפשר: משוואות / הסתברות / פונקציות / תרגילים רגילים / נעלמים", "משוואות");
-    if (!kind) return;
-    const normalized = kind.trim();
-    const map = {
-      "תרגילים רגילים": "regular",
-      "רגיל": "regular",
-      "משוואות": "equations",
-      "הסתברות": "probability",
-      "פונקציות": "functions",
-      "נעלמים": "variables",
-      "גאומטריה": "geometry",
-    };
-    const topicKind = map[normalized] || "regular";
-    const title = prompt("שם לנושא (אפשר להשאיר ריק)", topicKindLabel(topicKind)) || topicKindLabel(topicKind);
-    const t = createTopic(topicKind, title);
-    t.problems = [generateTopicProblem(t.kind, 1)];
-    t.currentProblemIndex = 0;
-    topicsState.topics.unshift(t);
-    topicsState.currentTopicId = t.id;
-    switchToTopic(t.id);
-  });
+  // "נושא חדש" פותח בורר עם נושאי הכיתה בלבד (לא הקלדה חופשית)
+  u.newTopicBtn?.addEventListener("click", () => showTopicPickerView());
+  u.pickerBackBtn?.addEventListener("click", () => showTopicListView());
 
   // Drag to resize chat
   if (u.chatResizeHandle) {
@@ -1093,3 +1953,26 @@ function main() {
 }
 
 document.addEventListener("DOMContentLoaded", main);
+
+/* parallax עדין ל-VELA ברקע התרגול — אותו אפקט כמו בבית ובהתחברות */
+(function appWordParallax() {
+  const bg = document.querySelector(".appWord");
+  if (!bg) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const MAX = 18;
+  let tx = 0;
+  let ty = 0;
+  let cx = 0;
+  let cy = 0;
+  window.addEventListener("pointermove", (e) => {
+    tx = -(e.clientX / window.innerWidth - 0.5) * MAX;
+    ty = -(e.clientY / window.innerHeight - 0.5) * MAX;
+  });
+  (function tick() {
+    cx += (tx - cx) * 0.15;
+    cy += (ty - cy) * 0.15;
+    bg.style.setProperty("--px", `${cx.toFixed(2)}px`);
+    bg.style.setProperty("--py", `${cy.toFixed(2)}px`);
+    requestAnimationFrame(tick);
+  })();
+})();

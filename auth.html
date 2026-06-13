@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מערכת לימוד – כניסה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./auth.css" />
+  </head>
+  <body class="authBody">
+    <div class="authWord" aria-hidden="true">vela</div>
+    <main class="authCard">
+      <div class="authBrand">
+        <div class="authBrand__mark" aria-hidden="true">✦</div>
+        <div class="authBrand__title">Vela</div>
+        <div class="authBrand__subtitle">מערכת לימוד והתפתחות</div>
+      </div>
+
+      <div class="authTabs" role="tablist">
+        <span class="authTabs__indicator" aria-hidden="true"></span>
+        <button id="tabLogin" class="authTab authTab--active" type="button" role="tab">כניסה</button>
+        <button id="tabRegister" class="authTab" type="button" role="tab">הרשמה</button>
+      </div>
+
+      <div id="authError" class="authError" hidden></div>
+
+      <div class="authForms" id="authForms">
+      <!-- כניסה -->
+      <form id="loginForm" class="authForm" autocomplete="on">
+        <label class="authField">
+          <span>שם משתמש</span>
+          <input id="loginUsername" name="username" type="text" required />
+        </label>
+        <label class="authField">
+          <span>סיסמה</span>
+          <div class="pwWrap">
+            <input id="loginPassword" name="password" type="password" required />
+            <button type="button" class="pwToggle" aria-label="הצג סיסמה">👁</button>
+          </div>
+        </label>
+        <button class="btn btn--primary authSubmit" type="submit">כניסה</button>
+      </form>
+
+      <!-- הרשמה -->
+      <form id="registerForm" class="authForm" hidden autocomplete="on">
+        <label class="authField">
+          <span>שם משתמש</span>
+          <input id="regUsername" name="username" type="text" required minlength="3" maxlength="24" />
+        </label>
+        <label class="authField">
+          <span>מייל</span>
+          <input id="regEmail" name="email" type="email" required />
+        </label>
+        <div class="authRow">
+          <label class="authField">
+            <span>גיל</span>
+            <input id="regAge" name="age" type="number" min="4" max="120" required />
+          </label>
+          <label class="authField">
+            <span>כיתה</span>
+            <select id="regGrade" name="grade" required>
+              <option value="" disabled selected>בחר/י</option>
+              <option>א'</option><option>ב'</option><option>ג'</option><option>ד'</option>
+              <option>ה'</option><option>ו'</option><option>ז'</option><option>ח'</option>
+              <option>ט'</option><option>י'</option><option>יא'</option><option>יב'</option>
+            </select>
+          </label>
+        </div>
+        <label class="authField">
+          <span>שם בית הספר</span>
+          <input id="regSchool" name="school" type="text" required />
+        </label>
+        <label class="authField">
+          <span>סיסמה (לפחות 6 תווים)</span>
+          <div class="pwWrap">
+            <input id="regPassword" name="password" type="password" required minlength="6" />
+            <button type="button" class="pwToggle" aria-label="הצג סיסמה">👁</button>
+          </div>
+        </label>
+        <button class="btn btn--primary authSubmit" type="submit">יצירת חשבון</button>
+      </form>
+      </div>
+    </main>
+
+    <script src="./auth.js" defer></script>
+  </body>
+</html>
