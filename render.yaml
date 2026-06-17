@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vela
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      # המפתח מוזן בלוח הבקרה של Render (לא נשמר בקוד) — sync:false מבקש אותו שם
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: LLM_PROVIDER
+        value: anthropic
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-4-20250514
+      - key: SAFE_CHILD_MODE
+        value: "true"
