@@ -324,14 +324,19 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  const status = getAgentStatus();
-  console.log("מערכת לימוד — שרת פעיל (חשבונות + 4 סוכנים)");
-  console.log(`אתר:  http://localhost:${PORT}`);
-  console.log("התחברות נדרשת — דף הרשמה/כניסה ב-/auth");
-  if (status.aiEnabled) {
-    console.log(`AI:   ${status.provider} / ${status.model}`);
-  } else {
-    console.log("AI:   מצב מקומי — הוסף מפתח ב-.env (ראה .env.example)");
-  }
-});
+// מאזין רק כשמריצים את הקובץ ישירות (node server.js) — כך טעינה כמודול לא קורסת
+if (require.main === module) {
+  server.listen(PORT, "0.0.0.0", () => {
+    const status = getAgentStatus();
+    console.log("מערכת לימוד — שרת פעיל (חשבונות + 4 סוכנים)");
+    console.log(`אתר:  http://localhost:${PORT}`);
+    console.log("התחברות נדרשת — דף הרשמה/כניסה ב-/auth");
+    if (status.aiEnabled) {
+      console.log(`AI:   ${status.provider} / ${status.model}`);
+    } else {
+      console.log("AI:   מצב מקומי — הוסף מפתח ב-.env (ראה .env.example)");
+    }
+  });
+}
+
+module.exports = server;
