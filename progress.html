@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מערכת לימוד – ההתקדמות שלי</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .progBody {
+        font-family: "Assistant", system-ui, sans-serif;
+        background: #eef5fb;
+        min-height: 100vh;
+        margin: 0;
+        color: #1f2c3a;
+      }
+      .prog {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 22px 18px 60px;
+      }
+      .prog__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 6px;
+      }
+      .prog__back {
+        text-decoration: none;
+        font-size: 22px;
+        color: #2b6cb0;
+        background: #fff;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(2, 6, 23, 0.08);
+      }
+      .prog__title {
+        font-family: "Fredoka", sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0;
+      }
+      .prog__sub {
+        color: #5a6b7b;
+        margin: 0 0 22px;
+      }
+      .prog__summary {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+      .sumCard {
+        flex: 1 1 140px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 16px 14px;
+        text-align: center;
+        box-shadow: 0 4px 14px rgba(2, 6, 23, 0.06);
+      }
+      .sumCard__val {
+        font-size: 30px;
+        font-weight: 800;
+        color: #2b6cb0;
+      }
+      .sumCard__label {
+        font-size: 14px;
+        color: #5a6b7b;
+        margin-top: 4px;
+      }
+      .prog__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 28px 16px;
+      }
+      .topicCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .circle {
+        position: relative;
+        width: 162px;
+        height: 162px;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 8px 22px rgba(2, 6, 23, 0.12);
+      }
+      .ring {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .ring__track {
+        fill: none;
+        stroke: #e8eef4;
+        stroke-width: 10;
+      }
+      .ring__bar {
+        fill: none;
+        stroke: #4aa8e8;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 0.95s cubic-bezier(0.4, 0.2, 0.2, 1);
+      }
+      .ring__center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .ring__center.is-in {
+        animation: valueIn 0.35s ease;
+      }
+      @keyframes valueIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .ring__val {
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 1;
+        color: #4aa8e8;
+      }
+      .ring__label {
+        font-size: 13px;
+        color: #5a6b7b;
+        margin-top: 5px;
+      }
+      .topicCard__title {
+        font-weight: 700;
+        font-size: 16px;
+        text-align: center;
+      }
+      .prog__hint {
+        text-align: center;
+        color: #5a6b7b;
+        margin-top: 30px;
+        font-size: 14px;
+      }
+      .prog__empty {
+        text-align: center;
+        color: #5a6b7b;
+        background: #fff;
+        border-radius: 16px;
+        padding: 40px 20px;
+      }
+      .prog__empty a {
+        color: #2b6cb0;
+        font-weight: 700;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ring__bar {
+          transition: none;
+        }
+        .ring__center.is-in {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="progBody">
+    <div class="prog">
+      <div class="prog__top">
+        <h1 class="prog__title">ההתקדמות שלי</h1>
+        <a class="prog__back" href="/home" aria-label="חזרה לדף הבית" title="חזרה">→</a>
+      </div>
+      <p class="prog__sub">לחצו על עיגול כדי לראות נתון אחר על אותו נושא</p>
+
+      <section class="prog__summary" id="progSummary"></section>
+      <section class="prog__grid" id="progGrid"></section>
+      <p class="prog__hint" id="progHint" hidden>טיפ: כל לחיצה מחליפה את הנתון שמוצג 🔄</p>
+    </div>
+
+    <script>
+      const R = 52;
+      const CIRC = 2 * Math.PI * R;
+      const METRICS = [
+        { key: "acc", short: "דיוק", color: "#4aa8e8" },
+        { key: "solved", short: "שאלות", color: "#34c759" },
+        { key: "time", short: "דקות", color: "#a06be0" },
+        { key: "mastery", short: "שליטה", color: "#ff9f43" },
+      ];
+
+      function masteryScore(t) {
+        const att = t.attempts || 0;
+        const cor = t.correct || 0;
+        if (cor < 1) return 0;
+        const acc = att ? cor / att : 0;
+        const conf = Math.min(1, cor / 20);
+        return Math.round(acc * 100 * (0.55 + 0.45 * conf));
+      }
+      function fmtMin(n) {
+        if (n < 1) return "0 דק׳";
+        if (n < 60) return n + " דק׳";
+        const h = Math.floor(n / 60);
+        const m = n % 60;
+        return m ? h + " ש׳ " + m + " דק׳" : h + " ש׳";
+      }
+      // מחזיר { fill(0..1), target(number|null), fmt(fn) } לכל נתון
+      function spec(t, key, scales) {
+        const att = t.attempts || 0;
+        const cor = t.correct || 0;
+        if (key === "acc") {
+          const v = att ? Math.round((cor / att) * 100) : null;
+          return { fill: v ? v / 100 : 0, target: v, fmt: (n) => n + "%" };
+        }
+        if (key === "solved") {
+          // כמה פתר מתוך כמה שאלות שקיימות כרגע במאגר לנושא
+          let total = 0;
+          const lc = t.levelCounts || {};
+          for (const k in lc) total += lc[k] || 0;
+          if (total < cor) total = cor;
+          return { fill: total ? cor / total : 0, target: cor, fmt: (n) => String(n) };
+        }
+        if (key === "time") {
+          const min = Math.round((t.timeMs || 0) / 60000);
+          return { fill: scales.maxTimeMin ? min / scales.maxTimeMin : 0, target: min, fmt: fmtMin };
+        }
+        const sc = masteryScore(t);
+        return { fill: sc / 100, target: cor < 1 ? null : sc, fmt: (n) => n + "%" };
+      }
+
+      function countUp(el, target, fmt) {
+        const reduce =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (target === null) {
+          el.textContent = "—";
+          return;
+        }
+        if (reduce) {
+          el.textContent = fmt(target);
+          return;
+        }
+        const dur = 900;
+        const start = performance.now();
+        function frame(now) {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = fmt(Math.round(target * eased));
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      // מצייר נתון על העיגול: הטבעת תמיד מתחילה מ-0 (לא חוזרת אחורה), הטקסט מתחלף
+      function animateCircle(circle, topic, metric, scales) {
+        const s = spec(topic, metric.key, scales);
+        const bar = circle.querySelector(".ring__bar");
+        const valEl = circle.querySelector(".ring__val");
+        const center = circle.querySelector(".ring__center");
+        bar.style.stroke = metric.color;
+        valEl.style.color = metric.color;
+        circle.querySelector(".ring__label").textContent = metric.short;
+        // איפוס לטבעת ריקה — בלי אנימציה, כדי שכל נתון יתחיל מ-0
+        bar.style.transition = "none";
+        bar.style.strokeDasharray = CIRC;
+        bar.style.strokeDashoffset = CIRC;
+        valEl.textContent = "0";
+        void bar.getBoundingClientRect();
+        // החזרת האנימציה ומילוי מ-0 ליעד
+        bar.style.transition = "";
+        const fill = Math.max(0, Math.min(1, s.fill));
+        requestAnimationFrame(() => {
+          bar.style.strokeDashoffset = CIRC * (1 - fill);
+        });
+        countUp(valEl, s.target, s.fmt);
+        // הבהוב עדין של הטקסט בהחלפה
+        center.classList.remove("is-in");
+        void center.offsetWidth;
+        center.classList.add("is-in");
+      }
+
+      function buildCircle(topic, scales) {
+        const card = document.createElement("div");
+        card.className = "topicCard";
+        const circle = document.createElement("button");
+        circle.type = "button";
+        circle.className = "circle";
+        circle.setAttribute("aria-label", (topic.title || "נושא") + " — לחצו להחלפת מידע");
+        circle.innerHTML =
+          '<svg class="ring" viewBox="0 0 120 120">' +
+          '<circle class="ring__track" cx="60" cy="60" r="' + R + '"></circle>' +
+          '<circle class="ring__bar" cx="60" cy="60" r="' + R + '" transform="rotate(-90 60 60)"></circle>' +
+          "</svg>" +
+          '<div class="ring__center"><div class="ring__val">0</div><div class="ring__label"></div></div>';
+        const title = document.createElement("div");
+        title.className = "topicCard__title";
+        title.textContent = topic.title || topic.kind || "נושא";
+        card.appendChild(circle);
+        card.appendChild(title);
+
+        let idx = 0;
+        animateCircle(circle, topic, METRICS[0], scales);
+        circle.addEventListener("click", () => {
+          idx = (idx + 1) % METRICS.length;
+          animateCircle(circle, topic, METRICS[idx], scales);
+        });
+        return card;
+      }
+
+      function sumCard(val, label) {
+        const c = document.createElement("div");
+        c.className = "sumCard";
+        c.innerHTML =
+          '<div class="sumCard__val">' + val + '</div><div class="sumCard__label">' + label + "</div>";
+        return c;
+      }
+
+      (async function () {
+        let userId = null;
+        try {
+          const res = await fetch("/api/me");
+          const data = res.ok ? await res.json() : null;
+          if (!data || !data.ok) {
+            window.location.href = "/auth";
+            return;
+          }
+          userId = data.user.id;
+        } catch {
+          window.location.href = "/auth";
+          return;
+        }
+
+        let topics = [];
+        try {
+          const raw = localStorage.getItem("learning-prototype-v1:" + userId);
+          if (raw) {
+            const st = JSON.parse(raw);
+            topics = (st && st.topicsState && st.topicsState.topics) || [];
+          }
+        } catch {
+          /* ignore */
+        }
+
+        const grid = document.getElementById("progGrid");
+        const summary = document.getElementById("progSummary");
+        if (!topics.length) {
+          grid.innerHTML =
+            '<div class="prog__empty">עדיין לא תרגלת נושאים. <a href="/practice">בוא נתחיל לתרגל!</a></div>';
+          return;
+        }
+
+        let totAtt = 0;
+        let totCor = 0;
+        let totTime = 0;
+        let maxSolved = 0;
+        let maxTimeMin = 0;
+        for (const t of topics) {
+          totAtt += t.attempts || 0;
+          totCor += t.correct || 0;
+          totTime += t.timeMs || 0;
+          maxSolved = Math.max(maxSolved, t.correct || 0);
+          maxTimeMin = Math.max(maxTimeMin, Math.round((t.timeMs || 0) / 60000));
+        }
+        const scales = { maxSolved, maxTimeMin };
+        const overallAcc = totAtt ? Math.round((totCor / totAtt) * 100) + "%" : "—";
+        summary.appendChild(sumCard(String(totCor), "סה״כ שאלות שפתרת"));
+        summary.appendChild(sumCard(overallAcc, "דיוק כללי"));
+        summary.appendChild(sumCard(fmtMin(Math.round(totTime / 60000)), "זמן תרגול כולל"));
+        summary.appendChild(sumCard(String(topics.length), "נושאים בתרגול"));
+
+        for (const t of topics) grid.appendChild(buildCircle(t, scales));
+        document.getElementById("progHint").hidden = false;
+      })();
+    </script>
+  </body>
+</html>

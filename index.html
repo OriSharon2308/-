@@ -7,45 +7,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=43" />
   </head>
   <body>
     <div class="appWord" aria-hidden="true">vela</div>
     <header class="topbar">
       <div class="topbar__left">
-        <div class="brand">
-          <div class="brand__mark" aria-hidden="true">∑</div>
-          <div class="brand__text">
-            <div class="brand__title">מערכת לימוד</div>
-            <div class="brand__subtitle">אבטיפוס: תרגול + צ’אט</div>
-          </div>
-        </div>
-      </div>
-      <div class="topbar__right">
         <span id="userChip" class="userChip" hidden>
           <span class="userChip__icon" aria-hidden="true">👤</span>
           <span id="userChipName" class="userChip__name"></span>
         </span>
-        <a href="/home" class="btn btn--ghost" id="homeBtn">🏠 בית</a>
-        <button id="topicsBtn" class="iconBtn" type="button" aria-label="פתיחת תפריט נושאים" aria-haspopup="dialog" aria-expanded="false">
-          <span class="iconBtn__icon" aria-hidden="true">☰</span>
-        </button>
-        <button id="resetBtn" class="btn btn--ghost" type="button">איפוס צ'אט</button>
-        <button id="logoutBtn" class="btn btn--ghost" type="button">יציאה</button>
-        <button id="deleteAccountBtn" class="btn btn--ghost btn--danger" type="button" title="מחיקת החשבון לצמיתות">מחיקת חשבון</button>
+      </div>
+      <div class="topbar__right">
+        <a href="/home" class="homeIcon" id="homeBtn" aria-label="דף הבית" title="דף הבית">🏠</a>
       </div>
     </header>
 
-    <div id="topicsOverlay" class="overlay" hidden></div>
-    <aside id="topicsDrawer" class="drawer" role="dialog" aria-label="נושאי תרגול" aria-modal="true" hidden>
+    <div id="topicsOverlay" class="overlay"></div>
+    <aside id="topicsDrawer" class="drawer" role="dialog" aria-label="נושאי תרגול" aria-modal="true" tabindex="-1">
+      <button id="topicsBtn" class="burger drawer__burger" type="button" aria-label="פתיחה/סגירה של תפריט נושאים" aria-haspopup="dialog" aria-expanded="false">
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+      </button>
       <div class="drawer__header">
         <div>
           <div class="drawer__title">נושאי תרגול</div>
           <div class="drawer__subtitle">כל נושא עם צ’אט ושאלות משלו</div>
         </div>
-        <button id="topicsCloseBtn" class="iconBtn" type="button" aria-label="סגירת תפריט נושאים">
-          <span class="iconBtn__icon" aria-hidden="true">✕</span>
-        </button>
       </div>
       <div class="drawer__content">
         <!-- תצוגה 1: הנושאים שכבר נפתחו -->
@@ -111,24 +100,29 @@
 
       <section class="panel lesson" aria-label="תרגול מודרך">
         <div class="panel__header">
-          <h2 class="panel__title">התרגיל שלך <span id="topicLabel" class="panel__titleSub"></span></h2>
-          <div class="pill" id="difficultyPill" title="רמת קושי">רמה: 1</div>
+          <h2 class="panel__title">
+            התרגיל שלך <span id="topicLabel" class="panel__titleSub"></span>
+          </h2>
+          <button class="pill pill--btn" id="difficultyPill" type="button" title="רמת קושי — לחצו לבחירת רמה" aria-haspopup="menu" aria-expanded="false">רמה: 1</button>
+          <div id="levelPicker" class="levelPicker" role="menu" aria-label="בחירת רמה" hidden></div>
         </div>
 
         <div class="card" id="lessonCard">
+          <div id="solvedBadge" class="solvedBadge" title="פתרת את השאלה הזו" hidden>✓</div>
+          <button id="helpBtn" class="helpBtn helpBtn--corner" type="button" aria-label="איך משתמשים" hidden>?</button>
+          <div id="helpPopover" class="helpPopover" hidden></div>
           <div class="problem">
             <div id="problemDiagram" class="problemDiagram" hidden aria-hidden="true"></div>
             <div class="problem__label">שאלה</div>
             <div class="problem__text" id="problemText">טוען…</div>
           </div>
 
-          <!-- קלט רגיל: מספר אחד -->
+          <!-- קלט רגיל: מספר אחד — בר אחד שעוטף את הכפתור -->
           <div class="answerRow" id="answerRowNumeric">
-            <label class="field">
-              <span class="field__label">התשובה שלי</span>
-              <input id="answerInput" class="input" inputmode="numeric" autocomplete="off" placeholder="לדוגמה: 12" />
-            </label>
-            <button id="checkBtn" class="btn btn--primary" type="button">בדוק</button>
+            <div class="answerBar">
+              <input id="answerInput" class="answerBar__input" inputmode="numeric" autocomplete="off" placeholder="התשובה שלי" />
+              <button id="checkBtn" class="answerBar__btn" type="button">סיימתי</button>
+            </div>
           </div>
 
           <!-- קלט שעה: שעות : דקות -->
@@ -156,10 +150,8 @@
           <div class="actions">
             <button id="prevProblemBtn" class="btn btn--secondary" type="button">שאלה קודמת</button>
             <button id="nextProblemBtn" class="btn btn--secondary" type="button">שאלה הבאה</button>
-            <button id="hint1Btn" class="btn btn--secondary" type="button">רמז קטן</button>
-            <button id="hint2Btn" class="btn btn--secondary" type="button">רמז גדול</button>
-            <button id="explainBtn" class="btn btn--secondary" type="button">תסביר</button>
-            <button id="newProblemBtn" class="btn btn--ghost" type="button">תרגיל אחר</button>
+            <button id="hintBtn" class="btn btn--secondary" type="button">רמז</button>
+            <button id="explainBtn" class="btn btn--secondary" type="button">הסבר</button>
           </div>
 
           <div class="feedback feedback--hidden" id="feedbackBox" role="status" aria-live="polite" hidden></div>
@@ -175,27 +167,29 @@
           </div>
         </div>
 
-        <div class="card stats">
-          <div class="stats__grid">
-            <div class="stat">
-              <div class="stat__label">דיוק</div>
-              <div class="stat__value" id="accuracyValue">—</div>
-            </div>
-            <div class="stat">
-              <div class="stat__label">רצף הצלחות</div>
-              <div class="stat__value" id="streakValue">—</div>
-            </div>
-            <div class="stat">
-              <div class="stat__label">ניסיון</div>
-              <div class="stat__value" id="attemptsValue">—</div>
-            </div>
+        <!-- מד שאלות לרמה הנוכחית -->
+        <div id="levelMeter" class="levelMeter" hidden>
+          <div class="levelMeter__head">
+            <span class="levelMeter__label">רמה <span id="meterLevel">1</span></span>
+            <span class="levelMeter__count"><span id="meterDone">0</span> / <span id="meterTotal">0</span></span>
           </div>
-          <div class="small muted">
-            כל ההסברים והרמזים — רק דרך הצ’אט עם המורה (AI).
-          </div>
+          <div class="levelMeter__track"><div class="levelMeter__fill" id="meterFill"></div></div>
         </div>
+
       </section>
     </main>
+
+    <!-- חלונית: סיימת את כל שאלות הרמה -->
+    <div id="levelDonePrompt" class="levelDone" hidden>
+      <div class="levelDone__box">
+        <div class="levelDone__title">כל הכבוד! 🎉</div>
+        <div class="levelDone__msg">פתרת את כל השאלות שיש כרגע ברמה <span id="doneLevel">1</span>! מה עכשיו?</div>
+        <div class="levelDone__actions">
+          <button id="levelNextBtn" class="btn btn--primary" type="button">לעלות רמה ⬆️</button>
+          <button id="levelStayBtn" class="btn btn--secondary" type="button">להמשיך ברמה זו 🔄</button>
+        </div>
+      </div>
+    </div>
 
     <footer class="footer">
       <div class="small muted">מערכת לימוד — תרגול עם מורה AI</div>
@@ -209,6 +203,25 @@
       <div class="agentDebug__body" id="agentDebugBody" hidden></div>
     </div>
 
-    <script src="./app.js?v=3" defer></script>
+    <!-- מקלדת מספרים — נפתחת בלחיצה על שדה התשובה -->
+    <div id="numPad" class="numPad" role="dialog" aria-label="מקלדת מספרים" hidden>
+      <div class="numPad__grid">
+        <button type="button" class="numKey" data-k="7">7</button>
+        <button type="button" class="numKey" data-k="8">8</button>
+        <button type="button" class="numKey" data-k="9">9</button>
+        <button type="button" class="numKey" data-k="4">4</button>
+        <button type="button" class="numKey" data-k="5">5</button>
+        <button type="button" class="numKey" data-k="6">6</button>
+        <button type="button" class="numKey" data-k="1">1</button>
+        <button type="button" class="numKey" data-k="2">2</button>
+        <button type="button" class="numKey" data-k="3">3</button>
+        <button type="button" class="numKey numKey--util" data-k="back" aria-label="מחיקה">⌫</button>
+        <button type="button" class="numKey" data-k="0">0</button>
+        <button type="button" class="numKey numKey--util" data-k="clear" aria-label="ניקוי">C</button>
+      </div>
+      <button type="button" class="numPad__done" id="numPadDone">סיימתי</button>
+    </div>
+
+    <script src="./app.js?v=43" defer></script>
   </body>
 </html>

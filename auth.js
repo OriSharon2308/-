@@ -299,6 +299,7 @@
       email: document.getElementById("regEmail").value,
       age: document.getElementById("regAge").value,
       grade: document.getElementById("regGrade").value,
+      gender: document.getElementById("regGender").value,
       school: document.getElementById("regSchool").value,
       password: document.getElementById("regPassword").value,
     });

@@ -15,17 +15,19 @@ function topicEntry(gradeNum, topicKey) {
 
 // ייצור שאלה אלגוריתמית *חדשה* שאין כמותה במאגר (לגיוון אחרי שהתלמיד מיצה את הקיים).
 // מחזיר את השאלה השמורה, או null אם מרחב המחולל מוצה (כל הנוסחים כבר קיימים).
-function generateFreshAlgo(gradeNum, topic, entry, level) {
+function generateFreshAlgo(gradeNum, topic, entry, level, exact = false) {
   const gen = GENERATORS[entry.gen];
   if (!gen) return null;
   const existing = bank.existingKeys(gradeNum, topic);
-  for (let i = 0; i < 80; i++) {
+  const tries = exact ? 400 : 80; // בנעילה על רמה צריך יותר ניסיונות כדי לפגוע ברמה המדויקת
+  for (let i = 0; i < tries; i++) {
     const q = gen(level, entry.params || {});
+    if (exact && (q.difficulty || 1) !== level) continue; // רק רמה מדויקת
     if (!existing.has(bank.qKey(q))) {
       return bank.addQuestion(gradeNum, topic, { ...q, source: "algo" });
     }
   }
-  return null; // מרחב המחולל מוצה
+  return null; // מרחב המחולל מוצה (או שאין שאלות ברמה הזו)
 }
 
 // אם אין כיתה ידועה — ניחוש סביר לפי הרמה
@@ -94,6 +96,7 @@ async function aiGenerate(gradeNum, topicKey, level) {
  */
 async function mathematicianCreate(payload = {}) {
   const level = payload.level ?? payload.student?.level ?? 1;
+  const exact = !!payload.exact; // נעילה על רמה — רק שאלות מהרמה המדויקת
   let gradeNum = payload.gradeNum || gradeToNum(payload.grade) || null;
   let topic = typeof payload.topic === "string" ? payload.topic : null;
 
@@ -108,20 +111,33 @@ async function mathematicianCreate(payload = {}) {
 
   const entry = topicEntry(gradeNum, topic);
   const hasGen = !!(entry && entry.gen && GENERATORS[entry.gen]);
+  const repeatable = !!(entry && entry.repeatable); // נושא שמותר לחזור עליו (למשל ציור צורות)
 
   // 1) מהמאגר — חינם ומיידי. excludeIds = שאלות שהתלמיד כבר קיבל (לא חוזרות).
-  const fromBank = bank.getQuestion(gradeNum, topic, level, payload.excludeIds || []);
+  const fromBank = bank.getQuestion(gradeNum, topic, level, payload.excludeIds || [], exact);
   if (fromBank) {
-    return { problem: fromBank, mode: "bank", topic, gradeNum };
+    return { problem: fromBank, mode: "bank", topic, gradeNum, repeatable };
   }
 
-  // 2) נושא עם מחולל: המאגר מוצה לתלמיד → מייצרים שאלה חדשה *קדימה* (גיוון אמיתי).
-  //    נושא ויזואלי סופי שמיצה את כל הצירופים → איתות מיצוי (השרת יתחיל מחזור חדש).
-  //    לא נופלים ל-AI בנושאים האלה — המחולל מדויק והוא היחיד שיודע לצרף שרטוט.
+  // נושא מחזורי: מותר לחזור — מגישים שוב מהמאגר (בלי מיצוי) במקום "להיתקע"
+  if (repeatable) {
+    const again = bank.getQuestion(gradeNum, topic, level, [], exact);
+    if (again) return { problem: again, mode: "bank", topic, gradeNum, repeatable };
+  }
+
+  // 2) נושא עם מחולל — המתמטיקאי תמיד מכין שאלה הבאה, בלי "מיצוי":
   if (hasGen) {
-    const fresh = generateFreshAlgo(gradeNum, topic, entry, level);
-    if (fresh) return { problem: fresh, mode: "algo", topic, gradeNum };
-    return { problem: null, mode: "exhausted", topic, gradeNum };
+    // א. מייצר חדשה ברמה המדויקת (אם נעול)
+    let fresh = generateFreshAlgo(gradeNum, topic, entry, level, exact);
+    // ב. אם מרחב הרמה המדויקת מוצה — מרפים: מייצר חדשה מרמה קרובה (כך לא נתקעים)
+    if (!fresh && exact) fresh = generateFreshAlgo(gradeNum, topic, entry, level, false);
+    if (fresh) return { problem: fresh, mode: "algo", topic, gradeNum, repeatable };
+    // ג. אי אפשר לייצר חדשה — מגישים שאלה כלשהי שעוד לא נראתה (לא מדויקת)
+    let any = bank.getQuestion(gradeNum, topic, level, payload.excludeIds || [], false);
+    // ד. הכל כבר נראה — מחזור אחרון כדי לא להיתקע (קורה רק כשבאמת אזל הכל)
+    if (!any) any = bank.getQuestion(gradeNum, topic, level, [], false);
+    if (any) return { problem: any, mode: "bank", topic, gradeNum, repeatable };
+    return { problem: null, mode: "exhausted", topic, gradeNum, repeatable };
   }
 
   // 3) נושא בלי מחולל (שברים, שאלות מילוליות) → AI יוצר ושומר למאגר

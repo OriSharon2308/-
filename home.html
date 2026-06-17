@@ -6,8 +6,55 @@
     <title>מערכת לימוד – בית</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Gveret+Levin+Alef+Alef+Alef&family=Amatic+SC:wght@700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
+    <style>
+      @font-face {
+        font-family: "Dana Yad";
+        src:
+          url("/fonts/DanaYadAlefAlefAlef-Normal.woff") format("woff"),
+          url("/fonts/DanaYadAlefAlefAlef-Normal.otf") format("opentype");
+        font-weight: normal;
+        font-display: swap;
+      }
+      /* הברכה במסך הבית — כתב יד (Dana Yad), נכתבת אות-אחר-אות */
+      .home__greeting {
+        font-family: "Dana Yad", cursive;
+        font-size: clamp(52px, 9vw, 104px);
+        line-height: 1.15;
+        /* אין קובץ בולד לפונט — מעבים אותו באופן מלאכותי */
+        font-weight: 700;
+        -webkit-text-stroke: 0.6px currentColor;
+      }
+      .home__greeting .ch {
+        opacity: 0;
+        display: inline-block;
+        white-space: pre;
+      }
+      .home__greeting .ch--on {
+        animation: handWrite 0.22s ease-out both;
+      }
+      @keyframes handWrite {
+        from {
+          opacity: 0;
+          transform: translateY(6px) scale(0.85);
+          filter: blur(1.5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: blur(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .home__greeting .ch {
+          opacity: 1;
+        }
+        .home__greeting .ch--on {
+          animation: none;
+        }
+      }
+    </style>
   </head>
   <body class="homeBody">
     <main class="home">
@@ -29,6 +76,7 @@
               <span></span><span></span><span></span>
             </button>
             <div id="menu" class="menu">
+              <a href="/progress" class="menu__item" id="progressItem" style="text-decoration: none">📊 ההתקדמות שלי</a>
               <button id="logoutItem" class="menu__item menu__item--danger" type="button">התנתקות</button>
             </div>
           </div>
@@ -37,7 +85,7 @@
 
       <section class="home__hero">
         <h1 class="home__greeting">שלום<span id="greetName"></span>! 👋</h1>
-        <p class="home__subtitle">מה נעשה היום?</p>
+        <p class="home__subtitle">מה עושים היום?</p>
 
         <div class="home__cards">
           <a class="homeCard homeCard--primary" href="/practice">
@@ -88,13 +136,43 @@
           }
           const name = data.user.username || "";
           document.getElementById("homeName").textContent = name;
-          document.getElementById("greetName").textContent = name ? `, ${name}` : "";
           document.getElementById("userChip").hidden = false;
           renderHomeStats(data.user.id);
+          writeGreeting(name);
         } catch {
           window.location.href = "/auth";
         }
       })();
+
+      // כותב את הברכה אות-אחר-אות בכתב היד (Dana Yad) — בכל כניסה/רענון
+      function writeGreeting(name) {
+        const h1 = document.querySelector(".home__greeting");
+        if (!h1) return;
+        const full = name ? ("\u05E9\u05DC\u05D5\u05DD, " + name + "! \uD83D\uDC4B") : "\u05E9\u05DC\u05D5\u05DD! \uD83D\uDC4B";
+        const reduce =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        h1.textContent = "";
+        if (reduce) {
+          h1.textContent = full;
+          return;
+        }
+        const spans = [];
+        for (const ch of full) {
+          const s = document.createElement("span");
+          s.className = "ch";
+          s.textContent = ch;
+          h1.appendChild(s);
+          spans.push(s);
+        }
+        let i = 0;
+        const step = () => {
+          if (i >= spans.length) return;
+          spans[i].classList.add("ch--on");
+          i += 1;
+          window.setTimeout(step, 90);
+        };
+        step();
+      }
 
       // קובע יעד למספר (data-target) ומציג 0 עד שנגלל אליו
       function setStat(id, value, suffix) {

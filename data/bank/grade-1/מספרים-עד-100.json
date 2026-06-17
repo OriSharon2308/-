@@ -4,696 +4,20 @@
   "topic": "מספרים עד 100",
   "questions": [
     {
-      "id": "q-7661cc23ab",
-      "text": "מה המספר שבא אחרי 19?",
-      "answer": 20,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 19 בא 20."
-      ],
-      "explanation": "אחרי 19 בא 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-692f666494",
-      "text": "מה המספר שבא אחרי 12?",
-      "answer": 13,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 12 בא 13."
-      ],
-      "explanation": "אחרי 12 בא 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3354e3f01c",
-      "text": "מה המספר שבא לפני 49?",
-      "answer": 48,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 49 בא 48."
-      ],
-      "explanation": "לפני 49 בא 48.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d4a9ec3f8d",
-      "text": "איזה מספר נמצא בין 27 ל-29?",
-      "answer": 28,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 27 ל-29 יש את 28."
-      ],
-      "explanation": "בין 27 ל-29 נמצא 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1c18a486e9",
-      "text": "מה המספר שבא אחרי 73?",
-      "answer": 74,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 73 בא 74."
-      ],
-      "explanation": "אחרי 73 בא 74.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2f5a445952",
-      "text": "מה המספר שבא לפני 54?",
-      "answer": 53,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 54 בא 53."
-      ],
-      "explanation": "לפני 54 בא 53.",
-      "source": "algo"
-    },
-    {
-      "id": "q-42f850e93a",
-      "text": "מה המספר שבא אחרי 3?",
-      "answer": 4,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 3 בא 4."
-      ],
-      "explanation": "אחרי 3 בא 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9e2e6536e1",
-      "text": "מה המספר שבא לפני 41?",
-      "answer": 40,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 41 בא 40."
-      ],
-      "explanation": "לפני 41 בא 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5adc78c72d",
-      "text": "מה המספר שבא אחרי 96?",
+      "id": "q-4ed8c88450",
+      "text": "מה המספר שבא לפני 98?",
       "answer": 97,
       "level": 4,
       "difficulty": 4,
       "hints": [
-        "מוסיפים 1.",
-        "אחרי 96 בא 97."
-      ],
-      "explanation": "אחרי 96 בא 97.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6331cd2635",
-      "text": "מה המספר שבא אחרי 60?",
-      "answer": 61,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 60 בא 61."
-      ],
-      "explanation": "אחרי 60 בא 61.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8ea42c3342",
-      "text": "איזה מספר נמצא בין 56 ל-58?",
-      "answer": 57,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 56 ל-58 יש את 57."
-      ],
-      "explanation": "בין 56 ל-58 נמצא 57.",
-      "source": "algo"
-    },
-    {
-      "id": "q-38c1d22f75",
-      "text": "מה המספר שבא אחרי 1?",
-      "answer": 2,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 1 בא 2."
-      ],
-      "explanation": "אחרי 1 בא 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-537f8a4cff",
-      "text": "איזה מספר נמצא בין 47 ל-49?",
-      "answer": 48,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 47 ל-49 יש את 48."
-      ],
-      "explanation": "בין 47 ל-49 נמצא 48.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c32281d9c6",
-      "text": "איזה מספר נמצא בין 76 ל-78?",
-      "answer": 77,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 76 ל-78 יש את 77."
-      ],
-      "explanation": "בין 76 ל-78 נמצא 77.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4d7e4a97e6",
-      "text": "מה המספר שבא לפני 9?",
-      "answer": 8,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
         "מורידים 1.",
-        "לפני 9 בא 8."
+        "לפני 98 בא 97."
       ],
-      "explanation": "לפני 9 בא 8.",
+      "explanation": "לפני 98 בא 97.",
       "source": "algo"
     },
     {
-      "id": "q-77ee1a68ea",
-      "text": "מה המספר שבא אחרי 80?",
-      "answer": 81,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 80 בא 81."
-      ],
-      "explanation": "אחרי 80 בא 81.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8c69ed026f",
-      "text": "מה המספר שבא לפני 77?",
-      "answer": 76,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 77 בא 76."
-      ],
-      "explanation": "לפני 77 בא 76.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b134bca736",
-      "text": "מה המספר שבא אחרי 74?",
-      "answer": 75,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 74 בא 75."
-      ],
-      "explanation": "אחרי 74 בא 75.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f1772b39e2",
-      "text": "מה המספר שבא אחרי 75?",
-      "answer": 76,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 75 בא 76."
-      ],
-      "explanation": "אחרי 75 בא 76.",
-      "source": "algo"
-    },
-    {
-      "id": "q-164243f632",
-      "text": "איזה מספר נמצא בין 8 ל-10?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 8 ל-10 יש את 9."
-      ],
-      "explanation": "בין 8 ל-10 נמצא 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c929f7cb25",
-      "text": "איזה מספר נמצא בין 38 ל-40?",
-      "answer": 39,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 38 ל-40 יש את 39."
-      ],
-      "explanation": "בין 38 ל-40 נמצא 39.",
-      "source": "algo"
-    },
-    {
-      "id": "q-44f27022f4",
-      "text": "מה המספר שבא לפני 60?",
-      "answer": 59,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 60 בא 59."
-      ],
-      "explanation": "לפני 60 בא 59.",
-      "source": "algo"
-    },
-    {
-      "id": "q-cf2bcba55a",
-      "text": "איזה מספר נמצא בין 39 ל-41?",
-      "answer": 40,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 39 ל-41 יש את 40."
-      ],
-      "explanation": "בין 39 ל-41 נמצא 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-974f718c06",
-      "text": "מה המספר שבא אחרי 84?",
-      "answer": 85,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 84 בא 85."
-      ],
-      "explanation": "אחרי 84 בא 85.",
-      "source": "algo"
-    },
-    {
-      "id": "q-83597ccaff",
-      "text": "איזה מספר נמצא בין 28 ל-30?",
-      "answer": 29,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 28 ל-30 יש את 29."
-      ],
-      "explanation": "בין 28 ל-30 נמצא 29.",
-      "source": "algo"
-    },
-    {
-      "id": "q-21db93ad33",
-      "text": "מה המספר שבא לפני 93?",
-      "answer": 92,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 93 בא 92."
-      ],
-      "explanation": "לפני 93 בא 92.",
-      "source": "algo"
-    },
-    {
-      "id": "q-823146ed73",
-      "text": "מה המספר שבא לפני 43?",
-      "answer": 42,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 43 בא 42."
-      ],
-      "explanation": "לפני 43 בא 42.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f28bf5afae",
-      "text": "איזה מספר נמצא בין 10 ל-12?",
-      "answer": 11,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 10 ל-12 יש את 11."
-      ],
-      "explanation": "בין 10 ל-12 נמצא 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-844d9d76b1",
-      "text": "מה המספר שבא אחרי 61?",
-      "answer": 62,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 61 בא 62."
-      ],
-      "explanation": "אחרי 61 בא 62.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2012b6a57c",
-      "text": "מה המספר שבא לפני 1?",
-      "answer": 0,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 1 בא 0."
-      ],
-      "explanation": "לפני 1 בא 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-faf00255e4",
-      "text": "איזה מספר נמצא בין 62 ל-64?",
-      "answer": 63,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 62 ל-64 יש את 63."
-      ],
-      "explanation": "בין 62 ל-64 נמצא 63.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4e5d71ad87",
-      "text": "איזה מספר נמצא בין 80 ל-82?",
-      "answer": 81,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 80 ל-82 יש את 81."
-      ],
-      "explanation": "בין 80 ל-82 נמצא 81.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9d4729215a",
-      "text": "מה המספר שבא אחרי 47?",
-      "answer": 48,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 47 בא 48."
-      ],
-      "explanation": "אחרי 47 בא 48.",
-      "source": "algo"
-    },
-    {
-      "id": "q-847c5adcbe",
-      "text": "איזה מספר נמצא בין 66 ל-68?",
-      "answer": 67,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 66 ל-68 יש את 67."
-      ],
-      "explanation": "בין 66 ל-68 נמצא 67.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2329e73e72",
-      "text": "איזה מספר נמצא בין 60 ל-62?",
-      "answer": 61,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 60 ל-62 יש את 61."
-      ],
-      "explanation": "בין 60 ל-62 נמצא 61.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d5389d9a0b",
-      "text": "מה המספר שבא לפני 4?",
-      "answer": 3,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 4 בא 3."
-      ],
-      "explanation": "לפני 4 בא 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-47832f26b7",
-      "text": "מה המספר שבא לפני 78?",
-      "answer": 77,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 78 בא 77."
-      ],
-      "explanation": "לפני 78 בא 77.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3201e07bff",
-      "text": "מה המספר שבא אחרי 92?",
-      "answer": 93,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 92 בא 93."
-      ],
-      "explanation": "אחרי 92 בא 93.",
-      "source": "algo"
-    },
-    {
-      "id": "q-33079cb4b2",
-      "text": "מה המספר שבא לפני 13?",
-      "answer": 12,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 13 בא 12."
-      ],
-      "explanation": "לפני 13 בא 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2ea0da7645",
-      "text": "מה המספר שבא אחרי 14?",
-      "answer": 15,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 14 בא 15."
-      ],
-      "explanation": "אחרי 14 בא 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f267c4e4a0",
-      "text": "איזה מספר נמצא בין 46 ל-48?",
-      "answer": 47,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 46 ל-48 יש את 47."
-      ],
-      "explanation": "בין 46 ל-48 נמצא 47.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4844846d3f",
-      "text": "מה המספר שבא אחרי 82?",
-      "answer": 83,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 82 בא 83."
-      ],
-      "explanation": "אחרי 82 בא 83.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2f689baae5",
-      "text": "מה המספר שבא לפני 37?",
-      "answer": 36,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 37 בא 36."
-      ],
-      "explanation": "לפני 37 בא 36.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0599b18e5c",
-      "text": "מה המספר שבא לפני 80?",
-      "answer": 79,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 80 בא 79."
-      ],
-      "explanation": "לפני 80 בא 79.",
-      "source": "algo"
-    },
-    {
-      "id": "q-79d2709b3b",
-      "text": "מה המספר שבא אחרי 64?",
-      "answer": 65,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 64 בא 65."
-      ],
-      "explanation": "אחרי 64 בא 65.",
-      "source": "algo"
-    },
-    {
-      "id": "q-dc04cc4c8e",
-      "text": "מה המספר שבא לפני 20?",
-      "answer": 19,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 20 בא 19."
-      ],
-      "explanation": "לפני 20 בא 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4ae314e142",
-      "text": "מה המספר שבא אחרי 55?",
-      "answer": 56,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 55 בא 56."
-      ],
-      "explanation": "אחרי 55 בא 56.",
-      "source": "algo"
-    },
-    {
-      "id": "q-83071aa1ed",
-      "text": "איזה מספר נמצא בין 17 ל-19?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 17 ל-19 יש את 18."
-      ],
-      "explanation": "בין 17 ל-19 נמצא 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-15b8b4b76e",
-      "text": "מה המספר שבא לפני 47?",
-      "answer": 46,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 47 בא 46."
-      ],
-      "explanation": "לפני 47 בא 46.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7792c66f08",
-      "text": "מה המספר שבא לפני 33?",
-      "answer": 32,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 33 בא 32."
-      ],
-      "explanation": "לפני 33 בא 32.",
-      "source": "algo"
-    },
-    {
-      "id": "q-653b62a0c1",
-      "text": "מה המספר שבא לפני 89?",
-      "answer": 88,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 89 בא 88."
-      ],
-      "explanation": "לפני 89 בא 88.",
-      "source": "algo"
-    },
-    {
-      "id": "q-54824a7f05",
-      "text": "איזה מספר נמצא בין 78 ל-80?",
-      "answer": 79,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 78 ל-80 יש את 79."
-      ],
-      "explanation": "בין 78 ל-80 נמצא 79.",
-      "source": "algo"
-    },
-    {
-      "id": "q-536caac18c",
-      "text": "מה המספר שבא לפני 15?",
-      "answer": 14,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 15 בא 14."
-      ],
-      "explanation": "לפני 15 בא 14.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c9383a6fcc",
+      "id": "q-9ccc8f7c80",
       "text": "איזה מספר נמצא בין 5 ל-7?",
       "answer": 6,
       "level": 2,
@@ -706,566 +30,20 @@
       "source": "algo"
     },
     {
-      "id": "q-1eef96ce4e",
-      "text": "מה המספר שבא אחרי 9?",
-      "answer": 10,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 9 בא 10."
-      ],
-      "explanation": "אחרי 9 בא 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-554296f780",
-      "text": "איזה מספר נמצא בין 83 ל-85?",
-      "answer": 84,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 83 ל-85 יש את 84."
-      ],
-      "explanation": "בין 83 ל-85 נמצא 84.",
-      "source": "algo"
-    },
-    {
-      "id": "q-cc666205ee",
-      "text": "מה המספר שבא לפני 42?",
-      "answer": 41,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 42 בא 41."
-      ],
-      "explanation": "לפני 42 בא 41.",
-      "source": "algo"
-    },
-    {
-      "id": "q-875d83ac1f",
-      "text": "מה המספר שבא אחרי 72?",
-      "answer": 73,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 72 בא 73."
-      ],
-      "explanation": "אחרי 72 בא 73.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b1c4851127",
-      "text": "מה המספר שבא לפני 23?",
-      "answer": 22,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 23 בא 22."
-      ],
-      "explanation": "לפני 23 בא 22.",
-      "source": "algo"
-    },
-    {
-      "id": "q-86be34b258",
-      "text": "מה המספר שבא לפני 59?",
-      "answer": 58,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 59 בא 58."
-      ],
-      "explanation": "לפני 59 בא 58.",
-      "source": "algo"
-    },
-    {
-      "id": "q-908664f951",
-      "text": "איזה מספר נמצא בין 91 ל-93?",
-      "answer": 92,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 91 ל-93 יש את 92."
-      ],
-      "explanation": "בין 91 ל-93 נמצא 92.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d106c4cbb6",
-      "text": "מה המספר שבא לפני 65?",
-      "answer": 64,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 65 בא 64."
-      ],
-      "explanation": "לפני 65 בא 64.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1e8809f267",
-      "text": "מה המספר שבא לפני 14?",
-      "answer": 13,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 14 בא 13."
-      ],
-      "explanation": "לפני 14 בא 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d4d78e6e04",
-      "text": "מה המספר שבא לפני 53?",
-      "answer": 52,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 53 בא 52."
-      ],
-      "explanation": "לפני 53 בא 52.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3aa1c72c09",
-      "text": "איזה מספר נמצא בין 23 ל-25?",
-      "answer": 24,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 23 ל-25 יש את 24."
-      ],
-      "explanation": "בין 23 ל-25 נמצא 24.",
-      "source": "algo"
-    },
-    {
-      "id": "q-16d55c3742",
-      "text": "איזה מספר נמצא בין 61 ל-63?",
-      "answer": 62,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 61 ל-63 יש את 62."
-      ],
-      "explanation": "בין 61 ל-63 נמצא 62.",
-      "source": "algo"
-    },
-    {
-      "id": "q-51f258cfe7",
-      "text": "איזה מספר נמצא בין 87 ל-89?",
-      "answer": 88,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 87 ל-89 יש את 88."
-      ],
-      "explanation": "בין 87 ל-89 נמצא 88.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e642da4cb1",
-      "text": "מה המספר שבא לפני 68?",
-      "answer": 67,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 68 בא 67."
-      ],
-      "explanation": "לפני 68 בא 67.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f2fb3a08a1",
-      "text": "מה המספר שבא אחרי 26?",
-      "answer": 27,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 26 בא 27."
-      ],
-      "explanation": "אחרי 26 בא 27.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bbe94cac81",
-      "text": "איזה מספר נמצא בין 88 ל-90?",
-      "answer": 89,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 88 ל-90 יש את 89."
-      ],
-      "explanation": "בין 88 ל-90 נמצא 89.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ab9ed41bdb",
-      "text": "מה המספר שבא לפני 29?",
-      "answer": 28,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 29 בא 28."
-      ],
-      "explanation": "לפני 29 בא 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-237368b09b",
-      "text": "איזה מספר נמצא בין 94 ל-96?",
-      "answer": 95,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 94 ל-96 יש את 95."
-      ],
-      "explanation": "בין 94 ל-96 נמצא 95.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5e1c9955b8",
-      "text": "מה המספר שבא אחרי 21?",
-      "answer": 22,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 21 בא 22."
-      ],
-      "explanation": "אחרי 21 בא 22.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1c71b791ad",
-      "text": "מה המספר שבא לפני 100?",
-      "answer": 99,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מורידים 1.",
-        "לפני 100 בא 99."
-      ],
-      "explanation": "לפני 100 בא 99.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ffc46f7dac",
-      "text": "מה המספר שבא לפני 21?",
-      "answer": 20,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 21 בא 20."
-      ],
-      "explanation": "לפני 21 בא 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2c9e6daeb0",
-      "text": "מה המספר שבא לפני 86?",
-      "answer": 85,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 86 בא 85."
-      ],
-      "explanation": "לפני 86 בא 85.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c5b773baf1",
-      "text": "מה המספר שבא לפני 71?",
-      "answer": 70,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 71 בא 70."
-      ],
-      "explanation": "לפני 71 בא 70.",
-      "source": "algo"
-    },
-    {
-      "id": "q-96a5d609a1",
-      "text": "מה המספר שבא אחרי 28?",
-      "answer": 29,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 28 בא 29."
-      ],
-      "explanation": "אחרי 28 בא 29.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1777d15e44",
-      "text": "מה המספר שבא לפני 73?",
-      "answer": 72,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 73 בא 72."
-      ],
-      "explanation": "לפני 73 בא 72.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0a22b846ee",
-      "text": "מה המספר שבא לפני 94?",
-      "answer": 93,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 94 בא 93."
-      ],
-      "explanation": "לפני 94 בא 93.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8f1c086264",
-      "text": "איזה מספר נמצא בין 50 ל-52?",
-      "answer": 51,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 50 ל-52 יש את 51."
-      ],
-      "explanation": "בין 50 ל-52 נמצא 51.",
-      "source": "algo"
-    },
-    {
-      "id": "q-96b6fedb44",
-      "text": "מה המספר שבא אחרי 58?",
-      "answer": 59,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 58 בא 59."
-      ],
-      "explanation": "אחרי 58 בא 59.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3d3a23c7a3",
-      "text": "מה המספר שבא אחרי 93?",
-      "answer": 94,
+      "id": "q-06732c49d6",
+      "text": "מה המספר שבא אחרי 95?",
+      "answer": 96,
       "level": 4,
       "difficulty": 4,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 93 בא 94."
+        "אחרי 95 בא 96."
       ],
-      "explanation": "אחרי 93 בא 94.",
+      "explanation": "אחרי 95 בא 96.",
       "source": "algo"
     },
     {
-      "id": "q-e601a3a996",
-      "text": "איזה מספר נמצא בין 41 ל-43?",
-      "answer": 42,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 41 ל-43 יש את 42."
-      ],
-      "explanation": "בין 41 ל-43 נמצא 42.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bba9a461d0",
-      "text": "איזה מספר נמצא בין 77 ל-79?",
-      "answer": 78,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 77 ל-79 יש את 78."
-      ],
-      "explanation": "בין 77 ל-79 נמצא 78.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e097fbf131",
-      "text": "מה המספר שבא אחרי 81?",
-      "answer": 82,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 81 בא 82."
-      ],
-      "explanation": "אחרי 81 בא 82.",
-      "source": "algo"
-    },
-    {
-      "id": "q-250fb33488",
-      "text": "איזה מספר נמצא בין 11 ל-13?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 11 ל-13 יש את 12."
-      ],
-      "explanation": "בין 11 ל-13 נמצא 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e83bbc5b3d",
-      "text": "מה המספר שבא לפני 27?",
-      "answer": 26,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 27 בא 26."
-      ],
-      "explanation": "לפני 27 בא 26.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ae71c67406",
-      "text": "איזה מספר נמצא בין 86 ל-88?",
-      "answer": 87,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 86 ל-88 יש את 87."
-      ],
-      "explanation": "בין 86 ל-88 נמצא 87.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4133c810a4",
-      "text": "איזה מספר נמצא בין 12 ל-14?",
-      "answer": 13,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 12 ל-14 יש את 13."
-      ],
-      "explanation": "בין 12 ל-14 נמצא 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f988e4085b",
-      "text": "מה המספר שבא לפני 2?",
-      "answer": 1,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 2 בא 1."
-      ],
-      "explanation": "לפני 2 בא 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1e149e1d6f",
-      "text": "מה המספר שבא אחרי 43?",
-      "answer": 44,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 43 בא 44."
-      ],
-      "explanation": "אחרי 43 בא 44.",
-      "source": "algo"
-    },
-    {
-      "id": "q-56bafee228",
-      "text": "מה המספר שבא לפני 12?",
-      "answer": 11,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 12 בא 11."
-      ],
-      "explanation": "לפני 12 בא 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-113f765a5e",
-      "text": "איזה מספר נמצא בין 40 ל-42?",
-      "answer": 41,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 40 ל-42 יש את 41."
-      ],
-      "explanation": "בין 40 ל-42 נמצא 41.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1b570b4e78",
-      "text": "מה המספר שבא אחרי 87?",
-      "answer": 88,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 87 בא 88."
-      ],
-      "explanation": "אחרי 87 בא 88.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d0c0bd194a",
-      "text": "איזה מספר נמצא בין 14 ל-16?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 14 ל-16 יש את 15."
-      ],
-      "explanation": "בין 14 ל-16 נמצא 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8ba74ca48a",
-      "text": "מה המספר שבא אחרי 38?",
-      "answer": 39,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 38 בא 39."
-      ],
-      "explanation": "אחרי 38 בא 39.",
-      "source": "algo"
-    },
-    {
-      "id": "q-570e6d060d",
+      "id": "q-e022841290",
       "text": "איזה מספר נמצא בין 44 ל-46?",
       "answer": 45,
       "level": 3,
@@ -1278,7 +56,839 @@
       "source": "algo"
     },
     {
-      "id": "q-50ebda34d2",
+      "id": "q-d609609ded",
+      "text": "איזה מספר נמצא בין 63 ל-65?",
+      "answer": 64,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המספר באמצע.",
+        "בין 63 ל-65 יש את 64."
+      ],
+      "explanation": "בין 63 ל-65 נמצא 64.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9f6ad9d984",
+      "text": "מה המספר שבא אחרי 42?",
+      "answer": 43,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 42 בא 43."
+      ],
+      "explanation": "אחרי 42 בא 43.",
+      "source": "algo"
+    },
+    {
+      "id": "q-87dd62d2bc",
+      "text": "מה המספר שבא לפני 44?",
+      "answer": 43,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "לפני 44 בא 43."
+      ],
+      "explanation": "לפני 44 בא 43.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2e505e1759",
+      "text": "מה המספר שבא אחרי 29?",
+      "answer": 30,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 29 בא 30."
+      ],
+      "explanation": "אחרי 29 בא 30.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7362c01f68",
+      "text": "מה המספר שבא לפני 2?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מורידים 1.",
+        "לפני 2 בא 1."
+      ],
+      "explanation": "לפני 2 בא 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4f74d8a67f",
+      "text": "איזה מספר נמצא בין 37 ל-39?",
+      "answer": 38,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "המספר באמצע.",
+        "בין 37 ל-39 יש את 38."
+      ],
+      "explanation": "בין 37 ל-39 נמצא 38.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0d7166ae1c",
+      "text": "איזה מספר נמצא בין 84 ל-86?",
+      "answer": 85,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המספר באמצע.",
+        "בין 84 ל-86 יש את 85."
+      ],
+      "explanation": "בין 84 ל-86 נמצא 85.",
+      "source": "algo"
+    },
+    {
+      "id": "q-255ebe63fd",
+      "text": "מה המספר שבא לפני 99?",
+      "answer": 98,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מורידים 1.",
+        "לפני 99 בא 98."
+      ],
+      "explanation": "לפני 99 בא 98.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d2e90ccfa7",
+      "text": "מה המספר שבא לפני 53?",
+      "answer": 52,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 53 בא 52."
+      ],
+      "explanation": "לפני 53 בא 52.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6c23ca1841",
+      "text": "מה המספר שבא אחרי 58?",
+      "answer": 59,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 58 בא 59."
+      ],
+      "explanation": "אחרי 58 בא 59.",
+      "source": "algo"
+    },
+    {
+      "id": "q-415dd42ed5",
+      "text": "איזה מספר נמצא בין 12 ל-14?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המספר באמצע.",
+        "בין 12 ל-14 יש את 13."
+      ],
+      "explanation": "בין 12 ל-14 נמצא 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a691361f8b",
+      "text": "איזה מספר נמצא בין 61 ל-63?",
+      "answer": 62,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המספר באמצע.",
+        "בין 61 ל-63 יש את 62."
+      ],
+      "explanation": "בין 61 ל-63 נמצא 62.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5829d7efe1",
+      "text": "איזה מספר נמצא בין 3 ל-5?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המספר באמצע.",
+        "בין 3 ל-5 יש את 4."
+      ],
+      "explanation": "בין 3 ל-5 נמצא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a2b3dc0cc7",
+      "text": "מה המספר שבא אחרי 12?",
+      "answer": 13,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 12 בא 13."
+      ],
+      "explanation": "אחרי 12 בא 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1341b34efb",
+      "text": "מה המספר שבא אחרי 5?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 5 בא 6."
+      ],
+      "explanation": "אחרי 5 בא 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1cdd196b32",
+      "text": "מה המספר שבא אחרי 15?",
+      "answer": 16,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 15 בא 16."
+      ],
+      "explanation": "אחרי 15 בא 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ab24b61a60",
+      "text": "איזה מספר נמצא בין 25 ל-27?",
+      "answer": 26,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "המספר באמצע.",
+        "בין 25 ל-27 יש את 26."
+      ],
+      "explanation": "בין 25 ל-27 נמצא 26.",
+      "source": "algo"
+    },
+    {
+      "id": "q-54f8919d1b",
+      "text": "איזה מספר נמצא בין 26 ל-28?",
+      "answer": 27,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "המספר באמצע.",
+        "בין 26 ל-28 יש את 27."
+      ],
+      "explanation": "בין 26 ל-28 נמצא 27.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0fd1f3c935",
+      "text": "מה המספר שבא לפני 38?",
+      "answer": 37,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "לפני 38 בא 37."
+      ],
+      "explanation": "לפני 38 בא 37.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f5f9541cd1",
+      "text": "מה המספר שבא אחרי 94?",
+      "answer": 95,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 94 בא 95."
+      ],
+      "explanation": "אחרי 94 בא 95.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7550fcdd51",
+      "text": "מה המספר שבא לפני 32?",
+      "answer": 31,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "לפני 32 בא 31."
+      ],
+      "explanation": "לפני 32 בא 31.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f6111de6d8",
+      "text": "מה המספר שבא לפני 48?",
+      "answer": 47,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "לפני 48 בא 47."
+      ],
+      "explanation": "לפני 48 בא 47.",
+      "source": "algo"
+    },
+    {
+      "id": "q-94cf89714f",
+      "text": "איזה מספר נמצא בין 18 ל-20?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המספר באמצע.",
+        "בין 18 ל-20 יש את 19."
+      ],
+      "explanation": "בין 18 ל-20 נמצא 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f460883ef7",
+      "text": "מה המספר שבא אחרי 34?",
+      "answer": 35,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 34 בא 35."
+      ],
+      "explanation": "אחרי 34 בא 35.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bb8e5dcedb",
+      "text": "מה המספר שבא אחרי 17?",
+      "answer": 18,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 17 בא 18."
+      ],
+      "explanation": "אחרי 17 בא 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b7073dd9d3",
+      "text": "מה המספר שבא אחרי 1?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 1 בא 2."
+      ],
+      "explanation": "אחרי 1 בא 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d8abbecff9",
+      "text": "מה המספר שבא אחרי 67?",
+      "answer": 68,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 67 בא 68."
+      ],
+      "explanation": "אחרי 67 בא 68.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0018ac0b6e",
+      "text": "מה המספר שבא לפני 22?",
+      "answer": 21,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מורידים 1.",
+        "לפני 22 בא 21."
+      ],
+      "explanation": "לפני 22 בא 21.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6f59672090",
+      "text": "מה המספר שבא אחרי 20?",
+      "answer": 21,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 20 בא 21."
+      ],
+      "explanation": "אחרי 20 בא 21.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7613551504",
+      "text": "מה המספר שבא לפני 70?",
+      "answer": 69,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 70 בא 69."
+      ],
+      "explanation": "לפני 70 בא 69.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4c805108db",
+      "text": "מה המספר שבא אחרי 2?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 2 בא 3."
+      ],
+      "explanation": "אחרי 2 בא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-47a7a72734",
+      "text": "איזה מספר נמצא בין 77 ל-79?",
+      "answer": 78,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המספר באמצע.",
+        "בין 77 ל-79 יש את 78."
+      ],
+      "explanation": "בין 77 ל-79 נמצא 78.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4a6c82c419",
+      "text": "מה המספר שבא אחרי 51?",
+      "answer": 52,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 51 בא 52."
+      ],
+      "explanation": "אחרי 51 בא 52.",
+      "source": "algo"
+    },
+    {
+      "id": "q-afb6605007",
+      "text": "מה המספר שבא אחרי 32?",
+      "answer": 33,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 32 בא 33."
+      ],
+      "explanation": "אחרי 32 בא 33.",
+      "source": "algo"
+    },
+    {
+      "id": "q-864c25d87d",
+      "text": "מה המספר שבא לפני 66?",
+      "answer": 65,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 66 בא 65."
+      ],
+      "explanation": "לפני 66 בא 65.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a0bfa876c6",
+      "text": "איזה מספר נמצא בין 83 ל-85?",
+      "answer": 84,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המספר באמצע.",
+        "בין 83 ל-85 יש את 84."
+      ],
+      "explanation": "בין 83 ל-85 נמצא 84.",
+      "source": "algo"
+    },
+    {
+      "id": "q-26c8547e4e",
+      "text": "מה המספר שבא אחרי 72?",
+      "answer": 73,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 72 בא 73."
+      ],
+      "explanation": "אחרי 72 בא 73.",
+      "source": "algo"
+    },
+    {
+      "id": "q-16ec4648c2",
+      "text": "מה המספר שבא לפני 50?",
+      "answer": 49,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 50 בא 49."
+      ],
+      "explanation": "לפני 50 בא 49.",
+      "source": "algo"
+    },
+    {
+      "id": "q-de128300bc",
+      "text": "מה המספר שבא אחרי 21?",
+      "answer": 22,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 21 בא 22."
+      ],
+      "explanation": "אחרי 21 בא 22.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4a598230f1",
+      "text": "מה המספר שבא אחרי 71?",
+      "answer": 72,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 71 בא 72."
+      ],
+      "explanation": "אחרי 71 בא 72.",
+      "source": "algo"
+    },
+    {
+      "id": "q-09c783fe6d",
+      "text": "איזה מספר נמצא בין 30 ל-32?",
+      "answer": 31,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "המספר באמצע.",
+        "בין 30 ל-32 יש את 31."
+      ],
+      "explanation": "בין 30 ל-32 נמצא 31.",
+      "source": "algo"
+    },
+    {
+      "id": "q-906148d7fa",
+      "text": "מה המספר שבא אחרי 91?",
+      "answer": 92,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 91 בא 92."
+      ],
+      "explanation": "אחרי 91 בא 92.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a094afcfc0",
+      "text": "מה המספר שבא לפני 11?",
+      "answer": 10,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מורידים 1.",
+        "לפני 11 בא 10."
+      ],
+      "explanation": "לפני 11 בא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-118d7ae1ee",
+      "text": "איזה מספר נמצא בין 98 ל-100?",
+      "answer": 99,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המספר באמצע.",
+        "בין 98 ל-100 יש את 99."
+      ],
+      "explanation": "בין 98 ל-100 נמצא 99.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c8d3b291c4",
+      "text": "מה המספר שבא אחרי 52?",
+      "answer": 53,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 52 בא 53."
+      ],
+      "explanation": "אחרי 52 בא 53.",
+      "source": "algo"
+    },
+    {
+      "id": "q-333530539d",
+      "text": "מה המספר שבא לפני 57?",
+      "answer": 56,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 57 בא 56."
+      ],
+      "explanation": "לפני 57 בא 56.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9f4a2d6b13",
+      "text": "איזה מספר נמצא בין 14 ל-16?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המספר באמצע.",
+        "בין 14 ל-16 יש את 15."
+      ],
+      "explanation": "בין 14 ל-16 נמצא 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-00914fb6f8",
+      "text": "מה המספר שבא לפני 47?",
+      "answer": 46,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "לפני 47 בא 46."
+      ],
+      "explanation": "לפני 47 בא 46.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e8f05fe391",
+      "text": "מה המספר שבא אחרי 74?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 74 בא 75."
+      ],
+      "explanation": "אחרי 74 בא 75.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6b4486f8fa",
+      "text": "מה המספר שבא אחרי 14?",
+      "answer": 15,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 14 בא 15."
+      ],
+      "explanation": "אחרי 14 בא 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-66bee7718a",
+      "text": "מה המספר שבא לפני 51?",
+      "answer": 50,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 51 בא 50."
+      ],
+      "explanation": "לפני 51 בא 50.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e8b5f341f0",
+      "text": "איזה מספר נמצא בין 64 ל-66?",
+      "answer": 65,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המספר באמצע.",
+        "בין 64 ל-66 יש את 65."
+      ],
+      "explanation": "בין 64 ל-66 נמצא 65.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e5a7a541ce",
+      "text": "איזה מספר נמצא בין 81 ל-83?",
+      "answer": 82,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המספר באמצע.",
+        "בין 81 ל-83 יש את 82."
+      ],
+      "explanation": "בין 81 ל-83 נמצא 82.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c6ca6b3104",
+      "text": "מה המספר שבא אחרי 6?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 6 בא 7."
+      ],
+      "explanation": "אחרי 6 בא 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-63da28ae82",
+      "text": "איזה מספר נמצא בין 13 ל-15?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המספר באמצע.",
+        "בין 13 ל-15 יש את 14."
+      ],
+      "explanation": "בין 13 ל-15 נמצא 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6ae02be200",
+      "text": "מה המספר שבא אחרי 64?",
+      "answer": 65,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 64 בא 65."
+      ],
+      "explanation": "אחרי 64 בא 65.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5a12636f82",
+      "text": "מה המספר שבא לפני 77?",
+      "answer": 76,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מורידים 1.",
+        "לפני 77 בא 76."
+      ],
+      "explanation": "לפני 77 בא 76.",
+      "source": "algo"
+    },
+    {
+      "id": "q-79d5c3574a",
+      "text": "מה המספר שבא אחרי 55?",
+      "answer": 56,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 55 בא 56."
+      ],
+      "explanation": "אחרי 55 בא 56.",
+      "source": "algo"
+    },
+    {
+      "id": "q-04513bfcac",
+      "text": "מה המספר שבא אחרי 80?",
+      "answer": 81,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 80 בא 81."
+      ],
+      "explanation": "אחרי 80 בא 81.",
+      "source": "algo"
+    },
+    {
+      "id": "q-374512d7f7",
+      "text": "מה המספר שבא לפני 68?",
+      "answer": 67,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 68 בא 67."
+      ],
+      "explanation": "לפני 68 בא 67.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f5904016ea",
+      "text": "מה המספר שבא לפני 24?",
+      "answer": 23,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מורידים 1.",
+        "לפני 24 בא 23."
+      ],
+      "explanation": "לפני 24 בא 23.",
+      "source": "algo"
+    },
+    {
+      "id": "q-de4473f8bd",
+      "text": "איזה מספר נמצא בין 8 ל-10?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המספר באמצע.",
+        "בין 8 ל-10 יש את 9."
+      ],
+      "explanation": "בין 8 ל-10 נמצא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8ea83f541e",
+      "text": "מה המספר שבא אחרי 70?",
+      "answer": 71,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 70 בא 71."
+      ],
+      "explanation": "אחרי 70 בא 71.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2fb7ef717f",
+      "text": "איזה מספר נמצא בין 82 ל-84?",
+      "answer": 83,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המספר באמצע.",
+        "בין 82 ל-84 יש את 83."
+      ],
+      "explanation": "בין 82 ל-84 נמצא 83.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fa4b674d7f",
       "text": "איזה מספר נמצא בין 4 ל-6?",
       "answer": 5,
       "level": 2,
@@ -1291,16 +901,406 @@
       "source": "algo"
     },
     {
-      "id": "q-4e360b4f02",
-      "text": "איזה מספר נמצא בין 30 ל-32?",
-      "answer": 31,
+      "id": "q-e15ce62e0a",
+      "text": "איזה מספר נמצא בין 16 ל-18?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המספר באמצע.",
+        "בין 16 ל-18 יש את 17."
+      ],
+      "explanation": "בין 16 ל-18 נמצא 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d31ac6545a",
+      "text": "מה המספר שבא לפני 62?",
+      "answer": 61,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 62 בא 61."
+      ],
+      "explanation": "לפני 62 בא 61.",
+      "source": "algo"
+    },
+    {
+      "id": "q-431f5133ea",
+      "text": "איזה מספר נמצא בין 71 ל-73?",
+      "answer": 72,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המספר באמצע.",
+        "בין 71 ל-73 יש את 72."
+      ],
+      "explanation": "בין 71 ל-73 נמצא 72.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e2bfc038a7",
+      "text": "איזה מספר נמצא בין 52 ל-54?",
+      "answer": 53,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המספר באמצע.",
+        "בין 52 ל-54 יש את 53."
+      ],
+      "explanation": "בין 52 ל-54 נמצא 53.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b064925702",
+      "text": "מה המספר שבא אחרי 60?",
+      "answer": 61,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 60 בא 61."
+      ],
+      "explanation": "אחרי 60 בא 61.",
+      "source": "algo"
+    },
+    {
+      "id": "q-94b8a481e4",
+      "text": "מה המספר שבא לפני 20?",
+      "answer": 19,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מורידים 1.",
+        "לפני 20 בא 19."
+      ],
+      "explanation": "לפני 20 בא 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d4dfb581e6",
+      "text": "מה המספר שבא אחרי 63?",
+      "answer": 64,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 63 בא 64."
+      ],
+      "explanation": "אחרי 63 בא 64.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0fb7e877e6",
+      "text": "מה המספר שבא אחרי 36?",
+      "answer": 37,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 36 בא 37."
+      ],
+      "explanation": "אחרי 36 בא 37.",
+      "source": "algo"
+    },
+    {
+      "id": "q-be47b8aadb",
+      "text": "מה המספר שבא לפני 49?",
+      "answer": 48,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "לפני 49 בא 48."
+      ],
+      "explanation": "לפני 49 בא 48.",
+      "source": "algo"
+    },
+    {
+      "id": "q-df59d0c13e",
+      "text": "מה המספר שבא לפני 12?",
+      "answer": 11,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מורידים 1.",
+        "לפני 12 בא 11."
+      ],
+      "explanation": "לפני 12 בא 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e51d4f29f0",
+      "text": "איזה מספר נמצא בין 56 ל-58?",
+      "answer": 57,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המספר באמצע.",
+        "בין 56 ל-58 יש את 57."
+      ],
+      "explanation": "בין 56 ל-58 נמצא 57.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ff2650a09d",
+      "text": "מה המספר שבא אחרי 50?",
+      "answer": 51,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 50 בא 51."
+      ],
+      "explanation": "אחרי 50 בא 51.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9e91e70ef7",
+      "text": "מה המספר שבא אחרי 4?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 4 בא 5."
+      ],
+      "explanation": "אחרי 4 בא 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9fd3bb3835",
+      "text": "מה המספר שבא אחרי 89?",
+      "answer": 90,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 89 בא 90."
+      ],
+      "explanation": "אחרי 89 בא 90.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7e4817b0db",
+      "text": "איזה מספר נמצא בין 88 ל-90?",
+      "answer": 89,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "המספר באמצע.",
+        "בין 88 ל-90 יש את 89."
+      ],
+      "explanation": "בין 88 ל-90 נמצא 89.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f24d0bd17b",
+      "text": "מה המספר שבא לפני 5?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מורידים 1.",
+        "לפני 5 בא 4."
+      ],
+      "explanation": "לפני 5 בא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2088555e26",
+      "text": "מה המספר שבא אחרי 24?",
+      "answer": 25,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 24 בא 25."
+      ],
+      "explanation": "אחרי 24 בא 25.",
+      "source": "algo"
+    },
+    {
+      "id": "q-94fe073ac0",
+      "text": "מה המספר שבא לפני 54?",
+      "answer": 53,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 54 בא 53."
+      ],
+      "explanation": "לפני 54 בא 53.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9a2cc8cf26",
+      "text": "מה המספר שבא לפני 7?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מורידים 1.",
+        "לפני 7 בא 6."
+      ],
+      "explanation": "לפני 7 בא 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b51c65fcd1",
+      "text": "מה המספר שבא אחרי 40?",
+      "answer": 41,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 40 בא 41."
+      ],
+      "explanation": "אחרי 40 בא 41.",
+      "source": "algo"
+    },
+    {
+      "id": "q-23bad43ff7",
+      "text": "מה המספר שבא לפני 83?",
+      "answer": 82,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מורידים 1.",
+        "לפני 83 בא 82."
+      ],
+      "explanation": "לפני 83 בא 82.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6e2d67f4c7",
+      "text": "מה המספר שבא אחרי 61?",
+      "answer": 62,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 61 בא 62."
+      ],
+      "explanation": "אחרי 61 בא 62.",
+      "source": "algo"
+    },
+    {
+      "id": "q-af580be56f",
+      "text": "מה המספר שבא לפני 25?",
+      "answer": 24,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "לפני 25 בא 24."
+      ],
+      "explanation": "לפני 25 בא 24.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5df0cac8a5",
+      "text": "איזה מספר נמצא בין 1 ל-3?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "המספר באמצע.",
+        "בין 1 ל-3 יש את 2."
+      ],
+      "explanation": "בין 1 ל-3 נמצא 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fee89016d1",
+      "text": "איזה מספר נמצא בין 69 ל-71?",
+      "answer": 70,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המספר באמצע.",
+        "בין 69 ל-71 יש את 70."
+      ],
+      "explanation": "בין 69 ל-71 נמצא 70.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5c5fa17788",
+      "text": "איזה מספר נמצא בין 54 ל-56?",
+      "answer": 55,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "המספר באמצע.",
+        "בין 54 ל-56 יש את 55."
+      ],
+      "explanation": "בין 54 ל-56 נמצא 55.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1eefac72a6",
+      "text": "מה המספר שבא אחרי 37?",
+      "answer": 38,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 37 בא 38."
+      ],
+      "explanation": "אחרי 37 בא 38.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1046874835",
+      "text": "מה המספר שבא אחרי 56?",
+      "answer": 57,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 56 בא 57."
+      ],
+      "explanation": "אחרי 56 בא 57.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d70e6b24d0",
+      "text": "מה המספר שבא אחרי 9?",
+      "answer": 10,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "אחרי 9 בא 10."
+      ],
+      "explanation": "אחרי 9 בא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ba8970af30",
+      "text": "איזה מספר נמצא בין 46 ל-48?",
+      "answer": 47,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "המספר באמצע.",
-        "בין 30 ל-32 יש את 31."
+        "בין 46 ל-48 יש את 47."
       ],
-      "explanation": "בין 30 ל-32 נמצא 31.",
+      "explanation": "בין 46 ל-48 נמצא 47.",
+      "source": "algo"
+    },
+    {
+      "id": "q-056acc752c",
+      "text": "מה המספר שבא לפני 74?",
+      "answer": 73,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מורידים 1.",
+        "לפני 74 בא 73."
+      ],
+      "explanation": "לפני 74 בא 73.",
       "source": "algo"
     }
   ]

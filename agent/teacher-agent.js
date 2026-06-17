@@ -3,13 +3,18 @@
 // המורה: הסוכן היחיד שמדבר עם התלמיד. משתמש ב-Claude כשיש מפתח, אחרת מצב מקומי.
 
 const llm = require("../lib/llm");
+const { genderize } = require("../lib/gender");
 
-function buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote }) {
+function buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote, gender }) {
+  const fem = gender === "female";
   const lines = [
     "את/ה מורה למתמטיקה לילדים. מדבר/ת עברית פשוטה, חמה וסבלנית.",
     "מטרה: להנחות את התלמיד לתשובה בעצמו — לא לפתור בשבילו אלא אם ביקש הסבר מלא.",
     "תשובות קצרות (1–4 משפטים), בגובה העיניים, בלי ז'רגון.",
     "כתוב/י בעברית תקנית בלבד — אך ורק אותיות עבריות. אסור לערבב אותיות ערביות או לועזיות בתוך מילים.",
+    `התלמיד/ה ${fem ? "בת (נקבה)" : "בן (זכר)"} — פנה/י אליו/ה אך ורק בלשון ${
+      fem ? "נקבה" : "זכר"
+    }, ובלי לוכסנים (לא 'צייר/י' אלא '${fem ? "ציירי" : "צייר"}').`,
   ];
   if (advice) lines.push(`הנחיה מהפסיכולוג (לא לחשוף לתלמיד): ${advice}`);
   if (problem?.text) {
@@ -38,7 +43,12 @@ const PRAISE = [
   "מצוין! זאת התשובה הנכונה 👏",
   "יפה מאוד, צדקת! 🌟",
   "מדויק! עבודה טובה 💪",
-  "נהדר, נכון בול!",
+  "נהדר, נכון בול! ⭐",
+  "וואו, פגעת בדיוק! 🎯",
+  "אלוף/ה! תשובה נכונה 🏆",
+  "בול! ממשיכים ככה 🚀",
+  "מהמם, צדקת לגמרי! ✨",
+  "כל הכבוד, איזה ראש! 🧠",
 ];
 const RETRY = [
   "לא מדויק הפעם, בוא/י ננסה שוב 🙂",
@@ -88,18 +98,19 @@ async function teacherReply(params) {
     correct = null,
     vizName = null,
     shapeNote = null,
+    gender = "male",
   } = params;
 
   // תשובה נכונה — שבח מקומי מגוון, בלי AI (התשובה ידועה מראש; חיסכון בטוקנים)
   if (messageKind === "CheckAnswer" && correct === true) {
-    return { reply: localReply({ messageKind, problem, correct, student }), mode: "local" };
+    return { reply: genderize(localReply({ messageKind, problem, correct, student }), gender), mode: "local" };
   }
 
   if (!llm.isEnabled()) {
-    return { reply: localReply({ messageKind, problem, correct, student }), mode: "local" };
+    return { reply: genderize(localReply({ messageKind, problem, correct, student }), gender), mode: "local" };
   }
 
-  const system = buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote });
+  const system = buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote, gender });
   let userText = messageText;
   if (messageKind === "CheckAnswer" && correct != null) {
     userText = `${messageText}\n(הערכת המערכת: התשובה ${correct ? "נכונה" : "שגויה"}.)`;

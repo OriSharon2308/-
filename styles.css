@@ -19,6 +19,7 @@
 
   /* ===== ערכה ידידותית לילדים ===== */
   --accent-rgb: 13 148 136; /* טורקיז */
+  --drawer-w: min(420px, 92vw); /* רוחב המגירה — משמש גם לחישוב מסלול המבורגר */
   --primary: #0d9488;
   --primary2: #14b8a6;
   --primary-strong: #0f766e;
@@ -69,7 +70,11 @@ body {
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 20; /* מתחת למגירה — המגירה (z50) עולה ומכסה את השם בפתיחה */
+}
+/* שומרים מקום בצד ימין לאייקון המבורגר שמציץ מהמגירה */
+.topbar__left {
+  padding-inline-start: 48px;
 }
 
 .iconBtn {
@@ -84,6 +89,24 @@ body {
   box-shadow: 0 1px 2px rgba(2, 6, 23, 0.05);
   transition: transform 0.22s cubic-bezier(0.32, 0.72, 0, 1),
     box-shadow 0.22s cubic-bezier(0.32, 0.72, 0, 1), background 0.18s ease;
+}
+
+/* אייקון בית — גדול, בלי עיגול/רקע/טקסט */
+.homeIcon {
+  font-size: 30px;
+  line-height: 1;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 12px;
+  display: inline-grid;
+  place-items: center;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.homeIcon:hover {
+  transform: scale(1.15);
+}
+.homeIcon:active {
+  transform: scale(0.95);
 }
 
 .iconBtn:hover {
@@ -475,12 +498,68 @@ body {
   align-items: center;
   gap: 10px;
 }
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* מבורגר נקי (בלי ריבוע), גדול, שהופך ל-X. יושב בתוך המגירה וזז יחד איתה. */
+.burger {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 6px;
+}
+/* האייקון כילד של המגירה — ממוקם בפינה השמאלית-עליונה שלה (זה גם ה"מציץ" כשסגור) */
+.drawer__burger {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  z-index: 2;
+  pointer-events: auto; /* לחיץ גם כשהמגירה שקופה-ללא-אינטראקציה (סגורה) */
+}
+.burger__line {
+  display: block;
+  width: 30px;
+  height: 3.5px;
+  border-radius: 3px;
+  background: var(--text);
+  transition: transform 0.6s cubic-bezier(0.34, 1.4, 0.5, 1), opacity 0.4s ease;
+  transform-origin: center;
+}
+/* המורש ל-X מונע ממצב המגירה — כך הוא מסונכרן מושלם עם ההחלקה */
+.drawer--open .burger__line:nth-child(1) {
+  transform: translateY(10.5px) rotate(45deg);
+}
+.drawer--open .burger__line:nth-child(2) {
+  opacity: 0;
+}
+.drawer--open .burger__line:nth-child(3) {
+  transform: translateY(-10.5px) rotate(-45deg);
+}
 
 .overlay {
   position: fixed;
   inset: 0;
   background: rgba(2, 6, 23, 0.35);
-  z-index: 40;
+  z-index: 30;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.overlay--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .drawer {
@@ -488,12 +567,35 @@ body {
   top: 0;
   right: 0;
   height: 100vh;
-  width: min(420px, 92vw);
-  background: rgba(255, 255, 255, 0.96);
-  border-left: 1px solid var(--border);
-  z-index: 50;
+  width: var(--drawer-w);
+  background: transparent;
+  border-left: 1px solid transparent;
+  box-shadow: none;
+  z-index: 50; /* מעל הסרגל — מכסה את השם בפתיחה */
   display: flex;
   flex-direction: column;
+  /* סגור: מוסטת ימינה כך שרק האייקון (בפינה השמאלית) מציץ בקצה הימני של המסך */
+  transform: translateX(calc(var(--drawer-w) - 78px));
+  pointer-events: none; /* כשסגורה — לא חוסמת קליקים; רק האייקון לחיץ */
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+.drawer--open {
+  transform: translateX(0);
+  background: rgba(255, 255, 255, 0.96);
+  border-left-color: var(--border);
+  box-shadow: -16px 0 40px rgba(2, 6, 23, 0.18);
+  pointer-events: auto;
+}
+/* תוכן המגירה גלוי רק כשפתוחה (כשסגורה רואים רק את האייקון) */
+.drawer__header,
+.drawer__content {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.drawer--open .drawer__header,
+.drawer--open .drawer__content {
+  opacity: 1;
 }
 
 .drawer__header {
@@ -501,7 +603,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  padding: 16px;
+  padding: 16px 16px 16px 70px; /* מקום לאייקון בפינה השמאלית */
   border-bottom: 1px solid var(--border);
 }
 
@@ -592,12 +694,200 @@ body {
 
 /* דירוג קושי ככוכבים */
 #difficultyPill {
-  cursor: help;
+  cursor: pointer;
+}
+.pill--btn {
+  font: inherit;
+  font-weight: 800;
+}
+.pill--btn:hover {
+  border-color: rgb(var(--accent-rgb) / 0.5);
 }
 .diffMax {
   font-size: 0.78em;
   color: var(--muted);
   margin-inline-start: 1px;
+}
+
+/* בורר רמה — נפתח מכפתור הכוכבים */
+.levelPicker {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  padding: 12px;
+  width: 260px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.16);
+}
+.levelPicker__title {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.levelPicker__opt {
+  font: inherit;
+  font-weight: 800;
+  padding: 10px 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.levelPicker__opt:hover {
+  transform: translateY(-1px);
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  background: rgb(var(--accent-rgb) / 0.06);
+}
+.levelPicker__opt--active {
+  background: rgb(var(--accent-rgb) / 0.14);
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  color: var(--primary-strong);
+}
+.levelPicker__opt--auto {
+  grid-column: 1 / -1;
+}
+
+/* מקלדת מספרים צפה */
+.numPad {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 80;
+  width: 248px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 18px 44px rgba(2, 6, 23, 0.22);
+}
+.numPad__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.numKey {
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 14px 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.numKey:hover {
+  background: rgb(var(--accent-rgb) / 0.06);
+}
+.numKey:active {
+  transform: scale(0.94);
+}
+.numKey--util {
+  font-size: 18px;
+  color: var(--muted);
+  background: rgba(15, 23, 42, 0.03);
+}
+.numPad__done {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px 0;
+  border: none;
+  border-radius: 14px;
+  background: #16a34a;
+  color: #fff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+.numPad__done:hover {
+  background: #15803d;
+}
+.numPad__done:active {
+  transform: scale(0.98);
+}
+
+/* מד שאלות לרמה */
+.levelMeter {
+  width: min(440px, 90%);
+  margin: 8px auto 0;
+}
+.levelMeter__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+.levelMeter__count {
+  color: var(--primary-strong);
+  font-weight: 800;
+}
+.levelMeter__track {
+  height: 16px;
+  border-radius: 999px;
+  background: rgb(var(--accent-rgb) / 0.1);
+  overflow: hidden;
+}
+.levelMeter__fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* חלונית "סיימת רמה" */
+.levelDone {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 23, 0.45);
+}
+.levelDone[hidden] {
+  display: none;
+}
+.levelDone__box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 26px;
+  width: min(420px, 90%);
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(2, 6, 23, 0.3);
+}
+.levelDone__title {
+  font-size: 22px;
+  font-weight: 800;
+}
+.levelDone__msg {
+  color: var(--muted);
+  margin: 10px 0 20px;
+}
+.levelDone__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.levelDone__actions .btn {
+  font-size: 16px;
+  padding: 14px;
 }
 
 .topicItem__actions {
@@ -859,7 +1149,130 @@ body.chat-collapsed .chatToggle {
   margin: 0 auto;
 }
 
+/* כרטיס השאלה — ממוקד, גדול וממורכז, תופס את כל האזור (בלי סטטיסטיקות) */
+#lessonCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 58vh;
+  gap: 22px;
+  padding: 36px 24px;
+  text-align: center;
+}
+/* ✓ קטן ונקי בפינה הימנית-העליונה — מונה תרגילים שנפתרו */
+.solvedBadge {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #16a34a;
+  pointer-events: none;
+  user-select: none;
+}
+/* "?" עזרה בפינה השמאלית-העליונה של התרגיל — בולט וברור */
+.helpBtn--corner {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  margin: 0;
+  z-index: 5;
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  background: var(--primary-strong);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(2, 6, 23, 0.18);
+}
+.helpBtn--corner:hover {
+  background: var(--primary-strong);
+  filter: brightness(1.08);
+}
+#lessonCard .problem {
+  width: 100%;
+  text-align: center;
+}
+#lessonCard .problem__label {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+#lessonCard .problem__text {
+  margin-top: 0;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.15;
+  text-align: center;
+}
+#lessonCard .answerRow {
+  margin-top: 0;
+  width: min(440px, 100%);
+  margin-inline: auto;
+}
+#lessonCard .actions {
+  margin-top: 2px;
+  justify-content: center;
+}
+#lessonCard .feedback {
+  font-size: 18px;
+}
+
+/* בר התשובה — שדה + כפתור "סיימתי" בתוך מסגרת אחת */
+.answerBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.answerBar:focus-within {
+  border-color: rgb(var(--accent-rgb) / 0.6);
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.15);
+}
+.answerBar__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: center;
+  color: var(--text);
+}
+.answerBar__btn {
+  flex: 0 0 auto;
+  border: none;
+  border-radius: 11px;
+  background: #16a34a;
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.answerBar__btn:hover {
+  background: #15803d;
+}
+.answerBar__btn:active {
+  transform: scale(0.97);
+}
+
 .panel__header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -943,14 +1356,7 @@ body.chat-collapsed .chatToggle {
 }
 
 .agentDebug {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 60;
-  border-top: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(8px);
+  display: none; /* חלונית הדיבוג של הסוכנים מוסתרת — הסתירה את המסך */
 }
 
 .agentDebug__toggle {
@@ -1020,10 +1426,7 @@ body.agent-debug-open {
 
 .problemDiagram {
   margin-bottom: 14px;
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px dashed rgb(var(--accent-rgb) / 0.25);
-  background: rgb(var(--accent-rgb) / 0.04);
+  padding: 0;
   max-width: 100%;
   /* גובה מוגבל — המצויר (שעון/צורה/מטבעות) נכנס למסך אחד בלי גלילה */
   max-height: 240px;
@@ -1135,11 +1538,72 @@ body.agent-debug-open {
   cursor: grabbing;
 }
 
+/* מצב שעון אינטראקטיבי — שאלה קטנה מעל, שעון גדול, כפתור גדול ממורכז */
+.mode-clock .problem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mode-clock .problem__label {
+  display: none;
+}
+/* specificity גבוה (#lessonCard.mode-clock) כדי לגבור על #lessonCard .problem__text שקובע clamp(36px..56px) */
+#lessonCard.mode-clock .problem__text {
+  order: 1;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 16px;
+}
+.mode-clock #problemDiagram {
+  order: 2;
+  max-height: none;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+}
+/* השעון (גם הסטטי "מה השעה" וגם האינטראקטיבי) — מידות מפורשות וריבועיות כדי שלא יקרוס ב-flex */
+.mode-clock .interactiveClock,
+.mode-clock .problemDiagram svg {
+  width: min(340px, 80vw);
+  height: min(340px, 80vw);
+  max-width: none;
+  max-height: none;
+}
+.mode-clock .answerRow--interactive {
+  margin-top: 22px;
+}
+.mode-clock #doneBtn {
+  font-size: 24px;
+  font-weight: 800;
+  padding: 20px 64px;
+  border-radius: 18px;
+}
+/* אזור התשובה בשאלות שעון — שומר על בר התשובה הרחב המקורי, רק עם כפתור "סיימתי" מתחתיו */
+.mode-clock .answerRow {
+  margin-top: 22px;
+}
+.mode-clock #answerRowNumeric .answerBar {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  padding: 6px 6px 12px;
+}
+.mode-clock #answerRowNumeric .answerBar__input {
+  font-size: 24px;
+}
+.mode-clock #answerRowNumeric .answerBar__btn {
+  align-self: center;
+  font-size: 18px;
+  padding: 13px 44px;
+}
+
 /* קלט שעה: שעות : דקות */
 .answerRow--time .timeInput {
   display: flex;
   align-items: flex-end;
   gap: 10px;
+  direction: ltr; /* שעות בשמאל, דקות בימין — כמו שכותבים שעה HH:MM */
 }
 .timeInput__colon {
   font-size: 30px;
@@ -1157,15 +1621,49 @@ body.agent-debug-open {
 /* שורת השעון האינטראקטיבי */
 .answerRow--interactive {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  flex-wrap: wrap;
 }
 .interactiveHint {
   font-size: 14px;
   font-weight: 600;
   color: var(--muted);
+  text-align: center;
+}
+
+/* אייקון "?" לעזרה ליד התרגיל */
+.helpBtn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgb(var(--accent-rgb) / 0.14);
+  color: var(--primary-strong);
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-inline-start: 6px;
+}
+.helpBtn:hover {
+  background: rgb(var(--accent-rgb) / 0.25);
+}
+.helpPopover {
+  position: absolute;
+  top: 48px;
+  left: 14px;
+  z-index: 60;
+  max-width: 320px;
+  text-align: start;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.16);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
 }
 #doneBtn {
   font-size: 17px;
@@ -1280,9 +1778,10 @@ body.agent-debug-open {
   font-size: 28px;
   font-weight: 800;
   letter-spacing: 0.3px;
+  /* כיוון אוטומטי לכל שאלה: עברית → ימין-לשמאל (? בשמאל), תרגיל חשבון → שמאל-לימין */
   direction: ltr;
-  unicode-bidi: embed;
-  text-align: left;
+  unicode-bidi: plaintext;
+  text-align: center;
 }
 
 .answerRow {
@@ -1567,6 +2066,51 @@ body.agent-debug-open {
 .msg__text {
   white-space: pre-wrap;
 }
+/* חשיפת טקסט אות-אחר-אות — כל תו שומר מקומו (בלי שינוי גודל); נחשף עם הבהוב זוהר תכלת */
+.msg__text .ch {
+  opacity: 0;
+}
+.msg__text .ch--on {
+  animation: charReveal 0.5s ease-out both;
+}
+@keyframes charReveal {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .msg__text .ch {
+    opacity: 1;
+  }
+  .msg__text .ch--on {
+    animation: none;
+  }
+}
+
+/* כניסת הודעה בסגנון אפל — הבועה מחליקה פנימה מלמטה, מוכנה בגודל מלא */
+.msg--enter {
+  animation: msgEnter 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes msgEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .msg--enter {
+    animation: none;
+  }
+}
 
 .chatComposer {
   border-top: 1px solid var(--border);
@@ -1602,6 +2146,7 @@ body.agent-debug-open {
   color: #1e3a8a;
   font-size: 14px;
   font-weight: 600;
+  margin-top: 5px; /* מוריד מעט את השם */
 }
 .userChip__icon {
   font-size: 15px;

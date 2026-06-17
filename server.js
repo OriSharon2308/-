@@ -8,11 +8,13 @@ const { loadEnvFile } = require("./lib/env");
 const { runChat, getAgentStatus } = require("./agent/orchestrator");
 const { mathematicianCreate } = require("./agent/mathematician-agent");
 const { designerDiagram } = require("./agent/designer-agent");
+const bank = require("./lib/bank");
+const { genderize, genderizeProblem } = require("./lib/gender");
 const users = require("./lib/users");
 const sessions = require("./lib/session");
 const memory = require("./lib/memory");
 const progress = require("./lib/progress");
-const { CURRICULUM, gradeToNum, topicsForApi } = require("./lib/curriculum");
+const { CURRICULUM, gradeToNum, topicsForApi, leafTopics, findLeaf } = require("./lib/curriculum");
 
 const ROOT = __dirname;
 loadEnvFile(ROOT);
@@ -167,7 +169,14 @@ const server = http.createServer(async (req, res) => {
       const body = await readJsonBody(req, res);
       if (!body) return;
       body.userId = userId; // לא סומכים על ה-userId מהלקוח
+      const chatUser = users.getUserById(userId);
+      body.gender = chatUser?.gender || "male"; // המורה יפנה לפי מין התלמיד
       const result = await runChat(body);
+      // ניסוח תשובת המורה לפי מין התלמיד (גם אם ה-AI כתב עם לוכסן)
+      if (result && typeof result.reply === "string") {
+        result.reply = genderize(result.reply, body.gender);
+      }
+      // הערה: סימון "נראתה" נעשה בהגשה (ב-/api/problem) — כך שום שאלה לא חוזרת
       return json(res, 200, result);
     }
 
@@ -178,7 +187,14 @@ const server = http.createServer(async (req, res) => {
       const user = users.getUserById(userId);
       const gradeNum = gradeToNum(user?.grade);
       const topics = gradeNum ? topicsForApi(gradeNum) : [];
-      return json(res, 200, { ok: true, grade: user?.grade || null, gradeNum, topics });
+      // כמויות שאלות לכל רמה, לכל נושא-עלה — כדי שמד השאלות יהיה זמין מיד
+      const topicLevels = {};
+      if (gradeNum) {
+        for (const t of leafTopics(gradeNum)) {
+          topicLevels[t.key] = bank.levelCounts(gradeNum, t.key);
+        }
+      }
+      return json(res, 200, { ok: true, grade: user?.grade || null, gradeNum, topics, topicLevels });
     }
 
     if (url.startsWith("/api/problem")) {
@@ -192,17 +208,33 @@ const server = http.createServer(async (req, res) => {
       body.grade = user?.grade || body.grade;
       const gradeNum = gradeToNum(body.grade);
 
-      // שאלות שהתלמיד כבר קיבל בנושא הזה — לא יחזרו אליו
+      // ממיר נושא-אב / שם ישן (כמו "חיבור עד 20") למפתח העלה האמיתי — מקור אמת אחד לכל המנגנון
       if (typeof body.topic === "string" && gradeNum) {
-        body.excludeIds = progress.getSeen(userId, gradeNum, body.topic);
+        const leaf = findLeaf(gradeNum, body.topic);
+        if (leaf && leaf.key) body.topic = leaf.key;
       }
 
-      let math = await mathematicianCreate(body);
-      // הכל מוצה לתלמיד הזה → מתחילים מחזור חדש (מאפסים את ה"נראה" ומגישים שוב)
-      if (math.mode === "exhausted" && math.gradeNum && math.topic) {
-        progress.clearSeen(userId, math.gradeNum, math.topic);
-        math = await mathematicianCreate({ ...body, excludeIds: [] });
+      // נושא מחזורי (כמו ציור צורות) — מותר לחזור עליו: בלי מעקב "נראה" ובלי מיצוי
+      const repeatable = !!(
+        typeof body.topic === "string" &&
+        gradeNum &&
+        findLeaf(gradeNum, body.topic) &&
+        findLeaf(gradeNum, body.topic).repeatable
+      );
+
+      // "לחזור על הרמה" (אופציה מפורשת של התלמיד) — מאפס את ההיסטוריה לנושא
+      if (body.resetSeen && typeof body.topic === "string" && gradeNum) {
+        progress.clearSeen(userId, gradeNum, body.topic);
       }
+
+      // לא חוזרים על שום שאלה שכבר הוצגה (מתמשך) + מה שנשלף במושב — אבל לא בנושא מחזורי
+      if (typeof body.topic === "string" && gradeNum) {
+        const seen = repeatable ? [] : progress.getSeen(userId, gradeNum, body.topic);
+        const session = Array.isArray(body.excludeIds) ? body.excludeIds : [];
+        body.excludeIds = Array.from(new Set([...seen, ...session]));
+      }
+
+      const math = await mathematicianCreate(body);
 
       const problem = math.problem || null;
       if (problem && problem.needsDiagram) {
@@ -212,11 +244,24 @@ const server = http.createServer(async (req, res) => {
           problem.diagramAlt = diagram.alt;
         }
       }
-      // מסמנים את השאלה כ"נראתה" כדי שלא תחזור
-      if (problem && problem.id && math.gradeNum && math.topic) {
+      // מסמנים כל שאלה שהוצגה — כך היא לא תחזור (לא בנושא מחזורי)
+      if (!repeatable && problem && problem.id && math.gradeNum && math.topic) {
         progress.markSeen(userId, math.gradeNum, math.topic, problem.id);
       }
-      return json(res, 200, { problem, mode: math.mode, topic: math.topic, gradeNum: math.gradeNum });
+      // ניסוח לפי מין התלמיד — בלי הסרבול של "צייר/י"
+      if (problem) genderizeProblem(problem, user?.gender);
+      const levels =
+        math.gradeNum && math.topic ? bank.availableLevels(math.gradeNum, math.topic) : [];
+      const counts =
+        math.gradeNum && math.topic ? bank.levelCounts(math.gradeNum, math.topic) : {};
+      return json(res, 200, {
+        problem,
+        mode: math.mode,
+        topic: math.topic,
+        gradeNum: math.gradeNum,
+        availableLevels: levels,
+        levelCounts: counts,
+      });
     }
 
     /* ---------------- קבצים סטטיים + שערי כניסה ---------------- */
@@ -248,6 +293,14 @@ const server = http.createServer(async (req, res) => {
         return send(res, 302, { location: "/auth" }, "");
       }
       return serveFile(res, "/index.html", method);
+    }
+
+    // מסך ההתקדמות
+    if (rel === "/progress" || rel === "/progress.html") {
+      if (!loggedIn) {
+        return send(res, 302, { location: "/auth" }, "");
+      }
+      return serveFile(res, "/progress.html", method);
     }
 
     // קבצים ציבוריים

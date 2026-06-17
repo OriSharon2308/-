@@ -4,134 +4,29 @@
   "topic": "ציור צורות",
   "questions": [
     {
-      "id": "q-c133054f1c",
-      "text": "צייר/י מלבן על הלוח (כל הזוויות ישרות!) — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
-      "answer": "מלבן",
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-0c52ac146f",
+      "text": "צייר/י מצולע בעל 8 צלעות",
+      "answer": "מצולע בעל 8 צלעות",
+      "level": 7,
+      "difficulty": 7,
       "hints": [
-        "לצורה הזו יש 4 צלעות.",
+        "לצורה הזו יש 8 צלעות.",
         "אפשר אורכי צלעות שונים."
       ],
-      "explanation": "כדי לצייר מלבן צריך 4 קודקודים, וכל הזוויות ישרות (90°).",
-      "source": "algo",
-      "interactive": "shape-create",
-      "shapeTarget": {
-        "type": "rectangle",
-        "sides": 4,
-        "equal": false,
-        "right": true,
-        "label": "מלבן"
-      }
-    },
-    {
-      "id": "q-fae03257a2",
-      "text": "צייר/י מצולע בעל 7 צלעות על הלוח — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
-      "answer": "מצולע בעל 7 צלעות",
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "לצורה הזו יש 7 צלעות.",
-        "אפשר אורכי צלעות שונים."
-      ],
-      "explanation": "כדי לצייר מצולע בעל 7 צלעות צריך 7 קודקודים.",
+      "explanation": "כדי לצייר מצולע בעל 8 צלעות צריך 8 קודקודים.",
       "source": "algo",
       "interactive": "shape-create",
       "shapeTarget": {
         "type": "polygon",
-        "sides": 7,
+        "sides": 8,
         "equal": false,
         "right": false,
-        "label": "מצולע בעל 7 צלעות"
+        "label": "מצולע בעל 8 צלעות"
       }
     },
     {
-      "id": "q-7e1aed72c6",
-      "text": "צייר/י מרובע על הלוח — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
-      "answer": "מרובע",
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "לצורה הזו יש 4 צלעות.",
-        "אפשר אורכי צלעות שונים."
-      ],
-      "explanation": "כדי לצייר מרובע צריך 4 קודקודים.",
-      "source": "algo",
-      "interactive": "shape-create",
-      "shapeTarget": {
-        "type": "quad",
-        "sides": 4,
-        "equal": false,
-        "right": false,
-        "label": "מרובע"
-      }
-    },
-    {
-      "id": "q-e6dae31f40",
-      "text": "צייר/י מצולע בעל 6 צלעות על הלוח — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
-      "answer": "מצולע בעל 6 צלעות",
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "לצורה הזו יש 6 צלעות.",
-        "אפשר אורכי צלעות שונים."
-      ],
-      "explanation": "כדי לצייר מצולע בעל 6 צלעות צריך 6 קודקודים.",
-      "source": "algo",
-      "interactive": "shape-create",
-      "shapeTarget": {
-        "type": "polygon",
-        "sides": 6,
-        "equal": false,
-        "right": false,
-        "label": "מצולע בעל 6 צלעות"
-      }
-    },
-    {
-      "id": "q-930a376c30",
-      "text": "צייר/י מצולע בעל 5 צלעות על הלוח — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
-      "answer": "מצולע בעל 5 צלעות",
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "לצורה הזו יש 5 צלעות.",
-        "אפשר אורכי צלעות שונים."
-      ],
-      "explanation": "כדי לצייר מצולע בעל 5 צלעות צריך 5 קודקודים.",
-      "source": "algo",
-      "interactive": "shape-create",
-      "shapeTarget": {
-        "type": "polygon",
-        "sides": 5,
-        "equal": false,
-        "right": false,
-        "label": "מצולע בעל 5 צלעות"
-      }
-    },
-    {
-      "id": "q-5911d0bcdb",
-      "text": "צייר/י משולש על הלוח — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
-      "answer": "משולש",
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "לצורה הזו יש 3 צלעות.",
-        "אפשר אורכי צלעות שונים."
-      ],
-      "explanation": "כדי לצייר משולש צריך 3 קודקודים.",
-      "source": "algo",
-      "interactive": "shape-create",
-      "shapeTarget": {
-        "type": "triangle",
-        "sides": 3,
-        "equal": false,
-        "right": false,
-        "label": "משולש"
-      }
-    },
-    {
-      "id": "q-1a93aa8119",
-      "text": "צייר/י משולש שווה-צלעות על הלוח (כל הצלעות שוות!) — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
+      "id": "q-6a3f19f86e",
+      "text": "צייר/י משולש שווה-צלעות (כל הצלעות שוות!)",
       "answer": "משולש שווה-צלעות",
       "level": 5,
       "difficulty": 5,
@@ -151,8 +46,134 @@
       }
     },
     {
-      "id": "q-ab7d85cb82",
-      "text": "צייר/י ריבוע על הלוח (כל הצלעות שוות וכל הזוויות ישרות!) — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
+      "id": "q-8a58113f80",
+      "text": "צייר/י משולש",
+      "answer": "משולש",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "לצורה הזו יש 3 צלעות.",
+        "אפשר אורכי צלעות שונים."
+      ],
+      "explanation": "כדי לצייר משולש צריך 3 קודקודים.",
+      "source": "algo",
+      "interactive": "shape-create",
+      "shapeTarget": {
+        "type": "triangle",
+        "sides": 3,
+        "equal": false,
+        "right": false,
+        "label": "משולש"
+      }
+    },
+    {
+      "id": "q-0598568f47",
+      "text": "צייר/י מצולע בעל 5 צלעות",
+      "answer": "מצולע בעל 5 צלעות",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "לצורה הזו יש 5 צלעות.",
+        "אפשר אורכי צלעות שונים."
+      ],
+      "explanation": "כדי לצייר מצולע בעל 5 צלעות צריך 5 קודקודים.",
+      "source": "algo",
+      "interactive": "shape-create",
+      "shapeTarget": {
+        "type": "polygon",
+        "sides": 5,
+        "equal": false,
+        "right": false,
+        "label": "מצולע בעל 5 צלעות"
+      }
+    },
+    {
+      "id": "q-b2a99c1636",
+      "text": "צייר/י מלבן (כל הזוויות ישרות!)",
+      "answer": "מלבן",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "לצורה הזו יש 4 צלעות.",
+        "אפשר אורכי צלעות שונים."
+      ],
+      "explanation": "כדי לצייר מלבן צריך 4 קודקודים, וכל הזוויות ישרות (90°).",
+      "source": "algo",
+      "interactive": "shape-create",
+      "shapeTarget": {
+        "type": "rectangle",
+        "sides": 4,
+        "equal": false,
+        "right": true,
+        "label": "מלבן"
+      }
+    },
+    {
+      "id": "q-d31bce6026",
+      "text": "צייר/י מצולע בעל 7 צלעות",
+      "answer": "מצולע בעל 7 צלעות",
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "לצורה הזו יש 7 צלעות.",
+        "אפשר אורכי צלעות שונים."
+      ],
+      "explanation": "כדי לצייר מצולע בעל 7 צלעות צריך 7 קודקודים.",
+      "source": "algo",
+      "interactive": "shape-create",
+      "shapeTarget": {
+        "type": "polygon",
+        "sides": 7,
+        "equal": false,
+        "right": false,
+        "label": "מצולע בעל 7 צלעות"
+      }
+    },
+    {
+      "id": "q-0c1a90a0e8",
+      "text": "צייר/י מרובע",
+      "answer": "מרובע",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "לצורה הזו יש 4 צלעות.",
+        "אפשר אורכי צלעות שונים."
+      ],
+      "explanation": "כדי לצייר מרובע צריך 4 קודקודים.",
+      "source": "algo",
+      "interactive": "shape-create",
+      "shapeTarget": {
+        "type": "quad",
+        "sides": 4,
+        "equal": false,
+        "right": false,
+        "label": "מרובע"
+      }
+    },
+    {
+      "id": "q-0d30c151f9",
+      "text": "צייר/י מצולע בעל 6 צלעות",
+      "answer": "מצולע בעל 6 צלעות",
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "לצורה הזו יש 6 צלעות.",
+        "אפשר אורכי צלעות שונים."
+      ],
+      "explanation": "כדי לצייר מצולע בעל 6 צלעות צריך 6 קודקודים.",
+      "source": "algo",
+      "interactive": "shape-create",
+      "shapeTarget": {
+        "type": "polygon",
+        "sides": 6,
+        "equal": false,
+        "right": false,
+        "label": "מצולע בעל 6 צלעות"
+      }
+    },
+    {
+      "id": "q-5d4fa41a71",
+      "text": "צייר/י ריבוע (כל הצלעות שוות וכל הזוויות ישרות!)",
       "answer": "ריבוע",
       "level": 5,
       "difficulty": 5,
@@ -169,27 +190,6 @@
         "equal": true,
         "right": true,
         "label": "ריבוע"
-      }
-    },
-    {
-      "id": "q-682aef57d2",
-      "text": "צייר/י מצולע בעל 8 צלעות על הלוח — סמנ/י קודקודים, סגר/י את הצורה ולחצ/י \"סיימתי\".",
-      "answer": "מצולע בעל 8 צלעות",
-      "level": 7,
-      "difficulty": 7,
-      "hints": [
-        "לצורה הזו יש 8 צלעות.",
-        "אפשר אורכי צלעות שונים."
-      ],
-      "explanation": "כדי לצייר מצולע בעל 8 צלעות צריך 8 קודקודים.",
-      "source": "algo",
-      "interactive": "shape-create",
-      "shapeTarget": {
-        "type": "polygon",
-        "sides": 8,
-        "equal": false,
-        "right": false,
-        "label": "מצולע בעל 8 צלעות"
       }
     }
   ]

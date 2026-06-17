@@ -9,6 +9,40 @@ function scopedKey(base) {
   return CURRENT_USER ? `${base}:${CURRENT_USER.id}` : base;
 }
 
+// מיגדור טקסט בצד הלקוח (גם לשאלות ששמורות מקודם עם "/י") — לפי מין החשבון
+const GENDER_VERBS = {
+  "צייר/י": ["צייר", "ציירי"], "כתוב/י": ["כתוב", "כתבי"], "סמנ/י": ["סמן", "סמני"],
+  "הזז/י": ["הזז", "הזיזי"], "כוון/י": ["כוון", "כווני"], "ספור/י": ["ספור", "ספרי"],
+  "וספר/י": ["וספר", "וספרי"], "בחר/י": ["בחר", "בחרי"], "מלא/י": ["מלא", "מלאי"],
+  "מצא/י": ["מצא", "מצאי"], "חבר/י": ["חבר", "חברי"], "חשב/י": ["חשב", "חשבי"],
+  "והוסף/י": ["והוסף", "והוסיפי"], "הוסף/י": ["הוסף", "הוסיפי"], "הורד/י": ["הורד", "הורידי"],
+  "התחל/י": ["התחל", "התחילי"], "וחזור/י": ["וחזור", "וחזרי"], "ולחצ/י": ["ולחץ", "ולחצי"],
+  "לחצ/י": ["לחץ", "לחצי"], "סגר/י": ["סגור", "סגרי"], "עבור/י": ["עבור", "עברי"],
+  "קרא/י": ["קרא", "קראי"], "שים/י": ["שים", "שימי"], "נסה/י": ["נסה", "נסי"],
+  "בדוק/י": ["בדוק", "בדקי"], "תן/י": ["תן", "תני"], "את/ה": ["אתה", "את"],
+  "יכול/ה": ["יכול", "יכולה"], "בוא/י": ["בוא", "בואי"],
+};
+const GENDER_TOKENS = Object.keys(GENDER_VERBS).sort((a, b) => b.length - a.length);
+function genderizeText(text) {
+  if (text == null) return text;
+  const idx = CURRENT_USER && CURRENT_USER.gender === "female" ? 1 : 0;
+  let out = String(text);
+  for (const tok of GENDER_TOKENS) {
+    if (out.indexOf(tok) !== -1) out = out.split(tok).join(GENDER_VERBS[tok][idx]);
+  }
+  return out;
+}
+
+// טקסט השאלה לתצוגה: ממוגדר, ובשאלות אינטראקטיביות — קצר (בלי הסבר "איך לעשות")
+function questionText(p) {
+  let t = genderizeText(p && p.text);
+  if (p && p.interactive && typeof t === "string") {
+    const i = t.indexOf(" — ");
+    if (i !== -1) t = t.slice(0, i).trim();
+  }
+  return t;
+}
+
 /** מזהה תלמיד יציב — הבסיס לזיכרון המתמשך של הסוכנים */
 function getUserId() {
   try {
@@ -196,10 +230,14 @@ function createTopic(kind, title) {
     title: title || topicKindLabel(kind),
     createdAt: Date.now(),
     level: 1,
+    levelLocked: false,
+    levelCounts: {}, // כמה שאלות בכל רמה (מהשרת, גדל ככל שמייצרים)
+    solvedByLevel: {}, // כמה נפתרו נכון בכל רמה (מתמשך)
     attempts: 0,
     correct: 0,
     streak: 0,
     wrongStreak: 0,
+    timeMs: 0, // זמן תרגול מצטבר בנושא (למסך ההתקדמות)
     problems: [],
     currentProblemIndex: 0,
     chatHistory: [],
@@ -377,12 +415,25 @@ function ui() {
     shapeClearBtn: document.getElementById("shapeClearBtn"),
     prevProblemBtn: document.getElementById("prevProblemBtn"),
     nextProblemBtn: document.getElementById("nextProblemBtn"),
-    hint1Btn: document.getElementById("hint1Btn"),
-    hint2Btn: document.getElementById("hint2Btn"),
+    hintBtn: document.getElementById("hintBtn"),
     explainBtn: document.getElementById("explainBtn"),
-    newProblemBtn: document.getElementById("newProblemBtn"),
     feedbackBox: document.getElementById("feedbackBox"),
     difficultyPill: document.getElementById("difficultyPill"),
+    levelPicker: document.getElementById("levelPicker"),
+    helpBtn: document.getElementById("helpBtn"),
+    helpPopover: document.getElementById("helpPopover"),
+    solvedBadge: document.getElementById("solvedBadge"),
+    levelMeter: document.getElementById("levelMeter"),
+    meterLevel: document.getElementById("meterLevel"),
+    meterDone: document.getElementById("meterDone"),
+    meterTotal: document.getElementById("meterTotal"),
+    meterFill: document.getElementById("meterFill"),
+    levelDonePrompt: document.getElementById("levelDonePrompt"),
+    doneLevel: document.getElementById("doneLevel"),
+    levelNextBtn: document.getElementById("levelNextBtn"),
+    levelStayBtn: document.getElementById("levelStayBtn"),
+    numPad: document.getElementById("numPad"),
+    numPadDone: document.getElementById("numPadDone"),
     accuracyValue: document.getElementById("accuracyValue"),
     streakValue: document.getElementById("streakValue"),
     attemptsValue: document.getElementById("attemptsValue"),
@@ -558,11 +609,30 @@ function renderInteractiveClock(container) {
     }
     draw();
   }
+  // הפרש זוויות (0–180) בין שתי זוויות במעלות
+  function angDiff(a, b) {
+    let d = Math.abs((((a - b) % 360) + 360) % 360);
+    return d > 180 ? 360 - d : d;
+  }
   function onDown(ev) {
     ev.preventDefault();
     const { px, py } = toSvg(ev);
-    const d = Math.hypot(px - cx, py - cy);
-    active = d < (HOUR_LEN + MIN_LEN) / 2 ? "hour" : "minute"; // קרוב למרכז = שעות
+    const dx = px - cx;
+    const dy = py - cy;
+    const pr = Math.hypot(dx, dy);
+    if (pr < 8) { active = null; return; } // קרוב מדי למרכז — לא ברור איזה מחוג
+    const pa = (Math.atan2(dy, dx) * 180) / Math.PI;
+    const hourAng = (state.hour % 12) * 30 - 90;
+    const minAng = state.minute * 6 - 90;
+    const onHour = angDiff(pa, hourAng) < 24 && pr <= HOUR_LEN + 20;
+    const onMin = angDiff(pa, minAng) < 24 && pr <= MIN_LEN + 20;
+    // תופסים רק אם עומדים על מחוג. בחפיפה — עדיפות למחוג השעות (השחור).
+    if (onHour) active = "hour";
+    else if (onMin) active = "minute";
+    else {
+      active = null; // לא על מחוג — לא זזים
+      return;
+    }
     update(px, py);
     if (svg.setPointerCapture && ev.pointerId != null) svg.setPointerCapture(ev.pointerId);
   }
@@ -862,7 +932,7 @@ function setFeedback(el, text, variant) {
   if (variant) el.classList.add(variant);
 }
 
-function appendMsg(chatLogEl, { from, text, isError }) {
+function appendMsg(chatLogEl, { from, text, isError, animate, reveal }) {
   const wrap = document.createElement("div");
   wrap.className = `msg ${from === "user" ? "msg--user" : "msg--bot"}${isError ? " msg--error" : ""}`;
   const meta = document.createElement("div");
@@ -876,12 +946,48 @@ function appendMsg(chatLogEl, { from, text, isError }) {
 
   const body = document.createElement("div");
   body.className = "msg__text";
-  body.textContent = text;
+  if (!reveal || isError) body.textContent = text;
 
   wrap.appendChild(meta);
   wrap.appendChild(body);
+
+  // אנימציית כניסה בסגנון אפל — הבועה מחליקה פנימה מלמטה עם easing רך
+  if (animate) wrap.classList.add("msg--enter");
   chatLogEl.appendChild(wrap);
-  chatLogEl.scrollTop = chatLogEl.scrollHeight;
+
+  // חשיפה אות-אחר-אות מתוך ערפל (אחרי שהבועה ב-DOM)
+  if (reveal && !isError) {
+    revealChars(body, String(text));
+  }
+
+  // גלילה חלקה כלפי מטה — ההודעות הקודמות "נדחפות" למעלה ברכות
+  if (animate && typeof chatLogEl.scrollTo === "function") {
+    chatLogEl.scrollTo({ top: chatLogEl.scrollHeight, behavior: "smooth" });
+  } else {
+    chatLogEl.scrollTop = chatLogEl.scrollHeight;
+  }
+}
+
+/** חושף טקסט אות-אחר-אות: בונה span לכל תו (במקומו מראש → בלי שינוי גודל), ונחשף מתוך ערפל. */
+function revealChars(bodyEl, text) {
+  const frag = document.createDocumentFragment();
+  const spans = [];
+  for (const ch of text) {
+    const s = document.createElement("span");
+    s.className = "ch";
+    s.textContent = ch;
+    frag.appendChild(s);
+    spans.push(s);
+  }
+  bodyEl.appendChild(frag);
+  let i = 0;
+  function step() {
+    if (i >= spans.length) return;
+    spans[i].classList.add("ch--on");
+    i += 1;
+    window.setTimeout(step, 16); // קצב חשיפה
+  }
+  step();
 }
 
 /** מציג בועת "כותב…" עם שלוש נקודות מקפצות (כמו בוואטסאפ). */
@@ -1029,6 +1135,7 @@ async function callTutorApi(payload) {
 /* ===== נושאי הכיתה + שאלות מהמאגר ===== */
 let GRADE_TOPICS = []; // [{ key, sub: [...] }]
 let GRADE_NUM = null;
+let GRADE_LEVEL_COUNTS = {}; // { "חיבור עד 20": {1:5,...}, ... } — למד השאלות
 
 async function fetchGradeTopics() {
   try {
@@ -1038,22 +1145,29 @@ async function fetchGradeTopics() {
     if (data?.ok && Array.isArray(data.topics)) {
       GRADE_TOPICS = data.topics.map((t) => (typeof t === "string" ? { key: t, sub: [] } : t));
       GRADE_NUM = data.gradeNum || null;
+      GRADE_LEVEL_COUNTS = data.topicLevels || {};
     }
   } catch {
     // ignore
   }
 }
 
-async function fetchBankProblem(topicKey, level) {
+async function fetchBankProblem(topicKey, level, sessionIds = [], exact = false, resetSeen = false) {
   try {
     const res = await fetch("/api/problem", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ topic: topicKey, level: level || 1 }),
+      body: JSON.stringify({ topic: topicKey, level: level || 1, excludeIds: sessionIds, exact, resetSeen }),
     });
     if (!res.ok) return null;
     const data = await res.json();
-    return data?.problem || null;
+    if (!data) return null;
+    return {
+      problem: data.problem || null,
+      mode: data.mode || null,
+      availableLevels: data.availableLevels || [],
+      levelCounts: data.levelCounts || {},
+    };
   } catch {
     return null;
   }
@@ -1069,6 +1183,7 @@ function buildTutorPayload(topic, intent, messageText, history, extra = {}) {
     topic: { title: topic.title, kind: topic.kind },
     problem: p
       ? {
+          id: p.id || null,
           text: p.text,
           hints: p.hints,
           explanation: p.explanation,
@@ -1144,13 +1259,14 @@ function renderAgentDebug(u, entries) {
 }
 
 function renderStats(u, state) {
+  // הסטטיסטיקות לא מוצגות לילד (כדי לא לפגוע במוטיבציה) — אבל עדיין נצברות ב-state
+  // לצורך התאמת הרמה האוטומטית. אם האלמנטים קיימים (למשל במסך הורה עתידי) — נעדכן.
   const attempts = state.attempts ?? 0;
   const correct = state.correct ?? 0;
   const acc = attempts > 0 ? correct / attempts : NaN;
-  u.accuracyValue.textContent = formatPercent(acc);
-  u.streakValue.textContent = String(state.streak ?? 0);
-  u.attemptsValue.textContent = String(attempts);
-  // דירוג הקושי מוצג ע"י renderDifficulty לפי השאלה הנוכחית (לא לפי רמת התלמיד)
+  if (u.accuracyValue) u.accuracyValue.textContent = formatPercent(acc);
+  if (u.streakValue) u.streakValue.textContent = String(state.streak ?? 0);
+  if (u.attemptsValue) u.attemptsValue.textContent = String(attempts);
 }
 
 async function main() {
@@ -1215,7 +1331,10 @@ async function main() {
   // נושאי הכיתה של התלמיד (מהשרת)
   await fetchGradeTopics();
   // מפתחות תקפים = נושאי-אב + תתי-נושאים (כדי לא לסנן תת-נושא פתוח בטעינה מחדש)
-  const gradeKeys = GRADE_TOPICS.flatMap((t) => [t.key, ...(Array.isArray(t.sub) ? t.sub : [])]);
+  const gradeKeys = GRADE_TOPICS.flatMap((t) => [
+    t.key,
+    ...(Array.isArray(t.sub) ? t.sub.map((s) => (typeof s === "string" ? s : s.key)) : []),
+  ]);
 
   const loaded = loadState();
   const uiLoaded = loadUi();
@@ -1271,6 +1390,21 @@ async function main() {
     return t || topicsState.topics[0];
   }
 
+  // מעקב זמן תרגול לכל נושא (למסך ההתקדמות) — צובר את הזמן שעבר על כל שאלה
+  const TIMER = { topicId: null, shownAt: 0 };
+  function flushTimer() {
+    if (TIMER.topicId && TIMER.shownAt) {
+      const t = topicsState.topics.find((x) => x.id === TIMER.topicId);
+      if (t) t.timeMs = (t.timeMs || 0) + Math.min(Date.now() - TIMER.shownAt, 180000); // תקרה 3 דק' לשאלה
+    }
+    TIMER.shownAt = Date.now();
+  }
+  function startTimer(topic) {
+    flushTimer(); // צובר את הזמן של השאלה הקודמת
+    TIMER.topicId = topic ? topic.id : null;
+    TIMER.shownAt = Date.now();
+  }
+
   function getCurrentProblem(topic) {
     if (!topic.problems?.length) return null;
     return topic.problems[topic.currentProblemIndex] ?? topic.problems[topic.problems.length - 1];
@@ -1281,12 +1415,21 @@ async function main() {
   }
 
   /** טוען שאלה חדשה מהמאגר לנושא הנוכחי (לפי הכיתה+נושא+רמה). */
-  async function loadBankProblem(topic, push = true) {
+  async function loadBankProblem(topic, push = true, resetSeen = false) {
     u.problemText.textContent = "טוען…";
     showProblemDiagram(u, null);
-    const p = await fetchBankProblem(topic.kind, topic.level);
+    const sessionIds = (topic.problems || []).map((q) => q.id).filter(Boolean);
+    const res = await fetchBankProblem(topic.kind, topic.level, sessionIds, !!topic.levelLocked, resetSeen);
+    const p = res && res.problem;
+    if (res && Array.isArray(res.availableLevels) && res.availableLevels.length) {
+      topic.availableLevels = res.availableLevels; // לבורר הרמות
+    }
+    if (res && res.levelCounts && Object.keys(res.levelCounts).length) {
+      topic.levelCounts = res.levelCounts; // כמה שאלות בכל רמה — למד השאלות
+    }
     if (!p) {
-      u.problemText.textContent = "לא נמצאה שאלה לנושא הזה כרגע.";
+      // (כמעט אף פעם — המתמטיקאי מכין תמיד שאלה הבאה). בלי חלונית, רק הודעה קצרה.
+      u.problemText.textContent = "רגע, מכינים עוד שאלה…";
       return;
     }
     setProblemOnTopic(
@@ -1310,11 +1453,11 @@ async function main() {
     );
   }
 
-  /** פותח נושא לפי מפתח (יוצר אם צריך, ומביא שאלה מהמאגר). */
-  async function openTopicByKey(key) {
+  /** פותח נושא לפי מפתח (יוצר אם צריך, ומביא שאלה מהמאגר). label = שם לתצוגה. */
+  async function openTopicByKey(key, label) {
     let topic = topicsState.topics.find((t) => t.kind === key);
     if (!topic) {
-      topic = createTopic(key, key);
+      topic = createTopic(key, label || key);
       topicsState.topics.unshift(topic);
     }
     topicsState.currentTopicId = topic.id;
@@ -1326,8 +1469,151 @@ async function main() {
   function renderDifficulty(diff) {
     if (!u.difficultyPill) return;
     const d = clamp(Math.round(diff || 1), 1, 10);
-    u.difficultyPill.title = `רמת קושי: ${d} מתוך 10 (1 = קל, 10 = קשה)`;
+    const locked = !!getCurrentTopic()?.levelLocked;
+    u.difficultyPill.title = locked
+      ? `רמה נעולה: ${d} מתוך 10. לחצו לשינוי או לחזרה לאוטומטי.`
+      : `רמת קושי: ${d} מתוך 10. לחצו לבחירת רמה קבועה.`;
     u.difficultyPill.innerHTML = `⭐ ${d}<span class="diffMax">/10</span>`;
+    u.difficultyPill.classList.toggle("pill--locked", locked);
+  }
+
+  // בורר רמה — לחיצה על הכוכבים פותחת בחירת רמה קבועה / חזרה לאוטומטי
+  function renderLevelPicker() {
+    if (!u.levelPicker) return;
+    const topic = getCurrentTopic();
+    const cur = topic?.level ?? 1;
+    const locked = !!topic?.levelLocked;
+    u.levelPicker.innerHTML = "";
+    const title = document.createElement("div");
+    title.className = "levelPicker__title";
+    title.textContent = "בחר/י רמה (1 = קל, 10 = קשה):";
+    u.levelPicker.appendChild(title);
+    // רק רמות שקיימות בפועל לנושא (אם ידוע); אחרת 1–10
+    const levels =
+      Array.isArray(topic?.availableLevels) && topic.availableLevels.length
+        ? topic.availableLevels
+        : Array.from({ length: 10 }, (_, i) => i + 1);
+    for (const n of levels) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = `levelPicker__opt${locked && n === cur ? " levelPicker__opt--active" : ""}`;
+      b.textContent = String(n);
+      b.addEventListener("click", () => pickLevel(n));
+      u.levelPicker.appendChild(b);
+    }
+    const auto = document.createElement("button");
+    auto.type = "button";
+    auto.className = `levelPicker__opt levelPicker__opt--auto${!locked ? " levelPicker__opt--active" : ""}`;
+    auto.textContent = "⚡ אוטומטי (עולה לפי הצלחה)";
+    auto.addEventListener("click", () => pickLevel(null));
+    u.levelPicker.appendChild(auto);
+  }
+  function toggleLevelPicker(show) {
+    if (!u.levelPicker) return;
+    const willShow = show ?? u.levelPicker.hidden;
+    if (willShow) renderLevelPicker();
+    u.levelPicker.hidden = !willShow;
+    u.difficultyPill?.setAttribute("aria-expanded", willShow ? "true" : "false");
+  }
+  function pickLevel(n) {
+    const topic = getCurrentTopic();
+    if (!topic) return;
+    if (n == null) {
+      topic.levelLocked = false; // חזרה לאוטומטי — לא משנים את הרמה הנוכחית, רק ממשיכים לטפס
+    } else {
+      topic.levelLocked = true;
+      topic.level = clamp(n, 1, 10);
+      loadBankProblem(topic, true); // שאלה חדשה ברמה שנבחרה
+    }
+    toggleLevelPicker(false);
+    renderStats(u, topic);
+    saveAll();
+  }
+
+  /* ---------- מד שאלות לרמה ---------- */
+  function topicCounts(topic) {
+    // עדיפות לנתוני הנושא; אחרת מהמפה הגלובלית שנטענה ב-/api/topics
+    return topic.levelCounts && Object.keys(topic.levelCounts).length
+      ? topic.levelCounts
+      : GRADE_LEVEL_COUNTS[topic.kind] || {};
+  }
+  function levelCountFor(topic, level) {
+    const c = topicCounts(topic);
+    return c[level] || c[String(level)] || 0;
+  }
+  // הרמות שקיימות בפועל לנושא (עם שאלות)
+  function topicLevelSet(topic) {
+    const c = topicCounts(topic);
+    return Object.keys(c)
+      .map(Number)
+      .filter((n) => c[n] > 0)
+      .sort((a, b) => a - b);
+  }
+  // ודא שהרמה קיימת במאגר, וצייר את המד
+  function ensureMeter(topic) {
+    if (!topic) return;
+    // בציור צורות אין מד (זה נושא מחזורי עם מעט אתגרים — אין "מיצוי")
+    const cp = getCurrentProblem(topic);
+    if (cp && cp.interactive === "shape-create") {
+      if (u.levelMeter) u.levelMeter.hidden = true;
+      return;
+    }
+    const levels = topicLevelSet(topic);
+    if (levels.length && !levels.includes(topic.level)) {
+      topic.level = levels.reduce(
+        (best, l) => (Math.abs(l - topic.level) < Math.abs(best - topic.level) ? l : best),
+        levels[0]
+      );
+    }
+    renderMeter(topic);
+  }
+  function renderMeter(topic) {
+    if (!u.levelMeter) return;
+    const N = levelCountFor(topic, topic.level); // מספר השאלות הקיים ברמה במאגר
+    const done = (topic.solvedByLevel && topic.solvedByLevel[topic.level]) || 0;
+    if (!N) {
+      u.levelMeter.hidden = true;
+      return;
+    }
+    // אם יש על המסך שאלה שעוד לא נפתרה — הסך תמיד גדול ב-1 מהפתורות (מראה "נוספה שאלה לפתור")
+    const cp = getCurrentProblem(topic);
+    const unsolvedOnScreen = cp && !cp.solved ? 1 : 0;
+    const total = Math.max(N, done + unsolvedOnScreen);
+    u.levelMeter.hidden = false;
+    if (u.meterLevel) u.meterLevel.textContent = String(topic.level);
+    if (u.meterDone) u.meterDone.textContent = String(Math.min(done, total));
+    if (u.meterTotal) u.meterTotal.textContent = String(total);
+    if (u.meterFill) u.meterFill.style.width = `${total ? Math.min(100, Math.round((done / total) * 100)) : 0}%`;
+  }
+  // נקרא בכל תשובה נכונה — מוסיף 1 למד הרמה הנוכחית
+  function registerCorrect() {
+    const topic = getCurrentTopic();
+    if (!topic) return;
+    if (!topic.solvedByLevel) topic.solvedByLevel = {};
+    topic.solvedByLevel[topic.level] = (topic.solvedByLevel[topic.level] || 0) + 1;
+    const cp = getCurrentProblem(topic);
+    if (cp) cp.solved = true; // מסמן את השאלה הספציפית הזו כפתורה
+    renderMeter(topic);
+    renderSolved(topic);
+    saveAll();
+  }
+  // ✓ מוצג רק אם השאלה הספציפית שמוצגת כרגע כבר נפתרה נכון
+  function renderSolved(topic) {
+    if (!u.solvedBadge) return;
+    const cp = getCurrentProblem(topic);
+    u.solvedBadge.hidden = !(cp && cp.solved);
+  }
+  function showLevelDone() {
+    const topic = getCurrentTopic();
+    if (u.doneLevel) u.doneLevel.textContent = String(topic?.level ?? 1);
+    // כפתור "לרמה הבאה" מוצג רק אם יש רמה גבוהה יותר זמינה
+    const higher = (topic?.availableLevels || []).filter((l) => l > (topic?.level ?? 1));
+    if (u.levelNextBtn) u.levelNextBtn.hidden = higher.length === 0;
+    if (u.levelDonePrompt) u.levelDonePrompt.hidden = false;
+    launchConfetti();
+  }
+  function hideLevelDone() {
+    if (u.levelDonePrompt) u.levelDonePrompt.hidden = true;
   }
 
   // בוחר את מצב הקלט לפי סוג השאלה: ציור צורה / מספר / שעה / שעון אינטראקטיבי
@@ -1335,13 +1621,36 @@ async function main() {
     const dd = p && p.diagramData;
     const isShapeCreate = !!(p && p.interactive === "shape-create");
     const isClockSet = !!(p && (p.interactive === "clock-set" || (dd && dd.type === "clock-set")));
+    const hasClock = !!(dd && (dd.type === "clock" || dd.type === "clock-set"));
     const isTime = !isClockSet && !isShapeCreate && !!(p && p.answerKind === "time");
+
+    // מעבר שאלה סוגר מקלדת/בורר רמה/עזרה אם נשארו פתוחים
+    if (u.numPad) u.numPad.hidden = true;
+    if (u.levelPicker) u.levelPicker.hidden = true;
+    if (u.helpPopover) u.helpPopover.hidden = true;
+
+    // אייקון "?" עם הסבר איך משתמשים — רק בשאלות אינטראקטיביות
+    const help = isShapeCreate
+      ? "לוחצים על הלוח כדי לסמן קודקודים. כדי לסגור את הצורה — לוחצים שוב על הנקודה הראשונה. בסיום לוחצים “סיימתי”."
+      : isClockSet
+        ? "מזיזים את מחוגי השעון עם העכבר עד לשעה הנכונה (המחוג הקצר לשעה, הארוך לדקות), ואז לוחצים “סיימתי”."
+        : hasClock
+          ? "קוראים את השעה מהשעון: המחוג הקצר מראה את השעה, המחוג הארוך את הדקות. מקלידים את השעה בתיבה."
+          : "";
+    if (u.helpBtn) {
+      u.helpBtn.hidden = !help;
+      u.helpBtn.removeAttribute("title"); // משתמשים בחלונית העשירה בריחוף, לא ב-tooltip של הדפדפן
+    }
+    if (u.helpPopover) u.helpPopover.textContent = help;
+
+    // מצב שעון אינטראקטיבי — שעון גדול, שאלה קטנה מעליו, כפתור גדול במרכז
+    if (u.lessonCard) u.lessonCard.classList.toggle("mode-clock", hasClock);
 
     // ציור צורה — לוח גדול במקום הכרטיס הרגיל
     if (u.lessonCard) u.lessonCard.hidden = isShapeCreate;
     if (u.shapeCreatorCard) u.shapeCreatorCard.hidden = !isShapeCreate;
     if (isShapeCreate) {
-      if (u.shapeRequest) u.shapeRequest.textContent = p.text;
+      if (u.shapeRequest) u.shapeRequest.textContent = questionText(p);
       renderShapeBoard(u.shapeBoard, p.shapeTarget || { label: "צורה", sides: 4 });
       return;
     }
@@ -1366,7 +1675,7 @@ async function main() {
     } else {
       topic.problems[topic.currentProblemIndex] = p;
     }
-    u.problemText.textContent = p.text;
+    u.problemText.textContent = questionText(p);
     showProblemVisual(u, p);
     applyAnswerMode(p);
     renderDifficulty(p.difficulty);
@@ -1375,18 +1684,36 @@ async function main() {
     u.feedbackBox.hidden = true;
     u.feedbackBox.classList.add("feedback--hidden");
     renderStats(u, topic);
+    ensureMeter(topic);
+    renderSolved(topic);
     renderTopicLabel();
+    startTimer(topic);
     saveAll();
   }
 
-  // משוב כן/לא על התשובה; אם נכון — מעבר אוטומטי לשאלה הבאה
+  // משוב כן/לא; אם נכון — מד מתמלא ועוברים לשאלה הבאה (חלונית הסיום מגיעה כשנגמרות השאלות)
+  // האם הרגע התמלא הסרגל ברמה הנוכחית בפעם הראשונה? (פתר את כל מה שקיים)
+  function meterJustFilledFirstTime(topic) {
+    if (!topic) return false;
+    const N = levelCountFor(topic, topic.level);
+    const done = (topic.solvedByLevel && topic.solvedByLevel[topic.level]) || 0;
+    const prompted = topic.levelPrompted && topic.levelPrompted[topic.level];
+    return N > 0 && done >= N && !prompted;
+  }
   function showAnswerFeedback(isCorrect) {
     u.feedbackBox.classList.remove("feedback--hidden");
     u.feedbackBox.hidden = false;
     if (isCorrect) {
+      registerCorrect();
+      const topic = getCurrentTopic();
+      // פעם ראשונה שמילא את הסרגל ברמה → חלונית בחירה (להמשיך/לעלות), בלי להתקדם אוטומטית
+      if (meterJustFilledFirstTime(topic)) {
+        setFeedback(u.feedbackBox, "✅ נכון!", "feedback--ok");
+        showLevelDone();
+        return;
+      }
       setFeedback(u.feedbackBox, "✅ נכון! עוברים לשאלה הבאה…", "feedback--ok");
       launchConfetti();
-      // מעבר שקט לשאלה הבאה — בדיוק כמו כפתור "שאלה הבאה", בלי הודעה בצ'אט
       window.setTimeout(() => u.nextProblemBtn?.click(), 1200);
     } else {
       setFeedback(u.feedbackBox, "❌ לא מדויק — נסה/י שוב, או בקש/י רמז.", "feedback--danger");
@@ -1459,8 +1786,8 @@ async function main() {
       const key = gt.key;
       const sub = Array.isArray(gt.sub) ? gt.sub : [];
 
-      const pickLeaf = (leafKey) => {
-        openTopicByKey(leafKey);
+      const pickLeaf = (leafKey, leafLabel) => {
+        openTopicByKey(leafKey, leafLabel);
         showTopicListView();
         closeTopicsDrawer();
       };
@@ -1476,12 +1803,14 @@ async function main() {
         const subWrap = document.createElement("div");
         subWrap.className = "catSub";
         subWrap.hidden = true;
-        for (const sk of sub) {
+        for (const s of sub) {
+          const sKey = typeof s === "string" ? s : s.key;
+          const sLabel = typeof s === "string" ? s : s.label || s.key;
           const sb = document.createElement("button");
           sb.type = "button";
-          sb.className = `catItem catItem--sub${openedKeys.has(sk) ? " catItem--active" : ""}`;
-          sb.textContent = sk;
-          sb.addEventListener("click", () => pickLeaf(sk));
+          sb.className = `catItem catItem--sub${openedKeys.has(sKey) ? " catItem--active" : ""}`;
+          sb.textContent = sLabel;
+          sb.addEventListener("click", () => pickLeaf(sKey, sLabel));
           subWrap.appendChild(sb);
         }
         item.addEventListener("click", () => {
@@ -1555,22 +1884,52 @@ async function main() {
     ensureTopicHasProblem(topic);
     const p = getCurrentProblem(topic);
     if (p) {
-      u.problemText.textContent = p.text;
+      u.problemText.textContent = questionText(p);
       showProblemVisual(u, p);
       applyAnswerMode(p);
       renderDifficulty(p.difficulty);
     }
     renderStats(u, topic);
+    ensureMeter(topic);
+    ensureLevelCounts(topic); // לטעון את כמויות הרמות אם חסרות (נושא שמור)
     renderTopicLabel();
     renderChatForTopic(topic);
     renderTopicsList();
+    startTimer(topic);
     saveAll();
   }
 
+  // מוודא שיש לנושא נתוני כמויות-לרמה (למד) — אם חסר, מושך אותם ברקע ומעדכן את המד
+  function ensureLevelCounts(topic) {
+    if (!topic) return;
+    const hasCounts = topic.levelCounts && Object.keys(topic.levelCounts).length;
+    if (hasCounts || topic._countsFetching) return;
+    topic._countsFetching = true;
+    fetchBankProblem(topic.kind, topic.level, [], !!topic.levelLocked)
+      .then((res) => {
+        topic._countsFetching = false;
+        if (res && res.levelCounts && Object.keys(res.levelCounts).length) {
+          topic.levelCounts = res.levelCounts;
+          if (Array.isArray(res.availableLevels) && res.availableLevels.length) {
+            topic.availableLevels = res.availableLevels;
+          }
+          ensureMeter(topic);
+          saveAll();
+        }
+      })
+      .catch(() => {
+        topic._countsFetching = false;
+      });
+  }
+
   function applyAnswerStats(topic, wasCorrect) {
+    // הרמה מנוהלת ע"י מד השאלות והבורר — לא משתנה אוטומטית לפי רצף
+    const keepLevel = topic.level;
     const nextTopic = estimateDifficultyNext(topic, wasCorrect);
     Object.assign(topic, nextTopic);
+    topic.level = keepLevel;
     renderStats(u, topic);
+    renderDifficulty(getCurrentProblem(topic)?.difficulty ?? topic.level);
     saveAll();
   }
 
@@ -1610,7 +1969,7 @@ async function main() {
     if (!text) return null;
 
     if (showUserBubble) {
-      appendMsg(u.chatLog, { from: "user", text });
+      appendMsg(u.chatLog, { from: "user", text, animate: true });
       topic.chatHistory = Array.isArray(topic.chatHistory) ? topic.chatHistory : [];
       topic.chatHistory.push({ role: "user", content: text });
       topic.chatHistory = topic.chatHistory.slice(-40);
@@ -1634,7 +1993,7 @@ async function main() {
     if (api?.showVisual) revealArithViz(u, getCurrentProblem(getCurrentTopic()));
 
     if (api?.reply && !isCannedBotMessage(api.reply)) {
-      appendMsg(u.chatLog, { from: "bot", text: api.reply });
+      appendMsg(u.chatLog, { from: "bot", text: api.reply, animate: true, reveal: true });
       topic.chatHistory.push({ role: "assistant", content: api.reply });
       topic.chatHistory = topic.chatHistory.slice(-40);
       applyApiSideEffects(topic, api);
@@ -1672,9 +2031,9 @@ async function main() {
     });
   }
 
-  async function requestHint(level) {
+  async function requestHint() {
     await requestAi({
-      messageText: level === 1 ? "תן לי רמז קטן לתרגיל" : "תן לי רמז גדול יותר",
+      messageText: "תן לי רמז לתרגיל",
       messageKind: "HintRequest",
     });
   }
@@ -1683,13 +2042,6 @@ async function main() {
     await requestAi({
       messageText: "תסביר לי את התרגיל שלב אחר שלב",
       messageKind: "ExplainRequest",
-    });
-  }
-
-  async function requestNewProblem() {
-    await requestAi({
-      messageText: "תרגיל חדש בבקשה",
-      messageKind: "NewProblem",
     });
   }
 
@@ -1767,6 +2119,78 @@ async function main() {
     }
   });
 
+  // בורר רמה — פתיחה/סגירה בלחיצה על כפתור הכוכבים, וסגירה בלחיצה בחוץ
+  u.difficultyPill?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleLevelPicker();
+  });
+  document.addEventListener("click", (e) => {
+    if (
+      u.levelPicker &&
+      !u.levelPicker.hidden &&
+      !u.levelPicker.contains(e.target) &&
+      e.target !== u.difficultyPill
+    ) {
+      toggleLevelPicker(false);
+    }
+  });
+
+  // אייקון "?" — פתיחה/סגירה של חלונית העזרה
+  u.helpBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (u.helpPopover) u.helpPopover.hidden = !u.helpPopover.hidden;
+  });
+  // ריחוף עכבר על האייקון — ההסבר מופיע מיד (גם בלי לחיצה)
+  u.helpBtn?.addEventListener("mouseenter", () => {
+    if (u.helpPopover) u.helpPopover.hidden = false;
+  });
+  u.helpBtn?.addEventListener("mouseleave", () => {
+    if (u.helpPopover) u.helpPopover.hidden = true;
+  });
+  document.addEventListener("click", (e) => {
+    if (
+      u.helpPopover &&
+      !u.helpPopover.hidden &&
+      !u.helpPopover.contains(e.target) &&
+      e.target !== u.helpBtn
+    ) {
+      u.helpPopover.hidden = true;
+    }
+  });
+
+  // מקלדת מספרים — נפתחת בלחיצה על שדה התשובה
+  function openNumPad() {
+    if (u.numPad) u.numPad.hidden = false;
+  }
+  function closeNumPad() {
+    if (u.numPad) u.numPad.hidden = true;
+  }
+  u.answerInput.addEventListener("focus", openNumPad);
+  u.answerInput.addEventListener("click", openNumPad);
+  u.numPad?.addEventListener("click", (e) => {
+    const key = e.target.closest(".numKey");
+    if (!key) return;
+    const k = key.getAttribute("data-k");
+    if (k === "back") u.answerInput.value = u.answerInput.value.slice(0, -1);
+    else if (k === "clear") u.answerInput.value = "";
+    else u.answerInput.value += k;
+  });
+  u.numPadDone?.addEventListener("click", () => {
+    closeNumPad();
+    u.checkBtn.click();
+  });
+  // סגירת המקלדת בלחיצה בחוץ (לא על השדה ולא על המקלדת)
+  document.addEventListener("click", (e) => {
+    if (
+      u.numPad &&
+      !u.numPad.hidden &&
+      !u.numPad.contains(e.target) &&
+      e.target !== u.answerInput
+    ) {
+      closeNumPad();
+    }
+  });
+
   // קלט שעה (שעות:דקות)
   u.checkTimeBtn?.addEventListener("click", () => {
     const h = String(u.timeHour?.value ?? "").trim();
@@ -1804,7 +2228,6 @@ async function main() {
     if (!st || !st.target) return;
     const verts = st.gridVerts || (st.verts || []).map((v) => v);
     const verdict = analyzeDrawnShape(verts, st.target, st.closed);
-    if (verdict.correct) launchConfetti();
     await requestAi({
       messageText: verdict.summary,
       messageKind: "CheckAnswer",
@@ -1818,7 +2241,8 @@ async function main() {
       },
     });
     if (verdict.correct) {
-      // מעבר שקט לצורה הבאה
+      registerCorrect();
+      launchConfetti();
       window.setTimeout(() => u.nextProblemBtn?.click(), 1500);
     } else {
       // נסה שוב — מנקים את הלוח
@@ -1826,20 +2250,49 @@ async function main() {
     }
   });
 
-  u.hint1Btn.addEventListener("click", () => requestHint(1));
-  u.hint2Btn.addEventListener("click", () => requestHint(2));
+  // חלונית סיום רמה: "לרמה הבאה" עולה רמה; "לחזור על הרמה" מאפס בכוונה ומגיש שוב
+  u.levelNextBtn?.addEventListener("click", () => {
+    const topic = getCurrentTopic();
+    hideLevelDone();
+    // לא לשאול שוב על הרמה הזו
+    if (!topic.levelPrompted) topic.levelPrompted = {};
+    topic.levelPrompted[topic.level] = true;
+    const higher = (topic.availableLevels || []).filter((l) => l > topic.level).sort((a, b) => a - b);
+    if (higher.length) {
+      topic.level = higher[0];
+      topic.levelLocked = true;
+    }
+    loadBankProblem(topic, true);
+  });
+  u.levelStayBtn?.addEventListener("click", () => {
+    const topic = getCurrentTopic();
+    hideLevelDone();
+    // ממשיכים באותה רמה — לא מאפסים! הסרגל ימשיך לגדול (4/4 → 4/5 → …) ולא נשאל שוב
+    if (!topic.levelPrompted) topic.levelPrompted = {};
+    topic.levelPrompted[topic.level] = true;
+    saveAll();
+    loadBankProblem(topic, true); // שאלה חדשה — המאגר גדל, המד עולה ב-1
+  });
+
+  u.hintBtn.addEventListener("click", () => requestHint());
   u.explainBtn.addEventListener("click", () => requestExplain());
-  u.newProblemBtn.addEventListener("click", () => requestNewProblem());
 
   u.prevProblemBtn?.addEventListener("click", () => {
     const topic = getCurrentTopic();
     topic.currentProblemIndex = clamp((topic.currentProblemIndex ?? 0) - 1, 0, (topic.problems?.length ?? 1) - 1);
     const p = getCurrentProblem(topic);
     if (p) {
-      u.problemText.textContent = p.text;
+      u.problemText.textContent = questionText(p);
       showProblemVisual(u, p);
       applyAnswerMode(p);
       renderDifficulty(p.difficulty);
+      u.answerInput.value = "";
+      setFeedback(u.feedbackBox, "", null);
+      u.feedbackBox.hidden = true;
+      u.feedbackBox.classList.add("feedback--hidden");
+      ensureMeter(topic);
+      renderSolved(topic);
+      startTimer(topic);
     }
     saveAll();
   });
@@ -1851,16 +2304,35 @@ async function main() {
       topic.currentProblemIndex = nextIndex;
       const p = getCurrentProblem(topic);
       if (p) {
-        u.problemText.textContent = p.text;
+        u.problemText.textContent = questionText(p);
         showProblemVisual(u, p);
         applyAnswerMode(p);
         renderDifficulty(p.difficulty);
+        u.answerInput.value = "";
+        setFeedback(u.feedbackBox, "", null);
+        u.feedbackBox.hidden = true;
+        u.feedbackBox.classList.add("feedback--hidden");
+        ensureMeter(topic);
+        renderSolved(topic);
+        startTimer(topic);
       }
       saveAll();
       return;
     }
     // אין עוד בהיסטוריה → טוען שאלה חדשה מהמאגר
     loadBankProblem(topic, true);
+  });
+
+  // שמירת זמן התרגול כשעוזבים/מסתירים את הדף (כדי שלא יאבד)
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      flushTimer();
+      saveAll();
+    }
+  });
+  window.addEventListener("beforeunload", () => {
+    flushTimer();
+    saveAll();
   });
 
   u.sendBtn.addEventListener("click", handleChatSend);
@@ -1871,7 +2343,7 @@ async function main() {
     }
   });
 
-  u.resetBtn.addEventListener("click", () => {
+  u.resetBtn?.addEventListener("click", () => {
     // מאפס רק את הצ'אט של הנושא הנוכחי — כל ההתקדמות והנתונים נשמרים
     const topic = getCurrentTopic();
     if (!confirm("לאפס את הצ'אט בנושא הזה? (ההתקדמות, הרמה והניקוד יישמרו)")) return;
@@ -1886,21 +2358,63 @@ async function main() {
     saveUi(uiState);
   });
 
+  // --- ניהול פוקוס במגירה (נגישות מקלדת/קורא-מסך) ---
+  let drawerReturnFocus = null;
+  // מנטרלים רק את תוכן העמוד — לא את הסרגל, כי המבורגר (=כפתור הסגירה) חי בו
+  const drawerInertEls = () => [document.querySelector(".layout")];
+
+  function drawerKeydown(e) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeTopicsDrawer();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const focusables = Array.from(
+      u.topicsDrawer.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => !el.disabled && el.offsetParent !== null);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   function openTopicsDrawer() {
-    u.topicsOverlay.hidden = false;
-    u.topicsDrawer.hidden = false;
+    drawerReturnFocus = document.activeElement; // נחזיר לכאן בסגירה
+    u.topicsOverlay.classList.add("overlay--open");
+    u.topicsDrawer.classList.add("drawer--open"); // המבורגר→X וההחלקה מסונכרנים (אותו אלמנט)
     u.topicsBtn?.setAttribute("aria-expanded", "true");
     showTopicListView();
     renderTopicsList();
+    // מנטרלים את תוכן העמוד מקוראי-מסך וממקלדת
+    drawerInertEls().forEach((el) => el && el.setAttribute("inert", ""));
+    document.addEventListener("keydown", drawerKeydown, true);
+    // מעבירים פוקוס פנימה
+    u.topicsDrawer.focus();
   }
 
   function closeTopicsDrawer() {
-    u.topicsOverlay.hidden = true;
-    u.topicsDrawer.hidden = true;
+    u.topicsOverlay.classList.remove("overlay--open");
+    u.topicsDrawer.classList.remove("drawer--open");
     u.topicsBtn?.setAttribute("aria-expanded", "false");
+    document.removeEventListener("keydown", drawerKeydown, true);
+    drawerInertEls().forEach((el) => el && el.removeAttribute("inert"));
+    // מחזירים פוקוס לכפתור שפתח
+    if (drawerReturnFocus && drawerReturnFocus.focus) drawerReturnFocus.focus();
+    drawerReturnFocus = null;
   }
 
-  u.topicsBtn?.addEventListener("click", openTopicsDrawer);
+  // לחיצה על המבורגר/ה-X — פותחת או סוגרת
+  u.topicsBtn?.addEventListener("click", () => {
+    if (u.topicsDrawer.classList.contains("drawer--open")) closeTopicsDrawer();
+    else openTopicsDrawer();
+  });
   u.topicsCloseBtn?.addEventListener("click", closeTopicsDrawer);
   u.topicsOverlay?.addEventListener("click", closeTopicsDrawer);
 

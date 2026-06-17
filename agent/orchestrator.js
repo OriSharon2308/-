@@ -154,6 +154,7 @@ async function runChat(payload = {}) {
     problem = null,
     student = {},
     history = [],
+    gender = "male",
   } = payload;
 
   const topicLabel = topic.title || topic.kind || "";
@@ -273,6 +274,7 @@ async function runChat(payload = {}) {
     correct,
     vizName: vizInfo ? vizInfo.name : null,
     shapeNote,
+    gender,
   });
 
   // המורה יכול לשלוח [[SHOW_VISUAL]] כדי שהמערכת תפתח את ההדמיה — מזהים, מסירים מהטקסט
