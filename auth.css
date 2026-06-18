@@ -192,6 +192,10 @@
   flex-direction: column;
   gap: 14px;
 }
+/* קריטי: כלל המחלקה display:flex גובר על [hidden] של הדפדפן — צריך להחזיר הסתרה */
+.authForm[hidden] {
+  display: none;
+}
 .authForm--in {
   animation: formIn 0.28s ease both;
 }
