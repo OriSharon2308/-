@@ -11,7 +11,12 @@
     <style>
       .progBody {
         font-family: "Assistant", system-ui, sans-serif;
-        background: #eef5fb;
+        background:
+          radial-gradient(760px 540px at 90% 0%, rgba(249, 168, 96, 0.16), transparent 60%),
+          radial-gradient(720px 560px at 4% 6%, rgba(20, 184, 166, 0.15), transparent 58%),
+          radial-gradient(680px 620px at 60% 120%, rgba(139, 124, 240, 0.12), transparent 60%),
+          #eef6f4;
+        background-attachment: fixed;
         min-height: 100vh;
         margin: 0;
         color: #1f2c3a;
@@ -30,7 +35,7 @@
       .prog__back {
         text-decoration: none;
         font-size: 22px;
-        color: #2b6cb0;
+        color: #0d9488;
         background: #fff;
         width: 44px;
         height: 44px;
@@ -44,6 +49,7 @@
         font-family: "Fredoka", sans-serif;
         font-size: 30px;
         font-weight: 700;
+        color: #0f3b36;
         margin: 0;
       }
       .prog__sub {
@@ -67,7 +73,7 @@
       .sumCard__val {
         font-size: 30px;
         font-weight: 800;
-        color: #2b6cb0;
+        color: #0d9488;
       }
       .sumCard__label {
         font-size: 14px;
@@ -109,7 +115,7 @@
       }
       .ring__bar {
         fill: none;
-        stroke: #4aa8e8;
+        stroke: #0d9488;
         stroke-width: 10;
         stroke-linecap: round;
         transition: stroke-dashoffset 0.95s cubic-bezier(0.4, 0.2, 0.2, 1);
@@ -139,7 +145,7 @@
         font-size: 32px;
         font-weight: 800;
         line-height: 1;
-        color: #4aa8e8;
+        color: #0d9488;
       }
       .ring__label {
         font-size: 13px;
@@ -165,7 +171,7 @@
         padding: 40px 20px;
       }
       .prog__empty a {
-        color: #2b6cb0;
+        color: #0d9488;
         font-weight: 700;
       }
       @media (prefers-reduced-motion: reduce) {
@@ -195,7 +201,7 @@
       const R = 52;
       const CIRC = 2 * Math.PI * R;
       const METRICS = [
-        { key: "acc", short: "דיוק", color: "#4aa8e8" },
+        { key: "acc", short: "דיוק", color: "#0d9488" },
         { key: "solved", short: "שאלות", color: "#34c759" },
         { key: "time", short: "דקות", color: "#a06be0" },
         { key: "mastery", short: "שליטה", color: "#ff9f43" },

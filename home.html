@@ -3,36 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>מערכת לימוד – בית</title>
+    <title>Vela – בית</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
     <style>
       @font-face {
-        font-family: "Dana Yad";
-        src:
-          url("/fonts/DanaYadAlefAlefAlef-Normal.woff") format("woff"),
-          url("/fonts/DanaYadAlefAlefAlef-Normal.otf") format("opentype");
-        font-weight: normal;
+        font-family: "Arca Morphe";
+        src: url("/fonts/ArcaMorphe-Regular.ttf") format("truetype");
+        font-weight: 400;
         font-display: swap;
       }
 
-      /* ===== מסך בית — קונספט חדש: מסקוט Vela + גיבור מפוצל ===== */
+      /* ===== דף בית — רקע "vela" שחורה + ערפל, ברכה עולה, סקשנים נגללים ===== */
       .homeBody {
         background:
-          radial-gradient(760px 540px at 90% -8%, rgba(249, 168, 96, 0.18), transparent 60%),
-          radial-gradient(720px 560px at 4% 4%, rgba(20, 184, 166, 0.18), transparent 58%),
-          radial-gradient(680px 600px at 70% 120%, rgba(139, 124, 240, 0.13), transparent 60%),
+          radial-gradient(760px 540px at 90% 2%, rgba(249, 168, 96, 0.16), transparent 60%),
+          radial-gradient(720px 560px at 4% 6%, rgba(20, 184, 166, 0.15), transparent 58%),
+          radial-gradient(680px 620px at 60% 120%, rgba(139, 124, 240, 0.12), transparent 60%),
           #eef6f4;
       }
       .home {
         overflow: hidden;
       }
+
+      /* "vela" שחורה ענקית ברקע הגיבור, נמוגה בערפל כלפי מטה */
       .home .home__bg {
-        color: rgba(13, 60, 53, 0.045);
+        position: absolute;
+        top: -3vh;
+        left: 50%;
+        transform: translateX(-50%) translate(var(--px, 0px), var(--py, 0px));
+        text-transform: none;
+        font-family: "Arca Morphe", "Archivo Black", sans-serif;
+        font-size: min(62vw, 82vh);
+        line-height: 1;
+        color: #0c1320;
+        -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 32%, transparent 72%);
+        mask-image: linear-gradient(to bottom, #000 0%, #000 32%, transparent 72%);
+        z-index: 0;
       }
 
+      /* מותג */
       .home .brand__mark {
         width: 44px;
         height: 44px;
@@ -52,46 +64,41 @@
         color: #0f3b36;
       }
 
-      /* גיבור: שתי עמודות (טקסט + מסקוט) */
+      /* גיבור — תוכן עולה מהתחתית, מעל ה-vela */
       .home__hero {
+        position: relative;
         z-index: 2;
-      }
-      .heroWrap {
-        width: min(960px, 100%);
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        align-items: center;
-        gap: 30px;
-      }
-      .heroText {
-        text-align: start;
+        min-height: 100vh;
+        justify-content: flex-end;
+        padding: 24px 24px 11vh;
       }
       .home .home__greeting {
-        font-family: "Dana Yad", cursive;
-        font-size: clamp(46px, 7vw, 84px);
-        line-height: 1.1;
+        font-family: "Fredoka", "Assistant", sans-serif;
         font-weight: 700;
+        font-size: clamp(40px, 7.5vw, 86px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
         color: #0f3b36;
-        -webkit-text-stroke: 0.5px #0f3b36;
         margin: 0;
-      }
-      .home .home__greeting .ch {
         opacity: 0;
-        display: inline-block;
-        white-space: pre;
+        transform: translateY(46px);
       }
-      .home .home__greeting .ch--on {
-        animation: handWrite 0.22s ease-out both;
+      .home .home__greeting.is-in {
+        animation: riseUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
       }
-      @keyframes handWrite {
-        from { opacity: 0; transform: translateY(6px) scale(0.85); filter: blur(1.5px); }
-        to { opacity: 1; transform: none; filter: blur(0); }
+      @keyframes riseUp {
+        to {
+          opacity: 1;
+          transform: none;
+        }
       }
       .home .home__subtitle {
         font-size: clamp(16px, 2.4vw, 21px);
         font-weight: 600;
         color: #46615f;
-        margin: 8px 0 26px;
+        margin: 12px 0 26px;
+        opacity: 0;
+        animation: riseUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
       }
 
       .heroActions {
@@ -99,12 +106,15 @@
         align-items: center;
         gap: 14px;
         flex-wrap: wrap;
+        justify-content: center;
+        opacity: 0;
+        animation: riseUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
       }
       .btnPrimary {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        padding: 16px 30px;
+        padding: 16px 32px;
         border-radius: 999px;
         background: linear-gradient(150deg, #17ccb8, #0d9488);
         color: #fff;
@@ -141,22 +151,163 @@
         color: #c2410c;
       }
 
-      /* מסקוט Vela */
-      .heroArt {
-        display: flex;
-        justify-content: center;
+      .scrollHint {
+        position: absolute;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 13px;
+        font-weight: 600;
+        color: #5f7a77;
+        animation: bob 1.8s ease-in-out infinite;
       }
-      .heroArt svg {
-        width: min(420px, 90%);
-        height: auto;
-        animation: bobArt 5.5s ease-in-out infinite;
-      }
-      @keyframes bobArt {
-        50% { transform: translateY(-12px); }
+      @keyframes bob {
+        50% {
+          transform: translateX(-50%) translateY(6px);
+        }
       }
 
-      /* סטטיסטיקות — אריחים צבעוניים רכים */
+      /* ===== סקשנים נגללים ===== */
+      .sec {
+        position: relative;
+        z-index: 2;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 64px 24px;
+      }
+      .sec__title {
+        font-family: "Fredoka", sans-serif;
+        font-size: clamp(24px, 4vw, 34px);
+        font-weight: 700;
+        color: #0f3b36;
+        text-align: center;
+        margin: 0 0 36px;
+      }
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      [data-reveal].reveal-in {
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      /* "איך זה עובד" — שלושה צעדים */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .step {
+        background: #fff;
+        border-radius: 22px;
+        padding: 26px 22px;
+        box-shadow: 0 10px 26px rgba(2, 6, 23, 0.06);
+        text-align: center;
+      }
+      .step__num {
+        width: 46px;
+        height: 46px;
+        margin: 0 auto 14px;
+        border-radius: 50%;
+        background: #d6f4ef;
+        color: #0d9488;
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .step:nth-child(2) .step__num {
+        background: #ffe7df;
+        color: #ef6c4d;
+      }
+      .step:nth-child(3) .step__num {
+        background: #eae6ff;
+        color: #7c6cf0;
+      }
+      .step h3 {
+        font-family: "Fredoka", sans-serif;
+        font-size: 19px;
+        margin: 0 0 8px;
+        color: #15324a;
+      }
+      .step p {
+        font-size: 14.5px;
+        line-height: 1.6;
+        color: #54677a;
+        margin: 0;
+      }
+
+      /* אזור הורים */
+      .parents {
+        position: relative;
+        z-index: 2;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 0 24px 64px;
+      }
+      .parents__panel {
+        background: linear-gradient(150deg, #0f766e, #0d9488);
+        color: #fff;
+        border-radius: 28px;
+        padding: 38px 34px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 26px;
+        flex-wrap: wrap;
+        box-shadow: 0 20px 44px rgba(13, 148, 136, 0.3);
+        overflow: hidden;
+      }
+      .parents__text h3 {
+        font-family: "Fredoka", sans-serif;
+        font-size: 28px;
+        margin: 0 0 10px;
+      }
+      .parents__lines {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 6px;
+      }
+      .parents__lines li {
+        font-size: 15.5px;
+        color: rgba(255, 255, 255, 0.92);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .parents__lines li::before {
+        content: "✓";
+        font-weight: 700;
+        color: #c8f5ec;
+      }
+      .parents__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        color: #0f766e;
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+        text-decoration: none;
+        padding: 14px 26px;
+        border-radius: 999px;
+        white-space: nowrap;
+        transition: transform 0.2s ease;
+      }
+      .parents__cta:hover {
+        transform: translateY(-2px);
+      }
+
+      /* סטטיסטיקות */
       .home__stats {
+        position: relative;
         z-index: 2;
       }
       .home .home__statsTitle {
@@ -187,28 +338,44 @@
       .home .home__statsGrid .statCard:nth-child(4) { background: #eae6ff; }
       .home .home__statsGrid .statCard:nth-child(4) .statCard__value { color: #7c6cf0; }
 
+      .home__foot {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 24px;
+        font-size: 13px;
+        color: #6c7e8e;
+      }
+
       @media (max-width: 720px) {
-        .heroWrap {
+        .steps {
           grid-template-columns: 1fr;
-          gap: 6px;
+        }
+        .parents__panel {
+          justify-content: center;
           text-align: center;
         }
-        .heroText { text-align: center; }
-        .heroActions { justify-content: center; }
-        .heroArt { order: -1; }
-        .heroArt svg { width: min(280px, 70%); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .heroArt svg { animation: none; }
-        .home .home__greeting .ch { opacity: 1; }
-        .home .home__greeting .ch--on { animation: none; }
+        .home .home__greeting,
+        .home .home__subtitle,
+        .heroActions {
+          opacity: 1;
+          animation: none;
+          transform: none;
+        }
+        .scrollHint {
+          animation: none;
+        }
+        [data-reveal] {
+          opacity: 1;
+          transform: none;
+        }
       }
     </style>
   </head>
   <body class="homeBody">
     <main class="home">
-      <div class="home__bg" aria-hidden="true">vela</div>
-
       <header class="home__top">
         <div class="brand">
           <div class="brand__mark" aria-hidden="true">∑</div>
@@ -227,6 +394,7 @@
             </button>
             <div id="menu" class="menu">
               <a href="/progress" class="menu__item" id="progressItem" style="text-decoration: none">📊 ההתקדמות שלי</a>
+              <a href="/progress" class="menu__item" id="parentsItem" style="text-decoration: none">👨‍👩‍👧 אזור הורים</a>
               <button id="logoutItem" class="menu__item menu__item--danger" type="button">התנתקות</button>
             </div>
           </div>
@@ -234,66 +402,51 @@
       </header>
 
       <section class="home__hero">
-        <div class="heroWrap">
-          <div class="heroText">
-            <h1 class="home__greeting">שלום<span id="greetName"></span>! 👋</h1>
-            <p class="home__subtitle">מוכנים לקצת קסם של מספרים?</p>
-            <div class="heroActions">
-              <a class="btnPrimary" href="/practice">
-                <span>בואו נתרגל</span>
-                <span class="btnPrimary__arrow" aria-hidden="true">←</span>
-              </a>
-              <button class="btnGhost" type="button" id="learnCard">למידה · <b>בקרוב</b></button>
-            </div>
+        <div class="home__bg" aria-hidden="true">vela</div>
+        <h1 class="home__greeting">ברוכים הבאים<span id="greetName"></span>!</h1>
+        <p class="home__subtitle">מוכנים לקצת קסם של מספרים?</p>
+        <div class="heroActions">
+          <a class="btnPrimary" href="/practice">
+            <span>בואו נתרגל</span>
+            <span class="btnPrimary__arrow" aria-hidden="true">←</span>
+          </a>
+          <button class="btnGhost" type="button" id="learnCard">למידה · <b>בקרוב</b></button>
+        </div>
+        <div class="scrollHint" aria-hidden="true">גללו לגלות עוד ↓</div>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec__title" data-reveal>איך Vela עובדת</h2>
+        <div class="steps">
+          <div class="step" data-reveal>
+            <div class="step__num">1</div>
+            <h3>בוחרים נושא</h3>
+            <p>חיבור, חיסור, שעון, גאומטריה ועוד — לפי הכיתה.</p>
           </div>
-
-          <div class="heroArt" aria-hidden="true">
-            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" role="img">
-              <title>מסקוט Vela</title>
-              <defs>
-                <linearGradient id="velaTeal" x1="0" y1="0" x2="0.4" y2="1">
-                  <stop offset="0" stop-color="#1ad3bd" />
-                  <stop offset="1" stop-color="#0d9488" />
-                </linearGradient>
-              </defs>
-
-              <!-- צל קרקע -->
-              <ellipse cx="220" cy="362" rx="120" ry="16" fill="rgba(13,60,53,0.10)" />
-
-              <!-- צורות מרחפות -->
-              <circle cx="70" cy="96" r="28" fill="#ff7a59" />
-              <text x="70" y="107" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="32" font-weight="700" fill="#fff">+</text>
-
-              <rect x="346" y="78" width="54" height="54" rx="16" fill="#f6b73c" transform="rotate(10 373 105)" />
-              <text x="373" y="115" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="30" font-weight="700" fill="#fff" transform="rotate(10 373 105)">7</text>
-
-              <polygon points="392,300 424,300 408,270" fill="#8b7cf0" />
-              <text x="58" y="312" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="34" font-weight="700" fill="rgba(13,148,136,0.55)">×</text>
-
-              <!-- כוכבים -->
-              <path d="M404 196 l5 12 13 1 -10 9 3 13 -11 -7 -11 7 3 -13 -10 -9 13 -1z" fill="#fbbf24" />
-              <path d="M44 196 l4 9 10 1 -8 7 3 10 -9 -6 -9 6 3 -10 -8 -7 10 -1z" fill="#fbbf24" opacity="0.85" />
-
-              <!-- גוף המסקוט -->
-              <rect x="128" y="120" width="184" height="184" rx="64" fill="url(#velaTeal)" />
-              <ellipse cx="178" cy="168" rx="42" ry="30" fill="#fff" opacity="0.14" />
-
-              <!-- לחיים -->
-              <circle cx="170" cy="236" r="13" fill="#ff8a5c" opacity="0.45" />
-              <circle cx="270" cy="236" r="13" fill="#ff8a5c" opacity="0.45" />
-
-              <!-- עיניים -->
-              <ellipse cx="186" cy="205" rx="15" ry="19" fill="#fff" />
-              <ellipse cx="254" cy="205" rx="15" ry="19" fill="#fff" />
-              <circle cx="189" cy="208" r="7.5" fill="#0f3b36" />
-              <circle cx="257" cy="208" r="7.5" fill="#0f3b36" />
-              <circle cx="192" cy="205" r="2.4" fill="#fff" />
-              <circle cx="260" cy="205" r="2.4" fill="#fff" />
-
-              <!-- חיוך -->
-              <path d="M196 250 Q220 276 244 250" fill="none" stroke="#0f3b36" stroke-width="7" stroke-linecap="round" />
-            </svg>
+          <div class="step" data-reveal>
+            <div class="step__num">2</div>
+            <h3>מתרגלים עם המורה</h3>
+            <p>המורה החכם מסביר, נותן רמזים ומתאים את הרמה לקצב של הילד.</p>
           </div>
+          <div class="step" data-reveal>
+            <div class="step__num">3</div>
+            <h3>רואים התקדמות</h3>
+            <p>אחוזי הצלחה, זמן תרגול ושליטה בחומר — בתצוגה מעודדת.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="parents">
+        <div class="parents__panel" data-reveal>
+          <div class="parents__text">
+            <h3>להורים</h3>
+            <ul class="parents__lines">
+              <li>עוקבים אחרי ההתקדמות של הילד</li>
+              <li>רואים נקודות חוזק ומה כדאי לחזק</li>
+              <li>הכול במקום אחד, בשליטה מלאה</li>
+            </ul>
+          </div>
+          <a class="parents__cta" href="/progress">לאזור ההורים ←</a>
         </div>
       </section>
 
@@ -318,6 +471,8 @@
           </div>
         </div>
       </section>
+
+      <footer class="home__foot">Vela · פלטפורמת לימוד מתמטיקה</footer>
     </main>
 
     <script>
@@ -339,33 +494,13 @@
         }
       })();
 
+      // ברכה: "ברוכים הבאים, <שם>!" עולה מלמטה
       function writeGreeting(name) {
         const h1 = document.querySelector(".home__greeting");
         if (!h1) return;
-        const full = name ? ("שלום, " + name + "! 👋") : "שלום! 👋";
-        const reduce =
-          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        h1.textContent = "";
-        if (reduce) {
-          h1.textContent = full;
-          return;
-        }
-        const spans = [];
-        for (const ch of full) {
-          const s = document.createElement("span");
-          s.className = "ch";
-          s.textContent = ch;
-          h1.appendChild(s);
-          spans.push(s);
-        }
-        let i = 0;
-        const step = () => {
-          if (i >= spans.length) return;
-          spans[i].classList.add("ch--on");
-          i += 1;
-          window.setTimeout(step, 90);
-        };
-        step();
+        h1.textContent = name ? "ברוכים הבאים, " + name + "!" : "ברוכים הבאים!";
+        void h1.offsetWidth;
+        h1.classList.add("is-in");
       }
 
       function setStat(id, value, suffix) {
@@ -426,33 +561,52 @@
         requestAnimationFrame(frame);
       }
 
-      function animateStats() {
-        document.querySelectorAll(".statCard__value[data-target]").forEach(animateValue);
-      }
-
-      (function statsReveal() {
-        const stats = document.getElementById("homeStats");
-        if (!stats) return;
-        const reveal = () => {
-          stats.classList.add("is-visible");
-          animateStats();
+      // חשיפה בגלילה — לכל [data-reveal]; אם אין IntersectionObserver, מציגים מיד
+      (function reveals() {
+        const items = Array.from(document.querySelectorAll("[data-reveal]"));
+        const statsEl = document.getElementById("homeStats");
+        const showAll = () => {
+          items.forEach((el) => el.classList.add("reveal-in"));
+          if (statsEl) {
+            statsEl.classList.add("is-visible");
+            document.querySelectorAll(".statCard__value[data-target]").forEach(animateValue);
+          }
         };
         if (!("IntersectionObserver" in window)) {
-          reveal();
+          showAll();
           return;
         }
         const io = new IntersectionObserver(
           (entries) => {
             entries.forEach((e) => {
               if (e.isIntersecting) {
-                reveal();
-                io.disconnect();
+                e.target.classList.add("reveal-in");
+                io.unobserve(e.target);
               }
             });
           },
-          { threshold: 0.2 }
+          { threshold: 0.15 }
         );
-        io.observe(stats);
+        items.forEach((el) => io.observe(el));
+
+        // הסטטיסטיקות + ספירה
+        if (statsEl) {
+          const io2 = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  statsEl.classList.add("is-visible");
+                  document.querySelectorAll(".statCard__value[data-target]").forEach(animateValue);
+                  io2.disconnect();
+                }
+              });
+            },
+            { threshold: 0.2 }
+          );
+          io2.observe(statsEl);
+        }
+        // רשת ביטחון — שלא יישאר שום דבר מוסתר
+        window.setTimeout(showAll, 2500);
       })();
 
       const menuBtn = document.getElementById("menuBtn");
@@ -484,7 +638,7 @@
         const bg = document.querySelector(".home__bg");
         if (!bg) return;
         if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        const MAX = 18;
+        const MAX = 16;
         let tx = 0, ty = 0, cx = 0, cy = 0;
         window.addEventListener("pointermove", (e) => {
           tx = -(e.clientX / window.innerWidth - 0.5) * MAX;
