@@ -6,7 +6,7 @@
     <title>מערכת לימוד – בית</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
     <style>
       @font-face {
@@ -18,45 +18,21 @@
         font-display: swap;
       }
 
-      /* ===== מסך בית — קונספט "בית למידה חם" (גרסה חדשה) ===== */
+      /* ===== מסך בית — קונספט חדש: מסקוט Vela + גיבור מפוצל ===== */
       .homeBody {
         background:
-          radial-gradient(820px 520px at 88% -6%, rgba(249, 168, 96, 0.16), transparent 60%),
-          radial-gradient(760px 560px at 6% 8%, rgba(20, 184, 166, 0.16), transparent 58%),
-          radial-gradient(700px 620px at 60% 116%, rgba(139, 124, 240, 0.12), transparent 60%),
+          radial-gradient(760px 540px at 90% -8%, rgba(249, 168, 96, 0.18), transparent 60%),
+          radial-gradient(720px 560px at 4% 4%, rgba(20, 184, 166, 0.18), transparent 58%),
+          radial-gradient(680px 600px at 70% 120%, rgba(139, 124, 240, 0.13), transparent 60%),
           #eef6f4;
       }
       .home {
         overflow: hidden;
       }
-
-      /* סמלי מתמטיקה מרחפים — מרקם משחקי עדין (לא אימוג'ים) */
-      .home__glyphs {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        overflow: hidden;
-      }
-      .home__glyphs span {
-        position: absolute;
-        font-family: "Fredoka", sans-serif;
-        font-weight: 600;
-        color: rgba(13, 148, 136, 0.13);
-        animation: floaty 9s ease-in-out infinite;
-      }
-      @keyframes floaty {
-        50% {
-          transform: translateY(-16px) rotate(var(--r, 6deg));
-        }
-      }
-
-      /* רקע "vela" עדין מאוד */
       .home .home__bg {
-        color: rgba(13, 60, 53, 0.05);
+        color: rgba(13, 60, 53, 0.045);
       }
 
-      /* מותג */
       .home .brand__mark {
         width: 44px;
         height: 44px;
@@ -67,7 +43,7 @@
         background: linear-gradient(140deg, #16c4b2, #0d9488);
         color: #fff;
         font-size: 22px;
-        box-shadow: 0 8px 18px rgba(13, 148, 136, 0.32);
+        box-shadow: 0 8px 18px rgba(13, 148, 136, 0.3);
       }
       .home .brand__title {
         font-family: "Fredoka", sans-serif;
@@ -76,15 +52,24 @@
         color: #0f3b36;
       }
 
-      /* היררכיית גיבור */
+      /* גיבור: שתי עמודות (טקסט + מסקוט) */
       .home__hero {
-        gap: 4px;
         z-index: 2;
+      }
+      .heroWrap {
+        width: min(960px, 100%);
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 30px;
+      }
+      .heroText {
+        text-align: start;
       }
       .home .home__greeting {
         font-family: "Dana Yad", cursive;
-        font-size: clamp(46px, 8vw, 92px);
-        line-height: 1.12;
+        font-size: clamp(46px, 7vw, 84px);
+        line-height: 1.1;
         font-weight: 700;
         color: #0f3b36;
         -webkit-text-stroke: 0.5px #0f3b36;
@@ -99,123 +84,81 @@
         animation: handWrite 0.22s ease-out both;
       }
       @keyframes handWrite {
-        from {
-          opacity: 0;
-          transform: translateY(6px) scale(0.85);
-          filter: blur(1.5px);
-        }
-        to {
-          opacity: 1;
-          transform: none;
-          filter: blur(0);
-        }
+        from { opacity: 0; transform: translateY(6px) scale(0.85); filter: blur(1.5px); }
+        to { opacity: 1; transform: none; filter: blur(0); }
       }
       .home .home__subtitle {
-        font-size: clamp(16px, 2.4vw, 20px);
+        font-size: clamp(16px, 2.4vw, 21px);
         font-weight: 600;
-        color: #4a6b66;
-        margin: 4px 0 30px;
+        color: #46615f;
+        margin: 8px 0 26px;
       }
 
-      /* כרטיסי פעולה — א-סימטריים: תרגול גדול ומוביל, למידה משני */
-      .home .home__cards {
-        grid-template-columns: 1.5fr 1fr;
-        gap: 18px;
-        width: min(680px, 100%);
-        align-items: stretch;
-        animation: riseIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-      }
-      @keyframes riseIn {
-        from {
-          opacity: 0;
-          transform: translateY(18px);
-        }
-      }
-      .home .homeCard {
-        align-items: flex-start;
-        text-align: start;
-        gap: 10px;
-        padding: 28px 26px;
-        border: none;
-        border-radius: 28px;
-        position: relative;
-        overflow: hidden;
-      }
-      .home .homeCard__icon {
-        width: 64px;
-        height: 64px;
+      .heroActions {
         display: flex;
         align-items: center;
-        justify-content: center;
-        border-radius: 18px;
-        font-size: 34px;
-        margin-bottom: 4px;
+        gap: 14px;
+        flex-wrap: wrap;
       }
-      .home .homeCard__title {
-        font-family: "Fredoka", sans-serif;
-        font-size: 26px;
-        font-weight: 700;
-      }
-      .home .homeCard__desc {
-        font-size: 15px;
-        line-height: 1.5;
-      }
-      .home .homeCard:hover {
-        transform: translateY(-6px) scale(1.02);
-      }
-
-      /* תרגול — פאנל טורקיז עשיר עם חץ */
-      .home .homeCard--primary {
-        background: linear-gradient(155deg, #17ccb8 0%, #0d9488 100%);
-        color: #fff;
-        box-shadow: 0 18px 40px rgba(13, 148, 136, 0.36);
-        justify-content: space-between;
-        min-height: 188px;
-      }
-      .home .homeCard--primary .homeCard__icon {
-        background: rgba(255, 255, 255, 0.2);
-      }
-      .home .homeCard--primary .homeCard__desc {
-        color: rgba(255, 255, 255, 0.92);
-      }
-      .home .homeCard--primary::after {
-        content: "←";
-        position: absolute;
-        bottom: 22px;
-        left: 24px;
-        font-size: 26px;
-        font-weight: 700;
-        opacity: 0.9;
-        transition: transform 0.25s ease;
-      }
-      .home .homeCard--primary:hover::after {
-        transform: translateX(-6px);
-      }
-
-      /* למידה (בקרוב) — כרטיס חמים ורך, משני */
-      .home .homeCard--soon {
-        background: #fff4e8;
-        color: #8a4b1f;
-        box-shadow: 0 10px 26px rgba(180, 120, 60, 0.15);
-        justify-content: center;
-      }
-      .home .homeCard--soon .homeCard__icon {
-        background: #ffe2c2;
-      }
-      .home .homeCard--soon .homeCard__title {
-        color: #7c4419;
-      }
-      .home .homeCard--soon .homeCard__desc {
-        align-self: flex-start;
-        color: #c2410c;
-        font-weight: 700;
-        background: #ffe0c0;
-        padding: 3px 14px;
+      .btnPrimary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 30px;
         border-radius: 999px;
-        font-size: 13px;
+        background: linear-gradient(150deg, #17ccb8, #0d9488);
+        color: #fff;
+        font-family: "Fredoka", sans-serif;
+        font-size: 21px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 14px 30px rgba(13, 148, 136, 0.36);
+        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease;
+      }
+      .btnPrimary__arrow {
+        font-size: 22px;
+        transition: transform 0.2s ease;
+      }
+      .btnPrimary:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(13, 148, 136, 0.42);
+      }
+      .btnPrimary:hover .btnPrimary__arrow {
+        transform: translateX(-5px);
+      }
+      .btnGhost {
+        border: 2px solid rgba(13, 148, 136, 0.28);
+        background: rgba(255, 255, 255, 0.6);
+        color: #5a6b68;
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 13px 22px;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .btnGhost b {
+        color: #c2410c;
       }
 
-      /* סטטיסטיקות — אריחים רכים וצבעוניים */
+      /* מסקוט Vela */
+      .heroArt {
+        display: flex;
+        justify-content: center;
+      }
+      .heroArt svg {
+        width: min(420px, 90%);
+        height: auto;
+        animation: bobArt 5.5s ease-in-out infinite;
+      }
+      @keyframes bobArt {
+        50% { transform: translateY(-12px); }
+      }
+
+      /* סטטיסטיקות — אריחים צבעוניים רכים */
+      .home__stats {
+        z-index: 2;
+      }
       .home .home__statsTitle {
         font-family: "Fredoka", sans-serif;
         font-weight: 700;
@@ -235,64 +178,36 @@
         color: #5a6b68;
         font-weight: 500;
       }
-      .home .home__statsGrid .statCard:nth-child(1) {
-        background: #d6f4ef;
-      }
-      .home .home__statsGrid .statCard:nth-child(1) .statCard__value {
-        color: #0d9488;
-      }
-      .home .home__statsGrid .statCard:nth-child(2) {
-        background: #ffe7df;
-      }
-      .home .home__statsGrid .statCard:nth-child(2) .statCard__value {
-        color: #ef6c4d;
-      }
-      .home .home__statsGrid .statCard:nth-child(3) {
-        background: #fff0c9;
-      }
-      .home .home__statsGrid .statCard:nth-child(3) .statCard__value {
-        color: #d99409;
-      }
-      .home .home__statsGrid .statCard:nth-child(4) {
-        background: #eae6ff;
-      }
-      .home .home__statsGrid .statCard:nth-child(4) .statCard__value {
-        color: #7c6cf0;
-      }
+      .home .home__statsGrid .statCard:nth-child(1) { background: #d6f4ef; }
+      .home .home__statsGrid .statCard:nth-child(1) .statCard__value { color: #0d9488; }
+      .home .home__statsGrid .statCard:nth-child(2) { background: #ffe7df; }
+      .home .home__statsGrid .statCard:nth-child(2) .statCard__value { color: #ef6c4d; }
+      .home .home__statsGrid .statCard:nth-child(3) { background: #fff0c9; }
+      .home .home__statsGrid .statCard:nth-child(3) .statCard__value { color: #d99409; }
+      .home .home__statsGrid .statCard:nth-child(4) { background: #eae6ff; }
+      .home .home__statsGrid .statCard:nth-child(4) .statCard__value { color: #7c6cf0; }
 
-      @media (max-width: 560px) {
-        .home .home__cards {
+      @media (max-width: 720px) {
+        .heroWrap {
           grid-template-columns: 1fr;
+          gap: 6px;
+          text-align: center;
         }
+        .heroText { text-align: center; }
+        .heroActions { justify-content: center; }
+        .heroArt { order: -1; }
+        .heroArt svg { width: min(280px, 70%); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .home__glyphs span {
-          animation: none;
-        }
-        .home .home__cards {
-          animation: none;
-        }
-        .home .home__greeting .ch {
-          opacity: 1;
-        }
-        .home .home__greeting .ch--on {
-          animation: none;
-        }
+        .heroArt svg { animation: none; }
+        .home .home__greeting .ch { opacity: 1; }
+        .home .home__greeting .ch--on { animation: none; }
       }
     </style>
   </head>
   <body class="homeBody">
     <main class="home">
       <div class="home__bg" aria-hidden="true">vela</div>
-      <div class="home__glyphs" aria-hidden="true">
-        <span style="top: 14%; right: 8%; font-size: 84px; --r: 8deg; animation-delay: 0s">+</span>
-        <span style="top: 24%; left: 10%; font-size: 64px; --r: -10deg; animation-delay: 1.2s">×</span>
-        <span style="top: 62%; right: 14%; font-size: 72px; --r: 7deg; animation-delay: 2.1s">÷</span>
-        <span style="top: 72%; left: 12%; font-size: 90px; --r: -6deg; animation-delay: 0.6s">=</span>
-        <span style="top: 44%; left: 4%; font-size: 56px; --r: 12deg; animation-delay: 1.8s">7</span>
-        <span style="top: 38%; right: 4%; font-size: 60px; --r: -8deg; animation-delay: 2.6s">★</span>
-        <span style="top: 84%; right: 40%; font-size: 50px; --r: 9deg; animation-delay: 1s">−</span>
-      </div>
 
       <header class="home__top">
         <div class="brand">
@@ -319,23 +234,66 @@
       </header>
 
       <section class="home__hero">
-        <h1 class="home__greeting">שלום<span id="greetName"></span>! 👋</h1>
-        <p class="home__subtitle">מה עושים היום?</p>
-
-        <div class="home__cards">
-          <a class="homeCard homeCard--primary" href="/practice">
-            <div class="homeCard__icon" aria-hidden="true">✏️</div>
-            <div>
-              <div class="homeCard__title">תרגול</div>
-              <div class="homeCard__desc">פותרים שאלות עם המורה החכם</div>
+        <div class="heroWrap">
+          <div class="heroText">
+            <h1 class="home__greeting">שלום<span id="greetName"></span>! 👋</h1>
+            <p class="home__subtitle">מוכנים לקצת קסם של מספרים?</p>
+            <div class="heroActions">
+              <a class="btnPrimary" href="/practice">
+                <span>בואו נתרגל</span>
+                <span class="btnPrimary__arrow" aria-hidden="true">←</span>
+              </a>
+              <button class="btnGhost" type="button" id="learnCard">למידה · <b>בקרוב</b></button>
             </div>
-          </a>
+          </div>
 
-          <button class="homeCard homeCard--soon" type="button" id="learnCard">
-            <div class="homeCard__icon" aria-hidden="true">📚</div>
-            <div class="homeCard__title">למידה</div>
-            <div class="homeCard__desc">בקרוב</div>
-          </button>
+          <div class="heroArt" aria-hidden="true">
+            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" role="img">
+              <title>מסקוט Vela</title>
+              <defs>
+                <linearGradient id="velaTeal" x1="0" y1="0" x2="0.4" y2="1">
+                  <stop offset="0" stop-color="#1ad3bd" />
+                  <stop offset="1" stop-color="#0d9488" />
+                </linearGradient>
+              </defs>
+
+              <!-- צל קרקע -->
+              <ellipse cx="220" cy="362" rx="120" ry="16" fill="rgba(13,60,53,0.10)" />
+
+              <!-- צורות מרחפות -->
+              <circle cx="70" cy="96" r="28" fill="#ff7a59" />
+              <text x="70" y="107" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="32" font-weight="700" fill="#fff">+</text>
+
+              <rect x="346" y="78" width="54" height="54" rx="16" fill="#f6b73c" transform="rotate(10 373 105)" />
+              <text x="373" y="115" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="30" font-weight="700" fill="#fff" transform="rotate(10 373 105)">7</text>
+
+              <polygon points="392,300 424,300 408,270" fill="#8b7cf0" />
+              <text x="58" y="312" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="34" font-weight="700" fill="rgba(13,148,136,0.55)">×</text>
+
+              <!-- כוכבים -->
+              <path d="M404 196 l5 12 13 1 -10 9 3 13 -11 -7 -11 7 3 -13 -10 -9 13 -1z" fill="#fbbf24" />
+              <path d="M44 196 l4 9 10 1 -8 7 3 10 -9 -6 -9 6 3 -10 -8 -7 10 -1z" fill="#fbbf24" opacity="0.85" />
+
+              <!-- גוף המסקוט -->
+              <rect x="128" y="120" width="184" height="184" rx="64" fill="url(#velaTeal)" />
+              <ellipse cx="178" cy="168" rx="42" ry="30" fill="#fff" opacity="0.14" />
+
+              <!-- לחיים -->
+              <circle cx="170" cy="236" r="13" fill="#ff8a5c" opacity="0.45" />
+              <circle cx="270" cy="236" r="13" fill="#ff8a5c" opacity="0.45" />
+
+              <!-- עיניים -->
+              <ellipse cx="186" cy="205" rx="15" ry="19" fill="#fff" />
+              <ellipse cx="254" cy="205" rx="15" ry="19" fill="#fff" />
+              <circle cx="189" cy="208" r="7.5" fill="#0f3b36" />
+              <circle cx="257" cy="208" r="7.5" fill="#0f3b36" />
+              <circle cx="192" cy="205" r="2.4" fill="#fff" />
+              <circle cx="260" cy="205" r="2.4" fill="#fff" />
+
+              <!-- חיוך -->
+              <path d="M196 250 Q220 276 244 250" fill="none" stroke="#0f3b36" stroke-width="7" stroke-linecap="round" />
+            </svg>
+          </div>
         </div>
       </section>
 
