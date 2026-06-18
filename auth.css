@@ -26,25 +26,30 @@ html {
   scroll-snap-type: y proximity;
 }
 
-/* ===== Hero — סצנת גלילה ===== */
-/* הסצנה גבוהה 200vh ומעניקה "מסלול"; ה-pin ננעץ ל-100vh הראשונים, ובמהלכם
-   התוכן עולה מלמטה למרכז והערפל ממלא את הרקע — ואז snap, ואז הפאנל הבא עולה. */
+/* ===== Hero — מסך 1→2 ===== */
+/* ה-hero הוא פאנל נעוץ (sticky) שנשאר במקום כל הזמן — כך הפאנל הבא עולה *מעליו*
+   (כמו שאר הערימה). ה-lpHeroSpacer שאחריו נותן 100vh "מסלול" לסקראב של מסך 1→2. */
 .lpHero {
-  position: relative;
-  height: 200vh;
-}
-.lpHero__pin {
   position: sticky;
   top: 0;
   z-index: 1;
   height: 100vh;
+  overflow: hidden;
+}
+.lpHero__pin {
+  position: relative;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 48px 20px;
-  overflow: hidden;
+}
+/* מסלול גלילה לסקראב מסך 1→2 (ריק); נקודת ה-snap של מסך 2 בראשו */
+.lpHeroSpacer {
+  height: 100vh;
+  scroll-snap-align: start;
 }
 /* בנק ערפל בתחתית — קיים כבר במסך הבית (נמוך) ועולה מהר בגלילה דרך --fogLine */
 .lpHero__veil {
@@ -85,24 +90,15 @@ html {
   align-items: center;
   will-change: transform;
 }
-/* נקודת ה-snap: סוף ביט ה-hero (תוכן ממורכז, ערפל מלא) */
-.lpHero__snap {
-  position: absolute;
-  top: 100vh;
-  left: 0;
-  right: 0;
-  height: 1px;
-  scroll-snap-align: start;
-}
-/* "vela" שחורה ענקית ברקע הגיבור, נמוגה בערפל כלפי מטה */
+/* "vela" שחורה ענקית — גדולה עד קצוות המסך, מעט נמוכה, נמוגה בערפל כלפי מטה */
 .lpHero__word {
   position: absolute;
-  top: 2%;
+  top: 7%;
   left: 50%;
   transform: translateX(-50%);
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
-  font-size: min(64vw, 80vh);
+  font-size: min(94vw, 90vh);
   line-height: 1;
   letter-spacing: -0.02em;
   color: #0c1320;
