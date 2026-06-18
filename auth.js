@@ -181,3 +181,32 @@
     }
   });
 })();
+
+/* ============ חשיפה בגלילה לסקשנים ============ */
+(function reveals() {
+  const reduce =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const els = Array.from(
+    document.querySelectorAll(".lpSection__title, .lpStep, .feature, .lpParents__panel")
+  );
+  if (!els.length || reduce || !("IntersectionObserver" in window)) return;
+  els.forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(28px)";
+    el.style.transition = "opacity .6s ease, transform .7s cubic-bezier(.22,1,.36,1)";
+  });
+  const io = new IntersectionObserver(
+    (ents) => {
+      ents.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = "1";
+          e.target.style.transform = "none";
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.14 }
+  );
+  els.forEach((el) => io.observe(el));
+  window.setTimeout(() => els.forEach((el) => { el.style.opacity = "1"; el.style.transform = "none"; }), 3000);
+})();

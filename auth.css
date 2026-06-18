@@ -23,43 +23,80 @@
 
 /* ===== Hero ===== */
 .lpHero {
-  min-height: 94vh;
+  min-height: 96vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   text-align: center;
-  padding: 40px 20px 30px;
+  padding: 40px 20px 8vh;
   position: relative;
+  overflow: hidden;
 }
+/* "vela" שחורה ענקית ברקע הגיבור, נמוגה בערפל כלפי מטה */
 .lpHero__word {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
-  font-size: clamp(80px, 21vw, 220px);
-  line-height: 0.95;
+  font-size: min(64vw, 80vh);
+  line-height: 1;
   letter-spacing: -0.02em;
-  color: #10202f;
-  margin: 0 0 6px;
-  padding-top: 0.08em; /* אוויר קטן למעלה כדי שראש האותיות לא ייחתך */
+  color: #0c1320;
+  margin: 0;
   user-select: none;
-  /* ערפל עדין מאוד בקצה התחתון — נוח לעין */
-  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 34%, transparent 74%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 34%, transparent 74%);
 }
+/* "ברוכים הבאים" עולה מלמטה, מעל ה-vela */
 .lpHero__title {
+  position: relative;
+  z-index: 1;
   font-family: "Fredoka", "Assistant", sans-serif;
   font-weight: 700;
-  font-size: clamp(24px, 4.4vw, 40px);
-  line-height: 1.12;
-  margin: 0 0 14px;
-  color: #112a2a;
+  font-size: clamp(34px, 6vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: #0f3b36;
+  opacity: 0;
+  animation: heroRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(46px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 .lpHero__sub {
+  position: relative;
+  z-index: 1;
   font-size: clamp(15px, 2.2vw, 18px);
   line-height: 1.65;
   color: #46615f;
   max-width: 520px;
-  margin: 0 auto 26px;
+  margin: 0 auto 24px;
+  opacity: 0;
+  animation: heroRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+.lpHero .authBox {
+  position: relative;
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lpHero__title,
+  .lpHero__sub {
+    opacity: 1;
+    animation: none;
+  }
 }
 
 /* ===== כרטיס האימות ===== */
@@ -449,5 +486,63 @@
   }
   .authTabs__indicator {
     transition: opacity 0.2s ease;
+  }
+}
+
+/* ===== אזור הורים ===== */
+.lpParents {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+.lpParents__panel {
+  background: linear-gradient(150deg, #0f766e, #0d9488);
+  color: #fff;
+  border-radius: 28px;
+  padding: 34px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: 0 20px 44px rgba(13, 148, 136, 0.28);
+}
+.lpParents__text h3 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 26px;
+  margin: 0 0 10px;
+}
+.lpParents__lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.lpParents__lines li {
+  font-size: 15.5px;
+  color: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lpParents__lines li::before {
+  content: "✓";
+  font-weight: 700;
+  color: #c8f5ec;
+}
+.lpParents__note {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f766e;
+  background: #fff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .lpParents__panel {
+    justify-content: center;
+    text-align: center;
   }
 }
