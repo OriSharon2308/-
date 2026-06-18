@@ -72,7 +72,6 @@ html {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  color: var(--mathColor, #a4aaae);
   -webkit-mask-image: linear-gradient(to top, #000 0%, #000 var(--mathReveal, 30%), transparent calc(var(--mathReveal, 30%) + 14%));
   mask-image: linear-gradient(to top, #000 0%, #000 var(--mathReveal, 30%), transparent calc(var(--mathReveal, 30%) + 14%));
   will-change: color, mask-image;
@@ -84,6 +83,12 @@ html {
   font-weight: 600;
   line-height: 1;
   user-select: none;
+  /* גוון מתכתי כמו ה"3": מבהיר למעלה → כהה למטה (נשלט מהגלילה דרך --mathTop/--mathBot) */
+  background-image: linear-gradient(to bottom, var(--mathTop, #e0e4e6) 0%, var(--mathBot, #969da1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 /* "ברוכים הבאים" + תת-כותרת — מופיעים (opacity) במרכז מסך 2, מעל הסרגל. לא עלייה ממש — דהייה פנימה */
 .lpHero__welcome {

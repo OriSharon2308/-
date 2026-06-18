@@ -1,3 +1,8 @@
+/* ============ ריפרש מתחיל תמיד ממסך הפתיחה (ביטול שחזור גלילה של הדפדפן) ============ */
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.scrollTo(0, 0);
+window.addEventListener("load", () => window.scrollTo(0, 0));
+
 /* ============ דף נחיתה — טוגל מאוזן (כניסה/הרשמה), טופס נפתח בלחיצה ============ */
 (function () {
   const tabLogin = document.getElementById("tabLogin");
@@ -242,7 +247,8 @@
     word.style.visibility = "hidden";
     if (math) {
       math.style.setProperty("--mathReveal", "126%");
-      math.style.setProperty("--mathColor", "rgb(208, 213, 215)");
+      math.style.setProperty("--mathTop", "rgb(226, 230, 232)");
+      math.style.setProperty("--mathBot", "rgb(200, 205, 207)");
     }
     return;
   }
@@ -278,8 +284,9 @@
     if (math) {
       math.style.setProperty("--mathReveal", Math.min(126, 30 + p * 100).toFixed(1) + "%");
       const l = (from, to) => Math.round(from + (to - from) * p);
-      // צבע ה"3" המכסיף: מסך פתיחה מעט כהה יותר מה-3 → מסך הרשמה אפור בהיר (לא לבן)
-      math.style.setProperty("--mathColor", `rgb(${l(164, 208)}, ${l(170, 213)}, ${l(174, 215)})`);
+      // גרדיאנט מתכתי כמו ה"3": למעלה בהיר (קבוע), למטה מתבהר מכהה(מסך 1)→אפור בהיר(מסך 2)
+      math.style.setProperty("--mathTop", `rgb(${l(224, 226)}, ${l(228, 230)}, ${l(230, 232)})`);
+      math.style.setProperty("--mathBot", `rgb(${l(150, 200)}, ${l(157, 205)}, ${l(161, 207)})`);
     }
   }
   window.addEventListener(
