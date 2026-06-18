@@ -315,3 +315,35 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   window.addEventListener("resize", update, { passive: true });
   update();
 })();
+
+/* ============ פאנל "מה מקבלים" נכנס מלמעלה (במקום מלמטה) ============
+   במקום לעלות מתחתית המסך, הוא יורד מהקצה העליון ומכסה את הפאנל שמתחתיו.
+   נשען על offsetTop (לא מושפע מה-transform) כדי לחשב את התקדמות הכניסה. */
+(function panelFromTop() {
+  const panel = document.querySelector(".lpSection--alt");
+  if (!panel) return;
+  const reduce =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) return; // ללא תנועה — מתנהג כרגיל (sticky)
+
+  let ticking = false;
+  function update() {
+    ticking = false;
+    // מיקום ה"זרימה" של הפאנל ביחס לתצוגה (יציב, ללא תלות ב-transform)
+    const naturalTop = panel.offsetTop - window.scrollY;
+    // מראה ויזואלי = -naturalTop (מראָה): מתחיל מעל המסך ויורד עד 0; אחרי ההצמדה = 0
+    panel.style.transform = `translateY(${(-2 * Math.max(0, naturalTop)).toFixed(1)}px)`;
+  }
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", update, { passive: true });
+  update();
+})();

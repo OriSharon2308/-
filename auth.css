@@ -503,11 +503,12 @@ html {
   background: #d6e8e3;
   text-align: center;
 }
-/* "מה מקבלים" — הפאנל הבהיר, עולה מעל הכהה כשגוללים */
+/* "מה מקבלים" — הפאנל הבהיר; נכנס מלמעלה (translateY מבוקר-גלילה ב-JS) */
 .lpSection--alt {
   z-index: 3;
   background: #ffffff;
   border: 0;
+  will-change: transform;
 }
 .lpSection__title {
   font-family: "Fredoka", "Assistant", sans-serif;
