@@ -28,25 +28,65 @@
     errorBox.textContent = "";
   }
 
-  // בלחיצה על אחד הכפתורים — נפתח רק הטופס שלו (השני נסגר)
+  const authBox = document.querySelector(".authBox");
+
+  // מריץ שינוי תוכן עם אנימציית גובה חלקה של הריבוע הלבן (התרחבות/התכווצות)
+  function transitionBox(apply) {
+    if (!authBox) {
+      apply();
+      return;
+    }
+    const reduce =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      apply();
+      authBox.style.height = "";
+      return;
+    }
+    const start = authBox.offsetHeight;
+    apply();
+    const end = authBox.offsetHeight;
+    if (start === end) {
+      authBox.style.height = "";
+      return;
+    }
+    authBox.style.height = `${start}px`;
+    void authBox.offsetHeight; // reflow
+    authBox.style.height = `${end}px`;
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      authBox.style.height = ""; // חזרה ל-auto
+      authBox.removeEventListener("transitionend", onEnd);
+    };
+    const onEnd = (e) => {
+      if (e.target === authBox && e.propertyName === "height") finish();
+    };
+    authBox.addEventListener("transitionend", onEnd);
+    window.setTimeout(finish, 520);
+  }
+
+  // בלחיצה על אחד הכפתורים — נפתח רק הטופס שלו (השני נסגר), עם מעבר גובה חלק
   function selectTab(which) {
     const login = which === "login";
     const showForm = login ? loginForm : registerForm;
     const hideForm = login ? registerForm : loginForm;
-    clearError();
-    tabLogin.classList.toggle("authTab--active", login);
-    tabRegister.classList.toggle("authTab--active", !login);
-    if (tabIndicator) tabIndicator.style.opacity = "1";
-    moveIndicator(login ? tabLogin : tabRegister, false);
+    transitionBox(() => {
+      clearError();
+      if (authBox) authBox.classList.remove("authBox--closed");
+      tabLogin.classList.toggle("authTab--active", login);
+      tabRegister.classList.toggle("authTab--active", !login);
+      if (tabIndicator) tabIndicator.style.opacity = "1";
+      moveIndicator(login ? tabLogin : tabRegister, false);
 
-    hideForm.hidden = true;
-    hideForm.classList.remove("authForm--in");
-    if (showForm.hidden) {
+      hideForm.hidden = true;
+      hideForm.classList.remove("authForm--in");
       showForm.hidden = false;
       showForm.classList.remove("authForm--in");
       void showForm.offsetWidth;
       showForm.classList.add("authForm--in");
-    }
+    });
   }
 
   tabLogin.addEventListener("click", () => selectTab("login"));
