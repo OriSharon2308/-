@@ -226,6 +226,7 @@
   const welcome = document.getElementById("heroWelcome");
   const bar = document.getElementById("heroBar");
   const hint = document.querySelector(".lpHero__bar .lpScrollHint");
+  const math = document.getElementById("heroMath");
   if (!word || !bar) return;
   const reduce =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -233,8 +234,16 @@
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
   if (reduce) {
+    // ללא תנועה: מצב סטטי של מסך 2 (ערפל מלא, vela מוסתרת, ברכה גלויה, סימבולים בהירים מלאים)
     if (welcome) welcome.style.opacity = "1";
     bar.style.transform = "none";
+    if (veil) veil.style.setProperty("--fogLine", "126%");
+    word.style.opacity = "0";
+    word.style.visibility = "hidden";
+    if (math) {
+      math.style.setProperty("--mathReveal", "126%");
+      math.style.setProperty("--mathColor", "rgb(250, 252, 251)");
+    }
     return;
   }
 
@@ -264,6 +273,13 @@
 
     // הרמז "כדאי לגלול" נעלם ברגע שמתחילים לגלול
     if (hint) hint.style.opacity = (1 - clamp(p / 0.28, 0, 1)).toFixed(3);
+
+    // שדה הסימבולים: מתגלה מלמטה כלפי מעלה (מתרבה/ממלא) + צבע משחור → בהיר מהרקע
+    if (math) {
+      math.style.setProperty("--mathReveal", Math.min(126, 30 + p * 100).toFixed(1) + "%");
+      const l = (from, to) => Math.round(from + (to - from) * p);
+      math.style.setProperty("--mathColor", `rgb(${l(12, 250)}, ${l(19, 252)}, ${l(32, 251)})`);
+    }
   }
   window.addEventListener(
     "scroll",

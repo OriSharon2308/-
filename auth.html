@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./auth.css?v=27" />
+    <link rel="stylesheet" href="./auth.css?v=28" />
   </head>
   <body class="authBody">
     <main class="lp">
@@ -16,6 +16,35 @@
         <div class="lpHero__pin">
         <div class="lpHero__word" aria-hidden="true">vela</div>
         <div class="lpHero__veil" aria-hidden="true"></div>
+        <!-- שדה סימבולי חשבון מפוזר: שחור במסך 1 (מתגלה מלמטה) → בהיר וממלא במסך 2 -->
+        <div class="lpHero__math" id="heroMath" aria-hidden="true">
+          <span class="mathSym" style="top:8%;left:12%;font-size:42px;--r:-12deg">+</span>
+          <span class="mathSym" style="top:16%;left:16%;font-size:32px;--r:8deg">9</span>
+          <span class="mathSym" style="top:6%;left:46%;font-size:30px;--r:-6deg">=</span>
+          <span class="mathSym" style="top:14%;left:78%;font-size:34px;--r:10deg">×</span>
+          <span class="mathSym" style="top:18%;left:62%;font-size:48px;--r:-10deg">√</span>
+          <span class="mathSym" style="top:22%;left:30%;font-size:38px;--r:8deg">÷</span>
+          <span class="mathSym" style="top:28%;left:88%;font-size:40px;--r:14deg">7</span>
+          <span class="mathSym" style="top:30%;left:52%;font-size:34px;--r:6deg">π</span>
+          <span class="mathSym" style="top:33%;left:8%;font-size:36px;--r:-8deg">−</span>
+          <span class="mathSym" style="top:38%;left:72%;font-size:30px;--r:-14deg">½</span>
+          <span class="mathSym" style="top:40%;left:48%;font-size:30px;--r:-6deg">≈</span>
+          <span class="mathSym" style="top:44%;left:22%;font-size:40px;--r:10deg">%</span>
+          <span class="mathSym" style="top:48%;left:90%;font-size:32px;--r:-6deg">+</span>
+          <span class="mathSym" style="top:52%;left:40%;font-size:46px;--r:8deg">∞</span>
+          <span class="mathSym" style="top:56%;left:14%;font-size:34px;--r:-12deg">×</span>
+          <span class="mathSym" style="top:60%;left:66%;font-size:44px;--r:6deg">3</span>
+          <span class="mathSym" style="top:64%;left:84%;font-size:30px;--r:-8deg">=</span>
+          <span class="mathSym" style="top:68%;left:32%;font-size:28px;--r:12deg">²</span>
+          <span class="mathSym" style="top:72%;left:54%;font-size:48px;--r:-10deg">√</span>
+          <span class="mathSym" style="top:76%;left:10%;font-size:36px;--r:8deg">÷</span>
+          <span class="mathSym" style="top:80%;left:78%;font-size:40px;--r:-6deg">8</span>
+          <span class="mathSym" style="top:84%;left:44%;font-size:34px;--r:10deg">−</span>
+          <span class="mathSym" style="top:88%;left:24%;font-size:30px;--r:-12deg">+</span>
+          <span class="mathSym" style="top:90%;left:64%;font-size:40px;--r:6deg">5</span>
+          <span class="mathSym" style="top:94%;left:88%;font-size:30px;--r:-8deg">%</span>
+          <span class="mathSym" style="top:92%;left:8%;font-size:34px;--r:12deg">×</span>
+        </div>
         <div class="lpHero__welcome" id="heroWelcome">
         <h1 class="lpHero__title">ברוכים הבאים!</h1>
         <p class="lpHero__sub">
@@ -198,6 +227,6 @@
       <footer class="lpFoot">Vela · פלטפורמת לימוד מתמטיקה</footer>
     </main>
 
-    <script src="./auth.js?v=23" defer></script>
+    <script src="./auth.js?v=24" defer></script>
   </body>
 </html>
