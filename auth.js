@@ -232,6 +232,7 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   const bar = document.getElementById("heroBar");
   const hint = document.querySelector(".lpHero__bar .lpScrollHint");
   const math = document.getElementById("heroMath");
+  const lateSyms = math ? math.querySelectorAll(".mathSym--late") : [];
   if (!word || !bar) return;
   const reduce =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -253,6 +254,7 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
       math.style.setProperty("--mathTop", "rgb(226, 230, 232)");
       math.style.setProperty("--mathBot", "rgb(200, 205, 207)");
     }
+    for (let i = 0; i < lateSyms.length; i++) lateSyms[i].style.opacity = "1";
     return;
   }
 
@@ -289,12 +291,16 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
 
     // שדה הסימבולים: מתגלה מלמטה כלפי מעלה (מתרבה/ממלא) + צבע משחור → בהיר מהרקע
     if (math) {
-      math.style.setProperty("--mathReveal", Math.min(126, -16 + p * 142).toFixed(1) + "%");
+      math.style.setProperty("--mathReveal", Math.min(126, 30 + p * 100).toFixed(1) + "%");
       const l = (from, to) => Math.round(from + (to - from) * p);
       // גרדיאנט מתכתי כמו ה"3": למעלה בהיר (קבוע), למטה מתבהר מכהה(מסך 1)→אפור בהיר(מסך 2)
       math.style.setProperty("--mathTop", `rgb(${l(224, 226)}, ${l(228, 230)}, ${l(230, 232)})`);
       math.style.setProperty("--mathBot", `rgb(${l(150, 200)}, ${l(157, 205)}, ${l(161, 207)})`);
     }
+
+    // שלושת הסימבולים שחפפו לטקסט (3/=/²): מוסתרים במסך 1, דוהים פנימה בגלילה
+    const lateOp = clamp((p - 0.25) / 0.35, 0, 1).toFixed(3);
+    for (let i = 0; i < lateSyms.length; i++) lateSyms[i].style.opacity = lateOp;
   }
   window.addEventListener(
     "scroll",
