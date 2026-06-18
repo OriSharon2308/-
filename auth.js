@@ -87,15 +87,12 @@
       void showForm.offsetWidth;
       showForm.classList.add("authForm--in");
     });
-    // גלילה לעמדה אחידה: ראש הכרטיס תמיד באותו מיקום (לא תלוי בגובה הטופס),
-    // כך שמעבר כניסה<->הרשמה לא מזיז מעלה/מטה.
+    // ה-hero נעוץ וממורכז — הטופס כבר ממורכז וגלוי. נוודא שאנחנו בראש (אם גללו מעט)
+    // כדי לראות את כל ה-hero, בלי לדחוף את הפאנל הבא מעל הטופס.
     const reduce =
       window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (authBox && window.scrollTo) {
-      window.setTimeout(() => {
-        const top = authBox.getBoundingClientRect().top + window.scrollY - 24;
-        window.scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
-      }, 60);
+    if (window.scrollY > 4 && window.scrollTo) {
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
     }
   }
 
