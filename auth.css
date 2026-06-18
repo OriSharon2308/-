@@ -475,19 +475,6 @@ html {
   color: #0f766e;
   animation: bob 1.8s ease-in-out infinite;
 }
-/* טקסט קטן מעל האופציות, רק במסך הפתיחה (נמוג עם הערפל בגלילה) */
-.lpHero__tagline {
-  position: absolute;
-  bottom: calc(100% + 12px);
-  left: 0;
-  right: 0;
-  margin: 0;
-  text-align: center;
-  font-size: clamp(15px, 2.4vw, 18px);
-  font-weight: 500;
-  color: #46615f;
-  will-change: opacity;
-}
 @keyframes bob {
   50% {
     transform: translateY(6px);
