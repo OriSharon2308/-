@@ -1888,6 +1888,9 @@ async function main() {
       showProblemVisual(u, p);
       applyAnswerMode(p);
       renderDifficulty(p.difficulty);
+    } else {
+      // נושא שכבר נפתח אך בלי שאלה טעונה — טוענים שאלה מהמאגר כדי שהמעבר תמיד יציג תוכן
+      loadBankProblem(topic, true);
     }
     renderStats(u, topic);
     ensureMeter(topic);
