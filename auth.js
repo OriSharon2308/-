@@ -87,6 +87,15 @@
       void showForm.offsetWidth;
       showForm.classList.add("authForm--in");
     });
+    // התצוגה גוללת אל הטופס כך שרואים את כולו (במקום לדחוף את הכותרת מעלה)
+    const reduce =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (authBox && authBox.scrollIntoView) {
+      window.setTimeout(
+        () => authBox.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" }),
+        140
+      );
+    }
   }
 
   tabLogin.addEventListener("click", () => selectTab("login"));

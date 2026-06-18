@@ -27,11 +27,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  padding: 18vh 20px 6vh;
+  padding: 42vh 20px 8vh;
   position: relative;
-  overflow: hidden;
 }
 /* "vela" שחורה ענקית ברקע הגיבור, נמוגה בערפל כלפי מטה */
 .lpHero__word {
@@ -52,23 +51,19 @@
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 34%, transparent 74%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 34%, transparent 74%);
 }
-/* "ברוכים הבאים" — לבן עם זוהר, מעוגן קבוע מעל ה-vela השחורה (לא זז כשהטופס גדל) */
+/* "ברוכים הבאים" — כהה, נמוך באזור הבהיר. בלחיצה הטופס יורד והתצוגה גוללת אליו (לא דוחף מעלה) */
 .lpHero__title {
-  position: absolute;
-  top: clamp(56px, 13vh, 150px);
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 1;
   font-family: "Fredoka", "Assistant", sans-serif;
   font-weight: 700;
-  font-size: clamp(42px, 7.5vw, 82px);
-  line-height: 1.05;
+  font-size: clamp(38px, 6.5vw, 70px);
+  line-height: 1.08;
   letter-spacing: -0.02em;
-  margin: 0;
-  color: #fff;
-  text-shadow: 0 2px 36px rgba(8, 16, 28, 0.55), 0 1px 4px rgba(8, 16, 28, 0.5);
+  margin: 0 0 12px;
+  color: #0f3b36;
   opacity: 0;
-  animation: heroGlow 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  animation: heroGlow 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 @keyframes heroGlow {
   from {
