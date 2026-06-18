@@ -289,7 +289,7 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
 
     // שדה הסימבולים: מתגלה מלמטה כלפי מעלה (מתרבה/ממלא) + צבע משחור → בהיר מהרקע
     if (math) {
-      math.style.setProperty("--mathReveal", Math.min(126, 30 + p * 100).toFixed(1) + "%");
+      math.style.setProperty("--mathReveal", Math.min(126, -16 + p * 142).toFixed(1) + "%");
       const l = (from, to) => Math.round(from + (to - from) * p);
       // גרדיאנט מתכתי כמו ה"3": למעלה בהיר (קבוע), למטה מתבהר מכהה(מסך 1)→אפור בהיר(מסך 2)
       math.style.setProperty("--mathTop", `rgb(${l(224, 226)}, ${l(228, 230)}, ${l(230, 232)})`);
