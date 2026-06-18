@@ -34,6 +34,7 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   }
 
   const authBox = document.querySelector(".authBox");
+  let scrolledAway = false; // האם גללו מטה מאז שנפתח טופס — כדי לסגור בחזרה למעלה
 
   // מריץ שינוי תוכן עם אנימציית גובה חלקה של הריבוע הלבן (התרחבות/התכווצות)
   function transitionBox(apply) {
@@ -77,6 +78,7 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
     const login = which === "login";
     const showForm = login ? loginForm : registerForm;
     const hideForm = login ? registerForm : loginForm;
+    scrolledAway = false; // פתיחה — איפוס; הגלילה האוטומטית למסך 2 לא תסגור מיד
     transitionBox(() => {
       clearError();
       if (authBox) authBox.classList.remove("authBox--closed");
@@ -101,8 +103,44 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
     }
   }
 
+  // סגירת הטופס בחזרה לשני הכפתורים (כשחוזרים עד למעלה למסך 1)
+  function closeTabs() {
+    if (!authBox || authBox.classList.contains("authBox--closed")) return;
+    transitionBox(() => {
+      clearError();
+      authBox.classList.add("authBox--closed");
+      tabLogin.classList.remove("authTab--active");
+      tabRegister.classList.remove("authTab--active");
+      if (tabIndicator) tabIndicator.style.opacity = "0";
+      loginForm.hidden = true;
+      loginForm.classList.remove("authForm--in");
+      registerForm.hidden = true;
+      registerForm.classList.remove("authForm--in");
+    });
+  }
+
   tabLogin.addEventListener("click", () => selectTab("login"));
   tabRegister.addEventListener("click", () => selectTab("register"));
+
+  // חזרה עד למעלה (מסך 1) → סגירת הטופס בחזרה לשני הכפתורים שמחכים ללחיצה
+  let closeTick = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (closeTick) return;
+      closeTick = true;
+      window.requestAnimationFrame(() => {
+        closeTick = false;
+        const vh = window.innerHeight || 1;
+        if (window.scrollY > vh * 0.5) scrolledAway = true;
+        if (scrolledAway && window.scrollY < vh * 0.06) {
+          scrolledAway = false;
+          closeTabs();
+        }
+      });
+    },
+    { passive: true }
+  );
 
   window.addEventListener("resize", () => {
     const active = document.querySelector(".authTab--active");
