@@ -87,12 +87,12 @@
       void showForm.offsetWidth;
       showForm.classList.add("authForm--in");
     });
-    // ה-hero נעוץ וממורכז — הטופס כבר ממורכז וגלוי. נוודא שאנחנו בראש (אם גללו מעט)
-    // כדי לראות את כל ה-hero, בלי לדחוף את הפאנל הבא מעל הטופס.
+    // פתיחת טופס → גלילה לנקודת ה-snap של ה-hero (התוכן ממורכז + הערפל מלא),
+    // כך שהטופס מוצג במלואו במרכז ולא נדחף ע"י הפאנל הבא.
     const reduce =
       window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (window.scrollY > 4 && window.scrollTo) {
-      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    if (window.scrollTo) {
+      window.scrollTo({ top: window.innerHeight, behavior: reduce ? "auto" : "smooth" });
     }
   }
 
@@ -218,26 +218,37 @@
   window.setTimeout(() => els.forEach((el) => { el.style.opacity = "1"; el.style.transform = "none"; }), 3000);
 })();
 
-/* ============ אפקט גלילה: הערפל עולה וה-vela מתמוססת ועולה ============ */
-(function heroFog() {
+/* ============ סצנת גלילה ל-hero: התוכן עולה מלמטה למרכז + הערפל ממלא את הרקע ============ */
+(function heroScene() {
   const word = document.querySelector(".lpHero__word");
-  if (!word) return;
+  const veil = document.querySelector(".lpHero__veil");
+  const content = document.getElementById("heroContent");
+  if (!word || !content) return;
   const reduce =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) return;
+
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
   let ticking = false;
   function update() {
     ticking = false;
-    const span = Math.max(1, window.innerHeight * 0.7);
-    const p = Math.min(1, Math.max(0, window.scrollY / span)); // 0 בראש → 1 אחרי ~0.7 מסך
-    // גבולות הערפל גבוהים יותר (התחתית של vela מוסתרת) ועולים בגלילה עד שנעלם
-    const a = 26 - p * 72; // 26% → -46%
-    const b = 62 - p * 66; // 62% → -4%
+    const vh = window.innerHeight || 1;
+    const p = clamp(window.scrollY / vh, 0, 1); // ביט ה-hero לאורך מסך אחד
+
+    // שלב 1 (0→0.62): התוכן עולה מהתחתית למרכז
+    const riseP = clamp(p / 0.62, 0, 1);
+    const startLow = 0.42 * vh; // מתחיל ~42% מתחת למרכז (קרוב לתחתית)
+    if (!reduce) content.style.transform = `translateY(${((1 - riseP) * startLow).toFixed(1)}px)`;
+
+    // הערפל עולה לאורך כל הביט; מסכת ה-vela עולה והאותיות מתמוססות
+    const a = 26 - p * 96; // 26% → -70%
+    const b = 62 - p * 70; // 62% → -8%
     word.style.setProperty("--fogA", a.toFixed(1) + "%");
     word.style.setProperty("--fogB", b.toFixed(1) + "%");
-    word.style.opacity = Math.max(0, 1 - p * 1.05).toFixed(3); // נעלם לגמרי בקצה (נשאר במקום)
-    // אחרי ~מסך מלא ה-vela נעלמת לגמרי → מעבר לגלילת אתר רגילה (פאנלים נערמים)
+
+    // שלב 2 (0.55→1): הערפל "ממלא" את הרקע (הצעיף נכנס) וה-vela דוהה לגמרי
+    if (veil) veil.style.opacity = clamp((p - 0.55) / 0.45, 0, 1).toFixed(3);
+    word.style.opacity = (1 - clamp((p - 0.4) / 0.6, 0, 1)).toFixed(3);
     word.style.visibility = p >= 1 ? "hidden" : "visible";
   }
   window.addEventListener(

@@ -21,24 +21,66 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* ===== Hero ===== */
-/* ה-hero הוא הפאנל התחתון בערימה: נעוץ (sticky) וממורכז — "ברוכים הבאים" + הטופס
-   נשארים במרכז, והפאנלים הבאים עולים מעליהם בזה אחר זה */
+/* גלילה עם snap: חופשית, ובעצירה ה"פוקוס" ננעל (לא גבוה/נמוך מדי) */
+html {
+  scroll-snap-type: y proximity;
+}
+
+/* ===== Hero — סצנת גלילה ===== */
+/* הסצנה גבוהה 200vh ומעניקה "מסלול"; ה-pin ננעץ ל-100vh הראשונים, ובמהלכם
+   התוכן עולה מלמטה למרכז והערפל ממלא את הרקע — ואז snap, ואז הפאנל הבא עולה. */
 .lpHero {
+  position: relative;
+  height: 200vh;
+}
+.lpHero__pin {
   position: sticky;
   top: 0;
   z-index: 1;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 48px 20px;
+  overflow: hidden;
+}
+/* צעיף ערפל — מתמלא ככל שהביט מתקדם עד שכל הרקע "מלא" */
+.lpHero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(120% 82% at 50% 122%, rgba(241, 247, 246, 0.97), rgba(241, 247, 246, 0) 70%),
+    linear-gradient(to top, rgba(241, 247, 246, 0.98), rgba(241, 247, 246, 0) 78%);
+  will-change: opacity;
+}
+/* תוכן ה-hero (ברכה + טופס) — עולה מלמטה למרכז דרך translateY מהגלילה */
+.lpHero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform;
+}
+/* נקודת ה-snap: סוף ביט ה-hero (תוכן ממורכז, ערפל מלא) */
+.lpHero__snap {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  right: 0;
+  height: 1px;
+  scroll-snap-align: start;
 }
 /* "vela" שחורה ענקית ברקע הגיבור, נמוגה בערפל כלפי מטה */
 .lpHero__word {
-  position: fixed;
+  position: absolute;
   top: 2%;
   left: 50%;
   transform: translateX(-50%);
@@ -405,6 +447,7 @@
   position: sticky;
   top: 0;
   min-height: 100vh;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -495,6 +538,7 @@
 .lpFoot {
   position: relative;
   z-index: 5;
+  scroll-snap-align: start;
   background: #f1f7f6;
   border-radius: 30px 30px 0 0;
   box-shadow: 0 -20px 55px rgba(13, 60, 53, 0.16);

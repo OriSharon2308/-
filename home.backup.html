@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מערכת לימוד – בית</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Gveret+Levin+Alef+Alef+Alef&family=Amatic+SC:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      @font-face {
+        font-family: "Dana Yad";
+        src:
+          url("/fonts/DanaYadAlefAlefAlef-Normal.woff") format("woff"),
+          url("/fonts/DanaYadAlefAlefAlef-Normal.otf") format("opentype");
+        font-weight: normal;
+        font-display: swap;
+      }
+      /* הברכה במסך הבית — כתב יד (Dana Yad), נכתבת אות-אחר-אות */
+      .home__greeting {
+        font-family: "Dana Yad", cursive;
+        font-size: clamp(52px, 9vw, 104px);
+        line-height: 1.15;
+        /* אין קובץ בולד לפונט — מעבים אותו באופן מלאכותי */
+        font-weight: 700;
+        -webkit-text-stroke: 0.6px currentColor;
+      }
+      .home__greeting .ch {
+        opacity: 0;
+        display: inline-block;
+        white-space: pre;
+      }
+      .home__greeting .ch--on {
+        animation: handWrite 0.22s ease-out both;
+      }
+      @keyframes handWrite {
+        from {
+          opacity: 0;
+          transform: translateY(6px) scale(0.85);
+          filter: blur(1.5px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: blur(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .home__greeting .ch {
+          opacity: 1;
+        }
+        .home__greeting .ch--on {
+          animation: none;
+        }
+      }
+
+      /* ===== עיצוב מחדש — מסך הבית של התלמיד: כיפי, צבעוני, נוח. אותו מבנה וכפתורים ===== */
+      /* כתמי צבע רכים ומשחקיים ברקע (מאחורי התוכן) */
+      .homeBody::before,
+      .homeBody::after {
+        content: "";
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.42;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .homeBody::before {
+        width: 44vw;
+        height: 44vw;
+        top: -12vw;
+        right: -8vw;
+        background: radial-gradient(circle, #ffd9a8, transparent 70%);
+      }
+      .homeBody::after {
+        width: 48vw;
+        height: 48vw;
+        bottom: -16vw;
+        left: -10vw;
+        background: radial-gradient(circle, #bfeede, transparent 70%);
+      }
+
+      /* סמל המותג — בצבע, מעוגל */
+      .home .brand__mark {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: linear-gradient(140deg, #16c4b2, #0d9488);
+        color: #fff;
+        box-shadow: 0 6px 16px rgba(13, 148, 136, 0.3);
+      }
+      .home .brand__title {
+        color: #0f3b36;
+      }
+
+      /* ברכה + תת-כותרת */
+      .home .home__greeting {
+        color: #0f3b36;
+      }
+      .home .home__subtitle {
+        font-weight: 600;
+        color: #4a6b66;
+      }
+
+      /* כרטיסי הפעולה — גדולים, צבעוניים, מזמינים */
+      .home .home__cards {
+        grid-template-columns: repeat(2, minmax(0, 250px));
+        gap: 22px;
+        animation: cardsIn 0.5s ease both;
+      }
+      @keyframes cardsIn {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+      }
+      .home .homeCard {
+        padding: 34px 24px;
+        border: none;
+        border-radius: 26px;
+        gap: 12px;
+      }
+      .home .homeCard__icon {
+        width: 78px;
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 40px;
+      }
+      .home .homeCard__title {
+        font-size: 25px;
+        font-weight: 700;
+      }
+      .home .homeCard__desc {
+        font-size: 14.5px;
+      }
+      .home .homeCard:hover {
+        transform: translateY(-6px) scale(1.03) rotate(-0.6deg);
+      }
+
+      /* תרגול — כרטיס טורקיז מלא */
+      .home .homeCard--primary {
+        background: linear-gradient(150deg, #16c8b5, #0d9488);
+        color: #fff;
+        box-shadow: 0 16px 34px rgba(13, 148, 136, 0.34);
+      }
+      .home .homeCard--primary .homeCard__icon {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .home .homeCard--primary .homeCard__desc {
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      /* למידה (בקרוב) — כרטיס חמים ורך */
+      .home .homeCard--soon {
+        background: #fff3e6;
+        color: #8a4b1f;
+        box-shadow: 0 10px 26px rgba(180, 120, 60, 0.16);
+      }
+      .home .homeCard--soon .homeCard__icon {
+        background: #ffe2c2;
+      }
+      .home .homeCard--soon .homeCard__desc {
+        color: #c2410c;
+        font-weight: 700;
+        background: #ffe0c0;
+        padding: 3px 14px;
+        border-radius: 999px;
+      }
+
+      /* כרטיסי סטטיסטיקה — צבעוניים ורכים, כל אחד בגוון משלו */
+      .home .home__statsTitle {
+        font-weight: 700;
+        color: #0f3b36;
+      }
+      .home .statCard {
+        border: none;
+        border-radius: 20px;
+        padding: 20px 12px;
+        box-shadow: 0 6px 16px rgba(2, 6, 23, 0.05);
+      }
+      .home .statCard__value {
+        font-size: 30px;
+      }
+      .home .statCard__label {
+        color: #5a6b68;
+      }
+      .home .home__statsGrid .statCard:nth-child(1) {
+        background: #d8f5f0;
+      }
+      .home .home__statsGrid .statCard:nth-child(1) .statCard__value {
+        color: #0d9488;
+      }
+      .home .home__statsGrid .statCard:nth-child(2) {
+        background: #ffe7df;
+      }
+      .home .home__statsGrid .statCard:nth-child(2) .statCard__value {
+        color: #ef6c4d;
+      }
+      .home .home__statsGrid .statCard:nth-child(3) {
+        background: #fff1cc;
+      }
+      .home .home__statsGrid .statCard:nth-child(3) .statCard__value {
+        color: #d99409;
+      }
+      .home .home__statsGrid .statCard:nth-child(4) {
+        background: #eae6ff;
+      }
+      .home .home__statsGrid .statCard:nth-child(4) .statCard__value {
+        color: #7c6cf0;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .home .home__cards {
+          animation: none;
+        }
+        .homeBody::before,
+        .homeBody::after {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="homeBody">
+    <main class="home">
+      <div class="home__bg" aria-hidden="true">vela</div>
+      <header class="home__top">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true">∑</div>
+          <div class="brand__text">
+            <div class="brand__title">מערכת לימוד</div>
+          </div>
+        </div>
+        <div class="home__topRight">
+          <span id="userChip" class="userChip" hidden>
+            <span class="userChip__icon" aria-hidden="true">👤</span>
+            <span id="homeName" class="userChip__name"></span>
+          </span>
+          <div class="menuWrap">
+            <button id="menuBtn" class="hamburger" type="button" aria-label="תפריט" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
+            <div id="menu" class="menu">
+              <a href="/progress" class="menu__item" id="progressItem" style="text-decoration: none">📊 ההתקדמות שלי</a>
+              <button id="logoutItem" class="menu__item menu__item--danger" type="button">התנתקות</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="home__hero">
+        <h1 class="home__greeting">שלום<span id="greetName"></span>! 👋</h1>
+        <p class="home__subtitle">מה עושים היום?</p>
+
+        <div class="home__cards">
+          <a class="homeCard homeCard--primary" href="/practice">
+            <div class="homeCard__icon" aria-hidden="true">📝</div>
+            <div class="homeCard__title">תרגול</div>
+            <div class="homeCard__desc">פותרים שאלות עם המורה</div>
+          </a>
+
+          <button class="homeCard homeCard--soon" type="button" id="learnCard">
+            <div class="homeCard__icon" aria-hidden="true">📚</div>
+            <div class="homeCard__title">למידה</div>
+            <div class="homeCard__desc">בקרוב</div>
+          </button>
+        </div>
+      </section>
+
+      <section class="home__stats" id="homeStats" aria-label="הנתונים שלי">
+        <h2 class="home__statsTitle">הנתונים שלי</h2>
+        <div class="home__statsGrid">
+          <div class="statCard">
+            <div class="statCard__value" id="statSolved">0</div>
+            <div class="statCard__label">תרגילים שפתרת</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statAccuracy">—</div>
+            <div class="statCard__label">דיוק</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statStreak">0</div>
+            <div class="statCard__label">רצף שיא</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statTopics">0</div>
+            <div class="statCard__label">נושאים</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (async function () {
+        try {
+          const res = await fetch("/api/me");
+          const data = res.ok ? await res.json() : null;
+          if (!data || !data.ok) {
+            window.location.href = "/auth";
+            return;
+          }
+          const name = data.user.username || "";
+          document.getElementById("homeName").textContent = name;
+          document.getElementById("userChip").hidden = false;
+          renderHomeStats(data.user.id);
+          writeGreeting(name);
+        } catch {
+          window.location.href = "/auth";
+        }
+      })();
+
+      // כותב את הברכה אות-אחר-אות בכתב היד (Dana Yad) — בכל כניסה/רענון
+      function writeGreeting(name) {
+        const h1 = document.querySelector(".home__greeting");
+        if (!h1) return;
+        const full = name ? ("\u05E9\u05DC\u05D5\u05DD, " + name + "! \uD83D\uDC4B") : "\u05E9\u05DC\u05D5\u05DD! \uD83D\uDC4B";
+        const reduce =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        h1.textContent = "";
+        if (reduce) {
+          h1.textContent = full;
+          return;
+        }
+        const spans = [];
+        for (const ch of full) {
+          const s = document.createElement("span");
+          s.className = "ch";
+          s.textContent = ch;
+          h1.appendChild(s);
+          spans.push(s);
+        }
+        let i = 0;
+        const step = () => {
+          if (i >= spans.length) return;
+          spans[i].classList.add("ch--on");
+          i += 1;
+          window.setTimeout(step, 90);
+        };
+        step();
+      }
+
+      // קובע יעד למספר (data-target) ומציג 0 עד שנגלל אליו
+      function setStat(id, value, suffix) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (value === null) {
+          el.textContent = "—";
+          el.removeAttribute("data-target");
+          return;
+        }
+        el.setAttribute("data-target", String(value));
+        if (suffix) el.setAttribute("data-suffix", suffix);
+        el.textContent = "0" + (suffix || "");
+      }
+
+      // סטטיסטיקות — חישוב מהנתונים המקומיים של החשבון
+      function renderHomeStats(userId) {
+        const s = { attempts: 0, correct: 0, maxStreak: 0, topics: 0 };
+        try {
+          const raw = localStorage.getItem("learning-prototype-v1:" + userId);
+          if (raw) {
+            const st = JSON.parse(raw);
+            const topics = (st && st.topicsState && st.topicsState.topics) || [];
+            s.topics = topics.length;
+            for (const t of topics) {
+              s.attempts += t.attempts || 0;
+              s.correct += t.correct || 0;
+              s.maxStreak = Math.max(s.maxStreak, t.streak || 0);
+            }
+          }
+        } catch {
+          /* ignore */
+        }
+        setStat("statSolved", s.attempts);
+        setStat("statAccuracy", s.attempts ? Math.round((s.correct / s.attempts) * 100) : null, "%");
+        setStat("statStreak", s.maxStreak);
+        setStat("statTopics", s.topics);
+      }
+
+      // אנימציית ספירה מ-0 עד היעד
+      function animateValue(el) {
+        const target = parseFloat(el.getAttribute("data-target"));
+        if (isNaN(target)) return;
+        const suffix = el.getAttribute("data-suffix") || "";
+        const reduce =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) {
+          el.textContent = target + suffix;
+          return;
+        }
+        const dur = 900;
+        const start = performance.now();
+        function frame(now) {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(frame);
+          else el.textContent = target + suffix;
+        }
+        requestAnimationFrame(frame);
+      }
+
+      function animateStats() {
+        document.querySelectorAll(".statCard__value[data-target]").forEach(animateValue);
+      }
+
+      // חשיפה + ספירה כשגוללים אל הסטטיסטיקות
+      (function statsReveal() {
+        const stats = document.getElementById("homeStats");
+        if (!stats) return;
+        const reveal = () => {
+          stats.classList.add("is-visible");
+          animateStats();
+        };
+        if (!("IntersectionObserver" in window)) {
+          reveal();
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                reveal();
+                io.disconnect();
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        io.observe(stats);
+      })();
+
+      const menuBtn = document.getElementById("menuBtn");
+      const menu = document.getElementById("menu");
+      function setMenu(open) {
+        menu.classList.toggle("menu--open", open);
+        menuBtn.classList.toggle("hamburger--open", open);
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+      menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setMenu(!menu.classList.contains("menu--open"));
+      });
+      document.addEventListener("click", (e) => {
+        if (menu.classList.contains("menu--open") && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+          setMenu(false);
+        }
+      });
+      document.getElementById("logoutItem").addEventListener("click", async () => {
+        try {
+          await fetch("/api/logout", { method: "POST" });
+        } catch {
+          /* ignore */
+        }
+        window.location.href = "/auth";
+      });
+
+      // parallax עדין — הרקע (VELA) זז מעט עם העכבר, כמו מסך נעילה באייפון
+      (function parallax() {
+        const bg = document.querySelector(".home__bg");
+        if (!bg) return;
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const MAX = 18;
+        let tx = 0, ty = 0, cx = 0, cy = 0;
+        window.addEventListener("pointermove", (e) => {
+          tx = -(e.clientX / window.innerWidth - 0.5) * MAX;
+          ty = -(e.clientY / window.innerHeight - 0.5) * MAX;
+        });
+        (function tick() {
+          cx += (tx - cx) * 0.15;
+          cy += (ty - cy) * 0.15;
+          bg.style.setProperty("--px", cx.toFixed(2) + "px");
+          bg.style.setProperty("--py", cy.toFixed(2) + "px");
+          requestAnimationFrame(tick);
+        })();
+      })();
+    </script>
+  </body>
+</html>

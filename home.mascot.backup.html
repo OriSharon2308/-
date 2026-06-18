@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מערכת לימוד – בית</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      @font-face {
+        font-family: "Dana Yad";
+        src:
+          url("/fonts/DanaYadAlefAlefAlef-Normal.woff") format("woff"),
+          url("/fonts/DanaYadAlefAlefAlef-Normal.otf") format("opentype");
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      /* ===== מסך בית — קונספט חדש: מסקוט Vela + גיבור מפוצל ===== */
+      .homeBody {
+        background:
+          radial-gradient(760px 540px at 90% -8%, rgba(249, 168, 96, 0.18), transparent 60%),
+          radial-gradient(720px 560px at 4% 4%, rgba(20, 184, 166, 0.18), transparent 58%),
+          radial-gradient(680px 600px at 70% 120%, rgba(139, 124, 240, 0.13), transparent 60%),
+          #eef6f4;
+      }
+      .home {
+        overflow: hidden;
+      }
+      .home .home__bg {
+        color: rgba(13, 60, 53, 0.045);
+      }
+
+      .home .brand__mark {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: linear-gradient(140deg, #16c4b2, #0d9488);
+        color: #fff;
+        font-size: 22px;
+        box-shadow: 0 8px 18px rgba(13, 148, 136, 0.3);
+      }
+      .home .brand__title {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #0f3b36;
+      }
+
+      /* גיבור: שתי עמודות (טקסט + מסקוט) */
+      .home__hero {
+        z-index: 2;
+      }
+      .heroWrap {
+        width: min(960px, 100%);
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 30px;
+      }
+      .heroText {
+        text-align: start;
+      }
+      .home .home__greeting {
+        font-family: "Dana Yad", cursive;
+        font-size: clamp(46px, 7vw, 84px);
+        line-height: 1.1;
+        font-weight: 700;
+        color: #0f3b36;
+        -webkit-text-stroke: 0.5px #0f3b36;
+        margin: 0;
+      }
+      .home .home__greeting .ch {
+        opacity: 0;
+        display: inline-block;
+        white-space: pre;
+      }
+      .home .home__greeting .ch--on {
+        animation: handWrite 0.22s ease-out both;
+      }
+      @keyframes handWrite {
+        from { opacity: 0; transform: translateY(6px) scale(0.85); filter: blur(1.5px); }
+        to { opacity: 1; transform: none; filter: blur(0); }
+      }
+      .home .home__subtitle {
+        font-size: clamp(16px, 2.4vw, 21px);
+        font-weight: 600;
+        color: #46615f;
+        margin: 8px 0 26px;
+      }
+
+      .heroActions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .btnPrimary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 30px;
+        border-radius: 999px;
+        background: linear-gradient(150deg, #17ccb8, #0d9488);
+        color: #fff;
+        font-family: "Fredoka", sans-serif;
+        font-size: 21px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 14px 30px rgba(13, 148, 136, 0.36);
+        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease;
+      }
+      .btnPrimary__arrow {
+        font-size: 22px;
+        transition: transform 0.2s ease;
+      }
+      .btnPrimary:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(13, 148, 136, 0.42);
+      }
+      .btnPrimary:hover .btnPrimary__arrow {
+        transform: translateX(-5px);
+      }
+      .btnGhost {
+        border: 2px solid rgba(13, 148, 136, 0.28);
+        background: rgba(255, 255, 255, 0.6);
+        color: #5a6b68;
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 13px 22px;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .btnGhost b {
+        color: #c2410c;
+      }
+
+      /* מסקוט Vela */
+      .heroArt {
+        display: flex;
+        justify-content: center;
+      }
+      .heroArt svg {
+        width: min(420px, 90%);
+        height: auto;
+        animation: bobArt 5.5s ease-in-out infinite;
+      }
+      @keyframes bobArt {
+        50% { transform: translateY(-12px); }
+      }
+
+      /* סטטיסטיקות — אריחים צבעוניים רכים */
+      .home__stats {
+        z-index: 2;
+      }
+      .home .home__statsTitle {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        color: #0f3b36;
+      }
+      .home .statCard {
+        border: none;
+        border-radius: 22px;
+        padding: 22px 12px;
+        box-shadow: 0 8px 18px rgba(2, 6, 23, 0.05);
+      }
+      .home .statCard__value {
+        font-family: "Fredoka", sans-serif;
+        font-size: 32px;
+      }
+      .home .statCard__label {
+        color: #5a6b68;
+        font-weight: 500;
+      }
+      .home .home__statsGrid .statCard:nth-child(1) { background: #d6f4ef; }
+      .home .home__statsGrid .statCard:nth-child(1) .statCard__value { color: #0d9488; }
+      .home .home__statsGrid .statCard:nth-child(2) { background: #ffe7df; }
+      .home .home__statsGrid .statCard:nth-child(2) .statCard__value { color: #ef6c4d; }
+      .home .home__statsGrid .statCard:nth-child(3) { background: #fff0c9; }
+      .home .home__statsGrid .statCard:nth-child(3) .statCard__value { color: #d99409; }
+      .home .home__statsGrid .statCard:nth-child(4) { background: #eae6ff; }
+      .home .home__statsGrid .statCard:nth-child(4) .statCard__value { color: #7c6cf0; }
+
+      @media (max-width: 720px) {
+        .heroWrap {
+          grid-template-columns: 1fr;
+          gap: 6px;
+          text-align: center;
+        }
+        .heroText { text-align: center; }
+        .heroActions { justify-content: center; }
+        .heroArt { order: -1; }
+        .heroArt svg { width: min(280px, 70%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .heroArt svg { animation: none; }
+        .home .home__greeting .ch { opacity: 1; }
+        .home .home__greeting .ch--on { animation: none; }
+      }
+    </style>
+  </head>
+  <body class="homeBody">
+    <main class="home">
+      <div class="home__bg" aria-hidden="true">vela</div>
+
+      <header class="home__top">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true">∑</div>
+          <div class="brand__text">
+            <div class="brand__title">Vela</div>
+          </div>
+        </div>
+        <div class="home__topRight">
+          <span id="userChip" class="userChip" hidden>
+            <span class="userChip__icon" aria-hidden="true">👤</span>
+            <span id="homeName" class="userChip__name"></span>
+          </span>
+          <div class="menuWrap">
+            <button id="menuBtn" class="hamburger" type="button" aria-label="תפריט" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
+            <div id="menu" class="menu">
+              <a href="/progress" class="menu__item" id="progressItem" style="text-decoration: none">📊 ההתקדמות שלי</a>
+              <button id="logoutItem" class="menu__item menu__item--danger" type="button">התנתקות</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="home__hero">
+        <div class="heroWrap">
+          <div class="heroText">
+            <h1 class="home__greeting">שלום<span id="greetName"></span>! 👋</h1>
+            <p class="home__subtitle">מוכנים לקצת קסם של מספרים?</p>
+            <div class="heroActions">
+              <a class="btnPrimary" href="/practice">
+                <span>בואו נתרגל</span>
+                <span class="btnPrimary__arrow" aria-hidden="true">←</span>
+              </a>
+              <button class="btnGhost" type="button" id="learnCard">למידה · <b>בקרוב</b></button>
+            </div>
+          </div>
+
+          <div class="heroArt" aria-hidden="true">
+            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" role="img">
+              <title>מסקוט Vela</title>
+              <defs>
+                <linearGradient id="velaTeal" x1="0" y1="0" x2="0.4" y2="1">
+                  <stop offset="0" stop-color="#1ad3bd" />
+                  <stop offset="1" stop-color="#0d9488" />
+                </linearGradient>
+              </defs>
+
+              <!-- צל קרקע -->
+              <ellipse cx="220" cy="362" rx="120" ry="16" fill="rgba(13,60,53,0.10)" />
+
+              <!-- צורות מרחפות -->
+              <circle cx="70" cy="96" r="28" fill="#ff7a59" />
+              <text x="70" y="107" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="32" font-weight="700" fill="#fff">+</text>
+
+              <rect x="346" y="78" width="54" height="54" rx="16" fill="#f6b73c" transform="rotate(10 373 105)" />
+              <text x="373" y="115" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="30" font-weight="700" fill="#fff" transform="rotate(10 373 105)">7</text>
+
+              <polygon points="392,300 424,300 408,270" fill="#8b7cf0" />
+              <text x="58" y="312" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="34" font-weight="700" fill="rgba(13,148,136,0.55)">×</text>
+
+              <!-- כוכבים -->
+              <path d="M404 196 l5 12 13 1 -10 9 3 13 -11 -7 -11 7 3 -13 -10 -9 13 -1z" fill="#fbbf24" />
+              <path d="M44 196 l4 9 10 1 -8 7 3 10 -9 -6 -9 6 3 -10 -8 -7 10 -1z" fill="#fbbf24" opacity="0.85" />
+
+              <!-- גוף המסקוט -->
+              <rect x="128" y="120" width="184" height="184" rx="64" fill="url(#velaTeal)" />
+              <ellipse cx="178" cy="168" rx="42" ry="30" fill="#fff" opacity="0.14" />
+
+              <!-- לחיים -->
+              <circle cx="170" cy="236" r="13" fill="#ff8a5c" opacity="0.45" />
+              <circle cx="270" cy="236" r="13" fill="#ff8a5c" opacity="0.45" />
+
+              <!-- עיניים -->
+              <ellipse cx="186" cy="205" rx="15" ry="19" fill="#fff" />
+              <ellipse cx="254" cy="205" rx="15" ry="19" fill="#fff" />
+              <circle cx="189" cy="208" r="7.5" fill="#0f3b36" />
+              <circle cx="257" cy="208" r="7.5" fill="#0f3b36" />
+              <circle cx="192" cy="205" r="2.4" fill="#fff" />
+              <circle cx="260" cy="205" r="2.4" fill="#fff" />
+
+              <!-- חיוך -->
+              <path d="M196 250 Q220 276 244 250" fill="none" stroke="#0f3b36" stroke-width="7" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="home__stats" id="homeStats" aria-label="הנתונים שלי">
+        <h2 class="home__statsTitle">הנתונים שלי</h2>
+        <div class="home__statsGrid">
+          <div class="statCard">
+            <div class="statCard__value" id="statSolved">0</div>
+            <div class="statCard__label">תרגילים שפתרת</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statAccuracy">—</div>
+            <div class="statCard__label">דיוק</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statStreak">0</div>
+            <div class="statCard__label">רצף שיא</div>
+          </div>
+          <div class="statCard">
+            <div class="statCard__value" id="statTopics">0</div>
+            <div class="statCard__label">נושאים</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (async function () {
+        try {
+          const res = await fetch("/api/me");
+          const data = res.ok ? await res.json() : null;
+          if (!data || !data.ok) {
+            window.location.href = "/auth";
+            return;
+          }
+          const name = data.user.username || "";
+          document.getElementById("homeName").textContent = name;
+          document.getElementById("userChip").hidden = false;
+          renderHomeStats(data.user.id);
+          writeGreeting(name);
+        } catch {
+          window.location.href = "/auth";
+        }
+      })();
+
+      function writeGreeting(name) {
+        const h1 = document.querySelector(".home__greeting");
+        if (!h1) return;
+        const full = name ? ("שלום, " + name + "! 👋") : "שלום! 👋";
+        const reduce =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        h1.textContent = "";
+        if (reduce) {
+          h1.textContent = full;
+          return;
+        }
+        const spans = [];
+        for (const ch of full) {
+          const s = document.createElement("span");
+          s.className = "ch";
+          s.textContent = ch;
+          h1.appendChild(s);
+          spans.push(s);
+        }
+        let i = 0;
+        const step = () => {
+          if (i >= spans.length) return;
+          spans[i].classList.add("ch--on");
+          i += 1;
+          window.setTimeout(step, 90);
+        };
+        step();
+      }
+
+      function setStat(id, value, suffix) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (value === null) {
+          el.textContent = "—";
+          el.removeAttribute("data-target");
+          return;
+        }
+        el.setAttribute("data-target", String(value));
+        if (suffix) el.setAttribute("data-suffix", suffix);
+        el.textContent = "0" + (suffix || "");
+      }
+
+      function renderHomeStats(userId) {
+        const s = { attempts: 0, correct: 0, maxStreak: 0, topics: 0 };
+        try {
+          const raw = localStorage.getItem("learning-prototype-v1:" + userId);
+          if (raw) {
+            const st = JSON.parse(raw);
+            const topics = (st && st.topicsState && st.topicsState.topics) || [];
+            s.topics = topics.length;
+            for (const t of topics) {
+              s.attempts += t.attempts || 0;
+              s.correct += t.correct || 0;
+              s.maxStreak = Math.max(s.maxStreak, t.streak || 0);
+            }
+          }
+        } catch {
+          /* ignore */
+        }
+        setStat("statSolved", s.attempts);
+        setStat("statAccuracy", s.attempts ? Math.round((s.correct / s.attempts) * 100) : null, "%");
+        setStat("statStreak", s.maxStreak);
+        setStat("statTopics", s.topics);
+      }
+
+      function animateValue(el) {
+        const target = parseFloat(el.getAttribute("data-target"));
+        if (isNaN(target)) return;
+        const suffix = el.getAttribute("data-suffix") || "";
+        const reduce =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) {
+          el.textContent = target + suffix;
+          return;
+        }
+        const dur = 900;
+        const start = performance.now();
+        function frame(now) {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(frame);
+          else el.textContent = target + suffix;
+        }
+        requestAnimationFrame(frame);
+      }
+
+      function animateStats() {
+        document.querySelectorAll(".statCard__value[data-target]").forEach(animateValue);
+      }
+
+      (function statsReveal() {
+        const stats = document.getElementById("homeStats");
+        if (!stats) return;
+        const reveal = () => {
+          stats.classList.add("is-visible");
+          animateStats();
+        };
+        if (!("IntersectionObserver" in window)) {
+          reveal();
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                reveal();
+                io.disconnect();
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        io.observe(stats);
+      })();
+
+      const menuBtn = document.getElementById("menuBtn");
+      const menu = document.getElementById("menu");
+      function setMenu(open) {
+        menu.classList.toggle("menu--open", open);
+        menuBtn.classList.toggle("hamburger--open", open);
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+      menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setMenu(!menu.classList.contains("menu--open"));
+      });
+      document.addEventListener("click", (e) => {
+        if (menu.classList.contains("menu--open") && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+          setMenu(false);
+        }
+      });
+      document.getElementById("logoutItem").addEventListener("click", async () => {
+        try {
+          await fetch("/api/logout", { method: "POST" });
+        } catch {
+          /* ignore */
+        }
+        window.location.href = "/auth";
+      });
+
+      (function parallax() {
+        const bg = document.querySelector(".home__bg");
+        if (!bg) return;
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const MAX = 18;
+        let tx = 0, ty = 0, cx = 0, cy = 0;
+        window.addEventListener("pointermove", (e) => {
+          tx = -(e.clientX / window.innerWidth - 0.5) * MAX;
+          ty = -(e.clientY / window.innerHeight - 0.5) * MAX;
+        });
+        (function tick() {
+          cx += (tx - cx) * 0.15;
+          cy += (ty - cy) * 0.15;
+          bg.style.setProperty("--px", cx.toFixed(2) + "px");
+          bg.style.setProperty("--py", cy.toFixed(2) + "px");
+          requestAnimationFrame(tick);
+        })();
+      })();
+    </script>
+  </body>
+</html>
