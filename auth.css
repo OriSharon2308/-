@@ -34,10 +34,10 @@
 }
 /* "vela" שחורה ענקית ברקע הגיבור, נמוגה בערפל כלפי מטה */
 .lpHero__word {
-  position: absolute;
+  position: fixed;
   top: 2%;
   left: 50%;
-  transform: translate(-50%, var(--vy, 0px));
+  transform: translateX(-50%);
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
   font-size: min(64vw, 80vh);
@@ -389,6 +389,14 @@
 }
 
 /* ===== סקשנים ===== */
+/* כל התוכן נצבע מעל ה-vela הקבועה (fixed) — הוא נשאר במקום והכל נגלל מעליו */
+.lpScrollHint,
+.lpSection,
+.lpParents,
+.lpFoot {
+  position: relative;
+  z-index: 1;
+}
 .lpSection {
   max-width: 1000px;
   margin: 0 auto;
