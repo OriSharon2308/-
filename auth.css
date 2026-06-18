@@ -35,11 +35,12 @@
 .lpHero__word {
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
-  font-size: clamp(96px, 26vw, 300px);
-  line-height: 0.82;
+  font-size: clamp(80px, 21vw, 220px);
+  line-height: 0.95;
   letter-spacing: -0.02em;
   color: #10202f;
   margin: 0 0 6px;
+  padding-top: 0.08em; /* אוויר קטן למעלה כדי שראש האותיות לא ייחתך */
   user-select: none;
   /* ערפל עדין מאוד בקצה התחתון — נוח לעין */
   -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
