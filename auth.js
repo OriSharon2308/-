@@ -218,16 +218,25 @@
   window.setTimeout(() => els.forEach((el) => { el.style.opacity = "1"; el.style.transform = "none"; }), 3000);
 })();
 
-/* ============ סצנת גלילה ל-hero: התוכן עולה מלמטה למרכז + הערפל ממלא את הרקע ============ */
+/* ============ סצנת גלילה ל-hero: מסך 1 (vela בערפל + סרגל למטה) → מסך 2 (ברוכים הבאים) ============
+   הערפל עולה מהר וממלא; הסרגל עולה לאט (פרלקסה); "ברוכים הבאים" דוהה פנימה (opacity) לקראת הסוף. */
 (function heroScene() {
   const word = document.querySelector(".lpHero__word");
   const veil = document.querySelector(".lpHero__veil");
-  const content = document.getElementById("heroContent");
-  if (!word || !content) return;
+  const welcome = document.getElementById("heroWelcome");
+  const bar = document.getElementById("heroBar");
+  const hint = document.querySelector(".lpHero__bar .lpScrollHint");
+  if (!word || !bar) return;
   const reduce =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+  if (reduce) {
+    if (welcome) welcome.style.opacity = "1";
+    bar.style.transform = "none";
+    return;
+  }
 
   let ticking = false;
   function update() {
@@ -235,24 +244,26 @@
     const vh = window.innerHeight || 1;
     const p = clamp(window.scrollY / vh, 0, 1); // ביט ה-hero לאורך מסך אחד
 
-    // התוכן עולה לאט (מסיים ~0.92), מתחיל מעט נמוך — הברכה גלויה והכפתורים ליד הערפל
-    const riseP = clamp(p / 0.92, 0, 1);
-    const startLow = 0.22 * vh;
-    if (!reduce) content.style.transform = `translateY(${((1 - riseP) * startLow).toFixed(1)}px)`;
+    // הסרגל עולה לאט: מהתחתית (מסך 1) למקומו הטבעי מתחת ל"ברוכים הבאים" (מסך 2)
+    const barP = clamp(p / 0.9, 0, 1);
+    bar.style.transform = `translateY(${((1 - barP) * 0.3 * vh).toFixed(1)}px)`;
 
     // הערפל עולה מהר: בנק הערפל ממלא את הרקע עד ~p=0.5
-    if (veil) {
-      const fogLine = Math.min(124, 20 + p * 210);
-      veil.style.setProperty("--fogLine", fogLine.toFixed(1) + "%");
-    }
+    if (veil) veil.style.setProperty("--fogLine", Math.min(126, 4 + p * 250).toFixed(1) + "%");
 
-    // מסכת ה-vela: ערפל נמוך בהתחלה (רואים כמעט את כל הטקסט), עולה מהר ומתמוססת
-    const a = 46 - p * 132; // 46% → מהר אל מתחת ל-0
-    const b = 88 - p * 120; // 88% → מהר אל מתחת ל-0
+    // ה-vela: התחתית בערפל (מסך 1), מתמוססת מהר בגלילה
+    const a = 52 - p * 150;
+    const b = 80 - p * 120;
     word.style.setProperty("--fogA", a.toFixed(1) + "%");
     word.style.setProperty("--fogB", b.toFixed(1) + "%");
-    word.style.opacity = (1 - clamp(p / 0.55, 0, 1)).toFixed(3); // נעלמת מהר
-    word.style.visibility = p >= 0.6 ? "hidden" : "visible";
+    word.style.opacity = (1 - clamp(p / 0.5, 0, 1)).toFixed(3);
+    word.style.visibility = p >= 0.55 ? "hidden" : "visible";
+
+    // "ברוכים הבאים" דוהה פנימה (opacity) לקראת הסוף, כשהמסך כבר מלא בצבע
+    if (welcome) welcome.style.opacity = clamp((p - 0.5) / 0.4, 0, 1).toFixed(3);
+
+    // הרמז "כדאי לגלול" נעלם ברגע שמתחילים לגלול
+    if (hint) hint.style.opacity = (1 - clamp(p / 0.28, 0, 1)).toFixed(3);
   }
   window.addEventListener(
     "scroll",

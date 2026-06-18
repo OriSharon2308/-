@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./auth.css?v=23" />
+    <link rel="stylesheet" href="./auth.css?v=24" />
   </head>
   <body class="authBody">
     <main class="lp">
@@ -16,13 +16,15 @@
         <div class="lpHero__pin">
         <div class="lpHero__word" aria-hidden="true">vela</div>
         <div class="lpHero__veil" aria-hidden="true"></div>
-        <div class="lpHero__content" id="heroContent">
+        <div class="lpHero__welcome" id="heroWelcome">
         <h1 class="lpHero__title">ברוכים הבאים!</h1>
         <p class="lpHero__sub">
           מורה פרטי חכם שמלווה את הילד צעד‑אחר‑צעד — תרגול מותאם אישית,
           הסברים ברורים בסבלנות, ומעקב שמראה כמה הוא מתקדם.
         </p>
+        </div><!-- /.lpHero__welcome -->
 
+        <div class="lpHero__bar" id="heroBar">
         <div class="authBox authBox--closed">
           <!-- טוגל אחד מאוזן: כניסה / הרשמה. הטפסים נפתחים בלחיצה -->
           <div class="authTabs" role="tablist">
@@ -121,8 +123,8 @@
             </div>
           </div>
 
-        <div class="lpScrollHint" aria-hidden="true">גללו לגלות עוד ↓</div>
-        </div><!-- /.lpHero__content -->
+        <div class="lpScrollHint" aria-hidden="true">כדאי לגלול ↓</div>
+        </div><!-- /.lpHero__bar -->
         </div><!-- /.lpHero__pin -->
         <div class="lpHero__snap" aria-hidden="true"></div>
       </section>
@@ -196,6 +198,6 @@
       <footer class="lpFoot">Vela · פלטפורמת לימוד מתמטיקה</footer>
     </main>
 
-    <script src="./auth.js?v=22" defer></script>
+    <script src="./auth.js?v=23" defer></script>
   </body>
 </html>

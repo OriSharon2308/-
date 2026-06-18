@@ -61,11 +61,25 @@ html {
   will-change: background;
 }
 /* תוכן ה-hero (ברכה + טופס) — עולה מלמטה למרכז דרך translateY מהגלילה */
-.lpHero__content {
+/* "ברוכים הבאים" + תת-כותרת — מופיעים (opacity) במרכז מסך 2, מעל הסרגל. לא עלייה ממש — דהייה פנימה */
+.lpHero__welcome {
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0; /* נדלק בגלילה (JS) לקראת סוף הביט */
+  will-change: opacity;
+}
+/* סרגל ההתחברות/הרשמה + רמז — מתחיל בתחתית (מסך 1) ועולה לאט למקומו (מסך 2) */
+.lpHero__bar {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 460px;
+  margin-top: 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,8 +111,8 @@ html {
   pointer-events: none;
   z-index: 0;
   /* גבולות הערפל נשלטים מהגלילה (--fogA/--fogB) — ככל שגוללים הם עולים וה-vela מתמוססת */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 46%), transparent var(--fogB, 88%));
-  mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 46%), transparent var(--fogB, 88%));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 52%), transparent var(--fogB, 80%));
+  mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 52%), transparent var(--fogB, 80%));
   will-change: mask-image, transform, opacity;
 }
 /* "ברוכים הבאים" — כהה, נמוך באזור הבהיר. בלחיצה הטופס יורד והתצוגה גוללת אליו (לא דוחף מעלה) */
@@ -112,8 +126,6 @@ html {
   letter-spacing: -0.02em;
   margin: 0 0 12px;
   color: #0f3b36;
-  opacity: 0;
-  animation: heroGlow 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 @keyframes heroGlow {
   from {
@@ -134,9 +146,7 @@ html {
   line-height: 1.65;
   color: #46615f;
   max-width: 520px;
-  margin: 0 auto 22px;
-  opacity: 0;
-  animation: heroGlow 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+  margin: 0 auto;
 }
 .lpHero .authBox {
   position: relative;
