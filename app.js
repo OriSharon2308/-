@@ -1741,15 +1741,24 @@ async function main() {
     for (const t of topics) {
       const row = document.createElement("div");
       row.className = `topicItem${t.id === currentId ? " topicItem--active" : ""}`;
-
-      const main = document.createElement("button");
-      main.type = "button";
-      main.className = "topicItem__main";
-      main.innerHTML = `<span class="topicItem__title">${t.title}</span>`;
-      main.addEventListener("click", () => {
+      // כל השורה לחיצה (לא רק הטקסט)
+      row.setAttribute("role", "button");
+      row.setAttribute("tabindex", "0");
+      const go = () => {
         switchToTopic(t.id);
         closeTopicsDrawer();
+      };
+      row.addEventListener("click", go);
+      row.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          go();
+        }
       });
+
+      const main = document.createElement("div");
+      main.className = "topicItem__main";
+      main.innerHTML = `<span class="topicItem__title">${t.title}</span>`;
 
       const actions = document.createElement("div");
       actions.className = "topicItem__actions";
