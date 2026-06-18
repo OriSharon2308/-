@@ -69,14 +69,36 @@
             </select>
           </label>
         </div>
-        <label class="authField">
+        <div class="authField">
           <span>בן או בת?</span>
-          <select id="regGender" name="gender" required>
-            <option value="" disabled selected>בחירה</option>
-            <option value="male">בן</option>
-            <option value="female">בת</option>
-          </select>
-        </label>
+          <input type="hidden" id="regGender" name="gender" />
+          <div class="genderPick" role="group" aria-label="בן או בת">
+            <button type="button" class="genderBtn" data-gender="male" aria-label="בן" aria-pressed="false">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="48" fill="#dbeafe" />
+                <path d="M22 94 a28 28 0 0 1 56 0 Z" fill="#3fa3e6" />
+                <circle cx="50" cy="46" r="20" fill="#f7d2ab" />
+                <path d="M30 44 a20 20 0 0 1 40 0 q-20 -13 -40 0 Z" fill="#6b4f2a" />
+                <circle cx="43" cy="47" r="2.6" fill="#33414f" />
+                <circle cx="57" cy="47" r="2.6" fill="#33414f" />
+                <path d="M43 55 q7 6 14 0" stroke="#33414f" stroke-width="2.4" fill="none" stroke-linecap="round" />
+              </svg>
+            </button>
+            <button type="button" class="genderBtn" data-gender="female" aria-label="בת" aria-pressed="false">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="48" fill="#fde2f3" />
+                <path d="M24 94 a26 26 0 0 1 52 0 Z" fill="#ef7fb6" />
+                <circle cx="28" cy="48" r="9" fill="#6b4f2a" />
+                <circle cx="72" cy="48" r="9" fill="#6b4f2a" />
+                <circle cx="50" cy="46" r="20" fill="#f7d2ab" />
+                <path d="M29 45 a21 21 0 0 1 42 0 q-21 -15 -42 0 Z" fill="#6b4f2a" />
+                <circle cx="43" cy="47" r="2.6" fill="#33414f" />
+                <circle cx="57" cy="47" r="2.6" fill="#33414f" />
+                <path d="M43 55 q7 6 14 0" stroke="#33414f" stroke-width="2.4" fill="none" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
         <label class="authField">
           <span>שם בית הספר</span>
           <input id="regSchool" name="school" type="text" required />

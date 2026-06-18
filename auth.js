@@ -290,9 +290,26 @@
     }
   });
 
+  // בחירת בן/בת בכפתורי תמונה — מעדכן את השדה המוסתר ומסמן את הנבחר
+  document.querySelectorAll(".genderBtn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const hidden = document.getElementById("regGender");
+      if (hidden) hidden.value = btn.dataset.gender;
+      document.querySelectorAll(".genderBtn").forEach((b) => {
+        const on = b === btn;
+        b.classList.toggle("is-selected", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    });
+  });
+
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     clearError();
+    if (!document.getElementById("regGender").value) {
+      showError(["צריך לבחור בן או בת."]);
+      return;
+    }
     disable(registerForm, true);
     const result = await post("/api/register", {
       username: document.getElementById("regUsername").value,

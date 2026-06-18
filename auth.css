@@ -307,3 +307,32 @@
   opacity: 1;
   background: rgba(15, 23, 42, 0.06);
 }
+
+/* בחירת בן/בת — שני כפתורי תמונה זה לצד זה, בלי טקסט */
+.genderPick {
+  display: flex;
+  gap: 14px;
+}
+.genderBtn {
+  flex: 1;
+  border: 2px solid rgba(15, 23, 42, 0.12);
+  border-radius: 18px;
+  background: #fff;
+  padding: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.genderBtn svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+}
+.genderBtn:hover {
+  border-color: rgba(74, 168, 232, 0.6);
+}
+.genderBtn.is-selected {
+  border-color: #4aa8e8;
+  box-shadow: 0 0 0 4px rgba(74, 168, 232, 0.22);
+  transform: translateY(-3px);
+}
