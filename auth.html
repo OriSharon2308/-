@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./auth.css?v=7" />
+    <link rel="stylesheet" href="./auth.css?v=8" />
   </head>
   <body class="authBody">
     <main class="lp">
@@ -21,24 +21,16 @@
         </p>
 
         <div class="authBox">
-          <!-- מצב התחלתי: בחירה -->
-          <div class="authChoice" id="authChoice">
-            <button class="choiceBtn choiceBtn--primary" id="choiceLogin" type="button">כניסה</button>
-            <button class="choiceBtn" id="choiceRegister" type="button">הרשמה</button>
+          <!-- טוגל אחד מאוזן: כניסה / הרשמה. הטפסים נפתחים בלחיצה -->
+          <div class="authTabs" role="tablist">
+            <span class="authTabs__indicator" aria-hidden="true"></span>
+            <button id="tabLogin" class="authTab" type="button" role="tab">כניסה</button>
+            <button id="tabRegister" class="authTab" type="button" role="tab">הרשמה</button>
           </div>
 
-          <!-- הטפסים — מוסתרים עד שבוחרים -->
-          <div class="authPanel" id="authPanel" hidden>
-            <button class="authBack" id="authBack" type="button">→ חזרה</button>
-            <div class="authTabs" role="tablist">
-              <span class="authTabs__indicator" aria-hidden="true"></span>
-              <button id="tabLogin" class="authTab" type="button" role="tab">כניסה</button>
-              <button id="tabRegister" class="authTab" type="button" role="tab">הרשמה</button>
-            </div>
+          <div id="authError" class="authError" hidden></div>
 
-            <div id="authError" class="authError" hidden></div>
-
-            <div class="authForms" id="authForms">
+          <div class="authForms" id="authForms">
               <!-- כניסה -->
               <form id="loginForm" class="authForm" hidden autocomplete="on">
                 <label class="authField">
@@ -125,7 +117,6 @@
               </form>
             </div>
           </div>
-        </div>
 
         <div class="lpScrollHint" aria-hidden="true">גללו לגלות עוד ↓</div>
       </section>
@@ -184,6 +175,6 @@
       <footer class="lpFoot">Vela · פלטפורמת לימוד מתמטיקה</footer>
     </main>
 
-    <script src="./auth.js?v=7" defer></script>
+    <script src="./auth.js?v=8" defer></script>
   </body>
 </html>

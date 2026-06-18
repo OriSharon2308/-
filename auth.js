@@ -1,10 +1,5 @@
-/* ============ דף נחיתה — בחירה (כניסה/הרשמה) ואז טופס ============ */
+/* ============ דף נחיתה — טוגל מאוזן (כניסה/הרשמה), טופס נפתח בלחיצה ============ */
 (function () {
-  const authChoice = document.getElementById("authChoice");
-  const authPanel = document.getElementById("authPanel");
-  const choiceLogin = document.getElementById("choiceLogin");
-  const choiceRegister = document.getElementById("choiceRegister");
-  const authBack = document.getElementById("authBack");
   const tabLogin = document.getElementById("tabLogin");
   const tabRegister = document.getElementById("tabRegister");
   const loginForm = document.getElementById("loginForm");
@@ -33,7 +28,7 @@
     errorBox.textContent = "";
   }
 
-  // מציג טופס מסוים (כניסה/הרשמה) בתוך הפאנל
+  // בלחיצה על אחד הכפתורים — נפתח רק הטופס שלו (השני נסגר)
   function selectTab(which) {
     const login = which === "login";
     const showForm = login ? loginForm : registerForm;
@@ -54,27 +49,6 @@
     }
   }
 
-  // פותח את הפאנל מתוך מסך הבחירה
-  function openAuth(which) {
-    if (authChoice) authChoice.hidden = true;
-    if (authPanel) authPanel.hidden = false;
-    selectTab(which);
-  }
-  // חזרה למסך הבחירה
-  function backToChoice() {
-    clearError();
-    if (authPanel) authPanel.hidden = true;
-    if (authChoice) authChoice.hidden = false;
-    loginForm.hidden = true;
-    registerForm.hidden = true;
-    tabLogin.classList.remove("authTab--active");
-    tabRegister.classList.remove("authTab--active");
-    if (tabIndicator) tabIndicator.style.opacity = "0";
-  }
-
-  choiceLogin && choiceLogin.addEventListener("click", () => openAuth("login"));
-  choiceRegister && choiceRegister.addEventListener("click", () => openAuth("register"));
-  authBack && authBack.addEventListener("click", backToChoice);
   tabLogin.addEventListener("click", () => selectTab("login"));
   tabRegister.addEventListener("click", () => selectTab("register"));
 
