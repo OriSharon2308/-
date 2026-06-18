@@ -11,6 +11,12 @@
 .authBody {
   margin: 0;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
   font-family: "Assistant", system-ui, -apple-system, sans-serif;
   color: #1f2c3a;
   background: radial-gradient(1200px 620px at 50% -8%, #eaf6ff 0%, #d2e9fb 55%, #c6e2f8 100%);
@@ -18,17 +24,24 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* "vela" — הלוגו המרכזי בפונט המקורי (Arca Morphe), שחור מלא */
-.brandLogo {
+/* "vela" — ענקית וממורכזת ברקע המסך, פונט מקורי (Arca Morphe), שחור */
+.authWord {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%);
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
-  font-size: clamp(76px, 15vw, 156px);
-  line-height: 0.9;
+  font-size: min(52vw, 88vh);
+  line-height: 1;
   letter-spacing: -0.02em;
-  color: #000;
-  text-align: center;
-  margin: 0 0 10px;
+  color: #0c1320;
+  white-space: nowrap;
   user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 64%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 64%, transparent 100%);
 }
 
 .landing {
@@ -92,12 +105,21 @@
 
 /* ===== כרטיס התחברות ===== */
 .authCard {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  max-width: 460px;
+  max-width: 440px;
   background: #ffffff;
   border-radius: 22px;
-  padding: 26px 26px 28px;
-  box-shadow: 0 24px 60px rgba(17, 49, 86, 0.16), 0 2px 6px rgba(17, 49, 86, 0.06);
+  padding: 24px 26px 28px;
+  box-shadow: 0 24px 60px rgba(17, 49, 86, 0.18), 0 2px 6px rgba(17, 49, 86, 0.06);
+}
+.authCard__tag {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a6b7b;
+  margin: 0 0 16px;
 }
 
 .authTabs {
@@ -130,6 +152,9 @@
   position: absolute;
   top: 5px;
   bottom: 5px;
+  left: 0;
+  width: 0;
+  z-index: 0;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(17, 49, 86, 0.12);
