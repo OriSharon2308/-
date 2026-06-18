@@ -235,21 +235,24 @@
     const vh = window.innerHeight || 1;
     const p = clamp(window.scrollY / vh, 0, 1); // ביט ה-hero לאורך מסך אחד
 
-    // שלב 1 (0→0.62): התוכן עולה מהתחתית למרכז
-    const riseP = clamp(p / 0.62, 0, 1);
-    const startLow = 0.42 * vh; // מתחיל ~42% מתחת למרכז (קרוב לתחתית)
+    // התוכן עולה לאט (מסיים ~0.92), מתחיל מעט נמוך — הברכה גלויה והכפתורים ליד הערפל
+    const riseP = clamp(p / 0.92, 0, 1);
+    const startLow = 0.22 * vh;
     if (!reduce) content.style.transform = `translateY(${((1 - riseP) * startLow).toFixed(1)}px)`;
 
-    // הערפל עולה לאורך כל הביט; מסכת ה-vela עולה והאותיות מתמוססות
-    const a = 26 - p * 96; // 26% → -70%
-    const b = 62 - p * 70; // 62% → -8%
+    // הערפל עולה מהר: בנק הערפל ממלא את הרקע עד ~p=0.5
+    if (veil) {
+      const fogLine = Math.min(124, 20 + p * 210);
+      veil.style.setProperty("--fogLine", fogLine.toFixed(1) + "%");
+    }
+
+    // מסכת ה-vela: ערפל נמוך בהתחלה (רואים כמעט את כל הטקסט), עולה מהר ומתמוססת
+    const a = 46 - p * 132; // 46% → מהר אל מתחת ל-0
+    const b = 88 - p * 120; // 88% → מהר אל מתחת ל-0
     word.style.setProperty("--fogA", a.toFixed(1) + "%");
     word.style.setProperty("--fogB", b.toFixed(1) + "%");
-
-    // שלב 2 (0.55→1): הערפל "ממלא" את הרקע (הצעיף נכנס) וה-vela דוהה לגמרי
-    if (veil) veil.style.opacity = clamp((p - 0.55) / 0.45, 0, 1).toFixed(3);
-    word.style.opacity = (1 - clamp((p - 0.4) / 0.6, 0, 1)).toFixed(3);
-    word.style.visibility = p >= 1 ? "hidden" : "visible";
+    word.style.opacity = (1 - clamp(p / 0.55, 0, 1)).toFixed(3); // נעלמת מהר
+    word.style.visibility = p >= 0.6 ? "hidden" : "visible";
   }
   window.addEventListener(
     "scroll",

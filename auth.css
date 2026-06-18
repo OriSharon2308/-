@@ -46,17 +46,19 @@ html {
   padding: 48px 20px;
   overflow: hidden;
 }
-/* צעיף ערפל — מתמלא ככל שהביט מתקדם עד שכל הרקע "מלא" */
+/* בנק ערפל בתחתית — קיים כבר במסך הבית (נמוך) ועולה מהר בגלילה דרך --fogLine */
 .lpHero__veil {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0;
-  background:
-    radial-gradient(120% 82% at 50% 122%, rgba(241, 247, 246, 0.97), rgba(241, 247, 246, 0) 70%),
-    linear-gradient(to top, rgba(241, 247, 246, 0.98), rgba(241, 247, 246, 0) 78%);
-  will-change: opacity;
+  background: linear-gradient(
+    to top,
+    #eef5f4 0%,
+    rgba(238, 245, 244, 0.97) var(--fogLine, 20%),
+    rgba(238, 245, 244, 0) calc(var(--fogLine, 20%) + 18%)
+  );
+  will-change: background;
 }
 /* תוכן ה-hero (ברכה + טופס) — עולה מלמטה למרכז דרך translateY מהגלילה */
 .lpHero__content {
@@ -95,8 +97,8 @@ html {
   pointer-events: none;
   z-index: 0;
   /* גבולות הערפל נשלטים מהגלילה (--fogA/--fogB) — ככל שגוללים הם עולים וה-vela מתמוססת */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 26%), transparent var(--fogB, 62%));
-  mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 26%), transparent var(--fogB, 62%));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 46%), transparent var(--fogB, 88%));
+  mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 46%), transparent var(--fogB, 88%));
   will-change: mask-image, transform, opacity;
 }
 /* "ברוכים הבאים" — כהה, נמוך באזור הבהיר. בלחיצה הטופס יורד והתצוגה גוללת אליו (לא דוחף מעלה) */
