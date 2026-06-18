@@ -220,3 +220,38 @@
   els.forEach((el) => io.observe(el));
   window.setTimeout(() => els.forEach((el) => { el.style.opacity = "1"; el.style.transform = "none"; }), 3000);
 })();
+
+/* ============ אפקט גלילה: הערפל עולה וה-vela מתמוססת ועולה ============ */
+(function heroFog() {
+  const word = document.querySelector(".lpHero__word");
+  if (!word) return;
+  const reduce =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) return;
+
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const span = Math.max(1, window.innerHeight * 0.7);
+    const p = Math.min(1, Math.max(0, window.scrollY / span)); // 0 בראש → 1 אחרי ~0.7 מסך
+    // גבולות הערפל עולים: האזור המלא מצטמצם מלמטה כלפי מעלה עד שנעלם
+    const a = 34 - p * 78; // 34% → -44%
+    const b = 78 - p * 78; // 78% → 0%
+    word.style.setProperty("--fogA", a.toFixed(1) + "%");
+    word.style.setProperty("--fogB", b.toFixed(1) + "%");
+    word.style.setProperty("--vy", (-p * 14).toFixed(1) + "vh"); // עולה מעט
+    word.style.opacity = Math.max(0, 1 - p * 1.05).toFixed(3); // נעלם לגמרי בקצה
+  }
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", update, { passive: true });
+  update();
+})();

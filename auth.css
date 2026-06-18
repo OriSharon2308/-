@@ -37,7 +37,7 @@
   position: absolute;
   top: 2%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, var(--vy, 0px));
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
   font-size: min(64vw, 80vh);
@@ -48,8 +48,10 @@
   user-select: none;
   pointer-events: none;
   z-index: 0;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 34%, transparent 74%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 34%, transparent 74%);
+  /* גבולות הערפל נשלטים מהגלילה (--fogA/--fogB) — ככל שגוללים הם עולים וה-vela מתמוססת */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 34%), transparent var(--fogB, 74%));
+  mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 34%), transparent var(--fogB, 74%));
+  will-change: mask-image, transform, opacity;
 }
 /* "ברוכים הבאים" — כהה, נמוך באזור הבהיר. בלחיצה הטופס יורד והתצוגה גוללת אליו (לא דוחף מעלה) */
 .lpHero__title {
