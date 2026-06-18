@@ -72,7 +72,7 @@ html {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  color: var(--mathColor, #0c1320);
+  color: var(--mathColor, #a4aaae);
   -webkit-mask-image: linear-gradient(to top, #000 0%, #000 var(--mathReveal, 30%), transparent calc(var(--mathReveal, 30%) + 14%));
   mask-image: linear-gradient(to top, #000 0%, #000 var(--mathReveal, 30%), transparent calc(var(--mathReveal, 30%) + 14%));
   will-change: color, mask-image;

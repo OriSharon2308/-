@@ -242,7 +242,7 @@
     word.style.visibility = "hidden";
     if (math) {
       math.style.setProperty("--mathReveal", "126%");
-      math.style.setProperty("--mathColor", "rgb(250, 252, 251)");
+      math.style.setProperty("--mathColor", "rgb(208, 213, 215)");
     }
     return;
   }
@@ -278,7 +278,8 @@
     if (math) {
       math.style.setProperty("--mathReveal", Math.min(126, 30 + p * 100).toFixed(1) + "%");
       const l = (from, to) => Math.round(from + (to - from) * p);
-      math.style.setProperty("--mathColor", `rgb(${l(12, 250)}, ${l(19, 252)}, ${l(32, 251)})`);
+      // צבע ה"3" המכסיף: מסך פתיחה מעט כהה יותר מה-3 → מסך הרשמה אפור בהיר (לא לבן)
+      math.style.setProperty("--mathColor", `rgb(${l(164, 208)}, ${l(170, 213)}, ${l(174, 215)})`);
     }
   }
   window.addEventListener(
