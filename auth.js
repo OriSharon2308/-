@@ -231,6 +231,7 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
   const welcome = document.getElementById("heroWelcome");
   const bar = document.getElementById("heroBar");
   const hint = document.querySelector(".lpHero__bar .lpScrollHint");
+  const tagline = document.getElementById("heroTagline");
   const math = document.getElementById("heroMath");
   const lateSyms = math ? math.querySelectorAll(".mathSym--late") : [];
   if (!word || !bar) return;
@@ -246,6 +247,8 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
       welcome.style.transform = "none";
     }
     bar.style.transform = "none";
+    if (tagline) tagline.style.opacity = "0";
+    if (hint) hint.style.opacity = "0";
     if (veil) veil.style.setProperty("--fogLine", "126%");
     word.style.opacity = "0";
     word.style.visibility = "hidden";
@@ -286,8 +289,9 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
       welcome.style.transform = `translateY(${((1 - wp) * 26).toFixed(1)}px)`;
     }
 
-    // הרמז "כדאי לגלול" נעלם ברגע שמתחילים לגלול
+    // הרמז (חץ) והטקסט הקטן נמוגים עם הערפל ברגע שמתחילים לגלול
     if (hint) hint.style.opacity = (1 - clamp(p / 0.28, 0, 1)).toFixed(3);
+    if (tagline) tagline.style.opacity = (1 - clamp(p / 0.3, 0, 1)).toFixed(3);
 
     // שדה הסימבולים: מתגלה מלמטה כלפי מעלה (מתרבה/ממלא) + צבע משחור → בהיר מהרקע
     if (math) {
