@@ -239,8 +239,7 @@
     const b = 78 - p * 78; // 78% → 0%
     word.style.setProperty("--fogA", a.toFixed(1) + "%");
     word.style.setProperty("--fogB", b.toFixed(1) + "%");
-    word.style.setProperty("--vy", (-p * 14).toFixed(1) + "vh"); // עולה מעט
-    word.style.opacity = Math.max(0, 1 - p * 1.05).toFixed(3); // נעלם לגמרי בקצה
+    word.style.opacity = Math.max(0, 1 - p * 1.05).toFixed(3); // נעלם לגמרי בקצה (נשאר במקום)
   }
   window.addEventListener(
     "scroll",
