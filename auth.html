@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./auth.css?v=5" />
+    <link rel="stylesheet" href="./auth.css?v=6" />
   </head>
   <body class="authBody">
     <div class="authWord" aria-hidden="true">vela</div>
@@ -17,7 +17,7 @@
 
       <div class="authTabs" role="tablist">
         <span class="authTabs__indicator" aria-hidden="true"></span>
-        <button id="tabLogin" class="authTab authTab--active" type="button" role="tab">כניסה</button>
+        <button id="tabLogin" class="authTab" type="button" role="tab">כניסה</button>
         <button id="tabRegister" class="authTab" type="button" role="tab">הרשמה</button>
       </div>
 
@@ -25,7 +25,7 @@
 
       <div class="authForms" id="authForms">
         <!-- כניסה -->
-        <form id="loginForm" class="authForm" autocomplete="on">
+        <form id="loginForm" class="authForm" hidden autocomplete="on">
           <label class="authField">
             <span>שם משתמש</span>
             <input id="loginUsername" name="username" type="text" required />
@@ -111,6 +111,6 @@
       </div>
     </main>
 
-    <script src="./auth.js?v=4" defer></script>
+    <script src="./auth.js?v=5" defer></script>
   </body>
 </html>

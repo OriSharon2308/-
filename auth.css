@@ -12,11 +12,9 @@
   margin: 0;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 24px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden; /* רק אופקי — גלילה אנכית מותרת */
   font-family: "Assistant", system-ui, -apple-system, sans-serif;
   color: #1f2c3a;
   /* צבע האפליקציה — רקע פסטל עדין (טורקיז/אינדיגו/ענבר) על בסיס בהיר */
@@ -31,21 +29,22 @@
 /* "vela" — ענקית, נוגעת בקצה העליון, ונמוגה כמו ערפל בתחתית. פונט מקורי, שחור */
 .authWord {
   position: fixed;
-  top: 0;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -15%);
+  transform: translate(-50%, -50%);
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
-  font-size: min(56vw, 94vh);
-  line-height: 1;
+  font-size: min(52vw, 88vh);
+  line-height: 0.82;
   letter-spacing: -0.02em;
   color: #0c1320;
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
   z-index: 0;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 90%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 90%);
+  /* ערפל עדין בקצוות — אבל כל המילה נראית */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%);
 }
 
 .landing {
@@ -111,6 +110,7 @@
 .authCard {
   position: relative;
   z-index: 1;
+  margin: auto; /* ממורכז ובטוח-לגלילה (במקום align-items:center שחותך) */
   width: 100%;
   max-width: 440px;
   background: #ffffff;
@@ -159,10 +159,12 @@
   left: 0;
   width: 0;
   z-index: 0;
+  opacity: 0; /* מופיע רק אחרי שבוחרים טאב */
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(17, 49, 86, 0.12);
-  transition: transform 0.28s cubic-bezier(0.4, 0.2, 0.2, 1), width 0.28s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: transform 0.28s cubic-bezier(0.4, 0.2, 0.2, 1), width 0.28s cubic-bezier(0.4, 0.2, 0.2, 1),
+    opacity 0.2s ease;
 }
 
 .authError {
@@ -176,28 +178,31 @@
   margin-bottom: 14px;
 }
 
-/* מעבר חלק בין טפסים (תלוי-JS: --entering / --leaving + גובה authForms) */
 .authForms {
   position: relative;
-  transition: height 0.35s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 .authForm {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.authForm--entering {
-  opacity: 0;
-  transform: translateY(10px);
+.authForm--in {
+  animation: formIn 0.3s ease both;
 }
-.authForm--leaving {
-  position: absolute;
-  inset: 0 0 auto 0;
-  width: 100%;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
+@keyframes formIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .authForm--in {
+    animation: none;
+  }
 }
 
 .authField {

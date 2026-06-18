@@ -30,69 +30,35 @@
     errorBox.textContent = "";
   }
 
-  const authForms = document.getElementById("authForms");
-  let animating = false;
-
+  // בהתחלה אף טופס לא פתוח — רק שני הכפתורים. לחיצה פותחת את הטופס שנבחר.
   function selectTab(which) {
     const login = which === "login";
     const showForm = login ? loginForm : registerForm;
     const hideForm = login ? registerForm : loginForm;
-    if (!showForm.hidden || animating) return; // כבר פעיל, או באמצע אנימציה
+    if (!showForm.hidden) return; // כבר פתוח
 
     clearError();
     tabLogin.classList.toggle("authTab--active", login);
     tabRegister.classList.toggle("authTab--active", !login);
+    if (tabIndicator) tabIndicator.style.opacity = "1";
     moveIndicator(login ? tabLogin : tabRegister, false);
 
-    const reduce =
-      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      hideForm.hidden = true;
-      showForm.hidden = false;
-      return;
-    }
-
-    animating = true;
-    const startH = authForms.offsetHeight;
-
-    hideForm.classList.add("authForm--leaving");
+    hideForm.hidden = true;
+    hideForm.classList.remove("authForm--in");
     showForm.hidden = false;
-    showForm.classList.add("authForm--entering");
-
-    const endH = authForms.offsetHeight;
-    authForms.style.height = `${startH}px`;
-    void authForms.offsetHeight; // reflow
-    authForms.style.height = `${endH}px`;
-
-    requestAnimationFrame(() => showForm.classList.remove("authForm--entering"));
-
-    let done = false;
-    const finish = () => {
-      if (done) return;
-      done = true;
-      hideForm.hidden = true;
-      hideForm.classList.remove("authForm--leaving");
-      authForms.style.height = "";
-      animating = false;
-      authForms.removeEventListener("transitionend", onEnd);
-    };
-    const onEnd = (e) => {
-      if (e.target === authForms && e.propertyName === "height") finish();
-    };
-    authForms.addEventListener("transitionend", onEnd);
-    window.setTimeout(finish, 650); // גיבוי אם transitionend לא נורה
+    showForm.classList.remove("authForm--in");
+    void showForm.offsetWidth; // reflow כדי להפעיל מחדש את האנימציה
+    showForm.classList.add("authForm--in");
   }
 
   tabLogin.addEventListener("click", () => selectTab("login"));
   tabRegister.addEventListener("click", () => selectTab("register"));
 
-  moveIndicator(tabLogin, true);
-  window.addEventListener("load", () =>
-    moveIndicator(document.querySelector(".authTab--active") || tabLogin, true)
-  );
-  window.addEventListener("resize", () =>
-    moveIndicator(document.querySelector(".authTab--active") || tabLogin, true)
-  );
+  // עדכון מיקום המסמן בשינוי גודל — רק אם כבר נבחר טאב
+  window.addEventListener("resize", () => {
+    const active = document.querySelector(".authTab--active");
+    if (active) moveIndicator(active, true);
+  });
 
   // הצג/הסתר סיסמה
   document.querySelectorAll(".pwToggle").forEach((btn) => {
