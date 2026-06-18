@@ -11,7 +11,7 @@
 .authBody {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip (לא hidden) — לא יוצר scroll-container ולכן position:sticky עובד */
   font-family: "Assistant", system-ui, -apple-system, sans-serif;
   color: #1f2c3a;
   background: radial-gradient(900px 620px at 8% -10%, rgba(20, 184, 166, 0.16), transparent 60%),
@@ -49,8 +49,8 @@
   pointer-events: none;
   z-index: 0;
   /* גבולות הערפל נשלטים מהגלילה (--fogA/--fogB) — ככל שגוללים הם עולים וה-vela מתמוססת */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 34%), transparent var(--fogB, 74%));
-  mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 34%), transparent var(--fogB, 74%));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 26%), transparent var(--fogB, 62%));
+  mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 26%), transparent var(--fogB, 62%));
   will-change: mask-image, transform, opacity;
 }
 /* "ברוכים הבאים" — כהה, נמוך באזור הבהיר. בלחיצה הטופס יורד והתצוגה גוללת אליו (לא דוחף מעלה) */
@@ -388,26 +388,35 @@
   }
 }
 
-/* ===== סקשנים ===== */
-/* כל התוכן נצבע מעל ה-vela הקבועה (fixed) — הוא נשאר במקום והכל נגלל מעליו */
-.lpScrollHint,
-.lpSection,
-.lpParents,
-.lpFoot {
+/* ===== סקשנים — "חלונית על חלונית": פאנלים נדבקים (sticky) ועולים זה על זה בגלילה ===== */
+.lpScrollHint {
   position: relative;
   z-index: 1;
 }
+.lpSection,
+.lpParents {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 -20px 55px rgba(13, 60, 53, 0.16);
+}
+/* "איך Vela עובדת" — הפאנל הכהה יותר (פסטל), יושב מתחת */
 .lpSection {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 56px 22px;
+  z-index: 2;
+  background: #d6e8e3;
   text-align: center;
 }
+/* "מה מקבלים" — הפאנל הבהיר, עולה מעל הכהה כשגוללים */
 .lpSection--alt {
-  background: rgba(255, 255, 255, 0.55);
-  max-width: none;
-  border-top: 1px solid rgba(13, 60, 53, 0.06);
-  border-bottom: 1px solid rgba(13, 60, 53, 0.06);
+  z-index: 3;
+  background: #ffffff;
+  border: 0;
 }
 .lpSection__title {
   font-family: "Fredoka", "Assistant", sans-serif;
@@ -421,6 +430,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -476,10 +486,15 @@
 }
 
 .lpFoot {
+  position: relative;
+  z-index: 5;
+  background: #f1f7f6;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 -20px 55px rgba(13, 60, 53, 0.16);
   text-align: center;
-  padding: 30px 20px 40px;
+  padding: 64px 20px 72px;
   font-size: 13px;
-  color: #6c7e8e;
+  color: #5f7a77;
 }
 
 /* ===== מובייל ===== */
@@ -501,22 +516,23 @@
 }
 
 /* ===== אזור הורים ===== */
+/* "אזור הורים" — הפאנל הכהה (טורקיז), בראש הערימה */
 .lpParents {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 24px 64px;
+  z-index: 4;
+  background: linear-gradient(160deg, #0f766e, #0d9488);
+  color: #fff;
 }
 .lpParents__panel {
-  background: linear-gradient(150deg, #0f766e, #0d9488);
-  color: #fff;
-  border-radius: 28px;
-  padding: 34px 32px;
+  background: transparent;
+  box-shadow: none;
+  max-width: 980px;
+  width: 100%;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
-  box-shadow: 0 20px 44px rgba(13, 148, 136, 0.28);
 }
 .lpParents__text h3 {
   font-family: "Fredoka", sans-serif;

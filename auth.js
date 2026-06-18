@@ -234,12 +234,14 @@
     ticking = false;
     const span = Math.max(1, window.innerHeight * 0.7);
     const p = Math.min(1, Math.max(0, window.scrollY / span)); // 0 בראש → 1 אחרי ~0.7 מסך
-    // גבולות הערפל עולים: האזור המלא מצטמצם מלמטה כלפי מעלה עד שנעלם
-    const a = 34 - p * 78; // 34% → -44%
-    const b = 78 - p * 78; // 78% → 0%
+    // גבולות הערפל גבוהים יותר (התחתית של vela מוסתרת) ועולים בגלילה עד שנעלם
+    const a = 26 - p * 72; // 26% → -46%
+    const b = 62 - p * 66; // 62% → -4%
     word.style.setProperty("--fogA", a.toFixed(1) + "%");
     word.style.setProperty("--fogB", b.toFixed(1) + "%");
     word.style.opacity = Math.max(0, 1 - p * 1.05).toFixed(3); // נעלם לגמרי בקצה (נשאר במקום)
+    // אחרי ~מסך מלא ה-vela נעלמת לגמרי → מעבר לגלילת אתר רגילה (פאנלים נערמים)
+    word.style.visibility = p >= 1 ? "hidden" : "visible";
   }
   window.addEventListener(
     "scroll",
