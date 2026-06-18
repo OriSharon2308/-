@@ -87,14 +87,15 @@
       void showForm.offsetWidth;
       showForm.classList.add("authForm--in");
     });
-    // התצוגה גוללת אל הטופס כך שרואים את כולו (במקום לדחוף את הכותרת מעלה)
+    // גלילה לעמדה אחידה: ראש הכרטיס תמיד באותו מיקום (לא תלוי בגובה הטופס),
+    // כך שמעבר כניסה<->הרשמה לא מזיז מעלה/מטה.
     const reduce =
       window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (authBox && authBox.scrollIntoView) {
-      window.setTimeout(
-        () => authBox.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" }),
-        140
-      );
+    if (authBox && window.scrollTo) {
+      window.setTimeout(() => {
+        const top = authBox.getBoundingClientRect().top + window.scrollY - 24;
+        window.scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
+      }, 60);
     }
   }
 
