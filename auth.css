@@ -19,20 +19,24 @@
   overflow: hidden;
   font-family: "Assistant", system-ui, -apple-system, sans-serif;
   color: #1f2c3a;
-  background: radial-gradient(1200px 620px at 50% -8%, #eaf6ff 0%, #d2e9fb 55%, #c6e2f8 100%);
+  /* צבע האפליקציה — רקע פסטל עדין (טורקיז/אינדיגו/ענבר) על בסיס בהיר */
+  background: radial-gradient(900px 620px at 8% -10%, rgba(20, 184, 166, 0.14), transparent 60%),
+    radial-gradient(820px 640px at 96% 2%, rgba(129, 140, 248, 0.12), transparent 58%),
+    radial-gradient(760px 720px at 50% 116%, rgba(251, 191, 36, 0.1), transparent 58%),
+    #f3f8f7;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
 
-/* "vela" — ענקית וממורכזת ברקע המסך, פונט מקורי (Arca Morphe), שחור */
+/* "vela" — ענקית, נוגעת בקצה העליון, ונמוגה כמו ערפל בתחתית. פונט מקורי, שחור */
 .authWord {
   position: fixed;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -46%);
+  transform: translate(-50%, -15%);
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
-  font-size: min(52vw, 88vh);
+  font-size: min(56vw, 94vh);
   line-height: 1;
   letter-spacing: -0.02em;
   color: #0c1320;
@@ -40,8 +44,8 @@
   user-select: none;
   pointer-events: none;
   z-index: 0;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 64%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 64%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 90%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 90%);
 }
 
 .landing {
