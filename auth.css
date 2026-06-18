@@ -101,7 +101,12 @@ html {
   font-size: min(94vw, 90vh);
   line-height: 1;
   letter-spacing: -0.02em;
-  color: rgba(12, 19, 32, 0.55);
+  /* שחור למעלה, מתבהר בהדרגה כלפי מטה (background-clip:text) — לבקשת המשתמש */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to bottom, #0c1320 0%, #0c1320 45%, #8fb0aa 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
   margin: 0;
   user-select: none;
   pointer-events: none;
