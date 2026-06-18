@@ -100,7 +100,7 @@ html {
   flex-direction: column;
   align-items: center;
   opacity: 0; /* נדלק בגלילה (JS) לקראת סוף הביט */
-  will-change: opacity;
+  will-change: opacity, transform;
 }
 /* סרגל ההתחברות/הרשמה + רמז — מתחיל בתחתית (מסך 1) ועולה לאט למקומו (מסך 2) */
 .lpHero__bar {

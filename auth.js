@@ -240,7 +240,10 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
 
   if (reduce) {
     // ללא תנועה: מצב סטטי של מסך 2 (ערפל מלא, vela מוסתרת, ברכה גלויה, סימבולים בהירים מלאים)
-    if (welcome) welcome.style.opacity = "1";
+    if (welcome) {
+      welcome.style.opacity = "1";
+      welcome.style.transform = "none";
+    }
     bar.style.transform = "none";
     if (veil) veil.style.setProperty("--fogLine", "126%");
     word.style.opacity = "0";
@@ -274,8 +277,12 @@ window.addEventListener("load", () => window.scrollTo(0, 0));
     word.style.opacity = (1 - clamp(p / 0.5, 0, 1)).toFixed(3);
     word.style.visibility = p >= 0.55 ? "hidden" : "visible";
 
-    // "ברוכים הבאים" דוהה פנימה (opacity) לקראת הסוף, כשהמסך כבר מלא בצבע
-    if (welcome) welcome.style.opacity = clamp((p - 0.5) / 0.4, 0, 1).toFixed(3);
+    // "ברוכים הבאים" + תת-כותרת: דוהים פנימה (opacity) וגם עולים מעט מלמטה (נחשפים)
+    if (welcome) {
+      const wp = clamp((p - 0.5) / 0.4, 0, 1);
+      welcome.style.opacity = wp.toFixed(3);
+      welcome.style.transform = `translateY(${((1 - wp) * 26).toFixed(1)}px)`;
+    }
 
     // הרמז "כדאי לגלול" נעלם ברגע שמתחילים לגלול
     if (hint) hint.style.opacity = (1 - clamp(p / 0.28, 0, 1)).toFixed(3);
