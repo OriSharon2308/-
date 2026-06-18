@@ -54,6 +54,178 @@
           animation: none;
         }
       }
+
+      /* ===== עיצוב מחדש — מסך הבית של התלמיד: כיפי, צבעוני, נוח. אותו מבנה וכפתורים ===== */
+      /* כתמי צבע רכים ומשחקיים ברקע (מאחורי התוכן) */
+      .homeBody::before,
+      .homeBody::after {
+        content: "";
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.42;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .homeBody::before {
+        width: 44vw;
+        height: 44vw;
+        top: -12vw;
+        right: -8vw;
+        background: radial-gradient(circle, #ffd9a8, transparent 70%);
+      }
+      .homeBody::after {
+        width: 48vw;
+        height: 48vw;
+        bottom: -16vw;
+        left: -10vw;
+        background: radial-gradient(circle, #bfeede, transparent 70%);
+      }
+
+      /* סמל המותג — בצבע, מעוגל */
+      .home .brand__mark {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: linear-gradient(140deg, #16c4b2, #0d9488);
+        color: #fff;
+        box-shadow: 0 6px 16px rgba(13, 148, 136, 0.3);
+      }
+      .home .brand__title {
+        color: #0f3b36;
+      }
+
+      /* ברכה + תת-כותרת */
+      .home .home__greeting {
+        color: #0f3b36;
+      }
+      .home .home__subtitle {
+        font-weight: 600;
+        color: #4a6b66;
+      }
+
+      /* כרטיסי הפעולה — גדולים, צבעוניים, מזמינים */
+      .home .home__cards {
+        grid-template-columns: repeat(2, minmax(0, 250px));
+        gap: 22px;
+        animation: cardsIn 0.5s ease both;
+      }
+      @keyframes cardsIn {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+      }
+      .home .homeCard {
+        padding: 34px 24px;
+        border: none;
+        border-radius: 26px;
+        gap: 12px;
+      }
+      .home .homeCard__icon {
+        width: 78px;
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 40px;
+      }
+      .home .homeCard__title {
+        font-size: 25px;
+        font-weight: 700;
+      }
+      .home .homeCard__desc {
+        font-size: 14.5px;
+      }
+      .home .homeCard:hover {
+        transform: translateY(-6px) scale(1.03) rotate(-0.6deg);
+      }
+
+      /* תרגול — כרטיס טורקיז מלא */
+      .home .homeCard--primary {
+        background: linear-gradient(150deg, #16c8b5, #0d9488);
+        color: #fff;
+        box-shadow: 0 16px 34px rgba(13, 148, 136, 0.34);
+      }
+      .home .homeCard--primary .homeCard__icon {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .home .homeCard--primary .homeCard__desc {
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      /* למידה (בקרוב) — כרטיס חמים ורך */
+      .home .homeCard--soon {
+        background: #fff3e6;
+        color: #8a4b1f;
+        box-shadow: 0 10px 26px rgba(180, 120, 60, 0.16);
+      }
+      .home .homeCard--soon .homeCard__icon {
+        background: #ffe2c2;
+      }
+      .home .homeCard--soon .homeCard__desc {
+        color: #c2410c;
+        font-weight: 700;
+        background: #ffe0c0;
+        padding: 3px 14px;
+        border-radius: 999px;
+      }
+
+      /* כרטיסי סטטיסטיקה — צבעוניים ורכים, כל אחד בגוון משלו */
+      .home .home__statsTitle {
+        font-weight: 700;
+        color: #0f3b36;
+      }
+      .home .statCard {
+        border: none;
+        border-radius: 20px;
+        padding: 20px 12px;
+        box-shadow: 0 6px 16px rgba(2, 6, 23, 0.05);
+      }
+      .home .statCard__value {
+        font-size: 30px;
+      }
+      .home .statCard__label {
+        color: #5a6b68;
+      }
+      .home .home__statsGrid .statCard:nth-child(1) {
+        background: #d8f5f0;
+      }
+      .home .home__statsGrid .statCard:nth-child(1) .statCard__value {
+        color: #0d9488;
+      }
+      .home .home__statsGrid .statCard:nth-child(2) {
+        background: #ffe7df;
+      }
+      .home .home__statsGrid .statCard:nth-child(2) .statCard__value {
+        color: #ef6c4d;
+      }
+      .home .home__statsGrid .statCard:nth-child(3) {
+        background: #fff1cc;
+      }
+      .home .home__statsGrid .statCard:nth-child(3) .statCard__value {
+        color: #d99409;
+      }
+      .home .home__statsGrid .statCard:nth-child(4) {
+        background: #eae6ff;
+      }
+      .home .home__statsGrid .statCard:nth-child(4) .statCard__value {
+        color: #7c6cf0;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .home .home__cards {
+          animation: none;
+        }
+        .homeBody::before,
+        .homeBody::after {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body class="homeBody">
