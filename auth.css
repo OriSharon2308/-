@@ -1,4 +1,4 @@
-/* ===== Vela — דף נחיתה + התחברות. עיצוב "אוויר נקי": מינימליסטי-פרימיום, רקע תכלת ===== */
+/* ===== Vela — דף נחיתה. רקע בצבע האפליקציה (פסטל טורקיז), גלילה, vela נוחה לעין ===== */
 @font-face {
   font-family: "Arca Morphe";
   src: url("/fonts/ArcaMorphe-Regular.ttf") format("truetype");
@@ -11,128 +11,134 @@
 .authBody {
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  padding: 24px;
-  position: relative;
-  overflow-x: hidden; /* רק אופקי — גלילה אנכית מותרת */
+  overflow-x: hidden;
   font-family: "Assistant", system-ui, -apple-system, sans-serif;
   color: #1f2c3a;
-  /* צבע האפליקציה — רקע פסטל עדין (טורקיז/אינדיגו/ענבר) על בסיס בהיר */
-  background: radial-gradient(900px 620px at 8% -10%, rgba(20, 184, 166, 0.14), transparent 60%),
+  background: radial-gradient(900px 620px at 8% -10%, rgba(20, 184, 166, 0.16), transparent 60%),
     radial-gradient(820px 640px at 96% 2%, rgba(129, 140, 248, 0.12), transparent 58%),
-    radial-gradient(760px 720px at 50% 116%, rgba(251, 191, 36, 0.1), transparent 58%),
-    #f3f8f7;
-  background-attachment: fixed;
+    radial-gradient(760px 720px at 50% 120%, rgba(251, 191, 36, 0.1), transparent 58%),
+    #f1f7f6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* "vela" — ענקית, נוגעת בקצה העליון, ונמוגה כמו ערפל בתחתית. פונט מקורי, שחור */
-.authWord {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: "Arca Morphe", "Archivo Black", sans-serif;
-  font-weight: 400;
-  font-size: min(52vw, 88vh);
-  line-height: 0.82;
-  letter-spacing: -0.02em;
-  color: #0c1320;
-  white-space: nowrap;
-  user-select: none;
-  pointer-events: none;
-  z-index: 0;
-  /* ערפל עדין בקצוות — אבל כל המילה נראית */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%);
-}
-
-.landing {
-  position: relative;
-  z-index: 1;
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 26px 20px 56px;
+/* ===== Hero ===== */
+.lpHero {
+  min-height: 94vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-}
-
-/* ===== ניווט עליון ===== */
-.landing__nav {
-  width: 100%;
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.brandWord {
-  font-family: "Archivo Black", sans-serif;
-  font-size: 30px;
-  letter-spacing: -0.5px;
-  color: #0e1726;
-}
-.brandTag {
-  font-size: 14px;
-  font-weight: 600;
-  color: #5a6b7b;
-}
-
-/* ===== Hero ===== */
-.hero {
+  justify-content: center;
   text-align: center;
-  max-width: 620px;
-  margin-top: 18px;
+  padding: 40px 20px 30px;
+  position: relative;
 }
-.hero__lead {
+.lpHero__word {
+  font-family: "Arca Morphe", "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-size: clamp(96px, 26vw, 300px);
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+  color: #10202f;
+  margin: 0 0 6px;
+  user-select: none;
+  /* ערפל עדין מאוד בקצה התחתון — נוח לעין */
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+}
+.lpHero__title {
   font-family: "Fredoka", "Assistant", sans-serif;
   font-weight: 700;
-  font-size: clamp(22px, 4vw, 32px);
-  line-height: 1.15;
+  font-size: clamp(24px, 4.4vw, 40px);
+  line-height: 1.12;
   margin: 0 0 14px;
-  color: #11243a;
+  color: #112a2a;
 }
-.hero__sub {
-  font-size: clamp(16px, 2.2vw, 19px);
+.lpHero__sub {
+  font-size: clamp(15px, 2.2vw, 18px);
   line-height: 1.65;
-  color: #44586b;
-  margin: 0 auto 14px;
-  max-width: 540px;
-}
-.hero__trust {
-  font-size: 13px;
-  color: #6c7e8e;
-  margin: 0;
+  color: #46615f;
+  max-width: 520px;
+  margin: 0 auto 26px;
 }
 
-/* ===== כרטיס התחברות ===== */
-.authCard {
-  position: relative;
-  z-index: 1;
-  margin: auto; /* ממורכז ובטוח-לגלילה (במקום align-items:center שחותך) */
+/* ===== כרטיס האימות ===== */
+.authBox {
   width: 100%;
-  max-width: 440px;
-  background: #ffffff;
+  max-width: 420px;
+  background: #fff;
   border-radius: 22px;
-  padding: 24px 26px 28px;
-  box-shadow: 0 24px 60px rgba(17, 49, 86, 0.18), 0 2px 6px rgba(17, 49, 86, 0.06);
+  padding: 22px;
+  box-shadow: 0 22px 55px rgba(13, 60, 53, 0.16), 0 2px 6px rgba(13, 60, 53, 0.06);
 }
-.authCard__tag {
-  text-align: center;
+
+/* בחירה התחלתית — שני כפתורים */
+.authChoice {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.choiceBtn {
+  width: 100%;
+  border: 2px solid #cfe4e0;
+  background: #fff;
+  color: #0f766e;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.choiceBtn:hover {
+  border-color: #14b8a6;
+}
+.choiceBtn:active {
+  transform: translateY(1px);
+}
+.choiceBtn--primary {
+  border-color: transparent;
+  background: #0d9488;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(13, 148, 136, 0.3);
+}
+.choiceBtn--primary:hover {
+  background: #0f766e;
+  border-color: transparent;
+}
+
+/* פאנל הטפסים (נחשף אחרי בחירה) */
+.authPanel {
+  animation: panelIn 0.28s ease both;
+}
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.authBack {
+  border: 0;
+  background: transparent;
+  color: #5a6b7b;
+  font-family: inherit;
   font-size: 14px;
   font-weight: 600;
-  color: #5a6b7b;
-  margin: 0 0 16px;
+  cursor: pointer;
+  padding: 4px 6px;
+  margin-bottom: 8px;
+}
+.authBack:hover {
+  color: #0f766e;
 }
 
 .authTabs {
   position: relative;
   display: flex;
-  background: #eef4f9;
+  background: #eef4f3;
   border-radius: 14px;
   padding: 5px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 .authTab {
   position: relative;
@@ -140,17 +146,17 @@
   flex: 1;
   border: 0;
   background: transparent;
-  padding: 11px;
+  padding: 10px;
   border-radius: 10px;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
-  color: #6a7c8c;
+  color: #6a7c7a;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 .authTab--active {
-  color: #14324a;
+  color: #0f3a36;
 }
 .authTabs__indicator {
   position: absolute;
@@ -159,10 +165,10 @@
   left: 0;
   width: 0;
   z-index: 0;
-  opacity: 0; /* מופיע רק אחרי שבוחרים טאב */
+  opacity: 0;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(17, 49, 86, 0.12);
+  box-shadow: 0 2px 8px rgba(13, 60, 53, 0.14);
   transition: transform 0.28s cubic-bezier(0.4, 0.2, 0.2, 1), width 0.28s cubic-bezier(0.4, 0.2, 0.2, 1),
     opacity 0.2s ease;
 }
@@ -187,21 +193,12 @@
   gap: 14px;
 }
 .authForm--in {
-  animation: formIn 0.3s ease both;
+  animation: formIn 0.28s ease both;
 }
 @keyframes formIn {
   from {
     opacity: 0;
     transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .authForm--in {
-    animation: none;
   }
 }
 
@@ -219,7 +216,7 @@
 .authField select {
   width: 100%;
   padding: 12px 14px;
-  border: 1.5px solid #dce6ee;
+  border: 1.5px solid #dbe7e4;
   border-radius: 12px;
   font-family: inherit;
   font-size: 15px;
@@ -230,8 +227,8 @@
 .authField input:focus,
 .authField select:focus {
   outline: none;
-  border-color: #3fa3e6;
-  box-shadow: 0 0 0 3px rgba(63, 163, 230, 0.18);
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.18);
 }
 .authRow {
   display: flex;
@@ -274,15 +271,15 @@
   font-size: 16px;
   font-weight: 700;
   color: #fff;
-  background: #2b6cb0;
+  background: #0d9488;
   padding: 14px;
   border-radius: 13px;
   margin-top: 4px;
-  box-shadow: 0 8px 18px rgba(43, 108, 176, 0.28);
+  box-shadow: 0 8px 18px rgba(13, 148, 136, 0.28);
   transition: background 0.15s ease, transform 0.1s ease;
 }
 .authSubmit:hover {
-  background: #235c98;
+  background: #0f766e;
 }
 .authSubmit:active {
   transform: translateY(1px);
@@ -292,7 +289,7 @@
   cursor: default;
 }
 
-/* בחירת בן/בת — שני כפתורי תמונה */
+/* בחירת בן/בת */
 .genderPick {
   display: flex;
   gap: 14px;
@@ -314,28 +311,90 @@
   border-radius: 50%;
 }
 .genderBtn:hover {
-  border-color: rgba(63, 163, 230, 0.6);
+  border-color: rgba(20, 184, 166, 0.6);
 }
 .genderBtn.is-selected {
-  border-color: #3fa3e6;
-  box-shadow: 0 0 0 4px rgba(63, 163, 230, 0.22);
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.22);
   transform: translateY(-3px);
 }
 
-/* ===== רצועת פיצ'רים ===== */
+/* רמז גלילה */
+.lpScrollHint {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #5f7a77;
+  animation: bob 1.8s ease-in-out infinite;
+}
+@keyframes bob {
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ===== סקשנים ===== */
+.lpSection {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 56px 22px;
+  text-align: center;
+}
+.lpSection--alt {
+  background: rgba(255, 255, 255, 0.55);
+  max-width: none;
+  border-top: 1px solid rgba(13, 60, 53, 0.06);
+  border-bottom: 1px solid rgba(13, 60, 53, 0.06);
+}
+.lpSection__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 700;
+  color: #112a2a;
+  margin: 0 0 32px;
+}
+.lpSteps,
 .features {
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 6px;
+  gap: 18px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
+.lpStep,
 .feature {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(17, 49, 86, 0.07);
+  background: #fff;
+  border: 1px solid rgba(13, 60, 53, 0.08);
   border-radius: 18px;
-  padding: 22px 20px;
+  padding: 24px 20px;
   text-align: center;
+}
+.lpStep__num {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #0d9488;
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lpStep__title,
+.feature__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #15324a;
+}
+.lpStep__desc,
+.feature__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #54677a;
+  margin: 0;
 }
 .feature__icon {
   width: 52px;
@@ -346,39 +405,33 @@
   width: 100%;
   height: 100%;
 }
-.feature__title {
-  font-size: 17px;
-  font-weight: 700;
-  margin: 0 0 6px;
-  color: #15324a;
-}
-.feature__desc {
+.lpSection__trust {
+  margin-top: 30px;
   font-size: 14px;
-  line-height: 1.55;
-  color: #54677a;
-  margin: 0;
+  color: #5f7a77;
 }
 
-.landing__foot {
+.lpFoot {
+  text-align: center;
+  padding: 30px 20px 40px;
   font-size: 13px;
   color: #6c7e8e;
-  margin-top: 8px;
 }
 
 /* ===== מובייל ===== */
 @media (max-width: 720px) {
+  .lpSteps,
   .features {
     grid-template-columns: 1fr;
   }
-  .landing__nav {
-    justify-content: center;
-    text-align: center;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .authForms,
-  .authForm,
+  .authPanel,
+  .authForm--in,
+  .lpScrollHint {
+    animation: none;
+  }
   .authTabs__indicator {
-    transition: none;
+    transition: opacity 0.2s ease;
   }
 }

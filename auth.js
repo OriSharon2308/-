@@ -1,5 +1,10 @@
-/* ============ לוגיקת הטפסים (כניסה / הרשמה) ============ */
+/* ============ דף נחיתה — בחירה (כניסה/הרשמה) ואז טופס ============ */
 (function () {
+  const authChoice = document.getElementById("authChoice");
+  const authPanel = document.getElementById("authPanel");
+  const choiceLogin = document.getElementById("choiceLogin");
+  const choiceRegister = document.getElementById("choiceRegister");
+  const authBack = document.getElementById("authBack");
   const tabLogin = document.getElementById("tabLogin");
   const tabRegister = document.getElementById("tabRegister");
   const loginForm = document.getElementById("loginForm");
@@ -7,14 +12,13 @@
   const errorBox = document.getElementById("authError");
   const tabIndicator = document.querySelector(".authTabs__indicator");
 
-  // ממקם את הפס המחליק מתחת לטאב הפעיל
   function moveIndicator(tab, instant) {
     if (!tabIndicator || !tab) return;
     if (instant) tabIndicator.style.transition = "none";
     tabIndicator.style.width = `${tab.offsetWidth}px`;
     tabIndicator.style.transform = `translateX(${tab.offsetLeft}px)`;
     if (instant) {
-      void tabIndicator.offsetWidth; // reflow כדי שהמעבר לא יקפוץ
+      void tabIndicator.offsetWidth;
       tabIndicator.style.transition = "";
     }
   }
@@ -24,19 +28,16 @@
     errorBox.textContent = text;
     errorBox.hidden = !text;
   }
-
   function clearError() {
     errorBox.hidden = true;
     errorBox.textContent = "";
   }
 
-  // בהתחלה אף טופס לא פתוח — רק שני הכפתורים. לחיצה פותחת את הטופס שנבחר.
+  // מציג טופס מסוים (כניסה/הרשמה) בתוך הפאנל
   function selectTab(which) {
     const login = which === "login";
     const showForm = login ? loginForm : registerForm;
     const hideForm = login ? registerForm : loginForm;
-    if (!showForm.hidden) return; // כבר פתוח
-
     clearError();
     tabLogin.classList.toggle("authTab--active", login);
     tabRegister.classList.toggle("authTab--active", !login);
@@ -45,16 +46,38 @@
 
     hideForm.hidden = true;
     hideForm.classList.remove("authForm--in");
-    showForm.hidden = false;
-    showForm.classList.remove("authForm--in");
-    void showForm.offsetWidth; // reflow כדי להפעיל מחדש את האנימציה
-    showForm.classList.add("authForm--in");
+    if (showForm.hidden) {
+      showForm.hidden = false;
+      showForm.classList.remove("authForm--in");
+      void showForm.offsetWidth;
+      showForm.classList.add("authForm--in");
+    }
   }
 
+  // פותח את הפאנל מתוך מסך הבחירה
+  function openAuth(which) {
+    if (authChoice) authChoice.hidden = true;
+    if (authPanel) authPanel.hidden = false;
+    selectTab(which);
+  }
+  // חזרה למסך הבחירה
+  function backToChoice() {
+    clearError();
+    if (authPanel) authPanel.hidden = true;
+    if (authChoice) authChoice.hidden = false;
+    loginForm.hidden = true;
+    registerForm.hidden = true;
+    tabLogin.classList.remove("authTab--active");
+    tabRegister.classList.remove("authTab--active");
+    if (tabIndicator) tabIndicator.style.opacity = "0";
+  }
+
+  choiceLogin && choiceLogin.addEventListener("click", () => openAuth("login"));
+  choiceRegister && choiceRegister.addEventListener("click", () => openAuth("register"));
+  authBack && authBack.addEventListener("click", backToChoice);
   tabLogin.addEventListener("click", () => selectTab("login"));
   tabRegister.addEventListener("click", () => selectTab("register"));
 
-  // עדכון מיקום המסמן בשינוי גודל — רק אם כבר נבחר טאב
   window.addEventListener("resize", () => {
     const active = document.querySelector(".authTab--active");
     if (active) moveIndicator(active, true);
@@ -106,7 +129,7 @@
     }
   });
 
-  // בחירת בן/בת בכפתורי תמונה — מעדכן את השדה המוסתר ומסמן את הנבחר
+  // בחירת בן/בת בכפתורי תמונה
   document.querySelectorAll(".genderBtn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const hidden = document.getElementById("regGender");

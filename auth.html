@@ -7,110 +7,183 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./auth.css?v=6" />
+    <link rel="stylesheet" href="./auth.css?v=7" />
   </head>
   <body class="authBody">
-    <div class="authWord" aria-hidden="true">vela</div>
+    <main class="lp">
+      <!-- ===== Hero ===== -->
+      <section class="lpHero">
+        <div class="lpHero__word" aria-hidden="true">vela</div>
+        <h1 class="lpHero__title">כל ילד יכול לאהוב מתמטיקה</h1>
+        <p class="lpHero__sub">
+          מורה פרטי חכם שמלווה את הילד צעד‑אחר‑צעד — תרגול מותאם אישית,
+          הסברים ברורים בסבלנות, ומעקב שמראה כמה הוא מתקדם.
+        </p>
 
-    <main class="authCard" aria-label="כניסה והרשמה">
-      <p class="authCard__tag">מתמטיקה לפי הקצב של הילד</p>
-
-      <div class="authTabs" role="tablist">
-        <span class="authTabs__indicator" aria-hidden="true"></span>
-        <button id="tabLogin" class="authTab" type="button" role="tab">כניסה</button>
-        <button id="tabRegister" class="authTab" type="button" role="tab">הרשמה</button>
-      </div>
-
-      <div id="authError" class="authError" hidden></div>
-
-      <div class="authForms" id="authForms">
-        <!-- כניסה -->
-        <form id="loginForm" class="authForm" hidden autocomplete="on">
-          <label class="authField">
-            <span>שם משתמש</span>
-            <input id="loginUsername" name="username" type="text" required />
-          </label>
-          <label class="authField">
-            <span>סיסמה</span>
-            <div class="pwWrap">
-              <input id="loginPassword" name="password" type="password" required />
-              <button type="button" class="pwToggle" aria-label="הצג סיסמה">👁</button>
-            </div>
-          </label>
-          <button class="btn btn--primary authSubmit" type="submit">כניסה</button>
-        </form>
-
-        <!-- הרשמה -->
-        <form id="registerForm" class="authForm" hidden autocomplete="on">
-          <label class="authField">
-            <span>שם משתמש</span>
-            <input id="regUsername" name="username" type="text" required minlength="3" maxlength="24" />
-          </label>
-          <label class="authField">
-            <span>מייל</span>
-            <input id="regEmail" name="email" type="email" required />
-          </label>
-          <div class="authRow">
-            <label class="authField">
-              <span>גיל</span>
-              <input id="regAge" name="age" type="number" min="4" max="120" required />
-            </label>
-            <label class="authField">
-              <span>כיתה</span>
-              <select id="regGrade" name="grade" required>
-                <option value="" disabled selected>בחר/י</option>
-                <option>א'</option><option>ב'</option><option>ג'</option><option>ד'</option>
-                <option>ה'</option><option>ו'</option><option>ז'</option><option>ח'</option>
-                <option>ט'</option><option>י'</option><option>יא'</option><option>יב'</option>
-              </select>
-            </label>
+        <div class="authBox">
+          <!-- מצב התחלתי: בחירה -->
+          <div class="authChoice" id="authChoice">
+            <button class="choiceBtn choiceBtn--primary" id="choiceLogin" type="button">כניסה</button>
+            <button class="choiceBtn" id="choiceRegister" type="button">הרשמה</button>
           </div>
-          <div class="authField">
-            <span>בן או בת?</span>
-            <input type="hidden" id="regGender" name="gender" />
-            <div class="genderPick" role="group" aria-label="בן או בת">
-              <button type="button" class="genderBtn" data-gender="male" aria-label="בן" aria-pressed="false">
-                <svg viewBox="0 0 100 100" aria-hidden="true">
-                  <circle cx="50" cy="50" r="48" fill="#dbeafe" />
-                  <path d="M22 94 a28 28 0 0 1 56 0 Z" fill="#3fa3e6" />
-                  <circle cx="50" cy="46" r="20" fill="#f7d2ab" />
-                  <path d="M30 44 a20 20 0 0 1 40 0 q-20 -13 -40 0 Z" fill="#6b4f2a" />
-                  <circle cx="43" cy="47" r="2.6" fill="#33414f" />
-                  <circle cx="57" cy="47" r="2.6" fill="#33414f" />
-                  <path d="M43 55 q7 6 14 0" stroke="#33414f" stroke-width="2.4" fill="none" stroke-linecap="round" />
-                </svg>
-              </button>
-              <button type="button" class="genderBtn" data-gender="female" aria-label="בת" aria-pressed="false">
-                <svg viewBox="0 0 100 100" aria-hidden="true">
-                  <circle cx="50" cy="50" r="48" fill="#fde2f3" />
-                  <path d="M24 94 a26 26 0 0 1 52 0 Z" fill="#ef7fb6" />
-                  <circle cx="28" cy="48" r="9" fill="#6b4f2a" />
-                  <circle cx="72" cy="48" r="9" fill="#6b4f2a" />
-                  <circle cx="50" cy="46" r="20" fill="#f7d2ab" />
-                  <path d="M29 45 a21 21 0 0 1 42 0 q-21 -15 -42 0 Z" fill="#6b4f2a" />
-                  <circle cx="43" cy="47" r="2.6" fill="#33414f" />
-                  <circle cx="57" cy="47" r="2.6" fill="#33414f" />
-                  <path d="M43 55 q7 6 14 0" stroke="#33414f" stroke-width="2.4" fill="none" stroke-linecap="round" />
-                </svg>
-              </button>
+
+          <!-- הטפסים — מוסתרים עד שבוחרים -->
+          <div class="authPanel" id="authPanel" hidden>
+            <button class="authBack" id="authBack" type="button">→ חזרה</button>
+            <div class="authTabs" role="tablist">
+              <span class="authTabs__indicator" aria-hidden="true"></span>
+              <button id="tabLogin" class="authTab" type="button" role="tab">כניסה</button>
+              <button id="tabRegister" class="authTab" type="button" role="tab">הרשמה</button>
+            </div>
+
+            <div id="authError" class="authError" hidden></div>
+
+            <div class="authForms" id="authForms">
+              <!-- כניסה -->
+              <form id="loginForm" class="authForm" hidden autocomplete="on">
+                <label class="authField">
+                  <span>שם משתמש</span>
+                  <input id="loginUsername" name="username" type="text" required />
+                </label>
+                <label class="authField">
+                  <span>סיסמה</span>
+                  <div class="pwWrap">
+                    <input id="loginPassword" name="password" type="password" required />
+                    <button type="button" class="pwToggle" aria-label="הצג סיסמה">👁</button>
+                  </div>
+                </label>
+                <button class="btn btn--primary authSubmit" type="submit">כניסה</button>
+              </form>
+
+              <!-- הרשמה -->
+              <form id="registerForm" class="authForm" hidden autocomplete="on">
+                <label class="authField">
+                  <span>שם משתמש</span>
+                  <input id="regUsername" name="username" type="text" required minlength="3" maxlength="24" />
+                </label>
+                <label class="authField">
+                  <span>מייל</span>
+                  <input id="regEmail" name="email" type="email" required />
+                </label>
+                <div class="authRow">
+                  <label class="authField">
+                    <span>גיל</span>
+                    <input id="regAge" name="age" type="number" min="4" max="120" required />
+                  </label>
+                  <label class="authField">
+                    <span>כיתה</span>
+                    <select id="regGrade" name="grade" required>
+                      <option value="" disabled selected>בחר/י</option>
+                      <option>א'</option><option>ב'</option><option>ג'</option><option>ד'</option>
+                      <option>ה'</option><option>ו'</option><option>ז'</option><option>ח'</option>
+                      <option>ט'</option><option>י'</option><option>יא'</option><option>יב'</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="authField">
+                  <span>בן או בת?</span>
+                  <input type="hidden" id="regGender" name="gender" />
+                  <div class="genderPick" role="group" aria-label="בן או בת">
+                    <button type="button" class="genderBtn" data-gender="male" aria-label="בן" aria-pressed="false">
+                      <svg viewBox="0 0 100 100" aria-hidden="true">
+                        <circle cx="50" cy="50" r="48" fill="#dbeafe" />
+                        <path d="M22 94 a28 28 0 0 1 56 0 Z" fill="#3fa3e6" />
+                        <circle cx="50" cy="46" r="20" fill="#f7d2ab" />
+                        <path d="M30 44 a20 20 0 0 1 40 0 q-20 -13 -40 0 Z" fill="#6b4f2a" />
+                        <circle cx="43" cy="47" r="2.6" fill="#33414f" />
+                        <circle cx="57" cy="47" r="2.6" fill="#33414f" />
+                        <path d="M43 55 q7 6 14 0" stroke="#33414f" stroke-width="2.4" fill="none" stroke-linecap="round" />
+                      </svg>
+                    </button>
+                    <button type="button" class="genderBtn" data-gender="female" aria-label="בת" aria-pressed="false">
+                      <svg viewBox="0 0 100 100" aria-hidden="true">
+                        <circle cx="50" cy="50" r="48" fill="#fde2f3" />
+                        <path d="M24 94 a26 26 0 0 1 52 0 Z" fill="#ef7fb6" />
+                        <circle cx="28" cy="48" r="9" fill="#6b4f2a" />
+                        <circle cx="72" cy="48" r="9" fill="#6b4f2a" />
+                        <circle cx="50" cy="46" r="20" fill="#f7d2ab" />
+                        <path d="M29 45 a21 21 0 0 1 42 0 q-21 -15 -42 0 Z" fill="#6b4f2a" />
+                        <circle cx="43" cy="47" r="2.6" fill="#33414f" />
+                        <circle cx="57" cy="47" r="2.6" fill="#33414f" />
+                        <path d="M43 55 q7 6 14 0" stroke="#33414f" stroke-width="2.4" fill="none" stroke-linecap="round" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <label class="authField">
+                  <span>שם בית הספר</span>
+                  <input id="regSchool" name="school" type="text" required />
+                </label>
+                <label class="authField">
+                  <span>סיסמה (לפחות 6 תווים)</span>
+                  <div class="pwWrap">
+                    <input id="regPassword" name="password" type="password" required minlength="6" />
+                    <button type="button" class="pwToggle" aria-label="הצג סיסמה">👁</button>
+                  </div>
+                </label>
+                <button class="btn btn--primary authSubmit" type="submit">יצירת חשבון</button>
+              </form>
             </div>
           </div>
-          <label class="authField">
-            <span>שם בית הספר</span>
-            <input id="regSchool" name="school" type="text" required />
-          </label>
-          <label class="authField">
-            <span>סיסמה (לפחות 6 תווים)</span>
-            <div class="pwWrap">
-              <input id="regPassword" name="password" type="password" required minlength="6" />
-              <button type="button" class="pwToggle" aria-label="הצג סיסמה">👁</button>
+        </div>
+
+        <div class="lpScrollHint" aria-hidden="true">גללו לגלות עוד ↓</div>
+      </section>
+
+      <!-- ===== איך זה עובד ===== -->
+      <section class="lpSection">
+        <h2 class="lpSection__title">איך Vela עובדת</h2>
+        <div class="lpSteps">
+          <div class="lpStep">
+            <div class="lpStep__num">1</div>
+            <h3 class="lpStep__title">בוחרים נושא</h3>
+            <p class="lpStep__desc">חיבור, חיסור, שעון, גאומטריה ועוד — לפי הכיתה של הילד.</p>
+          </div>
+          <div class="lpStep">
+            <div class="lpStep__num">2</div>
+            <h3 class="lpStep__title">מתרגלים עם המורה</h3>
+            <p class="lpStep__desc">המורה ה‑AI מסביר, נותן רמזים, ומתאים את הרמה לקצב של הילד.</p>
+          </div>
+          <div class="lpStep">
+            <div class="lpStep__num">3</div>
+            <h3 class="lpStep__title">רואים התקדמות</h3>
+            <p class="lpStep__desc">אחוזי הצלחה, זמן תרגול ושליטה בחומר — בתצוגה ברורה ומעודדת.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== מה מקבלים ===== -->
+      <section class="lpSection lpSection--alt">
+        <h2 class="lpSection__title">מה מקבלים</h2>
+        <div class="features">
+          <article class="feature">
+            <div class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#cdeee6"/><path d="M16 20h16M16 26h10" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/><circle cx="34" cy="30" r="3.4" fill="#14b8a6"/></svg>
             </div>
-          </label>
-          <button class="btn btn--primary authSubmit" type="submit">יצירת חשבון</button>
-        </form>
-      </div>
+            <h3 class="feature__title">מורה AI אישי</h3>
+            <p class="feature__desc">משוחח עם הילד, עונה על שאלות ומסביר בסבלנות — בדיוק כשצריך.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#cdeee6"/><path d="M14 30l6-6 5 4 9-10" stroke="#0f766e" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="feature__title">תרגול שמתאים לרמה</h3>
+            <p class="feature__desc">השאלות מטפסות עם הילד — לא קל מדי, לא מתסכל. תמיד באתגר הנכון.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#cdeee6"/><circle cx="24" cy="24" r="11" fill="none" stroke="#0f766e" stroke-width="3.4" stroke-dasharray="52 100" stroke-linecap="round" transform="rotate(-90 24 24)"/></svg>
+            </div>
+            <h3 class="feature__title">מעקב התקדמות</h3>
+            <p class="feature__desc">תמונה ברורה של מה הילד יודע ובמה כדאי להתמקד.</p>
+          </article>
+        </div>
+        <p class="lpSection__trust">מבוסס על תכנית הלימודים הישראלית · כיתות א׳–ו׳</p>
+      </section>
+
+      <footer class="lpFoot">Vela · פלטפורמת לימוד מתמטיקה</footer>
     </main>
 
-    <script src="./auth.js?v=5" defer></script>
+    <script src="./auth.js?v=7" defer></script>
   </body>
 </html>
