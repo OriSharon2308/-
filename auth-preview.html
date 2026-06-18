@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vela — תצוגת גלילה (preview)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      @font-face {
+        font-family: "Arca Morphe";
+        src: url("/fonts/ArcaMorphe-Regular.ttf") format("truetype");
+        font-display: swap;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; }
+      body {
+        font-family: "Assistant", system-ui, sans-serif;
+        color: #1f2c3a;
+        overflow: hidden; /* כל הגלילה בתוך .scroller */
+      }
+
+      /* מיכל הגלילה — כאן ה-scroll-snap והעיגון פועלים בצורה אמינה */
+      .scroller {
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scroll-snap-type: y proximity; /* גלילה חופשית, ובעצירה ה"פוקוס" ננעל */
+        scroll-behavior: smooth;
+        background:
+          radial-gradient(900px 620px at 8% -10%, rgba(20, 184, 166, 0.16), transparent 60%),
+          radial-gradient(820px 640px at 96% 2%, rgba(129, 140, 248, 0.12), transparent 58%),
+          #f1f7f6;
+      }
+
+      /* ===== ביט ה-hero: גבוה 200vh, ה-pin ננעץ ל-100vh הראשונים ומגלם את העלייה ===== */
+      .hero { position: relative; height: 200vh; }
+      .heroPin {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      /* נקודת ה-snap: כשהעלייה הסתיימה והערפל מלא — כאן ה"פוקוס" */
+      .heroSnap {
+        position: absolute;
+        top: 100vh;
+        left: 0;
+        right: 0;
+        height: 1px;
+        scroll-snap-align: start;
+      }
+
+      /* הטקסט הגדול "vela" עם מסכת ערפל הנשלטת מהגלילה */
+      .vela {
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        font-family: "Arca Morphe", "Archivo Black", sans-serif;
+        font-size: min(64vw, 80vh);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: #0c1320;
+        user-select: none;
+        pointer-events: none;
+        -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 26%), transparent var(--fogB, 62%));
+        mask-image: linear-gradient(to bottom, #000 0%, #000 var(--fogA, 26%), transparent var(--fogB, 62%));
+        will-change: mask-image, opacity;
+      }
+
+      /* צעיף הערפל — מתמלא ככל שהביט מתקדם עד שכל הרקע "מלא" */
+      .fogVeil {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0;
+        background:
+          radial-gradient(120% 80% at 50% 120%, rgba(241, 247, 246, 0.96), rgba(241, 247, 246, 0.0) 70%),
+          linear-gradient(to top, rgba(241, 247, 246, 0.98), rgba(241, 247, 246, 0.0) 75%);
+        will-change: opacity;
+      }
+
+      /* תוכן ה-hero: ברכה + טופס. מתחיל למטה ועולה למרכז (translateY מהגלילה) */
+      .heroContent {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 440px;
+        padding: 0 20px;
+        text-align: center;
+        will-change: transform;
+      }
+      .heroTitle {
+        font-family: "Fredoka", "Assistant", sans-serif;
+        font-weight: 700;
+        font-size: clamp(38px, 6.5vw, 70px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin: 0 0 12px;
+        color: #0f3b36;
+      }
+      .heroSub {
+        font-size: clamp(15px, 2.2vw, 18px);
+        line-height: 1.6;
+        color: #46615f;
+        margin: 0 0 22px;
+      }
+
+      /* כרטיס טופס מייצג (לתחושה בלבד) */
+      .card {
+        background: #fff;
+        border-radius: 22px;
+        padding: 16px 22px 22px;
+        box-shadow: 0 22px 55px rgba(13, 60, 53, 0.16), 0 2px 6px rgba(13, 60, 53, 0.06);
+        text-align: right;
+      }
+      .tabs {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #eef4f3;
+        border-radius: 14px;
+        padding: 4px;
+        margin-bottom: 16px;
+      }
+      .tabs button {
+        border: 0;
+        background: transparent;
+        font: inherit;
+        font-weight: 700;
+        color: #0f766e;
+        padding: 10px;
+        border-radius: 11px;
+        cursor: pointer;
+        z-index: 1;
+      }
+      .tabs .ind {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        width: calc(50% - 4px);
+        right: 4px;
+        background: #fff;
+        border-radius: 11px;
+        box-shadow: 0 2px 8px rgba(13, 60, 53, 0.12);
+        transition: transform 0.25s cubic-bezier(0.4, 0.2, 0.2, 1);
+      }
+      .field { margin-bottom: 12px; }
+      .field span { display: block; font-size: 13px; font-weight: 600; color: #54677a; margin-bottom: 6px; }
+      .field input {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #cfe0dc;
+        border-radius: 12px;
+        font: inherit;
+      }
+      .submit {
+        width: 100%;
+        margin-top: 6px;
+        padding: 13px;
+        border: 0;
+        border-radius: 13px;
+        background: #0d9488;
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* ===== הפאנלים הנערמים — כל אחד עולה ונועל (snap) מעל הקודם ===== */
+      .panel {
+        position: sticky;
+        top: 0;
+        min-height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 72px 24px;
+        border-radius: 30px 30px 0 0;
+        box-shadow: 0 -20px 55px rgba(13, 60, 53, 0.16);
+      }
+      .panel h2 {
+        font-family: "Fredoka", "Assistant", sans-serif;
+        font-size: clamp(26px, 4.4vw, 38px);
+        margin: 0 0 10px;
+      }
+      .panel p { max-width: 620px; font-size: 16px; line-height: 1.7; margin: 0 auto; }
+      .panel--a { z-index: 2; background: #d6e8e3; color: #15324a; }
+      .panel--b { z-index: 3; background: #ffffff; color: #15324a; }
+      .panel--c { z-index: 4; background: linear-gradient(160deg, #0f766e, #0d9488); color: #fff; }
+      .panel--foot {
+        z-index: 5;
+        min-height: 60vh;
+        background: #f1f7f6;
+        color: #5f7a77;
+        font-size: 14px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .scroller { scroll-snap-type: none; }
+        .heroContent { transform: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroller" id="scroller">
+      <!-- ===== HERO ===== -->
+      <section class="hero">
+        <div class="heroPin">
+          <div class="vela" id="vela" aria-hidden="true">vela</div>
+          <div class="fogVeil" id="fogVeil" aria-hidden="true"></div>
+          <div class="heroContent" id="heroContent">
+            <h1 class="heroTitle">ברוכים הבאים!</h1>
+            <p class="heroSub">מורה פרטי חכם שמלווה את הילד צעד‑אחר‑צעד.</p>
+            <div class="card">
+              <div class="tabs">
+                <span class="ind" id="ind"></span>
+                <button data-tab="login" id="tabLogin">כניסה</button>
+                <button data-tab="register" id="tabRegister">הרשמה</button>
+              </div>
+              <label class="field"><span>שם משתמש</span><input type="text" /></label>
+              <label class="field"><span>סיסמה</span><input type="password" /></label>
+              <button class="submit">כניסה</button>
+            </div>
+          </div>
+        </div>
+        <div class="heroSnap"></div>
+      </section>
+
+      <!-- ===== פאנלים נערמים ===== -->
+      <section class="panel panel--a">
+        <div>
+          <h2>איך Vela עובדת</h2>
+          <p>בוחרים נושא, מתרגלים עם המורה ה‑AI, ורואים התקדמות ברורה — לפי הקצב של הילד.</p>
+        </div>
+      </section>
+      <section class="panel panel--b">
+        <div>
+          <h2>מה מקבלים</h2>
+          <p>מורה AI אישי, תרגול שמתאים לרמה, ומעקב התקדמות — הכול במקום אחד.</p>
+        </div>
+      </section>
+      <section class="panel panel--c">
+        <div>
+          <h2>גם להורים יש מקום</h2>
+          <p>עוקבים אחרי ההתקדמות, רואים נקודות חוזק, ובשליטה מלאה.</p>
+        </div>
+      </section>
+      <section class="panel panel--foot">
+        <div>Vela · פלטפורמת לימוד מתמטיקה</div>
+      </section>
+    </div>
+
+    <script>
+      (function () {
+        const scroller = document.getElementById("scroller");
+        const vela = document.getElementById("vela");
+        const veil = document.getElementById("fogVeil");
+        const content = document.getElementById("heroContent");
+        const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+        let ticking = false;
+        function update() {
+          ticking = false;
+          const vh = scroller.clientHeight || window.innerHeight;
+          const y = scroller.scrollTop;
+          // p: התקדמות ביט ה-hero (0 בראש → 1 אחרי גלילת מסך אחד)
+          const p = clamp(y / vh, 0, 1);
+
+          // שלב 1 (0→0.62): התוכן עולה מהתחתית למרכז
+          const riseP = clamp(p / 0.62, 0, 1);
+          const startLow = 0.42 * vh; // מתחיל ~42% מתחת למרכז (קרוב לתחתית)
+          if (!reduce) content.style.transform = `translateY(${((1 - riseP) * startLow).toFixed(1)}px)`;
+
+          // הערפל עולה לאורך כל הביט; מסכת ה-vela עולה והאותיות מתמוססות
+          const a = 26 - p * 96; // 26% → -70%
+          const b = 62 - p * 70; // 62% → -8%
+          vela.style.setProperty("--fogA", a.toFixed(1) + "%");
+          vela.style.setProperty("--fogB", b.toFixed(1) + "%");
+
+          // שלב 2 (0.55→1): הערפל "ממלא" את כל הרקע (הצעיף נכנס) וה-vela דוהה
+          const fillP = clamp((p - 0.55) / 0.45, 0, 1);
+          veil.style.opacity = fillP.toFixed(3);
+          vela.style.opacity = (1 - clamp((p - 0.4) / 0.6, 0, 1)).toFixed(3);
+        }
+
+        scroller.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              ticking = true;
+              window.requestAnimationFrame(update);
+            }
+          },
+          { passive: true }
+        );
+        window.addEventListener("resize", update, { passive: true });
+        update();
+
+        // טוגל הטאבים (לתחושה)
+        const ind = document.getElementById("ind");
+        document.getElementById("tabLogin").addEventListener("click", () => (ind.style.transform = "translateX(0)"));
+        document
+          .getElementById("tabRegister")
+          .addEventListener("click", () => (ind.style.transform = "translateX(-100%)"));
+      })();
+    </script>
+  </body>
+</html>

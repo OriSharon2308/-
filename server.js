@@ -39,6 +39,7 @@ const PUBLIC_FILES = new Set([
   "/auth.html",
   "/auth.js",
   "/auth.css",
+  "/auth-preview.html", // תצוגת גלילה לבדיקה (זמני)
   "/styles.css",
   "/favicon.ico",
 ]);
