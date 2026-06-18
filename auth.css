@@ -1,191 +1,178 @@
-/* ====== מסך התחברות — סגנון Vela: בהיר, רגוע, מעוגל ====== */
-
+/* ===== Vela — דף נחיתה + התחברות. עיצוב "אוויר נקי": מינימליסטי-פרימיום, רקע תכלת ===== */
+* {
+  box-sizing: border-box;
+}
 .authBody {
+  margin: 0;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  position: relative;
-  overflow: hidden;
+  font-family: "Assistant", system-ui, -apple-system, sans-serif;
+  color: #1f2c3a;
+  background: radial-gradient(1200px 620px at 50% -8%, #eaf6ff 0%, #d2e9fb 55%, #c6e2f8 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
 
-/* "vela" ענק ברקע — חלק מהרקע */
+/* "vela" ענק וחיוור ברקע — מרקם עדין בלבד */
 .authWord {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -41%) translate(var(--px, 0px), var(--py, 0px));
-  direction: ltr;
-  text-transform: uppercase;
-  font-family: "Arca Morphe", "Archivo Black", "Fredoka", sans-serif;
-  font-weight: 400;
-  font-size: min(54vw, 94vh);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: rgb(var(--accent-rgb) / 0.08);
-  white-space: nowrap;
+  left: -2vw;
+  bottom: -6vh;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 40vw;
+  line-height: 0.8;
+  color: rgba(13, 23, 38, 0.035);
+  pointer-events: none;
   user-select: none;
-  pointer-events: none;
-  z-index: 0;
-  /* fade עדין למעלה ולמטה — נמוג לצבע הרקע */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 60%, transparent 100%);
-}
-
-/* ====== הכרטיס ====== */
-.authCard {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 420px;
-  padding: 32px;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.86);
-  border: 1px solid rgb(var(--accent-rgb) / 0.18);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.12);
-  overflow: hidden;
-  color: var(--text);
-  animation: cardIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.97);
-  }
-}
-
-/* spotlight שעוקב אחרי העכבר */
-.authCard::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    260px circle at var(--mx, 50%) var(--my, 0%),
-    rgb(var(--accent-rgb) / 0.16),
-    transparent 65%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
   z-index: 0;
 }
-.authCard.is-hover::before {
-  opacity: 1;
-}
-.authCard > * {
+
+.landing {
   position: relative;
   z-index: 1;
-}
-
-/* ====== מותג ====== */
-.authBrand {
-  text-align: center;
-  margin-bottom: 22px;
-}
-.authBrand__mark {
-  width: 58px;
-  height: 58px;
-  margin: 0 auto 12px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, var(--primary2), var(--primary));
-  color: #fff;
-  font-size: 28px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 26px 20px 56px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 22px rgb(var(--accent-rgb) / 0.4);
-}
-.authBrand__title {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-.authBrand__subtitle {
-  font-size: 14px;
-  color: var(--muted);
+  gap: 30px;
 }
 
-/* ====== טאבים ====== */
+/* ===== ניווט עליון ===== */
+.landing__nav {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.brandWord {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 30px;
+  letter-spacing: -0.5px;
+  color: #0e1726;
+}
+.brandTag {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a6b7b;
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  max-width: 620px;
+  margin-top: 14px;
+}
+.hero__eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2b6cb0;
+  background: rgba(43, 108, 176, 0.1);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+.hero__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 6vw, 56px);
+  line-height: 1.08;
+  margin: 0 0 16px;
+  color: #11243a;
+}
+.hero__sub {
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.65;
+  color: #44586b;
+  margin: 0 auto 14px;
+  max-width: 540px;
+}
+.hero__trust {
+  font-size: 13px;
+  color: #6c7e8e;
+  margin: 0;
+}
+
+/* ===== כרטיס התחברות ===== */
+.authCard {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 26px 26px 28px;
+  box-shadow: 0 24px 60px rgba(17, 49, 86, 0.16), 0 2px 6px rgba(17, 49, 86, 0.06);
+}
+
 .authTabs {
   position: relative;
   display: flex;
-  gap: 4px;
-  background: rgba(15, 23, 42, 0.05);
-  border-radius: 999px;
-  padding: 4px;
+  background: #eef4f9;
+  border-radius: 14px;
+  padding: 5px;
   margin-bottom: 18px;
 }
-
-/* פס מחוון שמחליק בין הטאבים */
-.authTabs__indicator {
-  position: absolute;
-  top: 4px;
-  bottom: 4px;
-  left: 0;
-  width: 0;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(2, 6, 23, 0.12);
-  transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1),
-    width 0.42s cubic-bezier(0.32, 0.72, 0, 1);
-  z-index: 0;
-}
-
 .authTab {
   position: relative;
   z-index: 1;
   flex: 1;
   border: 0;
   background: transparent;
-  padding: 10px;
-  border-radius: 999px;
+  padding: 11px;
+  border-radius: 10px;
   font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+  color: #6a7c8c;
   cursor: pointer;
-  transition: color 0.25s ease;
-}
-.authTab:hover {
-  color: var(--text);
+  transition: color 0.2s ease;
 }
 .authTab--active {
-  color: var(--primary-strong);
+  color: #14324a;
+}
+.authTabs__indicator {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(17, 49, 86, 0.12);
+  transition: transform 0.28s cubic-bezier(0.4, 0.2, 0.2, 1), width 0.28s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-/* ====== טפסים ====== */
-/* מיכל הטפסים — גובה מונפש למעבר חלק בין כניסה להרשמה */
+.authError {
+  background: #fdecec;
+  color: #b42318;
+  border: 1px solid #f6c9c4;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  white-space: pre-line;
+  margin-bottom: 14px;
+}
+
+/* מעבר חלק בין טפסים (תלוי-JS: --entering / --leaving + גובה authForms) */
 .authForms {
   position: relative;
-  overflow: hidden;
-  transition: height 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+  transition: height 0.35s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
-
 .authForm {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  transition: opacity 0.3s ease, transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
-/* הטופס הנכנס מתחיל שקוף ומעט למטה, ואז נכנס */
 .authForm--entering {
   opacity: 0;
   transform: translateY(10px);
 }
-
-/* הטופס היוצא מוצא מהזרימה ונמוג */
 .authForm--leaving {
   position: absolute;
-  top: 0;
-  inset-inline: 0;
+  inset: 0 0 auto 0;
+  width: 100%;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(-10px);
   pointer-events: none;
 }
 
@@ -196,27 +183,27 @@
 }
 .authField > span {
   font-size: 13px;
-  color: var(--muted);
   font-weight: 600;
+  color: #5a6b7b;
 }
 .authField input,
 .authField select {
-  padding: 12px 13px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius2);
-  font-size: 15px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #dce6ee;
+  border-radius: 12px;
   font-family: inherit;
-  color: var(--text);
+  font-size: 15px;
+  color: #1f2c3a;
   background: #fff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .authField input:focus,
 .authField select:focus {
   outline: none;
-  border-color: rgb(var(--accent-rgb) / 0.55);
-  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.16);
+  border-color: #3fa3e6;
+  box-shadow: 0 0 0 3px rgba(63, 163, 230, 0.18);
 }
-
 .authRow {
   display: flex;
   gap: 12px;
@@ -225,90 +212,58 @@
   flex: 1;
 }
 
-/* כפתור שליחה */
-.authSubmit {
-  margin-top: 8px;
-  padding: 13px;
-  font-size: 16px;
-  border-radius: 999px;
-  border: 0;
-  color: #fff;
-  background: var(--primary);
-  box-shadow: 0 8px 22px rgb(var(--accent-rgb) / 0.4);
-  cursor: pointer;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.24s ease, filter 0.18s ease;
-}
-.authSubmit:hover {
-  transform: translateY(-2px) scale(1.02);
-  filter: brightness(1.04);
-  box-shadow: 0 14px 32px rgb(var(--accent-rgb) / 0.5);
-}
-.authSubmit:active {
-  transform: translateY(0) scale(0.97);
-  transition-duration: 0.08s;
-}
-.authSubmit:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
-.authError {
-  background: rgba(239, 68, 68, 0.1);
-  color: #b91c1c;
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  border-radius: var(--radius2);
-  padding: 10px 12px;
-  font-size: 14px;
-  margin-bottom: 14px;
-  white-space: pre-line;
-}
-
-/* שכבת הניצוצות */
-.sparkleCanvas {
-  position: fixed;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .authCard {
-    animation: none;
-  }
-}
-
-/* כפתור הצג/הסתר סיסמה */
 .pwWrap {
   position: relative;
 }
 .pwWrap input {
-  width: 100%;
-  padding-inline-end: 44px;
+  padding-left: 44px;
 }
 .pwToggle {
   position: absolute;
-  inset-inline-end: 6px;
+  left: 6px;
   top: 50%;
   transform: translateY(-50%);
   border: 0;
   background: transparent;
-  cursor: pointer;
   font-size: 18px;
-  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
   padding: 6px;
   border-radius: 8px;
-  opacity: 0.6;
-  transition: opacity 0.15s ease, background 0.15s ease;
 }
 .pwToggle:hover {
   opacity: 1;
   background: rgba(15, 23, 42, 0.06);
 }
 
-/* בחירת בן/בת — שני כפתורי תמונה זה לצד זה, בלי טקסט */
+.authSubmit,
+.btn--primary {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: #2b6cb0;
+  padding: 14px;
+  border-radius: 13px;
+  margin-top: 4px;
+  box-shadow: 0 8px 18px rgba(43, 108, 176, 0.28);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.authSubmit:hover {
+  background: #235c98;
+}
+.authSubmit:active {
+  transform: translateY(1px);
+}
+.authSubmit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* בחירת בן/בת — שני כפתורי תמונה */
 .genderPick {
   display: flex;
   gap: 14px;
@@ -330,10 +285,71 @@
   border-radius: 50%;
 }
 .genderBtn:hover {
-  border-color: rgba(74, 168, 232, 0.6);
+  border-color: rgba(63, 163, 230, 0.6);
 }
 .genderBtn.is-selected {
-  border-color: #4aa8e8;
-  box-shadow: 0 0 0 4px rgba(74, 168, 232, 0.22);
+  border-color: #3fa3e6;
+  box-shadow: 0 0 0 4px rgba(63, 163, 230, 0.22);
   transform: translateY(-3px);
+}
+
+/* ===== רצועת פיצ'רים ===== */
+.features {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 6px;
+}
+.feature {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(17, 49, 86, 0.07);
+  border-radius: 18px;
+  padding: 22px 20px;
+  text-align: center;
+}
+.feature__icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+}
+.feature__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.feature__title {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #15324a;
+}
+.feature__desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #54677a;
+  margin: 0;
+}
+
+.landing__foot {
+  font-size: 13px;
+  color: #6c7e8e;
+  margin-top: 8px;
+}
+
+/* ===== מובייל ===== */
+@media (max-width: 720px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+  .landing__nav {
+    justify-content: center;
+    text-align: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .authForms,
+  .authForm,
+  .authTabs__indicator {
+    transition: none;
+  }
 }

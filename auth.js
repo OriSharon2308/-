@@ -1,151 +1,4 @@
-/* ============ parallax עדין — VELA ברקע זז מעט עם העכבר ============ */
-(function parallax() {
-  const bg = document.querySelector(".authWord");
-  if (!bg) return;
-  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const MAX = 18;
-  let tx = 0;
-  let ty = 0;
-  let cx = 0;
-  let cy = 0;
-  window.addEventListener("pointermove", (e) => {
-    tx = -(e.clientX / window.innerWidth - 0.5) * MAX;
-    ty = -(e.clientY / window.innerHeight - 0.5) * MAX;
-  });
-  (function tick() {
-    cx += (tx - cx) * 0.15;
-    cy += (ty - cy) * 0.15;
-    bg.style.setProperty("--px", `${cx.toFixed(2)}px`);
-    bg.style.setProperty("--py", `${cy.toFixed(2)}px`);
-    requestAnimationFrame(tick);
-  })();
-})();
-
-/* ============ אפקט spotlight: זוהר שעוקב אחרי העכבר על הכרטיס ============ */
-(function spotlight() {
-  const card = document.querySelector(".authCard");
-  if (!card) return;
-  card.addEventListener("pointermove", (e) => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    card.style.setProperty("--my", `${e.clientY - rect.top}px`);
-    card.classList.add("is-hover");
-  });
-  card.addEventListener("pointerleave", () => card.classList.remove("is-hover"));
-})();
-
-/* ============ אפקט ניצוצות שעוקב אחרי העכבר ============ */
-(function sparkles() {
-  const reduce =
-    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) return;
-
-  const canvas = document.createElement("canvas");
-  canvas.className = "sparkleCanvas";
-  document.body.appendChild(canvas);
-  const ctx = canvas.getContext("2d");
-
-  let w = 0;
-  let h = 0;
-  let dpr = 1;
-  function resize() {
-    w = window.innerWidth;
-    h = window.innerHeight;
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    canvas.style.width = `${w}px`;
-    canvas.style.height = `${h}px`;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  const parts = [];
-  const colors = ["#0d9488", "#14b8a6", "#fbbf24", "#818cf8"];
-  let lastX = 0;
-  let lastY = 0;
-  let lastSpawn = 0;
-
-  function spawn(x, y, n) {
-    for (let i = 0; i < n; i++) {
-      const a = Math.random() * Math.PI * 2;
-      const sp = Math.random() * 0.6 + 0.1;
-      parts.push({
-        x: x + (Math.random() - 0.5) * 18,
-        y: y + (Math.random() - 0.5) * 18,
-        vx: Math.cos(a) * sp,
-        vy: Math.sin(a) * sp - 0.25,
-        r: Math.random() * 5 + 2,
-        life: 1,
-        decay: Math.random() * 0.012 + 0.01,
-        rot: Math.random() * Math.PI,
-        vr: (Math.random() - 0.5) * 0.12,
-        tw: Math.random() * Math.PI * 2,
-        color: colors[(Math.random() * colors.length) | 0],
-      });
-    }
-    if (parts.length > 260) parts.splice(0, parts.length - 260);
-  }
-
-  window.addEventListener("pointermove", (e) => {
-    const now = performance.now();
-    const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-    lastX = e.clientX;
-    lastY = e.clientY;
-    if (now - lastSpawn < 16) return;
-    lastSpawn = now;
-    const n = dist > 40 ? 3 : dist > 8 ? 2 : 1;
-    spawn(e.clientX, e.clientY, n);
-  });
-
-  function star(x, y, r, alpha, rot, color) {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(rot);
-    ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
-    ctx.fillStyle = color;
-    ctx.shadowColor = color;
-    ctx.shadowBlur = r * 2.5;
-    const spikes = 4;
-    const inner = r * 0.38;
-    ctx.beginPath();
-    for (let i = 0; i < spikes * 2; i++) {
-      const rad = i % 2 === 0 ? r : inner;
-      const a = (Math.PI / spikes) * i - Math.PI / 2;
-      const px = Math.cos(a) * rad;
-      const py = Math.sin(a) * rad;
-      if (i === 0) ctx.moveTo(px, py);
-      else ctx.lineTo(px, py);
-    }
-    ctx.closePath();
-    ctx.fill();
-    ctx.restore();
-  }
-
-  function frame() {
-    ctx.clearRect(0, 0, w, h);
-    for (let i = parts.length - 1; i >= 0; i--) {
-      const p = parts[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += 0.004;
-      p.rot += p.vr;
-      p.tw += 0.2;
-      p.life -= p.decay;
-      if (p.life <= 0) {
-        parts.splice(i, 1);
-        continue;
-      }
-      const twinkle = 0.6 + 0.4 * Math.sin(p.tw);
-      star(p.x, p.y, p.r * p.life * twinkle + 0.5, p.life * twinkle, p.rot, p.color);
-    }
-    requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-})();
-
-/* ============ לוגיקת הטפסים ============ */
+/* ============ לוגיקת הטפסים (כניסה / הרשמה) ============ */
 (function () {
   const tabLogin = document.getElementById("tabLogin");
   const tabRegister = document.getElementById("tabRegister");
@@ -202,13 +55,11 @@
     animating = true;
     const startH = authForms.offsetHeight;
 
-    // הטופס היוצא — מוצא מהזרימה ונמוג
     hideForm.classList.add("authForm--leaving");
-    // הטופס הנכנס — מוצג, מתחיל שקוף
     showForm.hidden = false;
     showForm.classList.add("authForm--entering");
 
-    const endH = authForms.offsetHeight; // גובה היעד (רק הנכנס בזרימה)
+    const endH = authForms.offsetHeight;
     authForms.style.height = `${startH}px`;
     void authForms.offsetHeight; // reflow
     authForms.style.height = `${endH}px`;
@@ -235,7 +86,6 @@
   tabLogin.addEventListener("click", () => selectTab("login"));
   tabRegister.addEventListener("click", () => selectTab("register"));
 
-  // מיקום התחלתי (בלי אנימציה) + עדכון בטעינת הפונט ובשינוי גודל
   moveIndicator(tabLogin, true);
   window.addEventListener("load", () =>
     moveIndicator(document.querySelector(".authTab--active") || tabLogin, true)
