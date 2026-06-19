@@ -95,22 +95,26 @@
         will-change: height, transform;
         transition: height 0.62s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      /* הכותרת "צ'אט עם המורה" — בסגירה נחשפת מימין לשמאל (מהקצה הימני, ליד המורה, בלי לעבור מתחתיו) */
+      /* הכותרת "צ'אט עם המורה" + הכתובית מתחת — נחשפות מימין לשמאל (מהקצה הימני, ליד המורה, בלי לעבור מתחתיו).
+         החשיפה היא רק *אחרי* שהריבוע כבר נסגר — דרך השהיית transition-delay (לא בו-זמנית עם הסגירה) */
       .chatSidebar__header .chatSidebar__titleWrap {
-        transition: clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-          opacity 0.4s ease;
+        transition: clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.22s,
+          opacity 0.4s ease 0.22s;
       }
       .chatSidebar__header .aiIndicator {
-        transition: opacity 0.3s ease;
+        transition: opacity 0.4s ease 0.24s;
       }
+      /* בפתיחה (הסתרה) — מהיר ובלי השהיה, כדי שלא ישתהו לפני שהריבוע מכסה */
       .chatSidebar__header.is-talk .chatSidebar__titleWrap {
         clip-path: inset(0 0 0 100%); /* מוסתר; הצד הימני (ליד המורה) הוא נקודת ההתחלה של החשיפה */
         opacity: 0;
         pointer-events: none;
+        transition: clip-path 0.2s ease, opacity 0.2s ease;
       }
       .chatSidebar__header.is-talk .aiIndicator {
         opacity: 0;
         pointer-events: none;
+        transition: opacity 0.2s ease;
       }
       /* טקסט ההסבר — בתחתית הריבוע, קטן ונמוך */
       .mascotModal__text {
