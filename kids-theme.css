@@ -1,0 +1,848 @@
+/* ============================================================
+   kids-theme.css  —  Vela • מסך תרגול חשבון (גני/יסודי, עברית RTL)
+   ------------------------------------------------------------
+   נטען אחרי styles.css → גובר עליו לפי סדר המקור.
+   CSS בלבד. לא נוגעים ב-HTML. שומרים על חוזה ה-DOM:
+   - לא display:none / opacity:0 / גודל-אפס על אלמנט פעיל
+   - [hidden] תמיד מנצח (אנחנו לא מגדירים display שמתנגש בו)
+   - .feedback--hidden נשאר כלל הסתרה
+   - .mascotModal.is-open וכל הוקי הצ'אט/הלוח/השעון נשמרים
+   ------------------------------------------------------------
+   קו עיצוב: רגוע, ידידותי, מרווח, ילד-ראשון. טורקיז (#0d9488)
+   הוא עמוד השדרה; חמימות מ-4 פסטלים (טורקיז/אלמוג/ענבר/סגול).
+   Fredoka לכותרות ומספרים, Assistant לגוף. פינות עגולות,
+   צללים רכים בגוון טורקיז, מטרות מגע גדולות (>=48px), תנועה עדינה.
+   ============================================================ */
+
+/* ============================================================
+   1. טוקנים נוספים (לא דורסים את :root הקיים, רק מוסיפים)
+   ============================================================ */
+:root {
+  /* פסטלים — זוגות רקע/צבע-מלא של הבית */
+  --kid-teal-bg: #d6f4ef;
+  --kid-teal-ink: #0d9488;
+  --kid-coral-bg: #ffe7df;
+  --kid-coral-ink: #ef6c4d;
+  --kid-amber-bg: #fff0c9;
+  --kid-amber-ink: #8a5a00;
+  --kid-purple-bg: #eae6ff;
+  --kid-purple-ink: #7c6cf0;
+
+  /* דיו כהה-טורקיז לכותרות, אפור-טורקיז רך לטקסט-משנה */
+  --kid-ink: #0f3b36;
+  --kid-sub: #46615f;
+  --kid-sub2: #5a6b68;
+
+  /* ירוק "נכון/סיימתי" — הפעולה הראשית */
+  --kid-go: #15803d;
+  --kid-go-2: #16a34a;
+
+  /* רדיוסים ידידותיים גדולים יותר */
+  --kid-r-lg: 28px;
+  --kid-r-md: 22px;
+
+  /* easing משותף לקפיצים ידידותיים */
+  --kid-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   2. רקע הגוף — חתימת הבית (כתמי פסטל מעט חזקים יותר)
+   מעל בסיס לבן-טורקיז #eef6f4, מקובע, אף פעם לא לבן שטוח
+   ============================================================ */
+body {
+  background:
+    radial-gradient(820px 560px at 92% -8%, rgba(249, 168, 96, 0.16), transparent 58%),
+    radial-gradient(760px 600px at 4% 6%, rgba(20, 184, 166, 0.18), transparent 58%),
+    radial-gradient(720px 640px at 70% 118%, rgba(139, 124, 240, 0.13), transparent 58%),
+    #eef6f4;
+  background-attachment: fixed;
+}
+
+/* סימן המים הענק נשאר עדין מאחורי הכל */
+.appWord {
+  color: rgb(var(--accent-rgb) / 0.06);
+}
+
+/* ============================================================
+   3. סרגל עליון (.topbar) — שקוף-רך, מאוורר
+   ============================================================ */
+.topbar {
+  padding: 14px 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgb(13 60 53 / 0.08);
+}
+
+/* אייקון הבית — מטרת מגע גדולה וברורה */
+.homeIcon {
+  font-size: 30px;
+  width: 48px;
+  height: 48px;
+}
+
+/* תג שם המשתמש — בגוון המותג (טורקיז) במקום הכחול הישן */
+.userChip {
+  gap: 7px;
+  padding: 8px 14px;
+  background: var(--kid-teal-bg);
+  color: var(--kid-ink);
+  font-weight: 700;
+  font-size: 15px;
+}
+.userChip__icon {
+  font-size: 16px;
+}
+
+/* ============================================================
+   4. פריסה (.layout) + הצ'אט כעמודה צדדית
+   ============================================================ */
+.layout {
+  padding: 20px;
+  padding-left: calc(20px + var(--chat-width) + 14px);
+}
+body.chat-collapsed .layout {
+  padding-left: 20px;
+}
+
+/* ============================================================
+   5. הפאנל הראשי + הכותרת (.panel / .panel__header / .panel__title)
+   ============================================================ */
+.panel {
+  border: 1px solid rgb(13 60 53 / 0.10);
+  border-radius: var(--kid-r-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88));
+  box-shadow: 0 24px 56px rgb(13 60 53 / 0.10);
+  min-height: calc(100vh - 168px);
+}
+
+.lesson {
+  width: min(940px, 100%);
+}
+
+.panel__header {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.62);
+  border-bottom: 1px solid rgb(13 60 53 / 0.08);
+  gap: 12px;
+}
+
+.panel__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--kid-ink);
+}
+.panel__titleSub {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--kid-ink);
+  background: var(--kid-teal-bg);
+  padding: 4px 11px;
+  border-radius: 999px;
+  margin-right: 8px;
+}
+
+/* ============================================================
+   6. כפתור רמת הקושי (#difficultyPill) + בורר הרמות (.levelPicker)
+   נשאר כפתור, ה-innerHTML שלו (.diffMax) נוצר ע"י JS — לא נוגעים בו
+   ============================================================ */
+#difficultyPill,
+.pill--btn {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--kid-amber-ink);
+  background: var(--kid-amber-bg);
+  border: 1.5px solid rgba(217, 148, 9, 0.28);
+  padding: 9px 16px;
+  border-radius: 999px;
+  min-height: 40px;
+  transition: transform 0.2s var(--kid-spring), box-shadow 0.2s ease, filter 0.18s ease;
+}
+#difficultyPill:hover,
+.pill--btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  border-color: rgba(217, 148, 9, 0.5);
+  box-shadow: 0 8px 18px rgba(217, 148, 9, 0.22);
+}
+#difficultyPill:active {
+  transform: scale(0.96);
+}
+.pill--locked {
+  opacity: 0.7;
+}
+.diffMax {
+  color: rgba(138, 90, 0, 0.85);
+}
+
+/* הבורר — כרטיס נקי, מטרות מגע גדולות */
+.levelPicker {
+  width: 280px;
+  padding: 14px;
+  border: 1px solid rgb(13 60 53 / 0.10);
+  border-radius: 18px;
+  box-shadow: 0 18px 44px rgb(13 60 53 / 0.18);
+  gap: 8px;
+}
+.levelPicker__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--kid-ink);
+}
+.levelPicker__opt {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-weight: 700;
+  padding: 13px 0;
+  min-height: 46px;
+  border: 1.5px solid rgb(13 60 53 / 0.12);
+  border-radius: 13px;
+}
+.levelPicker__opt:hover {
+  transform: translateY(-2px);
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  background: rgb(var(--accent-rgb) / 0.08);
+}
+.levelPicker__opt--active {
+  background: var(--kid-teal-bg);
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  color: var(--kid-teal-ink);
+}
+
+/* ============================================================
+   7. כרטיס השאלה (#lessonCard) — הגיבור של המסך
+   השאלה גדולה במרכז, בר התשובה בולט, פעולות-משנה רגועות
+   ============================================================ */
+.card {
+  margin: 18px;
+  border: 1px solid rgb(13 60 53 / 0.10);
+  border-radius: var(--kid-r-md);
+  background: #ffffff;
+  box-shadow: 0 18px 44px rgb(13 60 53 / 0.09), 0 2px 8px rgb(13 60 53 / 0.05);
+  padding: 24px 20px;
+}
+
+#lessonCard {
+  min-height: 60vh;
+  gap: 26px;
+  padding: 40px 26px;
+}
+
+/* תווית "שאלה" — שבב ענבר רך מעל השאלה, לא eyebrow זעיר */
+#lessonCard:not(.mode-clock) .problem__label,
+.problem__label {
+  display: inline-block;
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--kid-sub);
+  margin-bottom: 14px;
+}
+
+/* טקסט השאלה — הגיבור: ענק, קריא, בגוון דיו כהה */
+#lessonCard .problem__text,
+.problem__text {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-weight: 700;
+  color: var(--kid-ink);
+}
+#lessonCard .problem__text {
+  font-size: clamp(40px, 6.2vw, 60px);
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+/* ✓ פתור — שבב ירוק רך וברור בפינה */
+.solvedBadge {
+  top: 16px;
+  right: 18px;
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--kid-go);
+  background: rgba(34, 197, 94, 0.12);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+/* "?" עזרה — עיגול טורקיז גדול וברור בפינה */
+.helpBtn--corner {
+  top: 14px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  background: var(--kid-teal-ink);
+  box-shadow: 0 6px 16px rgb(var(--accent-rgb) / 0.35);
+}
+.helpBtn--corner:hover {
+  filter: brightness(1.08);
+  transform: scale(1.06);
+}
+.helpPopover {
+  border-radius: 18px;
+  border: 1px solid rgb(13 60 53 / 0.10);
+  box-shadow: 0 18px 44px rgb(13 60 53 / 0.18);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--kid-ink);
+}
+
+/* ============================================================
+   8. בר התשובה (.answerBar) — הפעולה הראשית, מרכזית ובולטת
+   ============================================================ */
+#lessonCard .answerRow {
+  width: min(480px, 100%);
+}
+
+.answerBar {
+  gap: 8px;
+  padding: 7px;
+  border: 2.5px solid rgb(var(--accent-rgb) / 0.22);
+  border-radius: 20px;
+  box-shadow: 0 8px 22px rgb(13 60 53 / 0.07);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.answerBar:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 5px rgb(var(--accent-rgb) / 0.15), 0 10px 26px rgb(13 60 53 / 0.10);
+}
+.answerBar__input {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  padding: 12px 16px;
+  color: var(--kid-ink);
+}
+.answerBar__input::placeholder {
+  color: rgba(70, 97, 95, 0.62);
+  font-weight: 600;
+}
+
+/* כפתור "סיימתי" — ירוק "קדימה", גדול, ידידותי */
+.answerBar__btn {
+  border-radius: 15px;
+  background: linear-gradient(150deg, var(--kid-go-2), var(--kid-go));
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px 28px;
+  min-height: 50px;
+  box-shadow: 0 8px 18px rgba(22, 163, 74, 0.32);
+  transition: filter 0.15s ease, transform 0.12s ease, box-shadow 0.18s ease;
+}
+.answerBar__btn:hover {
+  background: linear-gradient(150deg, var(--kid-go-2), var(--kid-go));
+  filter: brightness(1.05);
+  box-shadow: 0 12px 24px rgba(22, 163, 74, 0.4);
+}
+.answerBar__btn:active {
+  transform: scale(0.97);
+}
+
+/* קלט שעה — מספרים גדולים וברורים */
+.input--time {
+  width: 92px;
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  padding: 14px 10px;
+  border-radius: 16px;
+  border: 2px solid rgb(var(--accent-rgb) / 0.2);
+}
+.input--time:focus {
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.16);
+}
+.timeInput__colon {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 34px;
+  color: var(--kid-sub);
+}
+.answerRow--time .field__label {
+  font-weight: 600;
+  color: var(--kid-sub);
+  text-align: center;
+}
+
+/* רמז אינטראקטיבי */
+.interactiveHint {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--kid-sub);
+}
+
+/* ============================================================
+   9. כפתורים גנריים (.btn / .btn--primary / .btn--secondary)
+   ============================================================ */
+.btn {
+  border-radius: var(--btn-radius);
+  padding: 12px 20px;
+  min-height: 46px;
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+.btn:focus-visible {
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.3);
+}
+
+/* ראשי — גלולת טורקיז עם גרדיאנט הבית */
+.btn--primary {
+  background: linear-gradient(150deg, #0d9488, #0f766e);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 12px 26px rgba(13, 148, 136, 0.34);
+}
+.btn--primary:hover {
+  background: linear-gradient(150deg, #0d9488, #0f766e);
+  filter: brightness(1.04);
+  box-shadow: 0 16px 34px rgba(13, 148, 136, 0.42);
+}
+
+/* משני — גלולה רכה רגועה, פעולות-עזר (קודם/הבא/רמז/הסבר) */
+.btn--secondary {
+  border: 2px solid rgb(var(--accent-rgb) / 0.22);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--kid-teal-ink);
+  font-weight: 700;
+}
+.btn--secondary:hover {
+  background: rgb(var(--accent-rgb) / 0.08);
+  border-color: rgb(var(--accent-rgb) / 0.38);
+}
+
+/* שורת הפעולות המשניות — מקובצת, מרכזית, רגועה */
+.actions {
+  gap: 10px;
+  justify-content: center;
+  margin-top: 4px;
+}
+#lessonCard .actions {
+  background: rgb(var(--accent-rgb) / 0.045);
+  padding: 12px 14px;
+  border-radius: 999px;
+}
+
+/* כפתור "סיימתי" של השעון האינטראקטיבי */
+#doneBtn {
+  font-size: 18px;
+  padding: 15px 34px;
+  min-height: 52px;
+}
+
+/* ============================================================
+   10. משוב (.feedback)  —  ברור, ידידותי, עגול
+   שמירה: .feedback--hidden ו-[hidden] נשארים כללי הסתרה (מ-styles.css)
+   ============================================================ */
+#lessonCard .feedback,
+.feedback {
+  border-radius: 16px;
+  border: 1.5px solid rgb(13 60 53 / 0.10);
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--kid-ink);
+  padding: 14px 18px;
+}
+.feedback--ok {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(34, 197, 94, 0.14);
+  color: #166534;
+}
+.feedback--warn {
+  border-color: rgba(245, 158, 11, 0.45);
+  background: var(--kid-amber-bg);
+  color: #92600a;
+}
+.feedback--danger {
+  border-color: rgba(239, 68, 68, 0.42);
+  background: rgba(239, 68, 68, 0.1);
+  color: #b91c1c;
+}
+
+/* ============================================================
+   11. מד ההתקדמות (.levelMeter) — מעודד וברור
+   ============================================================ */
+.levelMeter {
+  width: min(480px, 92%);
+  margin-top: 14px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgb(13 60 53 / 0.08);
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgb(13 60 53 / 0.06);
+}
+.levelMeter__head {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--kid-ink);
+  margin-bottom: 10px;
+}
+.levelMeter__count {
+  color: var(--kid-teal-ink);
+}
+.levelMeter__track {
+  height: 18px;
+  background: rgb(var(--accent-rgb) / 0.12);
+}
+.levelMeter__fill {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+}
+
+/* ============================================================
+   12. מגירת הנושאים (.drawer + .topicsList + .catItem)
+   שמירה: ה-burger בתוך המגירה, [hidden] על תצוגות, focus-trap
+   ============================================================ */
+.drawer--open {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: -18px 0 48px rgb(13 60 53 / 0.18);
+}
+.drawer__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--kid-ink);
+}
+.drawer__subtitle {
+  font-size: 13px;
+  color: var(--kid-sub);
+}
+
+/* "+ נושא חדש" וכפתורי המגירה — מטרת מגע מלאה */
+.drawer__actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* פריט נושא — כרטיס רך, מרווח, ידידותי */
+.topicItem {
+  gap: 12px;
+  border: 1.5px solid rgb(13 60 53 / 0.1);
+  border-radius: 18px;
+  padding: 14px 14px;
+  background: rgba(255, 255, 255, 0.7);
+}
+.topicItem:hover {
+  background: rgb(var(--accent-rgb) / 0.05);
+  box-shadow: 0 10px 24px rgb(13 60 53 / 0.1);
+}
+.topicItem--active {
+  border-color: rgb(var(--accent-rgb) / 0.4);
+  background: var(--kid-teal-bg);
+}
+.topicItem__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--kid-ink);
+}
+.topicItem__meta {
+  font-size: 12.5px;
+  color: var(--kid-sub);
+}
+
+/* קטלוג נושאי הכיתה */
+.catItem {
+  border: 1.5px solid rgb(13 60 53 / 0.1);
+  border-radius: 18px;
+  padding: 15px 18px;
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--kid-ink);
+}
+.catItem:hover {
+  color: var(--kid-teal-ink);
+  box-shadow: 0 10px 24px rgb(13 60 53 / 0.1);
+}
+.catItem--active {
+  border-color: rgb(var(--accent-rgb) / 0.45);
+  background: var(--kid-teal-bg);
+  color: var(--kid-teal-ink);
+}
+.catItem--sub {
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 14px;
+}
+
+/* כפתור מחיקה אדום במגירה — נשאר ברור */
+.iconBtn--danger {
+  border-radius: 12px;
+}
+
+.pickerHint {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--kid-sub);
+}
+
+/* ============================================================
+   13. מקלדת המספרים (.numPad)  —  מקשים ענקיים וידידותיים
+   שמירה: .numKey + data-k חייבים להישאר; לא נוגעים בהם מבנית
+   ============================================================ */
+.numPad {
+  width: 286px;
+  padding: 16px;
+  border: 1px solid rgb(13 60 53 / 0.1);
+  border-radius: 24px;
+  box-shadow: 0 22px 52px rgb(13 60 53 / 0.24);
+}
+.numPad__grid {
+  gap: 10px;
+}
+.numKey {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  padding: 18px 0;
+  min-height: 60px;
+  border: 1.5px solid rgb(13 60 53 / 0.1);
+  border-radius: 16px;
+  color: var(--kid-ink);
+}
+.numKey:hover {
+  background: rgb(var(--accent-rgb) / 0.08);
+  border-color: rgb(var(--accent-rgb) / 0.3);
+}
+.numKey--util {
+  font-size: 22px;
+  color: var(--kid-sub);
+  background: rgb(13 60 53 / 0.03);
+}
+.numPad__done {
+  margin-top: 12px;
+  padding: 16px 0;
+  min-height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(150deg, var(--kid-go-2), var(--kid-go));
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(22, 163, 74, 0.3);
+}
+.numPad__done:hover {
+  background: linear-gradient(150deg, var(--kid-go-2), var(--kid-go));
+  filter: brightness(1.05);
+}
+
+/* ============================================================
+   14. חלונית "סיימת רמה" (.levelDone)  —  חגיגית ומעודדת
+   ============================================================ */
+.levelDone {
+  background: rgba(15, 59, 54, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.levelDone__box {
+  border-radius: var(--kid-r-lg);
+  padding: 34px 30px;
+  box-shadow: 0 28px 70px rgb(13 60 53 / 0.34);
+  animation: kidPop 0.4s var(--kid-spring) both;
+}
+@keyframes kidPop {
+  from { opacity: 0; transform: translateY(10px) scale(0.92); }
+}
+.levelDone__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--kid-ink);
+}
+.levelDone__msg {
+  font-size: 16px;
+  color: var(--kid-sub);
+  line-height: 1.55;
+}
+.levelDone__actions .btn {
+  font-size: 17px;
+  padding: 16px;
+  min-height: 54px;
+}
+
+/* ============================================================
+   15. סרגל הצ'אט (.chatSidebar / .msg / .chatComposer)
+   שמירה: .msg/.msg--user/--bot/--typing/.dot/.ch + מבנה ה-meta
+   ============================================================ */
+.chatSidebar {
+  border-right: 1px solid rgb(13 60 53 / 0.1);
+  background: rgba(255, 255, 255, 0.94);
+}
+.chatSidebar__header {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid rgb(13 60 53 / 0.08);
+}
+.chatSidebar__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--kid-ink);
+}
+.chatSidebar__subtitle {
+  font-size: 12px;
+  color: var(--kid-sub);
+}
+
+/* ידית הגרירה — נקודת אחיזה בגוון טורקיז */
+.chatResizeHandle::after {
+  background: rgb(var(--accent-rgb) / 0.28);
+}
+
+/* כפתור פתיחה/סגירה של הצ'אט */
+.chatToggle {
+  width: 36px;
+  height: 48px;
+  border: 1px solid rgb(13 60 53 / 0.12);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 28px rgb(13 60 53 / 0.12);
+}
+.chatToggle__icon {
+  color: var(--kid-teal-ink);
+}
+
+/* בועות צ'אט — עגולות וקריאות */
+.msg {
+  padding: 12px 15px;
+  border-radius: 20px;
+  font-size: 15px;
+  line-height: 1.55;
+  box-shadow: 0 3px 10px rgb(13 60 53 / 0.06);
+}
+.msg--user {
+  border-color: rgb(var(--accent-rgb) / 0.2);
+  background: var(--kid-teal-bg);
+  color: var(--kid-ink);
+}
+.msg--bot {
+  border-color: rgb(13 60 53 / 0.08);
+  background: #f5f7f6;
+  color: var(--kid-ink);
+}
+.msg__meta {
+  font-size: 11px;
+  color: var(--kid-sub2);
+}
+
+/* תיבת הכתיבה */
+.chatComposer {
+  border-top: 1px solid rgb(13 60 53 / 0.08);
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.82);
+}
+.chatComposer .field__label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--kid-sub);
+}
+.chatComposer .textarea {
+  border: 1.5px solid rgb(13 60 53 / 0.12);
+  border-radius: 16px;
+  font-size: 15px;
+  padding: 12px 14px;
+}
+.chatComposer .textarea:focus {
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.16);
+}
+.chatComposer .btn--primary {
+  min-height: 48px;
+}
+
+/* אינדיקטור AI */
+.aiIndicator {
+  font-weight: 700;
+  color: var(--kid-sub);
+}
+
+/* ============================================================
+   16. לוח יצירת הצורות (.shapeCreatorCard) — כותרת ידידותית
+   שמירה: ה-SVG וכל הוקי הצורות (.shapeGrid/.shapeEdges...) נוצרים ב-JS
+   ============================================================ */
+.shapeCreator__request {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--kid-ink);
+  border: 1.5px solid rgb(var(--accent-rgb) / 0.2);
+  border-radius: 16px;
+  padding: 10px 18px;
+  box-shadow: 0 6px 16px rgb(13 60 53 / 0.08);
+}
+
+/* ============================================================
+   17. מסקוט הצ'אט — חימום ההד-בר (.mascotSlot חי בכותרת)
+   הסטיילינג של .mascotSlot/.mascotModal מוגדר inline ב-index.html.
+   לא נוגעים בו (כדי לא לשבור .is-open). רק מוודאים שהוא בולט יפה.
+   ============================================================ */
+
+/* ============================================================
+   18. רספונסיב — מובייל ולוחות
+   ============================================================ */
+@media (max-width: 980px) {
+  .layout {
+    padding: 16px;
+    padding-left: 16px;
+  }
+  #lessonCard {
+    min-height: 52vh;
+    padding: 30px 18px;
+    gap: 22px;
+  }
+  #lessonCard .problem__text {
+    font-size: clamp(34px, 9vw, 46px);
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar {
+    padding: 12px 16px;
+  }
+  .panel {
+    border-radius: var(--kid-r-md);
+  }
+  .card {
+    margin: 12px;
+    padding: 20px 14px;
+  }
+  #lessonCard {
+    min-height: auto;
+    padding: 26px 14px;
+  }
+  #lessonCard .problem__text {
+    font-size: clamp(30px, 11vw, 42px);
+  }
+  /* הפעולות המשניות נושמות — נשארות מטרות מגע גדולות */
+  .btn {
+    padding: 12px 16px;
+  }
+  .actions {
+    gap: 8px;
+  }
+  .levelPicker {
+    width: min(280px, 86vw);
+  }
+}
+
+/* ============================================================
+   19. תנועה עדינה / כיבוד prefers-reduced-motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .levelDone__box {
+    animation: none;
+  }
+  #difficultyPill,
+  .pill--btn,
+  .answerBar__btn,
+  .helpBtn--corner {
+    transition: none;
+  }
+}
