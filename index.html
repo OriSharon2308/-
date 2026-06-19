@@ -19,6 +19,22 @@
         flex: 0 0 auto;
         width: 46px;
         height: 46px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+      }
+      .mascotSlot:hover {
+        transform: scale(1.07);
+      }
+      .mascotSlot:active {
+        transform: scale(0.95);
+      }
+      .mascotSlot:focus-visible {
+        outline: 2px solid #0d9488;
+        outline-offset: 3px;
       }
       .mascotSlot svg {
         width: 100%;
@@ -35,9 +51,99 @@
           transform: translateY(-3px);
         }
       }
+      /* חלונית המורה — צפה ומרוכזת מעל הצ'אט, נכנסת/יוצאת מהפינה של המסקוט */
+      .mascotModal {
+        position: absolute;
+        inset: 0;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        background: rgba(15, 59, 54, 0.18);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.28s ease, visibility 0.28s ease;
+      }
+      .mascotModal.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .mascotModal__panel {
+        position: relative;
+        width: min(88%, 320px);
+        background: #fff;
+        border-radius: 24px;
+        padding: 28px 22px 24px;
+        text-align: center;
+        box-shadow: 0 26px 60px rgba(13, 60, 53, 0.3), 0 4px 14px rgba(13, 60, 53, 0.12);
+        transform: translateY(-14px) scale(0.78);
+        transform-origin: top center;
+        opacity: 0;
+        transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      }
+      .mascotModal.is-open .mascotModal__panel {
+        transform: none;
+        opacity: 1;
+      }
+      .mascotModal__mascot {
+        width: 112px;
+        height: 112px;
+        margin: 4px auto 14px;
+        animation: mascotBob 4.5s ease-in-out infinite;
+      }
+      .mascotModal__mascot svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        filter: drop-shadow(0 10px 20px rgba(13, 148, 136, 0.32));
+      }
+      .mascotModal__title {
+        font-family: "Fredoka", "Assistant", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #0f3b36;
+        margin: 0 0 6px;
+      }
+      .mascotModal__note {
+        font-size: 14px;
+        line-height: 1.55;
+        color: #46615f;
+        margin: 0;
+      }
+      .mascotModal__close {
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #5f7a77;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: color 0.15s ease, transform 0.15s ease;
+      }
+      .mascotModal__close:hover {
+        color: #0f3b36;
+        transform: scale(1.14);
+      }
       @media (prefers-reduced-motion: reduce) {
-        .mascotSlot svg {
+        .mascotSlot svg,
+        .mascotModal__mascot {
           animation: none;
+        }
+        .mascotModal,
+        .mascotModal__panel {
+          transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .mascotModal__panel {
+          transform: none;
         }
       }
     </style>
@@ -104,22 +210,27 @@
         <div id="chatResizeHandle" class="chatResizeHandle" role="separator" aria-orientation="vertical" aria-label="שינוי רוחב הצ’אט"></div>
         <div class="chatSidebar__inner">
           <div class="chatSidebar__header">
-            <!-- מקום שמור לדמות המדברת (מסקוט Vela) — בעתיד תחליף את הצ'אט הכתוב -->
-            <div class="mascotSlot" id="mascotSlot" aria-hidden="true">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <!-- דמות המורה (מסקוט Vela). לחיצה פותחת חלונית — בעתיד היא תזוז ותדבר -->
+            <button class="mascotSlot" id="mascotSlot" type="button" aria-label="המורה שלי — לחצו לפתיחה" aria-haspopup="dialog">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
-                  <linearGradient id="mTeal" x1="0" y1="0" x2="0.4" y2="1">
-                    <stop offset="0" stop-color="#1ad3bd" /><stop offset="1" stop-color="#0d9488" />
+                  <linearGradient id="mTeal" x1="0" y1="0" x2="0.35" y2="1">
+                    <stop offset="0" stop-color="#22d3c0" /><stop offset="1" stop-color="#0d9488" />
                   </linearGradient>
+                  <radialGradient id="mGloss" cx="0.5" cy="0.26" r="0.72">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.5" /><stop offset="0.62" stop-color="#ffffff" stop-opacity="0" />
+                  </radialGradient>
                 </defs>
-                <rect x="6" y="6" width="52" height="52" rx="18" fill="url(#mTeal)" />
-                <circle cx="25" cy="30" r="6" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" />
-                <circle cx="43" cy="30" r="6" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" />
-                <circle cx="22" cy="40" r="4" fill="#ff8a5c" opacity="0.5" />
-                <circle cx="46" cy="40" r="4" fill="#ff8a5c" opacity="0.5" />
-                <path d="M25 42 Q34 50 43 42" fill="none" stroke="#0f3b36" stroke-width="3.4" stroke-linecap="round" />
+                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mTeal)" />
+                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mGloss)" />
+                <circle cx="20" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
+                <circle cx="44" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
+                <circle cx="25" cy="30" r="6.2" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" /><circle cx="24.3" cy="29.3" r="1.1" fill="#fff" />
+                <circle cx="43" cy="30" r="6.2" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" /><circle cx="42.3" cy="29.3" r="1.1" fill="#fff" />
+                <path d="M25 43 Q34 50 43 43" fill="none" stroke="#0f3b36" stroke-width="3" stroke-linecap="round" />
+                <path d="M52.5 15 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#fff" opacity="0.92" />
               </svg>
-            </div>
+            </button>
             <div class="chatSidebar__titleWrap">
               <div class="chatSidebar__title">צ’אט עם המורה</div>
               <div class="chatSidebar__subtitle">המורה מדבר איתך — צוות הסוכנים עוזר מאחורי הקלעים</div>
@@ -143,6 +254,35 @@
               ></textarea>
             </label>
             <button id="sendBtn" class="btn btn--primary" type="button">שלח</button>
+          </div>
+        </div>
+
+        <!-- חלונית המורה (placeholder לדמות המדברת העתידית) -->
+        <div class="mascotModal" id="mascotModal" role="dialog" aria-modal="true" aria-label="המורה שלי" aria-hidden="true">
+          <div class="mascotModal__panel">
+            <button class="mascotModal__close" id="mascotModalClose" type="button" aria-label="סגירה">×</button>
+            <div class="mascotModal__mascot" aria-hidden="true">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="mTeal2" x1="0" y1="0" x2="0.35" y2="1">
+                    <stop offset="0" stop-color="#22d3c0" /><stop offset="1" stop-color="#0d9488" />
+                  </linearGradient>
+                  <radialGradient id="mGloss2" cx="0.5" cy="0.26" r="0.72">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.5" /><stop offset="0.62" stop-color="#ffffff" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mTeal2)" />
+                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mGloss2)" />
+                <circle cx="20" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
+                <circle cx="44" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
+                <circle cx="25" cy="30" r="6.2" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" /><circle cx="24.3" cy="29.3" r="1.1" fill="#fff" />
+                <circle cx="43" cy="30" r="6.2" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" /><circle cx="42.3" cy="29.3" r="1.1" fill="#fff" />
+                <path d="M25 43 Q34 50 43 43" fill="none" stroke="#0f3b36" stroke-width="3" stroke-linecap="round" />
+                <path d="M52.5 15 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#fff" opacity="0.92" />
+              </svg>
+            </div>
+            <p class="mascotModal__title">היי! אני המורה שלך</p>
+            <p class="mascotModal__note">בקרוב נוכל לדבר כאן יחד — בינתיים אני לצידך בכל שאלה 🙂</p>
           </div>
         </div>
       </aside>
@@ -272,5 +412,32 @@
     </div>
 
     <script src="./app.js?v=45" defer></script>
+
+    <!-- חלונית המורה: פתיחה בלחיצה על המסקוט, סגירה ב-X / רקע / Esc (עצמאי מ-app.js) -->
+    <script>
+      (function () {
+        var slot = document.getElementById("mascotSlot");
+        var modal = document.getElementById("mascotModal");
+        var closeBtn = document.getElementById("mascotModalClose");
+        if (!slot || !modal) return;
+        function open() {
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+        }
+        function close() {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          slot.focus();
+        }
+        slot.addEventListener("click", open);
+        if (closeBtn) closeBtn.addEventListener("click", close);
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) close();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+        });
+      })();
+    </script>
   </body>
 </html>
