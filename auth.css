@@ -126,7 +126,7 @@ html {
   transform: translateX(-50%);
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
   font-weight: 400;
-  font-size: min(94vw, 90vh);
+  font-size: min(88vw, 82vh);
   line-height: 1;
   letter-spacing: -0.02em;
   /* שחור למעלה, מתבהר בהדרגה כלפי מטה (background-clip:text) — לבקשת המשתמש */
