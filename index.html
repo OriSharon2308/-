@@ -72,9 +72,15 @@
       .chatSidebar__inner {
         position: relative;
       }
-      /* הפס הלבן האמיתי (#chatHeader) הוא שמתרחב — מעוגן ומשמש מיכל לדמות ולטקסט */
+      /* הפס הלבן האמיתי (#chatHeader) הוא שמתרחב — מעוגן ומשמש מיכל לדמות ולטקסט.
+         לבן מלא תמיד + מעברים על צל/רדיוס → אין "קפיצה" כשחוזרים למלבן */
       .chatSidebar__header {
         position: relative;
+        background: #ffffff;
+        border-radius: 0;
+        box-shadow: none;
+        transition: box-shadow 0.5s ease, border-radius 0.5s ease,
+          border-color 0.4s ease;
       }
       /* מצב שיחה: הפס האמיתי יוצא מהזרימה וגדל כלפי מטה לריבוע מושלם (גובה = רוחב, נקבע ב-JS) */
       .chatSidebar__header.is-talk {
@@ -83,13 +89,14 @@
         left: 0;
         right: 0;
         z-index: 6;
-        background: #ffffff;
         border-bottom-color: transparent;
         border-radius: 0 0 26px 26px;
         box-shadow: 0 22px 50px rgba(13, 60, 53, 0.18);
         overflow: hidden;
+        contain: layout paint; /* בידוד פריסה/ציור → אנימציית גובה זולה וחלקה */
+        will-change: height;
         transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.5s ease;
+          box-shadow 0.5s ease, border-radius 0.5s ease, border-color 0.4s ease;
       }
       /* תוכן הכותרת המקורי (כותרת + AI) — חוזר בעדינות; מוסתר לכל אורך מצב-השיחה כדי שלא "יקפוץ" בסגירה */
       .chatSidebar__header .chatSidebar__titleWrap,
@@ -448,7 +455,7 @@
         if (!slot || !header) return;
 
         var MASCOT = 46; /* גודל הכפתור בפס העליון */
-        var DUR = 640; /* משך התנועה (ms) — מעט יותר מ-0.6s של ה-CSS */
+        var DUR = 570; /* משך הסגירה (ms) — מעט יותר מ-0.55s, כדי שהכל יתואם לפני הסרת is-talk */
         var settleTimer = null;
         var inner = header.parentNode; /* .chatSidebar__inner */
         var startLeft = 0,
@@ -463,6 +470,12 @@
             clearTimeout(settleTimer);
             settleTimer = null;
           }
+        }
+        function reduced() {
+          return (
+            window.matchMedia &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          );
         }
         /* מחשב את צלע הריבוע ואת שתי מצבי ה-transform של המורה (פינה-קטן ↔ מרכז-גדול) */
         function compute() {
@@ -486,40 +499,61 @@
           }
           var side = compute();
 
-          /* מצב התחלה — ללא אנימציה: הקופסה כבר בגודל הסופי (SVG חד), אבל מוקטנת ובפינה דרך transform */
+          /* מצב התחלה — ללא אנימציה: הקופסה בגודל הסופי (SVG חד) אך מוקטנת בפינה (transform),
+             והפס שטוח כמו מלבן רגיל (בלי צל/רדיוס) — כדי שהכל יגדל יחד מאותה נקודה */
           header.classList.add("is-talk");
           if (inner) inner.style.paddingTop = collapsedH + "px"; /* שומר מקום — הצ'אט לא קופץ */
           slot.classList.add("is-fly");
           header.style.transition = "none";
           slot.style.transition = "none";
           header.style.height = collapsedH + "px";
+          header.style.boxShadow = "none";
+          header.style.borderRadius = "0px";
           slot.style.width = big + "px";
           slot.style.height = big + "px";
           slot.style.transform = startTf;
 
           void header.getBoundingClientRect(); /* commit reflow */
 
-          /* מצב סוף — מפעיל מעברים חלקים: הפס (height) גדל; המורה (transform בלבד, GPU) גדל ונע למרכז */
-          header.style.transition = "";
-          slot.style.transition = "";
+          /* מצב סוף — מעברים חלקים (ease-out-expo): הפס גדל אנכית + צל/רדיוס נכנסים יחד; המורה (transform/GPU) גדל ונע למרכז */
+          var t = reduced() ? "none" : "";
+          header.style.transition = t;
+          slot.style.transition = t;
           header.style.height = side + "px";
+          header.style.boxShadow = ""; /* → ערכי is-talk (צל גדול), מונפש */
+          header.style.borderRadius = "";
           slot.style.transform = endTf;
           header.classList.add("is-open");
           if (dialog) dialog.setAttribute("aria-hidden", "false");
         }
+        var EXIT = "cubic-bezier(0.4, 0, 0.2, 1)"; /* יציאה חלקה ונקייה (בלי "תקיעה" בסוף) */
         function close() {
           cancelSettle();
-          header.classList.remove("is-open"); /* טקסט+X נעלמים מהר ונקי, הכותרת המקורית מוסתרת עד הסוף */
+          header.classList.remove("is-open"); /* טקסט+X נעלמים מהר; הכותרת המקורית עדיין מוסתרת */
+          /* עקומת יציאה אחידה לכל מה שמתכווץ — הכל מתכווץ למלבן יחד וחלק */
+          if (reduced()) {
+            header.style.transition = "none";
+            slot.style.transition = "none";
+          } else {
+            header.style.transition =
+              "height 0.55s " + EXIT + ", box-shadow 0.5s ease, border-radius 0.5s ease, border-color 0.4s ease";
+            slot.style.transition = "transform 0.55s " + EXIT;
+          }
           header.style.height = collapsedH + "px"; /* הפס מתכווץ */
-          slot.style.transform = startTf; /* המורה חוזר לפינה ומתכווץ (transform בלבד) */
+          header.style.boxShadow = "none"; /* הצל נמוג יחד עם ההתכווצות */
+          header.style.borderRadius = "0px"; /* הרדיוס חוזר ל-0 יחד */
+          slot.style.transform = startTf; /* המורה חוזר לפינה ומתכווץ (transform/GPU) */
           if (dialog) dialog.setAttribute("aria-hidden", "true");
 
           settleTimer = setTimeout(function () {
-            header.classList.remove("is-talk"); /* חזרה לזרימה הרגילה של הפס */
+            /* בנקודה זו הכל כבר תואם למצב הרגיל → הסרת is-talk שקופה לחלוטין */
+            header.classList.remove("is-talk");
             if (inner) inner.style.paddingTop = "";
             slot.classList.remove("is-fly");
             header.style.height = "";
             header.style.transition = "";
+            header.style.boxShadow = "";
+            header.style.borderRadius = "";
             slot.style.width = "";
             slot.style.height = "";
             slot.style.transform = "";
