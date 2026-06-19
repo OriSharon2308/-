@@ -121,7 +121,7 @@ html {
 /* "vela" שחורה ענקית — גדולה עד קצוות המסך, מעט נמוכה, נמוגה בערפל כלפי מטה */
 .lpHero__word {
   position: absolute;
-  top: 5%;
+  top: 1%;
   left: 50%;
   transform: translateX(-50%);
   font-family: "Arca Morphe", "Archivo Black", sans-serif;
