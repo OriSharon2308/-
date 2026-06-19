@@ -248,8 +248,8 @@ body.chat-collapsed .layout {
   color: var(--kid-ink);
 }
 #lessonCard .problem__text {
-  font-size: clamp(40px, 6.2vw, 60px);
-  line-height: 1.12;
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.1;
   letter-spacing: 0;
 }
 
@@ -845,4 +845,47 @@ body.chat-collapsed .layout {
   .helpBtn--corner {
     transition: none;
   }
+}
+
+/* ============================================================
+   20. התאמה למסך — כל סוג שאלה נכנס במסך אחד בלי גלילה
+   הגדלים מותאמי-גובה (vh) כך שהדיאגרמה/השעון/הלוח מתכווצים
+   במסכים נמוכים, והשאלה + התשובה + מד ההתקדמות נשארים גלויים יחד.
+   ============================================================ */
+
+/* שעון (סטטי ואינטראקטיבי) — מותאם לגובה המסך (היה min(340px,80vw)) */
+.mode-clock .interactiveClock,
+.mode-clock .problemDiagram svg {
+  width: min(300px, 38vh, 78vw);
+  height: min(300px, 38vh, 78vw);
+}
+/* כותרת השאלה במצב שעון — ריווח הדוק כדי לפנות מקום לשעון + התשובה + המד */
+#lessonCard.mode-clock .problem__text {
+  font-size: clamp(17px, 2.6vw, 22px);
+  margin: 0 0 8px;
+}
+.mode-clock .answerRow--interactive {
+  margin-top: 12px;
+}
+.mode-clock .interactiveHint {
+  margin-bottom: 8px;
+}
+#lessonCard.mode-clock #doneBtn {
+  min-height: 50px;
+  padding: 12px 30px;
+}
+
+/* דיאגרמות שאינן שעון (חפצים/מטבעות/צורה סטטית) — תקרת גובה מותאמת-מסך */
+.problemDiagram {
+  max-height: min(34vh, 240px);
+}
+.problemDiagram svg,
+.problemDiagram .objViz {
+  max-height: min(32vh, 216px);
+}
+
+/* לוח יצירת צורות — נכנס במסך אחד (היה 60vh + min 380px) */
+.shapeBoard {
+  height: min(42vh, 380px);
+  min-height: 220px;
 }
