@@ -63,7 +63,6 @@
       }
       .chatSidebar__header .chatSidebar__titleWrap {
         flex: 1 1 auto;
-        clip-path: inset(0 0 0 0); /* גלוי במצב רגיל */
       }
       @keyframes mascotBob {
         50% {
@@ -97,12 +96,25 @@
       }
       /* הכותרת "צ'אט עם המורה" + הכתובית מתחת — נחשפות מימין לשמאל (מהקצה הימני, ליד המורה, בלי לעבור מתחתיו).
          החשיפה היא רק *אחרי* שהריבוע כבר נסגר — דרך השהיית transition-delay (לא בו-זמנית עם הסגירה) */
-      .chatSidebar__header .chatSidebar__titleWrap {
-        transition: clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.22s,
-          opacity 0.4s ease 0.22s;
+      .chatSidebar__title,
+      .chatSidebar__subtitle {
+        font-family: "Fredoka", "Assistant", sans-serif;
+      }
+      /* חשיפה אות-אחרי-אות (typewriter), מדורגת לפי --i, אחרי שהריבוע נסגר */
+      .chatSidebar__title .ch,
+      .chatSidebar__subtitle .ch {
+        opacity: 1;
+        transition: opacity 0.26s ease;
+        transition-delay: calc(0.24s + var(--i, 0) * 0.022s);
+      }
+      .chatSidebar__header.is-talk .chatSidebar__title .ch,
+      .chatSidebar__header.is-talk .chatSidebar__subtitle .ch {
+        opacity: 0;
+        transition: opacity 0.12s ease;
+        transition-delay: 0s;
       }
       .chatSidebar__header .aiIndicator {
-        transition: opacity 0.4s ease 0.24s;
+        transition: opacity 0.4s ease 0.26s;
       }
       /* בפתיחה (הסתרה) — מהיר ובלי השהיה, כדי שלא ישתהו לפני שהריבוע מכסה */
       .chatSidebar__header.is-talk .chatSidebar__titleWrap {
@@ -206,6 +218,12 @@
         .mascotModal__title,
         .mascotModal__note {
           transform: none;
+        }
+        /* בלי דירוג typewriter — כל האותיות יחד */
+        .chatSidebar__title .ch,
+        .chatSidebar__subtitle .ch {
+          transition: opacity 0.15s ease;
+          transition-delay: 0s;
         }
       }
     </style>
@@ -461,6 +479,29 @@
         var dialog = document.getElementById("mascotModal");
         var closeBtn = document.getElementById("mascotModalClose");
         if (!slot || !header) return;
+
+        /* פיצול הכותרת + הכתובית לתווים, עם אינדקס רץ (--i) — לחשיפה אות-אחרי-אות בסגירה */
+        (function splitLetters() {
+          var els = [
+            header.querySelector(".chatSidebar__title"),
+            header.querySelector(".chatSidebar__subtitle"),
+          ];
+          var idx = 0;
+          for (var e = 0; e < els.length; e++) {
+            var el = els[e];
+            if (!el || el.getAttribute("data-split")) continue;
+            var text = el.textContent;
+            el.textContent = "";
+            for (var i = 0; i < text.length; i++) {
+              var span = document.createElement("span");
+              span.className = "ch";
+              span.textContent = text[i];
+              span.style.setProperty("--i", idx++);
+              el.appendChild(span);
+            }
+            el.setAttribute("data-split", "1");
+          }
+        })();
 
         var MASCOT = 46; /* גודל הכפתור בפס העליון */
         var DUR = 570; /* משך הסגירה (ms) — מעט יותר מ-0.55s, כדי שהכל יתואם לפני הסרת is-talk */
