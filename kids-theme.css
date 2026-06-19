@@ -695,6 +695,7 @@ body.chat-collapsed .layout {
 /* ידית הגרירה — שליטה ברורה בהקטנה/הגדלה של רוחב הצ'אט (גוון טורקיז, קל לאחוז) */
 .chatResizeHandle {
   width: 14px; /* אזור אחיזה רחב יותר */
+  z-index: 4; /* מעל תוכן הצ'אט (.chatSidebar__inner ממוקם) כדי שאפשר יהיה לאחוז ולגרור; מתחת לריבוע הפתוח (6) ולכפתור (16) */
 }
 .chatResizeHandle::after {
   width: 5px;
