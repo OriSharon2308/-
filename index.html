@@ -45,6 +45,21 @@
         filter: drop-shadow(0 4px 10px rgba(13, 148, 136, 0.28));
         animation: mascotBob 4.5s ease-in-out infinite;
       }
+      /* בפתיחה: כפתור המורה עצמו (לא שכפול) גדל ונע באלכסון למרכז הריבוע. dx/dy/scale מחושבים מדויק ב-JS */
+      .mascotSlot.is-fly {
+        position: relative;
+        z-index: 7;
+        transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .mascotSlot.is-fly,
+      .mascotSlot.is-fly:hover,
+      .mascotSlot.is-fly:active {
+        transform: translate(var(--mx, 0px), var(--my, 0px)) scale(var(--ms, 1));
+      }
+      .mascotSlot.is-fly svg {
+        animation: none;
+        filter: drop-shadow(0 16px 30px rgba(13, 148, 136, 0.34));
+      }
       .chatSidebar__header .chatSidebar__titleWrap {
         flex: 1 1 auto;
       }
@@ -80,34 +95,18 @@
         box-shadow: 0 22px 50px rgba(13, 60, 53, 0.18);
         /* גובה הריבוע (= רוחב העמודה) נקבע ב-JS כדי שיהיה ריבוע מושלם */
       }
-      /* תוכן הריבוע — ממורכז */
-      .mascotModal__panel {
+      /* טקסט ההסבר — יושב בחלק התחתון של הריבוע (המורה עצמו עף למרכז מעליו) */
+      .mascotModal__text {
         position: absolute;
-        inset: 0;
+        left: 0;
+        right: 0;
+        bottom: 7%;
+        padding: 0 22px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 14px;
-        padding: 22px;
+        gap: 8px;
         text-align: center;
-      }
-      /* המורה — מתחיל קטן בפינה הימנית-עליונה (מעל מסקוט הכותרת) וגדל באלכסון למרכז */
-      .mascotModal__mascot {
-        width: min(46%, 200px);
-        aspect-ratio: 1 / 1;
-        transform-origin: center;
-        transform: translate(74%, -34%) scale(0.18);
-        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-      }
-      .mascotModal.is-open .mascotModal__mascot {
-        transform: translate(0, 0) scale(1);
-      }
-      .mascotModal__mascot svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-        filter: drop-shadow(0 12px 24px rgba(13, 148, 136, 0.3));
       }
       /* טקסט ההסבר — עולה באפקט אחרי שהריבוע נפתח */
       .mascotModal__title {
@@ -167,14 +166,14 @@
           animation: none;
         }
         .mascotModal,
-        .mascotModal__mascot,
         .mascotModal__title,
         .mascotModal__note,
         .mascotModal__close {
           transition: opacity 0.18s ease;
         }
-        .mascotModal__mascot,
-        .mascotModal.is-open .mascotModal__mascot,
+        .mascotSlot.is-fly {
+          transition: none; /* קופץ למרכז ללא תנועה אלכסונית */
+        }
         .mascotModal__title,
         .mascotModal__note {
           transform: none;
@@ -290,30 +289,10 @@
             <button id="sendBtn" class="btn btn--primary" type="button">שלח</button>
           </div>
 
-          <!-- חלונית המורה: הפס הלבן גדל לריבוע בתוך עמודת הצ'אט (placeholder לדמות המדברת) -->
+          <!-- חלונית המורה: הפס הלבן גדל לריבוע; מסקוט הכותרת עצמו עף למרכז (אין שכפול) -->
           <div class="mascotModal" id="mascotModal" role="dialog" aria-modal="true" aria-label="המורה שלי" aria-hidden="true">
             <button class="mascotModal__close" id="mascotModalClose" type="button" aria-label="סגירה">×</button>
-            <div class="mascotModal__panel">
-              <div class="mascotModal__mascot" aria-hidden="true">
-                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="mTeal2" x1="0" y1="0" x2="0.35" y2="1">
-                      <stop offset="0" stop-color="#22d3c0" /><stop offset="1" stop-color="#0d9488" />
-                    </linearGradient>
-                    <radialGradient id="mGloss2" cx="0.5" cy="0.26" r="0.72">
-                      <stop offset="0" stop-color="#ffffff" stop-opacity="0.5" /><stop offset="0.62" stop-color="#ffffff" stop-opacity="0" />
-                    </radialGradient>
-                  </defs>
-                  <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mTeal2)" />
-                  <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mGloss2)" />
-                  <circle cx="20" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
-                  <circle cx="44" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
-                  <circle cx="25" cy="30" r="6.2" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" /><circle cx="24.3" cy="29.3" r="1.1" fill="#fff" />
-                  <circle cx="43" cy="30" r="6.2" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" /><circle cx="42.3" cy="29.3" r="1.1" fill="#fff" />
-                  <path d="M25 43 Q34 50 43 43" fill="none" stroke="#0f3b36" stroke-width="3" stroke-linecap="round" />
-                  <path d="M52.5 15 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#fff" opacity="0.92" />
-                </svg>
-              </div>
+            <div class="mascotModal__text">
               <p class="mascotModal__title">היי! אני המורה שלך</p>
               <p class="mascotModal__note">בקרוב נוכל לדבר כאן יחד — אסביר לך תרגילים בקול, אענה על שאלות, ואלווה אותך צעד‑אחר‑צעד. בינתיים אני כאן לצידך בכל רגע 🙂</p>
             </div>
@@ -447,36 +426,84 @@
 
     <script src="./app.js?v=45" defer></script>
 
-    <!-- חלונית המורה: לחיצה על המסקוט מגדילה את הפס הלבן לריבוע מושלם; סגירה ב-X / Esc -->
+    <!-- חלונית המורה: הפס הלבן גדל כלפי מטה לריבוע מושלם, וכפתור המורה עצמו עף באלכסון למרכז. סגירה ב-X / Esc -->
     <script>
       (function () {
         var slot = document.getElementById("mascotSlot");
         var modal = document.getElementById("mascotModal");
         var closeBtn = document.getElementById("mascotModalClose");
         if (!slot || !modal) return;
-        function squareSize() {
-          /* גובה = רוחב עמודת הצ'אט → ריבוע מושלם */
-          return modal.offsetWidth + "px";
+
+        /* מודד את רוחב העמודה (= צלע הריבוע) ומחשב במדויק לאן ובכמה הכפתור צריך לעוף */
+        function layout() {
+          var side = modal.offsetWidth; /* רוחב העמודה → צלע ריבוע מושלם */
+          var box = modal.getBoundingClientRect(); /* ראש הריבוע = ראש הפס הלבן */
+          var s = slot.getBoundingClientRect();
+          var targetCx = box.left + side / 2; /* מרכז הריבוע אופקית */
+          var targetCy = box.top + side / 2; /* מרכז הריבוע אנכית (הגובה הסופי) */
+          var slotCx = s.left + s.width / 2; /* מרכז יציב גם תחת scale של hover */
+          var slotCy = s.top + s.height / 2;
+          var baseW = slot.offsetWidth || s.width; /* רוחב אמיתי (בלי transform) */
+          var big = Math.min(side * 0.42, 188); /* גודל המורה במרכז */
+          return {
+            side: side,
+            dx: Math.round(targetCx - slotCx),
+            dy: Math.round(targetCy - slotCy),
+            scale: Math.round((big / baseW) * 1000) / 1000,
+          };
+        }
+        var settleTimer = null;
+        function cancelSettle() {
+          if (settleTimer) {
+            clearTimeout(settleTimer);
+            settleTimer = null;
+          }
         }
         function open() {
-          modal.style.height = squareSize();
+          cancelSettle();
+          var g = layout();
+          modal.style.height = g.side + "px"; /* הריבוע גדל כלפי מטה */
+          slot.style.setProperty("--mx", g.dx + "px");
+          slot.style.setProperty("--my", g.dy + "px");
+          slot.style.setProperty("--ms", g.scale);
+          slot.classList.add("is-fly"); /* הכפתור עצמו עף באלכסון למרכז */
           modal.classList.add("is-open");
           modal.setAttribute("aria-hidden", "false");
         }
         function close() {
+          cancelSettle();
           modal.classList.remove("is-open");
-          modal.style.height = ""; /* חזרה לגובה הפס הלבן */
+          modal.style.height = "";
+          /* מחזירים את הכפתור לפינה באותו משך זמן (is-fly נשאר עד שהתנועה נגמרת) */
+          slot.style.setProperty("--mx", "0px");
+          slot.style.setProperty("--my", "0px");
+          slot.style.setProperty("--ms", "1");
           modal.setAttribute("aria-hidden", "true");
-          slot.focus();
+          settleTimer = setTimeout(function () {
+            slot.classList.remove("is-fly");
+            slot.style.removeProperty("--mx");
+            slot.style.removeProperty("--my");
+            slot.style.removeProperty("--ms");
+            settleTimer = null;
+          }, 560);
         }
-        slot.addEventListener("click", open);
+        function toggle() {
+          if (modal.classList.contains("is-open")) close();
+          else open();
+        }
+        slot.addEventListener("click", toggle);
         if (closeBtn) closeBtn.addEventListener("click", close);
         document.addEventListener("keydown", function (e) {
           if (e.key === "Escape" && modal.classList.contains("is-open")) close();
         });
-        /* שמירה על ריבוע מושלם אם משנים רוחב חלון/צ'אט בזמן שהוא פתוח */
+        /* שמירה על ריבוע מדויק ומיקום נכון אם משנים רוחב חלון/צ'אט בזמן שהוא פתוח */
         window.addEventListener("resize", function () {
-          if (modal.classList.contains("is-open")) modal.style.height = squareSize();
+          if (!modal.classList.contains("is-open")) return;
+          var g = layout();
+          modal.style.height = g.side + "px";
+          slot.style.setProperty("--mx", g.dx + "px");
+          slot.style.setProperty("--my", g.dy + "px");
+          slot.style.setProperty("--ms", g.scale);
         });
       })();
     </script>
