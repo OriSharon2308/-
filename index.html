@@ -45,20 +45,23 @@
         filter: drop-shadow(0 4px 10px rgba(13, 148, 136, 0.28));
         animation: mascotBob 4.5s ease-in-out infinite;
       }
-      /* בפתיחה: כפתור המורה עצמו (לא שכפול) גדל ונע באלכסון למרכז הריבוע. dx/dy/scale מחושבים מדויק ב-JS */
+      /* בפתיחה: כפתור המורה האמיתי גדל ע"י width/height (SVG וקטורי → חד בכל גודל, לא transform scale) ונע למרכז */
       .mascotSlot.is-fly {
-        position: relative;
-        z-index: 7;
-        transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        position: absolute;
+        z-index: 2;
+        border-radius: 22px;
+        transition: left 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          top 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          height 0.55s cubic-bezier(0.22, 1, 0.36, 1);
       }
-      .mascotSlot.is-fly,
       .mascotSlot.is-fly:hover,
       .mascotSlot.is-fly:active {
-        transform: translate(var(--mx, 0px), var(--my, 0px)) scale(var(--ms, 1));
+        transform: none; /* בלי scale של hover — שומר על חדות מלאה */
       }
       .mascotSlot.is-fly svg {
         animation: none;
-        filter: drop-shadow(0 16px 30px rgba(13, 148, 136, 0.34));
+        filter: drop-shadow(0 18px 34px rgba(13, 148, 136, 0.32));
       }
       .chatSidebar__header .chatSidebar__titleWrap {
         flex: 1 1 auto;
@@ -68,71 +71,73 @@
           transform: translateY(-3px);
         }
       }
-      /* עוגן הריבוע — עמודת הצ'אט עצמה */
       .chatSidebar__inner {
         position: relative;
       }
-      /* חלונית המורה — הפס הלבן העליון "גדל" כלפי מטה לריבוע מושלם בתוך עמודת הצ'אט (לא על כל המסך) */
-      .mascotModal {
+      /* הפס הלבן האמיתי (#chatHeader) הוא שמתרחב — מעוגן ומשמש מיכל לדמות ולטקסט */
+      .chatSidebar__header {
+        position: relative;
+      }
+      /* מצב שיחה: הפס האמיתי יוצא מהזרימה וגדל כלפי מטה לריבוע מושלם (גובה = רוחב, נקבע ב-JS) */
+      .chatSidebar__header.is-talk {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         z-index: 6;
-        height: 66px; /* סגור — בגובה הפס הלבן של הכותרת */
-        overflow: hidden;
         background: #ffffff;
+        border-bottom-color: transparent;
         border-radius: 0 0 26px 26px;
-        box-shadow: 0 0 0 rgba(13, 60, 53, 0);
+        box-shadow: 0 22px 50px rgba(13, 60, 53, 0.18);
+        overflow: hidden;
+        transition: height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.5s ease;
+      }
+      /* תוכן הכותרת המקורי (כותרת + AI) מתעמעם כשהריבוע נפתח */
+      .chatSidebar__header.is-open .chatSidebar__titleWrap,
+      .chatSidebar__header.is-open .aiIndicator {
         opacity: 0;
         pointer-events: none;
-        transition: height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-          box-shadow 0.5s ease, opacity 0.28s ease;
+        transition: opacity 0.2s ease;
       }
-      .mascotModal.is-open {
-        opacity: 1;
-        pointer-events: auto;
-        box-shadow: 0 22px 50px rgba(13, 60, 53, 0.18);
-        /* גובה הריבוע (= רוחב העמודה) נקבע ב-JS כדי שיהיה ריבוע מושלם */
-      }
-      /* טקסט ההסבר — יושב בחלק התחתון של הריבוע (המורה עצמו עף למרכז מעליו) */
+      /* טקסט ההסבר — בתחתית הריבוע, קטן ונמוך */
       .mascotModal__text {
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 7%;
+        bottom: 5%;
         padding: 0 22px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 5px;
         text-align: center;
+        pointer-events: none;
       }
-      /* טקסט ההסבר — עולה באפקט אחרי שהריבוע נפתח */
       .mascotModal__title {
         font-family: "Fredoka", "Assistant", sans-serif;
         font-weight: 700;
-        font-size: clamp(17px, 2.2vw, 23px);
+        font-size: clamp(15px, 1.9vw, 19px);
         color: #0f3b36;
         margin: 0;
         opacity: 0;
-        transform: translateY(12px);
-        transition: opacity 0.35s ease 0.22s,
-          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.22s;
+        transform: translateY(10px);
+        transition: opacity 0.35s ease 0.24s,
+          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.24s;
       }
       .mascotModal__note {
-        font-size: clamp(12.5px, 1.6vw, 15px);
-        line-height: 1.55;
+        font-size: clamp(11.5px, 1.5vw, 13.5px);
+        line-height: 1.5;
         color: #46615f;
-        max-width: 30ch;
+        max-width: 32ch;
         margin: 0;
         opacity: 0;
-        transform: translateY(12px);
-        transition: opacity 0.35s ease 0.32s,
-          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.32s;
+        transform: translateY(10px);
+        transition: opacity 0.35s ease 0.34s,
+          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.34s;
       }
-      .mascotModal.is-open .mascotModal__title,
-      .mascotModal.is-open .mascotModal__note {
+      .chatSidebar__header.is-open .mascotModal__title,
+      .chatSidebar__header.is-open .mascotModal__note {
         opacity: 1;
         transform: translateY(0);
       }
@@ -152,10 +157,13 @@
         cursor: pointer;
         border-radius: 50%;
         opacity: 0;
+        pointer-events: none;
+        z-index: 3;
         transition: color 0.15s ease, transform 0.15s ease, opacity 0.3s ease 0.2s;
       }
-      .mascotModal.is-open .mascotModal__close {
+      .chatSidebar__header.is-open .mascotModal__close {
         opacity: 1;
+        pointer-events: auto;
       }
       .mascotModal__close:hover {
         color: #0f3b36;
@@ -165,14 +173,12 @@
         .mascotSlot svg {
           animation: none;
         }
-        .mascotModal,
+        .chatSidebar__header.is-talk,
+        .mascotSlot.is-fly,
         .mascotModal__title,
         .mascotModal__note,
         .mascotModal__close {
           transition: opacity 0.18s ease;
-        }
-        .mascotSlot.is-fly {
-          transition: none; /* קופץ למרכז ללא תנועה אלכסונית */
         }
         .mascotModal__title,
         .mascotModal__note {
@@ -242,8 +248,8 @@
       <aside id="chatSidebar" class="chatSidebar" aria-label="צ’אט חופשי">
         <div id="chatResizeHandle" class="chatResizeHandle" role="separator" aria-orientation="vertical" aria-label="שינוי רוחב הצ’אט"></div>
         <div class="chatSidebar__inner">
-          <div class="chatSidebar__header">
-            <!-- דמות המורה (מסקוט Vela). לחיצה פותחת חלונית — בעתיד היא תזוז ותדבר -->
+          <div class="chatSidebar__header" id="chatHeader">
+            <!-- דמות המורה (מסקוט Vela). לחיצה מרחיבה את הפס הלבן עצמו לריבוע, והמורה גדל וזז למרכז -->
             <button class="mascotSlot" id="mascotSlot" type="button" aria-label="המורה שלי — לחצו לפתיחה" aria-haspopup="dialog">
               <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
@@ -272,6 +278,13 @@
               <span class="aiIndicator__dot" id="aiDot" aria-hidden="true"></span>
               <span class="aiIndicator__label">AI</span>
             </div>
+
+            <!-- מצב "שיחה": כשהפס הלבן עצמו גדל לריבוע — כפתור סגירה + טקסט הסבר -->
+            <button class="mascotModal__close" id="mascotModalClose" type="button" aria-label="סגירה">×</button>
+            <div class="mascotModal__text" id="mascotModal" role="dialog" aria-modal="true" aria-label="המורה שלי" aria-hidden="true">
+              <p class="mascotModal__title">היי! אני המורה שלך</p>
+              <p class="mascotModal__note">בקרוב נדבר כאן יחד — אסביר תרגילים, אענה על שאלות, ואלווה אותך צעד‑אחר‑צעד 🙂</p>
+            </div>
           </div>
 
           <div id="chatLog" class="chatLog" aria-label="היסטוריית שיחה"></div>
@@ -287,15 +300,6 @@
               ></textarea>
             </label>
             <button id="sendBtn" class="btn btn--primary" type="button">שלח</button>
-          </div>
-
-          <!-- חלונית המורה: הפס הלבן גדל לריבוע; מסקוט הכותרת עצמו עף למרכז (אין שכפול) -->
-          <div class="mascotModal" id="mascotModal" role="dialog" aria-modal="true" aria-label="המורה שלי" aria-hidden="true">
-            <button class="mascotModal__close" id="mascotModalClose" type="button" aria-label="סגירה">×</button>
-            <div class="mascotModal__text">
-              <p class="mascotModal__title">היי! אני המורה שלך</p>
-              <p class="mascotModal__note">בקרוב נוכל לדבר כאן יחד — אסביר לך תרגילים בקול, אענה על שאלות, ואלווה אותך צעד‑אחר‑צעד. בינתיים אני כאן לצידך בכל רגע 🙂</p>
-            </div>
           </div>
         </div>
       </aside>
@@ -426,84 +430,119 @@
 
     <script src="./app.js?v=45" defer></script>
 
-    <!-- חלונית המורה: הפס הלבן גדל כלפי מטה לריבוע מושלם, וכפתור המורה עצמו עף באלכסון למרכז. סגירה ב-X / Esc -->
+    <!-- חלונית המורה: הפס הלבן האמיתי (#chatHeader) גדל כלפי מטה לריבוע, והמורה גדל (width/height — חד) ונע למרכז. סגירה ב-X / Esc -->
     <script>
       (function () {
         var slot = document.getElementById("mascotSlot");
-        var modal = document.getElementById("mascotModal");
+        var header = document.getElementById("chatHeader");
+        var dialog = document.getElementById("mascotModal");
         var closeBtn = document.getElementById("mascotModalClose");
-        if (!slot || !modal) return;
+        if (!slot || !header) return;
 
-        /* מודד את רוחב העמודה (= צלע הריבוע) ומחשב במדויק לאן ובכמה הכפתור צריך לעוף */
-        function layout() {
-          var side = modal.offsetWidth; /* רוחב העמודה → צלע ריבוע מושלם */
-          var box = modal.getBoundingClientRect(); /* ראש הריבוע = ראש הפס הלבן */
-          var s = slot.getBoundingClientRect();
-          var targetCx = box.left + side / 2; /* מרכז הריבוע אופקית */
-          var targetCy = box.top + side / 2; /* מרכז הריבוע אנכית (הגובה הסופי) */
-          var slotCx = s.left + s.width / 2; /* מרכז יציב גם תחת scale של hover */
-          var slotCy = s.top + s.height / 2;
-          var baseW = slot.offsetWidth || s.width; /* רוחב אמיתי (בלי transform) */
-          var big = Math.min(side * 0.42, 188); /* גודל המורה במרכז */
-          return {
-            side: side,
-            dx: Math.round(targetCx - slotCx),
-            dy: Math.round(targetCy - slotCy),
-            scale: Math.round((big / baseW) * 1000) / 1000,
-          };
-        }
+        var MASCOT = 46; /* גודל הכפתור בפס העליון */
+        var DUR = 560; /* משך התנועה (ms) — תואם ל-CSS */
         var settleTimer = null;
+        var startLeft = 0,
+          startTop = 0,
+          collapsedH = 0;
+
         function cancelSettle() {
           if (settleTimer) {
             clearTimeout(settleTimer);
             settleTimer = null;
           }
         }
+        /* מצב פתוח: צלע הריבוע (= רוחב העמודה) + מיקום+גודל סופי של המורה במרכז */
+        function endGeom() {
+          var side = header.offsetWidth;
+          var big = Math.min(side * 0.46, 210); /* המורה גדול יותר במרכז */
+          return {
+            side: side,
+            big: big,
+            left: Math.round((side - big) / 2), /* ממורכז אופקית */
+            top: Math.round(side * 0.42 - big / 2), /* מעט מעל המרכז — מקום לטקסט מתחת */
+          };
+        }
+        var inner = header.parentNode; /* .chatSidebar__inner */
         function open() {
           cancelSettle();
-          var g = layout();
-          modal.style.height = g.side + "px"; /* הריבוע גדל כלפי מטה */
-          slot.style.setProperty("--mx", g.dx + "px");
-          slot.style.setProperty("--my", g.dy + "px");
-          slot.style.setProperty("--ms", g.scale);
-          slot.classList.add("is-fly"); /* הכפתור עצמו עף באלכסון למרכז */
-          modal.classList.add("is-open");
-          modal.setAttribute("aria-hidden", "false");
+          /* מודדים את מיקום הכפתור וגובה הפס לפני המעבר (רק אם עוד לא במצב שיחה) */
+          if (!header.classList.contains("is-talk")) {
+            collapsedH = header.offsetHeight;
+            startLeft = slot.offsetLeft; /* מדויק, בלי הושפעות מ-scale של hover */
+            startTop = slot.offsetTop;
+          }
+          var g = endGeom();
+
+          /* מצב התחלה — ללא אנימציה (הכפתור בפינה בגודלו הרגיל, הפס בגובהו) */
+          header.classList.add("is-talk");
+          /* שומרים מקום לפס שיצא מהזרימה — כדי שהצ'אט לא יקפוץ */
+          if (inner) inner.style.paddingTop = collapsedH + "px";
+          slot.classList.add("is-fly");
+          header.style.transition = "none";
+          slot.style.transition = "none";
+          header.style.height = collapsedH + "px";
+          slot.style.left = startLeft + "px";
+          slot.style.top = startTop + "px";
+          slot.style.width = MASCOT + "px";
+          slot.style.height = MASCOT + "px";
+
+          /* commit (reflow) כדי שהמצב ההתחלתי יירשם */
+          void header.getBoundingClientRect();
+
+          /* מצב סוף — מפעיל את המעברים: הפס גדל כלפי מטה, המורה גדל ונע למרכז */
+          header.style.transition = "";
+          slot.style.transition = "";
+          header.style.height = g.side + "px";
+          slot.style.left = g.left + "px";
+          slot.style.top = g.top + "px";
+          slot.style.width = g.big + "px";
+          slot.style.height = g.big + "px";
+          header.classList.add("is-open");
+          if (dialog) dialog.setAttribute("aria-hidden", "false");
         }
         function close() {
           cancelSettle();
-          modal.classList.remove("is-open");
-          modal.style.height = "";
-          /* מחזירים את הכפתור לפינה באותו משך זמן (is-fly נשאר עד שהתנועה נגמרת) */
-          slot.style.setProperty("--mx", "0px");
-          slot.style.setProperty("--my", "0px");
-          slot.style.setProperty("--ms", "1");
-          modal.setAttribute("aria-hidden", "true");
+          header.classList.remove("is-open"); /* הטקסט מתעמעם, הכותרת חוזרת */
+          header.style.height = collapsedH + "px"; /* הפס מתכווץ חזרה */
+          slot.style.left = startLeft + "px"; /* המורה חוזר לפינה ומתכווץ */
+          slot.style.top = startTop + "px";
+          slot.style.width = MASCOT + "px";
+          slot.style.height = MASCOT + "px";
+          if (dialog) dialog.setAttribute("aria-hidden", "true");
+
           settleTimer = setTimeout(function () {
+            header.classList.remove("is-talk"); /* חזרה לזרימה הרגילה של הפס */
+            if (inner) inner.style.paddingTop = ""; /* משחררים את שומר-המקום */
             slot.classList.remove("is-fly");
-            slot.style.removeProperty("--mx");
-            slot.style.removeProperty("--my");
-            slot.style.removeProperty("--ms");
+            header.style.height = "";
+            header.style.transition = "";
+            slot.style.left = "";
+            slot.style.top = "";
+            slot.style.width = "";
+            slot.style.height = "";
+            slot.style.transition = "";
             settleTimer = null;
-          }, 560);
+          }, DUR);
         }
         function toggle() {
-          if (modal.classList.contains("is-open")) close();
+          if (header.classList.contains("is-open")) close();
           else open();
         }
         slot.addEventListener("click", toggle);
         if (closeBtn) closeBtn.addEventListener("click", close);
         document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+          if (e.key === "Escape" && header.classList.contains("is-open")) close();
         });
-        /* שמירה על ריבוע מדויק ומיקום נכון אם משנים רוחב חלון/צ'אט בזמן שהוא פתוח */
+        /* שמירה על ריבוע מדויק ומרכוז נכון אם משנים רוחב חלון/צ'אט בזמן פתיחה */
         window.addEventListener("resize", function () {
-          if (!modal.classList.contains("is-open")) return;
-          var g = layout();
-          modal.style.height = g.side + "px";
-          slot.style.setProperty("--mx", g.dx + "px");
-          slot.style.setProperty("--my", g.dy + "px");
-          slot.style.setProperty("--ms", g.scale);
+          if (!header.classList.contains("is-open")) return;
+          var g = endGeom();
+          header.style.height = g.side + "px";
+          slot.style.left = g.left + "px";
+          slot.style.top = g.top + "px";
+          slot.style.width = g.big + "px";
+          slot.style.height = g.big + "px";
         });
       })();
     </script>
