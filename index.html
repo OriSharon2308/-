@@ -63,6 +63,7 @@
       }
       .chatSidebar__header .chatSidebar__titleWrap {
         flex: 1 1 auto;
+        clip-path: inset(0 0 0 0); /* גלוי במצב רגיל */
       }
       @keyframes mascotBob {
         50% {
@@ -87,17 +88,26 @@
         z-index: 6;
         border-bottom-color: transparent;
         border-radius: 0 0 26px 26px;
-        box-shadow: 0 14px 30px rgba(13, 60, 53, 0.15);
+        box-shadow: 0 12px 26px rgba(13, 60, 53, 0.14);
         overflow: hidden;
-        contain: layout paint; /* בידוד פריסה/ציור → אנימציית גובה זולה וחלקה */
-        transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        contain: layout paint; /* בידוד פריסה/ציור */
+        transform: translateZ(0); /* שכבת compositor נפרדת → לא מאלץ חישוב מחדש של ה-backdrop-filter של העמודה = הרבה יותר פריימים */
+        will-change: height, transform;
+        transition: height 0.62s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      /* תוכן הכותרת המקורי (כותרת + AI) — חוזר בעדינות; מוסתר לכל אורך מצב-השיחה כדי שלא "יקפוץ" בסגירה */
-      .chatSidebar__header .chatSidebar__titleWrap,
+      /* הכותרת "צ'אט עם המורה" — בסגירה נחשפת מימין לשמאל (מהקצה הימני, ליד המורה, בלי לעבור מתחתיו) */
+      .chatSidebar__header .chatSidebar__titleWrap {
+        transition: clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.4s ease;
+      }
       .chatSidebar__header .aiIndicator {
-        transition: opacity 0.22s ease;
+        transition: opacity 0.3s ease;
       }
-      .chatSidebar__header.is-talk .chatSidebar__titleWrap,
+      .chatSidebar__header.is-talk .chatSidebar__titleWrap {
+        clip-path: inset(0 0 0 100%); /* מוסתר; הצד הימני (ליד המורה) הוא נקודת ההתחלה של החשיפה */
+        opacity: 0;
+        pointer-events: none;
+      }
       .chatSidebar__header.is-talk .aiIndicator {
         opacity: 0;
         pointer-events: none;
