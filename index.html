@@ -59,8 +59,9 @@
         /* width/height (=הגודל הסופי) נקבעים ב-JS; ה-scale בתוך transform מקטין בהתחלה */
       }
       .mascotSlot.is-fly svg {
-        animation: none;
-        filter: drop-shadow(0 18px 34px rgba(13, 148, 136, 0.32));
+        /* ריחוף עדין גם כשפתוח (translateY בלבד → נשאר חד). הצל מתחת (mascotFloatShadow) נע איתו */
+        animation: mascotFloatBig 4.6s ease-in-out infinite;
+        filter: drop-shadow(0 16px 26px rgba(13, 148, 136, 0.26));
       }
       .chatSidebar__header .chatSidebar__titleWrap {
         flex: 1 1 auto;
@@ -68,6 +69,11 @@
       @keyframes mascotBob {
         50% {
           transform: translateY(-3px);
+        }
+      }
+      @keyframes mascotFloatBig {
+        50% {
+          transform: translateY(-9px);
         }
       }
       .chatSidebar__inner {
@@ -208,6 +214,113 @@
         color: #0f3b36;
         transform: scale(1.14);
       }
+      /* ===== סמלים מרחפים מסביב למורה (כמו בדף הבית) + צל-קרקע מרחף ===== */
+      .mascotOrbit {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        /* DOM-first + z-auto → מאחורי המורה (z2) ומאחורי הטקסט; נגזר ע"י overflow:hidden של הריבוע */
+      }
+      /* כל סמל: עוטף (כניסת קפיצה מדורגת) > באדג' (ריחוף אינסופי) — שני transforms נפרדים, בלי התנגשות */
+      .orbitSym {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0.25);
+        transition: opacity 0.16s ease, transform 0.18s ease; /* יציאה מהירה ונקייה */
+      }
+      .chatSidebar__header.is-open .orbitSym {
+        opacity: 1;
+        transform: scale(1);
+        /* כניסת "קפיצה" מדורגת (back-out עדין), אחת אחרי השנייה לפי --d */
+        transition: opacity 0.4s ease var(--d, 0s),
+          transform 0.5s cubic-bezier(0.34, 1.45, 0.55, 1) var(--d, 0s);
+      }
+      .orbitSym__b {
+        display: grid;
+        place-items: center;
+        font-family: "Fredoka", "Assistant", sans-serif;
+        font-weight: 700;
+        line-height: 1;
+        animation: orbitFloat var(--dur, 4.4s) ease-in-out var(--fd, 0s) infinite;
+      }
+      @keyframes orbitFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(var(--r, 0deg));
+        }
+        50% {
+          transform: translateY(-8px) rotate(var(--r, 0deg));
+        }
+      }
+      /* וריאנטים — צבעי דף הבית */
+      .orbitSym__b--plus {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #ff7a59;
+        color: #fff;
+        font-size: 21px;
+        box-shadow: 0 6px 14px rgba(255, 122, 89, 0.34);
+      }
+      .orbitSym__b--seven {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        background: #f6b73c;
+        color: #fff;
+        font-size: 17px;
+        box-shadow: 0 6px 14px rgba(246, 183, 60, 0.34);
+      }
+      .orbitSym__b--star {
+        color: #fbbf24;
+        font-size: 28px;
+        filter: drop-shadow(0 4px 8px rgba(251, 191, 36, 0.4));
+      }
+      .orbitSym__b--times {
+        color: rgba(13, 148, 136, 0.62);
+        font-size: 30px;
+      }
+      .orbitSym__b--tri {
+        color: #8b7cf0;
+        font-size: 24px;
+        filter: drop-shadow(0 4px 8px rgba(139, 124, 240, 0.34));
+      }
+      .orbitSym__b--eq {
+        color: #0d9488;
+        font-size: 26px;
+      }
+      /* צל-קרקע מתחת למורה — מרחף: נע מעט ימינה/שמאלה ופועם, כאילו המורה צף */
+      .mascotFloatShadow {
+        position: absolute;
+        top: 66%;
+        left: 50%;
+        width: min(38%, 140px);
+        height: 16px;
+        border-radius: 50%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(13, 60, 53, 0.26),
+          rgba(13, 60, 53, 0) 70%
+        );
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.4s ease 0.22s;
+      }
+      .chatSidebar__header.is-open .mascotFloatShadow {
+        opacity: 1;
+        animation: floatShadow 4.6s ease-in-out infinite;
+      }
+      @keyframes floatShadow {
+        0%,
+        100% {
+          transform: translateX(-50%) translateX(-7px) scaleX(0.9);
+          opacity: 0.85;
+        }
+        50% {
+          transform: translateX(-50%) translateX(7px) scaleX(1.08);
+          opacity: 0.55;
+        }
+      }
       @media (prefers-reduced-motion: reduce) {
         .mascotSlot svg {
           animation: none;
@@ -228,6 +341,20 @@
         .chatSidebar__subtitle .ch {
           transition: opacity 0.15s ease;
           transition-delay: 0s;
+        }
+        /* סמלים מרחפים + צל + ריחוף המורה — בלי תנועה: הופעה רגועה בלבד */
+        .mascotSlot.is-fly svg,
+        .orbitSym__b,
+        .chatSidebar__header.is-open .mascotFloatShadow {
+          animation: none;
+        }
+        .orbitSym {
+          transition: opacity 0.18s ease;
+          transform: none;
+        }
+        .chatSidebar__header.is-open .orbitSym {
+          transition: opacity 0.18s ease;
+          transform: none;
         }
       }
     </style>
@@ -294,6 +421,16 @@
         <div id="chatResizeHandle" class="chatResizeHandle" role="separator" aria-orientation="vertical" aria-label="שינוי רוחב הצ’אט"></div>
         <div class="chatSidebar__inner">
           <div class="chatSidebar__header" id="chatHeader">
+            <!-- סמלים מרחפים מסביב למורה + צל-קרקע מרחף (נחשפים בקפיצה מדורגת כשהריבוע נפתח). דקורטיבי -->
+            <div class="mascotOrbit" aria-hidden="true">
+              <span class="mascotFloatShadow"></span>
+              <span class="orbitSym" style="top:7%;left:14%;--d:0.40s"><span class="orbitSym__b orbitSym__b--plus" style="--dur:4.2s;--fd:0s">+</span></span>
+              <span class="orbitSym" style="top:6%;left:78%;--d:0.47s"><span class="orbitSym__b orbitSym__b--seven" style="--dur:4.8s;--fd:0.35s;--r:8deg">7</span></span>
+              <span class="orbitSym" style="top:22%;left:87%;--d:0.54s"><span class="orbitSym__b orbitSym__b--star" style="--dur:5.2s;--fd:0.2s">★</span></span>
+              <span class="orbitSym" style="top:35%;left:5%;--d:0.61s"><span class="orbitSym__b orbitSym__b--times" style="--dur:3.8s;--fd:0.9s">×</span></span>
+              <span class="orbitSym" style="top:60%;left:9%;--d:0.68s"><span class="orbitSym__b orbitSym__b--tri" style="--dur:4.5s;--fd:1.2s">▲</span></span>
+              <span class="orbitSym" style="top:63%;left:85%;--d:0.75s"><span class="orbitSym__b orbitSym__b--eq" style="--dur:4.0s;--fd:0.6s">=</span></span>
+            </div>
             <!-- דמות המורה (מסקוט Vela). לחיצה מרחיבה את הפס הלבן עצמו לריבוע, והמורה גדל וזז למרכז -->
             <button class="mascotSlot" id="mascotSlot" type="button" aria-label="המורה שלי — לחצו לפתיחה" aria-haspopup="dialog">
               <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
