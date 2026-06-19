@@ -26,13 +26,14 @@
         background: transparent;
         border-radius: 14px;
         cursor: pointer;
+        transform: translateY(4px); /* יישור אנכי בפס: מעט נמוך יותר כדי שייראה ממורכז (חייב להתאים ל-REST_NUDGE ב-JS) */
         transition: transform 0.15s ease;
       }
       .mascotSlot:hover {
-        transform: scale(1.07);
+        transform: translateY(4px) scale(1.07);
       }
       .mascotSlot:active {
-        transform: scale(0.95);
+        transform: translateY(4px) scale(0.95);
       }
       .mascotSlot:focus-visible {
         outline: 2px solid #0d9488;
@@ -504,6 +505,7 @@
         })();
 
         var MASCOT = 46; /* גודל הכפתור בפס העליון */
+        var REST_NUDGE = 4; /* ההזזה האנכית של המורה בפס במנוחה (translateY ב-CSS) — נכלל בנקודת ההתחלה של התעופה */
         var DUR = 570; /* משך הסגירה (ms) — מעט יותר מ-0.55s, כדי שהכל יתואם לפני הסרת is-talk */
         var settleTimer = null;
         var inner = header.parentNode; /* .chatSidebar__inner */
@@ -544,7 +546,7 @@
           if (!header.classList.contains("is-talk")) {
             collapsedH = header.offsetHeight;
             startLeft = slot.offsetLeft; /* מדויק, בלי הושפעות מ-scale של hover */
-            startTop = slot.offsetTop;
+            startTop = slot.offsetTop + REST_NUDGE; /* כולל את ההזזה האנכית של המנוחה → אין קפיצה בפתיחה/סגירה */
           }
           var side = compute();
 
