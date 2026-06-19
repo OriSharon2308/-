@@ -45,19 +45,17 @@
         filter: drop-shadow(0 4px 10px rgba(13, 148, 136, 0.28));
         animation: mascotBob 4.5s ease-in-out infinite;
       }
-      /* בפתיחה: כפתור המורה האמיתי גדל ע"י width/height (SVG וקטורי → חד בכל גודל, לא transform scale) ונע למרכז */
+      /* בפתיחה: המורה גדל ונע. הקופסה בגודל הסופי (SVG מצויר גדול → חד), והאנימציה רק על transform (GPU → חלק לגמרי, בלי reflow לכל פריים) */
       .mascotSlot.is-fly {
         position: absolute;
+        top: 0;
+        left: 0;
         z-index: 2;
-        border-radius: 22px;
-        transition: left 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-          top 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-          width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-          height 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-      }
-      .mascotSlot.is-fly:hover,
-      .mascotSlot.is-fly:active {
-        transform: none; /* בלי scale של hover — שומר על חדות מלאה */
+        transform-origin: 0 0;
+        will-change: transform;
+        backface-visibility: hidden;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        /* width/height (=הגודל הסופי) נקבעים ב-JS; ה-scale בתוך transform מקטין בהתחלה */
       }
       .mascotSlot.is-fly svg {
         animation: none;
@@ -90,15 +88,18 @@
         border-radius: 0 0 26px 26px;
         box-shadow: 0 22px 50px rgba(13, 60, 53, 0.18);
         overflow: hidden;
-        transition: height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
           box-shadow 0.5s ease;
       }
-      /* תוכן הכותרת המקורי (כותרת + AI) מתעמעם כשהריבוע נפתח */
-      .chatSidebar__header.is-open .chatSidebar__titleWrap,
-      .chatSidebar__header.is-open .aiIndicator {
+      /* תוכן הכותרת המקורי (כותרת + AI) — חוזר בעדינות; מוסתר לכל אורך מצב-השיחה כדי שלא "יקפוץ" בסגירה */
+      .chatSidebar__header .chatSidebar__titleWrap,
+      .chatSidebar__header .aiIndicator {
+        transition: opacity 0.22s ease;
+      }
+      .chatSidebar__header.is-talk .chatSidebar__titleWrap,
+      .chatSidebar__header.is-talk .aiIndicator {
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.2s ease;
       }
       /* טקסט ההסבר — בתחתית הריבוע, קטן ונמוך */
       .mascotModal__text {
@@ -121,9 +122,8 @@
         color: #0f3b36;
         margin: 0;
         opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.35s ease 0.24s,
-          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.24s;
+        transform: translateY(8px);
+        transition: opacity 0.14s ease, transform 0.14s ease; /* יציאה מהירה ונקייה */
       }
       .mascotModal__note {
         font-size: clamp(11.5px, 1.5vw, 13.5px);
@@ -132,14 +132,21 @@
         max-width: 32ch;
         margin: 0;
         opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.35s ease 0.34s,
-          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.34s;
+        transform: translateY(8px);
+        transition: opacity 0.14s ease, transform 0.14s ease; /* יציאה מהירה ונקייה */
       }
-      .chatSidebar__header.is-open .mascotModal__title,
+      /* כניסה — איטית וחלקה עם השהיה (אחרי שהריבוע כבר נפתח) */
+      .chatSidebar__header.is-open .mascotModal__title {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.4s ease 0.28s,
+          transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+      }
       .chatSidebar__header.is-open .mascotModal__note {
         opacity: 1;
         transform: translateY(0);
+        transition: opacity 0.4s ease 0.36s,
+          transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.36s;
       }
       /* X קטן בלי מסגרת */
       .mascotModal__close {
@@ -159,11 +166,12 @@
         opacity: 0;
         pointer-events: none;
         z-index: 3;
-        transition: color 0.15s ease, transform 0.15s ease, opacity 0.3s ease 0.2s;
+        transition: color 0.15s ease, transform 0.15s ease, opacity 0.14s ease; /* יציאה מהירה */
       }
       .chatSidebar__header.is-open .mascotModal__close {
         opacity: 1;
         pointer-events: auto;
+        transition: opacity 0.3s ease 0.32s; /* כניסה עם השהיה */
       }
       .mascotModal__close:hover {
         color: #0f3b36;
@@ -440,11 +448,15 @@
         if (!slot || !header) return;
 
         var MASCOT = 46; /* גודל הכפתור בפס העליון */
-        var DUR = 560; /* משך התנועה (ms) — תואם ל-CSS */
+        var DUR = 640; /* משך התנועה (ms) — מעט יותר מ-0.6s של ה-CSS */
         var settleTimer = null;
+        var inner = header.parentNode; /* .chatSidebar__inner */
         var startLeft = 0,
           startTop = 0,
-          collapsedH = 0;
+          collapsedH = 0,
+          big = 0,
+          startTf = "",
+          endTf = "";
 
         function cancelSettle() {
           if (settleTimer) {
@@ -452,75 +464,65 @@
             settleTimer = null;
           }
         }
-        /* מצב פתוח: צלע הריבוע (= רוחב העמודה) + מיקום+גודל סופי של המורה במרכז */
-        function endGeom() {
-          var side = header.offsetWidth;
-          var big = Math.min(side * 0.46, 210); /* המורה גדול יותר במרכז */
-          return {
-            side: side,
-            big: big,
-            left: Math.round((side - big) / 2), /* ממורכז אופקית */
-            top: Math.round(side * 0.42 - big / 2), /* מעט מעל המרכז — מקום לטקסט מתחת */
-          };
+        /* מחשב את צלע הריבוע ואת שתי מצבי ה-transform של המורה (פינה-קטן ↔ מרכז-גדול) */
+        function compute() {
+          var side = header.offsetWidth; /* רוחב העמודה = צלע ריבוע מושלם */
+          big = Math.min(side * 0.54, 250); /* המורה גדול יותר */
+          var endLeft = Math.round((side - big) / 2); /* ממורכז אופקית */
+          var endTop = Math.round(side * 0.4 - big / 2); /* מעט מעל המרכז — מקום לטקסט מתחת */
+          /* transform-origin 0 0: הקופסה בגודל big; scale מקטין מהפינה, translate ממקם */
+          startTf =
+            "translate(" + startLeft + "px," + startTop + "px) scale(" + MASCOT / big + ")";
+          endTf = "translate(" + endLeft + "px," + endTop + "px) scale(1)";
+          return side;
         }
-        var inner = header.parentNode; /* .chatSidebar__inner */
         function open() {
           cancelSettle();
-          /* מודדים את מיקום הכפתור וגובה הפס לפני המעבר (רק אם עוד לא במצב שיחה) */
+          /* מודדים מיקום הכפתור וגובה הפס לפני המעבר (רק אם עוד לא במצב שיחה) */
           if (!header.classList.contains("is-talk")) {
             collapsedH = header.offsetHeight;
             startLeft = slot.offsetLeft; /* מדויק, בלי הושפעות מ-scale של hover */
             startTop = slot.offsetTop;
           }
-          var g = endGeom();
+          var side = compute();
 
-          /* מצב התחלה — ללא אנימציה (הכפתור בפינה בגודלו הרגיל, הפס בגובהו) */
+          /* מצב התחלה — ללא אנימציה: הקופסה כבר בגודל הסופי (SVG חד), אבל מוקטנת ובפינה דרך transform */
           header.classList.add("is-talk");
-          /* שומרים מקום לפס שיצא מהזרימה — כדי שהצ'אט לא יקפוץ */
-          if (inner) inner.style.paddingTop = collapsedH + "px";
+          if (inner) inner.style.paddingTop = collapsedH + "px"; /* שומר מקום — הצ'אט לא קופץ */
           slot.classList.add("is-fly");
           header.style.transition = "none";
           slot.style.transition = "none";
           header.style.height = collapsedH + "px";
-          slot.style.left = startLeft + "px";
-          slot.style.top = startTop + "px";
-          slot.style.width = MASCOT + "px";
-          slot.style.height = MASCOT + "px";
+          slot.style.width = big + "px";
+          slot.style.height = big + "px";
+          slot.style.transform = startTf;
 
-          /* commit (reflow) כדי שהמצב ההתחלתי יירשם */
-          void header.getBoundingClientRect();
+          void header.getBoundingClientRect(); /* commit reflow */
 
-          /* מצב סוף — מפעיל את המעברים: הפס גדל כלפי מטה, המורה גדל ונע למרכז */
+          /* מצב סוף — מפעיל מעברים חלקים: הפס (height) גדל; המורה (transform בלבד, GPU) גדל ונע למרכז */
           header.style.transition = "";
           slot.style.transition = "";
-          header.style.height = g.side + "px";
-          slot.style.left = g.left + "px";
-          slot.style.top = g.top + "px";
-          slot.style.width = g.big + "px";
-          slot.style.height = g.big + "px";
+          header.style.height = side + "px";
+          slot.style.transform = endTf;
           header.classList.add("is-open");
           if (dialog) dialog.setAttribute("aria-hidden", "false");
         }
         function close() {
           cancelSettle();
-          header.classList.remove("is-open"); /* הטקסט מתעמעם, הכותרת חוזרת */
-          header.style.height = collapsedH + "px"; /* הפס מתכווץ חזרה */
-          slot.style.left = startLeft + "px"; /* המורה חוזר לפינה ומתכווץ */
-          slot.style.top = startTop + "px";
-          slot.style.width = MASCOT + "px";
-          slot.style.height = MASCOT + "px";
+          header.classList.remove("is-open"); /* טקסט+X נעלמים מהר ונקי, הכותרת המקורית מוסתרת עד הסוף */
+          header.style.height = collapsedH + "px"; /* הפס מתכווץ */
+          slot.style.transform = startTf; /* המורה חוזר לפינה ומתכווץ (transform בלבד) */
           if (dialog) dialog.setAttribute("aria-hidden", "true");
 
           settleTimer = setTimeout(function () {
             header.classList.remove("is-talk"); /* חזרה לזרימה הרגילה של הפס */
-            if (inner) inner.style.paddingTop = ""; /* משחררים את שומר-המקום */
+            if (inner) inner.style.paddingTop = "";
             slot.classList.remove("is-fly");
             header.style.height = "";
             header.style.transition = "";
-            slot.style.left = "";
-            slot.style.top = "";
             slot.style.width = "";
             slot.style.height = "";
+            slot.style.transform = "";
             slot.style.transition = "";
             settleTimer = null;
           }, DUR);
@@ -537,12 +539,11 @@
         /* שמירה על ריבוע מדויק ומרכוז נכון אם משנים רוחב חלון/צ'אט בזמן פתיחה */
         window.addEventListener("resize", function () {
           if (!header.classList.contains("is-open")) return;
-          var g = endGeom();
-          header.style.height = g.side + "px";
-          slot.style.left = g.left + "px";
-          slot.style.top = g.top + "px";
-          slot.style.width = g.big + "px";
-          slot.style.height = g.big + "px";
+          var side = compute();
+          header.style.height = side + "px";
+          slot.style.width = big + "px";
+          slot.style.height = big + "px";
+          slot.style.transform = endTf;
         });
       })();
     </script>
