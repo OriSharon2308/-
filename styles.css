@@ -1016,6 +1016,14 @@ body {
   margin: 0;
   padding: 16px;
   padding-left: calc(16px + var(--chat-width) + 12px); /* מקום לסרגל צ’אט פתוח */
+  transition: padding-left 0.42s cubic-bezier(0.22, 1, 0.36, 1); /* התרגיל מתרחב/מתכווץ חלק יחד עם הצ'אט */
+}
+
+/* בזמן גרירת-שינוי-רוחב — בלי אנימציה (השליטה נשארת חיה ומדויקת) */
+body.chat-resizing .layout,
+body.chat-resizing .chatSidebar,
+body.chat-resizing .chatToggle {
+  transition: none;
 }
 
 body.chat-collapsed .layout {
@@ -1039,6 +1047,9 @@ body.chat-collapsed .layout {
   top: 66px; /* מתחת לטופבר */
   bottom: 0;
   z-index: 15;
+  /* אפקט פתיחה/סגירה חלק של כל הצ'אט (הסליקה) */
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
+  will-change: transform;
 }
 
 .chatSidebar__inner {
@@ -1081,6 +1092,7 @@ body.chat-collapsed .layout {
   display: grid;
   place-items: center;
   z-index: 16;
+  transition: left 0.42s cubic-bezier(0.22, 1, 0.36, 1); /* נע חלק יחד עם פתיחה/סגירה */
 }
 
 .chatResizeHandle {
@@ -1123,10 +1135,8 @@ body.chat-collapsed .chatResizeHandle {
 .chatSidebar--collapsed {
   transform: translateX(-100%);
   border: 0;
-}
-
-.chatSidebar--collapsed .chatSidebar__inner {
-  display: none;
+  visibility: hidden; /* אינרטי רק אחרי שהסליקה נגמרה (delay) — כך התוכן נראה בזמן הסליקה */
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.42s;
 }
 
 body.chat-collapsed .chatToggle {

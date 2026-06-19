@@ -692,9 +692,22 @@ body.chat-collapsed .layout {
   color: var(--kid-sub);
 }
 
-/* ידית הגרירה — נקודת אחיזה בגוון טורקיז */
+/* ידית הגרירה — שליטה ברורה בהקטנה/הגדלה של רוחב הצ'אט (גוון טורקיז, קל לאחוז) */
+.chatResizeHandle {
+  width: 14px; /* אזור אחיזה רחב יותר */
+}
 .chatResizeHandle::after {
-  background: rgb(var(--accent-rgb) / 0.28);
+  width: 5px;
+  height: 84px;
+  right: 3px;
+  background: rgb(var(--accent-rgb) / 0.45);
+  transition: background 0.15s ease, width 0.15s ease, height 0.15s ease;
+}
+.chatResizeHandle:hover::after,
+body.chat-resizing .chatResizeHandle::after {
+  background: rgb(var(--accent-rgb) / 0.85);
+  width: 6px;
+  height: 110px;
 }
 
 /* כפתור פתיחה/סגירה של הצ'אט */
