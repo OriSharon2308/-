@@ -106,9 +106,11 @@
       }
       /* הכותרת "צ'אט עם המורה" + הכתובית מתחת — נחשפות מימין לשמאל (מהקצה הימני, ליד המורה, בלי לעבור מתחתיו).
          החשיפה היא רק *אחרי* שהריבוע כבר נסגר — דרך השהיית transition-delay (לא בו-זמנית עם הסגירה) */
-      .chatSidebar__title,
-      .chatSidebar__subtitle {
+      .chatSidebar__title {
         font-family: "Fredoka", "Assistant", sans-serif;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1.1;
       }
       /* חשיפה אות-אחרי-אות (typewriter), מדורגת לפי --i, אחרי שהריבוע נסגר */
       .chatSidebar__title .ch,
@@ -454,7 +456,6 @@
             </button>
             <div class="chatSidebar__titleWrap">
               <div class="chatSidebar__title">צ’אט עם המורה</div>
-              <div class="chatSidebar__subtitle">המורה מדבר איתך — צוות הסוכנים עוזר מאחורי הקלעים</div>
             </div>
             <div class="aiIndicator" id="aiIndicator" title="סטטוס AI">
               <span class="aiIndicator__dot" id="aiDot" aria-hidden="true"></span>
