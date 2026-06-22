@@ -274,7 +274,10 @@ body.chat-collapsed .layout {
   left: 16px;
   width: 40px;
   height: 40px;
+  display: grid;
+  place-items: center; /* ה-? ממורכז; כל העיגול הוא שטח הכפתור */
   font-size: 22px;
+  line-height: 1;
   background: var(--kid-teal-ink);
   box-shadow: 0 6px 16px rgb(var(--accent-rgb) / 0.35);
 }
@@ -283,12 +286,14 @@ body.chat-collapsed .layout {
   transform: scale(1.06);
 }
 .helpPopover {
+  top: 60px; /* מתחת לכפתור (כדי שלא יכסה אותו ויגרום להבהוב) */
   border-radius: 18px;
   border: 1px solid rgb(13 60 53 / 0.10);
   box-shadow: 0 18px 44px rgb(13 60 53 / 0.18);
   font-size: 15px;
   line-height: 1.65;
   color: var(--kid-ink);
+  pointer-events: none; /* החלונית לא "גונבת" את הריחוף → כל הכפתור (העיגול כולו) מציג אותה */
 }
 
 /* ============================================================
