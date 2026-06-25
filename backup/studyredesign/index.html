@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css?v=46" />
     <!-- שכבת עיצוב ילדים (רידיזיין) — נטענת אחרי styles.css, דורסת מראה+מיקומים. הסרה = חזרה למקור -->
-    <link rel="stylesheet" href="./kids-theme.css?v=46" />
+    <link rel="stylesheet" href="./kids-theme.css?v=3" />
     <style>
       /* מקום שמור לדמות המדברת (מסקוט) בראש הצ'אט — נותן פנים למורה */
       .chatSidebar__header {
@@ -55,7 +55,7 @@
         transform-origin: 0 0;
         will-change: transform;
         backface-visibility: hidden;
-        transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); /* איטי וחלק יותר */
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         /* width/height (=הגודל הסופי) נקבעים ב-JS; ה-scale בתוך transform מקטין בהתחלה */
       }
       .mascotSlot.is-fly svg {
@@ -110,7 +110,7 @@
         overflow: hidden;
         transform: translateZ(0); /* שכבת compositor נפרדת → גלילה חלקה */
         will-change: height, transform;
-        transition: height 0.85s cubic-bezier(0.16, 1, 0.3, 1); /* איטי וחלק יותר — בסנכרון עם המורה */
+        transition: height 0.62s cubic-bezier(0.16, 1, 0.3, 1);
       }
       /* הכותרת "צ'אט עם המורה" + הכתובית מתחת — נחשפות מימין לשמאל (מהקצה הימני, ליד המורה, בלי לעבור מתחתיו).
          החשיפה היא רק *אחרי* שהריבוע כבר נסגר — דרך השהיית transition-delay (לא בו-זמנית עם הסגירה) */
@@ -153,8 +153,7 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: calc(100% + 16px); /* מתחת לריבוע — אותו מקום שבו מופיע הטקסט (#voiceReply) */
-        bottom: auto;
+        bottom: 2px; /* המיקרופון נמוך עוד יותר — קרוב לתחתית הפאנל */
         padding: 0 22px;
         display: flex;
         flex-direction: column;
@@ -327,16 +326,16 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: 0; /* מכסה את כל העמודה — ערפל לבן מדורג אנכית */
+        top: var(--squareH, 42%);
         bottom: 0;
         z-index: 5;
         overflow: hidden; /* תשובה ארוכה במיוחד לא תגלוש מתחתית הריבוע */
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         gap: 16px;
-        padding: calc(var(--squareH, 50%) + 16px) 26px 32px; /* הטקסט מתחיל מתחת למורה */
+        padding: 22px 26px 32px;
         text-align: center;
         pointer-events: none;
         opacity: 0;
@@ -344,28 +343,30 @@
         clip-path: inset(0 0 100% 0);
         transition: opacity 0.4s ease, clip-path 0.72s cubic-bezier(0.16, 1, 0.3, 1);
         /* מתחיל שקוף לגמרי למעלה → בלי "פס" אטום חוצה-רוחב בקצה העליון */
-        /* ערפל מדורג בשני הקצוות: כניסה רכה מלמעלה (בלי פס לבן בקצה) → אטום סביב המורה
-           (לא רואים את הרקע) → דועך בהדרגה כלפי מטה (שם רואים את הצ'אט) */
         background: linear-gradient(
           to bottom,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.95) 12%,
-          rgba(255, 255, 255, 0.98) 30%,
-          rgba(255, 255, 255, 0.85) 46%,
-          rgba(255, 255, 255, 0.5) 64%,
-          rgba(255, 255, 255, 0.18) 82%,
-          rgba(255, 255, 255, 0) 100%
+          rgba(245, 250, 249, 0) 0%,
+          rgba(245, 250, 249, 0.5) 34%,
+          rgba(245, 250, 249, 0.66) 100%
         );
-        /* דירוג גם בקצוות השמאלי/ימני — שהלבן ידעך לשקיפות ולא ייפגש עם הרקע/השאלה בקו חד */
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%);
-        mask-image: linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%);
       }
       .chatSidebar__inner.is-voice .voiceFog {
         opacity: 1;
         clip-path: inset(0 0 0 0); /* הגל עולה על כל אזור הצ'אט */
       }
-      /* קו-ההפרדה הוסר לגמרי — אין שום פס/קו באזור הערפל */
-      .voiceFog::before { display: none; }
+      /* קו-הפרדה קצר ועדין — מסמן ברכות איפה מתחיל אזור הטקסט (לא מגיע לפינות) */
+      .voiceFog::before {
+        content: "";
+        position: absolute;
+        top: 9px;
+        left: 50%;
+        width: 52%;
+        height: 1.5px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 1px 4px rgba(13, 60, 53, 0.08);
+        transform: translateX(-50%);
+      }
       /* תגובת המורה — עולה במרכז ונחשפת אות-אחר-אות (כמו בבועת הצ'אט), בלי סמן מציק */
       .voiceFog__reply {
         margin: 0;
@@ -647,18 +648,6 @@
           <span id="userChipName" class="userChip__name"></span>
         </span>
       </div>
-      <!-- study-v2: מד הרמה + הקושי בטופ-בר, בין הבורגר לבית (לא בתוך חלון השאלה) -->
-      <div class="topbar__center" id="topbarCenter">
-        <div id="levelMeter" class="levelMeter" hidden>
-          <span class="levelMeter__label">רמה <span id="meterLevel">1</span></span>
-          <div class="levelMeter__track">
-            <div class="levelMeter__fill" id="meterFill"></div>
-            <span class="levelMeter__count"><span id="meterDone">0</span> / <span id="meterTotal">0</span></span>
-          </div>
-        </div>
-        <button class="pill pill--btn" id="difficultyPill" type="button" title="רמת קושי — לחצו לבחירת רמה" aria-haspopup="menu" aria-expanded="false">רמה: 1</button>
-        <div id="levelPicker" class="levelPicker" role="menu" aria-label="בחירת רמה" hidden></div>
-      </div>
       <div class="topbar__right">
         <a href="/home" class="homeIcon" id="homeBtn" aria-label="דף הבית" title="דף הבית">🏠</a>
       </div>
@@ -697,7 +686,7 @@
       </div>
     </aside>
 
-    <main class="layout study-v2">
+    <main class="layout">
       <button
         id="chatToggleBtn"
         class="chatToggle"
@@ -775,14 +764,7 @@
                 placeholder="לדוגמה: לא הבנתי למה עושים קודם כפל…"
               ></textarea>
             </label>
-            <button id="sendBtn" class="composerSend" type="button" aria-label="שיחה קולית עם המורה">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor" />
-                <path d="M5.5 11a6.5 6.5 0 0 0 13 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <line x1="12" y1="17.5" x2="12" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <line x1="8.5" y1="21" x2="15.5" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </button>
+            <button id="sendBtn" class="btn btn--primary" type="button">שלח</button>
           </div>
 
           <!-- שיחה בקול: ערפל על הצ'אט + תגובת המורה (טעינה ואז טייפרייטר) במרכז האזור המטושטש -->
@@ -808,19 +790,14 @@
           <h2 class="panel__title">
             התרגיל שלך <span id="topicLabel" class="panel__titleSub"></span>
           </h2>
+          <button class="pill pill--btn" id="difficultyPill" type="button" title="רמת קושי — לחצו לבחירת רמה" aria-haspopup="menu" aria-expanded="false">רמה: 1</button>
+          <div id="levelPicker" class="levelPicker" role="menu" aria-label="בחירת רמה" hidden></div>
         </div>
 
         <div class="card" id="lessonCard">
           <div id="solvedBadge" class="solvedBadge" title="פתרת את השאלה הזו" hidden>✓</div>
           <button id="helpBtn" class="helpBtn helpBtn--corner" type="button" aria-label="איך משתמשים" hidden>?</button>
           <div id="helpPopover" class="helpPopover" hidden></div>
-          <!-- study-v2: חצי-זווית עדינים בצדי הריבוע (קודם/הבא) — SVG שנמתח לגובה עם קו אחיד -->
-          <button class="qNav qNav--prev" id="qNavPrev" type="button" aria-label="שאלה קודמת">
-            <svg class="qNav__chev" viewBox="0 0 20 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="4,14 16,50 4,86" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" /></svg>
-          </button>
-          <button class="qNav qNav--next" id="qNavNext" type="button" aria-label="שאלה הבאה">
-            <svg class="qNav__chev" viewBox="0 0 20 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="16,14 4,50 16,86" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" /></svg>
-          </button>
           <div class="problem">
             <div id="problemDiagram" class="problemDiagram" hidden aria-hidden="true"></div>
             <div class="problem__label">שאלה</div>
@@ -871,38 +848,23 @@
         <div class="card shapeCreatorCard" id="shapeCreatorCard" hidden>
           <div id="shapeBoard" class="shapeBoard" aria-label="לוח ציור צורות"></div>
           <div class="shapeCreator__request" id="shapeRequest">צייר/י צורה</div>
-          <!-- "נסה שוב" — אייקון חזרה (חץ מעגלי) בפינה ימנית-תחתונה -->
-          <button id="shapeClearBtn" class="btn btn--secondary" type="button" aria-label="נסה שוב — מחיקה והתחלה מחדש">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="1 4 1 10 7 10" />
-              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
-            </svg>
-          </button>
           <div class="shapeCreator__actions">
             <button id="shapeDoneBtn" class="btn btn--primary" type="button">סיימתי</button>
+            <button id="shapeClearBtn" class="btn btn--secondary" type="button">נסה שוב</button>
           </div>
+        </div>
+
+        <!-- מד שאלות לרמה הנוכחית -->
+        <div id="levelMeter" class="levelMeter" hidden>
+          <div class="levelMeter__head">
+            <span class="levelMeter__label">רמה <span id="meterLevel">1</span></span>
+            <span class="levelMeter__count"><span id="meterDone">0</span> / <span id="meterTotal">0</span></span>
+          </div>
+          <div class="levelMeter__track"><div class="levelMeter__fill" id="meterFill"></div></div>
         </div>
 
       </section>
     </main>
-
-    <!-- study-v2: אווטאר מורה קטן בפינה שמאל-למטה — פתיחת הצ'אט עם המורה -->
-    <button class="teacherDock" id="teacherDock" type="button" aria-label="המורה — פתיחת צ'אט">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="tdTeal" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#22d3c0" /><stop offset="1" stop-color="#0d9488" /></linearGradient>
-          <radialGradient id="tdGloss" cx="0.5" cy="0.26" r="0.72"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5" /><stop offset="0.62" stop-color="#ffffff" stop-opacity="0" /></radialGradient>
-        </defs>
-        <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#tdTeal)" />
-        <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#tdGloss)" />
-        <circle cx="20" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
-        <circle cx="44" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
-        <circle cx="25" cy="30" r="6.2" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" /><circle cx="24.3" cy="29.3" r="1.1" fill="#fff" />
-        <circle cx="43" cy="30" r="6.2" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" /><circle cx="42.3" cy="29.3" r="1.1" fill="#fff" />
-        <path d="M25 43 Q34 50 43 43" fill="none" stroke="#0f3b36" stroke-width="3" stroke-linecap="round" />
-        <path d="M52.5 15 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#fff" opacity="0.92" />
-      </svg>
-    </button>
 
     <!-- חלונית: סיימת את כל שאלות הרמה -->
     <div id="levelDonePrompt" class="levelDone" hidden>
@@ -947,7 +909,7 @@
       <button type="button" class="numPad__done" id="numPadDone">סיימתי</button>
     </div>
 
-    <script src="./app.js?v=54" defer></script>
+    <script src="./app.js?v=48" defer></script>
 
     <!-- חלונית המורה: הפס הלבן האמיתי (#chatHeader) גדל כלפי מטה לריבוע, והמורה גדל (width/height — חד) ונע למרכז. סגירה ב-X / Esc -->
     <script>
@@ -986,7 +948,6 @@
         var DUR = 570; /* משך הסגירה (ms) — מעט יותר מ-0.55s, כדי שהכל יתואם לפני הסרת is-talk */
         var settleTimer = null;
         var inner = header.parentNode; /* .chatSidebar__inner */
-        var dock = document.getElementById("teacherDock"); /* אווטאר המורה בפינה שמאלית-תחתונה — מוצא/יעד המעוף */
         var startLeft = 0,
           startTop = 0,
           collapsedH = 0,
@@ -1010,24 +971,15 @@
         /* מחשב את צלע הריבוע ואת שתי מצבי ה-transform של המורה (פינה-קטן ↔ מרכז-גדול) */
         function compute() {
           var side = header.offsetWidth; /* רוחב העמודה */
-          big = Math.min(side * 0.42, 168); /* גודל המורה במרכז הריבוע */
-          /* ריבוע מושלם: גובה = רוחב העמודה. הריבוע מכסה את החלק העליון של הצ'אט (לא "מסך מלא") */
-          openH = side;
+          big = Math.min(side * 0.38, 150); /* המורה קטן יותר (כדי שהפאנל יהיה קטן) */
+          /* אזור קטן: מורה למעלה + מיקרופון מתחתיו + שוליים — לא ריבוע ענק. שאר הצ'אט מטושטש מתחת */
+          openH = Math.round(big + 122);
           var endLeft = Math.round((side - big) / 2); /* ממורכז אופקית */
-          var endTop = Math.round((openH - big) / 2); /* ממורכז אנכית → המורה בדיוק במרכז הריבוע */
+          var endTop = 58; /* המורה נמוך עוד — יותר אוויר בראש הפאנל */
+          /* transform-origin 0 0: הקופסה בגודל big; scale מקטין מהפינה, translate ממקם */
+          startTf =
+            "translate(" + startLeft + "px," + startTop + "px) scale(" + MASCOT / big + ")";
           endTf = "translate(" + endLeft + "px," + endTop + "px) scale(1)";
-          /* מוצא/יעד המורה = אווטאר הדוק (פינה שמאלית-תחתונה). transform-origin 0 0, הקופסה בגודל big →
-             scale מקטין לגודל הדוק, translate ממקם מעליו (בדיוק איפה שהמורה כשרק הצ'אט פתוח) */
-          var hr = header.getBoundingClientRect();
-          if (dock) {
-            var dr = dock.getBoundingClientRect();
-            startTf =
-              "translate(" + (dr.left - hr.left) + "px," + (dr.top - hr.top) +
-              "px) scale(" + (dr.width / big) + ")";
-          } else {
-            startTf =
-              "translate(" + startLeft + "px," + startTop + "px) scale(" + MASCOT / big + ")";
-          }
           return side;
         }
         function open() {
@@ -1042,8 +994,6 @@
 
           /* מצב התחלה — ללא אנימציה: הקופסה בגודל הסופי (SVG חד) אך מוקטנת בפינה (transform); הפס בגובה הסגור */
           header.classList.add("is-talk");
-          header.classList.remove("is-closing"); /* ריבוע לבן גלוי שוב בפתיחה */
-          if (dock) dock.classList.add("is-flown"); /* הדוק מתחבא — המורה המעופף מחליף אותו */
           if (inner) inner.style.paddingTop = collapsedH + "px"; /* שומר מקום — הצ'אט לא קופץ */
           slot.classList.add("is-fly");
           header.style.transition = "none";
@@ -1063,7 +1013,7 @@
           slot.style.transform = endTf;
           header.classList.add("is-open");
           if (dialog) dialog.setAttribute("aria-hidden", "false");
-          /* האזור הקולי: מטשטשים את הצ'אט שמאחור + חושפים את הערפל עם הטקסט המדבר מתחת למורה */
+          /* ערפל הצ'אט: מפרסמים את גובה הפאנל (כדי שהטקסט יֵשב מתחתיו) + גל הטשטוש */
           if (inner) {
             inner.style.setProperty("--squareH", openH + "px");
             inner.classList.add("is-voice");
@@ -1073,7 +1023,6 @@
         function close() {
           cancelSettle();
           header.classList.remove("is-open"); /* טקסט+X נעלמים מהר; הכותרת המקורית עדיין מוסתרת */
-          header.classList.add("is-closing"); /* הריבוע הלבן נמוג (בלי "פס לבן") בעוד המורה עף אל הדוק */
           if (inner) inner.classList.remove("is-voice"); /* הערפל מתפוגג יחד עם סגירת הריבוע */
           if (reduced()) {
             header.style.transition = "none";
@@ -1092,8 +1041,6 @@
             header.style.transition = "none";
             slot.style.transition = "none";
             header.classList.remove("is-talk");
-            header.classList.remove("is-closing");
-            if (dock) dock.classList.remove("is-flown"); /* המורה הגיע אל הדוק → מחזירים את אווטאר הדוק */
             if (inner) inner.style.paddingTop = "";
             slot.classList.remove("is-fly");
             header.style.height = "";
@@ -1629,12 +1576,10 @@
           new MutationObserver(function () {
             var open = header.classList.contains("is-open");
             if (open && !wasOpen) {
-              flyMic(true); // המיקרופון זז למרכז (מיקרופון אחד)
               clearReply(); setFogLoader(false);
               startListening(); // המיקרופון פתוח כברירת מחדל
             }
             if (!open && wasOpen) {
-              flyMic(false); // המיקרופון חוזר אל מקומו בפס והופך לתכלת
               if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
               teardownMic(); stopSpeaking();
               state = "idle"; setRecordingUI(false); setBusyUI(false); setFogLoader(false); clearReply();
@@ -1643,65 +1588,6 @@
             wasOpen = open;
           }).observe(header, { attributes: true, attributeFilter: ["class"] });
         }
-
-        /* אפקט "המיקרופון עף" — מיקרופון *אחד*: בפתיחה מסתירים את המיקרופון האמיתי בפס, ושיבוט יחיד
-           זז ממקומו אל מרכז-תחתית (מקום מיקרופון-הקול) ו*נשאר* שם באדום. בסגירה הוא חוזר אל מקומו והופך לתכלת,
-           ואז המיקרופון האמיתי חוזר. מופעל מה-observer → מכסה כל מסלולי הפתיחה/סגירה (מיקרופון / X / Esc). */
-        var micFlyEl = null;
-        function flyMic(opening) {
-          var noAnim = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-          var micBtn = document.getElementById("sendBtn");
-          var inr = header.parentNode; /* .chatSidebar__inner */
-          if (!micBtn || !inr) return;
-          if (opening) {
-            if (micFlyEl) { micFlyEl.remove(); micFlyEl = null; }
-            var m = micBtn.getBoundingClientRect();
-            var r = inr.getBoundingClientRect();
-            var dx = r.left + r.width / 2 - (m.left + m.width / 2); /* יעד: מרכז-תחתית עמודת הצ'אט */
-            var dy = r.bottom - 52 - (m.top + m.height / 2);
-            micBtn.style.opacity = "0"; /* מסתירים את המיקרופון האמיתי — רק זה שזז נראה (מיקרופון אחד) */
-            var fly = micBtn.cloneNode(true);
-            fly.removeAttribute("id");
-            fly.setAttribute("aria-hidden", "true");
-            fly.style.cssText =
-              "position:fixed;left:" + m.left + "px;top:" + m.top + "px;width:" + m.width + "px;height:" + m.height +
-              "px;margin:0;padding:0;border:0;background:transparent;box-shadow:none;display:grid;place-items:center;" +
-              "color:#ef4444;z-index:9999;pointer-events:none;transform:translate(0,0) scale(1);" +
-              (noAnim ? "" : "transition:transform 0.6s cubic-bezier(0.22,1,0.36,1),color 0.3s ease;");
-            document.body.appendChild(fly);
-            micFlyEl = fly;
-            fly.dataset.dx = dx; fly.dataset.dy = dy;
-            var goCenter = function () { fly.style.transform = "translate(" + dx + "px," + dy + "px) scale(1.4)"; };
-            if (noAnim) goCenter();
-            else requestAnimationFrame(function () { requestAnimationFrame(goCenter); });
-          } else {
-            var fly2 = micFlyEl;
-            micFlyEl = null;
-            var restore = function () {
-              if (fly2) fly2.remove();
-              if (!header.classList.contains("is-open")) { micBtn.style.opacity = ""; micBtn.classList.remove("is-recording"); } /* לא להחזיר אם נפתח שוב */
-            };
-            if (!fly2 || noAnim) { restore(); return; }
-            fly2.style.color = "#0d9488"; /* חוזר לתכלת */
-            fly2.style.transform = "translate(0,0) scale(1)"; /* חוזר אל מקום המיקרופון בפס */
-            var done = false;
-            var fin = function (e) { if (done || (e && e.propertyName !== "transform")) return; done = true; restore(); };
-            fly2.addEventListener("transitionend", fin);
-            setTimeout(fin, 760); /* גיבוי אם transitionend לא נורה */
-          }
-        }
-
-        /* study-v2: כפתור המיקרופון בפס הכתיבה מפעיל/מכבה שיחה קולית —
-           דרך פתיחת/סגירת ה-is-open הסמוי (המנגנון המלא של הקול נשאר זהה). */
-        window.vela = window.vela || {};
-        window.vela.flyMic = flyMic; // app.js מפעיל אחרי קביעת צבע ה-is-recording (כניסה ויציאה)
-        window.vela.voiceToggle = function () {
-          unlockAudio(); // תחת מחוות-המשתמש (לחיצה) → ניגון לא ייחסם בספארי
-          // פותח/סוגר את קופסת המורה המלאה — הריבוע המטושטש, המורה במרכז, והטקסט המדבר מתחתיו
-          if (slot) slot.click();
-          return header.classList.contains("is-open");
-        };
-        window.vela.voiceActive = function () { return header.classList.contains("is-open"); };
       })();
     </script>
   </body>

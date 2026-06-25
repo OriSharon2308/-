@@ -5,17 +5,28 @@
 const llm = require("../lib/llm");
 const { genderize } = require("../lib/gender");
 
-function buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote, gender }) {
+function buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote, gender, voice }) {
   const fem = gender === "female";
   const lines = [
     "את/ה מורה למתמטיקה לילדים. מדבר/ת עברית פשוטה, חמה וסבלנית.",
     "מטרה: להנחות את התלמיד לתשובה בעצמו — לא לפתור בשבילו אלא אם ביקש הסבר מלא.",
     "תשובות קצרות (1–4 משפטים), בגובה העיניים, בלי ז'רגון.",
     "כתוב/י בעברית תקנית בלבד — אך ורק אותיות עבריות. אסור לערבב אותיות ערביות או לועזיות בתוך מילים.",
+    "כתוב/י טקסט רגיל בלבד: בלי כוכביות (**) או סימוני markdown, בלי הדגשות. להדגשה השתמש/י במילים. אימוג'ים — במשורה (לכל היותר אחד, ולא בכל הודעה).",
     `התלמיד/ה ${fem ? "בת (נקבה)" : "בן (זכר)"} — פנה/י אליו/ה אך ורק בלשון ${
       fem ? "נקבה" : "זכר"
     }, ובלי לוכסנים (לא 'צייר/י' אלא '${fem ? "ציירי" : "צייר"}').`,
   ];
+  if (voice) {
+    // שיחה בקול: נימה רגועה — בלי סימני קריאה ובלי אימוג'ים (שלא יישמע דרמטי/נחרץ מדי)
+    lines.push(
+      "זוהי שיחה בקול (לא בכתב): דבר/י בנימה רגועה, טבעית ושקטה. בלי סימני קריאה (!), בלי אימוג'ים, ובלי התלהבות-יתר או הכרזות נחרצות. משפטים קצרים, פשוטים וזורמים שנעים לשמוע."
+    );
+    // קיצור = מהירות: ככל שהתשובה קצרה יותר, כך הקול נטען מהר יותר (TTS פרופורציונלי לאורך)
+    lines.push(
+      "חשוב מאוד: בקול ענה/י קצר ביותר — משפט אחד, שניים לכל היותר, עד ~25 מילים בסך הכל. בלי הקדמות ובלי חזרות. ישר ולעניין, כדי שהקול ייטען מהר."
+    );
+  }
   if (advice) lines.push(`הנחיה מהפסיכולוג (לא לחשוף לתלמיד): ${advice}`);
   if (problem?.text) {
     lines.push(`התרגיל הנוכחי: ${problem.text}`);
@@ -99,6 +110,7 @@ async function teacherReply(params) {
     vizName = null,
     shapeNote = null,
     gender = "male",
+    voice = false,
   } = params;
 
   // תשובה נכונה — שבח מקומי מגוון, בלי AI (התשובה ידועה מראש; חיסכון בטוקנים)
@@ -110,7 +122,7 @@ async function teacherReply(params) {
     return { reply: genderize(localReply({ messageKind, problem, correct, student }), gender), mode: "local" };
   }
 
-  const system = buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote, gender });
+  const system = buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote, gender, voice });
   let userText = messageText;
   if (messageKind === "CheckAnswer" && correct != null) {
     userText = `${messageText}\n(הערכת המערכת: התשובה ${correct ? "נכונה" : "שגויה"}.)`;
@@ -127,7 +139,17 @@ async function teacherReply(params) {
   ];
 
   try {
-    const reply = await llm.complete({ system, messages, maxTokens: 500 });
+    const tLlm = Date.now();
+    // בקול — מודל מהיר (Haiku ~2s מול Sonnet ~3.3s) + תקרת טוקנים נמוכה = תשובה קצרה ומהירה.
+    // חזרה ל-Sonnet בקול: ANTHROPIC_VOICE_MODEL=claude-sonnet-4-6 ב-.env
+    const voiceModel = (process.env.ANTHROPIC_VOICE_MODEL || "claude-haiku-4-5-20251001").trim();
+    const reply = await llm.complete({
+      system,
+      messages,
+      maxTokens: voice ? 160 : 500,
+      model: voice ? voiceModel : null,
+    });
+    console.log(`[timing]   └ Claude (llm.complete${voice ? " · " + voiceModel : ""}): ${Date.now() - tLlm}ms`);
     if (reply) return { reply, mode: "ai" };
   } catch (e) {
     console.error("teacher AI error:", e.message);

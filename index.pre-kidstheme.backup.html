@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מערכת לימוד – אבטיפוס</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=46" />
+    <style>
+      /* מקום שמור לדמות המדברת (מסקוט) בראש הצ'אט — נותן פנים למורה */
+      .chatSidebar__header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .mascotSlot {
+        flex: 0 0 auto;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+      }
+      .mascotSlot:hover {
+        transform: scale(1.07);
+      }
+      .mascotSlot:active {
+        transform: scale(0.95);
+      }
+      .mascotSlot:focus-visible {
+        outline: 2px solid #0d9488;
+        outline-offset: 3px;
+      }
+      .mascotSlot svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        filter: drop-shadow(0 4px 10px rgba(13, 148, 136, 0.28));
+        animation: mascotBob 4.5s ease-in-out infinite;
+      }
+      .chatSidebar__header .chatSidebar__titleWrap {
+        flex: 1 1 auto;
+      }
+      @keyframes mascotBob {
+        50% {
+          transform: translateY(-3px);
+        }
+      }
+      /* חלונית המורה — צפה ומרוכזת מעל הצ'אט, נכנסת/יוצאת מהפינה של המסקוט */
+      .mascotModal {
+        position: absolute;
+        inset: 0;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        background: rgba(15, 59, 54, 0.18);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.28s ease, visibility 0.28s ease;
+      }
+      .mascotModal.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .mascotModal__panel {
+        position: relative;
+        width: min(88%, 320px);
+        background: #fff;
+        border-radius: 24px;
+        padding: 28px 22px 24px;
+        text-align: center;
+        box-shadow: 0 26px 60px rgba(13, 60, 53, 0.3), 0 4px 14px rgba(13, 60, 53, 0.12);
+        transform: translateY(-14px) scale(0.78);
+        transform-origin: top center;
+        opacity: 0;
+        transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      }
+      .mascotModal.is-open .mascotModal__panel {
+        transform: none;
+        opacity: 1;
+      }
+      .mascotModal__mascot {
+        width: 112px;
+        height: 112px;
+        margin: 4px auto 14px;
+        animation: mascotBob 4.5s ease-in-out infinite;
+      }
+      .mascotModal__mascot svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        filter: drop-shadow(0 10px 20px rgba(13, 148, 136, 0.32));
+      }
+      .mascotModal__title {
+        font-family: "Fredoka", "Assistant", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #0f3b36;
+        margin: 0 0 6px;
+      }
+      .mascotModal__note {
+        font-size: 14px;
+        line-height: 1.55;
+        color: #46615f;
+        margin: 0;
+      }
+      .mascotModal__close {
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #5f7a77;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: color 0.15s ease, transform 0.15s ease;
+      }
+      .mascotModal__close:hover {
+        color: #0f3b36;
+        transform: scale(1.14);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .mascotSlot svg,
+        .mascotModal__mascot {
+          animation: none;
+        }
+        .mascotModal,
+        .mascotModal__panel {
+          transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .mascotModal__panel {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="appWord" aria-hidden="true">vela</div>
+    <header class="topbar">
+      <div class="topbar__left">
+        <span id="userChip" class="userChip" hidden>
+          <span class="userChip__icon" aria-hidden="true">👤</span>
+          <span id="userChipName" class="userChip__name"></span>
+        </span>
+      </div>
+      <div class="topbar__right">
+        <a href="/home" class="homeIcon" id="homeBtn" aria-label="דף הבית" title="דף הבית">🏠</a>
+      </div>
+    </header>
+
+    <div id="topicsOverlay" class="overlay"></div>
+    <aside id="topicsDrawer" class="drawer" role="dialog" aria-label="נושאי תרגול" aria-modal="true" tabindex="-1">
+      <button id="topicsBtn" class="burger drawer__burger" type="button" aria-label="פתיחה/סגירה של תפריט נושאים" aria-haspopup="dialog" aria-expanded="false">
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+      </button>
+      <div class="drawer__header">
+        <div>
+          <div class="drawer__title">נושאי תרגול</div>
+          <div class="drawer__subtitle">כל נושא עם צ’אט ושאלות משלו</div>
+        </div>
+      </div>
+      <div class="drawer__content">
+        <!-- תצוגה 1: הנושאים שכבר נפתחו -->
+        <div id="topicsListView">
+          <div class="drawer__actions">
+            <button id="newTopicBtn" class="btn btn--primary" type="button">+ נושא חדש</button>
+          </div>
+          <div id="topicsList" class="topicsList" aria-label="רשימת נושאים"></div>
+        </div>
+
+        <!-- תצוגה 2: בורר נושאי הכיתה (נפתח מ"נושא חדש") -->
+        <div id="topicPickerView" hidden>
+          <div class="drawer__actions">
+            <button id="pickerBackBtn" class="btn btn--secondary" type="button">→ חזרה</button>
+          </div>
+          <div class="pickerHint">בחר/י נושא מהכיתה שלך:</div>
+          <div id="topicPicker" class="topicsList" aria-label="נושאי הכיתה"></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="layout">
+      <button
+        id="chatToggleBtn"
+        class="chatToggle"
+        type="button"
+        aria-label="פתיחה/סגירה של הצ’אט"
+        aria-expanded="true"
+      >
+        <span class="chatToggle__icon" aria-hidden="true">◀</span>
+      </button>
+
+      <aside id="chatSidebar" class="chatSidebar" aria-label="צ’אט חופשי">
+        <div id="chatResizeHandle" class="chatResizeHandle" role="separator" aria-orientation="vertical" aria-label="שינוי רוחב הצ’אט"></div>
+        <div class="chatSidebar__inner">
+          <div class="chatSidebar__header">
+            <!-- דמות המורה (מסקוט Vela). לחיצה פותחת חלונית — בעתיד היא תזוז ותדבר -->
+            <button class="mascotSlot" id="mascotSlot" type="button" aria-label="המורה שלי — לחצו לפתיחה" aria-haspopup="dialog">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="mTeal" x1="0" y1="0" x2="0.35" y2="1">
+                    <stop offset="0" stop-color="#22d3c0" /><stop offset="1" stop-color="#0d9488" />
+                  </linearGradient>
+                  <radialGradient id="mGloss" cx="0.5" cy="0.26" r="0.72">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.5" /><stop offset="0.62" stop-color="#ffffff" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mTeal)" />
+                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mGloss)" />
+                <circle cx="20" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
+                <circle cx="44" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
+                <circle cx="25" cy="30" r="6.2" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" /><circle cx="24.3" cy="29.3" r="1.1" fill="#fff" />
+                <circle cx="43" cy="30" r="6.2" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" /><circle cx="42.3" cy="29.3" r="1.1" fill="#fff" />
+                <path d="M25 43 Q34 50 43 43" fill="none" stroke="#0f3b36" stroke-width="3" stroke-linecap="round" />
+                <path d="M52.5 15 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#fff" opacity="0.92" />
+              </svg>
+            </button>
+            <div class="chatSidebar__titleWrap">
+              <div class="chatSidebar__title">צ’אט עם המורה</div>
+              <div class="chatSidebar__subtitle">המורה מדבר איתך — צוות הסוכנים עוזר מאחורי הקלעים</div>
+            </div>
+            <div class="aiIndicator" id="aiIndicator" title="סטטוס AI">
+              <span class="aiIndicator__dot" id="aiDot" aria-hidden="true"></span>
+              <span class="aiIndicator__label">AI</span>
+            </div>
+          </div>
+
+          <div id="chatLog" class="chatLog" aria-label="היסטוריית שיחה"></div>
+
+          <div class="chatComposer">
+            <label class="field field--full">
+              <span class="field__label">כתוב/י כאן</span>
+              <textarea
+                id="chatInput"
+                class="textarea"
+                rows="2"
+                placeholder="לדוגמה: לא הבנתי למה עושים קודם כפל…"
+              ></textarea>
+            </label>
+            <button id="sendBtn" class="btn btn--primary" type="button">שלח</button>
+          </div>
+        </div>
+
+        <!-- חלונית המורה (placeholder לדמות המדברת העתידית) -->
+        <div class="mascotModal" id="mascotModal" role="dialog" aria-modal="true" aria-label="המורה שלי" aria-hidden="true">
+          <div class="mascotModal__panel">
+            <button class="mascotModal__close" id="mascotModalClose" type="button" aria-label="סגירה">×</button>
+            <div class="mascotModal__mascot" aria-hidden="true">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="mTeal2" x1="0" y1="0" x2="0.35" y2="1">
+                    <stop offset="0" stop-color="#22d3c0" /><stop offset="1" stop-color="#0d9488" />
+                  </linearGradient>
+                  <radialGradient id="mGloss2" cx="0.5" cy="0.26" r="0.72">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.5" /><stop offset="0.62" stop-color="#ffffff" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mTeal2)" />
+                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mGloss2)" />
+                <circle cx="20" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
+                <circle cx="44" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
+                <circle cx="25" cy="30" r="6.2" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" /><circle cx="24.3" cy="29.3" r="1.1" fill="#fff" />
+                <circle cx="43" cy="30" r="6.2" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" /><circle cx="42.3" cy="29.3" r="1.1" fill="#fff" />
+                <path d="M25 43 Q34 50 43 43" fill="none" stroke="#0f3b36" stroke-width="3" stroke-linecap="round" />
+                <path d="M52.5 15 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#fff" opacity="0.92" />
+              </svg>
+            </div>
+            <p class="mascotModal__title">היי! אני המורה שלך</p>
+            <p class="mascotModal__note">בקרוב נוכל לדבר כאן יחד — בינתיים אני לצידך בכל שאלה 🙂</p>
+          </div>
+        </div>
+      </aside>
+
+      <section class="panel lesson" aria-label="תרגול מודרך">
+        <div class="panel__header">
+          <h2 class="panel__title">
+            התרגיל שלך <span id="topicLabel" class="panel__titleSub"></span>
+          </h2>
+          <button class="pill pill--btn" id="difficultyPill" type="button" title="רמת קושי — לחצו לבחירת רמה" aria-haspopup="menu" aria-expanded="false">רמה: 1</button>
+          <div id="levelPicker" class="levelPicker" role="menu" aria-label="בחירת רמה" hidden></div>
+        </div>
+
+        <div class="card" id="lessonCard">
+          <div id="solvedBadge" class="solvedBadge" title="פתרת את השאלה הזו" hidden>✓</div>
+          <button id="helpBtn" class="helpBtn helpBtn--corner" type="button" aria-label="איך משתמשים" hidden>?</button>
+          <div id="helpPopover" class="helpPopover" hidden></div>
+          <div class="problem">
+            <div id="problemDiagram" class="problemDiagram" hidden aria-hidden="true"></div>
+            <div class="problem__label">שאלה</div>
+            <div class="problem__text" id="problemText">טוען…</div>
+          </div>
+
+          <!-- קלט רגיל: מספר אחד — בר אחד שעוטף את הכפתור -->
+          <div class="answerRow" id="answerRowNumeric">
+            <div class="answerBar">
+              <input id="answerInput" class="answerBar__input" inputmode="numeric" autocomplete="off" placeholder="התשובה שלי" />
+              <button id="checkBtn" class="answerBar__btn" type="button">סיימתי</button>
+            </div>
+          </div>
+
+          <!-- קלט שעה: שעות : דקות -->
+          <div class="answerRow answerRow--time" id="answerRowTime" hidden>
+            <div class="timeInput">
+              <label class="field timeInput__field">
+                <span class="field__label">שעות</span>
+                <input id="timeHour" class="input input--time" inputmode="numeric" autocomplete="off" min="1" max="12" placeholder="3" />
+              </label>
+              <span class="timeInput__colon" aria-hidden="true">:</span>
+              <label class="field timeInput__field">
+                <span class="field__label">דקות</span>
+                <input id="timeMin" class="input input--time" inputmode="numeric" autocomplete="off" min="0" max="59" placeholder="30" />
+              </label>
+            </div>
+            <button id="checkTimeBtn" class="btn btn--primary" type="button">בדוק</button>
+          </div>
+
+          <!-- קלט אינטראקטיבי: גוררים מחוגים ולוחצים "סיימתי" -->
+          <div class="answerRow answerRow--interactive" id="answerRowInteractive" hidden>
+            <div class="interactiveHint" id="interactiveHint">הזיזו את המחוגים על השעון למעלה ולחצו "סיימתי"</div>
+            <button id="doneBtn" class="btn btn--primary" type="button">סיימתי</button>
+          </div>
+
+          <div class="actions">
+            <button id="prevProblemBtn" class="btn btn--secondary" type="button">שאלה קודמת</button>
+            <button id="nextProblemBtn" class="btn btn--secondary" type="button">שאלה הבאה</button>
+            <button id="hintBtn" class="btn btn--secondary" type="button">רמז</button>
+            <button id="explainBtn" class="btn btn--secondary" type="button">הסבר</button>
+          </div>
+
+          <div class="feedback feedback--hidden" id="feedbackBox" role="status" aria-live="polite" hidden></div>
+        </div>
+
+        <!-- כרטיס יצירת צורות: לוח משבצות לציור עם העכבר (מחליף את הכרטיס הרגיל) -->
+        <div class="card shapeCreatorCard" id="shapeCreatorCard" hidden>
+          <div id="shapeBoard" class="shapeBoard" aria-label="לוח ציור צורות"></div>
+          <div class="shapeCreator__request" id="shapeRequest">צייר/י צורה</div>
+          <div class="shapeCreator__actions">
+            <button id="shapeDoneBtn" class="btn btn--primary" type="button">סיימתי</button>
+            <button id="shapeClearBtn" class="btn btn--secondary" type="button">נסה שוב</button>
+          </div>
+        </div>
+
+        <!-- מד שאלות לרמה הנוכחית -->
+        <div id="levelMeter" class="levelMeter" hidden>
+          <div class="levelMeter__head">
+            <span class="levelMeter__label">רמה <span id="meterLevel">1</span></span>
+            <span class="levelMeter__count"><span id="meterDone">0</span> / <span id="meterTotal">0</span></span>
+          </div>
+          <div class="levelMeter__track"><div class="levelMeter__fill" id="meterFill"></div></div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- חלונית: סיימת את כל שאלות הרמה -->
+    <div id="levelDonePrompt" class="levelDone" hidden>
+      <div class="levelDone__box">
+        <div class="levelDone__title">כל הכבוד! 🎉</div>
+        <div class="levelDone__msg">פתרת את כל השאלות שיש כרגע ברמה <span id="doneLevel">1</span>! מה עכשיו?</div>
+        <div class="levelDone__actions">
+          <button id="levelNextBtn" class="btn btn--primary" type="button">לעלות רמה ⬆️</button>
+          <button id="levelStayBtn" class="btn btn--secondary" type="button">להמשיך ברמה זו 🔄</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="small muted">מערכת לימוד — תרגול עם מורה AI</div>
+    </footer>
+
+    <div class="agentDebug" id="agentDebug">
+      <button type="button" class="agentDebug__toggle" id="agentDebugToggle" aria-expanded="false">
+        <span>סוכנים (זמני)</span>
+        <span class="agentDebug__arrow" id="agentDebugArrow" aria-hidden="true">▲</span>
+      </button>
+      <div class="agentDebug__body" id="agentDebugBody" hidden></div>
+    </div>
+
+    <!-- מקלדת מספרים — נפתחת בלחיצה על שדה התשובה -->
+    <div id="numPad" class="numPad" role="dialog" aria-label="מקלדת מספרים" hidden>
+      <div class="numPad__grid">
+        <button type="button" class="numKey" data-k="7">7</button>
+        <button type="button" class="numKey" data-k="8">8</button>
+        <button type="button" class="numKey" data-k="9">9</button>
+        <button type="button" class="numKey" data-k="4">4</button>
+        <button type="button" class="numKey" data-k="5">5</button>
+        <button type="button" class="numKey" data-k="6">6</button>
+        <button type="button" class="numKey" data-k="1">1</button>
+        <button type="button" class="numKey" data-k="2">2</button>
+        <button type="button" class="numKey" data-k="3">3</button>
+        <button type="button" class="numKey numKey--util" data-k="back" aria-label="מחיקה">⌫</button>
+        <button type="button" class="numKey" data-k="0">0</button>
+        <button type="button" class="numKey numKey--util" data-k="clear" aria-label="ניקוי">C</button>
+      </div>
+      <button type="button" class="numPad__done" id="numPadDone">סיימתי</button>
+    </div>
+
+    <script src="./app.js?v=45" defer></script>
+
+    <!-- חלונית המורה: פתיחה בלחיצה על המסקוט, סגירה ב-X / רקע / Esc (עצמאי מ-app.js) -->
+    <script>
+      (function () {
+        var slot = document.getElementById("mascotSlot");
+        var modal = document.getElementById("mascotModal");
+        var closeBtn = document.getElementById("mascotModalClose");
+        if (!slot || !modal) return;
+        function open() {
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+        }
+        function close() {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          slot.focus();
+        }
+        slot.addEventListener("click", open);
+        if (closeBtn) closeBtn.addEventListener("click", close);
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) close();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+        });
+      })();
+    </script>
+  </body>
+</html>

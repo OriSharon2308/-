@@ -1,0 +1,2166 @@
+@font-face {
+  font-family: "Arca Morphe";
+  src: url("/fonts/ArcaMorphe-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --panel2: #ffffff;
+  --text: rgba(15, 23, 42, 0.92);
+  --muted: rgba(15, 23, 42, 0.62);
+  --border: rgba(15, 23, 42, 0.12);
+  --shadow: rgba(2, 6, 23, 0.08);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+
+  /* ===== ערכה ידידותית לילדים ===== */
+  --accent-rgb: 13 148 136; /* טורקיז */
+  --drawer-w: min(420px, 92vw); /* רוחב המגירה — משמש גם לחישוב מסלול המבורגר */
+  --primary: #0d9488;
+  --primary2: #14b8a6;
+  --primary-strong: #0f766e;
+  --radius: 22px;
+  --radius2: 18px;
+  --btn-radius: 999px;
+  --btn-lift: -2px;
+  --btn-scale: 1.04;
+  --font: "Fredoka", "Assistant", ui-rounded, system-ui, -apple-system,
+    "Segoe UI", "Noto Sans Hebrew", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* רקע רגוע — כתמי פסטל עדינים, לא לבן שטוח */
+  background: radial-gradient(900px 620px at 8% -10%, rgba(20, 184, 166, 0.14), transparent 60%),
+    radial-gradient(820px 640px at 96% 2%, rgba(129, 140, 248, 0.12), transparent 58%),
+    radial-gradient(760px 720px at 50% 116%, rgba(251, 191, 36, 0.10), transparent 58%),
+    #f3f8f7;
+  background-attachment: fixed;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 20; /* מתחת למגירה — המגירה (z50) עולה ומכסה את השם בפתיחה */
+}
+/* שומרים מקום בצד ימין לאייקון המבורגר שמציץ מהמגירה */
+.topbar__left {
+  padding-inline-start: 48px;
+}
+
+.iconBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.86);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.05);
+  transition: transform 0.22s cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 0.22s cubic-bezier(0.32, 0.72, 0, 1), background 0.18s ease;
+}
+
+/* אייקון בית — גדול, בלי עיגול/רקע/טקסט */
+.homeIcon {
+  font-size: 30px;
+  line-height: 1;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 12px;
+  display: inline-grid;
+  place-items: center;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.homeIcon:hover {
+  transform: scale(1.15);
+}
+.homeIcon:active {
+  transform: scale(0.95);
+}
+
+.iconBtn:hover {
+  background: rgba(15, 23, 42, 0.04);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.12);
+}
+
+.iconBtn:active {
+  transform: translateY(0) scale(0.94);
+  transition-duration: 0.08s;
+}
+
+/* חיות: לוגו שמרחף בעדינות */
+.brand__mark {
+  animation: float 4.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* פריטי נושא מגיבים בריחוף */
+.topicItem {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.topicItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand__mark {
+    animation: none;
+  }
+}
+
+/* ===== דף הבית ===== */
+.homeBody {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* טקסט ענק ברקע — "vela", חלק מהרקע, גולש מכל הצדדים */
+.home__bg,
+.appWord {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -41%) translate(var(--px, 0px), var(--py, 0px));
+  direction: ltr;
+  text-transform: uppercase;
+  font-family: "Arca Morphe", "Archivo Black", "Fredoka", sans-serif;
+  font-weight: 400;
+  font-size: min(54vw, 94vh);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: rgb(var(--accent-rgb) / 0.08);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  /* fade עדין למעלה ולמטה — נמוג לצבע הרקע */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 60%, transparent 100%);
+}
+
+/* בתרגול — אותו רקע, אבל עדין יותר ומאחורי כל התוכן */
+.appWord {
+  color: rgb(var(--accent-rgb) / 0.045);
+  z-index: -1;
+}
+
+.home__top {
+  position: relative;
+  z-index: 20; /* מעל ה-hero כדי שהתפריט הנפתח יהיה לחיץ */
+}
+
+.home__hero {
+  position: relative;
+  z-index: 1;
+}
+
+.home__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+}
+
+.home__topRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home__hero {
+  flex: 1;
+  min-height: calc(100vh - 92px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+/* ===== סטטיסטיקות בדף הבית (נחשפות בגלילה) ===== */
+.home__stats {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 36px 24px 64px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.home__stats.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home__statsTitle {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.home__statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.statCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 18px 12px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(2, 6, 23, 0.05);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.home__stats.is-visible .statCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+.home__stats.is-visible .statCard:nth-child(2) {
+  transition-delay: 0.08s;
+}
+.home__stats.is-visible .statCard:nth-child(3) {
+  transition-delay: 0.16s;
+}
+.home__stats.is-visible .statCard:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+.statCard__value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-strong);
+  line-height: 1.1;
+}
+
+.statCard__label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+@media (max-width: 540px) {
+  .home__statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home__stats,
+  .statCard {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.home__greeting {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.home__subtitle {
+  font-size: 18px;
+  color: var(--muted);
+  margin: 6px 0 32px;
+}
+
+.home__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 230px));
+  gap: 22px;
+}
+
+.homeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 30px 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(2, 6, 23, 0.06);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text);
+  font-family: inherit;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.24s ease, border-color 0.18s ease;
+}
+
+.homeCard:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.13);
+}
+
+.homeCard--primary:hover {
+  border-color: rgb(var(--accent-rgb) / 0.4);
+}
+
+.homeCard__icon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.homeCard__title {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.homeCard__desc {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.homeCard--soon .homeCard__desc {
+  color: var(--primary-strong);
+  font-weight: 600;
+}
+
+@media (max-width: 540px) {
+  .home__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== תפריט המבורגר ===== */
+.menuWrap {
+  position: relative;
+}
+
+.hamburger {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.05);
+  transition: box-shadow 0.22s ease, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hamburger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.12);
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--text);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.hamburger--open span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger--open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger--open span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.16);
+  padding: 6px;
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  transform-origin: top;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.menu--open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.menu__item {
+  display: block;
+  width: 100%;
+  text-align: start;
+  border: 0;
+  background: transparent;
+  padding: 11px 13px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.menu__item:hover {
+  background: rgb(var(--accent-rgb) / 0.1);
+  color: var(--primary-strong);
+}
+
+.menu__item--danger {
+  background: var(--danger);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.menu__item--danger:hover {
+  background: #d11f1f;
+  color: #fff;
+}
+
+.iconBtn__icon {
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(15, 23, 42, 0.78);
+}
+
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* מבורגר נקי (בלי ריבוע), גדול, שהופך ל-X. יושב בתוך המגירה וזז יחד איתה. */
+.burger {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 6px;
+}
+/* האייקון כילד של המגירה — ממוקם בפינה השמאלית-עליונה שלה (זה גם ה"מציץ" כשסגור) */
+.drawer__burger {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  z-index: 2;
+  pointer-events: auto; /* לחיץ גם כשהמגירה שקופה-ללא-אינטראקציה (סגורה) */
+}
+.burger__line {
+  display: block;
+  width: 30px;
+  height: 3.5px;
+  border-radius: 3px;
+  background: var(--text);
+  transition: transform 0.6s cubic-bezier(0.34, 1.4, 0.5, 1), opacity 0.4s ease;
+  transform-origin: center;
+}
+/* המורש ל-X מונע ממצב המגירה — כך הוא מסונכרן מושלם עם ההחלקה */
+.drawer--open .burger__line:nth-child(1) {
+  transform: translateY(10.5px) rotate(45deg);
+}
+.drawer--open .burger__line:nth-child(2) {
+  opacity: 0;
+}
+.drawer--open .burger__line:nth-child(3) {
+  transform: translateY(-10.5px) rotate(-45deg);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.35);
+  z-index: 30;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.overlay--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: var(--drawer-w);
+  background: transparent;
+  border-left: 1px solid transparent;
+  box-shadow: none;
+  z-index: 50; /* מעל הסרגל — מכסה את השם בפתיחה */
+  display: flex;
+  flex-direction: column;
+  /* סגור: מוסטת ימינה כך שרק האייקון (בפינה השמאלית) מציץ בקצה הימני של המסך */
+  transform: translateX(calc(var(--drawer-w) - 78px));
+  pointer-events: none; /* כשסגורה — לא חוסמת קליקים; רק האייקון לחיץ */
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+.drawer--open {
+  transform: translateX(0);
+  background: rgba(255, 255, 255, 0.96);
+  border-left-color: var(--border);
+  box-shadow: -16px 0 40px rgba(2, 6, 23, 0.18);
+  pointer-events: auto;
+}
+/* תוכן המגירה גלוי רק כשפתוחה (כשסגורה רואים רק את האייקון) */
+.drawer__header,
+.drawer__content {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.drawer--open .drawer__header,
+.drawer--open .drawer__content {
+  opacity: 1;
+}
+
+.drawer__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 16px 70px; /* מקום לאייקון בפינה השמאלית */
+  border-bottom: 1px solid var(--border);
+}
+
+.drawer__title {
+  font-size: 16px;
+  font-weight: 950;
+}
+
+.drawer__subtitle {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.drawer__content {
+  padding: 16px;
+  overflow: auto;
+  flex: 1;
+}
+
+.drawer__actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.topicsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topicItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  padding: 12px 12px;
+  background: rgba(15, 23, 42, 0.02);
+  cursor: pointer;
+}
+
+/* קטלוג נושאי הכיתה */
+.catItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: start;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.22s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.catItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.1);
+  color: var(--primary-strong);
+}
+.catItem--active {
+  border-color: rgb(var(--accent-rgb) / 0.45);
+  background: rgb(var(--accent-rgb) / 0.06);
+  color: var(--primary-strong);
+}
+.catItem__chev {
+  color: var(--muted);
+}
+.catSub {
+  margin: -2px 0 10px 0;
+  padding-inline-start: 14px;
+  border-inline-start: 2px solid var(--border);
+}
+.catItem--sub {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 11px 14px;
+}
+
+/* דירוג קושי ככוכבים */
+#difficultyPill {
+  cursor: pointer;
+}
+.pill--btn {
+  font: inherit;
+  font-weight: 800;
+}
+.pill--btn:hover {
+  border-color: rgb(var(--accent-rgb) / 0.5);
+}
+.diffMax {
+  font-size: 0.78em;
+  color: var(--muted);
+  margin-inline-start: 1px;
+}
+
+/* בורר רמה — נפתח מכפתור הכוכבים */
+.levelPicker {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  padding: 12px;
+  width: 260px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.16);
+}
+.levelPicker__title {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.levelPicker__opt {
+  font: inherit;
+  font-weight: 800;
+  padding: 10px 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.levelPicker__opt:hover {
+  transform: translateY(-1px);
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  background: rgb(var(--accent-rgb) / 0.06);
+}
+.levelPicker__opt--active {
+  background: rgb(var(--accent-rgb) / 0.14);
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  color: var(--primary-strong);
+}
+.levelPicker__opt--auto {
+  grid-column: 1 / -1;
+}
+
+/* מקלדת מספרים צפה */
+.numPad {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 80;
+  width: 248px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 18px 44px rgba(2, 6, 23, 0.22);
+}
+.numPad__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.numKey {
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 14px 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.numKey:hover {
+  background: rgb(var(--accent-rgb) / 0.06);
+}
+.numKey:active {
+  transform: scale(0.94);
+}
+.numKey--util {
+  font-size: 18px;
+  color: var(--muted);
+  background: rgba(15, 23, 42, 0.03);
+}
+.numPad__done {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px 0;
+  border: none;
+  border-radius: 14px;
+  background: #16a34a;
+  color: #fff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+.numPad__done:hover {
+  background: #15803d;
+}
+.numPad__done:active {
+  transform: scale(0.98);
+}
+
+/* מד שאלות לרמה */
+.levelMeter {
+  width: min(440px, 90%);
+  margin: 8px auto 0;
+}
+.levelMeter__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+.levelMeter__count {
+  color: var(--primary-strong);
+  font-weight: 800;
+}
+.levelMeter__track {
+  height: 16px;
+  border-radius: 999px;
+  background: rgb(var(--accent-rgb) / 0.1);
+  overflow: hidden;
+}
+.levelMeter__fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* חלונית "סיימת רמה" */
+.levelDone {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 23, 0.45);
+}
+.levelDone[hidden] {
+  display: none;
+}
+.levelDone__box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 26px;
+  width: min(420px, 90%);
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(2, 6, 23, 0.3);
+}
+.levelDone__title {
+  font-size: 22px;
+  font-weight: 800;
+}
+.levelDone__msg {
+  color: var(--muted);
+  margin: 10px 0 20px;
+}
+.levelDone__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.levelDone__actions .btn {
+  font-size: 16px;
+  padding: 14px;
+}
+
+.topicItem__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.miniBtn {
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.86);
+  cursor: pointer;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.86);
+}
+
+.miniBtn:hover {
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.miniBtn--danger {
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.06);
+  color: rgba(185, 28, 28, 0.95);
+}
+
+.miniBtn--danger:hover {
+  background: rgba(239, 68, 68, 0.10);
+}
+
+.topicItem:hover {
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.topicItem--active {
+  border-color: rgb(var(--accent-rgb) / 0.30);
+  background: rgb(var(--accent-rgb) / 0.06);
+}
+
+.topicItem__title {
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.topicItem__meta {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 6px 2px;
+}
+
+/* כפתור-הנושא בתוך השורה — נראה כטקסט אך לחיץ במלוא הרוחב */
+.topicItem__main {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  text-align: start;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+.iconBtn--danger {
+  color: rgba(185, 28, 28, 0.95);
+}
+.iconBtn--danger:hover {
+  background: rgba(239, 68, 68, 0.10);
+}
+.pickerHint {
+  margin: 4px 2px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.panel__titleSub {
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--muted);
+  margin-right: 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand__mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.95);
+  background: var(--primary);
+  box-shadow: 0 6px 18px rgb(var(--accent-rgb) / 0.35);
+}
+
+.brand__title {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.brand__subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+:root {
+  --chat-width: 360px;
+}
+
+.layout {
+  direction: ltr; /* כדי שהצ’אט ייצמד לשמאל המסך */
+  max-width: none;
+  margin: 0;
+  padding: 16px;
+  padding-left: calc(16px + var(--chat-width) + 12px); /* מקום לסרגל צ’אט פתוח */
+}
+
+body.chat-collapsed .layout {
+  padding-left: 16px; /* כשהצ’אט סגור – התרגיל על כל המסך */
+}
+
+.lesson,
+.chatSidebar {
+  direction: rtl; /* תוכן בעברית */
+}
+
+.chatSidebar {
+  width: var(--chat-width);
+  border-right: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 0;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 66px; /* מתחת לטופבר */
+  bottom: 0;
+  z-index: 15;
+}
+
+.chatSidebar__inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatSidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.chatSidebar__title {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.chatSidebar__subtitle {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chatToggle {
+  position: fixed;
+  left: calc(var(--chat-width) - 12px); /* בין הצ’אט לתרגיל */
+  top: 84px;
+  width: 34px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.10);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 16;
+}
+
+.chatResizeHandle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  cursor: col-resize;
+  background: transparent;
+}
+
+.chatResizeHandle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 64px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.18);
+}
+
+body.chat-resizing {
+  user-select: none;
+  cursor: col-resize;
+}
+
+body.chat-collapsed .chatResizeHandle {
+  display: none;
+}
+
+.chatToggle__icon {
+  font-size: 20px;
+  line-height: 1;
+  color: rgba(15, 23, 42, 0.82);
+}
+
+.chatSidebar--collapsed {
+  transform: translateX(-100%);
+  border: 0;
+}
+
+.chatSidebar--collapsed .chatSidebar__inner {
+  display: none;
+}
+
+body.chat-collapsed .chatToggle {
+  left: 8px; /* נשאר גלוי גם כשהצ’אט סגור */
+}
+
+.panel {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78));
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.10);
+  overflow: hidden;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+}
+
+.lesson {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+/* כרטיס השאלה — ממוקד, גדול וממורכז, תופס את כל האזור (בלי סטטיסטיקות) */
+#lessonCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 58vh;
+  gap: 22px;
+  padding: 36px 24px;
+  text-align: center;
+}
+/* ✓ קטן ונקי בפינה הימנית-העליונה — מונה תרגילים שנפתרו */
+.solvedBadge {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #16a34a;
+  pointer-events: none;
+  user-select: none;
+}
+/* "?" עזרה בפינה השמאלית-העליונה של התרגיל — בולט וברור */
+.helpBtn--corner {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  margin: 0;
+  z-index: 5;
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  background: var(--primary-strong);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(2, 6, 23, 0.18);
+}
+.helpBtn--corner:hover {
+  background: var(--primary-strong);
+  filter: brightness(1.08);
+}
+#lessonCard .problem {
+  width: 100%;
+  text-align: center;
+}
+#lessonCard .problem__label {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+#lessonCard .problem__text {
+  margin-top: 0;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.15;
+  text-align: center;
+}
+#lessonCard .answerRow {
+  margin-top: 0;
+  width: min(440px, 100%);
+  margin-inline: auto;
+}
+#lessonCard .actions {
+  margin-top: 2px;
+  justify-content: center;
+}
+#lessonCard .feedback {
+  font-size: 18px;
+}
+
+/* בר התשובה — שדה + כפתור "סיימתי" בתוך מסגרת אחת */
+.answerBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.answerBar:focus-within {
+  border-color: rgb(var(--accent-rgb) / 0.6);
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.15);
+}
+.answerBar__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: center;
+  color: var(--text);
+}
+.answerBar__btn {
+  flex: 0 0 auto;
+  border: none;
+  border-radius: 11px;
+  background: #16a34a;
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.answerBar__btn:hover {
+  background: #15803d;
+}
+.answerBar__btn:active {
+  transform: scale(0.97);
+}
+
+.panel__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.panel__title {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+}
+
+.pill {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.86);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.pill--ok {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(34, 197, 94, 0.10);
+}
+
+.pill--warn {
+  border-color: rgba(245, 158, 11, 0.45);
+  background: rgba(245, 158, 11, 0.12);
+  color: rgba(120, 53, 15, 0.9);
+}
+
+.aiIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.75);
+}
+
+.aiIndicator__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #94a3b8;
+  flex-shrink: 0;
+}
+
+.aiIndicator--ready .aiIndicator__dot {
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+}
+
+.aiIndicator--thinking .aiIndicator__dot {
+  background: #22c55e;
+  animation: ai-pulse 0.85s ease-in-out infinite;
+}
+
+.aiIndicator--offline .aiIndicator__dot {
+  background: #94a3b8;
+  box-shadow: none;
+}
+
+@keyframes ai-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+.feedback--hidden {
+  display: none !important;
+}
+
+.agentDebug {
+  display: none; /* חלונית הדיבוג של הסוכנים מוסתרת — הסתירה את המסך */
+}
+
+.agentDebug__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.72);
+}
+
+.agentDebug__arrow {
+  transition: transform 0.15s ease;
+}
+
+.agentDebug--open .agentDebug__arrow {
+  transform: rotate(180deg);
+}
+
+.agentDebug__body {
+  max-height: 220px;
+  overflow: auto;
+  padding: 0 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.agentDebug__entry {
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 10px;
+  padding: 8px 10px;
+  background: rgba(15, 23, 42, 0.02);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.agentDebug__entryTitle {
+  font-weight: 900;
+  color: var(--primary-strong);
+  margin-bottom: 4px;
+}
+
+body.agent-debug-open {
+  padding-bottom: 240px;
+}
+
+.card {
+  margin: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.88));
+  box-shadow: 0 18px 50px rgba(2, 6, 23, 0.08);
+  padding: 14px;
+}
+
+.problem__label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.problemDiagram {
+  margin-bottom: 14px;
+  padding: 0;
+  max-width: 100%;
+  /* גובה מוגבל — המצויר (שעון/צורה/מטבעות) נכנס למסך אחד בלי גלילה */
+  max-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* הדמיית חפצים לחיבור/חיסור */
+.objViz {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 26px;
+  line-height: 1.5;
+  animation: vizIn 0.5s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes vizIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .objViz {
+    animation: none;
+  }
+}
+.objViz__group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+.objViz__op {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.obj {
+  display: inline-block;
+  transition: opacity 0.25s ease, filter 0.25s ease, transform 0.15s ease;
+}
+.obj--clickable {
+  cursor: pointer;
+  user-select: none;
+}
+.obj--clickable:hover {
+  transform: scale(1.18);
+}
+.obj--removed {
+  position: relative;
+  opacity: 0.3;
+  filter: grayscale(0.6);
+}
+.obj--removed::after {
+  content: "✗";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef4444;
+  font-size: 0.7em;
+  font-weight: 700;
+  animation: xPop 0.2s ease both;
+}
+@keyframes xPop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.problemDiagram svg {
+  display: block;
+  max-width: 100%;
+  max-height: 218px; /* יחד עם width/height:auto — מתכווץ לפי הקטן, שומר על פרופורציה */
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* הדמיית חפצים — גם היא נכנסת בלי גלילה */
+.problemDiagram .objViz {
+  max-height: 218px;
+  overflow: hidden;
+}
+
+/* שעון אינטראקטיבי */
+.interactiveClock {
+  display: block;
+  max-height: 230px;
+  width: auto;
+  margin: 0 auto;
+  touch-action: none;
+  cursor: pointer;
+  user-select: none;
+}
+.interactiveClock line {
+  cursor: grab;
+}
+.interactiveClock:active line {
+  cursor: grabbing;
+}
+
+/* מצב שעון אינטראקטיבי — שאלה קטנה מעל, שעון גדול, כפתור גדול ממורכז */
+.mode-clock .problem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mode-clock .problem__label {
+  display: none;
+}
+/* specificity גבוה (#lessonCard.mode-clock) כדי לגבור על #lessonCard .problem__text שקובע clamp(36px..56px) */
+#lessonCard.mode-clock .problem__text {
+  order: 1;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 16px;
+}
+.mode-clock #problemDiagram {
+  order: 2;
+  max-height: none;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+}
+/* השעון (גם הסטטי "מה השעה" וגם האינטראקטיבי) — מידות מפורשות וריבועיות כדי שלא יקרוס ב-flex */
+.mode-clock .interactiveClock,
+.mode-clock .problemDiagram svg {
+  width: min(340px, 80vw);
+  height: min(340px, 80vw);
+  max-width: none;
+  max-height: none;
+}
+.mode-clock .answerRow--interactive {
+  margin-top: 22px;
+}
+.mode-clock #doneBtn {
+  font-size: 24px;
+  font-weight: 800;
+  padding: 20px 64px;
+  border-radius: 18px;
+}
+/* אזור התשובה בשאלות שעון — שומר על בר התשובה הרחב המקורי, רק עם כפתור "סיימתי" מתחתיו */
+.mode-clock .answerRow {
+  margin-top: 22px;
+}
+.mode-clock #answerRowNumeric .answerBar {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  padding: 6px 6px 12px;
+}
+.mode-clock #answerRowNumeric .answerBar__input {
+  font-size: 24px;
+}
+.mode-clock #answerRowNumeric .answerBar__btn {
+  align-self: center;
+  font-size: 18px;
+  padding: 13px 44px;
+}
+
+/* קלט שעה: שעות : דקות */
+.answerRow--time .timeInput {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  direction: ltr; /* שעות בשמאל, דקות בימין — כמו שכותבים שעה HH:MM */
+}
+.timeInput__colon {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--muted);
+  padding-bottom: 8px;
+}
+.input--time {
+  width: 84px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* שורת השעון האינטראקטיבי */
+.answerRow--interactive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.interactiveHint {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* אייקון "?" לעזרה ליד התרגיל */
+.helpBtn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgb(var(--accent-rgb) / 0.14);
+  color: var(--primary-strong);
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-inline-start: 6px;
+}
+.helpBtn:hover {
+  background: rgb(var(--accent-rgb) / 0.25);
+}
+.helpPopover {
+  position: absolute;
+  top: 48px;
+  left: 14px;
+  z-index: 60;
+  max-width: 320px;
+  text-align: start;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.16);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+#doneBtn {
+  font-size: 17px;
+  padding: 12px 28px;
+}
+
+/* ציור צורות — כל הכרטיס הוא לוח משבצות, כותרת וכפתורים צפים מעליו */
+.shapeCreatorCard {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+.shapeBoard {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 380px;
+  background: rgb(var(--accent-rgb) / 0.03);
+}
+.shapeBoardSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+  touch-action: none;
+}
+.shapeGrid {
+  stroke: rgb(var(--accent-rgb) / 0.16); /* תכלת עדין כמו ה-VELA ברקע */
+  stroke-width: 1;
+}
+.shapeCreator__request {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 92%;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgb(var(--accent-rgb) / 0.18);
+  border-radius: 14px;
+  padding: 8px 16px;
+  pointer-events: none;
+}
+.shapeEdges {
+  stroke: rgb(var(--accent-rgb) / 0.95);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.shapeFill {
+  fill: rgb(var(--accent-rgb) / 0.12);
+}
+.shapeRubber {
+  stroke: rgb(var(--accent-rgb) / 0.5);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+.shapeDot {
+  fill: rgb(var(--accent-rgb) / 0.95);
+}
+.shapeDot--first {
+  fill: #fff;
+  stroke: rgb(var(--accent-rgb) / 0.95);
+  stroke-width: 3;
+}
+/* בלי transform על האב — אחרת ה-backdrop-filter של הכפתורים לא עובד */
+.shapeCreator__actions {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+/* "נסה שוב" — זכוכית מטושטשת (frosted glass): טשטוש הרקע החי + גוון + כיפת ברק */
+#shapeClearBtn {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.34);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 6px 20px rgba(2, 6, 23, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.3);
+  color: var(--text);
+  will-change: auto;
+}
+/* כיפת ברק עליונה — מוסיפה תחושת זכוכית עבה (עובד בכל הדפדפנים) */
+#shapeClearBtn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(130% 90% at 50% 0%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 62%);
+  pointer-events: none;
+}
+#shapeClearBtn:hover {
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.problem__text {
+  margin-top: 8px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  /* כיוון אוטומטי לכל שאלה: עברית → ימין-לשמאל (? בשמאל), תרגיל חשבון → שמאל-לימין */
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: center;
+}
+
+.answerRow {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field--full {
+  width: 100%;
+}
+
+.field__label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 44px;
+  max-height: 140px;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.18);
+}
+
+.btn {
+  border: 1px solid var(--border);
+  border-radius: var(--btn-radius);
+  padding: 10px 16px;
+  color: rgba(15, 23, 42, 0.92);
+  background: rgba(15, 23, 42, 0.03);
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.06);
+  /* easing קפיצי — נותן "חיות" לכפתורים */
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.24s ease, background 0.18s ease, border-color 0.18s ease,
+    filter 0.18s ease;
+  user-select: none;
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translateY(var(--btn-lift)) scale(var(--btn-scale));
+  border-color: rgba(15, 23, 42, 0.18);
+  background: rgba(15, 23, 42, 0.05);
+  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.08);
+  transition-duration: 0.08s;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.28);
+}
+
+.btn--primary {
+  color: #fff;
+  border-color: transparent;
+  background: var(--primary);
+  box-shadow: 0 2px 8px rgb(var(--accent-rgb) / 0.30);
+}
+
+.btn--secondary {
+  border-color: rgba(15, 23, 42, 0.12);
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.btn--primary:hover {
+  border-color: transparent;
+  background: var(--primary2);
+  filter: brightness(1.03);
+  box-shadow: 0 10px 24px rgb(var(--accent-rgb) / 0.38);
+}
+
+.btn--danger {
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.28);
+  background: rgba(220, 38, 38, 0.06);
+  box-shadow: none;
+}
+
+.btn--danger:hover {
+  color: #fff;
+  border-color: rgba(220, 38, 38, 0.5);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 10px 24px rgba(220, 38, 38, 0.35);
+}
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.feedback {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px dashed rgba(15, 23, 42, 0.16);
+  background: rgba(15, 23, 42, 0.03);
+  color: rgba(15, 23, 42, 0.90);
+  min-height: 44px;
+}
+
+.feedback--ok {
+  border-color: rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.10);
+}
+
+.feedback--warn {
+  border-color: rgba(245, 158, 11, 0.38);
+  background: rgba(245, 158, 11, 0.10);
+}
+
+.feedback--danger {
+  border-color: rgba(239, 68, 68, 0.45);
+  background: rgba(239, 68, 68, 0.10);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat {
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.02);
+  padding: 10px 12px;
+}
+
+.stat__label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.stat__value {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.chatLog {
+  padding: 14px;
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msg {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.05);
+  line-height: 1.45;
+  animation: msgIn 0.32s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes msgIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.msg--user {
+  align-self: flex-start;
+  border-color: rgb(var(--accent-rgb) / 0.22);
+  background: rgb(var(--accent-rgb) / 0.07);
+}
+
+.msg--bot {
+  align-self: flex-end;
+  border-color: rgba(15, 23, 42, 0.08);
+  background: #f4f4f6;
+}
+
+/* אינדיקטור הקלדה — שלוש נקודות מקפצות, כמו בוואטסאפ */
+.msg--typing {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 14px 16px;
+}
+
+.msg--typing .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.38);
+  animation: typingBounce 1.2s infinite ease-in-out;
+}
+
+.msg--typing .dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.msg--typing .dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typingBounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msg {
+    animation: none;
+  }
+  .msg--typing .dot {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+.msg--error {
+  border-color: rgba(239, 68, 68, 0.45);
+  background: rgba(239, 68, 68, 0.08);
+  color: rgba(127, 29, 29, 0.95);
+}
+
+.msg__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.msg__text {
+  white-space: pre-wrap;
+}
+/* חשיפת טקסט אות-אחר-אות — כל תו שומר מקומו (בלי שינוי גודל); נחשף עם הבהוב זוהר תכלת */
+.msg__text .ch {
+  opacity: 0;
+}
+.msg__text .ch--on {
+  animation: charReveal 0.5s ease-out both;
+}
+@keyframes charReveal {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .msg__text .ch {
+    opacity: 1;
+  }
+  .msg__text .ch--on {
+    animation: none;
+  }
+}
+
+/* כניסת הודעה בסגנון אפל — הבועה מחליקה פנימה מלמטה, מוכנה בגודל מלא */
+.msg--enter {
+  animation: msgEnter 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes msgEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .msg--enter {
+    animation: none;
+  }
+}
+
+.chatComposer {
+  border-top: 1px solid var(--border);
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: end;
+  background: rgba(255, 255, 255, 0.80);
+}
+
+.footer {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 10px 16px 18px;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.userChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.1);
+  color: #1e3a8a;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 5px; /* מוריד מעט את השם */
+}
+.userChip__icon {
+  font-size: 15px;
+}
+
+@media (max-width: 980px) {
+  .layout {
+    padding-left: 16px;
+  }
+  .panel,
+  .chatSidebar {
+    min-height: unset;
+  }
+  .problem__text {
+    font-size: 26px;
+  }
+}

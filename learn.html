@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מערכת לימוד – אזור הלמידה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      @font-face {
+        font-family: "Dana Yad";
+        src:
+          url("/fonts/DanaYadAlefAlefAlef-Normal.woff") format("woff"),
+          url("/fonts/DanaYadAlefAlefAlef-Normal.otf") format("opentype");
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      /* ===== אזור הלמידה — אותה שפה עיצובית כמו דף הבית ===== */
+      .learnBody {
+        background:
+          radial-gradient(760px 540px at 90% -8%, rgba(249, 168, 96, 0.18), transparent 60%),
+          radial-gradient(720px 560px at 4% 4%, rgba(20, 184, 166, 0.18), transparent 58%),
+          radial-gradient(680px 600px at 70% 120%, rgba(139, 124, 240, 0.13), transparent 60%),
+          #eef6f4;
+        min-height: 100vh;
+      }
+      .learn {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 22px clamp(16px, 4vw, 40px) 80px;
+      }
+
+      .learn .brand__mark {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: linear-gradient(140deg, #16c4b2, #0d9488);
+        color: #fff;
+        font-size: 22px;
+        box-shadow: 0 8px 18px rgba(13, 148, 136, 0.3);
+      }
+      .learn .brand__title {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #0f3b36;
+      }
+
+      /* כותרת האזור */
+      .learnHead {
+        text-align: center;
+        margin: 26px 0 30px;
+      }
+      .learnHead__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 2px solid rgba(13, 148, 136, 0.18);
+        color: #0d9488;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 7px 16px;
+        border-radius: 999px;
+      }
+      .learnHead__title {
+        font-family: "Dana Yad", cursive;
+        font-size: clamp(38px, 6vw, 64px);
+        line-height: 1.12;
+        font-weight: 700;
+        color: #0f3b36;
+        -webkit-text-stroke: 0.5px #0f3b36;
+        margin: 14px 0 6px;
+      }
+      .learnHead__subtitle {
+        font-size: clamp(15px, 2.2vw, 19px);
+        font-weight: 600;
+        color: #46615f;
+        margin: 0;
+      }
+      .learnHead__grade {
+        color: #c2410c;
+      }
+
+      /* רשת נושאים */
+      .topicGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 18px;
+        margin-top: 8px;
+      }
+      .topicTile {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        text-align: start;
+        border: none;
+        border-radius: 24px;
+        padding: 22px 20px;
+        background: #fff;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+        cursor: pointer;
+        font-family: inherit;
+        transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s ease;
+      }
+      .topicTile:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 18px 38px rgba(2, 6, 23, 0.1);
+      }
+      .topicTile:focus-visible {
+        outline: 3px solid #0d9488;
+        outline-offset: 3px;
+      }
+      .topicTile__icon {
+        width: 58px;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        font-size: 30px;
+        box-shadow: inset 0 0 0 1px rgba(2, 6, 23, 0.04);
+      }
+      .topicTile__name {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #0f3b36;
+        line-height: 1.2;
+      }
+      .topicTile__subs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 2px;
+      }
+      .topicTile__sub {
+        font-size: 13px;
+        font-weight: 600;
+        color: #5a6b68;
+        background: rgba(13, 60, 53, 0.05);
+        padding: 4px 10px;
+        border-radius: 999px;
+      }
+      .topicTile__go {
+        margin-top: auto;
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #0d9488;
+        font-weight: 700;
+        font-size: 15px;
+        padding-top: 4px;
+      }
+      .topicTile__go .arrow {
+        transition: transform 0.18s ease;
+      }
+      .topicTile:hover .topicTile__go .arrow {
+        transform: translateX(-5px);
+      }
+
+      /* גוונים מתחלפים לאריחים */
+      .topicTile:nth-child(6n + 1) .topicTile__icon { background: #d6f4ef; }
+      .topicTile:nth-child(6n + 2) .topicTile__icon { background: #ffe7df; }
+      .topicTile:nth-child(6n + 3) .topicTile__icon { background: #fff0c9; }
+      .topicTile:nth-child(6n + 4) .topicTile__icon { background: #eae6ff; }
+      .topicTile:nth-child(6n + 5) .topicTile__icon { background: #dbeafe; }
+      .topicTile:nth-child(6n + 6) .topicTile__icon { background: #fde2f3; }
+
+      .learnEmpty {
+        text-align: center;
+        color: #5a6b68;
+        font-weight: 600;
+        padding: 40px 0;
+      }
+
+      /* טוסט "בקרוב" */
+      .learnToast {
+        position: fixed;
+        left: 50%;
+        bottom: 28px;
+        transform: translateX(-50%) translateY(20px);
+        background: #0f3b36;
+        color: #fff;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 13px 22px;
+        border-radius: 999px;
+        box-shadow: 0 14px 30px rgba(15, 59, 54, 0.34);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        z-index: 50;
+      }
+      .learnToast.is-show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .topicTile,
+        .topicTile__go .arrow,
+        .learnToast {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="learnBody">
+    <main class="learn">
+      <header class="home__top">
+        <a href="/" class="brand" style="text-decoration: none">
+          <div class="brand__mark" aria-hidden="true">∑</div>
+          <div class="brand__text">
+            <div class="brand__title">Vela</div>
+          </div>
+        </a>
+        <div class="home__topRight">
+          <span id="userChip" class="userChip" hidden>
+            <span class="userChip__icon" aria-hidden="true">👤</span>
+            <span id="learnName" class="userChip__name"></span>
+          </span>
+          <div class="menuWrap">
+            <button id="menuBtn" class="hamburger" type="button" aria-label="תפריט" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
+            <div id="menu" class="menu">
+              <a href="/" class="menu__item" style="text-decoration: none">🏠 דף הבית</a>
+              <a href="/practice" class="menu__item" style="text-decoration: none">✏️ לתרגול</a>
+              <a href="/progress" class="menu__item" style="text-decoration: none">📊 ההתקדמות שלי</a>
+              <button id="logoutItem" class="menu__item menu__item--danger" type="button">התנתקות</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="learnHead">
+        <span class="learnHead__eyebrow">📚 אזור הלמידה</span>
+        <h1 class="learnHead__title">מה בא לך ללמוד?</h1>
+        <p class="learnHead__subtitle">
+          בחרו נושא מכיתה <span class="learnHead__grade" id="gradeLabel">—</span> ונצא ללמוד אותו יחד
+        </p>
+      </section>
+
+      <section aria-label="נושאים ללמידה">
+        <div class="topicGrid" id="topicGrid">
+          <div class="learnEmpty" id="loadingMsg">טוען נושאים…</div>
+        </div>
+      </section>
+    </main>
+
+    <div class="learnToast" id="learnToast" role="status" aria-live="polite"></div>
+
+    <script>
+      // אימוג'י לכל נושא לפי מילות מפתח בשם הנושא
+      function topicIcon(key) {
+        const k = String(key || "");
+        const has = (s) => k.indexOf(s) !== -1;
+        if (has("חיבור") && has("חיסור")) return "➕";
+        if (has("חיבור")) return "➕";
+        if (has("חיסור")) return "➖";
+        if (has("כפל")) return "✖️";
+        if (has("חילוק")) return "➗";
+        if (has("שעון")) return "🕐";
+        if (has("כסף") || has("מטבע")) return "🪙";
+        if (has("צורות") || has("צלע") || has("קודקוד")) return "🔷";
+        if (has("שבר")) return "🍕";
+        if (has("אחוז")) return "％";
+        if (has("עשרוני")) return "🔟";
+        if (has("נעלם") || has("משוו")) return "❓";
+        if (has("יחס") || has("פרופור")) return "⚖️";
+        if (has("מילולי")) return "📖";
+        if (has("מספר")) return "🔢";
+        return "✨";
+      }
+
+      const toastEl = document.getElementById("learnToast");
+      let toastTimer = null;
+      function showToast(text) {
+        toastEl.textContent = text;
+        toastEl.classList.add("is-show");
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastEl.classList.remove("is-show"), 2600);
+      }
+
+      function renderTopics(topics) {
+        const grid = document.getElementById("topicGrid");
+        grid.innerHTML = "";
+        if (!topics || !topics.length) {
+          grid.innerHTML = '<div class="learnEmpty">עדיין אין נושאים לכיתה הזו 🙂</div>';
+          return;
+        }
+        for (const t of topics) {
+          const tile = document.createElement("button");
+          tile.type = "button";
+          tile.className = "topicTile";
+          tile.setAttribute("data-key", t.key);
+
+          const icon = document.createElement("div");
+          icon.className = "topicTile__icon";
+          icon.setAttribute("aria-hidden", "true");
+          icon.textContent = topicIcon(t.key);
+          tile.appendChild(icon);
+
+          const name = document.createElement("div");
+          name.className = "topicTile__name";
+          name.textContent = t.key;
+          tile.appendChild(name);
+
+          if (Array.isArray(t.sub) && t.sub.length) {
+            const subs = document.createElement("div");
+            subs.className = "topicTile__subs";
+            for (const s of t.sub) {
+              const chip = document.createElement("span");
+              chip.className = "topicTile__sub";
+              chip.textContent = s.label || s.key;
+              subs.appendChild(chip);
+            }
+            tile.appendChild(subs);
+          }
+
+          const go = document.createElement("div");
+          go.className = "topicTile__go";
+          go.innerHTML = '<span>בואו נלמד</span><span class="arrow" aria-hidden="true">←</span>';
+          tile.appendChild(go);
+
+          tile.addEventListener("click", () => {
+            // לחיצה על נושא → עמוד הלמידה (דף המשבצות במסך מלא), עם שם הנושא ב-URL.
+            window.location.href = "/learn-board?topic=" + encodeURIComponent(t.key);
+          });
+
+          grid.appendChild(tile);
+        }
+      }
+
+      (async function init() {
+        try {
+          const meRes = await fetch("/api/me");
+          const me = meRes.ok ? await meRes.json() : null;
+          if (!me || !me.ok) {
+            window.location.href = "/auth";
+            return;
+          }
+          document.getElementById("learnName").textContent = me.user.username || "";
+          document.getElementById("userChip").hidden = false;
+
+          const topRes = await fetch("/api/topics");
+          const data = topRes.ok ? await topRes.json() : null;
+          const loading = document.getElementById("loadingMsg");
+          if (loading) loading.remove();
+          if (data && data.ok) {
+            document.getElementById("gradeLabel").textContent = data.grade || "—";
+            renderTopics(data.topics || []);
+          } else {
+            renderTopics([]);
+          }
+        } catch {
+          window.location.href = "/auth";
+        }
+      })();
+
+      // תפריט (זהה לדף הבית)
+      const menuBtn = document.getElementById("menuBtn");
+      const menu = document.getElementById("menu");
+      function setMenu(open) {
+        menu.classList.toggle("menu--open", open);
+        menuBtn.classList.toggle("hamburger--open", open);
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+      menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setMenu(!menu.classList.contains("menu--open"));
+      });
+      document.addEventListener("click", (e) => {
+        if (menu.classList.contains("menu--open") && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+          setMenu(false);
+        }
+      });
+      document.getElementById("logoutItem").addEventListener("click", async () => {
+        try {
+          await fetch("/api/logout", { method: "POST" });
+        } catch {
+          /* ignore */
+        }
+        window.location.href = "/auth";
+      });
+    </script>
+  </body>
+</html>

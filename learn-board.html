@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>אזור הלמידה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root { --teal: #0d9488; --ink: #0f3b36; --muted: #51706c; --z-dial: 30; }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; overflow: hidden; overscroll-behavior: none; }
+      body { font-family: "Assistant", sans-serif; background: #fff; }
+
+      /* הלוח ממלא את כל המסך — דף ענק אחד של משבצות */
+      #boardWrap { position: fixed; inset: 0; }
+      canvas#board { width: 100%; height: 100%; display: block; touch-action: none; }
+
+      /* צל רך סביב כל קצוות המסך — כאילו הקצוות מצלים פנימה, ומתחזק מעט למטה
+         כך שמרגיש שהצל ממשיך מתחת למסך. מעל הלוח, מתחת לפקדים. */
+      .edgeShadow {
+        position: fixed; inset: 0; pointer-events: none; z-index: 4;
+        box-shadow:
+          inset 0 0 100px 8px rgba(13, 60, 53, 0.12),
+          inset 0 -85px 95px -42px rgba(13, 60, 53, 0.17);
+      }
+
+      /* קישוט עליון מינימלי — שלא יסיח מהמשבצות */
+      .topbar {
+        position: fixed; top: 0; inset-inline: 0; height: 56px;
+        display: flex; align-items: center; gap: 12px;
+        padding: 0 16px; pointer-events: none; z-index: 5;
+      }
+      .chip {
+        pointer-events: auto;
+        display: inline-flex; align-items: center; gap: 8px;
+        height: 38px; padding: 0 14px; border-radius: 999px;
+        background: rgba(255, 255, 255, 0.82); backdrop-filter: blur(6px);
+        border: 1px solid rgba(13, 60, 53, 0.08);
+        box-shadow: 0 4px 14px rgba(2, 6, 23, 0.06);
+        font-weight: 700; color: var(--ink); text-decoration: none; font-size: 15px;
+      }
+      .chip.back { font-size: 18px; padding: 0 12px; }
+      .chip.topic { color: var(--teal); }
+      .chip.topic .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); }
+      .spacer { flex: 1; }
+
+      /* כפתורי זום צפים */
+      .zoomCtl {
+        position: fixed; bottom: 18px; inset-inline-start: 18px; z-index: 5;
+        display: flex; flex-direction: column; gap: 8px;
+      }
+      .zoomCtl button {
+        width: 44px; height: 44px; border-radius: 16px; cursor: pointer;
+        border: 1px solid rgba(13, 60, 53, 0.08);
+        background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(6px);
+        box-shadow: 0 4px 14px rgba(2, 6, 23, 0.08);
+        font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1;
+        display: flex; align-items: center; justify-content: center;
+        transition: transform 0.12s ease;
+      }
+      .zoomCtl button:hover { transform: translateY(-1px); }
+      .zoomCtl button:active { transform: scale(0.94); }
+      .zoomCtl .reset { font-size: 18px; }
+
+      /* ───────── חוגת הכלים ───────── */
+      /* אלמנט אחד שמתמרח: עיגול → גלולה. הכלי הפעיל גולש ממרכז העיגול למקומו. */
+      .toolDial {
+        position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+        z-index: var(--z-dial);
+      }
+
+      .dial {
+        height: 46px; width: 46px; border-radius: 999px; overflow: hidden;
+        display: flex; align-items: center; justify-content: center; cursor: pointer;
+        background: rgba(255, 255, 255, 0.62); /* האליפסה הלבנה — בלי מסגרת, רק צל קל מתחת */
+        -webkit-backdrop-filter: blur(20px) saturate(150%);
+        backdrop-filter: blur(20px) saturate(150%);
+        box-shadow: 0 7px 18px rgba(13, 60, 53, 0.07); /* הצללה ממש עדינה מתחת — בעיגול וכשמתרחב */
+        transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.26s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .toolDial.open .dial { width: var(--openW, 360px); cursor: default; }
+      /* כשבוחרים אובייקט — החוגה נסגרת בעדינות (במקום להיעלם), וחוזרת חלק כעיגול הסמן */
+      .toolDial.is-hidden { pointer-events: none; }
+      .toolDial.is-hidden .dial { opacity: 0; transform: scale(0.6); pointer-events: none; }
+
+      /* שורת האייקונים — ברוחב מלא תמיד; בעיגול הסגור היא מוסטת כך שהכלי הפעיל במרכז, ונגזרת */
+      .dial__row {
+        flex: none; position: relative;
+        display: flex; align-items: center; gap: 18px; padding: 0 18px;
+        transform: translateX(var(--shift, 0px));
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .toolDial.open .dial__row { transform: translateX(0); }
+
+      /* אייקוני הכלים — חופשיים, בלי מסגרת, במרווחים שווים */
+      .dial__tool {
+        position: relative; width: 34px; height: 34px; padding: 0; border: none; background: none;
+        display: flex; align-items: center; justify-content: center; flex: none;
+        color: var(--muted); cursor: pointer;
+        opacity: 0; transition: opacity 0.18s ease, color 0.15s ease;
+      }
+      .dial__tool.active { color: var(--teal); opacity: 1; } /* הכלי הפעיל תמיד גלוי — גם בעיגול הסגור */
+      .toolDial.open .dial__tool { opacity: 1; }
+      .toolDial.open .dial__tool:nth-child(1) { transition-delay: 0.03s; }
+      .toolDial.open .dial__tool:nth-child(2) { transition-delay: 0.05s; }
+      .toolDial.open .dial__tool:nth-child(3) { transition-delay: 0.07s; }
+      .toolDial.open .dial__tool:nth-child(4) { transition-delay: 0.09s; }
+      .toolDial.open .dial__tool:nth-child(5) { transition-delay: 0.11s; }
+      .toolDial.open .dial__tool:nth-child(6) { transition-delay: 0.13s; }
+      .toolDial.open .dial__tool:nth-child(7) { transition-delay: 0.15s; }
+      .dial__tool svg { width: 25px; height: 25px; display: block; }
+      .dial__tool:hover { color: var(--ink); }
+      .dial__tool:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 10px; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dial { transition: width 0.12s linear; }
+        .dial__row { transition: none; }
+        .dial__tool { transition: opacity 0.12s linear, color 0.12s linear; }
+      }
+
+      /* ───────── תפריט מאפיינים (נפתח כשבוחרים אובייקט, במקום החוגה) ───────── */
+      /* מורפינג מהעיגול — בדיוק כמו חוגת הכלים (נפתח ונסגר מהמקום, לא יורד למטה) */
+      .propsBar {
+        position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: var(--z-dial);
+        direction: ltr; height: 46px; width: 46px; border-radius: 999px; overflow: hidden;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(255, 255, 255, 0.62);
+        -webkit-backdrop-filter: blur(20px) saturate(150%);
+        backdrop-filter: blur(20px) saturate(150%);
+        box-shadow: 0 7px 18px rgba(13, 60, 53, 0.1);
+        opacity: 0; visibility: hidden; pointer-events: none;
+        /* סגירה (חזרה לעיגול) — איטית וחלקה יותר; השקיפות נמוגה לאורך כל הכיווץ */
+        transition: width 0.62s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.55s ease, visibility 0s linear 0.62s;
+      }
+      /* פתיחה — מהירה וזריזה (לא משתנה) */
+      .propsBar.is-show {
+        width: var(--propsW, 360px); opacity: 1; visibility: visible; pointer-events: auto;
+        transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.26s ease, visibility 0s linear 0s;
+      }
+      .propsBar__row { flex: none; display: flex; align-items: center; gap: 9px; padding: 0 12px; }
+      .propsBar__btn {
+        border: none; background: none; cursor: pointer; width: 34px; height: 34px; padding: 0;
+        display: flex; align-items: center; justify-content: center; color: var(--muted); border-radius: 14px;
+        transition: color 0.15s ease, background 0.15s ease;
+      }
+      .propsBar__btn svg { width: 22px; height: 22px; display: block; }
+      .propsBar__btn:hover { color: var(--ink); background: rgba(13, 60, 53, 0.05); }
+      .propsBar__btn.active { color: var(--teal); }
+      .propsBar__trash { color: #ef4444; }
+      .propsBar__trash:hover { color: #ef4444; background: rgba(239, 68, 68, 0.12); }
+      .propsBar__sep { width: 1px; height: 22px; background: rgba(13, 60, 53, 0.12); }
+      .propsBar__colors { display: flex; gap: 7px; }
+      .propsBar__sw {
+        width: 22px; height: 22px; border-radius: 50%; padding: 0; cursor: pointer;
+        border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(13, 60, 53, 0.12);
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+      .propsBar__sw:hover { transform: scale(1.1); }
+      .propsBar__sw.active { box-shadow: 0 0 0 2px var(--teal); transform: scale(1.1); }
+      .propsBar__thick { display: flex; gap: 3px; }
+      .propsBar__thick .propsBar__btn { width: 30px; }
+
+      /* ───────── חלונית "מה ציירתי?" (בקשה מהמורה להבין) ───────── */
+      .askChip {
+        position: fixed; top: 68px; left: 50%; z-index: 35;
+        display: flex; align-items: center; gap: 10px;
+        background: rgba(255, 255, 255, 0.92);
+        -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+        border: 1px solid rgba(13, 60, 53, 0.08);
+        border-radius: 999px; padding: 7px 7px 7px 16px;
+        box-shadow: 0 12px 28px rgba(13, 60, 53, 0.16);
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transform: translateX(-50%) translateY(-10px);
+        transition: opacity 0.25s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.25s;
+      }
+      /* החלונית עצמה לא לוכדת אירועים (שלא תחסום ציור מתחתיה) — רק כפתור ה-✓ */
+      .askChip.is-show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+      .askChip.is-show .askChip__ok { pointer-events: auto; }
+      .askChip__txt { font-weight: 600; font-size: 14px; color: var(--ink); }
+      .askChip__ok {
+        width: 36px; height: 36px; flex: none; border: none; border-radius: 50%;
+        background: var(--teal); color: #fff; font-size: 18px; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: transform 0.12s ease, background 0.15s ease;
+      }
+      .askChip__ok:hover { background: #0b8378; transform: scale(1.06); }
+      @media (prefers-reduced-motion: reduce) { .askChip { transition: opacity 0.12s linear, visibility 0.12s; transform: translateX(-50%) !important; } }
+
+      /* ───────── כפתור המורה (מרחף) + צ'אט ───────── */
+      .teacherFab {
+        position: fixed; left: 20px; bottom: 16px; z-index: 20;
+        width: 78px; height: 92px; padding: 0; border: none; background: none; cursor: pointer;
+      }
+      .teacherFab__art {
+        display: block; width: 72px; height: 72px; margin: 0 auto;
+        animation: fabBob 4.6s ease-in-out infinite;
+      }
+      .teacherFab__art svg { display: block; width: 100%; height: 100%; transition: transform 0.2s ease; }
+      .teacherFab:hover .teacherFab__art svg { transform: scale(1.06); }
+      .teacherFab__shadow {
+        position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%);
+        width: 50px; height: 11px; border-radius: 50%;
+        background: rgba(13, 60, 53, 0.2); filter: blur(2px);
+        animation: fabShadow 4.6s ease-in-out infinite;
+      }
+      @keyframes fabBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      @keyframes fabShadow {
+        0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.5; }
+        50% { transform: translateX(-50%) scaleX(0.78); opacity: 0.3; }
+      }
+
+      .chatPanel {
+        position: fixed; left: 18px; bottom: 116px; z-index: 40;
+        width: min(360px, calc(100vw - 36px));
+        height: min(520px, calc(100dvh - 170px));
+        display: flex; flex-direction: column; overflow: hidden;
+        background: #fff; border-radius: 26px;
+        box-shadow: 0 24px 60px rgba(13, 60, 53, 0.22);
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transform: translateY(14px) scale(0.96); transform-origin: left bottom;
+        transition: opacity 0.26s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.26s;
+      }
+      .chatPanel.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+      .chatPanel__head {
+        display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+        background: linear-gradient(135deg, #e9faf6, #ffffff);
+        border-bottom: 1px solid rgba(13, 60, 53, 0.06);
+      }
+      .chatPanel__avatar { width: 40px; height: 40px; flex: none; }
+      .chatPanel__title { font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1.15; }
+      .chatPanel__title small { display: block; font-family: "Assistant", sans-serif; font-weight: 600; font-size: 12px; color: var(--muted); }
+      .chatPanel__close {
+        margin-inline-start: auto; width: 30px; height: 30px; border: none; border-radius: 50%;
+        background: rgba(13, 60, 53, 0.06); color: var(--muted); font-size: 18px; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .chatPanel__close:hover { background: rgba(13, 60, 53, 0.12); }
+      .chatPanel__msgs { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; background: #f7fbfa; }
+      .msg { max-width: 82%; padding: 9px 13px; border-radius: 20px; font-size: 15px; line-height: 1.45; word-wrap: break-word; }
+      .msg.bot { align-self: flex-start; background: #fff; color: var(--ink); border-bottom-right-radius: 6px; box-shadow: 0 2px 8px rgba(2, 6, 23, 0.05); }
+      .msg.me { align-self: flex-end; background: var(--teal); color: #fff; border-bottom-left-radius: 6px; }
+      .msg.typing { display: flex; gap: 4px; align-items: center; }
+      .msg.typing span { width: 7px; height: 7px; border-radius: 50%; background: #9bb3ae; animation: chatDot 1s infinite; }
+      .msg.typing span:nth-child(2) { animation-delay: 0.15s; }
+      .msg.typing span:nth-child(3) { animation-delay: 0.3s; }
+      @keyframes chatDot { 0%, 60%, 100% { opacity: 0.35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-4px); } }
+      .chatPanel__input { display: flex; gap: 8px; padding: 12px; border-top: 1px solid rgba(13, 60, 53, 0.06); background: #fff; }
+      .chatPanel__input input {
+        flex: 1; min-width: 0; border: 1.5px solid rgba(13, 60, 53, 0.12); border-radius: 999px;
+        padding: 10px 16px; font-family: inherit; font-size: 15px; color: var(--ink); background: #fbfdfc;
+      }
+      .chatPanel__input input:focus { outline: none; border-color: var(--teal); }
+      .chatPanel__input button {
+        width: 42px; height: 42px; flex: none; border: none; border-radius: 50%;
+        background: var(--teal); color: #fff; font-size: 17px; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .chatPanel__input button:hover { background: #0b8378; }
+
+      /* בועת דיבור של המורה (תשובת ה-✓) — מימין לדמות, צל רך משלה (בלי החשכת מסך) */
+      .teacherBubble {
+        position: fixed; left: 92px; bottom: 112px; z-index: 38;
+        max-width: min(320px, calc(100vw - 112px));
+        background: #fff; color: var(--ink);
+        border-radius: 24px; padding: 13px 17px;
+        font-size: 15.5px; line-height: 1.55; font-weight: 500;
+        box-shadow: 0 12px 34px rgba(13, 60, 53, 0.2);
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transform: translate(-6px, 6px) scale(0.96); transform-origin: left bottom;
+        transition: opacity 0.26s ease, transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.26s;
+      }
+      .teacherBubble.is-show { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+      /* זנב בפינה השמאלית-תחתונה, מצביע באלכסון מטה-שמאלה אל המורה */
+      .teacherBubble::after {
+        content: ""; position: absolute; left: 16px; bottom: -7px; width: 18px; height: 18px;
+        background: #fff; transform: rotate(45deg); border-radius: 0 0 6px 0;
+      }
+      .bubbleTyping { display: inline-flex; gap: 5px; align-items: center; padding: 3px 0; }
+      .bubbleTyping span { width: 8px; height: 8px; border-radius: 50%; background: #9bb3ae; animation: chatDot 1s infinite; }
+      .bubbleTyping span:nth-child(2) { animation-delay: 0.15s; }
+      .bubbleTyping span:nth-child(3) { animation-delay: 0.3s; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .teacherFab__art, .teacherFab__shadow { animation: none; }
+        .chatPanel { transition: opacity 0.15s linear, visibility 0.15s; transform: none; }
+        .propsBar { transition: width 0.12s linear, opacity 0.12s linear, visibility 0.12s; }
+        .toolDial.is-hidden .dial { transition: opacity 0.12s linear; transform: none; }
+        .teacherBubble { transition: opacity 0.12s linear, visibility 0.12s; transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="boardWrap">
+      <canvas id="board"></canvas>
+    </div>
+    <div class="edgeShadow" aria-hidden="true"></div>
+
+    <!-- חלונית "מה ציירתי?" — מופיעה אחרי ציור; עד שלא לוחצים ✓ המורה לא עושה כלום -->
+    <div class="askChip" id="askChip">
+      <span class="askChip__txt">סיימת לצייר? בוא נראה מה המורה מבין</span>
+      <button class="askChip__ok" id="askOk" type="button" aria-label="שאל את המורה מה ציירתי">✓</button>
+    </div>
+
+    <!-- כפתור המורה המרחף (למטה-משמאל) -->
+    <button class="teacherFab" id="teacherFab" type="button" aria-label="פתיחת צ'אט עם המורה">
+      <span class="teacherFab__shadow" aria-hidden="true"></span>
+      <span class="teacherFab__art" aria-hidden="true">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="velaGfab" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#1ad3bd"/><stop offset="1" stop-color="#0d9488"/></linearGradient></defs>
+          <rect x="12" y="12" width="56" height="56" rx="20" fill="url(#velaGfab)"/>
+          <ellipse cx="30" cy="30" rx="14" ry="10" fill="#fff" opacity="0.14"/>
+          <circle cx="31" cy="50" r="5" fill="#ff8a5c" opacity="0.45"/>
+          <circle cx="49" cy="50" r="5" fill="#ff8a5c" opacity="0.45"/>
+          <ellipse cx="33" cy="40" rx="5" ry="6.5" fill="#fff"/>
+          <ellipse cx="47" cy="40" rx="5" ry="6.5" fill="#fff"/>
+          <circle cx="34" cy="42" r="2.6" fill="#0f3b36"/>
+          <circle cx="48" cy="42" r="2.6" fill="#0f3b36"/>
+          <path d="M34 52 Q40 58 46 52" fill="none" stroke="#0f3b36" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </button>
+
+    <!-- בועת דיבור של המורה (תשובת ה-✓) — מימין לדמות, בלי מסגרת, עם צל משלה -->
+    <div class="teacherBubble" id="teacherBubble" role="status" aria-live="polite">
+      <div class="teacherBubble__body" id="teacherBubbleBody"></div>
+    </div>
+
+    <!-- פאנל הצ'אט עם המורה -->
+    <div class="chatPanel" id="chatPanel" role="dialog" aria-label="צ'אט עם המורה">
+      <header class="chatPanel__head">
+        <span class="chatPanel__avatar" aria-hidden="true">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="velaGhead" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#1ad3bd"/><stop offset="1" stop-color="#0d9488"/></linearGradient></defs>
+            <rect x="12" y="12" width="56" height="56" rx="20" fill="url(#velaGhead)"/>
+            <ellipse cx="33" cy="40" rx="5" ry="6.5" fill="#fff"/>
+            <ellipse cx="47" cy="40" rx="5" ry="6.5" fill="#fff"/>
+            <circle cx="34" cy="42" r="2.6" fill="#0f3b36"/>
+            <circle cx="48" cy="42" r="2.6" fill="#0f3b36"/>
+            <path d="M34 52 Q40 58 46 52" fill="none" stroke="#0f3b36" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="chatPanel__title">המורה<small>כאן ללמד אותך</small></div>
+        <button class="chatPanel__close" id="chatClose" type="button" aria-label="סגירה">×</button>
+      </header>
+      <div class="chatPanel__msgs" id="chatMsgs"></div>
+      <form class="chatPanel__input" id="chatForm">
+        <input id="chatInput" type="text" placeholder="כתוב/י למורה…" autocomplete="off" />
+        <button type="submit" aria-label="שליחה">↑</button>
+      </form>
+    </div>
+
+    <div class="topbar">
+      <a href="/learn" class="chip back" title="חזרה לאזור הלמידה">→</a>
+      <span class="chip topic" id="topicChip" hidden><span class="dot"></span><span id="topicName"></span></span>
+      <span class="spacer"></span>
+    </div>
+
+    <div class="zoomCtl">
+      <button id="zoomIn" title="הגדלה" aria-label="הגדלה">＋</button>
+      <button id="zoomOut" title="הקטנה" aria-label="הקטנה">−</button>
+      <button id="zoomReset" class="reset" title="איפוס תצוגה" aria-label="איפוס תצוגה">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></svg>
+      </button>
+    </div>
+
+    <!-- חוגת הכלים: עיגול שמתמרח לסרגל; הכלי הפעיל גולש למקומו -->
+    <div class="toolDial" id="toolDial">
+      <div class="dial" id="dial" role="toolbar" aria-label="כלי הלוח">
+        <div class="dial__row" id="dialRow">
+        <button class="dial__tool" type="button" data-tool="cursor" aria-label="סמן ובחירה" title="סמן">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l5 15 2.2-6.3L18.5 11 5 4z"/></svg>
+        </button>
+        <button class="dial__tool" type="button" data-tool="pencil" aria-label="עיפרון" title="עיפרון">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19.5l1-3.6L15.4 6l3 3-9.9 9.9-3.6 1z"/><path d="M14 7.4l3 3"/></svg>
+        </button>
+        <button class="dial__tool" type="button" data-tool="eraser" aria-label="מחק" title="מחק">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10" width="12" height="8" rx="1.6" transform="rotate(-45 10.5 14)"/><line x1="7.5" y1="20" x2="19" y2="20"/></svg>
+        </button>
+        <button class="dial__tool" type="button" data-tool="line" aria-label="קו" title="קו">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="18" x2="18" y2="6"/><circle cx="6" cy="18" r="2.2" fill="currentColor" stroke="none"/><circle cx="18" cy="6" r="2.2" fill="currentColor" stroke="none"/></svg>
+        </button>
+        <button class="dial__tool" type="button" data-tool="angle" aria-label="זווית" title="זווית">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M4 19L17 7"/><path d="M10 19A6 6 0 0 0 8.4 14.9"/></svg>
+        </button>
+        <button class="dial__tool" type="button" data-tool="shapes" aria-label="צורות" title="צורות">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3.5" y="8.5" width="9" height="9" rx="1.6"/><circle cx="15.5" cy="13.5" r="5"/></svg>
+        </button>
+        <button class="dial__tool" type="button" data-tool="text" aria-label="טקסט" title="טקסט">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h12"/><path d="M12 6v12"/></svg>
+        </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- תפריט מאפיינים לאובייקט נבחר (קו/צורה/קשקוש) — מחליף את החוגה -->
+    <div class="propsBar" id="propsBar" role="toolbar" aria-label="עריכת האובייקט">
+      <div class="propsBar__row" id="propsRow">
+      <button class="propsBar__btn propsBar__trash" id="propDelete" type="button" aria-label="מחיקת האובייקט" title="מחיקה">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V5h6v2"/><path d="M6 7l1 13h10l1-13"/><path d="M10 11v6M14 11v6"/></svg>
+      </button>
+      <span class="propsBar__sep"></span>
+      <div class="propsBar__colors" id="propColors">
+        <button class="propsBar__sw" type="button" data-color="#0d9488" style="background: #0d9488" aria-label="טורקיז"></button>
+        <button class="propsBar__sw" type="button" data-color="#f97316" style="background: #f97316" aria-label="כתום"></button>
+        <button class="propsBar__sw" type="button" data-color="#ef4444" style="background: #ef4444" aria-label="אדום"></button>
+        <button class="propsBar__sw" type="button" data-color="#2563eb" style="background: #2563eb" aria-label="כחול"></button>
+        <button class="propsBar__sw" type="button" data-color="#22c55e" style="background: #22c55e" aria-label="ירוק"></button>
+        <button class="propsBar__sw" type="button" data-color="#8b5cf6" style="background: #8b5cf6" aria-label="סגול"></button>
+        <button class="propsBar__sw" type="button" data-color="#0f3b36" style="background: #0f3b36" aria-label="כהה"></button>
+      </div>
+      <span class="propsBar__sep"></span>
+      <div class="propsBar__thick" id="propThick">
+        <button class="propsBar__btn" type="button" data-w="3" aria-label="קו דק"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <button class="propsBar__btn" type="button" data-w="6" aria-label="קו בינוני"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></button>
+        <button class="propsBar__btn" type="button" data-w="11" aria-label="קו עבה"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg></button>
+      </div>
+      <span class="propsBar__sep"></span>
+      <button class="propsBar__btn" id="propFill" type="button" aria-label="מילוי רקע" title="מילוי">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3l8 8-7.5 7.5a2 2 0 0 1-2.8 0L4 13.3a2 2 0 0 1 0-2.8z"/><path d="M8.5 6.5l6 6"/><path d="M20 15.5c.9 1.2 1.5 2.2 1.5 3a1.5 1.5 0 0 1-3 0c0-.8.6-1.8 1.5-3z"/></svg>
+      </button>
+      </div>
+    </div>
+
+    <script src="./board.js"></script>
+    <script>
+      // הלוח: מסך מלא, רשת משבצות מרובעות (מצב fill), עם גרירה+זום
+      var canvas = document.getElementById("board");
+      var board = new VelaBoard(canvas, {
+        fit: "fill", background: "grid", grid: 42, mode: "idle",
+        pan: true, zoom: true, // גרירה (יד שתופסת) + זום (גלגלת/צביטה/כפתורים)
+      });
+      window.velaBoard = board; // נגיש לקונסול — לבדיקת כלי מורה, למשל:
+      // velaBoard.tool('draw_circle', { x: 300, y: 240, r: 60 })
+
+      document.getElementById("zoomIn").onclick = function () { board.zoomIn(); };
+      document.getElementById("zoomOut").onclick = function () { board.zoomOut(); };
+      document.getElementById("zoomReset").onclick = function () { board.resetView(); };
+
+      // ───────── חוגת הכלים (מורפינג: עיגול → גלולה) ─────────
+      (function toolDial() {
+        var toolDial = document.getElementById("toolDial");
+        var dial = document.getElementById("dial");
+        var row = document.getElementById("dialRow");
+        var tools = Array.prototype.slice.call(row.querySelectorAll(".dial__tool"));
+        // cursor=בחירה/הזזה, pencil=ציור חופשי, eraser=מחק, line/angle/shapes/text=ציור צורות.
+        var TOOL_MODE = { cursor: "idle", pencil: "child", eraser: "eraser", line: "line", angle: "angle", shapes: "shape", text: "text" };
+        var activeBtn = null, closeTimer = null;
+
+        function isOpen() { return toolDial.classList.contains("open"); }
+        function open() { if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; } toolDial.classList.add("open"); }
+        function close() { toolDial.classList.remove("open"); }
+        function closeSoon() { closeTimer = setTimeout(close, 130); }
+
+        // רוחב הגלולה הפתוחה = רוחב השורה המלא; ההיסט ממרכז את הכלי הפעיל בעיגול הסגור.
+        function measure() {
+          dial.style.setProperty("--openW", row.offsetWidth + "px");
+          if (activeBtn) setShift(activeBtn);
+        }
+        function setShift(btn) {
+          var shift = row.offsetWidth / 2 - (btn.offsetLeft + btn.offsetWidth / 2);
+          row.style.setProperty("--shift", shift + "px");
+        }
+
+        function select(tool) {
+          activeBtn = null;
+          tools.forEach(function (b) { var on = b.dataset.tool === tool; b.classList.toggle("active", on); if (on) activeBtn = b; });
+          if (activeBtn) { setShift(activeBtn); dial.setAttribute("aria-label", "כלי נבחר: " + activeBtn.getAttribute("aria-label")); }
+          if (window.velaBoard) window.velaBoard.setMode(TOOL_MODE[tool] || "idle");
+          window.activeTool = tool;
+        }
+
+        dial.addEventListener("mouseenter", open); // ריחוף → מתרחב
+        toolDial.addEventListener("mouseenter", function () { if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; } });
+        toolDial.addEventListener("mouseleave", closeSoon);
+        toolDial.addEventListener("focusin", open);
+        toolDial.addEventListener("focusout", function (e) { if (!toolDial.contains(e.relatedTarget)) close(); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+        tools.forEach(function (b) {
+          b.addEventListener("click", function () {
+            if (!isOpen()) { open(); return; } // נגיעה ראשונה פותחת (מסך מגע)
+            select(b.dataset.tool); close();
+          });
+        });
+
+        // מדידה ראשונית בלי אנימציה (שלא תיראה "קפיצה" בטעינה), ואז ברירת המחדל
+        dial.style.transition = "none"; row.style.transition = "none";
+        measure(); select("cursor");
+        requestAnimationFrame(function () { dial.style.transition = ""; row.style.transition = ""; });
+
+        window.addEventListener("resize", measure);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+      })();
+
+      // ───────── צ'אט עם המורה ─────────
+      (function chat() {
+        var fab = document.getElementById("teacherFab");
+        var panel = document.getElementById("chatPanel");
+        var closeBtn = document.getElementById("chatClose");
+        var msgs = document.getElementById("chatMsgs");
+        var form = document.getElementById("chatForm");
+        var input = document.getElementById("chatInput");
+        var history = [];
+        var greeted = false;
+        var sending = false;
+        var bubble = document.getElementById("teacherBubble");
+        var bubbleBody = document.getElementById("teacherBubbleBody");
+
+        function isOpen() { return panel.classList.contains("is-open"); }
+        function openChat() {
+          panel.classList.add("is-open");
+          if (!greeted) { addMsg("bot", "היי! אני המורה שלך. אפשר לשאול אותי כל דבר 😊"); greeted = true; }
+          setTimeout(function () { input.focus(); }, 80);
+        }
+        function closeChat() { panel.classList.remove("is-open"); }
+
+        // בועת דיבור ליד המורה (לתשובת ה-✓) — לא הצ'אט. לבועה צל משלה, בלי החשכת מסך.
+        function openBubble(loading) {
+          bubble.classList.add("is-show");
+          if (loading) bubbleBody.innerHTML = '<span class="bubbleTyping"><span></span><span></span><span></span></span>';
+          else bubbleBody.textContent = "";
+        }
+        function setBubble(text) { bubbleBody.textContent = text; }
+        function hideBubble() { bubble.classList.remove("is-show"); }
+
+        // לחיצה על המורה = פתיחת הצ'אט (שיחה אמיתית); קודם סוגרים בועה אם פתוחה.
+        fab.addEventListener("click", function () { hideBubble(); isOpen() ? closeChat() : openChat(); });
+        closeBtn.addEventListener("click", closeChat);
+        // לחיצה מחוץ לבועה (ולא על המורה) סוגרת אותה — בלי לחסום את הלוח.
+        document.addEventListener("pointerdown", function (e) {
+          if (!bubble.classList.contains("is-show")) return;
+          if (bubble.contains(e.target) || fab.contains(e.target)) return;
+          hideBubble();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key !== "Escape") return;
+          if (bubble.classList.contains("is-show")) hideBubble();
+          else if (isOpen()) closeChat();
+        });
+
+        function addMsg(role, text) {
+          var d = document.createElement("div");
+          d.className = "msg " + (role === "me" ? "me" : "bot");
+          d.textContent = text;
+          msgs.appendChild(d);
+          msgs.scrollTop = msgs.scrollHeight;
+          return d;
+        }
+        function showTyping() {
+          var d = addMsg("bot", "");
+          d.classList.add("typing");
+          d.innerHTML = "<span></span><span></span><span></span>";
+          msgs.scrollTop = msgs.scrollHeight;
+          return d;
+        }
+
+        // שליחה משותפת: displayText = מה שמוצג כבועת הילד; payloadText = מה שנשלח למורה.
+        async function sendToTeacher(displayText, payloadText) {
+          if (sending) return;
+          sending = true;
+          openChat();
+          addMsg("me", displayText);
+          history.push({ role: "user", content: payloadText });
+          var typing = showTyping();
+          try {
+            var res = await fetch("/api/chat", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({
+                messageKind: "Question",
+                messageText: payloadText,
+                topic: { title: new URLSearchParams(location.search).get("topic") || "" },
+                history: history.slice(-12),
+              }),
+            });
+            if (res.status === 401) { typing.remove(); addMsg("bot", "צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 900); return; }
+            var data = await res.json();
+            typing.remove();
+            var reply = (data && data.reply) || "סליחה, לא הצלחתי לענות כרגע.";
+            addMsg("bot", reply);
+            history.push({ role: "assistant", content: reply });
+          } catch (err) {
+            typing.remove();
+            addMsg("bot", "אופס, יש בעיית חיבור. ננסה שוב?");
+          } finally {
+            sending = false;
+          }
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var text = input.value.trim();
+          if (!text) return;
+          input.value = "";
+          sendToTeacher(text, text);
+        });
+
+        // המורה "רואה" את הציור כתמונה (Claude vision) ומפרש מה צויר.
+        async function seeBoard(imageDataUrl) {
+          if (sending) return;
+          sending = true;
+          openBubble(true); // בועה ליד המורה עם "טוען", ורקע מוצלל — בלי לפתוח צ'אט
+          try {
+            var res = await fetch("/api/see", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({ image: imageDataUrl, topic: { title: new URLSearchParams(location.search).get("topic") || "" } }),
+            });
+            if (res.status === 401) { setBubble("צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 1100); return; }
+            var data = await res.json();
+            var reply = (data && data.reply) || "סליחה, לא הצלחתי לראות את הציור.";
+            setBubble(reply);
+            // נשמר בהיסטוריה (להקשר אם ייפתח צ'אט), אך לא מוצג בצ'אט עצמו.
+            history.push({ role: "user", content: "(הראיתי למורה את הציור שלי על הלוח)" });
+            history.push({ role: "assistant", content: reply });
+          } catch (err) {
+            setBubble("אופס, לא הצלחתי לראות את הציור. ננסה שוב?");
+          } finally {
+            sending = false;
+          }
+        }
+
+        // נקודות כניסה ל"המורה יבין מה ציירתי": ראייה (תמונה) או תיאור מובנה (גיבוי).
+        window.velaSeeBoard = seeBoard;
+        window.velaBubble = function (text) { openBubble(false); setBubble(text); }; // בועה עם טקסט (למשל לוח ריק)
+        window.velaAskBoard = function (displayText, payloadText) { sendToTeacher(displayText, payloadText); };
+      })();
+
+      // ───────── תפריט המאפיינים (בחירת אובייקט) ─────────
+      (function propsBar() {
+        var bar = document.getElementById("propsBar");
+        var dialEl = document.getElementById("toolDial");
+        var colors = Array.prototype.slice.call(bar.querySelectorAll(".propsBar__sw"));
+        var thicks = Array.prototype.slice.call(document.querySelectorAll("#propThick .propsBar__btn"));
+        var fillBtn = document.getElementById("propFill");
+        var delBtn = document.getElementById("propDelete");
+        var row = document.getElementById("propsRow");
+
+        // רוחב הסרגל הפתוח = רוחב השורה (כדי שייפתח מהעיגול בדיוק כמו החוגה)
+        function measure() { bar.style.setProperty("--propsW", row.offsetWidth + "px"); }
+        measure();
+        window.addEventListener("resize", measure);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+        var thickGroup = document.getElementById("propThick");
+        function sync(sel) {
+          colors.forEach(function (b) { b.classList.toggle("active", b.dataset.color === sel.color); });
+          thicks.forEach(function (b) { b.classList.toggle("active", +b.dataset.w === sel.width); });
+          fillBtn.classList.toggle("active", !!sel.fill);
+          // לטקסט אין עובי-קו/מילוי — מסתירים אותם (ואת המפרידים שלפניהם) שלא יהיו פקדים מתים.
+          var isText = sel.type === "text";
+          [thickGroup, fillBtn].forEach(function (el) {
+            if (!el) return;
+            el.style.display = isText ? "none" : "";
+            var sep = el.previousElementSibling;
+            if (sep && sep.classList.contains("propsBar__sep")) sep.style.display = isText ? "none" : "";
+          });
+        }
+
+        // כשבוחרים אובייקט — החוגה נסגרת בעדינות והתפריט נפתח; בביטול — להפך (חלק).
+        board.onSelectionChange(function (sel) {
+          if (sel) { dialEl.classList.add("is-hidden"); bar.classList.add("is-show"); sync(sel); }
+          else { bar.classList.remove("is-show"); dialEl.classList.remove("is-hidden"); }
+        });
+
+        colors.forEach(function (b) { b.addEventListener("click", function () { board.setSelectedColor(b.dataset.color); }); });
+        thicks.forEach(function (b) { b.addEventListener("click", function () { board.setSelectedWidth(+b.dataset.w); }); });
+        fillBtn.addEventListener("click", function () { board.toggleSelectedFill(); });
+        delBtn.addEventListener("click", function () { board.deleteSelected(); });
+
+        // מקלדת: Delete / Backspace מוחקים את האובייקט הנבחר (אך לא בזמן הקלדה בשדה טקסט)
+        document.addEventListener("keydown", function (e) {
+          if (e.key !== "Delete" && e.key !== "Backspace") return;
+          var t = e.target;
+          if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+          if (board.getSelected && board.getSelected()) {
+            e.preventDefault();
+            board.deleteSelected();
+          }
+        });
+      })();
+
+      // ───────── "המורה מבין מה ציירתי" ─────────
+      (function understand() {
+        var askChip = document.getElementById("askChip");
+        var askOk = document.getElementById("askOk");
+        var G = window.VelaBoard._geom;
+
+        // הופך את תוכן הלוח לתיאור עברי קצר (מנצל שאנחנו יודעים באיזה כלי צוירה כל צורה).
+        function describeBoard(scene) {
+          var items = (scene && scene.childStrokes) || [];
+          var out = [];
+          for (var i = 0; i < items.length; i++) {
+            var s = items[i];
+            if (s.type === "text") { out.push('הכיתוב "' + s.text + '"'); continue; }
+            if (s.kind === "line") { out.push("קו ישר"); continue; }
+            if (s.kind === "angle") {
+              var p = s.points, deg = Math.round((G.angleAt(p[0], p[1], p[2]) * 180) / Math.PI);
+              out.push("זווית של כ-" + deg + " מעלות"); continue;
+            }
+            if (s.kind === "rect") {
+              var bb = G.bboxOf(s.points), w = bb.maxX - bb.minX, h = bb.maxY - bb.minY;
+              var sq = Math.abs(w - h) < 0.2 * Math.max(w, h);
+              out.push((sq ? "ריבוע" : "מלבן") + (s.fill ? " מלא" : "")); continue;
+            }
+            // קשקוש חופשי — סיווג אוטומטי
+            var c = G.classifyStroke(s.points);
+            if (c.kind === "circle") out.push("עיגול");
+            else if (c.kind === "triangle") out.push("משולש");
+            else if (c.kind === "quad") out.push("מרובע");
+            else if (c.kind === "polygon") out.push("צורה עם " + c.corners + " צלעות");
+            else if (c.kind === "line") out.push("קו");
+            else if (c.kind === "curve") out.push("קו מתעקל");
+            else out.push("ציור חופשי");
+          }
+          return out;
+        }
+
+        // אחרי כל ציור — מציגים את החלונית. עד שלא לוחצים ✓, המורה לא עושה כלום.
+        board.onDraw(function () { askChip.classList.add("is-show"); });
+
+        askOk.addEventListener("click", function () {
+          askChip.classList.remove("is-show");
+          // המורה רואה את הציור כתמונה ועונה בבועה לידו (לא בצ'אט).
+          var img = board.exportPNG ? board.exportPNG() : null;
+          if (img && window.velaSeeBoard) window.velaSeeBoard(img);
+          else if (window.velaBubble) window.velaBubble("הלוח עוד ריק — צייר משהו ואני אסתכל 🙂");
+        });
+      })();
+
+      // שם הנושא שהגענו ממנו (?topic=...)
+      var topic = new URLSearchParams(location.search).get("topic");
+      if (topic) {
+        document.getElementById("topicName").textContent = topic;
+        document.getElementById("topicChip").hidden = false;
+        document.title = topic + " — אזור הלמידה";
+      }
+    </script>
+  </body>
+</html>

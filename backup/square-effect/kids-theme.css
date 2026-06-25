@@ -1032,22 +1032,6 @@ body.chat-collapsed main.study-v2.layout {
   padding: clamp(18px, 3.5vh, 44px) clamp(20px, 4vw, 60px) clamp(22px, 4vh, 52px);
 }
 
-/* שאלות ציור צורה: לוח הסרטוט ממלא את כל מסך השאלה, רקע לבן, ומשבצות עדינות יותר */
-.study-v2 #shapeCreatorCard {
-  padding: 8px; /* כמעט עד הקצוות — הלוח ממלא את כל החלון */
-}
-/* גובה מוגדר (לא flex/auto) — כך ה-JS מודד את הלוח נכון וה-SVG מצייר משבצות ריבועיות
-   שממלאות את כל השטח (עוד משבצות), במקום למתוח משבצות קיימות */
-.study-v2 #shapeCreatorCard .shapeBoard {
-  height: calc(100vh - 124px);
-  min-height: 0;
-  background: #ffffff; /* רקע לבן */
-  border-radius: 18px;
-}
-.study-v2 #shapeCreatorCard .shapeGrid {
-  stroke: rgb(var(--accent-rgb) / 0.08); /* פסי המשבצות עדינים יותר */
-}
-
 /* (9) ה-? בלי עיגול — רק סימן שאלה תכלת */
 .study-v2 .helpBtn--corner {
   background: transparent;
@@ -1131,71 +1115,6 @@ body.chat-collapsed main.study-v2.layout {
   align-self: center !important;
 }
 
-/* שאלות צורה: "סיימתי" רחב יותר במרכז; "נסה שוב" כאייקון חזרה בפינה ימנית-תחתונה */
-.study-v2 .shapeCreator__actions #shapeDoneBtn,
-.study-v2 .shapeCreator__actions #shapeDoneBtn:hover {
-  min-width: min(440px, 72%) !important; /* רחב יותר לצדדים */
-  box-shadow: none !important; /* בלי ערפל/הילה תכלת מתחת לכפתור */
-}
-.study-v2 #shapeClearBtn {
-  position: absolute;
-  bottom: 16px;
-  right: 18px;
-  left: auto;
-  min-width: 0 !important;
-  width: 48px;
-  height: 48px;
-  padding: 0 !important;
-  border: 0;
-  border-radius: 0;
-  background: transparent; /* בלי מסגרת/עיגול — רק הסימן */
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  color: var(--kid-teal-ink);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  z-index: 4;
-}
-.study-v2 #shapeClearBtn::before { display: none; } /* בלי כיפת-ברק */
-/* הסימן בלבד; ריחוף → סיבוב 360°, יציאה → 360° הפוך (ה-transition חוזר מ-360 ל-0) */
-.study-v2 #shapeClearBtn svg {
-  width: 28px;
-  height: 28px;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.study-v2 #shapeClearBtn:hover svg { transform: rotate(-360deg); }
-@media (prefers-reduced-motion: reduce) {
-  .study-v2 #shapeClearBtn svg { transition: none; }
-  .study-v2 #shapeClearBtn:hover svg { transform: none; }
-}
-
-/* ===== מעבר בין שאלות: יציאה בזינוק כלפי מעלה + כניסה קופצת מלמטה ===== */
-.study-v2 .lesson.q-leave {
-  animation: qLeave 0.5s cubic-bezier(0.55, 0, 0.85, 0.18) forwards;
-  will-change: transform, opacity;
-}
-.study-v2 .lesson.q-enter {
-  animation: qEnter 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
-  will-change: transform, opacity;
-}
-@keyframes qLeave {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  20% { transform: translateY(16px) scale(0.985); opacity: 1; } /* כיווץ-קפיצה לפני הזינוק */
-  100% { transform: translateY(-118%) scale(0.9); opacity: 0; } /* זינוק כלפי מעלה והחוצה */
-}
-@keyframes qEnter {
-  0% { transform: translateY(64%) scale(0.94); opacity: 0; }
-  62% { transform: translateY(-2.5%) scale(1.02); opacity: 1; } /* חריגה קלה — תחושת קפיץ */
-  100% { transform: translateY(0) scale(1); opacity: 1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .study-v2 .lesson.q-leave,
-  .study-v2 .lesson.q-enter { animation: none; }
-}
-
 /* הסרת טקסט הפוטר "מערכת לימוד — תרגול עם מורה AI" */
 body:has(.study-v2) .footer { display: none; }
 
@@ -1253,7 +1172,7 @@ body:has(.study-v2) .footer { display: none; }
 .study-v2 .chatToggle { display: none !important; }
 .study-v2 .chatSidebar {
   width: 28%; /* צר עוד יותר */
-  background: transparent; /* בלי אזור-לבן נפרד — מתמזג עם הרקע, אין תפר בקצה */
+  background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: 0;
@@ -1309,8 +1228,8 @@ body:has(.study-v2) .footer { display: none; }
 .study-v2 .composerSend:hover { transform: scale(1.1); }
 .study-v2 .composerSend:active { transform: scale(0.92); }
 .study-v2 .chatResizeHandle { display: none; }
-/* במנוחה: כל הפס מוסתר לגמרי — בלי רקע, בלי קו-הפרדה, בלי ציור המורה.
-   נשאר מדיד (לא display:none) כדי שהריבוע (is-talk) ייפתח בלחיצה על המיקרופון */
+/* בצ'אט-טקסט קופסת המורה נעלמת (גובה 0, אך עדיין מדידה כדי שתוכל להיפתח);
+   בשיחת קול (is-talk) היא נפתחת לחוויה המלאה — ריבוע מטושטש + מורה + טקסט מדבר */
 .study-v2 #chatHeader:not(.is-talk) {
   height: 0 !important;
   min-height: 0 !important;
@@ -1321,33 +1240,15 @@ body:has(.study-v2) .footer { display: none; }
   box-shadow: none !important;
   border: 0 !important;
   pointer-events: none;
-  opacity: 0;
+  opacity: 0; /* שום שריד לבן בצ'אט-טקסט */
 }
-/* הכותרת "צ'אט עם המורה" וה-"AI" — מוסתרים תמיד */
-.study-v2 .chatSidebar__titleWrap,
-.study-v2 #chatHeader .aiIndicator {
-  display: none;
-}
-/* אין ריבוע/רקע על המורה — הערפל הלבן המדורג מכסה את כל העמודה דרך .voiceFog
-   (אטום למעלה אצל המורה → לא רואים רקע, ודועך כלפי מטה).
-   overflow:visible כדי שהמורה יוכל לעוף פנימה/החוצה אל הדוק */
-.study-v2 .chatSidebar__header.is-talk {
-  background: transparent;
-  overflow: visible;
-  box-shadow: none;
-}
-/* כשהקול פתוח — אווטאר הדוק מוסתר (המורה המעופף מחליף אותו) */
-.teacherDock.is-flown { opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
 /* ערפל על ההודעות: מסיבי למעלה, מתפוגג כלפי מטה — התחתונות חשופות, השנייה-מלמטה
    מתחילה כבר עם מעט ערפל, וככל שעולים הערפל גדל עד היעלמות מלאה למעלה */
 .study-v2 #chatLog {
-  /* הערפל מתחיל גבוה יותר: ההודעות חשופות עד ~60% מהגובה, ורק החלק העליון דועך */
-  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 60%, transparent 98%);
-  mask-image: linear-gradient(to top, #000 0%, #000 60%, transparent 98%);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 3%, transparent 97%);
+  mask-image: linear-gradient(to top, #000 0%, #000 3%, transparent 97%);
   padding-left: 108px; /* טקסט מצטמצם משמאל — לא עובר מאחורי המורה */
 }
-/* מיקרופון-הערפל מוסתר — המיקרופון היחיד הוא זה שזז למרכז (שיבוט) */
-.study-v2 .voiceFog__mic { display: none; }
 /* מצב הקלטה — הסמל אדום ופועם (בלי עיגול) */
 .study-v2 .composerSend.is-recording {
   color: #ef4444;

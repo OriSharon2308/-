@@ -782,53 +782,38 @@ function analyzeDrawnShape(verts, target, closed) {
 /** בונה לוח משבצות לציור צורה. המצב נשמר ב-container._shapeState. */
 function renderShapeBoard(container, target) {
   if (!container) return;
-  // הלוח ממלא את כל הכרטיס. הגודל נמדד בפיקסלים (1 יחידה = 1 פיקסל) כדי שהמשבצות יהיו ריבועיות,
-  // ונמדד מחדש (ResizeObserver) כשהלוח באמת מוצג/משנה גודל → המשבצות תמיד ריבועיות, לא נמתחות.
+  // הלוח ממלא את כל הכרטיס; מודדים את הגודל בפיקסלים כדי שהמשבצות יהיו ריבועיות
   const cell = 38; // גודל משבצת בפיקסלים
+  const rect = container.getBoundingClientRect();
+  const W = Math.max(240, Math.round(rect.width) || 640);
+  const H = Math.max(240, Math.round(rect.height) || 440);
+  const colsMax = Math.floor(W / cell);
+  const rowsMax = Math.floor(H / cell);
   const SNAP = cell * 0.6; // מרחק סגירה אל הנקודה הראשונה
-  let W = 640, H = 440, colsMax = 0, rowsMax = 0;
   const state = { verts: [], closed: false, target };
   container._shapeState = state;
   container.innerHTML = "";
 
   const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
   svg.setAttribute("preserveAspectRatio", "none"); // 1 יחידה = 1 פיקסל → משבצות ריבועיות
   svg.setAttribute("class", "shapeBoardSvg");
 
-  // שכבת המשבצות (מאחורי הצורה) — נבנית מחדש בכל מדידה
-  const gridLayer = document.createElementNS(SVG_NS, "g");
-  svg.appendChild(gridLayer);
-  function buildGrid() {
-    gridLayer.innerHTML = "";
-    for (let x = 0; x <= W; x += cell) {
-      const vline = document.createElementNS(SVG_NS, "line");
-      vline.setAttribute("x1", x); vline.setAttribute("y1", 0);
-      vline.setAttribute("x2", x); vline.setAttribute("y2", H);
-      vline.setAttribute("class", "shapeGrid");
-      gridLayer.appendChild(vline);
-    }
-    for (let y = 0; y <= H; y += cell) {
-      const hline = document.createElementNS(SVG_NS, "line");
-      hline.setAttribute("x1", 0); hline.setAttribute("y1", y);
-      hline.setAttribute("x2", W); hline.setAttribute("y2", y);
-      hline.setAttribute("class", "shapeGrid");
-      gridLayer.appendChild(hline);
-    }
+  // משבצות — קווי תכלת עדינים על פני כל הלוח (כמו נייר משבצות)
+  for (let x = 0; x <= W; x += cell) {
+    const vline = document.createElementNS(SVG_NS, "line");
+    vline.setAttribute("x1", x); vline.setAttribute("y1", 0);
+    vline.setAttribute("x2", x); vline.setAttribute("y2", H);
+    vline.setAttribute("class", "shapeGrid");
+    svg.appendChild(vline);
   }
-  // מודד את גודל הלוח בפיקסלים ומעדכן viewBox + משבצות (1:1 → ריבועי). מחזיר true אם השתנה.
-  function measure() {
-    const rect = container.getBoundingClientRect();
-    const nw = Math.max(240, Math.round(rect.width) || 640);
-    const nh = Math.max(240, Math.round(rect.height) || 440);
-    if (nw === W && nh === H && gridLayer.childNodes.length) return false;
-    W = nw; H = nh;
-    colsMax = Math.floor(W / cell);
-    rowsMax = Math.floor(H / cell);
-    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    buildGrid();
-    return true;
+  for (let y = 0; y <= H; y += cell) {
+    const hline = document.createElementNS(SVG_NS, "line");
+    hline.setAttribute("x1", 0); hline.setAttribute("y1", y);
+    hline.setAttribute("x2", W); hline.setAttribute("y2", y);
+    hline.setAttribute("class", "shapeGrid");
+    svg.appendChild(hline);
   }
-  measure();
 
   const edges = document.createElementNS(SVG_NS, "polyline");
   edges.setAttribute("class", "shapeEdges");
@@ -927,15 +912,6 @@ function renderShapeBoard(container, target) {
 
   container.appendChild(svg);
   redraw();
-
-  // מדידה מחדש כשהלוח מקבל גודל אמיתי (hidden→מוצג) או משנה גודל — המשבצות נשארות ריבועיות,
-  // הקודקודים נשמרים (פיקסלים) → הצורה נשארת על הגריד
-  if (window.ResizeObserver) {
-    const ro = new ResizeObserver(function () {
-      if (measure()) redraw();
-    });
-    ro.observe(container);
-  }
 }
 
 /** חושף את הדמיית החפצים — נקרא רק כשהתלמיד מתקשה (תשובה שגויה / בקשת רמז). */
@@ -965,7 +941,6 @@ function appendMsg(chatLogEl, { from, text, isError, animate, reveal }) {
   who.textContent = from === "user" ? "את/ה" : "מורה";
   const time = document.createElement("span");
   time.textContent = nowTime();
-  wrap.dataset.time = time.textContent; // study-v2: השעה נשמרת כנתון גם כשהיא לא מוצגת
   meta.appendChild(who);
   meta.appendChild(time);
 
@@ -1725,37 +1700,6 @@ async function main() {
     const prompted = topic.levelPrompted && topic.levelPrompted[topic.level];
     return N > 0 && done >= N && !prompted;
   }
-  // ===== מעבר בין שאלות: המלבן הנוכחי "מזנק" כלפי מעלה ויוצא, וחדש קופץ פנימה מלמטה =====
-  function prefersReducedMotion() {
-    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }
-  function animateQuestionEnter() {
-    const card = document.querySelector(".panel.lesson");
-    if (!card || prefersReducedMotion()) return;
-    card.classList.remove("q-enter");
-    void card.offsetWidth; // reflow → אתחול האנימציה
-    card.classList.add("q-enter");
-    card.addEventListener("animationend", function onEnd(e) {
-      if (e.target !== card || e.animationName !== "qEnter") return; // לא להיתפס על אנימציות של ילדים
-      card.removeEventListener("animationend", onEnd);
-      card.classList.remove("q-enter");
-    });
-  }
-  // יציאה (זינוק החוצה כלפי מעלה) → החלפת התוכן לשאלה הבאה → כניסה קופצת מלמטה
-  function leapToNextQuestion() {
-    const card = document.querySelector(".panel.lesson");
-    const advance = () => u.nextProblemBtn?.click();
-    if (!card || prefersReducedMotion()) { advance(); return; }
-    card.classList.remove("q-enter");
-    card.classList.add("q-leave");
-    card.addEventListener("animationend", function onEnd(e) {
-      if (e.target !== card || e.animationName !== "qLeave") return;
-      card.removeEventListener("animationend", onEnd);
-      card.classList.remove("q-leave");
-      advance(); // התוכן מתחלף בזמן שהכרטיס למעלה ושקוף → אין הבהוב
-      animateQuestionEnter(); // הכרטיס החדש קופץ פנימה מלמטה
-    });
-  }
   function showAnswerFeedback(isCorrect) {
     u.feedbackBox.classList.remove("feedback--hidden");
     u.feedbackBox.hidden = false;
@@ -1770,7 +1714,7 @@ async function main() {
       }
       setFeedback(u.feedbackBox, "✅ נכון! עוברים לשאלה הבאה…", "feedback--ok");
       launchConfetti();
-      window.setTimeout(leapToNextQuestion, 1100);
+      window.setTimeout(() => u.nextProblemBtn?.click(), 1200);
     } else {
       setFeedback(u.feedbackBox, "❌ לא מדויק — נסה/י שוב, או בקש/י רמז.", "feedback--danger");
     }
@@ -2089,46 +2033,6 @@ async function main() {
     return api;
   }
 
-  // וו ללולאת הקול (לא משנה את המורה — רק עוטף): שולח טקסט מתומלל למורה הקיים,
-  // מציג את ההודעה+התשובה בצ'אט כרגיל, ומחזיר את תשובת המורה (string) כדי שאפשר יהיה להקריא אותה.
-  window.vela = window.vela || {};
-  window.vela.ask = async function (text) {
-    const api = await requestAi({ messageText: text, messageKind: "Question" });
-    return api && typeof api.reply === "string" ? api.reply : "";
-  };
-
-  // ===== שיחה בקול: לא מתעדכן בצ'אט בלייב — נצבר, ונשפך לצ'אט רק בסגירת המורה =====
-  // voiceSession: התורים של השיחה הפתוחה (לא מוצגים עדיין). משמשים גם כהקשר למורה.
-  let voiceSession = [];
-  // שולח למורה בלי לרנדר בועות/לגעת בהיסטוריה הגלויה. מחזיר את תשובת המורה (string).
-  window.vela.askVoice = async function (text) {
-    const t = String(text ?? "").trim();
-    if (!t) return "";
-    const topic = getCurrentTopic();
-    const base = Array.isArray(topic.chatHistory) ? topic.chatHistory : [];
-    const history = base.concat(voiceSession).slice(-14); // הקשר: צ'אט קודם + מה שנאמר בקול עד כה
-    const payload = buildTutorPayload(topic, { kind: "Question" }, t, history, {});
-    payload.voice = true; // נימה רגועה, בלי סימני קריאה/אימוג'ים
-    const api = await callTutorApi(payload);
-    const reply = api && typeof api.reply === "string" ? api.reply : "";
-    voiceSession.push({ role: "user", content: t });
-    if (reply) voiceSession.push({ role: "assistant", content: reply });
-    return reply;
-  };
-  // נשפך לצ'אט בסגירת המורה: מוסיף את כל הבועות בבת-אחת + לזיכרון + שמירה.
-  window.vela.flushVoice = function () {
-    if (!voiceSession.length) return;
-    const topic = getCurrentTopic();
-    topic.chatHistory = Array.isArray(topic.chatHistory) ? topic.chatHistory : [];
-    for (const m of voiceSession) {
-      appendMsg(u.chatLog, { from: m.role === "user" ? "user" : "bot", text: m.content, animate: true });
-      topic.chatHistory.push(m);
-    }
-    topic.chatHistory = topic.chatHistory.slice(-40);
-    voiceSession = [];
-    saveAll();
-  };
-
   async function checkAnswerText(answerText) {
     const raw = String(answerText ?? "").trim();
     if (!raw) return;
@@ -2194,27 +2098,9 @@ async function main() {
   saveAll();
 
   setChatWidth(uiState.chatWidth);
-  uiState.chatCollapsed = true; // study-v2: ריבוע השאלה על כל הרוחב — הצ'אט נפתח דרך אווטאר המורה
   renderChatCollapsed();
 
-  // study-v2: חצי-הזווית בצדי השאלה משתמשים באותם הנדלרים של קודם/הבא; אווטאר המורה פותח את הצ'אט
-  (function wireStudyV2() {
-    const qp = document.getElementById("qNavPrev");
-    const qn = document.getElementById("qNavNext");
-    const pb = document.getElementById("prevProblemBtn");
-    const nb = document.getElementById("nextProblemBtn");
-    if (qp && pb) qp.addEventListener("click", () => pb.click());
-    if (qn && nb) qn.addEventListener("click", () => nb.click());
-    const td = document.getElementById("teacherDock");
-    if (td && u.chatToggleBtn) td.addEventListener("click", () => u.chatToggleBtn.click());
-  })();
-
   refreshAiStatus(u);
-  // חיווי ה-AI מרפא את עצמו: בדיקה תקופתית + כשחוזרים לטאב/לרשת —
-  // כך אחרי בליפ זמני בשרת (או הרמה מחדש) הנקודה לא נשארת תקועה על "מנותק".
-  setInterval(() => refreshAiStatus(u), 20000);
-  window.addEventListener("focus", () => refreshAiStatus(u));
-  window.addEventListener("online", () => refreshAiStatus(u));
 
   u.agentDebugToggle?.addEventListener("click", () => {
     const open = u.agentDebugBody.hidden;
@@ -2369,7 +2255,7 @@ async function main() {
     if (verdict.correct) {
       registerCorrect();
       launchConfetti();
-      window.setTimeout(leapToNextQuestion, 1400);
+      window.setTimeout(() => u.nextProblemBtn?.click(), 1500);
     } else {
       // נסה שוב — מנקים את הלוח
       renderShapeBoard(u.shapeBoard, st.target);
@@ -2461,11 +2347,7 @@ async function main() {
     saveAll();
   });
 
-  // study-v2: כפתור המיקרופון מפעיל/מכבה שיחה קולית. שליחת טקסט נשארת ב-Enter.
-  u.sendBtn.addEventListener("click", () => {
-    // פתיחה/סגירה של שיחת הקול; אפקט המיקרופון (זז למרכז / חוזר) מנוהל ב-observer של הריבוע
-    if (window.vela && typeof window.vela.voiceToggle === "function") window.vela.voiceToggle();
-  });
+  u.sendBtn.addEventListener("click", handleChatSend);
   u.chatInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();

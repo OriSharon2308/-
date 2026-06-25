@@ -2,6 +2,7 @@
 
 const llm = require("../lib/llm");
 const memory = require("../lib/memory");
+const learnerProfile = require("../lib/learner-profile"); // פרופיל מתומצת משותף לכל המערכת
 const users = require("../lib/users");
 const { gradeToNum, CURRICULUM } = require("../lib/curriculum");
 const { teacherReply } = require("./teacher-agent");
@@ -155,6 +156,7 @@ async function runChat(payload = {}) {
     student = {},
     history = [],
     gender = "male",
+    voice = false,
   } = payload;
 
   const topicLabel = topic.title || topic.kind || "";
@@ -204,7 +206,15 @@ async function runChat(payload = {}) {
     query: messageText,
     topic: topicLabel,
   });
-  const contextText = memory.contextToText(ctx);
+  let contextText = memory.contextToText(ctx);
+  // מקדימים את הפרופיל המתומצת המשותף (סטטוס לכל נושא) — זה הזיכרון שהמורה
+  // נושא איתו לכל אזור באפליקציה. עטוף: פרופיל לא קריטי, לא מפיל את הצ'אט.
+  try {
+    const profileText = learnerProfile.toPromptText(userId);
+    if (profileText) contextText = `${profileText}\n\n${contextText}`.trim();
+  } catch (e) {
+    /* ignore — הזיכרון המובנה הוא תוספת, לא תלות */
+  }
 
   const response = { agentDebug };
 
@@ -275,6 +285,7 @@ async function runChat(payload = {}) {
     vizName: vizInfo ? vizInfo.name : null,
     shapeNote,
     gender,
+    voice,
   });
 
   // המורה יכול לשלוח [[SHOW_VISUAL]] כדי שהמערכת תפתח את ההדמיה — מזהים, מסירים מהטקסט
@@ -303,6 +314,12 @@ async function runChat(payload = {}) {
         problem: problem.text,
         correct,
       });
+      // עדכון הפרופיל המתומצת המשותף — דטרמיניסטי, זול, מתעדכן מכל אזור באפליקציה
+      try {
+        learnerProfile.record(userId, { topic: problem.bankTopic || topicLabel, correct });
+      } catch (e) {
+        /* ignore — רישום פרופיל לא חוסם את התשובה */
+      }
       // עדכון הפרופיל המילולי ברקע — לא חוסם את התשובה לתלמיד
       void updateTeacherProfile(userId);
     } else if (messageKind === "NewProblem" && activeProblem) {
