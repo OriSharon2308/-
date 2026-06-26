@@ -264,7 +264,8 @@
         position: fixed; left: 92px; bottom: 112px; z-index: 38;
         max-width: min(320px, calc(100vw - 112px));
         background: #fff; color: var(--ink);
-        border-radius: 24px; padding: 13px 17px;
+        /* פינה שמאלית-תחתונה ישרה (חדה) — הבועה מצביעה באלכסון אל המורה, בלי חץ */
+        border-radius: 24px 24px 24px 0; padding: 13px 17px;
         font-size: 15.5px; line-height: 1.55; font-weight: 500;
         box-shadow: 0 12px 34px rgba(13, 60, 53, 0.2);
         opacity: 0; visibility: hidden; pointer-events: none;
@@ -272,11 +273,6 @@
         transition: opacity 0.26s ease, transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.26s;
       }
       .teacherBubble.is-show { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
-      /* זנב בפינה השמאלית-תחתונה, מצביע באלכסון מטה-שמאלה אל המורה */
-      .teacherBubble::after {
-        content: ""; position: absolute; left: 16px; bottom: -7px; width: 18px; height: 18px;
-        background: #fff; transform: rotate(45deg); border-radius: 0 0 6px 0;
-      }
       .bubbleTyping { display: inline-flex; gap: 5px; align-items: center; padding: 3px 0; }
       .bubbleTyping span { width: 8px; height: 8px; border-radius: 50%; background: #9bb3ae; animation: chatDot 1s infinite; }
       .bubbleTyping span:nth-child(2) { animation-delay: 0.15s; }
