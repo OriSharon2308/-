@@ -99,10 +99,33 @@
         position: relative; width: 34px; height: 34px; padding: 0; border: none; background: none;
         display: flex; align-items: center; justify-content: center; flex: none;
         color: var(--muted); cursor: pointer;
-        opacity: 0; transition: opacity 0.18s ease, color 0.15s ease;
+        opacity: 0; transition: opacity 0.18s ease, color 0.15s ease, transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
       }
       .dial__tool.active { color: var(--teal); opacity: 1; } /* הכלי הפעיל תמיד גלוי — גם בעיגול הסגור */
       .toolDial.open .dial__tool { opacity: 1; }
+
+      /* בורר הצורות: כשפעיל — כלי החוגה עפים החוצה לצדדים, והצורות נפרשות מהמרכז */
+      .dial__shapes {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 30px;
+        opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s;
+      }
+      .toolDial.is-shapes .dial__shapes { opacity: 1; visibility: visible; pointer-events: auto; }
+      .toolDial.is-shapes .dial__tool { opacity: 0 !important; pointer-events: none; }
+      .toolDial.is-shapes .dial__tool:nth-child(-n+3) { transform: translateX(78px); }
+      .toolDial.is-shapes .dial__tool:nth-child(4) { transform: scale(0.4); }
+      .toolDial.is-shapes .dial__tool:nth-child(n+5) { transform: translateX(-78px); }
+      .dial__shape {
+        width: 38px; height: 38px; padding: 0; border: none; background: none; flex: none; cursor: pointer;
+        display: flex; align-items: center; justify-content: center; color: var(--muted);
+        transform: scale(0.2); opacity: 0;
+        transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease, color 0.15s ease;
+      }
+      .toolDial.is-shapes .dial__shape { transform: scale(1); opacity: 1; }
+      .toolDial.is-shapes .dial__shape:nth-child(1) { transition-delay: 0.04s; }
+      .toolDial.is-shapes .dial__shape:nth-child(2) { transition-delay: 0.09s; }
+      .toolDial.is-shapes .dial__shape:nth-child(3) { transition-delay: 0.14s; }
+      .dial__shape:hover { color: var(--ink); }
+      .dial__shape svg { width: 27px; height: 27px; display: block; }
       .toolDial.open .dial__tool:nth-child(1) { transition-delay: 0.03s; }
       .toolDial.open .dial__tool:nth-child(2) { transition-delay: 0.05s; }
       .toolDial.open .dial__tool:nth-child(3) { transition-delay: 0.07s; }
@@ -139,7 +162,8 @@
         width: var(--propsW, 360px); opacity: 1; visibility: visible; pointer-events: auto;
         transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.26s ease, visibility 0s linear 0s;
       }
-      .propsBar__row { flex: none; display: flex; align-items: center; gap: 9px; padding: 0 12px; }
+      .propsBar__row { position: relative; flex: none; display: flex; align-items: center; gap: 9px; padding: 0 12px; }
+      .propsBar__grp { display: flex; align-items: center; gap: 9px; transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease; }
       .propsBar__btn {
         border: none; background: none; cursor: pointer; width: 34px; height: 34px; padding: 0;
         display: flex; align-items: center; justify-content: center; color: var(--muted); border-radius: 14px;
@@ -151,14 +175,36 @@
       .propsBar__trash { color: #ef4444; }
       .propsBar__trash:hover { color: #ef4444; background: rgba(239, 68, 68, 0.12); }
       .propsBar__sep { width: 1px; height: 22px; background: rgba(13, 60, 53, 0.12); }
-      .propsBar__colors { display: flex; gap: 7px; }
-      .propsBar__sw {
-        width: 22px; height: 22px; border-radius: 50%; padding: 0; cursor: pointer;
-        border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(13, 60, 53, 0.12);
-        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      /* עיגול הצבע הנוכחי — מחליף את שלל הגוונים */
+      .propsBar__color {
+        width: 26px; height: 26px; border-radius: 50%; padding: 0; flex: none; cursor: pointer;
+        border: 2px solid #fff; background: var(--teal);
+        box-shadow: 0 1px 4px rgba(2, 6, 23, 0.18), 0 0 0 1px rgba(13, 60, 53, 0.12);
+        transition: transform 0.16s ease, opacity 0.22s ease;
       }
-      .propsBar__sw:hover { transform: scale(1.1); }
-      .propsBar__sw.active { box-shadow: 0 0 0 2px var(--teal); transform: scale(1.1); }
+      .propsBar__color:hover { transform: scale(1.12); }
+
+      /* מצב בחירת-צבע: הפקדים הקיימים עפים הצידה ופס הקשת מתגלה */
+      .propsBar.is-picking .propsBar__grp--start { transform: translateX(86px); opacity: 0; pointer-events: none; }
+      .propsBar.is-picking .propsBar__grp--end { transform: translateX(-86px); opacity: 0; pointer-events: none; }
+      .propsBar.is-picking .propsBar__color { opacity: 0; pointer-events: none; }
+      .propsBar__rainbow {
+        position: absolute; top: 50%; left: 18px; right: 18px; transform: translateY(-50%);
+        height: 22px; display: flex; align-items: center;
+        opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.24s ease, visibility 0.24s;
+      }
+      .propsBar.is-picking .propsBar__rainbow { opacity: 1; visibility: visible; pointer-events: auto; }
+      .propsBar__rainbowTrack {
+        position: relative; width: 100%; height: 12px; border-radius: 999px; cursor: pointer;
+        background: linear-gradient(to right, hsl(0,90%,55%), hsl(45,92%,53%), hsl(90,80%,48%), hsl(140,75%,45%), hsl(180,80%,46%), hsl(220,88%,57%), hsl(265,85%,60%), hsl(310,85%,58%), hsl(360,90%,55%));
+        box-shadow: inset 0 0 0 1px rgba(13, 60, 53, 0.10);
+      }
+      .propsBar__rainbowDot {
+        position: absolute; top: 50%; left: 50%; width: 20px; height: 20px; border-radius: 50%; padding: 0;
+        transform: translate(-50%, -50%); border: 3px solid #fff; background: var(--teal); cursor: grab; touch-action: none;
+        box-shadow: 0 1px 5px rgba(2, 6, 23, 0.3);
+      }
+      .propsBar__rainbowDot:active { cursor: grabbing; }
       .propsBar__thick { display: flex; gap: 3px; }
       .propsBar__thick .propsBar__btn { width: 30px; }
 
@@ -405,35 +451,49 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h12"/><path d="M12 6v12"/></svg>
         </button>
         </div>
+        <!-- בורר צורה — נפתח כשלוחצים על "צורות": שאר הכלים עפים הצידה והצורות נפרשות -->
+        <div class="dial__shapes" id="dialShapes" aria-hidden="true">
+          <button class="dial__shape" type="button" data-shape="triangle" aria-label="משולש" title="משולש">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 4.5L20.5 19.5H3.5z"/></svg>
+          </button>
+          <button class="dial__shape" type="button" data-shape="circle" aria-label="עיגול" title="עיגול">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/></svg>
+          </button>
+          <button class="dial__shape" type="button" data-shape="square" aria-label="ריבוע" title="ריבוע">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="15" rx="2"/></svg>
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- תפריט מאפיינים לאובייקט נבחר (קו/צורה/קשקוש) — מחליף את החוגה -->
     <div class="propsBar" id="propsBar" role="toolbar" aria-label="עריכת האובייקט">
       <div class="propsBar__row" id="propsRow">
-      <button class="propsBar__btn propsBar__trash" id="propDelete" type="button" aria-label="מחיקת האובייקט" title="מחיקה">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V5h6v2"/><path d="M6 7l1 13h10l1-13"/><path d="M10 11v6M14 11v6"/></svg>
-      </button>
-      <span class="propsBar__sep"></span>
-      <div class="propsBar__colors" id="propColors">
-        <button class="propsBar__sw" type="button" data-color="#0d9488" style="background: #0d9488" aria-label="טורקיז"></button>
-        <button class="propsBar__sw" type="button" data-color="#f97316" style="background: #f97316" aria-label="כתום"></button>
-        <button class="propsBar__sw" type="button" data-color="#ef4444" style="background: #ef4444" aria-label="אדום"></button>
-        <button class="propsBar__sw" type="button" data-color="#2563eb" style="background: #2563eb" aria-label="כחול"></button>
-        <button class="propsBar__sw" type="button" data-color="#22c55e" style="background: #22c55e" aria-label="ירוק"></button>
-        <button class="propsBar__sw" type="button" data-color="#8b5cf6" style="background: #8b5cf6" aria-label="סגול"></button>
-        <button class="propsBar__sw" type="button" data-color="#0f3b36" style="background: #0f3b36" aria-label="כהה"></button>
+      <div class="propsBar__grp propsBar__grp--start" id="propGrpStart">
+        <button class="propsBar__btn propsBar__trash" id="propDelete" type="button" aria-label="מחיקת האובייקט" title="מחיקה">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V5h6v2"/><path d="M6 7l1 13h10l1-13"/><path d="M10 11v6M14 11v6"/></svg>
+        </button>
+        <span class="propsBar__sep"></span>
       </div>
-      <span class="propsBar__sep"></span>
-      <div class="propsBar__thick" id="propThick">
-        <button class="propsBar__btn" type="button" data-w="3" aria-label="קו דק"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <button class="propsBar__btn" type="button" data-w="6" aria-label="קו בינוני"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></button>
-        <button class="propsBar__btn" type="button" data-w="11" aria-label="קו עבה"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg></button>
+      <!-- עיגול הצבע הנוכחי — לחיצה פותחת את פס הקשת -->
+      <button class="propsBar__color" id="propColor" type="button" aria-label="בחירת צבע" title="צבע"></button>
+      <div class="propsBar__grp propsBar__grp--end" id="propGrpEnd">
+        <span class="propsBar__sep"></span>
+        <div class="propsBar__thick" id="propThick">
+          <button class="propsBar__btn" type="button" data-w="3" aria-label="קו דק"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          <button class="propsBar__btn" type="button" data-w="6" aria-label="קו בינוני"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></button>
+          <button class="propsBar__btn" type="button" data-w="11" aria-label="קו עבה"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg></button>
+        </div>
+        <span class="propsBar__sep"></span>
+        <button class="propsBar__btn" id="propFill" type="button" aria-label="מילוי רקע" title="מילוי">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3l8 8-7.5 7.5a2 2 0 0 1-2.8 0L4 13.3a2 2 0 0 1 0-2.8z"/><path d="M8.5 6.5l6 6"/><path d="M20 15.5c.9 1.2 1.5 2.2 1.5 3a1.5 1.5 0 0 1-3 0c0-.8.6-1.8 1.5-3z"/></svg>
+        </button>
       </div>
-      <span class="propsBar__sep"></span>
-      <button class="propsBar__btn" id="propFill" type="button" aria-label="מילוי רקע" title="מילוי">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3l8 8-7.5 7.5a2 2 0 0 1-2.8 0L4 13.3a2 2 0 0 1 0-2.8z"/><path d="M8.5 6.5l6 6"/><path d="M20 15.5c.9 1.2 1.5 2.2 1.5 3a1.5 1.5 0 0 1-3 0c0-.8.6-1.8 1.5-3z"/></svg>
-      </button>
+      <!-- פס הקשת — נפתח כשלוחצים על עיגול הצבע; גרירת הנקודה בוחרת גוון -->
+      <div class="propsBar__rainbow" id="propRainbow" aria-hidden="true">
+        <div class="propsBar__rainbowTrack" id="rainbowTrack"></div>
+        <button class="propsBar__rainbowDot" id="rainbowDot" type="button" aria-label="גוון"></button>
+      </div>
       </div>
     </div>
 
@@ -458,14 +518,16 @@
         var dial = document.getElementById("dial");
         var row = document.getElementById("dialRow");
         var tools = Array.prototype.slice.call(row.querySelectorAll(".dial__tool"));
+        var shapeBtns = Array.prototype.slice.call(document.querySelectorAll("#dialShapes .dial__shape"));
         // cursor=בחירה/הזזה, pencil=ציור חופשי, eraser=מחק, line/angle/shapes/text=ציור צורות.
         var TOOL_MODE = { cursor: "idle", pencil: "child", eraser: "eraser", line: "line", angle: "angle", shapes: "shape", text: "text" };
         var activeBtn = null, closeTimer = null;
 
         function isOpen() { return toolDial.classList.contains("open"); }
         function open() { if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; } toolDial.classList.add("open"); }
-        function close() { toolDial.classList.remove("open"); }
+        function close() { toolDial.classList.remove("open"); toolDial.classList.remove("is-shapes"); }
         function closeSoon() { closeTimer = setTimeout(close, 130); }
+        function openShapePicker() { open(); toolDial.classList.add("is-shapes"); }
 
         // רוחב הגלולה הפתוחה = רוחב השורה המלא; ההיסט ממרכז את הכלי הפעיל בעיגול הסגור.
         function measure() {
@@ -495,7 +557,15 @@
         tools.forEach(function (b) {
           b.addEventListener("click", function () {
             if (!isOpen()) { open(); return; } // נגיעה ראשונה פותחת (מסך מגע)
+            if (b.dataset.tool === "shapes") { openShapePicker(); return; } // צורות → בורר במקום בחירה מיידית
             select(b.dataset.tool); close();
+          });
+        });
+        // בחירת צורה מהבורר: קובע את סוג הצורה, נכנס למצב "צורה", וסוגר.
+        shapeBtns.forEach(function (b) {
+          b.addEventListener("click", function () {
+            if (window.velaBoard) window.velaBoard.setShapeKind(b.dataset.shape);
+            select("shapes"); close();
           });
         });
 
@@ -697,7 +767,10 @@
       (function propsBar() {
         var bar = document.getElementById("propsBar");
         var dialEl = document.getElementById("toolDial");
-        var colors = Array.prototype.slice.call(bar.querySelectorAll(".propsBar__sw"));
+        var colorBtn = document.getElementById("propColor");
+        var rainbow = document.getElementById("propRainbow");
+        var track = document.getElementById("rainbowTrack");
+        var dot = document.getElementById("rainbowDot");
         var thicks = Array.prototype.slice.call(document.querySelectorAll("#propThick .propsBar__btn"));
         var fillBtn = document.getElementById("propFill");
         var delBtn = document.getElementById("propDelete");
@@ -709,9 +782,38 @@
         window.addEventListener("resize", measure);
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
 
+        // ── עזרי צבע: HSL→HEX, וחילוץ גוון מצבע קיים (דרך getComputedStyle) ──
+        function hslToHex(h, s, l) {
+          s /= 100; l /= 100;
+          var c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = l - c / 2, r = 0, g = 0, b = 0;
+          if (h < 60) { r = c; g = x; } else if (h < 120) { r = x; g = c; } else if (h < 180) { g = c; b = x; }
+          else if (h < 240) { g = x; b = c; } else if (h < 300) { r = x; b = c; } else { r = c; b = x; }
+          function hx(v) { return ("0" + Math.round((v + m) * 255).toString(16)).slice(-2); }
+          return "#" + hx(r) + hx(g) + hx(b);
+        }
+        function rgbToHue(r, g, b) {
+          r /= 255; g /= 255; b /= 255;
+          var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn, h = 0;
+          if (d === 0) h = 0; else if (mx === r) h = ((g - b) / d) % 6; else if (mx === g) h = (b - r) / d + 2; else h = (r - g) / d + 4;
+          h *= 60; if (h < 0) h += 360; return h;
+        }
+        var probe = document.createElement("span");
+        probe.style.cssText = "position:absolute;visibility:hidden;pointer-events:none";
+        document.body.appendChild(probe);
+        function colorToHue(c) {
+          if (!c) return null;
+          probe.style.color = "#000"; probe.style.color = c;
+          var m = (getComputedStyle(probe).color || "").match(/\d+(\.\d+)?/g);
+          if (!m || m.length < 3) return null;
+          return rgbToHue(+m[0], +m[1], +m[2]);
+        }
+        function positionDotByHue(h) { dot.style.left = (h / 360 * 100) + "%"; }
+
         var thickGroup = document.getElementById("propThick");
+        var curColor = "#0d9488";
         function sync(sel) {
-          colors.forEach(function (b) { b.classList.toggle("active", b.dataset.color === sel.color); });
+          curColor = sel.color || "#0d9488";
+          colorBtn.style.background = curColor;
           thicks.forEach(function (b) { b.classList.toggle("active", +b.dataset.w === sel.width); });
           fillBtn.classList.toggle("active", !!sel.fill);
           // לטקסט אין עובי-קו/מילוי — מסתירים אותם (ואת המפרידים שלפניהם) שלא יהיו פקדים מתים.
@@ -724,13 +826,48 @@
           });
         }
 
+        // ── פס הקשת: פתיחה, מיקום הנקודה, וגרירה לבחירת גוון ──
+        function closePicking() { bar.classList.remove("is-picking"); }
+        function openPicking() {
+          var h = colorToHue(curColor); if (h == null) h = 175;
+          positionDotByHue(h); dot.style.background = curColor;
+          bar.classList.add("is-picking");
+        }
+        function hueFromClientX(clientX) {
+          var r = track.getBoundingClientRect();
+          var f = r.width ? (clientX - r.left) / r.width : 0;
+          return Math.max(0, Math.min(1, f)) * 360;
+        }
+        function applyHue(h) {
+          var hex = hslToHex(h, 88, 52);
+          curColor = hex; board.setSelectedColor(hex);
+          colorBtn.style.background = hex; dot.style.background = hex; positionDotByHue(h);
+        }
+        var dragging = false;
+        function startDrag(e) {
+          dragging = true; applyHue(hueFromClientX(e.clientX)); e.preventDefault();
+          if (dot.setPointerCapture && e.pointerId != null) { try { dot.setPointerCapture(e.pointerId); } catch (err) {} }
+        }
+        colorBtn.addEventListener("click", openPicking);
+        track.addEventListener("pointerdown", startDrag);
+        dot.addEventListener("pointerdown", startDrag);
+        document.addEventListener("pointermove", function (e) { if (dragging) applyHue(hueFromClientX(e.clientX)); });
+        document.addEventListener("pointerup", function () { dragging = false; });
+        // לחיצה מחוץ לסרגל (או Esc) סוגרת את פס הקשת
+        document.addEventListener("pointerdown", function (e) {
+          if (!bar.classList.contains("is-picking") || dragging) return;
+          if (bar.contains(e.target)) return;
+          closePicking();
+        });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePicking(); });
+
         // כשבוחרים אובייקט — החוגה נסגרת בעדינות והתפריט נפתח; בביטול — להפך (חלק).
         board.onSelectionChange(function (sel) {
+          closePicking(); // מעבר אובייקט / ביטול → לסגור את פס הקשת
           if (sel) { dialEl.classList.add("is-hidden"); bar.classList.add("is-show"); sync(sel); }
           else { bar.classList.remove("is-show"); dialEl.classList.remove("is-hidden"); }
         });
 
-        colors.forEach(function (b) { b.addEventListener("click", function () { board.setSelectedColor(b.dataset.color); }); });
         thicks.forEach(function (b) { b.addEventListener("click", function () { board.setSelectedWidth(+b.dataset.w); }); });
         fillBtn.addEventListener("click", function () { board.toggleSelectedFill(); });
         delBtn.addEventListener("click", function () { board.deleteSelected(); });
@@ -765,7 +902,9 @@
               var p = s.points, deg = Math.round((G.angleAt(p[0], p[1], p[2]) * 180) / Math.PI);
               out.push("זווית של כ-" + deg + " מעלות"); continue;
             }
-            if (s.kind === "rect") {
+            if (s.kind === "shape_triangle") { out.push("משולש" + (s.fill ? " מלא" : "")); continue; }
+            if (s.kind === "shape_circle") { out.push("עיגול" + (s.fill ? " מלא" : "")); continue; }
+            if (s.kind === "rect" || s.kind === "shape_square") {
               var bb = G.bboxOf(s.points), w = bb.maxX - bb.minX, h = bb.maxY - bb.minY;
               var sq = Math.abs(w - h) < 0.2 * Math.max(w, h);
               out.push((sq ? "ריבוע" : "מלבן") + (s.fill ? " מלא" : "")); continue;
