@@ -126,6 +126,16 @@
       .toolDial.is-shapes .dial__shape:nth-child(3) { transition-delay: 0.14s; }
       .dial__shape:hover { color: var(--ink); }
       .dial__shape svg { width: 27px; height: 27px; display: block; }
+      /* כפתור חזרה (שברון שמאלה, בלי קו ראשי) — יוצא מבורר הצורות חזרה לכלים */
+      .dial__back {
+        position: absolute; left: 12px; top: 50%; width: 30px; height: 30px; padding: 0; flex: none;
+        border: none; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        color: var(--muted); opacity: 0; transform: translateY(-50%) translateX(-6px);
+        transition: opacity 0.2s ease 0.05s, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1) 0.05s, color 0.15s ease;
+      }
+      .toolDial.is-shapes .dial__back { opacity: 1; transform: translateY(-50%) translateX(0); }
+      .dial__back:hover { color: var(--ink); }
+      .dial__back svg { width: 22px; height: 22px; display: block; }
       .toolDial.open .dial__tool:nth-child(1) { transition-delay: 0.03s; }
       .toolDial.open .dial__tool:nth-child(2) { transition-delay: 0.05s; }
       .toolDial.open .dial__tool:nth-child(3) { transition-delay: 0.07s; }
@@ -188,12 +198,22 @@
       .propsBar.is-picking .propsBar__grp--start { transform: translateX(86px); opacity: 0; pointer-events: none; }
       .propsBar.is-picking .propsBar__grp--end { transform: translateX(-86px); opacity: 0; pointer-events: none; }
       .propsBar.is-picking .propsBar__color { opacity: 0; pointer-events: none; }
+      .propsBar__back {
+        position: absolute; left: 10px; top: 50%; width: 30px; height: 30px; padding: 0;
+        border: none; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        color: var(--muted); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-50%) translateX(-6px);
+        transition: opacity 0.22s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.22s, color 0.15s ease;
+      }
+      .propsBar.is-picking .propsBar__back { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(-50%) translateX(0); }
+      .propsBar__back:hover { color: var(--ink); }
+      .propsBar__back svg { width: 22px; height: 22px; display: block; }
       .propsBar__rainbow {
         position: absolute; top: 50%; left: 18px; right: 18px; transform: translateY(-50%);
         height: 22px; display: flex; align-items: center;
-        opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.24s ease, visibility 0.24s;
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity 0.24s ease, visibility 0.24s, left 0.32s cubic-bezier(0.22, 1, 0.36, 1);
       }
-      .propsBar.is-picking .propsBar__rainbow { opacity: 1; visibility: visible; pointer-events: auto; }
+      .propsBar.is-picking .propsBar__rainbow { opacity: 1; visibility: visible; pointer-events: auto; left: 44px; right: 14px; }
       .propsBar__rainbowTrack {
         position: relative; width: 100%; height: 12px; border-radius: 999px; cursor: pointer;
         background: linear-gradient(to right, hsl(0,90%,55%), hsl(45,92%,53%), hsl(90,80%,48%), hsl(140,75%,45%), hsl(180,80%,46%), hsl(220,88%,57%), hsl(265,85%,60%), hsl(310,85%,58%), hsl(360,90%,55%));
@@ -307,7 +327,7 @@
 
       /* בועת דיבור של המורה (תשובת ה-✓) — מימין לדמות, צל רך משלה (בלי החשכת מסך) */
       .teacherBubble {
-        position: fixed; left: 92px; bottom: 112px; z-index: 38;
+        position: fixed; left: 92px; bottom: 90px; z-index: 38;
         max-width: min(320px, calc(100vw - 112px));
         background: #fff; color: var(--ink);
         /* פינה שמאלית-תחתונה ישרה (חדה) — הבועה מצביעה באלכסון אל המורה, בלי חץ */
@@ -339,7 +359,7 @@
         border: 2px dashed var(--teal); border-radius: 8px;
         background: rgba(255, 255, 255, 0.82); padding: 1px 8px;
         font-family: "Fredoka", "Assistant", sans-serif; font-weight: 700;
-        color: #f97316; outline: none; white-space: pre; min-width: 26px; line-height: 1.25;
+        color: #1a1a1a; outline: none; white-space: pre; min-width: 26px; line-height: 1.25;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -462,6 +482,10 @@
           <button class="dial__shape" type="button" data-shape="square" aria-label="ריבוע" title="ריבוע">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="15" rx="2"/></svg>
           </button>
+          <!-- כפתור חזרה — אחרון ב-DOM (ממוקם אבסולוטית בשמאל) כדי שהשברונים 1-3 יישארו הצורות, ולא ישבשו את אנימציית ה-stagger -->
+          <button class="dial__back" id="dialBack" type="button" aria-label="חזרה" title="חזרה">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 6 8.5 12 14.5 18"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -489,6 +513,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3l8 8-7.5 7.5a2 2 0 0 1-2.8 0L4 13.3a2 2 0 0 1 0-2.8z"/><path d="M8.5 6.5l6 6"/><path d="M20 15.5c.9 1.2 1.5 2.2 1.5 3a1.5 1.5 0 0 1-3 0c0-.8.6-1.8 1.5-3z"/></svg>
         </button>
       </div>
+      <!-- כפתור חזרה (שברון שמאלה) — יוצא מפס הקשת חזרה לפקדים -->
+      <button class="propsBar__back" id="propBack" type="button" aria-label="חזרה" title="חזרה">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 6 8.5 12 14.5 18"/></svg>
+      </button>
       <!-- פס הקשת — נפתח כשלוחצים על עיגול הצבע; גרירת הנקודה בוחרת גוון -->
       <div class="propsBar__rainbow" id="propRainbow" aria-hidden="true">
         <div class="propsBar__rainbowTrack" id="rainbowTrack"></div>
@@ -503,7 +531,7 @@
       var canvas = document.getElementById("board");
       var board = new VelaBoard(canvas, {
         fit: "fill", background: "grid", grid: 42, mode: "idle",
-        pan: true, zoom: true, // גרירה (יד שתופסת) + זום (גלגלת/צביטה/כפתורים)
+        pan: true, zoom: true, // הזזה: יד שתופסת / שתי אצבעות במשטח-מגע. זום: צביטה / גלגלת-עכבר / כפתורים.
       });
       window.velaBoard = board; // נגיש לקונסול — לבדיקת כלי מורה, למשל:
       // velaBoard.tool('draw_circle', { x: 300, y: 240, r: 60 })
@@ -568,6 +596,9 @@
             select("shapes"); close();
           });
         });
+        // כפתור חזרה — יוצא מבורר הצורות חזרה לכלים (החוגה נשארת פתוחה)
+        var backBtn = document.getElementById("dialBack");
+        if (backBtn) backBtn.addEventListener("click", function () { toolDial.classList.remove("is-shapes"); });
 
         // מדידה ראשונית בלי אנימציה (שלא תיראה "קפיצה" בטעינה), ואז ברירת המחדל
         dial.style.transition = "none"; row.style.transition = "none";
@@ -596,20 +627,32 @@
 
         function isOpen() { return panel.classList.contains("is-open"); }
         function openChat() {
+          hideBubble(); // פתיחת הצ'אט סוגרת בועה צפה אם הייתה
           panel.classList.add("is-open");
           if (!greeted) { addMsg("bot", "היי! אני המורה שלך. אפשר לשאול אותי כל דבר 😊"); greeted = true; }
           setTimeout(function () { input.focus(); }, 80);
         }
-        function closeChat() { panel.classList.remove("is-open"); }
+        function closeChat() {
+          panel.classList.remove("is-open");
+          if (sending) openBubble(true); // המורה עדיין חושב — ממשיכים את 3 הנקודות בבועה ליד המורה
+        }
 
-        // בועת דיבור ליד המורה (לתשובת ה-✓) — לא הצ'אט. לבועה צל משלה, בלי החשכת מסך.
+        // בועת דיבור ליד המורה (לתשובת ה-✓ / כשהצ'אט סגור) — צל משלה, בלי החשכת מסך.
+        // טיימר סגירה אוטומטי: ~30ש' אחרי שמוצג טקסט, אם העכבר לא על הבועה.
+        var bubbleTimer = null, bubbleHover = false;
+        function clearBubbleTimer() { if (bubbleTimer) { clearTimeout(bubbleTimer); bubbleTimer = null; } }
+        function startBubbleTimer() { clearBubbleTimer(); bubbleTimer = setTimeout(function () { if (!bubbleHover) hideBubble(); }, 30000); }
         function openBubble(loading) {
           bubble.classList.add("is-show");
-          if (loading) bubbleBody.innerHTML = '<span class="bubbleTyping"><span></span><span></span><span></span></span>';
+          if (loading) { bubbleBody.innerHTML = '<span class="bubbleTyping"><span></span><span></span><span></span></span>'; clearBubbleTimer(); }
           else bubbleBody.textContent = "";
         }
-        function setBubble(text) { bubbleBody.textContent = text; }
-        function hideBubble() { bubble.classList.remove("is-show"); }
+        // טקסט סופי תמיד מוודא שהבועה גלויה (כדי שתשובה לא "תיכתב" לבועה מוסתרת ותאבד) + מתחיל ספירה לסגירה.
+        function setBubble(text) { bubble.classList.add("is-show"); bubbleBody.textContent = text; startBubbleTimer(); }
+        function showBubble(text) { setBubble(text); }
+        function hideBubble() { bubble.classList.remove("is-show"); clearBubbleTimer(); }
+        bubble.addEventListener("mouseenter", function () { bubbleHover = true; clearBubbleTimer(); });
+        bubble.addEventListener("mouseleave", function () { bubbleHover = false; if (bubble.classList.contains("is-show")) startBubbleTimer(); });
 
         // לחיצה על המורה = פתיחת הצ'אט (שיחה אמיתית); קודם סוגרים בועה אם פתוחה.
         fab.addEventListener("click", function () { hideBubble(); isOpen() ? closeChat() : openChat(); });
@@ -697,10 +740,13 @@
             reply = reply || "סליחה, לא הצלחתי לענות כרגע.";
             addMsg("bot", reply);
             history.push({ role: "assistant", content: reply });
+            if (!isOpen()) showBubble(reply); // הצ'אט נסגר באמצע — מציגים את התשובה בבועה
           } catch (err) {
             typing.remove();
-            if (err && err.auth) { addMsg("bot", "צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 900); }
-            else addMsg("bot", "אופס, יש בעיית חיבור. ננסה שוב?");
+            var em = err && err.auth ? "צריך להתחבר מחדש 🙂" : "אופס, יש בעיית חיבור. ננסה שוב?";
+            addMsg("bot", em);
+            if (!isOpen()) showBubble(em);
+            if (err && err.auth) setTimeout(function () { location.href = "/auth"; }, 900);
           } finally {
             sending = false; flushPending();
           }
@@ -712,12 +758,17 @@
           sending = true;
           history.push({ role: "user", content: payloadText });
           var typing = isOpen() ? showTyping() : null;
+          if (!isOpen()) openBubble(true); // צ'אט סגור → בועת חשיבה (3 נקודות) ליד המורה
           try {
             var reply = await postTeach(payloadText);
             if (typing) typing.remove();
-            if (reply) { addMsg("bot", reply); history.push({ role: "assistant", content: reply }); }
+            if (reply) {
+              addMsg("bot", reply); history.push({ role: "assistant", content: reply });
+              if (!isOpen()) showBubble(reply); // צ'אט סגור → התשובה בבועה
+            } else if (!isOpen()) hideBubble(); // אין תשובה → לסגור את בועת החשיבה
           } catch (err) {
             if (typing) typing.remove();
+            if (!isOpen()) hideBubble();
           } finally {
             sending = false; flushPending();
           }
@@ -746,12 +797,13 @@
             if (res.status === 401) { setBubble("צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 1100); return; }
             var data = await res.json();
             var reply = (data && data.reply) || "סליחה, לא הצלחתי לראות את הציור.";
-            setBubble(reply);
-            // נשמר בהיסטוריה (להקשר אם ייפתח צ'אט), אך לא מוצג בצ'אט עצמו.
+            // אם הילד פתח את הצ'אט באמצע — מציגים בתוך הצ'אט; אחרת בבועה ליד המורה.
+            if (isOpen()) { hideBubble(); addMsg("bot", reply); } else showBubble(reply);
             history.push({ role: "user", content: "(הראיתי למורה את הציור שלי על הלוח)" });
             history.push({ role: "assistant", content: reply });
           } catch (err) {
-            setBubble("אופס, לא הצלחתי לראות את הציור. ננסה שוב?");
+            if (isOpen()) { hideBubble(); addMsg("bot", "אופס, לא הצלחתי לראות את הציור. ננסה שוב?"); }
+            else showBubble("אופס, לא הצלחתי לראות את הציור. ננסה שוב?");
           } finally {
             sending = false; flushPending();
           }
@@ -805,7 +857,9 @@
           probe.style.color = "#000"; probe.style.color = c;
           var m = (getComputedStyle(probe).color || "").match(/\d+(\.\d+)?/g);
           if (!m || m.length < 3) return null;
-          return rgbToHue(+m[0], +m[1], +m[2]);
+          var r = +m[0], g = +m[1], b = +m[2];
+          if (Math.max(r, g, b) - Math.min(r, g, b) < 8) return null; // אפור/שחור (כמו ברירת-המחדל) — אין גוון; נשתמש במיקום ניטרלי
+          return rgbToHue(r, g, b);
         }
         function positionDotByHue(h) { dot.style.left = (h / 360 * 100) + "%"; }
 
@@ -849,6 +903,8 @@
           if (dot.setPointerCapture && e.pointerId != null) { try { dot.setPointerCapture(e.pointerId); } catch (err) {} }
         }
         colorBtn.addEventListener("click", openPicking);
+        var propBack = document.getElementById("propBack");
+        if (propBack) propBack.addEventListener("click", closePicking);
         track.addEventListener("pointerdown", startDrag);
         dot.addEventListener("pointerdown", startDrag);
         document.addEventListener("pointermove", function (e) { if (dragging) applyHue(hueFromClientX(e.clientX)); });

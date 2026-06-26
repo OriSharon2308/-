@@ -24,10 +24,12 @@
     teacher: "#0d9488",
     child: "#f97316",
     text: "#0f3b36",
+    ink: "#1a1a1a", // שחור רך — צבע ברירת-המחדל לציור הילד
     sel: "#0d9488",
   };
   var HANDLE_PX = 11; // גודל ידית על המסך
   var ERASER_PX = 28; // גודל ריבוע המחק על המסך
+  var WHEEL_ZOOM_SENS = 0.005; // רגישות זום בצביטה על משטח-מגע (נמוך = עדין מאוד)
   var ERASER_CURSOR =
     "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28'><rect x='2' y='2' width='24' height='24' rx='3' fill='rgba(255,255,255,0.5)' stroke='%230f3b36' stroke-width='2'/></svg>\") 14 14, crosshair";
   // מצבי ציור — כולם נשמרים כ-childStrokes (פוליגון), כך שהבחירה/עריכה עובדת עליהם.
@@ -179,7 +181,7 @@
     this.objects = [];
     this.childStrokes = [];
     this.penWidth = options.penWidth || 5;
-    this.penColor = COLORS.child; // צבע הציור הנוכחי (נשלט ע"י בורר הקשת)
+    this.penColor = COLORS.ink; // צבע ברירת-מחדל לציור — שחור (נשלט ע"י בורר הקשת)
     this.shapeKind = "square"; // square | circle | triangle (לכלי הצורות)
     this._currentStroke = null;
     this._twoClick = null; // מצב מיקום בשתי לחיצות
@@ -343,7 +345,7 @@
       ctx.beginPath(); ctx.moveTo(pp[0].x, pp[0].y);
       for (var pi = 1; pi < pp.length; pi++) ctx.lineTo(pp[pi].x, pp[pi].y);
       ctx.closePath();
-      if (o.fill) { ctx.fillStyle = hexToRgba(o.color || COLORS.teacher, 0.18); ctx.fill(); }
+      if (o.fill) { ctx.fillStyle = hexToRgba(o.color || COLORS.teacher, 0.4); ctx.fill(); }
       ctx.strokeStyle = color; ctx.lineWidth = o.width || 4; ctx.lineJoin = "round"; ctx.stroke();
     }
     else if (o.type === "arrow") {
@@ -390,7 +392,7 @@
     if (st.fill && pts.length > 2) {
       ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
       for (var k = 1; k < pts.length; k++) ctx.lineTo(pts[k].x, pts[k].y);
-      ctx.closePath(); ctx.fillStyle = hexToRgba(st.color || COLORS.child, 0.22); ctx.fill();
+      ctx.closePath(); ctx.fillStyle = hexToRgba(st.color || COLORS.child, 0.42); ctx.fill();
     }
     ctx.strokeStyle = st.color || COLORS.child; ctx.lineWidth = st.width || 5; ctx.lineCap = "round"; ctx.lineJoin = "round";
     ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
@@ -565,11 +567,13 @@
   };
 
   VelaBoard.prototype.setShapeKind = function (k) { if (k === "square" || k === "circle" || k === "triangle") this.shapeKind = k; };
-  // משיכה עדינה לקודקודי הרשת — אם קרוב לקודקוד (בתוך סף), מצמיד אליו.
+  // משיכה עדינה לקודקודי הרשת בלבד (צמתים) — לא לקווים. מצמיד רק כשקרובים לצומת ממש.
   VelaBoard.prototype._snap = function (w) {
-    var G = this.GRID, thr = G * 0.25;
+    var G = this.GRID, thr = G * 0.28;
     var gx = Math.round(w.x / G) * G, gy = Math.round(w.y / G) * G;
-    return { x: Math.abs(w.x - gx) <= thr ? gx : w.x, y: Math.abs(w.y - gy) <= thr ? gy : w.y };
+    var dx = w.x - gx, dy = w.y - gy;
+    if (dx * dx + dy * dy <= thr * thr) return { x: gx, y: gy }; // בתוך רדיוס סביב הצומת → הצמדה
+    return { x: w.x, y: w.y }; // אחרת חופשי לגמרי (גם אם קרוב לקו אחד)
   };
   // סיום צורה (לחיצה שנייה או סיום גרירה)
   VelaBoard.prototype._finalizeShape = function (end) {
@@ -835,7 +839,23 @@
       if (self._gesture === "pinch" && n < 2) self._pinch = null;
       if (n === 0) self._gesture = "none"; else if (self._gesture === "pinch" && n < 2) self._gesture = "none";
     }
-    function wheel(evt) { if (!self.zoom) return; evt.preventDefault(); self._zoomAt(self._screen(evt), self.view.scale * (evt.deltaY < 0 ? 1.12 : 1 / 1.12)); self.render(); }
+    // משטח-מגע: צביטה (ctrlKey) = זום עדין סביב הסמן; שתי אצבעות יחד = הזזת המסך (גלילה).
+    // גלגלת-עכבר קלאסית (יחידות שורה/עמוד — לעולם לא משטח-מגע) = זום בצעד קבוע, כדי לא לאבד זום בעכבר.
+    function wheel(evt) {
+      if (!self.zoom) return;
+      evt.preventDefault();
+      var dx = evt.deltaX, dy = evt.deltaY;
+      if (evt.deltaMode === 1) { dx *= 16; dy *= 16; } else if (evt.deltaMode === 2) { dx *= self.W; dy *= self.H; } // נרמול ליחידות פיקסל
+      if (evt.ctrlKey) { // צביטת זום (תמיד deltaMode פיקסלים) — עדין סביב הסמן
+        self._zoomAt(self._screen(evt), self.view.scale * Math.exp(-dy * WHEEL_ZOOM_SENS));
+        self.render(); return;
+      }
+      if (evt.deltaMode !== 0) { // גלגלת-עכבר אמיתית (שורה/עמוד) → זום בצעד קבוע ועדין
+        self._zoomAt(self._screen(evt), self.view.scale * (evt.deltaY < 0 ? 1.1 : 1 / 1.1));
+        self.render(); return;
+      }
+      self.view.x -= dx; self.view.y -= dy; self.render(); // שתי אצבעות יחד → גלילה דו-כיוונית
+    }
     on(this.canvas, "pointerdown", down); on(this.canvas, "pointermove", move);
     on(this.canvas, "pointerup", up); on(this.canvas, "pointercancel", up); on(this.canvas, "wheel", wheel);
   };
