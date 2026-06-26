@@ -271,6 +271,42 @@
     if (o.type === "circle") { ctx.strokeStyle = color; ctx.lineWidth = o.width || 4; ctx.beginPath(); ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2); ctx.stroke(); }
     else if (o.type === "line") { ctx.strokeStyle = color; ctx.lineWidth = o.width || 4; ctx.lineCap = "round"; ctx.beginPath(); ctx.moveTo(o.x1, o.y1); ctx.lineTo(o.x2, o.y2); ctx.stroke(); }
     else if (o.type === "text") { ctx.fillStyle = color === COLORS.teacher ? COLORS.text : color; var sz = o.size || 32; ctx.font = "700 " + sz + "px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(String(o.text), o.x, o.y); }
+    else if (o.type === "polygon") {
+      var pp = o.points || []; if (pp.length < 2) return;
+      ctx.beginPath(); ctx.moveTo(pp[0].x, pp[0].y);
+      for (var pi = 1; pi < pp.length; pi++) ctx.lineTo(pp[pi].x, pp[pi].y);
+      ctx.closePath();
+      if (o.fill) { ctx.fillStyle = hexToRgba(o.color || COLORS.teacher, 0.18); ctx.fill(); }
+      ctx.strokeStyle = color; ctx.lineWidth = o.width || 4; ctx.lineJoin = "round"; ctx.stroke();
+    }
+    else if (o.type === "arrow") {
+      ctx.strokeStyle = color; ctx.lineWidth = o.width || 4; ctx.lineCap = "round"; ctx.lineJoin = "round";
+      ctx.beginPath(); ctx.moveTo(o.x1, o.y1); ctx.lineTo(o.x2, o.y2); ctx.stroke();
+      var aa = Math.atan2(o.y2 - o.y1, o.x2 - o.x1), ah = 12 + (o.width || 4) * 1.6;
+      ctx.beginPath();
+      ctx.moveTo(o.x2, o.y2); ctx.lineTo(o.x2 - ah * Math.cos(aa - Math.PI / 7), o.y2 - ah * Math.sin(aa - Math.PI / 7));
+      ctx.moveTo(o.x2, o.y2); ctx.lineTo(o.x2 - ah * Math.cos(aa + Math.PI / 7), o.y2 - ah * Math.sin(aa + Math.PI / 7));
+      ctx.stroke();
+    }
+    else if (o.type === "point") {
+      ctx.fillStyle = color; ctx.beginPath(); ctx.arc(o.x, o.y, 6, 0, Math.PI * 2); ctx.fill();
+      if (o.label) { ctx.fillStyle = COLORS.text; ctx.font = "700 22px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "bottom"; ctx.fillText(String(o.label), o.x, o.y - 11); }
+    }
+    else if (o.type === "number_line") {
+      var nf = o.from, nt = o.to, nstep = o.step || 1;
+      var steps = Math.abs(Math.round((nt - nf) / nstep)) || 1;
+      var L = o.length || Math.min(640, Math.max(120, steps * 52));
+      var nx = o.x, ny = o.y;
+      ctx.strokeStyle = color; ctx.lineWidth = o.width || 3; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(nx, ny); ctx.lineTo(nx + L, ny); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(nx + L, ny); ctx.lineTo(nx + L - 11, ny - 7); ctx.moveTo(nx + L, ny); ctx.lineTo(nx + L - 11, ny + 7); ctx.stroke();
+      ctx.fillStyle = COLORS.text; ctx.font = "600 18px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
+      for (var nk = 0; nk <= steps; nk++) {
+        var tx = nx + (L * nk) / steps;
+        ctx.strokeStyle = color; ctx.beginPath(); ctx.moveTo(tx, ny - 7); ctx.lineTo(tx, ny + 7); ctx.stroke();
+        ctx.fillText(String(nf + nk * nstep), tx, ny + 11);
+      }
+    }
   };
 
   VelaBoard.prototype._drawStroke = function (st) {
@@ -324,6 +360,10 @@
     draw_circle: function (i) { this.objects.push({ who: "teacher", type: "circle", x: +i.x, y: +i.y, r: clamp(i.r, 1, 5000), color: i.color || null, width: i.width || null }); },
     draw_line: function (i) { this.objects.push({ who: "teacher", type: "line", x1: +i.x1, y1: +i.y1, x2: +i.x2, y2: +i.y2, color: i.color || null, width: i.width || null }); },
     write_text: function (i) { this.objects.push({ who: "teacher", type: "text", x: +i.x, y: +i.y, text: String(i.text == null ? "" : i.text).slice(0, 40), size: i.size ? clamp(i.size, 8, 400) : null, color: i.color || null }); },
+    draw_polygon: function (i) { this.objects.push({ who: "teacher", type: "polygon", points: (i.points || []).map(function (p) { return { x: +p[0], y: +p[1] }; }), color: i.color || null, width: i.width || null, fill: !!i.fill }); },
+    draw_arrow: function (i) { this.objects.push({ who: "teacher", type: "arrow", x1: +i.x1, y1: +i.y1, x2: +i.x2, y2: +i.y2, color: i.color || null, width: i.width || null }); },
+    draw_point: function (i) { this.objects.push({ who: "teacher", type: "point", x: +i.x, y: +i.y, label: i.label ? String(i.label).slice(0, 16) : "", color: i.color || null }); },
+    draw_number_line: function (i) { this.objects.push({ who: "teacher", type: "number_line", x: +i.x, y: +i.y, from: +i.from, to: +i.to, step: i.step ? +i.step : 1, length: i.length ? +i.length : null, color: i.color || null }); },
     clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this._select(null); },
   };
   VelaBoard.prototype.tool = function (name, input) {
@@ -562,7 +602,13 @@
       var o = all[i];
       if (o.points && o.points.length) { for (var j = 0; j < o.points.length; j++) ext(o.points[j].x, o.points[j].y); }
       else if (o.type === "circle") { ext(o.x - o.r, o.y - o.r); ext(o.x + o.r, o.y + o.r); }
-      else if (o.type === "line") { ext(o.x1, o.y1); ext(o.x2, o.y2); }
+      else if (o.type === "line" || o.type === "arrow") { ext(o.x1, o.y1); ext(o.x2, o.y2); }
+      else if (o.type === "point") { ext(o.x - 14, o.y - 28); ext(o.x + 14, o.y + 14); }
+      else if (o.type === "number_line") {
+        var nlS = Math.abs(Math.round((o.to - o.from) / (o.step || 1))) || 1;
+        var nlL = o.length || Math.min(640, Math.max(120, nlS * 52));
+        ext(o.x - 8, o.y - 18); ext(o.x + nlL + 14, o.y + 34);
+      }
       else if (o.type === "text") {
         // מדידה אמיתית של טקסט המורה (במקום הערכה קבועה) — שלא ייחתך בייצוא
         var tsz = o.size || 32;

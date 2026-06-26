@@ -7,6 +7,7 @@ const path = require("path");
 const { loadEnvFile } = require("./lib/env");
 const { runChat, getAgentStatus } = require("./agent/orchestrator");
 const { visionDescribeBoard } = require("./agent/vision-agent"); // המורה "רואה" את ציור הילד
+const { teacherDraw } = require("./agent/draw-agent"); // המורה מסרטט על הלוח דרך Tool Use
 const { mathematicianCreate } = require("./agent/mathematician-agent");
 const { designerDiagram } = require("./agent/designer-agent");
 const bank = require("./lib/bank");
@@ -274,6 +275,29 @@ const server = http.createServer(async (req, res) => {
         userId,
       });
       console.log(`[timing] see total: ${Date.now() - tSee}ms`);
+      return json(res, 200, result);
+    }
+
+    /* ---------------- API: סרטוט — המורה מצייר על הלוח (Tool Use, דורש התחברות) ---------------- */
+
+    if (url.startsWith("/api/teach")) {
+      if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+      const userId = sessions.currentUserId(req);
+      if (!userId) return json(res, 401, { error: "Not authenticated" });
+      const body = await readJsonBody(req, res);
+      if (!body) return;
+      const teachUser = users.getUserById(userId);
+      const tTeach = Date.now();
+      const result = await teacherDraw({
+        messageText: String(body.messageText || ""),
+        history: Array.isArray(body.history) ? body.history : [],
+        gender: teachUser?.gender || "male",
+        topic: body.topic && body.topic.title ? String(body.topic.title) : "",
+        geometry: body.geometry || null,
+        occupied: Array.isArray(body.occupied) ? body.occupied : [],
+        userId,
+      });
+      console.log(`[timing] teach total: ${Date.now() - tTeach}ms`);
       return json(res, 200, result);
     }
 

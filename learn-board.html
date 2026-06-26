@@ -552,7 +552,28 @@
           return d;
         }
 
-        // שליחה משותפת: displayText = מה שמוצג כבועת הילד; payloadText = מה שנשלח למורה.
+        // תקציר אזורים תפוסים בלוח [x,y,w,h] — כדי שהמורה יסרטט באזור פנוי ולא מעל הקיים.
+        function boardOccupied() {
+          if (!board.getScene) return [];
+          var sc = board.getScene();
+          var items = (sc.teacherObjects || []).concat(sc.childStrokes || []);
+          var out = [];
+          for (var i = 0; i < items.length && out.length < 16; i++) {
+            var o = items[i], b = null;
+            if (o.points && o.points.length) {
+              var mnX = Infinity, mnY = Infinity, mxX = -Infinity, mxY = -Infinity;
+              for (var j = 0; j < o.points.length; j++) { var p = o.points[j]; if (p.x < mnX) mnX = p.x; if (p.y < mnY) mnY = p.y; if (p.x > mxX) mxX = p.x; if (p.y > mxY) mxY = p.y; }
+              b = [mnX, mnY, mxX - mnX, mxY - mnY];
+            } else if (o.type === "circle") b = [o.x - o.r, o.y - o.r, 2 * o.r, 2 * o.r];
+            else if (o.type === "line" || o.type === "arrow") b = [Math.min(o.x1, o.x2), Math.min(o.y1, o.y2), Math.abs(o.x2 - o.x1), Math.abs(o.y2 - o.y1)];
+            else if (o.type === "point") b = [o.x - 12, o.y - 12, 24, 24];
+            else if (o.type === "text" || o.type === "number_line") b = [o.x - 20, o.y - 20, 220, 60];
+            if (b) out.push(b.map(function (n) { return Math.round(n); }));
+          }
+          return out;
+        }
+
+        // שליחה למורה (עם כלי סרטוט): displayText = בועת הילד; payloadText = מה שנשלח.
         async function sendToTeacher(displayText, payloadText) {
           if (sending) return;
           sending = true;
@@ -561,19 +582,23 @@
           history.push({ role: "user", content: payloadText });
           var typing = showTyping();
           try {
-            var res = await fetch("/api/chat", {
+            var sc = board.getScene ? board.getScene() : null;
+            var res = await fetch("/api/teach", {
               method: "POST",
               headers: { "content-type": "application/json" },
               body: JSON.stringify({
-                messageKind: "Question",
                 messageText: payloadText,
                 topic: { title: new URLSearchParams(location.search).get("topic") || "" },
                 history: history.slice(-12),
+                geometry: sc ? sc.geometry : null,
+                occupied: boardOccupied(),
               }),
             });
             if (res.status === 401) { typing.remove(); addMsg("bot", "צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 900); return; }
             var data = await res.json();
             typing.remove();
+            // המורה מסרטט בפועל על הלוח (אם החזיר קריאות לכלים)
+            if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) board.runTools(data.toolCalls);
             var reply = (data && data.reply) || "סליחה, לא הצלחתי לענות כרגע.";
             addMsg("bot", reply);
             history.push({ role: "assistant", content: reply });
