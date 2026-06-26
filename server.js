@@ -220,6 +220,8 @@ const server = http.createServer(async (req, res) => {
       body.userId = userId; // לא סומכים על ה-userId מהלקוח
       const chatUser = users.getUserById(userId);
       body.gender = chatUser?.gender || "male"; // המורה יפנה לפי מין התלמיד
+      // שם התלמיד → המורה יכיר אותו ויפנה אליו בשמו מדי פעם
+      if (chatUser?.username) body.student = Object.assign({}, body.student, { name: chatUser.username });
       const tChat = Date.now();
       const result = await runChat(body);
       console.log(`[timing] chat total (runChat): ${Date.now() - tChat}ms  voice=${!!body.voice}`);

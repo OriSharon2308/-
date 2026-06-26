@@ -278,6 +278,24 @@
       .bubbleTyping span:nth-child(2) { animation-delay: 0.15s; }
       .bubbleTyping span:nth-child(3) { animation-delay: 0.3s; }
 
+      /* תיבות-תשובה (input שקוף מעל המסגרת שמצוירת על הלוח) — יכולות להיות כמה */
+      .answerInput {
+        position: fixed; z-index: 39; display: none; box-sizing: border-box;
+        border: none; outline: none; background: transparent;
+        font-family: "Fredoka", "Assistant", sans-serif; font-weight: 700;
+        color: var(--ink); padding: 0 10px;
+      }
+      .answerInput.is-show { display: block; }
+
+      /* עורך טקסט inline (כלי הטקסט) — קו מקווקו שכותבים בתוכו, גדל עם הטקסט */
+      #textEditor {
+        position: fixed; z-index: 40; display: none;
+        border: 2px dashed var(--teal); border-radius: 8px;
+        background: rgba(255, 255, 255, 0.82); padding: 1px 8px;
+        font-family: "Fredoka", "Assistant", sans-serif; font-weight: 700;
+        color: #f97316; outline: none; white-space: pre; min-width: 26px; line-height: 1.25;
+      }
+
       @media (prefers-reduced-motion: reduce) {
         .teacherFab__art, .teacherFab__shadow { animation: none; }
         .chatPanel { transition: opacity 0.15s linear, visibility 0.15s; transform: none; }
@@ -501,6 +519,8 @@
         var history = [];
         var greeted = false;
         var sending = false;
+        var pendingFollowup = null; // followup שממתין אם כרגע יש קריאה בתהליך
+        function flushPending() { if (pendingFollowup && !sending) { var p = pendingFollowup; pendingFollowup = null; teacherFollowup(p); } }
         var bubble = document.getElementById("teacherBubble");
         var bubbleBody = document.getElementById("teacherBubbleBody");
 
@@ -573,7 +593,27 @@
           return out;
         }
 
-        // שליחה למורה (עם כלי סרטוט): displayText = בועת הילד; payloadText = מה שנשלח.
+        // קריאה ל-/api/teach: מריצה את הסרטוט ומחזירה את תשובת המורה. זורק {auth:true} ב-401.
+        async function postTeach(payloadText) {
+          var sc = board.getScene ? board.getScene() : null;
+          var res = await fetch("/api/teach", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              messageText: payloadText,
+              topic: { title: new URLSearchParams(location.search).get("topic") || "" },
+              history: history.slice(-12),
+              geometry: sc ? sc.geometry : null,
+              occupied: boardOccupied(),
+            }),
+          });
+          if (res.status === 401) throw { auth: true };
+          var data = await res.json();
+          if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) board.runTools(data.toolCalls);
+          return (data && data.reply) || "";
+        }
+
+        // שליחה רגילה: בועת "אני" + תשובת המורה (כולל סרטוט).
         async function sendToTeacher(displayText, payloadText) {
           if (sending) return;
           sending = true;
@@ -582,33 +622,37 @@
           history.push({ role: "user", content: payloadText });
           var typing = showTyping();
           try {
-            var sc = board.getScene ? board.getScene() : null;
-            var res = await fetch("/api/teach", {
-              method: "POST",
-              headers: { "content-type": "application/json" },
-              body: JSON.stringify({
-                messageText: payloadText,
-                topic: { title: new URLSearchParams(location.search).get("topic") || "" },
-                history: history.slice(-12),
-                geometry: sc ? sc.geometry : null,
-                occupied: boardOccupied(),
-              }),
-            });
-            if (res.status === 401) { typing.remove(); addMsg("bot", "צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 900); return; }
-            var data = await res.json();
+            var reply = await postTeach(payloadText);
             typing.remove();
-            // המורה מסרטט בפועל על הלוח (אם החזיר קריאות לכלים)
-            if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) board.runTools(data.toolCalls);
-            var reply = (data && data.reply) || "סליחה, לא הצלחתי לענות כרגע.";
+            reply = reply || "סליחה, לא הצלחתי לענות כרגע.";
             addMsg("bot", reply);
             history.push({ role: "assistant", content: reply });
           } catch (err) {
             typing.remove();
-            addMsg("bot", "אופס, יש בעיית חיבור. ננסה שוב?");
+            if (err && err.auth) { addMsg("bot", "צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 900); }
+            else addMsg("bot", "אופס, יש בעיית חיבור. ננסה שוב?");
           } finally {
-            sending = false;
+            sending = false; flushPending();
           }
         }
+
+        // המשך אוטומטי (אחרי תשובה נכונה/שגויה) — בלי בועת "אני", רק תגובת המורה.
+        async function teacherFollowup(payloadText) {
+          if (sending) { pendingFollowup = payloadText; return; } // ממתינים לסיום הקריאה הנוכחית
+          sending = true;
+          history.push({ role: "user", content: payloadText });
+          var typing = isOpen() ? showTyping() : null;
+          try {
+            var reply = await postTeach(payloadText);
+            if (typing) typing.remove();
+            if (reply) { addMsg("bot", reply); history.push({ role: "assistant", content: reply }); }
+          } catch (err) {
+            if (typing) typing.remove();
+          } finally {
+            sending = false; flushPending();
+          }
+        }
+        window.velaTeachFollowup = teacherFollowup;
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
@@ -639,7 +683,7 @@
           } catch (err) {
             setBubble("אופס, לא הצלחתי לראות את הציור. ננסה שוב?");
           } finally {
-            sending = false;
+            sending = false; flushPending();
           }
         }
 
@@ -749,6 +793,134 @@
           if (img && window.velaSeeBoard) window.velaSeeBoard(img);
           else if (window.velaBubble) window.velaBubble("הלוח עוד ריק — צייר משהו ואני אסתכל 🙂");
         });
+      })();
+
+      // ───────── קונפטי (תשובה נכונה) ─────────
+      (function confetti() {
+        var CC = ["#0d9488", "#f97316", "#fbbf24", "#8b5cf6", "#22c55e", "#ef4444"];
+        window.velaConfetti = function () {
+          var cv = document.createElement("canvas");
+          cv.style.cssText = "position:fixed;inset:0;pointer-events:none;z-index:60";
+          cv.width = window.innerWidth; cv.height = window.innerHeight;
+          document.body.appendChild(cv);
+          var ctx = cv.getContext("2d"), parts = [];
+          for (var i = 0; i < 100; i++) parts.push({ x: cv.width / 2, y: cv.height * 0.32, vx: (Math.random() - 0.5) * 15, vy: Math.random() * -13 - 3, g: 0.4 + Math.random() * 0.3, c: CC[i % CC.length], s: 6 + Math.random() * 7, rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.5 });
+          var start = performance.now();
+          (function frame(t) {
+            ctx.clearRect(0, 0, cv.width, cv.height);
+            var alive = false;
+            for (var i = 0; i < parts.length; i++) {
+              var p = parts[i]; p.vy += p.g; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+              if (p.y < cv.height + 24) alive = true;
+              ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 0.62); ctx.restore();
+            }
+            if (alive && t - start < 2600) requestAnimationFrame(frame); else cv.remove();
+          })(start);
+        };
+      })();
+
+      // ───────── תיבות-תשובה (כמה במקביל; בדיקה אוטומטית מול התשובה שהמורה הגדיר) ─────────
+      (function answerBoxes() {
+        var inputs = {}; // id → input
+        var boxes = [];  // המצב הנוכחי
+
+        function boxById(id) { for (var i = 0; i < boxes.length; i++) if (boxes[i].id === id) return boxes[i]; return null; }
+        function firstOpen() { for (var i = 0; i < boxes.length; i++) if (boxes[i].status === "open") return boxes[i]; return boxes[0] || null; }
+        function normNum(s) { var n = parseFloat(String(s).replace(/\s+/g, "").replace(",", ".")); return isFinite(n) ? n : null; }
+
+        function makeInput(id) {
+          var el = document.createElement("input");
+          el.className = "answerInput"; el.type = "text"; el.autocomplete = "off";
+          el.setAttribute("data-boxid", id); el.setAttribute("aria-label", "תשובה");
+          el.addEventListener("input", function () { var b = boxById(id); if (b && b.status === "wrong") { b.status = "open"; board.setAnswerStatusById(id, "open"); } });
+          el.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); submit(id, el.value); } });
+          document.body.appendChild(el);
+          return el;
+        }
+
+        function place() {
+          var rects = board.getAnswerBoxRects ? board.getAnswerBoxRects() : [], seen = {};
+          for (var i = 0; i < rects.length; i++) {
+            var r = rects[i], el = inputs[r.id]; if (!el) continue; seen[r.id] = 1;
+            el.classList.add("is-show");
+            el.style.left = r.left + "px"; el.style.top = r.top + "px";
+            el.style.width = r.width + "px"; el.style.height = r.height + "px";
+            el.style.lineHeight = r.height + "px"; el.style.fontSize = Math.max(14, Math.round(r.height * 0.46)) + "px";
+            if (r.kind === "text") { el.style.textAlign = "right"; el.dir = "rtl"; } else { el.style.textAlign = "center"; el.dir = "ltr"; }
+          }
+          Object.keys(inputs).forEach(function (id) { if (!seen[id]) inputs[id].classList.remove("is-show"); });
+        }
+
+        board.onAnswerBoxes(function (list) {
+          boxes = list.map(function (b) { return { id: b.id, kind: b.kind, answer: b.answer, status: b.status }; });
+          var ids = {};
+          boxes.forEach(function (b) { ids[b.id] = 1; if (!inputs[b.id]) inputs[b.id] = makeInput(b.id); });
+          Object.keys(inputs).forEach(function (id) { if (!ids[id]) { inputs[id].remove(); delete inputs[id]; } });
+          place();
+          var f = firstOpen();
+          if (f && inputs[f.id]) setTimeout(function () { inputs[f.id].focus(); }, 60);
+        });
+        board.onRender(place);
+
+        function submit(id, value) {
+          var b = boxById(id); if (!b || b.status === "correct") return; // כבר נפתר → לא לבדוק שוב
+          var val = String(value).trim(); if (!val) return;
+          var correct;
+          if (b.kind === "number") { var a = normNum(b.answer), bb = normNum(val); correct = a != null && bb != null && Math.abs(a - bb) < 1e-6; }
+          else if (b.answer) correct = val.toLowerCase() === String(b.answer).trim().toLowerCase();
+          else correct = null; // טקסט בלי תשובה ידועה → המורה יבדוק
+
+          if (correct === true) {
+            b.status = "correct"; board.setAnswerStatusById(id, "correct");
+            if (inputs[id]) { inputs[id].blur(); inputs[id].readOnly = true; } // נעילת תיבה שנפתרה
+            var allDone = boxes.length > 0 && boxes.every(function (x) { return x.status === "correct"; });
+            if (allDone) {
+              if (window.velaConfetti) window.velaConfetti();
+              if (board.tool) board.tool("clear_board", {}); // לוח נקי לסבב חדש (מאפס מונה השורות ומסיר תיבות ישנות)
+              if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד פתר נכון את כל התרגילים. שבח אותו בחום במשפט קצר, ותן סבב חדש של תרגילים באותו נושא עם draw_exercise.)");
+            }
+          } else if (correct === false) {
+            b.status = "wrong"; board.setAnswerStatusById(id, "wrong");
+            if (window.velaBubble) window.velaBubble("כמעט! נסה/י שוב 🙂");
+          } else {
+            if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד ענה על שאלה מילולית: '" + val + "'. בדוק אם נכון; אם כן שבח ותן הבאה, אם לא עודד לנסות שוב.)");
+          }
+        }
+      })();
+
+      // ───────── עורך טקסט inline (כלי הטקסט) ─────────
+      (function textEditor() {
+        var ed = document.createElement("div");
+        ed.id = "textEditor"; ed.contentEditable = "true";
+        ed.setAttribute("aria-label", "כתיבת טקסט על הלוח");
+        document.body.appendChild(ed);
+        var active = null;
+
+        function place() {
+          if (!active) { ed.style.display = "none"; return; }
+          var c = board.worldToScreen(active.x, active.y);
+          ed.style.display = "block";
+          ed.style.left = c.x + "px"; ed.style.top = c.y + "px";
+          ed.style.fontSize = Math.max(13, Math.round(30 * c.sy)) + "px";
+        }
+        function finish(keep) {
+          if (!active) return;
+          var a = active; active = null;
+          var text = (ed.textContent || "").trim();
+          ed.style.display = "none"; ed.textContent = "";
+          if (keep && text && board.addTextObject) board.addTextObject(a.x, a.y, text);
+        }
+        board.onTextEdit(function (pt) {
+          if (active) finish(true); // לסיים טקסט קודם לפני שמתחילים חדש
+          active = { x: pt.x, y: pt.y }; ed.textContent = "";
+          place(); setTimeout(function () { ed.focus(); }, 30);
+        });
+        board.onRender(function () { if (active) place(); });
+        ed.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") { e.preventDefault(); finish(true); }
+          else if (e.key === "Escape") { e.preventDefault(); finish(false); }
+        });
+        ed.addEventListener("blur", function () { finish(true); });
       })();
 
       // שם הנושא שהגענו ממנו (?topic=...)

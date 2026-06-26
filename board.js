@@ -37,6 +37,17 @@
   function clamp(v, lo, hi) { v = Number(v); if (!isFinite(v)) return lo; return v < lo ? lo : v > hi ? hi : v; }
   function hypot(a, b) { return Math.sqrt(a * a + b * b); }
   function clonePts(pts) { return pts.map(function (p) { return { x: p.x, y: p.y }; }); }
+  function isClosed(pts) { var n = pts.length; return n > 2 && Math.abs(pts[0].x - pts[n - 1].x) < 1e-6 && Math.abs(pts[0].y - pts[n - 1].y) < 1e-6; }
+  function roundRectPath(ctx, x, y, w, h, r) {
+    r = Math.min(r, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
 
   function hexToRgba(hex, a) {
     var h = String(hex || "").replace("#", "");
@@ -180,6 +191,16 @@
     this._resize = null;
     this._move = null;
 
+    // תיבות-תשובה (שאלות/תרגילים) + אנימציית הופעה + callbacks
+    this.answerBoxes = [];
+    this._abid = 0;   // מזהה רץ לתיבות
+    this._exSlot = 0; // שורת התרגיל הבא (לסידור אוטומטי)
+    this._vertex = null;        // גרירת קודקוד פעילה
+    this._onAnswerBoxes = null;
+    this._onTextEdit = null;    // עריכת טקסט inline
+    this._onRenderCbs = [];     // כמה מאזינים לרינדור (תיבות, עורך טקסט)
+    this._animScheduled = false;
+
     this._pointers = {};
     this._gesture = "none"; // none|pan|draw|pinch|erase|move|resize
     this._panLast = null;
@@ -236,19 +257,60 @@
   VelaBoard.prototype.toggleBackground = function () { return this.setBackground(this.background === "grid" ? "dots" : "grid"); };
 
   /* ---------- רינדור ---------- */
+  var REVEAL_DUR = 380; // משך אנימציית ההופעה (ms)
   VelaBoard.prototype.render = function () {
     var ctx = this.ctx, dpr = this._dpr, v = this.view;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.direction = "ltr"; // תרגילים ומספרים נכתבים משמאל לימין (לא RTL)
     ctx.fillStyle = COLORS.surface; ctx.fillRect(0, 0, this.W, this.H);
     ctx.setTransform(dpr * v.scale, 0, 0, dpr * v.scale, dpr * v.x, dpr * v.y);
 
     this._drawGrid();
-    for (var i = 0; i < this.objects.length; i++) this._drawObject(this.objects[i]);
+    var now = (typeof Date !== "undefined" && Date.now) ? Date.now() : 0;
+    var animating = false;
+    for (var i = 0; i < this.objects.length; i++) {
+      var o = this.objects[i], pr = this._revealProgress(o, now);
+      if (pr < 1) { animating = true; this._drawObjectReveal(o, pr); }
+      else this._drawObject(o);
+    }
     for (var j = 0; j < this.childStrokes.length; j++) this._drawStroke(this.childStrokes[j]);
     if (this._currentStroke) this._drawStroke(this._currentStroke);
+    for (var ai = 0; ai < this.answerBoxes.length; ai++) this._drawAnswerBox(this.answerBoxes[ai]);
 
     var act = this.selectedId || this.hoverId;
     if (act) { var s = this._byId(act); if (s) this._drawHandles(s, this.selectedId === act); }
+
+    for (var ri = 0; ri < this._onRenderCbs.length; ri++) this._onRenderCbs[ri](); // ללקוח — למקם אלמנטי HTML על הלוח
+    if (animating) this._scheduleAnim();
+  };
+
+  // אנימציית הופעה (fade + scale) לאובייקטי המורה — אפקט חשיפה כשאלמנט מצויר.
+  VelaBoard.prototype._revealProgress = function (o, now) {
+    if (!o || o._t0 == null) return 1;
+    var t = (now - o._t0) / REVEAL_DUR;
+    if (t >= 1) return 1; if (t <= 0) return 0;
+    return 1 - Math.pow(1 - t, 3); // ease-out
+  };
+  VelaBoard.prototype._objCenter = function (o) {
+    if (o.points && o.points.length) { var b = bboxOf(o.points); return { x: (b.minX + b.maxX) / 2, y: (b.minY + b.maxY) / 2 }; }
+    if (o.type === "circle" || o.type === "point" || o.type === "text") return { x: o.x, y: o.y };
+    if (o.type === "line" || o.type === "arrow") return { x: (o.x1 + o.x2) / 2, y: (o.y1 + o.y2) / 2 };
+    if (o.type === "number_line") return { x: o.x, y: o.y };
+    return { x: o.x || 0, y: o.y || 0 };
+  };
+  VelaBoard.prototype._drawObjectReveal = function (o, e) {
+    var ctx = this.ctx, c = this._objCenter(o), sc = 0.74 + 0.26 * e;
+    ctx.save();
+    ctx.globalAlpha = e;
+    ctx.translate(c.x, c.y); ctx.scale(sc, sc); ctx.translate(-c.x, -c.y);
+    this._drawObject(o);
+    ctx.restore();
+  };
+  VelaBoard.prototype._scheduleAnim = function () {
+    if (this._animScheduled || !global.requestAnimationFrame) return;
+    this._animScheduled = true;
+    var self = this;
+    global.requestAnimationFrame(function () { self._animScheduled = false; self.render(); });
   };
 
   VelaBoard.prototype._drawGrid = function () {
@@ -339,18 +401,24 @@
       { x: b.maxX + pad, y: b.maxY + pad }, { x: b.minX - pad, y: b.maxY + pad },
     ];
   };
+  // טקסט וקשקוש-חופשי (הרבה נקודות) → ידיות bbox (שינוי גודל); צורה גאומטרית → ידיות קודקוד.
+  VelaBoard.prototype._editMode = function (s) {
+    return (s.type === "text" || (s.points && s.points.length > 16)) ? "bbox" : "vertex";
+  };
+  // קודקודי הצורה (בלי הנקודה הסוגרת הכפולה), עם אינדקס הנקודה.
+  VelaBoard.prototype._vertices = function (s) {
+    var pts = s.points, out = [], last = isClosed(pts) ? pts.length - 1 : pts.length;
+    for (var i = 0; i < last; i++) out.push({ x: pts[i].x, y: pts[i].y, idx: i });
+    return out;
+  };
   VelaBoard.prototype._drawHandles = function (s, solid) {
-    var ctx = this.ctx, sc = this.view.scale, c = this._corners(s);
+    var ctx = this.ctx, sc = this.view.scale, hs = HANDLE_PX / sc;
+    var pts = this._editMode(s) === "bbox" ? this._corners(s) : this._vertices(s);
     ctx.save();
-    ctx.globalAlpha = solid ? 1 : 0.55;
-    ctx.strokeStyle = COLORS.sel; ctx.lineWidth = 1.5 / sc;
-    ctx.setLineDash([5 / sc, 4 / sc]);
-    ctx.beginPath(); ctx.moveTo(c[0].x, c[0].y); ctx.lineTo(c[1].x, c[1].y); ctx.lineTo(c[2].x, c[2].y); ctx.lineTo(c[3].x, c[3].y); ctx.closePath(); ctx.stroke();
-    ctx.setLineDash([]);
-    var hs = HANDLE_PX / sc;
-    for (var i = 0; i < 4; i++) {
+    ctx.globalAlpha = solid ? 1 : 0.6;
+    for (var i = 0; i < pts.length; i++) {
       ctx.fillStyle = "#fff"; ctx.strokeStyle = COLORS.sel; ctx.lineWidth = 1.5 / sc;
-      ctx.beginPath(); ctx.rect(c[i].x - hs / 2, c[i].y - hs / 2, hs, hs); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.rect(pts[i].x - hs / 2, pts[i].y - hs / 2, hs, hs); ctx.fill(); ctx.stroke();
     }
     ctx.restore();
   };
@@ -364,14 +432,93 @@
     draw_arrow: function (i) { this.objects.push({ who: "teacher", type: "arrow", x1: +i.x1, y1: +i.y1, x2: +i.x2, y2: +i.y2, color: i.color || null, width: i.width || null }); },
     draw_point: function (i) { this.objects.push({ who: "teacher", type: "point", x: +i.x, y: +i.y, label: i.label ? String(i.label).slice(0, 16) : "", color: i.color || null }); },
     draw_number_line: function (i) { this.objects.push({ who: "teacher", type: "number_line", x: +i.x, y: +i.y, from: +i.from, to: +i.to, step: i.step ? +i.step : 1, length: i.length ? +i.length : null, color: i.color || null }); },
-    clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this._select(null); },
+    ask_answer: function (i) {
+      var kind = i.kind === "text" ? "text" : "number";
+      var dim = kind === "text" ? { w: 300, h: 86 } : { w: 88, h: 74 };
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: +i.x, y: +i.y, kind: kind, answer: i.answer == null ? "" : String(i.answer), w: dim.w, h: dim.h, status: "open" });
+      if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
+    },
+    // תבנית מהירה: תרגיל שלם + תיבת-תשובה, ממוקם אוטומטית בצד שמאל, מוערם בשורות.
+    draw_exercise: function (i) {
+      var size = 40, top = 130, rowH = 116, colW = 430, rightMargin = 30;
+      var perCol = Math.max(1, Math.floor((this.H - top) / rowH)); // כמה תרגילים נכנסים בעמודה
+      var slot = this._exSlot || 0, col = Math.floor(slot / perCol), row = slot % perCol;
+      var y = top + row * rowH;
+      var text = String(i.text == null ? "" : i.text).slice(0, 60);
+      var kind = i.kind === "text" ? "text" : "number";
+      this.ctx.font = "700 " + size + "px Fredoka, Assistant, sans-serif";
+      var tw = this.ctx.measureText(text).width;
+      var boxW = kind === "text" ? 300 : 88, boxH = kind === "text" ? 86 : 74;
+      // עוגן לצד ימין: התיבה ליד הקצה הימני, הטקסט משמאל לה. עמודות נוספות נערמות שמאלה.
+      var boxX = this.W - rightMargin - boxW / 2 - col * colW;
+      var textCx = boxX - boxW / 2 - 30 - tw / 2;
+      if (textCx - tw / 2 < 20) textCx = 20 + tw / 2; // הגנה: לא לצאת משמאל
+      this.objects.push({ who: "teacher", type: "text", x: textCx, y: y, text: text, size: size, color: null });
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, answer: i.answer == null ? "" : String(i.answer), w: boxW, h: boxH, status: "open" });
+      this._exSlot = slot + 1;
+      if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
+    },
+    // תבנית מהירה: שעון שלם (עיגול + 12 מספרים + מחוגים) בקריאה אחת.
+    draw_clock: function (i) {
+      var cx = +i.x, cy = +i.y, r = i.r ? +i.r : 110, col = i.color || null;
+      var hour = (((+i.hour) % 12) + 12) % 12, minute = i.minute ? +i.minute : 0;
+      this.objects.push({ who: "teacher", type: "circle", x: cx, y: cy, r: r, color: col, width: 4 });
+      for (var n = 1; n <= 12; n++) {
+        var na = ((n * 30 - 90) * Math.PI) / 180;
+        this.objects.push({ who: "teacher", type: "text", x: cx + Math.cos(na) * (r - 24), y: cy + Math.sin(na) * (r - 24), text: String(n), size: 22, color: col });
+      }
+      var ha = (((hour % 12) * 30 + minute * 0.5 - 90) * Math.PI) / 180, ma = ((minute * 6 - 90) * Math.PI) / 180;
+      this.objects.push({ who: "teacher", type: "line", x1: cx, y1: cy, x2: cx + Math.cos(ha) * (r * 0.5), y2: cy + Math.sin(ha) * (r * 0.5), color: col, width: 6 });
+      this.objects.push({ who: "teacher", type: "line", x1: cx, y1: cy, x2: cx + Math.cos(ma) * (r * 0.78), y2: cy + Math.sin(ma) * (r * 0.78), color: col, width: 4 });
+      this.objects.push({ who: "teacher", type: "point", x: cx, y: cy, label: "", color: col });
+    },
+    clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this.answerBoxes = []; this._exSlot = 0; this._select(null); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); },
   };
   VelaBoard.prototype.tool = function (name, input) {
     var h = this._tools[name]; if (!h) { console.warn("VelaBoard: כלי לא מוכר —", name); return { ok: false, error: "unknown_tool" }; }
-    try { h.call(this, input || {}); this.render(); return { ok: true }; } catch (e) { console.error("VelaBoard tool error:", name, e); return { ok: false, error: String(e && e.message) }; }
+    try {
+      h.call(this, input || {});
+      var t0 = Date.now ? Date.now() : 0; // חותמת זמן לאנימציית ההופעה
+      for (var i = 0; i < this.objects.length; i++) if (this.objects[i]._t0 == null) this.objects[i]._t0 = t0;
+      this.render();
+      return { ok: true };
+    } catch (e) { console.error("VelaBoard tool error:", name, e); return { ok: false, error: String(e && e.message) }; }
   };
   VelaBoard.prototype.runTools = function (calls) { if (Array.isArray(calls)) for (var i = 0; i < calls.length; i++) if (calls[i] && calls[i].name) this.tool(calls[i].name, calls[i].input || {}); };
   VelaBoard.prototype.registerTool = function (name, h) { if (name && typeof h === "function") this._tools[name] = h; };
+
+  /* ---------- תיבת-תשובה (שאלה/תרגיל) ---------- */
+  VelaBoard.prototype.onAnswerBoxes = function (cb) { this._onAnswerBoxes = typeof cb === "function" ? cb : null; };
+  VelaBoard.prototype.onRender = function (cb) { if (typeof cb === "function") this._onRenderCbs.push(cb); };
+  VelaBoard.prototype.clearAnswerBoxes = function () { this.answerBoxes = []; this._exSlot = 0; if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); this.render(); };
+  VelaBoard.prototype.setAnswerStatusById = function (id, status) { for (var i = 0; i < this.answerBoxes.length; i++) if (this.answerBoxes[i].id === id) { this.answerBoxes[i].status = status; this.render(); return; } };
+  // עולם → פיקסלי-מסך (CSS) — למיקום תיבת ה-HTML מעל הלוח (עוקב אחרי זום/גרירה)
+  VelaBoard.prototype.worldToScreen = function (wx, wy) {
+    var rect = this.canvas.getBoundingClientRect();
+    var fx = rect.width / this.W, fy = rect.height / this.H;
+    return {
+      x: rect.left + (wx * this.view.scale + this.view.x) * fx,
+      y: rect.top + (wy * this.view.scale + this.view.y) * fy,
+      sx: this.view.scale * fx, sy: this.view.scale * fy,
+    };
+  };
+  VelaBoard.prototype.getAnswerBoxRects = function () {
+    var out = [];
+    for (var i = 0; i < this.answerBoxes.length; i++) {
+      var a = this.answerBoxes[i], c = this.worldToScreen(a.x - a.w / 2, a.y - a.h / 2);
+      out.push({ id: a.id, left: c.x, top: c.y, width: a.w * c.sx, height: a.h * c.sy, kind: a.kind, status: a.status });
+    }
+    return out;
+  };
+  VelaBoard.prototype._drawAnswerBox = function (a) {
+    var ctx = this.ctx, col = a.status === "correct" ? "#22c55e" : a.status === "wrong" ? "#ef4444" : COLORS.teacher;
+    ctx.save();
+    ctx.fillStyle = "rgba(255,255,255,0.9)";
+    roundRectPath(ctx, a.x - a.w / 2, a.y - a.h / 2, a.w, a.h, 14); ctx.fill();
+    ctx.strokeStyle = col; ctx.lineWidth = 3; ctx.setLineDash(a.status === "open" ? [8, 6] : []);
+    roundRectPath(ctx, a.x - a.w / 2, a.y - a.h / 2, a.w, a.h, 14); ctx.stroke();
+    ctx.restore();
+  };
 
   /* ---------- מצב + סמן ---------- */
   VelaBoard.prototype.setMode = function (mode) {
@@ -403,17 +550,18 @@
   };
 
   // טקסט: שואל מה לכתוב וממקם כאובייקט (תיבה בת 4 פינות — נבחר/נגרר/נמחק כמו השאר).
-  VelaBoard.prototype._placeText = function (w) {
-    var txt = global.prompt ? global.prompt("מה לכתוב על הלוח?") : "";
-    if (!txt) return;
-    txt = String(txt).slice(0, 40);
+  // כלי הטקסט: פותח עורך inline בלקוח (בלי חלונית prompt).
+  VelaBoard.prototype._placeText = function (w) { if (this._onTextEdit) this._onTextEdit({ x: w.x, y: w.y }); };
+  VelaBoard.prototype.onTextEdit = function (cb) { this._onTextEdit = typeof cb === "function" ? cb : null; };
+  // יוצר אובייקט טקסט (פינה שמאלית-עליונה ב-(x,y)) — נקרא מעורך ה-inline בסיום הכתיבה.
+  VelaBoard.prototype.addTextObject = function (x, y, text) {
+    text = String(text == null ? "" : text).slice(0, 60); if (!text) return;
     var size = 30;
     this.ctx.font = "700 " + size + "px Fredoka, Assistant, sans-serif";
-    var tw = Math.max(20, this.ctx.measureText(txt).width), th = size * 1.25;
-    var x0 = w.x - tw / 2, y0 = w.y - th / 2;
+    var tw = Math.max(24, this.ctx.measureText(text).width), th = size * 1.25;
     var item = {
-      id: this._nid(), who: "child", type: "text", text: txt, color: COLORS.child, kind: "text",
-      points: [{ x: x0, y: y0 }, { x: x0 + tw, y: y0 }, { x: x0 + tw, y: y0 + th }, { x: x0, y: y0 + th }],
+      id: this._nid(), who: "child", type: "text", text: text, color: COLORS.child, kind: "text",
+      points: [{ x: x, y: y }, { x: x + tw, y: y }, { x: x + tw, y: y + th }, { x: x, y: y + th }],
     };
     this.childStrokes.push(item);
     if (this._onChildStroke) this._onChildStroke(item, this.childStrokes);
@@ -454,10 +602,23 @@
     }
     return null;
   };
+  // מחזיר { type:'bbox', corner } או { type:'vertex', idx } או null.
   VelaBoard.prototype._handleAt = function (p, s) {
-    var c = this._corners(s), hr = (HANDLE_PX + 4) / this.view.scale / 2;
-    for (var i = 0; i < 4; i++) if (Math.abs(p.x - c[i].x) <= hr && Math.abs(p.y - c[i].y) <= hr) return i;
-    return -1;
+    var hr = (HANDLE_PX + 6) / this.view.scale / 2;
+    if (this._editMode(s) === "bbox") {
+      var c = this._corners(s);
+      for (var i = 0; i < 4; i++) if (Math.abs(p.x - c[i].x) <= hr && Math.abs(p.y - c[i].y) <= hr) return { type: "bbox", corner: i };
+    } else {
+      var v = this._vertices(s);
+      for (var j = 0; j < v.length; j++) if (Math.abs(p.x - v[j].x) <= hr && Math.abs(p.y - v[j].y) <= hr) return { type: "vertex", idx: v[j].idx };
+    }
+    return null;
+  };
+  VelaBoard.prototype._vertexTo = function (w) {
+    var v = this._vertex, s = this._byId(v.id); if (!s) return;
+    s.points[v.idx] = { x: w.x, y: w.y };
+    if (v.closed && v.idx === 0) s.points[s.points.length - 1] = { x: w.x, y: w.y }; // לשמור צורה סגורה
+    this.render();
   };
   VelaBoard.prototype._eraseAt = function (cx, cy) {
     var r = ERASER_PX / 2 / this.view.scale, self = this, next = [];
@@ -521,7 +682,15 @@
       if (self.mode === "eraser") { evt.preventDefault(); self._gesture = "erase"; self._eraseAt(w.x, w.y); self.render(); return; }
       // mode idle = בחירה + הזזת תצוגה
       var act = self.selectedId || self.hoverId, actS = act ? self._byId(act) : null;
-      if (actS) { var hc = self._handleAt(w, actS); if (hc >= 0) { evt.preventDefault(); self._select(actS.id); self._gesture = "resize"; self._resize = { id: actS.id, corner: hc, orig: clonePts(actS.points), bb: bboxOf(actS.points) }; return; } }
+      if (actS) {
+        var h = self._handleAt(w, actS);
+        if (h) {
+          evt.preventDefault(); self._select(actS.id);
+          if (h.type === "bbox") { self._gesture = "resize"; self._resize = { id: actS.id, corner: h.corner, orig: clonePts(actS.points), bb: bboxOf(actS.points) }; }
+          else { self._gesture = "vertex"; self._vertex = { id: actS.id, idx: h.idx, closed: isClosed(actS.points) }; }
+          return;
+        }
+      }
       var hit = self._hitTest(w);
       if (hit) { evt.preventDefault(); self._select(hit); var hs = self._byId(hit); self._gesture = "move"; self._move = { id: hit, orig: clonePts(hs.points), start: w }; self.render(); return; }
       if (self.selectedId) { self._select(null); self.render(); }
@@ -533,9 +702,9 @@
         var wp = self._toWorld(self._screen(evt));
         var hv = self._hitTest(wp);
         var overHandle = false;
-        if (self.selectedId || hv) { var os = self._byId(self.selectedId || hv); if (os && self._handleAt(wp, os) >= 0) overHandle = true; }
+        if (self.selectedId || hv) { var os = self._byId(self.selectedId || hv); if (os && self._handleAt(wp, os)) overHandle = true; }
         if (hv !== self.hoverId) { self.hoverId = hv; self.render(); }
-        self.canvas.style.cursor = overHandle ? "nwse-resize" : (hv ? "move" : (self.pan ? "grab" : "default"));
+        self.canvas.style.cursor = overHandle ? "pointer" : (hv ? "move" : (self.pan ? "grab" : "default"));
       }
       if (!(evt.pointerId in self._pointers)) return;
       var s = self._screen(evt); self._pointers[evt.pointerId] = s; var w = self._toWorld(s);
@@ -548,6 +717,7 @@
         } else { self._currentStroke.points = self._shapePts(self.mode, self._drawStart, w); self.render(); }
       } else if (self._gesture === "erase") { evt.preventDefault(); self._eraseAt(w.x, w.y); self.render(); }
       else if (self._gesture === "resize") { evt.preventDefault(); self._resizeTo(w); }
+      else if (self._gesture === "vertex") { evt.preventDefault(); self._vertexTo(w); }
       else if (self._gesture === "move") { evt.preventDefault(); self._moveTo(w); }
       else if (self._gesture === "pan") { evt.preventDefault(); self.view.x += s.x - self._panLast.x; self.view.y += s.y - self._panLast.y; self._panLast = s; self.render(); }
     }
@@ -574,6 +744,7 @@
       }
       if (self._gesture === "pan") { self._panLast = null; self._applyCursor(false); }
       if (self._gesture === "resize") self._resize = null;
+      if (self._gesture === "vertex") self._vertex = null;
       if (self._gesture === "move") self._move = null;
       if (self._gesture === "pinch" && n < 2) self._pinch = null;
       if (n === 0) self._gesture = "none"; else if (self._gesture === "pinch" && n < 2) self._gesture = "none";
@@ -630,6 +801,7 @@
     if (!doc || !doc.createElement) return null;
     var off = doc.createElement("canvas"); off.width = cw; off.height = ch;
     var octx = off.getContext("2d");
+    octx.direction = "ltr";
     octx.fillStyle = COLORS.surface; octx.fillRect(0, 0, cw, ch);
     if (opts.grid !== false) {
       octx.strokeStyle = COLORS.gridLine; octx.lineWidth = 1;
