@@ -634,35 +634,42 @@
         }
         function closeChat() {
           panel.classList.remove("is-open");
-          if (sending) openBubble(true); // המורה עדיין חושב — ממשיכים את 3 הנקודות בבועה ליד המורה
+          if (sending) showLoadingUI(); // המורה עדיין חושב — מעבירים את הטעינה לבועה ליד המורה
         }
 
         // בועת דיבור ליד המורה (לתשובת ה-✓ / כשהצ'אט סגור) — צל משלה, בלי החשכת מסך.
-        // טיימר סגירה אוטומטי: ~30ש' אחרי שמוצג טקסט, אם העכבר לא על הבועה.
-        var bubbleTimer = null, bubbleHover = false;
+        // טיימר סגירה אוטומטי: ~14ש' אחרי שמוצג טקסט, אם העכבר לא על הבועה.
+        var bubbleTimer = null, bubbleHover = false, bubbleLoading = false;
         function clearBubbleTimer() { if (bubbleTimer) { clearTimeout(bubbleTimer); bubbleTimer = null; } }
-        function startBubbleTimer() { clearBubbleTimer(); bubbleTimer = setTimeout(function () { if (!bubbleHover) hideBubble(); }, 30000); }
+        function startBubbleTimer() { clearBubbleTimer(); bubbleTimer = setTimeout(function () { if (!bubbleHover) hideBubble(); }, 14000); }
         function openBubble(loading) {
-          bubble.classList.add("is-show");
+          bubble.classList.add("is-show"); bubbleLoading = !!loading;
           if (loading) { bubbleBody.innerHTML = '<span class="bubbleTyping"><span></span><span></span><span></span></span>'; clearBubbleTimer(); }
           else bubbleBody.textContent = "";
         }
         // טקסט סופי תמיד מוודא שהבועה גלויה (כדי שתשובה לא "תיכתב" לבועה מוסתרת ותאבד) + מתחיל ספירה לסגירה.
-        function setBubble(text) { bubble.classList.add("is-show"); bubbleBody.textContent = text; startBubbleTimer(); }
+        function setBubble(text) { bubble.classList.add("is-show"); bubbleLoading = false; bubbleBody.textContent = text; startBubbleTimer(); }
         function showBubble(text) { setBubble(text); }
-        function hideBubble() { bubble.classList.remove("is-show"); clearBubbleTimer(); }
+        function hideBubble() { bubble.classList.remove("is-show"); bubbleLoading = false; clearBubbleTimer(); }
         bubble.addEventListener("mouseenter", function () { bubbleHover = true; clearBubbleTimer(); });
-        bubble.addEventListener("mouseleave", function () { bubbleHover = false; if (bubble.classList.contains("is-show")) startBubbleTimer(); });
+        // בזמן טעינה (3 נקודות) אסור להתחיל ספירה לסגירה — אחרת המורה "מפסיק לחשוב" באמצע בקשה איטית.
+        bubble.addEventListener("mouseleave", function () { bubbleHover = false; if (bubble.classList.contains("is-show") && !bubbleLoading) startBubbleTimer(); });
 
-        // לחיצה על המורה = פתיחת הצ'אט (שיחה אמיתית); קודם סוגרים בועה אם פתוחה.
-        fab.addEventListener("click", function () { hideBubble(); isOpen() ? closeChat() : openChat(); });
-        closeBtn.addEventListener("click", closeChat);
-        // לחיצה מחוץ לבועה (ולא על המורה) סוגרת אותה — בלי לחסום את הלוח.
-        document.addEventListener("pointerdown", function (e) {
-          if (!bubble.classList.contains("is-show")) return;
-          if (bubble.contains(e.target) || fab.contains(e.target)) return;
-          hideBubble();
+        // מחוון טעינה מאוחד: מוצג בצ'אט אם הוא פתוח, אחרת כבועת "חושב" ליד המורה — ועובר ביניהם בעת פתיחה/סגירה.
+        var chatTyping = null;
+        function showLoadingUI() {
+          if (isOpen()) { hideBubble(); if (!chatTyping) chatTyping = showTyping(); }
+          else { if (chatTyping) { chatTyping.remove(); chatTyping = null; } openBubble(true); }
+        }
+        function clearLoadingUI() { if (chatTyping) { chatTyping.remove(); chatTyping = null; } }
+
+        // לחיצה על המורה = פתיחת/סגירת הצ'אט. בפתיחה תוך כדי טעינה — מציגים את מחוון הטעינה בצ'אט.
+        fab.addEventListener("click", function () {
+          if (isOpen()) closeChat();
+          else { openChat(); if (sending) showLoadingUI(); }
         });
+        closeBtn.addEventListener("click", closeChat);
+        // הבועה לא נסגרת בלחיצה אקראית על הלוח — היא נשארת עד שהטיימר נגמר, Escape, או לחיצה על המורה.
         document.addEventListener("keydown", function (e) {
           if (e.key !== "Escape") return;
           if (bubble.classList.contains("is-show")) hideBubble();
@@ -733,16 +740,16 @@
           openChat();
           addMsg("me", displayText);
           history.push({ role: "user", content: payloadText });
-          var typing = showTyping();
+          showLoadingUI(); // מחוון טעינה בצ'אט (פתוח) או בבועה (סגור)
           try {
             var reply = await postTeach(payloadText);
-            typing.remove();
+            clearLoadingUI();
             reply = reply || "סליחה, לא הצלחתי לענות כרגע.";
             addMsg("bot", reply);
             history.push({ role: "assistant", content: reply });
             if (!isOpen()) showBubble(reply); // הצ'אט נסגר באמצע — מציגים את התשובה בבועה
           } catch (err) {
-            typing.remove();
+            clearLoadingUI();
             var em = err && err.auth ? "צריך להתחבר מחדש 🙂" : "אופס, יש בעיית חיבור. ננסה שוב?";
             addMsg("bot", em);
             if (!isOpen()) showBubble(em);
@@ -757,17 +764,16 @@
           if (sending) { pendingFollowup = payloadText; return; } // ממתינים לסיום הקריאה הנוכחית
           sending = true;
           history.push({ role: "user", content: payloadText });
-          var typing = isOpen() ? showTyping() : null;
-          if (!isOpen()) openBubble(true); // צ'אט סגור → בועת חשיבה (3 נקודות) ליד המורה
+          showLoadingUI(); // צ'אט פתוח → typing בצ'אט; סגור → בועת חשיבה ליד המורה
           try {
             var reply = await postTeach(payloadText);
-            if (typing) typing.remove();
+            clearLoadingUI();
             if (reply) {
               addMsg("bot", reply); history.push({ role: "assistant", content: reply });
               if (!isOpen()) showBubble(reply); // צ'אט סגור → התשובה בבועה
             } else if (!isOpen()) hideBubble(); // אין תשובה → לסגור את בועת החשיבה
           } catch (err) {
-            if (typing) typing.remove();
+            clearLoadingUI();
             if (!isOpen()) hideBubble();
           } finally {
             sending = false; flushPending();
@@ -787,22 +793,24 @@
         async function seeBoard(imageDataUrl) {
           if (sending) return;
           sending = true;
-          openBubble(true); // בועה ליד המורה עם "טוען", ורקע מוצלל — בלי לפתוח צ'אט
+          showLoadingUI(); // בדרך כלל הצ'אט סגור → בועת "חושב" ליד המורה; אם פתוח → typing בצ'אט
           try {
             var res = await fetch("/api/see", {
               method: "POST",
               headers: { "content-type": "application/json" },
               body: JSON.stringify({ image: imageDataUrl, topic: { title: new URLSearchParams(location.search).get("topic") || "" } }),
             });
-            if (res.status === 401) { setBubble("צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 1100); return; }
+            if (res.status === 401) { clearLoadingUI(); if (isOpen()) addMsg("bot", "צריך להתחבר מחדש 🙂"); else showBubble("צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 1100); return; }
             var data = await res.json();
             var reply = (data && data.reply) || "סליחה, לא הצלחתי לראות את הציור.";
+            clearLoadingUI();
             // אם הילד פתח את הצ'אט באמצע — מציגים בתוך הצ'אט; אחרת בבועה ליד המורה.
-            if (isOpen()) { hideBubble(); addMsg("bot", reply); } else showBubble(reply);
+            if (isOpen()) addMsg("bot", reply); else showBubble(reply);
             history.push({ role: "user", content: "(הראיתי למורה את הציור שלי על הלוח)" });
             history.push({ role: "assistant", content: reply });
           } catch (err) {
-            if (isOpen()) { hideBubble(); addMsg("bot", "אופס, לא הצלחתי לראות את הציור. ננסה שוב?"); }
+            clearLoadingUI();
+            if (isOpen()) addMsg("bot", "אופס, לא הצלחתי לראות את הציור. ננסה שוב?");
             else showBubble("אופס, לא הצלחתי לראות את הציור. ננסה שוב?");
           } finally {
             sending = false; flushPending();

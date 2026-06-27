@@ -184,7 +184,7 @@
     this.penColor = COLORS.ink; // צבע ברירת-מחדל לציור — שחור (נשלט ע"י בורר הקשת)
     this.shapeKind = "square"; // square | circle | triangle (לכלי הצורות)
     this._currentStroke = null;
-    this._twoClick = null; // מצב מיקום בשתי לחיצות
+    this._place = null; // מצב מיקום צורה (אוסף נקודות: 2 לרוב, 3 למשולש)
     this._onChildStroke = null;
     this._sid = 0;
 
@@ -281,7 +281,7 @@
     }
     for (var j = 0; j < this.childStrokes.length; j++) this._drawStroke(this.childStrokes[j]);
     if (this._currentStroke) this._drawStroke(this._currentStroke);
-    if (this._twoClick) this._drawTwoClickPreview();
+    if (this._place) this._drawPlacePreview();
     for (var ai = 0; ai < this.answerBoxes.length; ai++) this._drawAnswerBox(this.answerBoxes[ai]);
 
     var act = this.selectedId || this.hoverId;
@@ -530,7 +530,7 @@
   /* ---------- מצב + סמן ---------- */
   VelaBoard.prototype.setMode = function (mode) {
     this.mode = ALLOWED_MODES[mode] ? mode : "idle";
-    this._twoClick = null; // לבטל מיקום שתי-לחיצות שלא הושלם בעת מעבר כלי
+    this._place = null; // לבטל מיקום צורה שלא הושלם בעת מעבר כלי
     if (this.mode !== "idle") { this.hoverId = null; this._select(null); }
     this._applyCursor(); this.render(); return this.mode;
   };
@@ -544,7 +544,7 @@
   VelaBoard.prototype.onDraw = function (cb) { this._onDraw = typeof cb === "function" ? cb : null; };
 
   // נקודות הצורה לפי מצב הציור (קו/זווית/מלבן). זווית = שתי קרניים מהקודקוד.
-  VelaBoard.prototype._shapePts = function (mode, a, b) {
+  VelaBoard.prototype._shapePts = function (mode, a, b, kind) {
     if (mode === "line") return [{ x: a.x, y: a.y }, { x: b.x, y: b.y }];
     if (mode === "angle") {
       var len = Math.sqrt(dist2(a.x, a.y, b.x, b.y)) || 1;
@@ -552,7 +552,7 @@
     }
     if (mode === "shape") {
       var x1 = Math.min(a.x, b.x), y1 = Math.min(a.y, b.y), x2 = Math.max(a.x, b.x), y2 = Math.max(a.y, b.y);
-      var kind = this.shapeKind || "square";
+      kind = kind || this.shapeKind || "square"; // ברירת מחדל: הצורה הנוכחית
       if (kind === "triangle") {
         return [{ x: (x1 + x2) / 2, y: y1 }, { x: x2, y: y2 }, { x: x1, y: y2 }, { x: (x1 + x2) / 2, y: y1 }];
       }
@@ -576,15 +576,34 @@
     return { x: w.x, y: w.y }; // אחרת חופשי לגמרי (גם אם קרוב לקו אחד)
   };
   // סיום צורה (לחיצה שנייה או סיום גרירה)
-  VelaBoard.prototype._finalizeShape = function (end) {
-    var tc = this._twoClick; if (!tc) return;
-    this._twoClick = null;
-    var start = tc.start;
-    if (Math.max(Math.abs(end.x - start.x), Math.abs(end.y - start.y)) < 4 / this.view.scale) { this.render(); return; } // זעיר → ביטול
-    var pts = this._shapePts(tc.mode, start, end);
+  // מספר הלחיצות הדרוש למיקום צורה: משולש = 3 קודקודים; כל השאר = 2.
+  function placeClicks(mode, kind) { return (mode === "shape" && kind === "triangle") ? 3 : 2; }
+  // הפוליגון לפי הנקודות שנאספו (pl.pts) + מיקום הסמן (pl.cur) — משמש לתצוגה מקדימה ולסיום.
+  VelaBoard.prototype._placePolygon = function (pl) {
+    var pts = pl.pts, cur = pl.cur;
+    if (pl.mode === "shape" && pl.kind === "triangle") {
+      if (pts.length >= 3) return [pts[0], pts[1], pts[2], pts[0]]; // משולש סופי (3 קודקודים שנלחצו)
+      if (pts.length === 2) return [pts[0], pts[1], cur, pts[0]];   // תצוגה: 2 קודקודים + הסמן
+      return [pts[0], cur];                                         // תצוגה: צלע ראשונה
+    }
+    var end = pts.length >= 2 ? pts[1] : cur; // 2-לחיצות: לחיצה שנייה, או סמן/גרירה
+    return this._shapePts(pl.mode, pts[0], end, pl.kind);
+  };
+  // סיום מיקום — יוצר את הצורה מהנקודות שנאספו.
+  VelaBoard.prototype._finalizePlace = function () {
+    var pl = this._place; if (!pl) return;
+    this._place = null;
+    var pts = this._placePolygon(pl), bb = bboxOf(pts);
+    if (Math.max(bb.maxX - bb.minX, bb.maxY - bb.minY) < 4 / this.view.scale) { this.render(); return; } // זעיר → ביטול
+    if (pl.mode === "shape" && pl.kind === "triangle") { // משולש שטוח/מנוון (3 נקודות כמעט על קו) → ביטול
+      var a = pl.pts[0], b = pl.pts[1], c = pl.pts[2];
+      var base = Math.sqrt(dist2(a.x, a.y, b.x, b.y)) || 1;
+      var height = Math.abs((b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)) / base; // מרחק הקודקוד השלישי מהבסיס
+      if (height < 8 / this.view.scale) { this.render(); return; }
+    }
     var stroke = {
       who: "child", type: "stroke", points: pts, color: this.penColor, width: this.penWidth,
-      kind: tc.mode === "shape" ? "shape_" + (this.shapeKind || "square") : tc.mode, id: this._nid(),
+      kind: pl.mode === "shape" ? "shape_" + (pl.kind || "square") : pl.mode, id: this._nid(),
     };
     this.childStrokes.push(stroke);
     if (this._onChildStroke) this._onChildStroke(stroke, this.childStrokes);
@@ -599,10 +618,10 @@
     if (s && s.who === "child") { s.color = this.penColor; this.render(); }
   };
 
-  // תצוגה מקדימה (מקווקו, חצי-שקוף) של הצורה בזמן מיקום בשתי לחיצות + נקודת ההצמדה.
-  VelaBoard.prototype._drawTwoClickPreview = function () {
-    var tc = this._twoClick, ctx = this.ctx, sc = this.view.scale;
-    var pts = this._shapePts(tc.mode, tc.start, tc.cur);
+  // תצוגה מקדימה (מקווקו, חצי-שקוף) של הצורה בזמן מיקום + הנקודות שנקבעו והסמן.
+  VelaBoard.prototype._drawPlacePreview = function () {
+    var pl = this._place, ctx = this.ctx, sc = this.view.scale;
+    var pts = this._placePolygon(pl);
     ctx.save();
     ctx.globalAlpha = 0.55; ctx.strokeStyle = this.penColor; ctx.lineWidth = (this.penWidth || 5) / sc;
     ctx.lineJoin = "round"; ctx.lineCap = "round"; ctx.setLineDash([6 / sc, 5 / sc]);
@@ -610,12 +629,12 @@
     for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
     ctx.stroke();
     ctx.setLineDash([]);
-    // נקודת התחלה + נקודה נוכחית (מסומנות בצבע הרשת אם הוצמדו)
-    var hr = 5 / sc;
-    [tc.start, tc.cur].forEach(function (p) {
+    // הנקודות שכבר נקבעו + הסמן הנוכחי (בצבע הרשת אם הוצמדו)
+    var hr = 5 / sc, dots = pl.pts.concat([pl.cur]);
+    for (var d = 0; d < dots.length; d++) {
       ctx.globalAlpha = 0.9; ctx.fillStyle = COLORS.sel;
-      ctx.beginPath(); ctx.arc(p.x, p.y, hr, 0, Math.PI * 2); ctx.fill();
-    });
+      ctx.beginPath(); ctx.arc(dots[d].x, dots[d].y, hr, 0, Math.PI * 2); ctx.fill();
+    }
     ctx.restore();
   };
 
@@ -748,11 +767,16 @@
         self._currentStroke = { who: "child", type: "stroke", points: [w], color: self.penColor, kind: "scribble" };
         return;
       }
-      if (TWO_CLICK_MODES[self.mode]) { // קו/זווית/צורה — לחיצה ראשונה=התחלה, שנייה=סיום (או גרירה)
+      if (TWO_CLICK_MODES[self.mode]) { // קו/זווית/צורה — אוסף נקודות בלחיצות (משולש=3, השאר=2) או גרירה
         evt.preventDefault();
         var sp = self._snap(w);
-        if (self._twoClick) self._finalizeShape(sp);
-        else { self._twoClick = { mode: self.mode, start: sp, cur: sp, downScreen: s, dragging: false }; self.render(); }
+        if (self._place) {
+          self._place.pts.push(sp); self._place.cur = sp;
+          if (self._place.pts.length >= self._place.needed) self._finalizePlace(); else self.render();
+        } else {
+          self._place = { mode: self.mode, kind: self.shapeKind, pts: [sp], cur: sp, needed: placeClicks(self.mode, self.shapeKind), downScreen: s, dragging: false };
+          self.render();
+        }
         return;
       }
       if (self.mode === "text") { evt.preventDefault(); self._placeText(w); return; }
@@ -783,13 +807,14 @@
         if (hv !== self.hoverId) { self.hoverId = hv; self.render(); }
         self.canvas.style.cursor = overHandle ? "pointer" : (hv ? "move" : (self.pan ? "grab" : "default"));
       }
-      // תצוגה מקדימה למצב שתי-לחיצות (קו/זווית/צורה) — עוקבת אחרי הסמן גם בין הלחיצות.
-      if (self._twoClick) {
+      // תצוגה מקדימה למיקום צורה — עוקבת אחרי הסמן גם בין הלחיצות.
+      if (self._place) {
         var s2 = self._screen(evt);
-        self._twoClick.cur = self._snap(self._toWorld(s2));
-        if ((evt.pointerId in self._pointers) && self._twoClick.downScreen &&
-            Math.abs(s2.x - self._twoClick.downScreen.x) + Math.abs(s2.y - self._twoClick.downScreen.y) > 6) {
-          self._twoClick.dragging = true; // המשתמש מחזיק וגורר → יצירה בגרירה
+        self._place.cur = self._snap(self._toWorld(s2));
+        // גרירה אפשרית רק לצורות 2-לחיצות (לא משולש), ורק אחרי הנקודה הראשונה.
+        if ((evt.pointerId in self._pointers) && self._place.downScreen && self._place.needed === 2 && self._place.pts.length === 1 &&
+            Math.abs(s2.x - self._place.downScreen.x) + Math.abs(s2.y - self._place.downScreen.y) > 6) {
+          self._place.dragging = true; // המשתמש מחזיק וגורר → יצירה בגרירה
         }
         self.render();
         if (!(evt.pointerId in self._pointers)) { evt.preventDefault(); return; } // עכבר חופשי בין הלחיצות
@@ -814,7 +839,7 @@
       delete self._pointers[evt.pointerId];
       var n = self._ids().length;
       // שתי-לחיצות: אם המשתמש החזיק וגרר → סיים את הצורה; אחרת השאר פתוח ללחיצה השנייה.
-      if (self._twoClick && self._twoClick.dragging) { self._finalizeShape(self._twoClick.cur); }
+      if (self._place && self._place.dragging) self._finalizePlace();
       if (self._gesture === "draw") {
         var stroke = self._currentStroke; self._currentStroke = null;
         var minPts = stroke && stroke.kind === "scribble" ? 1 : 2;
