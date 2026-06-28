@@ -77,8 +77,7 @@ async function teacherDraw(p = {}) {
     // לולאת Tool Use: מחזירים ל-Claude אישור לכל קריאה כדי שישלים ציורים מרובי-שלבים
     // (למשל שעון = עיגול + 12 מספרים + מחוגים). עוצרים כשסיים (end_turn) או בתקרה.
     for (let iter = 0; iter < 8; iter++) {
-      // זורם: כל כלי נשלח ל-onToolCall ברגע שהושלם → הלקוח מצייר צעד-אחר-צעד תוך כדי החשיבה.
-      const out = await llm.completeToolsStream({ system, messages: msgs, tools: BOARD_TOOLS, maxTokens: 1200, cacheSystem: true, onToolCall: typeof p.onToolCall === "function" ? p.onToolCall : null });
+      const out = await llm.completeTools({ system, messages: msgs, tools: BOARD_TOOLS, maxTokens: 1200, cacheSystem: true });
       if (out.text) text = out.text;
       if (out.toolCalls.length) {
         for (const tc of out.toolCalls) allCalls.push(tc);

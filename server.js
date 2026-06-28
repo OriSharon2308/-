@@ -290,27 +290,17 @@ const server = http.createServer(async (req, res) => {
       if (!body) return;
       const teachUser = users.getUserById(userId);
       const tTeach = Date.now();
-      // תשובה זורמת (NDJSON): כל פקודת ציור נשלחת מיד כשהמודל מסיים אותה, ובסוף אירוע done עם הטקסט.
-      res.writeHead(200, { "content-type": "application/x-ndjson; charset=utf-8", "cache-control": "no-store", "x-accel-buffering": "no" });
-      const writeEvent = (obj) => { try { res.write(JSON.stringify(obj) + "\n"); } catch (_) { /* הלקוח התנתק */ } };
-      try {
-        const result = await teacherDraw({
-          messageText: String(body.messageText || ""),
-          history: Array.isArray(body.history) ? body.history : [],
-          gender: teachUser?.gender || "male",
-          topic: body.topic && body.topic.title ? String(body.topic.title) : "",
-          geometry: body.geometry || null,
-          occupied: Array.isArray(body.occupied) ? body.occupied : [],
-          userId,
-          onToolCall: (tc) => writeEvent({ type: "tool", tool: { name: tc.name, input: tc.input } }),
-        });
-        writeEvent({ type: "done", reply: result.reply || "", mode: result.mode || "ai" });
-      } catch (e) {
-        console.error("teach stream error:", e.message);
-        writeEvent({ type: "done", reply: "אופס, לא הצלחתי לסרטט כרגע. ננסה שוב?", mode: "error" });
-      }
+      const result = await teacherDraw({
+        messageText: String(body.messageText || ""),
+        history: Array.isArray(body.history) ? body.history : [],
+        gender: teachUser?.gender || "male",
+        topic: body.topic && body.topic.title ? String(body.topic.title) : "",
+        geometry: body.geometry || null,
+        occupied: Array.isArray(body.occupied) ? body.occupied : [],
+        userId,
+      });
       console.log(`[timing] teach total: ${Date.now() - tTeach}ms`);
-      return res.end();
+      return json(res, 200, result);
     }
 
     /* ---------------- API: דיבור (STT/TTS) — דורש התחברות ---------------- */
