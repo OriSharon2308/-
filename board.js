@@ -164,7 +164,7 @@
     options = options || {};
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
-    this.background = options.background === "dots" ? "dots" : "grid";
+    this.background = (options.background === "dots" || options.background === "blank") ? options.background : "grid";
     this.mode = options.mode || "idle";
     this.fit = options.fit === "fill" ? "fill" : "fixed";
     this.GRID = options.grid || 40;
@@ -322,8 +322,8 @@
   };
 
   /* ---------- רקע ---------- */
-  VelaBoard.prototype.setBackground = function (m) { this.background = m === "dots" ? "dots" : "grid"; this.render(); return this.background; };
-  VelaBoard.prototype.toggleBackground = function () { return this.setBackground(this.background === "grid" ? "dots" : "grid"); };
+  VelaBoard.prototype.setBackground = function (m) { this.background = (m === "dots" || m === "blank") ? m : "grid"; this.render(); return this.background; };
+  VelaBoard.prototype.toggleBackground = function () { var o = ["grid", "dots", "blank"]; return this.setBackground(o[(o.indexOf(this.background) + 1) % 3]); };
 
   /* ---------- רינדור ---------- */
   var REVEAL_DUR = 380; // משך אנימציית ההופעה (ms)
@@ -385,6 +385,7 @@
   };
 
   VelaBoard.prototype._drawGrid = function () {
+    if (this.background === "blank") return; // רקע חלק — בלי תבנית
     var ctx = this.ctx, G = this.GRID, s = this.view.scale;
     var left = (0 - this.view.x) / s, top = (0 - this.view.y) / s, right = (this.W - this.view.x) / s, bottom = (this.H - this.view.y) / s;
     var x0 = Math.floor(left / G) * G, y0 = Math.floor(top / G) * G;
@@ -1075,7 +1076,7 @@
     var octx = off.getContext("2d");
     octx.direction = "ltr";
     octx.fillStyle = COLORS.surface; octx.fillRect(0, 0, cw, ch);
-    if (opts.grid !== false) {
+    if (opts.grid !== false && this.background !== "blank") {
       octx.strokeStyle = COLORS.gridLine; octx.lineWidth = 1;
       var G = this.GRID, gx, gy;
       for (gx = Math.ceil(b.minX / G) * G; gx <= b.maxX; gx += G) { var px = (gx - b.minX) * s; octx.beginPath(); octx.moveTo(px + 0.5, 0); octx.lineTo(px + 0.5, ch); octx.stroke(); }
