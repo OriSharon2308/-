@@ -844,14 +844,33 @@
             }),
           });
           if (res.status === 401) throw { auth: true };
-          var data = await res.json();
-          if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
-            board.runTools(data.toolCalls);
-            // המורה הוסיף תרגילים/שאלות → לסדר את התצוגה כך שיראו אותן (מושך לבית/מארגן את המסך)
-            var addedExercise = data.toolCalls.some(function (tc) { return tc && (tc.name === "draw_exercise" || tc.name === "ask_answer"); });
-            if (addedExercise && board.organizeView) setTimeout(function () { board.organizeView(); }, 240);
+          // תשובה זורמת (NDJSON): כל פקודת ציור מצוירת מיד כשהיא מגיעה — צעד-אחר-צעד תוך כדי שהמורה ממשיכה.
+          var reply = "", addedExercise = false, firstTool = true;
+          function handleEvent(ev) {
+            if (ev.type === "tool" && ev.tool && board.tool) {
+              if (firstTool) { firstTool = false; clearLoadingUI(); hideBubble(); } // ציור התחיל → מסירים את מחוון הטעינה
+              board.tool(ev.tool.name, ev.tool.input || {});
+              if (ev.tool.name === "draw_exercise" || ev.tool.name === "ask_answer") addedExercise = true;
+            } else if (ev.type === "done") { reply = ev.reply || ""; }
           }
-          return (data && data.reply) || "";
+          if (res.body && res.body.getReader) {
+            var reader = res.body.getReader(), dec = new TextDecoder(), buf = "", nl;
+            for (;;) {
+              var c = await reader.read();
+              if (c.done) break;
+              buf += dec.decode(c.value, { stream: true });
+              while ((nl = buf.indexOf("\n")) >= 0) {
+                var line = buf.slice(0, nl).trim(); buf = buf.slice(nl + 1);
+                if (line) { try { handleEvent(JSON.parse(line)); } catch (e) { /* שורה חלקית/פגומה */ } }
+              }
+            }
+          } else {
+            // נפילה לאחור (דפדפן בלי streaming reader): קוראים את כל ה-NDJSON בבת אחת
+            (await res.text()).split("\n").forEach(function (line) { line = line.trim(); if (line) { try { handleEvent(JSON.parse(line)); } catch (e) {} } });
+          }
+          // המורה הוסיפה תרגילים → לסדר את התצוגה שיראו אותן (אחרי שכל הציור הושלם, בלי לקטוע)
+          if (addedExercise && board.organizeView) setTimeout(function () { board.organizeView(); }, 240);
+          return reply;
         }
 
         // שליחה רגילה: בועת "אני" + תשובת המורה (כולל סרטוט).
