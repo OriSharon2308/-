@@ -65,7 +65,7 @@
       .zoomCtl .reset { font-size: 18px; }
 
       /* בורר רקע הלוח (משבצות / נקודות / חלק) — עיגול עם הרקע הנוכחי; בריחוף נפתחות שתי האחרות */
-      .bgPicker { position: fixed; top: 68px; inset-inline-end: 18px; z-index: 6; width: 46px; height: 46px; }
+      .bgPicker { position: fixed; top: 116px; inset-inline-end: 18px; z-index: 6; width: 46px; height: 46px; } /* מתחת לפס ה"✓ בדיקה" הממורכז */
       .bgOpt {
         position: absolute; top: 0; inset-inline-end: 0; width: 46px; height: 46px; padding: 0;
         border: 1px solid rgba(13, 60, 53, 0.10); border-radius: 50%; cursor: pointer;
@@ -597,9 +597,12 @@
         function closeSoon() { closeT = setTimeout(close, 150); } // השהיה קצרה גושרת על הרווח בין העיגולים
 
         layout(current);
-        // דסקטופ: ריחוף פותח/סוגר (עם השהיה כמו חוגת הכלים)
-        wrap.addEventListener("mouseenter", open);
-        wrap.addEventListener("mouseleave", closeSoon);
+        // ריחוף פותח/סוגר רק במכשירי עכבר אמיתי — אחרת אירועי-עכבר מסונתזים במגע פותחים וסוגרים בנגיעה אחת
+        var canHover = !window.matchMedia || window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        if (canHover) {
+          wrap.addEventListener("mouseenter", open);
+          wrap.addEventListener("mouseleave", closeSoon);
+        }
         opts.forEach(function (btn) {
           btn.addEventListener("click", function () {
             // מסך מגע: נגיעה ראשונה על הנוכחי (כשסגור) פותחת
