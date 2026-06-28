@@ -531,7 +531,7 @@
       var canvas = document.getElementById("board");
       var board = new VelaBoard(canvas, {
         fit: "fill", background: "grid", grid: 42, mode: "idle",
-        pan: true, zoom: true, // הזזה: יד שתופסת / שתי אצבעות במשטח-מגע. זום: צביטה / גלגלת-עכבר / כפתורים.
+        pan: true, zoom: true, // זום: גלגלת / צביטה / כפתורים. הזזה: יד שתופסת / החלקה אופקית.
       });
       window.velaBoard = board; // נגיש לקונסול — לבדיקת כלי מורה, למשל:
       // velaBoard.tool('draw_circle', { x: 300, y: 240, r: 60 })

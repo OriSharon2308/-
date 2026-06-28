@@ -864,22 +864,20 @@
       if (self._gesture === "pinch" && n < 2) self._pinch = null;
       if (n === 0) self._gesture = "none"; else if (self._gesture === "pinch" && n < 2) self._gesture = "none";
     }
-    // משטח-מגע: צביטה (ctrlKey) = זום עדין סביב הסמן; שתי אצבעות יחד = הזזת המסך (גלילה).
-    // גלגלת-עכבר קלאסית (יחידות שורה/עמוד — לעולם לא משטח-מגע) = זום בצעד קבוע, כדי לא לאבד זום בעכבר.
+    // גלגלת ו/או צביטה = זום (סביב הסמן), עדין. החלקה אופקית מובהקת (שתי אצבעות בצד) = הזזת המסך.
     function wheel(evt) {
       if (!self.zoom) return;
       evt.preventDefault();
       var dx = evt.deltaX, dy = evt.deltaY;
       if (evt.deltaMode === 1) { dx *= 16; dy *= 16; } else if (evt.deltaMode === 2) { dx *= self.W; dy *= self.H; } // נרמול ליחידות פיקסל
-      if (evt.ctrlKey) { // צביטת זום (תמיד deltaMode פיקסלים) — עדין סביב הסמן
-        self._zoomAt(self._screen(evt), self.view.scale * Math.exp(-dy * WHEEL_ZOOM_SENS));
-        self.render(); return;
+      // החלקה אופקית מובהקת (טראקפד בצד) → הזזת המסך; הגלגלת היא אנכית ולא תיכנס לכאן.
+      if (!evt.ctrlKey && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        self.view.x -= dx; self.view.y -= dy; self.render(); return;
       }
-      if (evt.deltaMode !== 0) { // גלגלת-עכבר אמיתית (שורה/עמוד) → זום בצעד קבוע ועדין
-        self._zoomAt(self._screen(evt), self.view.scale * (evt.deltaY < 0 ? 1.1 : 1 / 1.1));
-        self.render(); return;
-      }
-      self.view.x -= dx; self.view.y -= dy; self.render(); // שתי אצבעות יחד → גלילה דו-כיוונית
+      // זום: מגבילים צעד בודד (גלגלת שולחת קפיצה גדולה) כדי שיהיה עדין; צביטה (deltas קטנים) נשארת חלקה.
+      var d = Math.max(-40, Math.min(40, dy));
+      self._zoomAt(self._screen(evt), self.view.scale * Math.exp(-d * WHEEL_ZOOM_SENS));
+      self.render();
     }
     on(this.canvas, "pointerdown", down); on(this.canvas, "pointermove", move);
     on(this.canvas, "pointerup", up); on(this.canvas, "pointercancel", up); on(this.canvas, "wheel", wheel);
