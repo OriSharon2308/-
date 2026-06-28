@@ -65,9 +65,9 @@
       .zoomCtl .reset { font-size: 18px; }
 
       /* בורר רקע הלוח (משבצות / נקודות / חלק) — עיגול עם הרקע הנוכחי; בריחוף נפתחות שתי האחרות */
-      .bgPicker { position: fixed; top: 5px; inset-inline-end: 16px; z-index: 6; width: 46px; height: 46px; } /* שמאל-למעלה, מיושר לגובה כפתור היציאה בסרגל העליון */
+      .bgPicker { position: fixed; top: 9px; inset-inline-end: 16px; z-index: 6; width: 38px; height: 38px; } /* קוטר = גובה הצ'יפים (38px), מיושר לכפתור היציאה/הנושא */
       .bgOpt {
-        position: absolute; top: 0; inset-inline-end: 0; width: 46px; height: 46px; padding: 0; overflow: hidden;
+        position: absolute; top: 0; inset-inline-end: 0; width: 38px; height: 38px; padding: 0; overflow: hidden;
         border: 1px solid rgba(13, 60, 53, 0.10); border-radius: 50%; cursor: pointer;
         background: #fff;
         box-shadow: 0 5px 16px rgba(2, 6, 23, 0.10);
@@ -77,7 +77,7 @@
       .bgOpt svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; } /* התבנית ממלאת את כל העיגול (נחתכת לעיגול ע"י overflow) */
       .bgOpt.is-current { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; z-index: 3; }
       .bgPicker.is-open .bgOpt {
-        opacity: 1; pointer-events: auto; transform: translateY(calc(var(--i, 0) * 54px)) scale(1);
+        opacity: 1; pointer-events: auto; transform: translateY(calc(var(--i, 0) * 44px)) scale(1);
         transition-delay: calc(var(--i, 0) * 0.045s);
       }
       .bgOpt:hover { box-shadow: 0 7px 20px rgba(2, 6, 23, 0.16); }
@@ -471,8 +471,8 @@
         <svg viewBox="0 0 46 46" fill="none" stroke="#0d9488" stroke-width="2" opacity="0.5"><path d="M6.8 -2V48M39.2 -2V48M-2 6.8H48M-2 39.2H48"/></svg>
       </button>
       <button class="bgOpt" type="button" data-bg="dots" title="נקודות" aria-label="רקע נקודות">
-        <!-- נקודה אחת במרכז, בגודל המדויק של נקודות הרשת שעל הלוח (r≈1.8) -->
-        <svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="1.9" fill="#0d9488"/></svg>
+        <!-- נקודה אחת במרכז, בגודל המדויק של נקודות הרשת שעל הלוח (~1.8px; r מוגדל לפי כיווץ העיגול ל-38px) -->
+        <svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="2.3" fill="#0d9488"/></svg>
       </button>
       <button class="bgOpt" type="button" data-bg="blank" title="חלק" aria-label="רקע חלק"></button>
     </div>
