@@ -946,6 +946,7 @@
           if (e.key !== "Delete" && e.key !== "Backspace") return;
           var t = e.target;
           if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+          if (board.getSelectedExId && board.getSelectedExId()) { e.preventDefault(); board.deleteSelectedExercise(); return; }
           if (board.getSelected && board.getSelected()) {
             e.preventDefault();
             board.deleteSelected();

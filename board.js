@@ -190,6 +190,8 @@
 
     // בחירה/עריכה
     this.selectedId = null;
+    this.selectedExId = null; // תרגיל נבחר (להזזה/שינוי-גודל)
+    this._exDrag = null;
     this.hoverId = null;
     this._onSelect = null;
     this._onDraw = null;
@@ -342,6 +344,7 @@
 
     var act = this.selectedId || this.hoverId;
     if (act) { var s = this._byId(act); if (s) this._drawHandles(s, this.selectedId === act); }
+    if (this.selectedExId) { var sa = this._exById(this.selectedExId); if (sa) this._drawExSelection(sa); }
 
     for (var ri = 0; ri < this._onRenderCbs.length; ri++) this._onRenderCbs[ri](); // ללקוח — למקם אלמנטי HTML על הלוח
     if (animating) this._scheduleAnim();
@@ -537,7 +540,7 @@
       this.objects.push({ who: "teacher", type: "line", x1: cx, y1: cy, x2: cx + Math.cos(ma) * (r * 0.78), y2: cy + Math.sin(ma) * (r * 0.78), color: col, width: 4 });
       this.objects.push({ who: "teacher", type: "point", x: cx, y: cy, label: "", color: col });
     },
-    clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this.answerBoxes = []; this._exSlot = 0; this._select(null); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); },
+    clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this.answerBoxes = []; this._exSlot = 0; this.selectedExId = null; this._select(null); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); },
   };
   VelaBoard.prototype.tool = function (name, input) {
     var h = this._tools[name]; if (!h) { console.warn("VelaBoard: כלי לא מוכר —", name); return { ok: false, error: "unknown_tool" }; }
@@ -557,6 +560,38 @@
   VelaBoard.prototype.onRender = function (cb) { if (typeof cb === "function") this._onRenderCbs.push(cb); };
   VelaBoard.prototype.clearAnswerBoxes = function () { this.answerBoxes = []; this._exSlot = 0; if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); this.render(); };
   VelaBoard.prototype.setAnswerStatusById = function (id, status) { for (var i = 0; i < this.answerBoxes.length; i++) if (this.answerBoxes[i].id === id) { this.answerBoxes[i].status = status; this.render(); return; } };
+
+  /* ---------- הזזה + שינוי-גודל של תרגילים ---------- */
+  VelaBoard.prototype._exById = function (id) { for (var i = 0; i < this.answerBoxes.length; i++) if (this.answerBoxes[i].id === id) return this.answerBoxes[i]; return null; };
+  VelaBoard.prototype._exAt = function (w) { // התרגיל העליון שתיבתו התוחמת מכילה את הנקודה
+    for (var i = this.answerBoxes.length - 1; i >= 0; i--) { var bb = this._exBBox(this.answerBoxes[i]); if (w.x >= bb.minX && w.x <= bb.maxX && w.y >= bb.minY && w.y <= bb.maxY) return this.answerBoxes[i]; }
+    return null;
+  };
+  VelaBoard.prototype._exHandleAt = function (w, a) { // ידית שינוי-גודל בפינה שמאלית-תחתונה
+    var bb = this._exBBox(a), hr = (HANDLE_PX + 9) / this.view.scale;
+    return Math.abs(w.x - bb.minX) <= hr && Math.abs(w.y - bb.maxY) <= hr;
+  };
+  VelaBoard.prototype._selectEx = function (id) { this.selectedExId = id || null; if (id) this._select(null); this.render(); };
+  VelaBoard.prototype.getSelectedExId = function () { return this.selectedExId; };
+  VelaBoard.prototype.deleteSelectedExercise = function () {
+    if (!this.selectedExId) return;
+    var id = this.selectedExId;
+    this.answerBoxes = this.answerBoxes.filter(function (a) { return a.id !== id; });
+    this.selectedExId = null;
+    if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
+    this.render();
+  };
+  VelaBoard.prototype._drawExSelection = function (a) {
+    var ctx = this.ctx, sc = this.view.scale, bb = this._exBBox(a), pad = 6 / sc;
+    ctx.save();
+    ctx.strokeStyle = COLORS.sel; ctx.lineWidth = 1.6 / sc; ctx.setLineDash([6 / sc, 4 / sc]);
+    roundRectPath(ctx, bb.minX - pad, bb.minY - pad, bb.maxX - bb.minX + pad * 2, bb.maxY - bb.minY + pad * 2, 10 / sc); ctx.stroke();
+    ctx.setLineDash([]);
+    var hr = (HANDLE_PX / 2) / sc; // ידית שינוי-גודל (עיגול מלא בצבע הרשת) בפינה שמאלית-תחתונה
+    ctx.fillStyle = COLORS.sel; ctx.strokeStyle = "#fff"; ctx.lineWidth = 1.6 / sc;
+    ctx.beginPath(); ctx.arc(bb.minX, bb.maxY, hr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  };
   // עולם → פיקסלי-מסך (CSS) — למיקום תיבת ה-HTML מעל הלוח (עוקב אחרי זום/גרירה)
   VelaBoard.prototype.worldToScreen = function (wx, wy) {
     var rect = this.canvas.getBoundingClientRect();
@@ -609,7 +644,7 @@
   VelaBoard.prototype.setMode = function (mode) {
     this.mode = ALLOWED_MODES[mode] ? mode : "idle";
     this._place = null; // לבטל מיקום צורה שלא הושלם בעת מעבר כלי
-    if (this.mode !== "idle") { this.hoverId = null; this._select(null); }
+    if (this.mode !== "idle") { this.hoverId = null; this._select(null); this.selectedExId = null; }
     this._applyCursor(); this.render(); return this.mode;
   };
   VelaBoard.prototype._applyCursor = function (dragging) {
@@ -860,7 +895,19 @@
       }
       if (self.mode === "text") { evt.preventDefault(); self._placeText(w); return; }
       if (self.mode === "eraser") { evt.preventDefault(); self._gesture = "erase"; self._eraseAt(w.x, w.y); self.render(); return; }
-      // mode idle = בחירה + הזזת תצוגה
+      // mode idle: קודם תרגילים (הם מעל הציור) — ידית שינוי-גודל, ואז גוף התרגיל להזזה
+      if (self.selectedExId) {
+        var selA = self._exById(self.selectedExId);
+        if (selA && self._exHandleAt(w, selA)) {
+          evt.preventDefault(); self._gesture = "exresize";
+          self._exDrag = { id: selA.id, startScale: selA.scale || 1, startDist: Math.max(10, Math.sqrt(dist2(w.x, w.y, selA.x, selA.y))) };
+          return;
+        }
+      }
+      var exHit = self._exAt(w);
+      if (exHit) { evt.preventDefault(); self._selectEx(exHit.id); self._gesture = "exmove"; self._exDrag = { id: exHit.id, dx: exHit.x - w.x, dy: exHit.y - w.y }; return; }
+      if (self.selectedExId) self._selectEx(null); // לחיצה מחוץ לתרגיל → ביטול בחירת תרגיל
+      // mode idle = בחירה + הזזת תצוגה (ציור)
       var act = self.selectedId || self.hoverId, actS = act ? self._byId(act) : null;
       if (actS) {
         var h = self._handleAt(w, actS);
@@ -880,6 +927,10 @@
       // ריחוף (idle, בלי מחווה) → ידיות + סמן
       if (self.mode === "idle" && self._gesture === "none") {
         var wp = self._toWorld(self._screen(evt));
+        // תרגילים מעל הציור — סמן ייעודי לידית/גוף תרגיל
+        var selA2 = self.selectedExId ? self._exById(self.selectedExId) : null;
+        if (selA2 && self._exHandleAt(wp, selA2)) { if (self.hoverId) { self.hoverId = null; self.render(); } self.canvas.style.cursor = "nesw-resize"; return; }
+        if (self._exAt(wp)) { if (self.hoverId) { self.hoverId = null; self.render(); } self.canvas.style.cursor = "move"; return; }
         var hv = self._hitTest(wp);
         var overHandle = false;
         if (self.selectedId || hv) { var os = self._byId(self.selectedId || hv); if (os && self._handleAt(wp, os)) overHandle = true; }
@@ -908,6 +959,8 @@
           if (!last || Math.abs(w.x - last.x) + Math.abs(w.y - last.y) >= 1.2) { pts.push(w); self.render(); }
         } else { self._currentStroke.points = self._shapePts(self.mode, self._drawStart, w); self.render(); }
       } else if (self._gesture === "erase") { evt.preventDefault(); self._eraseAt(w.x, w.y); self.render(); }
+      else if (self._gesture === "exmove") { evt.preventDefault(); var ma = self._exById(self._exDrag.id); if (ma) { ma.x = w.x + self._exDrag.dx; ma.y = w.y + self._exDrag.dy; self.render(); } }
+      else if (self._gesture === "exresize") { evt.preventDefault(); var ra = self._exById(self._exDrag.id); if (ra) { var dd = Math.sqrt(dist2(w.x, w.y, ra.x, ra.y)); ra.scale = clamp(self._exDrag.startScale * dd / self._exDrag.startDist, 0.5, 3); self.render(); } }
       else if (self._gesture === "resize") { evt.preventDefault(); self._resizeTo(w); }
       else if (self._gesture === "vertex") { evt.preventDefault(); self._vertexTo(w); }
       else if (self._gesture === "move") { evt.preventDefault(); self._moveTo(w); }
@@ -940,6 +993,7 @@
       if (self._gesture === "resize") self._resize = null;
       if (self._gesture === "vertex") self._vertex = null;
       if (self._gesture === "move") self._move = null;
+      if (self._gesture === "exmove" || self._gesture === "exresize") self._exDrag = null;
       if (self._gesture === "pinch" && n < 2) self._pinch = null;
       if (n === 0) self._gesture = "none"; else if (self._gesture === "pinch" && n < 2) self._gesture = "none";
     }
