@@ -308,9 +308,14 @@
     for (var k = 0; k < this.answerBoxes.length; k++) ext(this._exBBox(this.answerBoxes[k]));
     return any ? b : null;
   };
+  // האם המשתמש כרגע באמצע מחווה (לחיצה/גרירה/מיקום צורה) — כדי לא לקטוע אותה באנימציית תצוגה.
+  VelaBoard.prototype.isInteracting = function () {
+    return (this._gesture && this._gesture !== "none") || !!this._place || (this._pointers && Object.keys(this._pointers).length > 0);
+  };
   // מסדר את התצוגה כך שהתוכן הרלוונטי נראה — זה ה"משוך אותי לבית והצג שאלות / ארגן את המסך".
   // יש ציור (מורה/ילד)? התאם תצוגה לכל התוכן (ציור + שאלות יחד). רק שאלות/ריק? חזרה לבית (שם השאלות במקומן מימין).
   VelaBoard.prototype.organizeView = function () {
+    if (this.isInteracting()) return; // לא לקטוע ציור/גרירה פעילים (תיקון: אנימציה יכלה לעוות שרטוט)
     var hasDrawing = (this.objects && this.objects.length) || (this.childStrokes && this.childStrokes.length);
     var bb = hasDrawing ? this._contentBBox() : null;
     if (bb) this.fitView(bb); else this.animateView({ x: 0, y: 0, scale: 1 });
@@ -613,7 +618,8 @@
   // תיבה תוחמת של כל קבוצת התרגיל (טקסט + תיבה) — לבחירה/הצמדה-לתצוגה/ידיות.
   VelaBoard.prototype._exBBox = function (a) {
     var d = this._exDims(a), halfH = Math.max(d.h, d.tsize) / 2;
-    return { minX: a.x - d.w / 2 - (a.text ? d.gap + d.tw : 0), minY: a.y - halfH, maxX: a.x + d.w / 2, maxY: a.y + halfH };
+    var m = a.text ? 0 : 12; // תיבה בלי טקסט (ask_answer): שוליים קטנים לתפיסה מחוץ ל-input
+    return { minX: a.x - d.w / 2 - (a.text ? d.gap + d.tw : m), minY: a.y - halfH - m, maxX: a.x + d.w / 2 + m, maxY: a.y + halfH + m };
   };
   VelaBoard.prototype.getAnswerBoxRects = function () {
     var out = [];
@@ -924,6 +930,7 @@
       if (self.pan) { evt.preventDefault(); self._gesture = "pan"; self._panLast = s; self._applyCursor(true); }
     }
     function move(evt) {
+      if (self._viewAnim && (evt.pointerId in self._pointers)) self._viewAnim = null; // מחווה פעילה גוברת על אנימציית תצוגה
       // ריחוף (idle, בלי מחווה) → ידיות + סמן
       if (self.mode === "idle" && self._gesture === "none") {
         var wp = self._toWorld(self._screen(evt));

@@ -710,6 +710,9 @@
             else if (o.type === "text" || o.type === "number_line") b = [o.x - 20, o.y - 20, 220, 60];
             if (b) out.push(b.map(function (n) { return Math.round(n); }));
           }
+          // גם אזורי התרגילים (הטקסט הוטמע בתיבה ולא ב-teacherObjects) — כדי שהמורה ידע שהלוח לא ריק
+          var exs = sc.exercises || [];
+          for (var e = 0; e < exs.length && out.length < 16; e++) if (exs[e].bbox) out.push(exs[e].bbox);
           return out;
         }
 
