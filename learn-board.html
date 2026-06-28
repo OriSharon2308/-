@@ -572,12 +572,50 @@
       document.getElementById("zoomOut").onclick = function () { board.zoomOut(); };
       document.getElementById("zoomReset").onclick = function () { board.organizeView(); }; // בית = סדר תצוגה כך שכל התוכן/השאלות נראים
 
+      // ───────── זיכרון לוח לפי נושא (מיקום + קישקושים + רקע) ─────────
+      (function boardMemory() {
+        var topic = new URLSearchParams(location.search).get("topic") || "";
+        var committedBg = board.background || "grid"; // הרקע שנבחר בפועל (לא תצוגה-מקדימה זמנית)
+        var saveT = null;
+        function key() { return "vela_board_" + topic; }
+        function save() {
+          if (!topic) return;
+          try {
+            localStorage.setItem(key(), JSON.stringify({ v: 1, view: board.getView(), bg: committedBg, strokes: board.getChildStrokes() }));
+          } catch (e) { /* מכסת אחסון / פרטיות — לא קריטי */ }
+        }
+        function saveSoon() { if (saveT) clearTimeout(saveT); saveT = setTimeout(save, 500); }
+        function load() {
+          if (!topic) return;
+          try {
+            var raw = localStorage.getItem(key()); if (!raw) return;
+            var d = JSON.parse(raw); if (!d) return;
+            if (d.bg) { committedBg = d.bg; board.setBackground(d.bg); }
+            if (Array.isArray(d.strokes) && board.setChildStrokes) board.setChildStrokes(d.strokes);
+            if (d.view && board.setView) board.setView(d.view); // אחרי שחזור הציורים, להחזיר את המיקום
+          } catch (e) { /* JSON פגום — מתעלמים */ }
+        }
+        load();
+        if (board.onChildStroke) board.onChildStroke(saveSoon);     // ציור חדש
+        window.addEventListener("pointerup", saveSoon, true);        // סוף גרירה/מחיקה/הזזה
+        window.addEventListener("wheel", function () { saveSoon(); }, { passive: true }); // זום
+        window.addEventListener("pagehide", save);
+        document.addEventListener("visibilitychange", function () { if (document.hidden) save(); });
+        // API לבורר הרקע: שמירת הרקע ה"מחויב" (לא התצוגה-המקדימה)
+        window.velaBoardMem = {
+          getBg: function () { return committedBg; },
+          setBg: function (bg) { committedBg = bg; board.setBackground(bg); saveSoon(); },
+        };
+      })();
+
       // ───────── בורר רקע הלוח (משבצות / נקודות / חלק) ─────────
       (function bgPicker() {
         var wrap = document.getElementById("bgPicker");
         var opts = Array.prototype.slice.call(wrap.querySelectorAll(".bgOpt"));
         var ORDER = ["grid", "dots", "blank"]; // סדר קבוע של שתי האפשרויות שנפרשות
-        var current = (board && board.background) || "grid";
+        var mem = window.velaBoardMem;
+        function committed() { return mem ? mem.getBg() : (board.background || "grid"); }
+        var current = committed();
         var closeT = null;
 
         function layout(cur) {
@@ -589,24 +627,26 @@
             btn.setAttribute("aria-pressed", isCur ? "true" : "false");
           });
         }
-        function open() { if (closeT) { clearTimeout(closeT); closeT = null; } wrap.classList.add("is-open"); }
-        function close() { wrap.classList.remove("is-open"); }
-        function closeSoon() { closeT = setTimeout(close, 150); } // השהיה קצרה גושרת על הרווח בין העיגולים
-
-        layout(current);
         // ריחוף פותח/סוגר רק במכשירי עכבר אמיתי — אחרת אירועי-עכבר מסונתזים במגע פותחים וסוגרים בנגיעה אחת
         var canHover = !window.matchMedia || window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        function open() { if (closeT) { clearTimeout(closeT); closeT = null; } wrap.classList.add("is-open"); }
+        function close() { wrap.classList.remove("is-open"); if (canHover) board.setBackground(committed()); } // סגירה מחזירה לרקע הנבחר (מבטלת תצוגה-מקדימה)
+        function closeSoon() { closeT = setTimeout(close, 150); } // השהיה גושרת על הרווח בין העיגולים — בלי לרפרף בין תצוגות-מקדימה
+
+        function commit(bg) { current = bg; if (mem) mem.setBg(bg); else board.setBackground(bg); layout(bg); }
+
+        layout(current);
         if (canHover) {
           wrap.addEventListener("mouseenter", open);
           wrap.addEventListener("mouseleave", closeSoon);
+          // ריחוף על אפשרות = תצוגה-מקדימה חיה על הלוח (עם הקישקושים), בלי לשמור
+          opts.forEach(function (btn) { btn.addEventListener("mouseenter", function () { board.setBackground(btn.dataset.bg); }); });
         }
         opts.forEach(function (btn) {
           btn.addEventListener("click", function () {
             // מסך מגע: נגיעה ראשונה על הנוכחי (כשסגור) פותחת
             if (!wrap.classList.contains("is-open") && btn.classList.contains("is-current")) { open(); return; }
-            current = btn.dataset.bg;
-            if (board.setBackground) board.setBackground(current);
-            layout(current); close();
+            commit(btn.dataset.bg); close();
           });
         });
         // מסך מגע: לחיצה בחוץ סוגרת

@@ -259,6 +259,7 @@
   VelaBoard.prototype.zoomOut = function () { this._zoomAt({ x: this.W / 2, y: this.H / 2 }, this.view.scale / 1.2); this.render(); };
   VelaBoard.prototype.resetView = function () { this.view = { x: 0, y: 0, scale: 1 }; this.render(); };
   VelaBoard.prototype.getView = function () { return { x: this.view.x, y: this.view.y, scale: this.view.scale }; };
+  VelaBoard.prototype.setView = function (v) { if (!v) return; this._viewAnim = null; this.view = { x: +v.x || 0, y: +v.y || 0, scale: clamp(+v.scale || 1, this.minScale, this.maxScale) }; this.render(); };
 
   // אנימציית תצוגה חלקה (ease-out) — נקטעת ע"י אינטראקציה של המשתמש.
   VelaBoard.prototype.animateView = function (target, dur) {
@@ -1028,6 +1029,12 @@
 
   /* ---------- נתונים ---------- */
   VelaBoard.prototype.getChildStrokes = function () { return JSON.parse(JSON.stringify(this.childStrokes)); };
+  // שחזור קישקושי הילד (מהזיכרון). מוודא מזהים כדי שבחירה/עריכה יעבדו.
+  VelaBoard.prototype.setChildStrokes = function (arr) {
+    this.childStrokes = Array.isArray(arr) ? JSON.parse(JSON.stringify(arr)) : [];
+    for (var i = 0; i < this.childStrokes.length; i++) if (this.childStrokes[i].id == null) this.childStrokes[i].id = this._nid();
+    this._currentStroke = null; this._select(null); this.render();
+  };
   VelaBoard.prototype.clearChildStrokes = function () { this.childStrokes = []; this._currentStroke = null; this._select(null); this.render(); };
   VelaBoard.prototype.getScene = function () {
     var self = this;
