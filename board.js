@@ -258,6 +258,62 @@
   VelaBoard.prototype.resetView = function () { this.view = { x: 0, y: 0, scale: 1 }; this.render(); };
   VelaBoard.prototype.getView = function () { return { x: this.view.x, y: this.view.y, scale: this.view.scale }; };
 
+  // אנימציית תצוגה חלקה (ease-out) — נקטעת ע"י אינטראקציה של המשתמש.
+  VelaBoard.prototype.animateView = function (target, dur) {
+    var self = this;
+    target = { x: target.x, y: target.y, scale: clamp(target.scale, this.minScale, this.maxScale) };
+    dur = dur == null ? 480 : dur;
+    if (dur <= 0 || !global.requestAnimationFrame) { this.view = target; this._viewAnim = null; this.render(); return; }
+    var start = { x: this.view.x, y: this.view.y, scale: this.view.scale }, t0 = Date.now ? Date.now() : 0, token = {};
+    this._viewAnim = token;
+    (function step() {
+      if (self._viewAnim !== token) return; // בוטל ע"י אינטראקציה/אנימציה חדשה
+      var t = Math.min(1, ((Date.now ? Date.now() : 0) - t0) / dur), e = 1 - Math.pow(1 - t, 3);
+      self.view.x = start.x + (target.x - start.x) * e;
+      self.view.y = start.y + (target.y - start.y) * e;
+      self.view.scale = start.scale + (target.scale - start.scale) * e;
+      self.render();
+      if (t < 1) global.requestAnimationFrame(step); else self._viewAnim = null;
+    })();
+  };
+  // ממקם את התצוגה כך שתיבה תוחמת נתונה תיכנס למסך, ממורכזת, עם שוליים (לא מגדיל מעבר ל-1).
+  VelaBoard.prototype.fitView = function (bbox, pad, dur) {
+    if (!bbox || !isFinite(bbox.minX)) return;
+    pad = pad == null ? 70 : pad;
+    var bw = (bbox.maxX - bbox.minX) + pad * 2, bh = (bbox.maxY - bbox.minY) + pad * 2;
+    var cx = (bbox.minX + bbox.maxX) / 2, cy = (bbox.minY + bbox.maxY) / 2;
+    var scale = clamp(Math.min(this.W / bw, this.H / bh), this.minScale, 1);
+    this.animateView({ x: this.W / 2 - cx * scale, y: this.H / 2 - cy * scale, scale: scale }, dur);
+  };
+  // תיבה תוחמת של אובייקט בודד (מורה/ילד) — להצמדת-תצוגה.
+  VelaBoard.prototype._objBBox = function (o) {
+    if (!o) return null;
+    if (o.points && o.points.length) return bboxOf(o.points);
+    if (o.type === "circle") return { minX: o.x - o.r, minY: o.y - o.r, maxX: o.x + o.r, maxY: o.y + o.r };
+    if (o.type === "line" || o.type === "arrow") return { minX: Math.min(o.x1, o.x2), minY: Math.min(o.y1, o.y2), maxX: Math.max(o.x1, o.x2), maxY: Math.max(o.y1, o.y2) };
+    if (o.type === "text") { var sz = o.size || 32, w = String(o.text || "").length * sz * 0.6; return { minX: o.x - w / 2, minY: o.y - sz / 2, maxX: o.x + w / 2, maxY: o.y + sz / 2 }; }
+    if (o.type === "point") return { minX: o.x - 12, minY: o.y - 12, maxX: o.x + 12, maxY: o.y + 12 };
+    if (o.type === "number_line") { var len = o.length || 400; return { minX: o.x - 10, minY: o.y - 30, maxX: o.x + len, maxY: o.y + 30 }; }
+    if (o.x != null && o.y != null) return { minX: o.x - 20, minY: o.y - 20, maxX: o.x + 20, maxY: o.y + 20 };
+    return null;
+  };
+  // תיבה תוחמת של כל התוכן (ציורי מורה+ילד+תרגילים) — null אם ריק.
+  VelaBoard.prototype._contentBBox = function () {
+    var b = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity }, any = false;
+    function ext(bb) { if (!bb) return; any = true; if (bb.minX < b.minX) b.minX = bb.minX; if (bb.minY < b.minY) b.minY = bb.minY; if (bb.maxX > b.maxX) b.maxX = bb.maxX; if (bb.maxY > b.maxY) b.maxY = bb.maxY; }
+    var objs = this.objects.concat(this.childStrokes);
+    for (var i = 0; i < objs.length; i++) ext(this._objBBox(objs[i]));
+    for (var k = 0; k < this.answerBoxes.length; k++) ext(this._exBBox(this.answerBoxes[k]));
+    return any ? b : null;
+  };
+  // מסדר את התצוגה כך שהתוכן הרלוונטי נראה — זה ה"משוך אותי לבית והצג שאלות / ארגן את המסך".
+  // יש ציור (מורה/ילד)? התאם תצוגה לכל התוכן (ציור + שאלות יחד). רק שאלות/ריק? חזרה לבית (שם השאלות במקומן מימין).
+  VelaBoard.prototype.organizeView = function () {
+    var hasDrawing = (this.objects && this.objects.length) || (this.childStrokes && this.childStrokes.length);
+    var bb = hasDrawing ? this._contentBBox() : null;
+    if (bb) this.fitView(bb); else this.animateView({ x: 0, y: 0, scale: 1 });
+  };
+
   /* ---------- רקע ---------- */
   VelaBoard.prototype.setBackground = function (m) { this.background = m === "dots" ? "dots" : "grid"; this.render(); return this.background; };
   VelaBoard.prototype.toggleBackground = function () { return this.setBackground(this.background === "grid" ? "dots" : "grid"); };
@@ -441,27 +497,29 @@
     draw_number_line: function (i) { this.objects.push({ who: "teacher", type: "number_line", x: +i.x, y: +i.y, from: +i.from, to: +i.to, step: i.step ? +i.step : 1, length: i.length ? +i.length : null, color: i.color || null }); },
     ask_answer: function (i) {
       var kind = i.kind === "text" ? "text" : "number";
-      var dim = kind === "text" ? { w: 300, h: 86 } : { w: 88, h: 74 };
-      this.answerBoxes.push({ id: "ab" + (++this._abid), x: +i.x, y: +i.y, kind: kind, answer: i.answer == null ? "" : String(i.answer), w: dim.w, h: dim.h, status: "open" });
+      var bw = kind === "text" ? 150 : 60, bh = kind === "text" ? 56 : 52;
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: +i.x, y: +i.y, kind: kind, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: 0, gap0: 16, scale: 1, text: "", status: "open" });
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
-    // תבנית מהירה: תרגיל שלם + תיבת-תשובה, ממוקם אוטומטית בצד שמאל, מוערם בשורות.
+    // תבנית מהירה: תרגיל שלם כאובייקט אחד (טקסט "35 + 24 =" + תיבת-תשובה צמודה), ממוקם בצד ימין, מוערם בשורות.
     draw_exercise: function (i) {
-      var size = 40, top = 130, rowH = 116, colW = 430, rightMargin = 30;
+      var tsize0 = 38, top = 116, rowH = 96, rightMargin = 44, gap0 = 16;
+      var kind = i.kind === "text" ? "text" : "number";
+      var bw = kind === "text" ? 150 : 60, bh = kind === "text" ? 56 : 52;
       var perCol = Math.max(1, Math.floor((this.H - top) / rowH)); // כמה תרגילים נכנסים בעמודה
       var slot = this._exSlot || 0, col = Math.floor(slot / perCol), row = slot % perCol;
       var y = top + row * rowH;
-      var text = String(i.text == null ? "" : i.text).slice(0, 60);
-      var kind = i.kind === "text" ? "text" : "number";
-      this.ctx.font = "700 " + size + "px Fredoka, Assistant, sans-serif";
+      // התיבה היא מקום התשובה: בתרגיל מספרי מנקים "?" מיותר ומוודאים סיום ב-"="; בשאלה מילולית משאירים את ה-"?".
+      var text = String(i.text == null ? "" : i.text).slice(0, 80).trim();
+      if (kind === "number") { text = text.replace(/\s*\?\s*$/, "").trim(); if (!/[=:]\s*$/.test(text)) text += " ="; }
+      this.ctx.font = "700 " + tsize0 + "px Fredoka, Assistant, sans-serif";
       var tw = this.ctx.measureText(text).width;
-      var boxW = kind === "text" ? 300 : 88, boxH = kind === "text" ? 86 : 74;
+      var colW = bw + gap0 + tw + 70; // רוחב עמודה לערימה שמאלה
       // עוגן לצד ימין: התיבה ליד הקצה הימני, הטקסט משמאל לה. עמודות נוספות נערמות שמאלה.
-      var boxX = this.W - rightMargin - boxW / 2 - col * colW;
-      var textCx = boxX - boxW / 2 - 30 - tw / 2;
-      if (textCx - tw / 2 < 20) textCx = 20 + tw / 2; // הגנה: לא לצאת משמאל
-      this.objects.push({ who: "teacher", type: "text", x: textCx, y: y, text: text, size: size, color: null });
-      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, answer: i.answer == null ? "" : String(i.answer), w: boxW, h: boxH, status: "open" });
+      var boxX = this.W - rightMargin - bw / 2 - col * colW;
+      var groupLeft = boxX - bw / 2 - gap0 - tw;
+      if (groupLeft < 20) boxX += 20 - groupLeft; // הגנה: לא לצאת משמאל
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: 1, text: text, status: "open" });
       this._exSlot = slot + 1;
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
@@ -509,21 +567,41 @@
       sx: this.view.scale * fx, sy: this.view.scale * fy,
     };
   };
+  // מידות מחושבות של תרגיל (תיבה + טקסט) לפי scale. תומך גם בתיבות ישנות (w/h).
+  VelaBoard.prototype._exDims = function (a) {
+    var s = a.scale || 1;
+    var w = (a.bw != null ? a.bw : a.w || 60) * s, h = (a.bh != null ? a.bh : a.h || 52) * s;
+    var tsize = (a.tsize0 || 0) * s, gap = (a.gap0 != null ? a.gap0 : 16) * s, tw = 0;
+    if (a.text) { this.ctx.save(); this.ctx.font = "700 " + tsize + "px Fredoka, Assistant, sans-serif"; tw = this.ctx.measureText(a.text).width; this.ctx.restore(); }
+    return { w: w, h: h, tsize: tsize, gap: gap, tw: tw };
+  };
+  // תיבה תוחמת של כל קבוצת התרגיל (טקסט + תיבה) — לבחירה/הצמדה-לתצוגה/ידיות.
+  VelaBoard.prototype._exBBox = function (a) {
+    var d = this._exDims(a), halfH = Math.max(d.h, d.tsize) / 2;
+    return { minX: a.x - d.w / 2 - (a.text ? d.gap + d.tw : 0), minY: a.y - halfH, maxX: a.x + d.w / 2, maxY: a.y + halfH };
+  };
   VelaBoard.prototype.getAnswerBoxRects = function () {
     var out = [];
     for (var i = 0; i < this.answerBoxes.length; i++) {
-      var a = this.answerBoxes[i], c = this.worldToScreen(a.x - a.w / 2, a.y - a.h / 2);
-      out.push({ id: a.id, left: c.x, top: c.y, width: a.w * c.sx, height: a.h * c.sy, kind: a.kind, status: a.status });
+      var a = this.answerBoxes[i], d = this._exDims(a), c = this.worldToScreen(a.x - d.w / 2, a.y - d.h / 2);
+      out.push({ id: a.id, left: c.x, top: c.y, width: d.w * c.sx, height: d.h * c.sy, kind: a.kind, status: a.status });
     }
     return out;
   };
   VelaBoard.prototype._drawAnswerBox = function (a) {
-    var ctx = this.ctx, col = a.status === "correct" ? "#22c55e" : a.status === "wrong" ? "#ef4444" : COLORS.teacher;
+    var ctx = this.ctx, d = this._exDims(a), x = a.x, y = a.y, w = d.w, h = d.h;
+    var col = a.status === "correct" ? "#22c55e" : a.status === "wrong" ? "#ef4444" : COLORS.teacher;
     ctx.save();
+    if (a.text) { // טקסט השאלה, מיושר ימינה כך שמסתיים ממש לפני התיבה
+      ctx.fillStyle = a.status === "correct" ? "#16794f" : COLORS.text;
+      ctx.font = "700 " + d.tsize + "px Fredoka, Assistant, sans-serif";
+      ctx.textAlign = "right"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
+      ctx.fillText(a.text, x - w / 2 - d.gap, y);
+    }
     ctx.fillStyle = "rgba(255,255,255,0.9)";
-    roundRectPath(ctx, a.x - a.w / 2, a.y - a.h / 2, a.w, a.h, 14); ctx.fill();
+    roundRectPath(ctx, x - w / 2, y - h / 2, w, h, 12); ctx.fill();
     ctx.strokeStyle = col; ctx.lineWidth = 3; ctx.setLineDash(a.status === "open" ? [8, 6] : []);
-    roundRectPath(ctx, a.x - a.w / 2, a.y - a.h / 2, a.w, a.h, 14); ctx.stroke();
+    roundRectPath(ctx, x - w / 2, y - h / 2, w, h, 12); ctx.stroke();
     ctx.restore();
   };
 
@@ -757,6 +835,7 @@
   VelaBoard.prototype._bindPointer = function () {
     var self = this;
     function down(evt) {
+      self._viewAnim = null; // אינטראקציה עוצרת אנימציית תצוגה רצה
       var s = self._screen(evt); self._pointers[evt.pointerId] = s;
       if (self.canvas.setPointerCapture && evt.pointerId != null) { try { self.canvas.setPointerCapture(evt.pointerId); } catch (e) {} }
       var n = self._ids().length, w = self._toWorld(s);
@@ -867,6 +946,7 @@
     // גלגלת ו/או צביטה = זום (סביב הסמן), עדין. החלקה אופקית מובהקת (שתי אצבעות בצד) = הזזת המסך.
     function wheel(evt) {
       if (!self.zoom) return;
+      self._viewAnim = null; // אינטראקציה עוצרת אנימציית תצוגה רצה
       evt.preventDefault();
       var dx = evt.deltaX, dy = evt.deltaY;
       if (evt.deltaMode === 1) { dx *= 16; dy *= 16; } else if (evt.deltaMode === 2) { dx *= self.W; dy *= self.H; } // נרמול ליחידות פיקסל
@@ -888,7 +968,9 @@
   VelaBoard.prototype.getChildStrokes = function () { return JSON.parse(JSON.stringify(this.childStrokes)); };
   VelaBoard.prototype.clearChildStrokes = function () { this.childStrokes = []; this._currentStroke = null; this._select(null); this.render(); };
   VelaBoard.prototype.getScene = function () {
-    return { geometry: { width: this.W, height: this.H, grid: this.GRID, fit: this.fit }, view: this.getView(), background: this.background, teacherObjects: JSON.parse(JSON.stringify(this.objects)), childStrokes: this.getChildStrokes() };
+    var self = this;
+    var exercises = this.answerBoxes.map(function (a) { var bb = self._exBBox(a); return { id: a.id, kind: a.kind, text: a.text || "", status: a.status, bbox: [Math.round(bb.minX), Math.round(bb.minY), Math.round(bb.maxX - bb.minX), Math.round(bb.maxY - bb.minY)] }; });
+    return { geometry: { width: this.W, height: this.H, grid: this.GRID, fit: this.fit }, view: this.getView(), background: this.background, teacherObjects: JSON.parse(JSON.stringify(this.objects)), childStrokes: this.getChildStrokes(), exercises: exercises };
   };
 
   // ייצוא הציור כתמונת PNG (data-URL), חתוכה לתוכן + רקע לבן + רשת קלה — למורה שיראה.

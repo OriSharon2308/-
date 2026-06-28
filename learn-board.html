@@ -538,7 +538,7 @@
 
       document.getElementById("zoomIn").onclick = function () { board.zoomIn(); };
       document.getElementById("zoomOut").onclick = function () { board.zoomOut(); };
-      document.getElementById("zoomReset").onclick = function () { board.resetView(); };
+      document.getElementById("zoomReset").onclick = function () { board.organizeView(); }; // בית = סדר תצוגה כך שכל התוכן/השאלות נראים
 
       // ───────── חוגת הכלים (מורפינג: עיגול → גלולה) ─────────
       (function toolDial() {
@@ -729,7 +729,12 @@
           });
           if (res.status === 401) throw { auth: true };
           var data = await res.json();
-          if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) board.runTools(data.toolCalls);
+          if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
+            board.runTools(data.toolCalls);
+            // המורה הוסיף תרגילים/שאלות → לסדר את התצוגה כך שיראו אותן (מושך לבית/מארגן את המסך)
+            var addedExercise = data.toolCalls.some(function (tc) { return tc && (tc.name === "draw_exercise" || tc.name === "ask_answer"); });
+            if (addedExercise && board.organizeView) setTimeout(function () { board.organizeView(); }, 240);
+          }
           return (data && data.reply) || "";
         }
 
