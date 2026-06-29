@@ -52,6 +52,16 @@
     ctx.closePath();
   }
 
+  // רוחב מצויר של בלוקי בסיס-10 לערך — מקור-אמת יחיד שמשמש גם ברינדור וגם ב-bbox (כדי שיהיו עקביים).
+  var B10 = { u: 6, flat: 60, gGroup: 16, gIn: 4 }; // יחידה, ריבוע-מאה, רווח בין קבוצות, רווח פנימי
+  function base10Width(value) {
+    var v = clamp(Math.round(value || 0), 0, 999), nH = Math.floor(v / 100), nT = Math.floor((v % 100) / 10), nO = v % 10, w = 0;
+    if (nH > 0) w += nH * B10.flat + (nH - 1) * B10.gIn;
+    if (nT > 0) { if (nH > 0) w += B10.gGroup; w += nT * B10.u + (nT - 1) * B10.gIn; }
+    if (nO > 0) { if (nH > 0 || nT > 0) w += B10.gGroup; w += B10.u; }
+    return w;
+  }
+
   function hexToRgba(hex, a) {
     var h = String(hex || "").replace("#", "");
     if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
@@ -296,11 +306,15 @@
     if (o.type === "line" || o.type === "arrow") return { minX: Math.min(o.x1, o.x2), minY: Math.min(o.y1, o.y2), maxX: Math.max(o.x1, o.x2), maxY: Math.max(o.y1, o.y2) };
     if (o.type === "text") { var sz = o.size || 32, w = String(o.text || "").length * sz * 0.6; return { minX: o.x - w / 2, minY: o.y - sz / 2, maxX: o.x + w / 2, maxY: o.y + sz / 2 }; }
     if (o.type === "point") return { minX: o.x - 12, minY: o.y - 12, maxX: o.x + 12, maxY: o.y + 12 };
-    if (o.type === "number_line") { var len = o.length || 400; return { minX: o.x - 10, minY: o.y - (o.jumps ? 80 : 30), maxX: o.x + len, maxY: o.y + 40 }; }
+    if (o.type === "number_line") { var nlst = Math.abs(Math.round((o.to - o.from) / (o.step || 1))) || 1, len = o.length || Math.min(640, Math.max(120, nlst * 52)); return { minX: o.x - 10, minY: o.y - (o.jumps ? 84 : 30), maxX: o.x + len + 14, maxY: o.y + 40 }; }
     if (o.type === "fraction_bar") { var fw = o.w || 320, fh = o.h || 58; return { minX: o.x - fw / 2, minY: o.y - fh / 2, maxX: o.x + fw / 2, maxY: o.y + fh / 2 + 40 }; }
-    if (o.type === "array_dots") { var agw = (Math.round(o.cols || 1) - 1) * 30, agh = (Math.round(o.rows || 1) - 1) * 30; return { minX: o.x - agw / 2 - 8, minY: o.y - agh / 2 - 8, maxX: o.x + agw / 2 + 8, maxY: o.y + agh / 2 + 48 }; }
+    if (o.type === "array_dots") {
+      var arw = Math.round(o.rows || 1), acl = Math.round(o.cols || 1), agw = (acl - 1) * 30, agh = (arw - 1) * 30;
+      var alab = o.label != null ? String(o.label) : (arw + " × " + acl + " = " + arw * acl), ahw = Math.max(agw / 2 + 8, alab.length * 7 + 6); // התווית רחבה מהנקודות במערכים צרים
+      return { minX: o.x - ahw, minY: o.y - agh / 2 - 8, maxX: o.x + ahw, maxY: o.y + agh / 2 + 48 };
+    }
     if (o.type === "bar_model") { var bw = o.w || 380, bh = o.h || 50; return { minX: o.x - bw / 2, minY: o.y - bh / 2 - 30, maxX: o.x + bw / 2, maxY: o.y + bh / 2 }; }
-    if (o.type === "base_ten") { return { minX: o.x - 190, minY: o.y - 36, maxX: o.x + 190, maxY: o.y + 64 }; }
+    if (o.type === "base_ten") { var b10w = base10Width(o.value || 0); return { minX: o.x - b10w / 2 - 6, minY: o.y - 36, maxX: o.x + b10w / 2 + 6, maxY: o.y + 64 }; }
     if (o.x != null && o.y != null) return { minX: o.x - 20, minY: o.y - 20, maxX: o.x + 20, maxY: o.y + 20 };
     return null;
   };
@@ -440,10 +454,11 @@
       ctx.beginPath(); ctx.moveTo(nx, ny); ctx.lineTo(nx + L, ny); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(nx + L, ny); ctx.lineTo(nx + L - 11, ny - 7); ctx.moveTo(nx + L, ny); ctx.lineTo(nx + L - 11, ny + 7); ctx.stroke();
       ctx.fillStyle = COLORS.text; ctx.font = "600 18px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
+      var nsgn = nt >= nf ? 1 : -1; // כיוון: ציר יורד (to<from) → התוויות יורדות, עקבי עם מיפוי הקפיצות
       for (var nk = 0; nk <= steps; nk++) {
         var tx = nx + (L * nk) / steps;
         ctx.strokeStyle = color; ctx.beginPath(); ctx.moveTo(tx, ny - 7); ctx.lineTo(tx, ny + 7); ctx.stroke();
-        ctx.fillText(String(nf + nk * nstep), tx, ny + 11);
+        ctx.fillText(String(nf + nk * nstep * nsgn), tx, ny + 11);
       }
       // קפיצות: קשתות מעל הציר עם תווית (למשל "+3") — להמחשת חיבור/חיסור
       if (Array.isArray(o.jumps) && nt !== nf) {
@@ -497,19 +512,20 @@
       if (o.total != null) { ctx.fillStyle = COLORS.text; ctx.font = "700 22px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "bottom"; ctx.fillText(String(o.total), o.x, by - 9); }
     }
     else if (o.type === "base_ten") {
-      var bv = Math.max(0, Math.min(999, Math.round(o.value || 0)));
-      var nH = Math.floor(bv / 100), nT = Math.floor((bv % 100) / 10), nO = bv % 10, u = 6, flat = u * 10, ggap = 16;
-      function b10grid(gx, gy, cols, rws) {
+      var bv = clamp(Math.round(o.value || 0), 0, 999);
+      var nH = Math.floor(bv / 100), nT = Math.floor((bv % 100) / 10), nO = bv % 10, u = B10.u, flat = B10.flat;
+      var b10grid = function (gx, gy, cols, rws) {
         ctx.fillStyle = hexToRgba(color, 0.18); ctx.fillRect(gx, gy, cols * u, rws * u);
         ctx.strokeStyle = color; ctx.lineWidth = 1;
         for (var gc = 0; gc <= cols; gc++) { ctx.beginPath(); ctx.moveTo(gx + gc * u, gy); ctx.lineTo(gx + gc * u, gy + rws * u); ctx.stroke(); }
         for (var gr = 0; gr <= rws; gr++) { ctx.beginPath(); ctx.moveTo(gx, gy + gr * u); ctx.lineTo(gx + cols * u, gy + gr * u); ctx.stroke(); }
-      }
-      var totW = nH * (flat + ggap) + nT * (u + 4) + (nT ? ggap : 0) + (nO ? u : 0);
-      var px = o.x - totW / 2, topY = o.y - flat / 2;
-      for (var hh = 0; hh < nH; hh++) { b10grid(px, topY, 10, 10); px += flat + ggap; }
-      for (var tt = 0; tt < nT; tt++) { b10grid(px, topY, 1, 10); px += u + 4; }
-      if (nO) { px += ggap - 4; for (var oo = 0; oo < nO; oo++) b10grid(px, topY + (9 - oo) * u, 1, 1); }
+      };
+      var topY = o.y - flat / 2, px = o.x - base10Width(bv) / 2; // ממורכז לפי הרוחב האמיתי
+      for (var hh = 0; hh < nH; hh++) { b10grid(px, topY, 10, 10); px += flat + (hh < nH - 1 ? B10.gIn : 0); }
+      if (nH > 0 && (nT > 0 || nO > 0)) px += B10.gGroup;
+      for (var tt = 0; tt < nT; tt++) { b10grid(px, topY, 1, 10); px += u + (tt < nT - 1 ? B10.gIn : 0); }
+      if (nT > 0 && nO > 0) px += B10.gGroup;
+      for (var oo = 0; oo < nO; oo++) b10grid(px, topY + (9 - oo) * u, 1, 1); // יחידות כעמודה
       ctx.fillStyle = COLORS.text; ctx.font = "700 24px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top"; ctx.direction = "ltr";
       ctx.fillText(o.label != null ? String(o.label) : String(bv), o.x, topY + flat + 10);
     }
