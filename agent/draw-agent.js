@@ -7,6 +7,7 @@ const llm = require("../lib/llm");
 const { genderize } = require("../lib/gender");
 const learnerProfile = require("../lib/learner-profile");
 const { BOARD_TOOLS } = require("../lib/board-tools");
+const { catalogPromptSection } = require("../lib/teaching-tools"); // מאגר הכלים: נושא → הויזואל → הכלי
 
 // ה-system קבוע (בלי מספרים משתנים) — כך הוא + הכלים נשמרים ב-Prompt Cache.
 // הגודל המדויק של הלוח והתוכן הקיים נשלחים בהודעת המשתמש (החלק המשתנה).
@@ -44,8 +45,10 @@ function buildSystem({ gender, profileText, topic }) {
     "- כשמבקשים כמה שאלות (למשל 3) — קרא/י ל-draw_exercise שלוש פעמים, כולן יחד באותה תשובה (במקביל), כדי שכולן יופיעו מיד ובמלואן.",
     "מהירות (חשוב!): הוצא/י את כל קריאות הכלים יחד באותה תשובה כשאפשר — לא אחת-אחת. כך זה מהיר.",
     "כתיבת מספרים ותרגילים תמיד משמאל לימין (\"3 + 4 = 7\"), לא הפוך. אל תבקש/י מהילד 'לכתוב בצ'אט' — התיבה על הלוח היא מקום התשובה.",
+    "",
+    catalogPromptSection(), // מאגר הכלים + פרואקטיביות — המורה מחליט בעצמו מה להציג
   ];
-  if (topic) lines.push(`נושא הלמידה כרגע: ${topic}.`);
+  if (topic) lines.push(`נושא הלמידה כרגע: ${topic}. בחר/י מהמאגר את הויזואל המתאים לנושא והצג/י אותו מיוזמתך.`);
   if (profileText) lines.push(`\n${profileText}`);
   return lines.join("\n");
 }
