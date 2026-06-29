@@ -419,6 +419,7 @@ const server = http.createServer(async (req, res) => {
         topic: body.topic && body.topic.title ? String(body.topic.title) : "",
         geometry: body.geometry || null,
         occupied: Array.isArray(body.occupied) ? body.occupied : [],
+        layout: Array.isArray(body.layout) ? body.layout : [],
         userId,
       });
       console.log(`[timing] teach total: ${Date.now() - tTeach}ms`);

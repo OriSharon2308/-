@@ -924,6 +924,7 @@
               history: history.slice(-12),
               geometry: sc ? sc.geometry : null,
               occupied: boardOccupied(),
+              layout: board.getLayout ? board.getLayout() : [], // פריסת הלוח (id+מיקום) — שהמורה יוכל לסדר בעצמו
             }),
           });
           if (res.status === 401) throw { auth: true };

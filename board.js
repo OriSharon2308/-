@@ -218,6 +218,7 @@
     // ווידג'טים חיים — מיני-אפליקציות אינטראקטיביות שהמורה מייצר (iframe מבודד מעל הלוח)
     this.widgets = [];
     this._wid = 0;
+    this._oid = 0;              // מזהה יציב לכל אובייקט-מורה (להזזה/שינוי-גודל/מחיקה לפי id)
     this._onWidgets = null;
     this._onTextEdit = null;    // עריכת טקסט inline
     this._onRenderCbs = [];     // כמה מאזינים לרינדור (תיבות, עורך טקסט)
@@ -718,12 +719,75 @@
   VelaBoard.prototype._tools.mult_array = kitTool("mult_array", 380, 260, "מערך כפל");
   VelaBoard.prototype._tools.mult_table = kitTool("mult_table", 360, 360, "לוח הכפל");
 
+  // ───────── סידור-עצמי: המורה רואה את פריסת הלוח (getLayout) ויכול להזיז/לשנות-גודל/למחוק פריט לפי id ─────────
+  // הזזת אובייקט = הסטת כל שדות הקואורדינטות שלו (נקודות/x,y/x1..y2/cx,cy).
+  VelaBoard.prototype._translateObject = function (o, dx, dy) {
+    if (!o || !isFinite(dx) || !isFinite(dy)) return;
+    if (o.points && o.points.length) o.points = o.points.map(function (p) { return { x: p.x + dx, y: p.y + dy }; });
+    if (o.x != null) o.x += dx;   if (o.y != null) o.y += dy;
+    if (o.x1 != null) o.x1 += dx; if (o.y1 != null) o.y1 += dy;
+    if (o.x2 != null) o.x2 += dx; if (o.y2 != null) o.y2 += dy;
+    if (o.cx != null) o.cx += dx; if (o.cy != null) o.cy += dy;
+  };
+  // פריסת הלוח: כל פריט (אובייקט-מורה/תרגיל/ווידג'ט) עם id, סוג, מלבן תוחם ותווית קצרה. החלק שהמורה "רואה".
+  VelaBoard.prototype.getLayout = function () {
+    var out = [], i, b;
+    for (i = 0; i < this.objects.length; i++) {
+      var o = this.objects[i]; if (o.id == null) o.id = "ob" + (++this._oid); b = this._objBBox(o); if (!b || !isFinite(b.minX)) continue;
+      out.push({ id: o.id, kind: o.type || "shape", x: Math.round(b.minX), y: Math.round(b.minY), w: Math.round(b.maxX - b.minX), h: Math.round(b.maxY - b.minY),
+        label: o.type === "text" ? String(o.text || "").slice(0, 30) : (o.label != null ? String(o.label).slice(0, 30) : "") });
+    }
+    for (i = 0; i < this.answerBoxes.length; i++) { var a = this.answerBoxes[i], eb = this._exBBox(a); if (!eb) continue;
+      out.push({ id: a.id, kind: "exercise", x: Math.round(eb.minX), y: Math.round(eb.minY), w: Math.round(eb.maxX - eb.minX), h: Math.round(eb.maxY - eb.minY), label: String(a.text || "").slice(0, 30) }); }
+    for (i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i];
+      out.push({ id: wd.id, kind: "widget", x: Math.round(wd.x), y: Math.round(wd.y), w: wd.w, h: wd.h, label: String(wd.title || "").slice(0, 30) }); }
+    return out;
+  };
+  VelaBoard.prototype._tools.move_item = function (i) {
+    var id = String(i.id == null ? "" : i.id), nx = +i.x, ny = +i.y;
+    if (!id || !isFinite(nx) || !isFinite(ny)) return;
+    var k;
+    for (k = 0; k < this.widgets.length; k++) if (this.widgets[k].id === id) {
+      this.widgets[k].x = clamp(nx, -200, this.W + 600); this.widgets[k].y = clamp(ny, -200, this.H + 6000);
+      if (this._onWidgets) this._onWidgets(this.widgets); return;
+    }
+    for (k = 0; k < this.answerBoxes.length; k++) if (this.answerBoxes[k].id === id) {
+      this.answerBoxes[k].x = nx; this.answerBoxes[k].y = ny; if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); return;
+    }
+    for (k = 0; k < this.objects.length; k++) if (this.objects[k].id === id) {
+      var bb = this._objBBox(this.objects[k]); if (bb) this._translateObject(this.objects[k], nx - bb.minX, ny - bb.minY); return;
+    }
+  };
+  VelaBoard.prototype._tools.resize_item = function (i) {
+    var id = String(i.id == null ? "" : i.id); if (!id) return;
+    var k;
+    for (k = 0; k < this.widgets.length; k++) if (this.widgets[k].id === id) {
+      if (i.w != null) this.widgets[k].w = clamp(+i.w, 140, 880); if (i.h != null) this.widgets[k].h = clamp(+i.h, 90, 660);
+      if (this._onWidgets) this._onWidgets(this.widgets); return;
+    }
+    for (k = 0; k < this.answerBoxes.length; k++) if (this.answerBoxes[k].id === id) {
+      if (i.scale != null) this.answerBoxes[k].scale = clamp(+i.scale, 0.5, 3); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); return;
+    }
+  };
+  VelaBoard.prototype._tools.remove_item = function (i) {
+    var id = String(i.id == null ? "" : i.id); if (!id) return;
+    var n;
+    n = this.widgets.length; this.widgets = this.widgets.filter(function (x) { return x.id !== id; });
+    if (this.widgets.length !== n) { if (this._onWidgets) this._onWidgets(this.widgets); return; }
+    n = this.answerBoxes.length; this.answerBoxes = this.answerBoxes.filter(function (x) { return x.id !== id; });
+    if (this.answerBoxes.length !== n) { if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); return; }
+    this.objects = this.objects.filter(function (x) { return x.id !== id; });
+  };
+
   VelaBoard.prototype.tool = function (name, input) {
     var h = this._tools[name]; if (!h) { console.warn("VelaBoard: כלי לא מוכר —", name); return { ok: false, error: "unknown_tool" }; }
     try {
       h.call(this, input || {});
       var t0 = Date.now ? Date.now() : 0; // חותמת זמן לאנימציית ההופעה
-      for (var i = 0; i < this.objects.length; i++) if (this.objects[i]._t0 == null) this.objects[i]._t0 = t0;
+      for (var i = 0; i < this.objects.length; i++) {
+        if (this.objects[i]._t0 == null) this.objects[i]._t0 = t0;
+        if (this.objects[i].id == null) this.objects[i].id = "ob" + (++this._oid); // מזהה יציב להזזה
+      }
       this.render();
       return { ok: true };
     } catch (e) { console.error("VelaBoard tool error:", name, e); return { ok: false, error: String(e && e.message) }; }
