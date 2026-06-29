@@ -215,6 +215,10 @@
     this._exSlot = 0; // שורת התרגיל הבא (לסידור אוטומטי)
     this._vertex = null;        // גרירת קודקוד פעילה
     this._onAnswerBoxes = null;
+    // ווידג'טים חיים — מיני-אפליקציות אינטראקטיביות שהמורה מייצר (iframe מבודד מעל הלוח)
+    this.widgets = [];
+    this._wid = 0;
+    this._onWidgets = null;
     this._onTextEdit = null;    // עריכת טקסט inline
     this._onRenderCbs = [];     // כמה מאזינים לרינדור (תיבות, עורך טקסט)
     this._animScheduled = false;
@@ -325,6 +329,7 @@
     var objs = this.objects.concat(this.childStrokes);
     for (var i = 0; i < objs.length; i++) ext(this._objBBox(objs[i]));
     for (var k = 0; k < this.answerBoxes.length; k++) ext(this._exBBox(this.answerBoxes[k]));
+    for (var w = 0; w < this.widgets.length; w++) { var wd = this.widgets[w]; ext({ minX: wd.x, minY: wd.y, maxX: wd.x + wd.w, maxY: wd.y + wd.h }); }
     return any ? b : null;
   };
   // האם המשתמש כרגע באמצע מחווה (לחיצה/גרירה/מיקום צורה) — כדי לא לקטוע אותה באנימציית תצוגה.
@@ -640,7 +645,16 @@
       this.objects.push({ who: "teacher", type: "point", x: cx, y: cy, label: "", color: col });
       if (i.title != null && String(i.title)) this.objects.push({ who: "teacher", type: "text", x: cx, y: cy - r - 28, text: String(i.title).slice(0, 40), size: 26, color: col }); // כותרת מעל השעון — בלי לחפוף
     },
-    clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this.answerBoxes = []; this._exSlot = 0; this.selectedExId = null; this._select(null); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); },
+    // ווידג'ט חי: מיני-אפליקציה אינטראקטיבית (HTML/SVG/JS) שהמורה מייצר — תרוץ ב-iframe מבודד על הלוח.
+    render_widget: function (i) {
+      var html = String(i.html == null ? "" : i.html).slice(0, 60000);
+      if (!html) return;
+      var w = clamp(i.w || 380, 80, 760), h = clamp(i.h || 240, 60, 520);
+      var x = i.x != null ? +i.x : Math.round((this.W - w) / 2), y = i.y != null ? +i.y : 120;
+      this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, html: html, title: i.title != null ? String(i.title).slice(0, 60) : "" });
+      if (this._onWidgets) this._onWidgets(this.widgets);
+    },
+    clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this.answerBoxes = []; this._exSlot = 0; this.selectedExId = null; this.widgets = []; this._select(null); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); if (this._onWidgets) this._onWidgets(this.widgets); },
   };
   VelaBoard.prototype.tool = function (name, input) {
     var h = this._tools[name]; if (!h) { console.warn("VelaBoard: כלי לא מוכר —", name); return { ok: false, error: "unknown_tool" }; }
@@ -654,6 +668,17 @@
   };
   VelaBoard.prototype.runTools = function (calls) { if (Array.isArray(calls)) for (var i = 0; i < calls.length; i++) if (calls[i] && calls[i].name) this.tool(calls[i].name, calls[i].input || {}); };
   VelaBoard.prototype.registerTool = function (name, h) { if (name && typeof h === "function") this._tools[name] = h; };
+
+  /* ---------- ווידג'טים חיים (iframe מבודד מעל הלוח) ---------- */
+  VelaBoard.prototype.onWidgets = function (cb) { this._onWidgets = typeof cb === "function" ? cb : null; };
+  VelaBoard.prototype.getWidgets = function () { return this.widgets.map(function (w) { return { id: w.id, x: w.x, y: w.y, w: w.w, h: w.h, html: w.html, title: w.title }; }); };
+  VelaBoard.prototype.setWidgets = function (list) { this.widgets = Array.isArray(list) ? list.map(function (w) { return { id: w.id || "wg", x: +w.x || 0, y: +w.y || 0, w: +w.w || 380, h: +w.h || 240, html: String(w.html || ""), title: w.title || "" }; }) : []; if (this._onWidgets) this._onWidgets(this.widgets); this.render(); };
+  // מיקומי הווידג'טים בפיקסלי-מסך (עוקבים אחרי זום/גרירה כמו תיבות-התשובה).
+  VelaBoard.prototype.getWidgetRects = function () {
+    var out = [];
+    for (var i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i], c = this.worldToScreen(wd.x, wd.y); out.push({ id: wd.id, left: c.x, top: c.y, w: wd.w, h: wd.h, scale: c.sx, html: wd.html, title: wd.title }); }
+    return out;
+  };
 
   /* ---------- תיבת-תשובה (שאלה/תרגיל) ---------- */
   VelaBoard.prototype.onAnswerBoxes = function (cb) { this._onAnswerBoxes = typeof cb === "function" ? cb : null; };

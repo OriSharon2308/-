@@ -372,6 +372,13 @@
       }
       .answerInput.is-show { display: block; }
 
+      /* ווידג'ט חי — iframe מבודד (sandbox) שהמורה מייצר; מעל הלוח, עוקב אחרי זום/גרירה */
+      .boardWidget {
+        position: fixed; z-index: 8; display: none; border: none; background: transparent;
+        border-radius: 16px; box-shadow: 0 12px 34px rgba(13, 60, 53, 0.16);
+      }
+      .boardWidget.is-show { display: block; }
+
       /* עורך טקסט inline (כלי הטקסט) — קו מקווקו שכותבים בתוכו, גדל עם הטקסט */
       #textEditor {
         position: fixed; z-index: 40; display: none;
@@ -847,9 +854,9 @@
           var data = await res.json();
           if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
             board.runTools(data.toolCalls);
-            // המורה הוסיף תרגילים/שאלות → לסדר את התצוגה כך שיראו אותן (מושך לבית/מארגן את המסך)
-            var addedExercise = data.toolCalls.some(function (tc) { return tc && (tc.name === "draw_exercise" || tc.name === "ask_answer"); });
-            if (addedExercise && board.organizeView) setTimeout(function () { board.organizeView(); }, 240);
+            // המורה הוסיף תרגילים/שאלות/ווידג'ט → לסדר את התצוגה כך שיראו אותם (מושך לבית/מארגן את המסך)
+            var addedFocus = data.toolCalls.some(function (tc) { return tc && (tc.name === "draw_exercise" || tc.name === "ask_answer" || tc.name === "render_widget"); });
+            if (addedFocus && board.organizeView) setTimeout(function () { board.organizeView(); }, 240);
           }
           return (data && data.reply) || "";
         }
@@ -1211,6 +1218,60 @@
             if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד ענה על שאלה מילולית: '" + val + "'. בדוק אם נכון; אם כן שבח ותן הבאה, אם לא עודד לנסות שוב.)");
           }
         }
+      })();
+
+      // ───────── ווידג'טים חיים — מיני-אפליקציות שהמורה מייצר, רצות ב-iframe מבודד ─────────
+      (function widgets() {
+        var frames = {}; // id → iframe
+
+        // עוטף את ה-HTML של המורה במעטפת מאובטחת: CSP חוסם רשת/משאבים חיצוניים, רק inline.
+        function shell(inner) {
+          var csp = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'";
+          return '<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">'
+            + '<meta http-equiv="Content-Security-Policy" content="' + csp + '">'
+            + '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            + '<style>html,body{margin:0;padding:0;width:100%;height:100%;font-family:Fredoka,Assistant,system-ui,sans-serif;color:#0f3b36;'
+            + 'overflow:hidden;background:transparent;-webkit-user-select:none;user-select:none;touch-action:none}*{box-sizing:border-box}</style>'
+            + '</head><body>' + inner + '</body></html>';
+        }
+        function make(id, html) {
+          var f = document.createElement("iframe");
+          f.className = "boardWidget";
+          // מבודד: allow-scripts בלי allow-same-origin → מקור אטום, אין גישה לדף/עוגיות; ה-CSP חוסם רשת.
+          f.setAttribute("sandbox", "allow-scripts");
+          f.setAttribute("title", "כלי אינטראקטיבי של המורה");
+          f.srcdoc = shell(html);
+          document.body.appendChild(f);
+          return f;
+        }
+        function place() {
+          var rects = board.getWidgetRects ? board.getWidgetRects() : [], seen = {};
+          for (var i = 0; i < rects.length; i++) {
+            var r = rects[i], f = frames[r.id]; if (!f) continue; seen[r.id] = 1;
+            f.classList.add("is-show");
+            f.style.left = r.left + "px"; f.style.top = r.top + "px";
+            f.style.width = r.w + "px"; f.style.height = r.h + "px";
+            f.style.transform = "scale(" + r.scale + ")"; f.style.transformOrigin = "top left";
+          }
+          Object.keys(frames).forEach(function (id) { if (!seen[id]) frames[id].classList.remove("is-show"); });
+        }
+        board.onWidgets(function (list) {
+          var ids = {};
+          list.forEach(function (wd) { ids[wd.id] = 1; if (!frames[wd.id]) frames[wd.id] = make(wd.id, wd.html); });
+          Object.keys(frames).forEach(function (id) { if (!ids[id]) { frames[id].remove(); delete frames[id]; } });
+          place();
+        });
+        board.onRender(place);
+
+        // גשר תוצאות: ווידג'ט יכול לשלוח postMessage; מאמתים שהמקור הוא iframe שלנו לפני שמגיבים.
+        window.addEventListener("message", function (e) {
+          var mine = false; for (var k in frames) { if (frames[k].contentWindow === e.source) { mine = true; break; } }
+          if (!mine) return;
+          var d = e.data || {};
+          if (d.type === "vela:correct") { if (window.velaConfetti) window.velaConfetti(); }
+          else if (d.type === "vela:wrong") { if (window.velaBubble) window.velaBubble("כמעט! נסה/י שוב 🙂"); }
+          else if (d.type === "vela:say" && typeof d.text === "string" && window.velaBubble) window.velaBubble(String(d.text).slice(0, 200));
+        });
       })();
 
       // ───────── עורך טקסט inline (כלי הטקסט) ─────────
