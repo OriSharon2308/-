@@ -377,14 +377,14 @@
       .answerInput.is-show { display: block; }
 
       /* ווידג'ט חי — כרטיס במסגרת: סרגל-כותרת + iframe מבודד + ידית שינוי-גודל. מעל הלוח, מתחת לפקדים. */
-      /* מסגרת פשוטה — פינות מעוגלות + צל רך (בלי סרגל-כותרת), עם ידית שינוי-גודל בלבד */
+      /* מסגרת פשוטה ושקופה — רקע הלוח נראה דרכה (אפקט זכוכית), פינות מעוגלות + צל רך + ידית שינוי-גודל */
       .widgetCard {
         position: fixed; z-index: 4; display: none; transform-origin: top left;
-        border-radius: 16px; overflow: hidden; background: #fff;
+        border-radius: 16px; background: transparent;
         box-shadow: 0 12px 34px rgba(13, 60, 53, 0.16);
       }
       .widgetCard.is-show { display: block; }
-      .widgetCard__body { display: block; border: none; background: #fff; }
+      .widgetCard__body { display: block; border: none; background: transparent; }
       .widgetCard__resize {
         position: absolute; right: 3px; bottom: 3px; width: 18px; height: 18px; cursor: nwse-resize; touch-action: none;
         background: linear-gradient(135deg, transparent 55%, rgba(13, 148, 136, 0.6) 55% 66%, transparent 66% 78%, rgba(13, 148, 136, 0.6) 78% 89%, transparent 89%);
@@ -637,11 +637,11 @@
           [1, 1, "מודל-מוט", function (x, y) { board.tool("draw_bar_model", { x: x, y: y, parts: [{ value: 5, label: "5" }, { value: 3, label: "3" }], total: "8" }); }],
           [2, 1, "שעון", function (x, y) { board.tool("draw_clock", { x: x, y: y, hour: 3, minute: 0, r: 78 }); }],
           // שורה 2–3: ווידג'טים אינטראקטיביים מוכנים (במסגרת הפשוטה, נשלטי-גודל). it[4] = גובה (למרווח הכותרת)
-          [0, 2, "שבר לחיץ", widget("interactive_fraction", 360, 220, { shape: "circle", parts: 4, target: 3, label: "צבעו 3/4" }), 220],
+          [0, 2, "שבר לחיץ", widget("interactive_fraction", 360, 220, { shape: "circle", parts: 4, shaded: 2 }), 220],
           [1, 2, "ספירת אובייקטים", widget("count_objects", 360, 220, { left: 3, right: 2, op: "+", item: "apple" }), 220],
-          [2, 2, "לוח-עשר", widget("ten_frame", 360, 240, { cells: 10, perRow: 5, target: 7 }), 240],
+          [2, 2, "לוח-עשר", widget("ten_frame", 360, 240, { cells: 10, perRow: 5, filled: 6 }), 240],
           [0, 3, "בניית בסיס-10", widget("base_ten_builder", 360, 240, { target: 142 }), 240],
-          [1, 3, "מערך כפל (בחירה)", widget("mult_array", 380, 260, { maxRows: 10, maxCols: 10, targetRows: 3, targetCols: 4 }), 260],
+          [1, 3, "מערך כפל (בחירה)", widget("mult_array", 380, 260, { maxRows: 10, maxCols: 10 }), 260],
           [2, 3, "כלי-על: סרגל נגרר", widget("render_widget", 380, 180, { html: WIDGET_NUMLINE, title: "סרגל קפיצות" }), 180],
           // שורה 4: לוח-הכפל (גבוה) — לבד בשורה התחתונה כדי לא לדחוק שום פריט
           [1, 4, "לוח-הכפל", widget("mult_table", 360, 360, { max: 10, hide: 6 }), 360],

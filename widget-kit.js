@@ -153,27 +153,18 @@
   gL.svg + gR.svg + signMarkup +
   '<line x1="14" y1="'+(topY+groupH+14)+'" x2="'+(W-14)+'" y2="'+(topY+groupH+14)+'" stroke="#0d9488" stroke-opacity="0.15" stroke-width="2"/>'+
   '<text x="18" y="'+(H-14)+'" text-anchor="start" class="tap">לחץ על הצורות כדי לספור</text>'+
-  '<text id="eq" x="'+(W-18)+'" y="'+(H-13)+'" text-anchor="end" font-size="20" font-weight="700" fill="#0d9488">'+left+' '+op+' '+right+' = ?</text>'+
+  '<text id="eq" x="'+(W/2)+'" y="'+(H-12)+'" text-anchor="middle" font-size="22" font-weight="800" fill="#0d9488"></text>'+
 '</svg>'+
 '<script>(function(){'+
-'  var ANS='+answer+', TOTAL='+total+';'+
-'  var marked={}, done=false;'+
+'  var marked={};'+
 '  var eq=document.getElementById("eq");'+
-'  function post(t){try{parent.postMessage({type:t},"*");}catch(e){}}'+
 '  function countOn(){var n=0;for(var k in marked){if(marked[k])n++;}return n;}'+
-'  function toggle(g){'+
+'  function toggle(g){'+ // כלי ספירה בלבד — לא שאלה. סימון מונה כמה נספרו; השאלה נכתבת על הלוח.
 '    if(!g)return;'+
 '    var i=g.getAttribute("data-i");'+
 '    var on=!marked[i]; marked[i]=on;'+
 '    if(on){g.classList.add("on");}else{g.classList.remove("on");}'+
-'    var c=countOn();'+
-'    if(c===TOTAL && TOTAL>0){'+
-'      if(eq){eq.textContent="'+left+' '+op+' '+right+' = "+ANS;}'+
-'      if(!done){done=true;post("vela:correct");}'+
-'    }else{'+
-'      if(done){done=false;}'+
-'      if(eq){eq.textContent="'+left+' '+op+' '+right+' = ?";}'+
-'    }'+
+'    var c=countOn(); if(eq){eq.textContent=c?String(c):"";}'+
 '  }'+
 '  var objs=document.querySelectorAll(".obj");'+
 '  for(var j=0;j<objs.length;j++){(function(g){'+
@@ -418,18 +409,7 @@
     '}'+
     'if(!solved){label.textContent=rows+" \\u00D7 "+cols+" = "+(rows*cols);result.textContent="";}'+
   '}'+
-  'function check(){'+
-    'if(solved)return;'+
-    'if(curR===D.targetRows&&curC===D.targetCols){'+
-      'solved=true;'+
-      'svg.classList.add("win");'+
-      'label.textContent=D.targetRows+" \\u00D7 "+D.targetCols+" = "+(D.targetRows*D.targetCols)+" \\u2713";'+
-      'result.textContent="\\u05DB\\u05DC \\u05D4\\u05DB\\u05D1\\u05D5\\u05D3!";'+
-      'try{parent.postMessage({type:"vela:correct"},"*");}catch(e){}'+
-    '}else{'+
-      'try{parent.postMessage({type:"vela:wrong"},"*");}catch(e){}'+
-    '}'+
-  '}'+
+  'function check(){}'+ // כלי בלבד — בלי "בדיקה"/ניצחון. הילד בוחר ריבוע ורואה rows×cols=מכפלה; השאלה נכתבת על הלוח.
   'function down(ev){'+
     'if(solved)return;'+
     'ev.preventDefault();dragging=true;'+
