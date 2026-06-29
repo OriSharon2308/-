@@ -296,7 +296,11 @@
     if (o.type === "line" || o.type === "arrow") return { minX: Math.min(o.x1, o.x2), minY: Math.min(o.y1, o.y2), maxX: Math.max(o.x1, o.x2), maxY: Math.max(o.y1, o.y2) };
     if (o.type === "text") { var sz = o.size || 32, w = String(o.text || "").length * sz * 0.6; return { minX: o.x - w / 2, minY: o.y - sz / 2, maxX: o.x + w / 2, maxY: o.y + sz / 2 }; }
     if (o.type === "point") return { minX: o.x - 12, minY: o.y - 12, maxX: o.x + 12, maxY: o.y + 12 };
-    if (o.type === "number_line") { var len = o.length || 400; return { minX: o.x - 10, minY: o.y - 30, maxX: o.x + len, maxY: o.y + 30 }; }
+    if (o.type === "number_line") { var len = o.length || 400; return { minX: o.x - 10, minY: o.y - (o.jumps ? 80 : 30), maxX: o.x + len, maxY: o.y + 40 }; }
+    if (o.type === "fraction_bar") { var fw = o.w || 320, fh = o.h || 58; return { minX: o.x - fw / 2, minY: o.y - fh / 2, maxX: o.x + fw / 2, maxY: o.y + fh / 2 + 40 }; }
+    if (o.type === "array_dots") { var agw = (Math.round(o.cols || 1) - 1) * 30, agh = (Math.round(o.rows || 1) - 1) * 30; return { minX: o.x - agw / 2 - 8, minY: o.y - agh / 2 - 8, maxX: o.x + agw / 2 + 8, maxY: o.y + agh / 2 + 48 }; }
+    if (o.type === "bar_model") { var bw = o.w || 380, bh = o.h || 50; return { minX: o.x - bw / 2, minY: o.y - bh / 2 - 30, maxX: o.x + bw / 2, maxY: o.y + bh / 2 }; }
+    if (o.type === "base_ten") { return { minX: o.x - 190, minY: o.y - 36, maxX: o.x + 190, maxY: o.y + 64 }; }
     if (o.x != null && o.y != null) return { minX: o.x - 20, minY: o.y - 20, maxX: o.x + 20, maxY: o.y + 20 };
     return null;
   };
@@ -441,6 +445,73 @@
         ctx.strokeStyle = color; ctx.beginPath(); ctx.moveTo(tx, ny - 7); ctx.lineTo(tx, ny + 7); ctx.stroke();
         ctx.fillText(String(nf + nk * nstep), tx, ny + 11);
       }
+      // קפיצות: קשתות מעל הציר עם תווית (למשל "+3") — להמחשת חיבור/חיסור
+      if (Array.isArray(o.jumps) && nt !== nf) {
+        ctx.lineWidth = 2.5; ctx.fillStyle = COLORS.text;
+        ctx.font = "700 16px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "bottom"; ctx.direction = "ltr";
+        for (var ji = 0; ji < o.jumps.length; ji++) {
+          var jp = o.jumps[ji] || [], xf = nx + L * (+jp[0] - nf) / (nt - nf), xt = nx + L * (+jp[1] - nf) / (nt - nf);
+          var mid = (xf + xt) / 2, arcH = Math.min(52, 20 + Math.abs(xt - xf) * 0.32), d = xt >= xf ? 1 : -1;
+          ctx.strokeStyle = color; ctx.beginPath(); ctx.moveTo(xf, ny - 3); ctx.quadraticCurveTo(mid, ny - arcH * 1.45, xt, ny - 3); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(xt, ny - 3); ctx.lineTo(xt - d * 8, ny - 11); ctx.moveTo(xt, ny - 3); ctx.lineTo(xt - d * 10, ny - 1); ctx.stroke();
+          if (jp[2] != null) ctx.fillText(String(jp[2]), mid, ny - arcH - 2);
+        }
+      }
+    }
+    else if (o.type === "fraction_bar") {
+      var fparts = Math.max(1, Math.min(24, Math.round(o.parts || 1))), fsh = Math.max(0, Math.min(fparts, Math.round(o.shaded || 0)));
+      var fw = o.w || 320, fh = o.h || 58, fx = o.x - fw / 2, fy = o.y - fh / 2, fcw = fw / fparts;
+      ctx.fillStyle = hexToRgba(color, 0.42);
+      for (var fi = 0; fi < fsh; fi++) ctx.fillRect(fx + fi * fcw, fy, fcw, fh);
+      ctx.strokeStyle = color; ctx.lineJoin = "round";
+      ctx.lineWidth = o.width || 3; ctx.strokeRect(fx, fy, fw, fh);
+      ctx.lineWidth = 2;
+      for (var fj = 1; fj < fparts; fj++) { ctx.beginPath(); ctx.moveTo(fx + fj * fcw, fy); ctx.lineTo(fx + fj * fcw, fy + fh); ctx.stroke(); }
+      var flabel = o.label != null ? String(o.label) : (fsh + "/" + fparts);
+      if (flabel) { ctx.fillStyle = COLORS.text; ctx.font = "700 26px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top"; ctx.direction = "ltr"; ctx.fillText(flabel, o.x, fy + fh + 9); }
+    }
+    else if (o.type === "array_dots") {
+      var arows = Math.max(1, Math.min(12, Math.round(o.rows || 1))), acols = Math.max(1, Math.min(12, Math.round(o.cols || 1)));
+      var agap = 30, adr = 6, agw = (acols - 1) * agap, agh = (arows - 1) * agap, ax = o.x - agw / 2, ay = o.y - agh / 2;
+      ctx.fillStyle = color;
+      for (var arr = 0; arr < arows; arr++) for (var acc = 0; acc < acols; acc++) { ctx.beginPath(); ctx.arc(ax + acc * agap, ay + arr * agap, adr, 0, Math.PI * 2); ctx.fill(); }
+      var alabel = o.label != null ? String(o.label) : (arows + " × " + acols + " = " + arows * acols);
+      if (alabel) { ctx.fillStyle = COLORS.text; ctx.font = "700 24px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top"; ctx.direction = "ltr"; ctx.fillText(alabel, o.x, ay + agh + 20); }
+    }
+    else if (o.type === "bar_model") {
+      var bparts = Array.isArray(o.parts) ? o.parts.slice(0, 8) : []; if (!bparts.length) return;
+      var bw = o.w || 380, bh = o.h || 50, bsum = 0;
+      for (var bi = 0; bi < bparts.length; bi++) bsum += Math.max(0, +bparts[bi].value || 0);
+      if (bsum <= 0) bsum = bparts.length;
+      var bx = o.x - bw / 2, by = o.y - bh / 2, bcx = bx;
+      ctx.lineWidth = o.width || 3; ctx.lineJoin = "round";
+      ctx.font = "700 20px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
+      for (var bk = 0; bk < bparts.length; bk++) {
+        var segW = bw * (Math.max(0, +bparts[bk].value || 0) / bsum);
+        ctx.fillStyle = hexToRgba(color, bk % 2 ? 0.34 : 0.18); ctx.fillRect(bcx, by, segW, bh);
+        ctx.strokeStyle = color; ctx.strokeRect(bcx, by, segW, bh);
+        var blbl = bparts[bk].label != null ? String(bparts[bk].label) : String(bparts[bk].value == null ? "" : bparts[bk].value);
+        if (blbl) { ctx.fillStyle = COLORS.text; ctx.fillText(blbl, bcx + segW / 2, o.y); }
+        bcx += segW;
+      }
+      if (o.total != null) { ctx.fillStyle = COLORS.text; ctx.font = "700 22px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "bottom"; ctx.fillText(String(o.total), o.x, by - 9); }
+    }
+    else if (o.type === "base_ten") {
+      var bv = Math.max(0, Math.min(999, Math.round(o.value || 0)));
+      var nH = Math.floor(bv / 100), nT = Math.floor((bv % 100) / 10), nO = bv % 10, u = 6, flat = u * 10, ggap = 16;
+      function b10grid(gx, gy, cols, rws) {
+        ctx.fillStyle = hexToRgba(color, 0.18); ctx.fillRect(gx, gy, cols * u, rws * u);
+        ctx.strokeStyle = color; ctx.lineWidth = 1;
+        for (var gc = 0; gc <= cols; gc++) { ctx.beginPath(); ctx.moveTo(gx + gc * u, gy); ctx.lineTo(gx + gc * u, gy + rws * u); ctx.stroke(); }
+        for (var gr = 0; gr <= rws; gr++) { ctx.beginPath(); ctx.moveTo(gx, gy + gr * u); ctx.lineTo(gx + cols * u, gy + gr * u); ctx.stroke(); }
+      }
+      var totW = nH * (flat + ggap) + nT * (u + 4) + (nT ? ggap : 0) + (nO ? u : 0);
+      var px = o.x - totW / 2, topY = o.y - flat / 2;
+      for (var hh = 0; hh < nH; hh++) { b10grid(px, topY, 10, 10); px += flat + ggap; }
+      for (var tt = 0; tt < nT; tt++) { b10grid(px, topY, 1, 10); px += u + 4; }
+      if (nO) { px += ggap - 4; for (var oo = 0; oo < nO; oo++) b10grid(px, topY + (9 - oo) * u, 1, 1); }
+      ctx.fillStyle = COLORS.text; ctx.font = "700 24px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top"; ctx.direction = "ltr";
+      ctx.fillText(o.label != null ? String(o.label) : String(bv), o.x, topY + flat + 10);
     }
   };
 
@@ -504,7 +575,12 @@
     draw_polygon: function (i) { this.objects.push({ who: "teacher", type: "polygon", points: (i.points || []).map(function (p) { return { x: +p[0], y: +p[1] }; }), color: i.color || null, width: i.width || null, fill: !!i.fill }); },
     draw_arrow: function (i) { this.objects.push({ who: "teacher", type: "arrow", x1: +i.x1, y1: +i.y1, x2: +i.x2, y2: +i.y2, color: i.color || null, width: i.width || null }); },
     draw_point: function (i) { this.objects.push({ who: "teacher", type: "point", x: +i.x, y: +i.y, label: i.label ? String(i.label).slice(0, 16) : "", color: i.color || null }); },
-    draw_number_line: function (i) { this.objects.push({ who: "teacher", type: "number_line", x: +i.x, y: +i.y, from: +i.from, to: +i.to, step: i.step ? +i.step : 1, length: i.length ? +i.length : null, color: i.color || null }); },
+    draw_number_line: function (i) { this.objects.push({ who: "teacher", type: "number_line", x: +i.x, y: +i.y, from: +i.from, to: +i.to, step: i.step ? +i.step : 1, length: i.length ? +i.length : null, jumps: Array.isArray(i.jumps) ? i.jumps : null, color: i.color || null }); },
+    // תבניות מתמטיקה (אובייקט אחד עם תוויות מובנות — בלי טקסט נפרד שעלול לחפוף)
+    draw_fraction_bar: function (i) { this.objects.push({ who: "teacher", type: "fraction_bar", x: +i.x, y: +i.y, parts: +i.parts, shaded: +i.shaded || 0, w: i.w ? +i.w : null, h: i.h ? +i.h : null, label: i.label != null ? String(i.label).slice(0, 16) : null, color: i.color || null }); },
+    draw_array: function (i) { this.objects.push({ who: "teacher", type: "array_dots", x: +i.x, y: +i.y, rows: +i.rows, cols: +i.cols, label: i.label != null ? String(i.label).slice(0, 24) : null, color: i.color || null }); },
+    draw_base_ten: function (i) { this.objects.push({ who: "teacher", type: "base_ten", x: +i.x, y: +i.y, value: +i.value, label: i.label != null ? String(i.label).slice(0, 16) : null, color: i.color || null }); },
+    draw_bar_model: function (i) { this.objects.push({ who: "teacher", type: "bar_model", x: +i.x, y: +i.y, parts: (Array.isArray(i.parts) ? i.parts : []).slice(0, 8).map(function (p) { return { value: +(p && p.value) || 0, label: p && p.label != null ? String(p.label).slice(0, 12) : null }; }), total: i.total != null ? String(i.total).slice(0, 12) : null, w: i.w ? +i.w : null, color: i.color || null }); },
     ask_answer: function (i) {
       var kind = i.kind === "text" ? "text" : "number";
       var bw = kind === "text" ? 150 : 60, bh = kind === "text" ? 56 : 52;
@@ -546,6 +622,7 @@
       this.objects.push({ who: "teacher", type: "line", x1: cx, y1: cy, x2: cx + Math.cos(ha) * (r * 0.5), y2: cy + Math.sin(ha) * (r * 0.5), color: col, width: 6 });
       this.objects.push({ who: "teacher", type: "line", x1: cx, y1: cy, x2: cx + Math.cos(ma) * (r * 0.78), y2: cy + Math.sin(ma) * (r * 0.78), color: col, width: 4 });
       this.objects.push({ who: "teacher", type: "point", x: cx, y: cy, label: "", color: col });
+      if (i.title != null && String(i.title)) this.objects.push({ who: "teacher", type: "text", x: cx, y: cy - r - 28, text: String(i.title).slice(0, 40), size: 26, color: col }); // כותרת מעל השעון — בלי לחפוף
     },
     clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this.answerBoxes = []; this._exSlot = 0; this.selectedExId = null; this._select(null); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); },
   };
@@ -1058,7 +1135,7 @@
       else if (o.type === "number_line") {
         var nlS = Math.abs(Math.round((o.to - o.from) / (o.step || 1))) || 1;
         var nlL = o.length || Math.min(640, Math.max(120, nlS * 52));
-        ext(o.x - 8, o.y - 18); ext(o.x + nlL + 14, o.y + 34);
+        ext(o.x - 8, o.y - (o.jumps ? 84 : 18)); ext(o.x + nlL + 14, o.y + 40);
       }
       else if (o.type === "text") {
         // מדידה אמיתית של טקסט המורה (במקום הערכה קבועה) — שלא ייחתך בייצוא
@@ -1067,6 +1144,7 @@
         var thw = this.ctx.measureText(String(o.text || "")).width / 2 + 8, thh = tsz * 0.75;
         ext(o.x - thw, o.y - thh); ext(o.x + thw, o.y + thh);
       }
+      else { var ob = this._objBBox(o); if (ob) { ext(ob.minX, ob.minY); ext(ob.maxX, ob.maxY); } } // תבניות מתמטיקה חדשות וכו'
     }
     if (!isFinite(b.minX)) return null;
     var pad = opts.pad != null ? opts.pad : 40;
