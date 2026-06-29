@@ -649,7 +649,48 @@
     render_widget: function (i) { this._pushWidget(i.html, i, 380, 240, i.title); },
     clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this.answerBoxes = []; this._exSlot = 0; this.selectedExId = null; this.widgets = []; this._select(null); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); if (this._onWidgets) this._onWidgets(this.widgets); },
   };
-  // דחיפת ווידג'ט ככרטיס — משותף ל-render_widget ולכלי-הערכה. x/y תחומים ובלי NaN (שלא ישבשו bbox/סידור-תצוגה).
+  // תיבות תפוסות על הלוח (ווידג'טים קיימים + אובייקטי-מורה) — לאכיפת חוק אי-החפיפה.
+  // תוויות טקסט אינן נספרות: הן אמורות לשבת *ליד* פריטים (כותרת מעל ציור), לא לחסום אותם.
+  VelaBoard.prototype._occupiedBoxes = function () {
+    var boxes = [], i;
+    for (i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i]; boxes.push({ x: wd.x, y: wd.y, w: wd.w, h: wd.h }); }
+    var objs = this.objects || [];
+    for (i = 0; i < objs.length; i++) {
+      if (objs[i] && objs[i].type === "text") continue;
+      var b = this._objBBox(objs[i]);
+      if (b && isFinite(b.minX) && isFinite(b.minY) && isFinite(b.maxX) && isFinite(b.maxY) && b.maxX >= b.minX && b.maxY >= b.minY)
+        boxes.push({ x: b.minX, y: b.minY, w: b.maxX - b.minX, h: b.maxY - b.minY });
+    }
+    return boxes;
+  };
+  // חוק ברזל: שום פריט לא עולה על פריט אחר. מרצף את התיבה wxh בתוך רוחב הלוח וכלפי מטה (הלוח נגלל מטה),
+  // כך שלעולם לא בורחת מחוץ למסך לצדדים. נפילה-אחורה: מתחת לכל הפריטים — פנוי מובטח.
+  VelaBoard.prototype._freeSpot = function (x, y, w, h) {
+    var GAP = 22, boxes = this._occupiedBoxes();
+    function hits(nx, ny) {
+      for (var i = 0; i < boxes.length; i++) {
+        var b = boxes[i];
+        if (nx < b.x + b.w + GAP && nx + w + GAP > b.x && ny < b.y + b.h + GAP && ny + h + GAP > b.y) return true;
+      }
+      return false;
+    }
+    if (!hits(x, y)) return { x: x, y: y };
+    var minX = 20, maxX = Math.max(minX, this.W - w - 20);
+    var colStep = Math.max(60, Math.round((w + GAP) / 2));
+    var rowStep = Math.max(40, Math.round((h + GAP) / 2));
+    var startY = Math.max(20, Math.min(y, this.H));
+    for (var ry = 0; ry < 120; ry++) {
+      var ny = startY + ry * rowStep;
+      for (var nx = minX; nx <= maxX + 1; nx += colStep) {
+        var px = Math.min(nx, maxX);
+        if (!hits(px, ny)) return { x: px, y: ny };
+      }
+    }
+    var maxBottom = startY; // נפילה-אחורה — מתחת לכולם
+    for (var k = 0; k < boxes.length; k++) maxBottom = Math.max(maxBottom, boxes[k].y + boxes[k].h);
+    return { x: clamp(x, minX, maxX), y: maxBottom + GAP };
+  };
+  // דחיפת ווידג'ט ככרטיס — משותף ל-render_widget ולכלי-הערכה. x/y תחומים ובלי NaN, ולא חופפים (חוק אי-החפיפה).
   VelaBoard.prototype._pushWidget = function (html, i, dw, dh, title) {
     html = String(html == null ? "" : html).slice(0, 60000);
     if (!html) return;
@@ -657,6 +698,7 @@
     var w = clamp(i.w || dw, 80, 760), h = clamp(i.h || dh, 60, 520);
     var x = clamp(i.x != null ? +i.x || 0 : Math.round((this.W - w) / 2), -200, this.W + 200);
     var y = clamp(i.y != null ? +i.y || 0 : 120, -200, this.H + 200);
+    var spot = this._freeSpot(x, y, w, h); x = spot.x; y = spot.y; // לעולם לא על פריט קיים
     this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, html: html, title: title != null ? String(title).slice(0, 60) : "" });
     if (this._onWidgets) this._onWidgets(this.widgets);
   };

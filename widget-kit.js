@@ -184,134 +184,31 @@
 
   return html;
 },
-  "ten_frame": function(p){
+  "ten_frame": function (p) {
   p = p || {};
-  function clamp(v,min,max,def){ v = Math.round(Number(v)); if(!isFinite(v)) v = def; return Math.max(min, Math.min(max, v)); }
-  var cells  = clamp(p.cells, 1, 30, 10);
-  var perRow = clamp(p.perRow, 1, 10, 5);
-  if(perRow > cells) perRow = cells;
-  var filled = clamp(p.filled, 0, cells, 0);
-  var target = clamp(p.target, 0, cells, 0);
-
+  function ci(v, lo, hi, d) { v = parseInt(v, 10); if (isNaN(v)) v = d; return v < lo ? lo : v > hi ? hi : v; }
+  var cells = ci(p.cells, 1, 30, 10), perRow = ci(p.perRow, 1, 10, Math.min(5, cells));
+  var filled0 = ci(p.filled, 0, cells, 0), target = ci(p.target, 0, cells, 0);
   var rows = Math.ceil(cells / perRow);
-
-  // fixed inner viewBox
-  var VB_W = 360, VB_H = 240;
-
-  // layout regions
-  var headerH = 46;
-  var padX = 18, padTop = headerH + 6, padBottom = 14;
-  var gridW = VB_W - padX*2;
-  var gridH = VB_H - padTop - padBottom;
-
-  // cell sizing keeps squares, fits both dims
-  var gap = 6;
-  var cw = (gridW - gap*(perRow-1)) / perRow;
-  var ch = (gridH - gap*(rows-1)) / rows;
-  var size = Math.max(8, Math.min(cw, ch));
-  // center the grid
-  var totalGW = perRow*size + gap*(perRow-1);
-  var totalGH = rows*size + gap*(rows-1);
-  var startX = (VB_W - totalGW)/2;
-  var startY = padTop + (gridH - totalGH)/2;
-
-  // initial filled state array
-  var state = [];
-  for(var i=0;i<cells;i++) state.push(i < filled);
-
-  // build cell rects + dots
-  var cellSvg = "";
-  for(var i=0;i<cells;i++){
-    var r = Math.floor(i/perRow), c = i % perRow;
-    var x = startX + c*(size+gap);
-    var y = startY + r*(size+gap);
-    var cx = x + size/2, cy = y + size/2;
-    var dotR = size*0.34;
-    cellSvg +=
-      '<g class="cell" data-i="'+i+'" style="cursor:pointer">' +
-        '<rect x="'+x.toFixed(2)+'" y="'+y.toFixed(2)+'" width="'+size.toFixed(2)+'" height="'+size.toFixed(2)+'" rx="'+(size*0.16).toFixed(2)+'" ' +
-          'fill="#ffffff" stroke="#0d9488" stroke-width="2" class="frame"/>' +
-        '<circle class="dot" cx="'+cx.toFixed(2)+'" cy="'+cy.toFixed(2)+'" r="'+dotR.toFixed(2)+'" ' +
-          'fill="#0d9488" opacity="0" transform="scale(0.5)" transform-origin="'+cx.toFixed(2)+'px '+cy.toFixed(2)+'px"/>' +
-      '</g>';
+  var VBW = 360, VBH = 240, INK = "#0f3b36", TEAL = "#0d9488", OK = "#22c55e";
+  var top = 22, bottomTxt = 34, availW = VBW - 40, availH = VBH - top - bottomTxt;
+  var cs = Math.min(availW / perRow, availH / rows, 56);
+  var gridW = cs * perRow, gridH = cs * rows;
+  var gx = (VBW - gridW) / 2, gy = top + (availH - gridH) / 2;
+  var cellsSvg = "";
+  for (var idx = 0; idx < cells; idx++) {
+    var rr = Math.floor(idx / perRow), cc = idx % perRow;
+    var x = gx + cc * cs, y = gy + rr * cs;
+    cellsSvg += '<rect class="cell" data-i="' + idx + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + cs.toFixed(1) + '" height="' + cs.toFixed(1) + '" rx="4" fill="#fff" stroke="' + TEAL + '" stroke-width="2"/>';
   }
-
-  var targetTxt = target>0 ? ('יעד: ' + target) : '';
-
-  var html =
-'<svg viewBox="0 0 '+VB_W+' '+VB_H+'" width="100%" height="100%" style="display:block" xmlns="http://www.w3.org/2000/svg" font-family="inherit">' +
-  '<defs>' +
-    '<style>' +
-      '.dot{transition:opacity .16s ease, transform .18s cubic-bezier(.34,1.56,.64,1);}' +
-      '.dot.on{opacity:1;transform:scale(1);}' +
-      '.cell .frame{transition:fill .12s ease;}' +
-      '.cell:active .frame{fill:#f0fdfa;}' +
-      '.counter-num{transition:transform .2s cubic-bezier(.34,1.56,.64,1);transform-origin:center;}' +
-      '.pop{animation:pop .35s ease;}' +
-      '@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}' +
-    '</style>' +
-  '</defs>' +
-  // header
-  '<g>' +
-    '<rect x="14" y="10" width="118" height="30" rx="15" fill="#0d9488"/>' +
-    '<text x="73" y="30" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700">סכום</text>' +
-    '<text id="count" class="counter-num" x="160" y="33" text-anchor="middle" fill="#0f3b36" font-size="30" font-weight="800">'+filled+'</text>' +
-    '<text x="180" y="31" text-anchor="start" fill="#0f3b36" font-size="20" font-weight="600">/ '+cells+'</text>' +
-    (target>0 ? '<text id="goal" x="'+(VB_W-16)+'" y="31" text-anchor="end" fill="#0d9488" font-size="16" font-weight="700">'+targetTxt+'</text>' : '') +
-  '</g>' +
-  // grid
-  '<g id="grid">' + cellSvg + '</g>' +
-'</svg>' +
-'<script>(function(){' +
-  'var SVG=document.currentScript.previousElementSibling;' +
-  'if(!SVG||SVG.tagName.toLowerCase()!=="svg"){var ss=document.getElementsByTagName("svg");SVG=ss[ss.length-1];}' +
-  'var CELLS='+cells+', TARGET='+target+';' +
-  'var state=new Array(CELLS).fill(false);' +
-  'var initFilled='+filled+';' +
-  'for(var k=0;k<initFilled;k++) state[k]=true;' +
-  'var cntEl=SVG.querySelector("#count");' +
-  'var dots=SVG.querySelectorAll(".dot");' +
-  'function send(t){try{parent.postMessage({type:t},"*");}catch(e){}}' +
-  'function count(){var n=0;for(var i=0;i<CELLS;i++) if(state[i]) n++; return n;}' +
-  // render initial dots
-  'for(var i=0;i<CELLS;i++){ if(state[i]) dots[i].classList.add("on"); }' +
-  'var reached=false;' +
-  'function refresh(prev){' +
-    'var n=count();' +
-    'cntEl.textContent=n;' +
-    'cntEl.classList.remove("pop");void cntEl.getBBox();cntEl.classList.add("pop");' +
-    'if(TARGET>0){' +
-      'if(n===TARGET && !reached){reached=true;send("vela:correct");}' +
-      'if(n!==TARGET) reached=false;' +
-    '}' +
-  '}' +
-  'function toggle(i){' +
-    'state[i]=!state[i];' +
-    'if(state[i]) dots[i].classList.add("on"); else dots[i].classList.remove("on");' +
-    'if(TARGET>0){ if(!state[i] && count()+0===0){} }' +
-    'refresh();' +
-    'if(TARGET<=0){' +
-      // no target: any fill = positive feedback, emptying back is neutral
-      'if(state[i]) send("vela:correct");' +
-    '} else {' +
-      'var n=count();' +
-      'if(n>TARGET) send("vela:wrong");' +
-    '}' +
-  '}' +
-  'var cellsG=SVG.querySelectorAll(".cell");' +
-  'cellsG.forEach(function(g){' +
-    'g.style.touchAction="none";' +
-    'g.addEventListener("pointerdown",function(ev){' +
-      'ev.preventDefault();' +
-      'var idx=parseInt(g.getAttribute("data-i"),10);' +
-      'if(isNaN(idx)) return;' +
-      'toggle(idx);' +
-    '});' +
-  '});' +
-  'SVG.style.touchAction="none";' +
-'})();</' + 'script>';
-
-  return html;
+  return '<svg viewBox="0 0 360 240" width="100%" height="100%" style="display:block;touch-action:none">'
+    + '<g>' + cellsSvg + '</g>'
+    + '<text id="ct" x="180" y="' + (VBH - 9) + '" text-anchor="middle" font-size="22" font-weight="800" fill="' + INK + '"></text></svg>'
+    + '<script>(function(){var N=' + cells + ',T=' + target + ',st=[],cl=[].slice.call(document.querySelectorAll(".cell")),ct=document.getElementById("ct");'
+    + 'for(var i=0;i<N;i++)st[i]=i<' + filled0 + ';'
+    + 'function rn(){var n=0;for(var i=0;i<N;i++){cl[i].setAttribute("fill",st[i]?"' + TEAL + '":"#fff");if(st[i])n++;}ct.textContent=n;'
+    + 'if(T>0&&n===T){ct.setAttribute("fill","' + OK + '");parent.postMessage({type:"vela:correct"},"*");}else{ct.setAttribute("fill","' + INK + '");}}'
+    + 'document.querySelector("svg").addEventListener("pointerdown",function(e){var t=e.target,i=t.getAttribute&&t.getAttribute("data-i");if(i==null)return;i=+i;st[i]=!st[i];rn();});rn();})();<\/script>';
 },
   "base_ten_builder": function(p){
   p = p || {};
