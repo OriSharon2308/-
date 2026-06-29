@@ -646,18 +646,36 @@
       if (i.title != null && String(i.title)) this.objects.push({ who: "teacher", type: "text", x: cx, y: cy - r - 28, text: String(i.title).slice(0, 40), size: 26, color: col }); // כותרת מעל השעון — בלי לחפוף
     },
     // ווידג'ט חי: מיני-אפליקציה אינטראקטיבית (HTML/SVG/JS) שהמורה מייצר — תרוץ ב-iframe מבודד על הלוח.
-    render_widget: function (i) {
-      var html = String(i.html == null ? "" : i.html).slice(0, 60000);
-      if (!html) return;
-      var w = clamp(i.w || 380, 80, 760), h = clamp(i.h || 240, 60, 520);
-      // x/y תחומים ובלי NaN (כמו setWidgets) — ערך פגום היה משבש את ה-bbox ואת סידור-התצוגה
-      var x = clamp(i.x != null ? +i.x || 0 : Math.round((this.W - w) / 2), -200, this.W + 200);
-      var y = clamp(i.y != null ? +i.y || 0 : 120, -200, this.H + 200);
-      this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, html: html, title: i.title != null ? String(i.title).slice(0, 60) : "" });
-      if (this._onWidgets) this._onWidgets(this.widgets);
-    },
+    render_widget: function (i) { this._pushWidget(i.html, i, 380, 240, i.title); },
     clear_board: function () { this.objects = []; this.childStrokes = []; this._currentStroke = null; this.answerBoxes = []; this._exSlot = 0; this.selectedExId = null; this.widgets = []; this._select(null); if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); if (this._onWidgets) this._onWidgets(this.widgets); },
   };
+  // דחיפת ווידג'ט ככרטיס — משותף ל-render_widget ולכלי-הערכה. x/y תחומים ובלי NaN (שלא ישבשו bbox/סידור-תצוגה).
+  VelaBoard.prototype._pushWidget = function (html, i, dw, dh, title) {
+    html = String(html == null ? "" : html).slice(0, 60000);
+    if (!html) return;
+    i = i || {};
+    var w = clamp(i.w || dw, 80, 760), h = clamp(i.h || dh, 60, 520);
+    var x = clamp(i.x != null ? +i.x || 0 : Math.round((this.W - w) / 2), -200, this.W + 200);
+    var y = clamp(i.y != null ? +i.y || 0 : 120, -200, this.H + 200);
+    this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, html: html, title: title != null ? String(title).slice(0, 60) : "" });
+    if (this._onWidgets) this._onWidgets(this.widgets);
+  };
+  // כלי-ערכה: ווידג'טים אינטראקטיביים מוכנים מ-widget-kit.js (window.VelaWidgets). כל אחד מייצר HTML ונדחף ככרטיס.
+  function kitTool(key, dw, dh, defTitle) {
+    return function (i) {
+      var kit = global.VelaWidgets;
+      if (!kit || typeof kit[key] !== "function") { console.warn("VelaBoard: ערכת-ווידג'טים לא נטענה —", key); return; }
+      var html; try { html = kit[key](i || {}); } catch (e) { console.warn("VelaBoard: יצירת ווידג'ט נכשלה —", key, e && e.message); return; }
+      this._pushWidget(html, i, dw, dh, (i && i.title != null) ? i.title : defTitle);
+    };
+  }
+  VelaBoard.prototype._tools.interactive_fraction = kitTool("fraction", 360, 220, "שבר");
+  VelaBoard.prototype._tools.count_objects = kitTool("count_objects", 360, 220, "ספירה");
+  VelaBoard.prototype._tools.ten_frame = kitTool("ten_frame", 360, 240, "לוח-עשר");
+  VelaBoard.prototype._tools.base_ten_builder = kitTool("base_ten_builder", 360, 240, "בלוקי בסיס-10");
+  VelaBoard.prototype._tools.mult_array = kitTool("mult_array", 380, 260, "מערך כפל");
+  VelaBoard.prototype._tools.mult_table = kitTool("mult_table", 360, 360, "לוח הכפל");
+
   VelaBoard.prototype.tool = function (name, input) {
     var h = this._tools[name]; if (!h) { console.warn("VelaBoard: כלי לא מוכר —", name); return { ok: false, error: "unknown_tool" }; }
     try {
