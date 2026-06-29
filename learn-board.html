@@ -372,9 +372,9 @@
       }
       .answerInput.is-show { display: block; }
 
-      /* ווידג'ט חי — iframe מבודד (sandbox) שהמורה מייצר; מעל הלוח, עוקב אחרי זום/גרירה */
+      /* ווידג'ט חי — iframe מבודד (sandbox) שהמורה מייצר; מעל הלוח אך מתחת לפקדים (סרגל/בית/בורר-רקע) */
       .boardWidget {
-        position: fixed; z-index: 8; display: none; border: none; background: transparent;
+        position: fixed; z-index: 4; display: none; border: none; background: transparent;
         border-radius: 16px; box-shadow: 0 12px 34px rgba(13, 60, 53, 0.16);
       }
       .boardWidget.is-show { display: block; }
@@ -1264,9 +1264,11 @@
         board.onRender(place);
 
         // גשר תוצאות: ווידג'ט יכול לשלוח postMessage; מאמתים שהמקור הוא iframe שלנו לפני שמגיבים.
+        var lastBridge = 0;
         window.addEventListener("message", function (e) {
           var mine = false; for (var k in frames) { if (frames[k].contentWindow === e.source) { mine = true; break; } }
           if (!mine) return;
+          var now = Date.now(); if (now - lastBridge < 600) return; lastBridge = now; // הגבלת-קצב — שווידג'ט לא יציף קונפטי/בועות
           var d = e.data || {};
           if (d.type === "vela:correct") { if (window.velaConfetti) window.velaConfetti(); }
           else if (d.type === "vela:wrong") { if (window.velaBubble) window.velaBubble("כמעט! נסה/י שוב 🙂"); }

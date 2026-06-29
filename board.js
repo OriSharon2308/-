@@ -340,7 +340,7 @@
   // יש ציור (מורה/ילד)? התאם תצוגה לכל התוכן (ציור + שאלות יחד). רק שאלות/ריק? חזרה לבית (שם השאלות במקומן מימין).
   VelaBoard.prototype.organizeView = function () {
     if (this.isInteracting()) return; // לא לקטוע ציור/גרירה פעילים (תיקון: אנימציה יכלה לעוות שרטוט)
-    var hasDrawing = (this.objects && this.objects.length) || (this.childStrokes && this.childStrokes.length);
+    var hasDrawing = (this.objects && this.objects.length) || (this.childStrokes && this.childStrokes.length) || (this.widgets && this.widgets.length);
     var bb = hasDrawing ? this._contentBBox() : null;
     if (bb) this.fitView(bb); else this.animateView({ x: 0, y: 0, scale: 1 });
   };
@@ -650,7 +650,9 @@
       var html = String(i.html == null ? "" : i.html).slice(0, 60000);
       if (!html) return;
       var w = clamp(i.w || 380, 80, 760), h = clamp(i.h || 240, 60, 520);
-      var x = i.x != null ? +i.x : Math.round((this.W - w) / 2), y = i.y != null ? +i.y : 120;
+      // x/y תחומים ובלי NaN (כמו setWidgets) — ערך פגום היה משבש את ה-bbox ואת סידור-התצוגה
+      var x = clamp(i.x != null ? +i.x || 0 : Math.round((this.W - w) / 2), -200, this.W + 200);
+      var y = clamp(i.y != null ? +i.y || 0 : 120, -200, this.H + 200);
       this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, html: html, title: i.title != null ? String(i.title).slice(0, 60) : "" });
       if (this._onWidgets) this._onWidgets(this.widgets);
     },
