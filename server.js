@@ -20,6 +20,10 @@ const progress = require("./lib/progress");
 const speech = require("./lib/speech"); // STT + TTS (Azure Speech)
 const googleTts = require("./lib/google-tts"); // TTS חלופי: Google Gemini (קול Orus) דרך Vertex+ADC
 const { CURRICULUM, gradeToNum, topicsForApi, leafTopics, findLeaf } = require("./lib/curriculum");
+const adminAuth = require("./lib/admin-auth"); // אימות אזור הניהול (נפרד מתלמידים)
+const analytics = require("./lib/analytics"); // סדרות-זמן + סיכומים לתלמיד
+const assess = require("./lib/assessments"); // הערכות מורה/פסיכולוג/מתמטיקאי (מטמון)
+const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנק השאלות)
 
 const ROOT = __dirname;
 loadEnvFile(ROOT);
@@ -39,13 +43,16 @@ const MIME = {
   ".woff2": "font/woff2",
 };
 
-// קבצים שמותר לראות בלי התחברות
+// קבצים שמותר לראות בלי התחברות (כולל קבצי שלד אזור-הניהול — המידע מוגן ב-API)
 const PUBLIC_FILES = new Set([
   "/auth.html",
   "/auth.js",
   "/auth.css",
   "/styles.css",
   "/favicon.ico",
+  "/admin.html",
+  "/admin.css",
+  "/admin.js",
 ]);
 
 function send(res, status, headers, body) {
@@ -185,13 +192,128 @@ const server = http.createServer(async (req, res) => {
       if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
       const userId = sessions.currentUserId(req);
       if (!userId) return json(res, 401, { ok: false });
-      // מוחקים זיכרון → פרופיל → התקדמות → חשבון → כל ה-sessions, ומנקים את העוגייה
+      // מוחקים זיכרון → פרופיל → התקדמות → הערכות → חשבון → כל ה-sessions, ומנקים את העוגייה
       memory.deleteUserMemory(userId);
       learnerProfile.deleteUser(userId);
       progress.deleteUser(userId);
+      assess.deleteUser(userId);
       users.deleteUser(userId);
       sessions.destroyAllForUser(userId);
       return json(res, 200, { ok: true }, { "set-cookie": sessions.buildClearCookie() });
+    }
+
+    /* ---------------- API: אזור הניהול (אדמין) ---------------- */
+
+    if (url.startsWith("/api/admin/")) {
+      // התחברות/יציאה/סטטוס — לפני בדיקת ההרשאה
+      if (url.startsWith("/api/admin/login")) {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        const body = await readJsonBody(req, res);
+        if (!body) return;
+        const r = adminAuth.login(body.password);
+        if (!r.ok) return json(res, 401, { ok: false, error: r.error });
+        return json(res, 200, { ok: true }, { "set-cookie": adminAuth.buildSetCookie(r.token) });
+      }
+      if (url.startsWith("/api/admin/logout")) {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        adminAuth.logout(req);
+        return json(res, 200, { ok: true }, { "set-cookie": adminAuth.buildClearCookie() });
+      }
+      if (url.startsWith("/api/admin/me")) {
+        return json(res, 200, {
+          ok: true,
+          admin: adminAuth.isAdmin(req),
+          configured: adminAuth.isConfigured(),
+        });
+      }
+
+      // מכאן — דורש הרשאת אדמין
+      if (!adminAuth.isAdmin(req)) return json(res, 403, { ok: false, error: "Forbidden" });
+
+      const au = new URL(url, "http://localhost");
+      const q = au.searchParams;
+
+      if (au.pathname === "/api/admin/overview") {
+        return json(res, 200, { ok: true, overview: analytics.overview(users.getAllUsers()) });
+      }
+
+      if (au.pathname === "/api/admin/users") {
+        const list = users.getAllUsers().map((usr) => {
+          const s = analytics.summary(usr.id);
+          return {
+            ...usr,
+            stats: {
+              attempts: s.totalAttempts,
+              accuracy: s.accuracy,
+              lastActive: s.lastActive,
+              motivation: s.currentMotivation,
+              mastery: s.currentMastery,
+              dayStreak: s.dayStreak,
+            },
+          };
+        });
+        return json(res, 200, { ok: true, users: list });
+      }
+
+      if (au.pathname === "/api/admin/user") {
+        const id = q.get("id");
+        const usr = id ? users.getUserAdmin(id) : null;
+        if (!usr) return json(res, 404, { ok: false, error: "לא נמצא" });
+        return json(res, 200, {
+          ok: true,
+          user: usr,
+          summary: analytics.summary(id),
+          daily: analytics.dailySeries(id),
+          time: analytics.dailyTime(id),
+          mastery: analytics.masteryByTopic(id),
+          assessments: await assess.getAssessments(id, usr, { force: q.get("refresh") === "1" }),
+        });
+      }
+
+      if (au.pathname === "/api/admin/user/update") {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        const body = await readJsonBody(req, res);
+        if (!body) return;
+        const updated = users.updateUserFields(body.id, body.patch || {});
+        if (!updated) return json(res, 404, { ok: false, error: "לא נמצא" });
+        return json(res, 200, { ok: true, user: updated });
+      }
+
+      if (au.pathname === "/api/admin/user/delete") {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        const body = await readJsonBody(req, res);
+        if (!body) return;
+        if (!body.id) return json(res, 400, { ok: false, error: "חסר מזהה" });
+        memory.deleteUserMemory(body.id);
+        learnerProfile.deleteUser(body.id);
+        progress.deleteUser(body.id);
+        assess.deleteUser(body.id);
+        users.deleteUser(body.id);
+        sessions.destroyAllForUser(body.id);
+        return json(res, 200, { ok: true });
+      }
+
+      if (au.pathname === "/api/admin/content") {
+        return json(res, 200, { ok: true, tree: adminContent.tree() });
+      }
+
+      if (au.pathname === "/api/admin/content/topic") {
+        const gradeNum = Number.parseInt(q.get("grade"), 10);
+        const topic = q.get("topic");
+        if (!gradeNum || !topic) return json(res, 400, { ok: false, error: "חסר grade/topic" });
+        return json(res, 200, { ok: true, ...adminContent.getTopic(gradeNum, topic) });
+      }
+
+      if (au.pathname === "/api/admin/content/save") {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        const body = await readJsonBody(req, res);
+        if (!body) return;
+        const r = adminContent.saveTopic(Number.parseInt(body.gradeNum, 10), body.topic, body.questions);
+        if (!r.ok) return json(res, 400, { ok: false, error: r.error });
+        return json(res, 200, { ok: true, count: r.count });
+      }
+
+      return json(res, 404, { ok: false, error: "Unknown admin endpoint" });
     }
 
     /* ---------------- API: סטטוס (ציבורי) ---------------- */
@@ -491,6 +613,11 @@ const server = http.createServer(async (req, res) => {
     // עמוד ההתחברות
     if (rel === "/auth" || rel === "/auth/") {
       return serveFile(res, "/auth.html", method);
+    }
+
+    // אזור הניהול — שלד הדף ציבורי (הנתונים מוגנים ב-API לפי session אדמין נפרד)
+    if (rel === "/admin" || rel === "/admin/" || rel === "/admin.html") {
+      return serveFile(res, "/admin.html", method);
     }
 
     const loggedIn = !!sessions.currentUserId(req);

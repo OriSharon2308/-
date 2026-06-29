@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css?v=46" />
     <!-- שכבת עיצוב ילדים (רידיזיין) — נטענת אחרי styles.css, דורסת מראה+מיקומים. הסרה = חזרה למקור -->
-    <link rel="stylesheet" href="./kids-theme.css?v=46" />
+    <link rel="stylesheet" href="./kids-theme.css?v=69" />
     <style>
       /* מקום שמור לדמות המדברת (מסקוט) בראש הצ'אט — נותן פנים למורה */
       .chatSidebar__header {
@@ -387,6 +387,7 @@
         opacity: 1;
         transform: translateY(0);
       }
+      /* פסי הדיבור — הגובה נשלט ב-JS (עיגול במנוחה ↔ פס לפי הקול), ההחלקה ב-JS */
       .voiceFog__reply .ch {
         opacity: 0;
       }
@@ -776,11 +777,11 @@
               ></textarea>
             </label>
             <button id="sendBtn" class="composerSend" type="button" aria-label="שיחה קולית עם המורה">
+              <!-- 3 פסים: המרכזי ארוך, הצדדים שווים וקצרים. כשמדברים עולים לפי עוצמת הקול (currentColor → תכלת/אדום) -->
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor" />
-                <path d="M5.5 11a6.5 6.5 0 0 0 13 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <line x1="12" y1="17.5" x2="12" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <line x1="8.5" y1="21" x2="15.5" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <rect class="vBar" x="3.5" y="7" width="4" height="10" rx="2" fill="currentColor" />
+                <rect class="vBar" x="10" y="3.5" width="4" height="17" rx="2" fill="currentColor" />
+                <rect class="vBar" x="16.5" y="7" width="4" height="10" rx="2" fill="currentColor" />
               </svg>
             </button>
           </div>
@@ -827,12 +828,35 @@
             <div class="problem__text" id="problemText">טוען…</div>
           </div>
 
-          <!-- קלט רגיל: מספר אחד — בר אחד שעוטף את הכפתור -->
+          <!-- מחשבון תשובה: קלט למעלה · מספרים נפתחים באמצע · "סיימתי" מעוגן למטה (לא זז) -->
           <div class="answerRow" id="answerRowNumeric">
+            <!-- מסגרת המחשבון: הקלט למעלה · המספרים נפתחים מתחתיו · התחתית נשארת במקום (גדל מעלה) -->
+            <div class="numCalc">
             <div class="answerBar">
               <input id="answerInput" class="answerBar__input" inputmode="numeric" autocomplete="off" placeholder="התשובה שלי" />
-              <button id="checkBtn" class="answerBar__btn" type="button">סיימתי</button>
             </div>
+            <!-- מקלדת המספרים — נפתחת באמצע (בין הקלט לכפתור) באפקט חלק; דוחפת את הקלט מעלה -->
+            <div id="numPad" class="numPad" role="group" aria-label="מקלדת מספרים">
+              <div class="numPad__clip">
+              <div class="numPad__grid">
+                <button type="button" class="numKey" data-k="1">1</button>
+                <button type="button" class="numKey" data-k="2">2</button>
+                <button type="button" class="numKey" data-k="3">3</button>
+                <button type="button" class="numKey" data-k="4">4</button>
+                <button type="button" class="numKey" data-k="5">5</button>
+                <button type="button" class="numKey" data-k="6">6</button>
+                <button type="button" class="numKey" data-k="7">7</button>
+                <button type="button" class="numKey" data-k="8">8</button>
+                <button type="button" class="numKey" data-k="9">9</button>
+                <button type="button" class="numKey numKey--util" data-k="back" aria-label="מחיקה">⌫</button>
+                <button type="button" class="numKey" data-k="0">0</button>
+                <button type="button" class="numKey numKey--util" data-k="clear" aria-label="ניקוי">C</button>
+              </div>
+              </div>
+            </div>
+            </div>
+            <!-- "סיימתי" — נפרד מהמחשבון, מתחתיו -->
+            <button id="checkBtn" class="answerBar__btn" type="button">סיימתי</button>
           </div>
 
           <!-- קלט שעה: שעות : דקות -->
@@ -929,25 +953,10 @@
     </div>
 
     <!-- מקלדת מספרים — נפתחת בלחיצה על שדה התשובה -->
-    <div id="numPad" class="numPad" role="dialog" aria-label="מקלדת מספרים" hidden>
-      <div class="numPad__grid">
-        <button type="button" class="numKey" data-k="7">7</button>
-        <button type="button" class="numKey" data-k="8">8</button>
-        <button type="button" class="numKey" data-k="9">9</button>
-        <button type="button" class="numKey" data-k="4">4</button>
-        <button type="button" class="numKey" data-k="5">5</button>
-        <button type="button" class="numKey" data-k="6">6</button>
-        <button type="button" class="numKey" data-k="1">1</button>
-        <button type="button" class="numKey" data-k="2">2</button>
-        <button type="button" class="numKey" data-k="3">3</button>
-        <button type="button" class="numKey numKey--util" data-k="back" aria-label="מחיקה">⌫</button>
-        <button type="button" class="numKey" data-k="0">0</button>
-        <button type="button" class="numKey numKey--util" data-k="clear" aria-label="ניקוי">C</button>
-      </div>
-      <button type="button" class="numPad__done" id="numPadDone">סיימתי</button>
-    </div>
+    <!-- numPad הועבר לתוך #answerRowNumeric (משולב במסגרת אזור התשובה) -->
 
-    <script src="./app.js?v=54" defer></script>
+
+    <script src="./app.js?v=59" defer></script>
 
     <!-- חלונית המורה: הפס הלבן האמיתי (#chatHeader) גדל כלפי מטה לריבוע, והמורה גדל (width/height — חד) ונע למרכז. סגירה ב-X / Esc -->
     <script>
@@ -1143,7 +1152,7 @@
         var slot = document.getElementById("mascotSlot");
 
         // זיהוי-דיבור (VAD) — מתי התלמיד סיים לדבר
-        var SPEECH_RMS = 0.018;  // עוצמה שמעליה זה "דיבור"
+        var SPEECH_RMS = 0.013;  // עוצמה שמעליה זה "דיבור" (רגיש יותר — קולט גם דיבור שקט)
         var SILENCE_MS = 1100;   // שקט אחרי דיבור → סוף תור → שולחים למורה
         var MIN_SPEECH_MS = 320; // חייב לפחות כך הרבה דיבור לפני שספירת השקט נספרת
 
@@ -1155,11 +1164,38 @@
         var capturing = false; // שער VAD: true = צוברים אודיו ומזהים שקט
         var chunks = [];
         var sawSpeech, speechSamples, silenceSamples, finalized;
+        var lastRms = 0, smoothLevel = 0, barsRaf = null; // אנימציית הפסים לפי עוצמת הקול (רק בהקשבה)
 
         function setStatus(t) { statusEl.textContent = t || ""; }
         function setRecordingUI(on) { micBtn.classList.toggle("is-recording", !!on); }
         function setBusyUI(on) { micBtn.classList.toggle("is-busy", !!on); }
         function setFogLoader(on) { if (fogLoader) fogLoader.hidden = !on; }
+        /* אנימציית הפסים לפי עוצמת הקול — פועלת רק כשהמיקרופון קולט (capturing=הקשבה).
+           מזיזה את הפסים של האייקון המעופף (micFlyEl). לא נוגעת במכונת-המצבים. */
+        var CIRCLE = 4, GROW = [10, 16, 10]; // במנוחה עיגול (גובה=רוחב); כשמדברים עולה לפס לפי הקול (המרכזי גדל הכי הרבה)
+        var curH = [10, 17, 10];             // גובה נוכחי (מתחיל כפסים → מתכווץ לעיגולים בפתיחה)
+        var barsReduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+        /* במנוחה (אין קול) → 3 עיגולים; כשמדברים → עולים לפסים לפי עוצמת הקול. המרכזי תמיד הארוך. */
+        function barsLoop() {
+          smoothLevel += (lastRms - smoothLevel) * 0.3; // החלקת עוצמת הקול
+          var bars = micFlyEl ? micFlyEl.querySelectorAll(".vBar") : null;
+          if (bars && bars.length) {
+            var lvl = (capturing && !barsReduced) ? Math.min(1, smoothLevel * 8) : 0;
+            for (var i = 0; i < bars.length; i++) {
+              var tgt = CIRCLE + lvl * (GROW[i] != null ? GROW[i] : 10); // עיגול בשקט → פס כשמדברים
+              curH[i] += (tgt - curH[i]) * 0.4; // החלקה: מעבר רך פס→עיגול בפתיחה + תגובה לקול
+              var h = curH[i];
+              bars[i].setAttribute("height", h.toFixed(1));
+              bars[i].setAttribute("y", (12 - h / 2).toFixed(1));
+            }
+          }
+          barsRaf = requestAnimationFrame(barsLoop);
+        }
+        function startBarsLoop() { curH = [10, 17, 10]; smoothLevel = 0; if (!barsRaf) barsRaf = requestAnimationFrame(barsLoop); }
+        function stopBarsLoop() {
+          if (barsRaf) { cancelAnimationFrame(barsRaf); barsRaf = null; }
+          smoothLevel = 0; lastRms = 0;
+        }
         // "מדבר": מפעיל את אנימציית הדיבור של הדמות (על הכותרת) + סימון על כפתור המיקרופון
         function setSpeaking(on) {
           micBtn.classList.toggle("is-speaking", !!on);
@@ -1202,40 +1238,55 @@
         }
 
         /* --- מיקרופון מתמשך דרך Web Audio (WAV PCM) — תואם ספארי+כרום --- */
+        var micPending = null;
         async function ensureMic() {
           if (mic) return;
-          var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          var AC = window.AudioContext || window.webkitAudioContext;
-          var ctx = new AC();
-          if (ctx.state === "suspended") { try { await ctx.resume(); } catch (e) {} }
-          // אם המערכת השהתה את ההקשר (נעילת מסך / החלפת טאב / שיחה נכנסת) — מחדשים כל עוד הריבוע פתוח
-          ctx.onstatechange = function () {
-            if (ctx.state === "suspended" && header.classList.contains("is-open")) {
-              try { ctx.resume(); } catch (e) {}
-            }
-          };
-          var source = ctx.createMediaStreamSource(stream);
-          var node = ctx.createScriptProcessor(4096, 1, 1);
-          var rate = ctx.sampleRate;
-          node.onaudioprocess = function (e) {
-            if (!capturing) return; // בזמן עיבוד/דיבור לא צוברים (אין הד מהמורה)
-            var input = e.inputBuffer.getChannelData(0);
-            chunks.push(new Float32Array(input)); // חובה להעתיק — ה-buffer ממוחזר
-            var sum = 0;
-            for (var i = 0; i < input.length; i++) sum += input[i] * input[i];
-            var rms = Math.sqrt(sum / input.length);
-            if (rms > SPEECH_RMS) { sawSpeech = true; speechSamples += input.length; silenceSamples = 0; }
-            else if (sawSpeech) { silenceSamples += input.length; }
-            if (!finalized && sawSpeech &&
-                (speechSamples / rate) * 1000 > MIN_SPEECH_MS &&
-                (silenceSamples / rate) * 1000 > SILENCE_MS) {
-              finalized = true; capturing = false;
-              Promise.resolve().then(finalizeTurn); // מחוץ ל-thread של האודיו
-            }
-          };
-          source.connect(node);
-          node.connect(ctx.destination); // פלט שקט — אין הד
-          mic = { stream: stream, ctx: ctx, source: source, node: node, rate: rate };
+          if (micPending) return micPending; // בקשה כבר בתהליך — לא לבקש פעמיים (מונע שני זרמים/הקשרים)
+          // ללא secure-context (לא localhost ולא https) הדפדפן חוסם מיקרופון לגמרי
+          if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            var ie = new Error("mic unavailable");
+            ie.name = window.isSecureContext ? "NotFoundError" : "InsecureContext";
+            console.warn("[voice] אין גישה ל-getUserMedia. secureContext=" + window.isSecureContext + " origin=" + location.origin);
+            throw ie;
+          }
+          micPending = (async function () {
+            console.log("[voice] מבקש הרשאת מיקרופון…");
+            var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            console.log("[voice] הרשאת מיקרופון אושרה ✓");
+            var AC = window.AudioContext || window.webkitAudioContext;
+            var ctx = new AC();
+            if (ctx.state === "suspended") { try { await ctx.resume(); } catch (e) {} }
+            // אם המערכת השהתה את ההקשר (נעילת מסך / החלפת טאב / שיחה נכנסת) — מחדשים כל עוד הריבוע פתוח
+            ctx.onstatechange = function () {
+              if (ctx.state === "suspended" && header.classList.contains("is-open")) {
+                try { ctx.resume(); } catch (e) {}
+              }
+            };
+            var source = ctx.createMediaStreamSource(stream);
+            var node = ctx.createScriptProcessor(4096, 1, 1);
+            var rate = ctx.sampleRate;
+            node.onaudioprocess = function (e) {
+              if (!capturing) { lastRms = 0; return; } // בזמן עיבוד/דיבור לא צוברים (אין הד מהמורה)
+              var input = e.inputBuffer.getChannelData(0);
+              chunks.push(new Float32Array(input)); // חובה להעתיק — ה-buffer ממוחזר
+              var sum = 0;
+              for (var i = 0; i < input.length; i++) sum += input[i] * input[i];
+              var rms = Math.sqrt(sum / input.length);
+              lastRms = rms; // רמת-הקול החיה → תנועת הפסים
+              if (rms > SPEECH_RMS) { sawSpeech = true; speechSamples += input.length; silenceSamples = 0; }
+              else if (sawSpeech) { silenceSamples += input.length; }
+              if (!finalized && sawSpeech &&
+                  (speechSamples / rate) * 1000 > MIN_SPEECH_MS &&
+                  (silenceSamples / rate) * 1000 > SILENCE_MS) {
+                finalized = true; capturing = false;
+                Promise.resolve().then(finalizeTurn); // מחוץ ל-thread של האודיו
+              }
+            };
+            source.connect(node);
+            node.connect(ctx.destination); // פלט שקט — אין הד
+            mic = { stream: stream, ctx: ctx, source: source, node: node, rate: rate };
+          })();
+          try { await micPending; } finally { micPending = null; }
         }
         function teardownMic() {
           capturing = false;
@@ -1317,7 +1368,7 @@
         var streamEndTimer = null; // טיימר סיום-ניגון (→ done)
         var streamEndResolve = null; // resolver של המתנת סיום-הניגון (כדי לשחרר מיד בעצירה)
         var speakGuard = null; // ה-watchdog הפעיל של speak() (כדי לבטל בעצירה — שלא יירה בתור הבא)
-        var ttsStreamMode = "auto"; // "auto" | "on" | "off" (=503 בשרת → fallback קבוע)
+        var ttsStreamMode = "off"; // streaming כבוי זמנית — WAV דרך <audio> הכי אמין לניגון (ספארי)
 
         // "פותח" ניגון תחת מחוות-משתמש: גם נגן ה-<audio> וגם ה-AudioContext של ה-streaming
         function unlockAudio() {
@@ -1364,6 +1415,12 @@
           var ctx = streamCtx;
           streamStop = false; streamSources = []; // לפני ה-await של resume — שבקשת-עצירה לא תאבד
           if (ctx.state === "suspended") { try { await ctx.resume(); } catch (e) {} }
+          // אם ה-AudioContext עדיין לא רץ (ספארי משהה מחוץ למחווה) → הסטרימינג יהיה שקט; נופלים ל-<audio> WAV
+          if (ctx.state !== "running") {
+            console.warn("[voice] streamCtx לא רץ (" + ctx.state + ") → נופל ל-WAV דרך <audio>");
+            return false;
+          }
+          console.log("[voice] streamCtx רץ — מתחיל סטרימינג אודיו");
           var rate = parseInt(res.headers.get("x-sample-rate") || "24000", 10) || 24000;
           var reader = res.body.getReader();
           var playHead = ctx.currentTime + 0.15; // לי-זמן קטן לפני המקטע הראשון
@@ -1464,6 +1521,7 @@
           }
           var blob = await res.blob();
           logTts("WAV מלא");
+          console.log("[voice] WAV התקבל מהשרת — bytes:", blob.size);
           if (ttsUrl) { try { URL.revokeObjectURL(ttsUrl); } catch (e) {} }
           ttsUrl = URL.createObjectURL(blob);
           ttsAudio.src = ttsUrl;
@@ -1479,13 +1537,25 @@
             done();
           };
           try {
+            console.log("[voice] מנגן WAV דרך <audio> — bytes:", blob.size, "| muted:", ttsAudio.muted, "| volume:", ttsAudio.volume);
+            ttsAudio.muted = false; ttsAudio.volume = 1; // ליתר ביטחון
             var pr = ttsAudio.play();
             if (pr && pr.catch) {
               pr.catch(function (err) {
                 setSpeaking(false);
-                console.warn("[voice] play blocked:", err && err.name, err && err.message);
-                setStatus("הקול נחסם בדפדפן — הקישו רווח כדי לדבר");
+                console.warn("[voice] play נחסם:", err && err.name, err && err.message);
+                setStatus("🔊 הקש/י במסך כדי לשמוע את המורה");
                 reveal();
+                // ניסיון-ניגון חוזר בלחיצה/מקש/נגיעה הבאים — מתחת למחווה זה יעבוד
+                var retry = function () {
+                  document.removeEventListener("click", retry, true);
+                  document.removeEventListener("keydown", retry, true);
+                  document.removeEventListener("touchstart", retry, true);
+                  try { ttsAudio.play().then(function () { setStatus(""); }).catch(function () {}); } catch (e) {}
+                };
+                document.addEventListener("click", retry, true);
+                document.addEventListener("keydown", retry, true);
+                document.addEventListener("touchstart", retry, true);
                 done();
               });
             }
@@ -1507,8 +1577,22 @@
             await ensureMic();
           } catch (e) {
             starting = false; state = "paused"; setRecordingUI(false);
-            setStatus(e && (e.name === "NotAllowedError" || e.name === "SecurityError")
-              ? "צריך לאשר גישה למיקרופון 🎤" : "אין מיקרופון זמין במכשיר הזה.");
+            var nm = e && e.name;
+            console.warn("[voice] שגיאת מיקרופון:", nm, e && e.message, "| origin =", location.origin, "| secureContext =", window.isSecureContext);
+            // מצב ההרשאה — חד-משמעי: denied = הדפדפן חוסם (תיקון בהגדרות); granted = באג אמיתי בקוד
+            if (navigator.permissions && navigator.permissions.query) {
+              navigator.permissions.query({ name: "microphone" }).then(function (p) {
+                console.log("[voice] מצב הרשאת מיקרופון =", p.state);
+                if (p.state === "denied") setStatus("המיקרופון חסום בדפדפן 🚫 — אפשרי דרך 🎤 בשורת הכתובת, ואז רענני");
+              }).catch(function () {});
+            }
+            var msg;
+            if (nm === "InsecureContext") msg = "כדי לדבר צריך לפתוח את האתר דרך localhost או https 🔒";
+            else if (nm === "NotAllowedError" || nm === "SecurityError") msg = "צריך לאשר גישה למיקרופון 🎤 (אם חסמת — אפסי בהגדרות האתר בדפדפן)";
+            else if (nm === "NotFoundError" || nm === "DevicesNotFoundError") msg = "לא נמצא מיקרופון במכשיר הזה.";
+            else if (nm === "NotReadableError") msg = "המיקרופון תפוס על-ידי אפליקציה אחרת.";
+            else msg = "המיקרופון לא זמין כרגע — נסי שוב.";
+            setStatus(msg);
             return;
           }
           // אם בזמן בקשת ההרשאה סגרו את הריבוע — לא להפעיל מיקרופון "תקוע": משחררים וחוזרים
@@ -1516,20 +1600,23 @@
           if (mic && mic.ctx.state === "suspended") { try { mic.ctx.resume(); } catch (e) {} }
           resetVad(); capturing = true; state = "listening"; starting = false;
           setBusyUI(false); setFogLoader(false); clearReply();
-          setRecordingUI(true); setStatus(""); clearReply(); // בלי טקסט "מקשיב" — רק סמל המיקרופון הפועם
+          setRecordingUI(true); clearReply();
+          setStatus("🎙 מקשיב — דבר/י עכשיו"); // חיווי ברור שהמיקרופון פעיל
+          console.log("[voice] מקשיב — דברו עכשיו 🎙 (SPEECH_RMS=" + SPEECH_RMS + ", SILENCE_MS=" + SILENCE_MS + ")");
         }
 
         async function finalizeTurn() {
           if (state !== "listening") return; // הגנה מכפילות
           state = "processing"; capturing = false;
           setRecordingUI(false); setBusyUI(true); clearReply();
-          setFogLoader(true); setStatus(""); // רק נקודות הטעינה באזור הערפל — בלי טקסט בפאנל
+          setFogLoader(true); setStatus("שמעתי — חושב/ת… 💭"); // חיווי שהדיבור נקלט ונשלח
           var wav;
           try { wav = buildWav(); } catch (e) { return resumeAfter(); }
           resetVad(); // ניקוי למקטע הבא (המיקרופון נשאר פתוח)
           try {
             var tStt = (window.performance || Date).now();
             var text = await transcribe(wav);
+            console.log("[voice] תמלול שהתקבל:", JSON.stringify(text));
             var sttMs = Math.round((window.performance || Date).now() - tStt);
             if (state !== "processing") return; // המשתמש סגר/השהה באמצע
             if (!text) { setFogLoader(false); showFog("לא שמעתי — נא דברו שוב"); return resumeAfter(); }
@@ -1630,11 +1717,13 @@
             var open = header.classList.contains("is-open");
             if (open && !wasOpen) {
               flyMic(true); // המיקרופון זז למרכז (מיקרופון אחד)
+              startBarsLoop(); // הפסים נעים לפי הקול בזמן הקשבה
               clearReply(); setFogLoader(false);
               startListening(); // המיקרופון פתוח כברירת מחדל
             }
             if (!open && wasOpen) {
               flyMic(false); // המיקרופון חוזר אל מקומו בפס והופך לתכלת
+              stopBarsLoop(); // עוצרים את אנימציית הפסים
               if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
               teardownMic(); stopSpeaking();
               state = "idle"; setRecordingUI(false); setBusyUI(false); setFogLoader(false); clearReply();
@@ -1697,6 +1786,26 @@
         window.vela.flyMic = flyMic; // app.js מפעיל אחרי קביעת צבע ה-is-recording (כניסה ויציאה)
         window.vela.voiceToggle = function () {
           unlockAudio(); // תחת מחוות-המשתמש (לחיצה) → ניגון לא ייחסם בספארי
+          var opening = !header.classList.contains("is-open");
+          if (opening) {
+            // בקשת מיקרופון ברורה מתחת למחוות הלחיצה — והודעה שאי אפשר לפספס אם הוא חסום
+            if (!window.isSecureContext) {
+              alert("כדי לדבר עם המורה צריך לפתוח את האתר דרך כתובת מאובטחת:\n\nhttp://localhost:8787  (או https)\n\nדרך כתובת IP אחרת הדפדפן חוסם את המיקרופון.");
+            } else if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+              try {
+                ensureMic().catch(function (e) {
+                  var nm = e && e.name;
+                  if (nm === "NotAllowedError" || nm === "SecurityError") {
+                    alert("המיקרופון חסום בדפדפן 🎤\n\nכדי לאפשר:\n• כרום: לחצו על האייקון 🔒 / 🎤 בשורת הכתובת ← אפשרו מיקרופון ← רעננו.\n• ספארי: תפריט Safari ← Settings ← Websites ← Microphone ← Allow ל-localhost ← רעננו.");
+                  } else if (nm === "NotFoundError" || nm === "DevicesNotFoundError") {
+                    alert("לא נמצא מיקרופון במכשיר הזה.");
+                  } else if (nm === "NotReadableError") {
+                    alert("המיקרופון תפוס על-ידי אפליקציה אחרת. סגרו אותה ונסו שוב.");
+                  }
+                });
+              } catch (e) {}
+            }
+          }
           // פותח/סוגר את קופסת המורה המלאה — הריבוע המטושטש, המורה במרכז, והטקסט המדבר מתחתיו
           if (slot) slot.click();
           return header.classList.contains("is-open");

@@ -484,7 +484,8 @@ function vizObjectFor(text) {
 
 function vizRepeat(emoji, n, cls) {
   let s = "";
-  for (let i = 0; i < n; i++) s += `<span class="obj${cls ? ` ${cls}` : ""}">${emoji}</span>`;
+  // --i = אינדקס לכניסה מדורגת (animation-delay ב-CSS)
+  for (let i = 0; i < n; i++) s += `<span class="obj${cls ? ` ${cls}` : ""}" style="--i:${i}">${emoji}</span>`;
   return s;
 }
 
@@ -505,7 +506,8 @@ function buildArithViz(text) {
   return `<div class="objViz objViz--interactive"><span class="objViz__group">${vizRepeat(emoji, a, "obj--clickable")}</span></div>`;
 }
 
-/** מציג איור שרת אם יש; הדמיית חפצים לא מוצגת אוטומטית (רק כשהתלמיד מתקשה). */
+/** מציג איור שרת אם יש; הדמיית חפצים לא מוצגת אוטומטית —
+ *  רק כשהילד מתקשה והמורה מחליט לחשוף אותה (revealArithViz דרך [[SHOW_VISUAL]]). */
 function showProblemVisual(u, p) {
   if (!p) return showProblemDiagram(u, null);
   if (p.diagramSvg) return showProblemDiagram(u, p.diagramSvg, p.diagramAlt);
@@ -1650,7 +1652,7 @@ async function main() {
     const isTime = !isClockSet && !isShapeCreate && !!(p && p.answerKind === "time");
 
     // מעבר שאלה סוגר מקלדת/בורר רמה/עזרה אם נשארו פתוחים
-    if (u.numPad) u.numPad.hidden = true;
+    if (u.lessonCard) u.lessonCard.classList.remove("numpad-open");
     if (u.levelPicker) u.levelPicker.hidden = true;
     if (u.helpPopover) u.helpPopover.hidden = true;
 
@@ -2001,7 +2003,7 @@ async function main() {
     saveAll();
   }
 
-  function applyApiSideEffects(topic, api) {
+  function applyApiSideEffects(topic, api, opts = {}) {
     if (api?.newProblem?.text) {
       const np = {
         id: api.newProblem.id || crypto.randomUUID?.() || String(Date.now()),
@@ -2026,12 +2028,12 @@ async function main() {
       }
     }
 
-    if (typeof api?.checkAnswerCorrect === "boolean") {
+    if (!opts.skipStats && typeof api?.checkAnswerCorrect === "boolean") {
       applyAnswerStats(topic, api.checkAnswerCorrect);
     }
   }
 
-  async function requestAi({ messageText, messageKind, studentAnswer, showUserBubble = true, shapeCheck = null }) {
+  async function requestAi({ messageText, messageKind, studentAnswer, showUserBubble = true, shapeCheck = null, localHandled = false }) {
     const topic = getCurrentTopic();
     const text = String(messageText ?? "").trim();
     if (!text) return null;
@@ -2064,11 +2066,12 @@ async function main() {
       appendMsg(u.chatLog, { from: "bot", text: api.reply, animate: true, reveal: true });
       topic.chatHistory.push({ role: "assistant", content: api.reply });
       topic.chatHistory = topic.chatHistory.slice(-40);
-      applyApiSideEffects(topic, api);
+      applyApiSideEffects(topic, api, { skipStats: localHandled });
       saveAll();
-      // בציור צורה — הקונפטי והמעבר מטופלים ע"י כפתור "סיימתי", לא כאן (מניעת כפילות)
+      // בציור צורה — הקונפטי והמעבר מטופלים ע"י כפתור "סיימתי", לא כאן (מניעת כפילות).
+      // localHandled — המשוב (❌) כבר הוצג מקומית, לא להציג שוב.
       const isShapeCreate = shapeCheck != null;
-      if (!isShapeCreate && messageKind === "CheckAnswer" && typeof api.checkAnswerCorrect === "boolean") {
+      if (!isShapeCreate && !localHandled && messageKind === "CheckAnswer" && typeof api.checkAnswerCorrect === "boolean") {
         showAnswerFeedback(api.checkAnswerCorrect);
       }
     }
@@ -2132,6 +2135,38 @@ async function main() {
   async function checkAnswerText(answerText) {
     const raw = String(answerText ?? "").trim();
     if (!raw) return;
+    const topic = getCurrentTopic();
+    const p = getCurrentProblem(topic);
+
+    // שאלות פשוטות (תשובה ידועה) — בדיקה מקומית מיידית, בלי לבדוק עם המורה.
+    // טעות ראשונה: רק "❌ לא נכון, נסה/י שוב". רק בטעות השנייה ברציפות המורה נכנס להבין למה.
+    if (p && p.answer != null) {
+      const correct = answersMatch(raw, p.answer);
+      applyAnswerStats(topic, correct);
+      if (correct) {
+        p._wrongAttempts = 0;
+        showAnswerFeedback(true); // ✅ + קונפטי + מעבר — מקומי, בלי AI
+        return;
+      }
+      p._wrongAttempts = (p._wrongAttempts || 0) + 1;
+      showAnswerFeedback(false); // ❌ מיידי — מקומי, בלי AI
+      if (p._wrongAttempts < 2) return; // טעות ראשונה → בלי מורה
+      // טעות שנייה+ → המורה נכנס להבין למה (פותחים את הצ'אט כדי שהעזרה תיראה)
+      if (uiState.chatCollapsed) {
+        uiState.chatCollapsed = false;
+        renderChatCollapsed();
+      }
+      await requestAi({
+        messageText: `טעיתי שוב בתשובה (${raw}). תעזור/י לי להבין מה לא הבנתי.`,
+        messageKind: "CheckAnswer",
+        studentAnswer: raw,
+        showUserBubble: false,
+        localHandled: true, // הסטטיסטיקה והמשוב כבר טופלו מקומית — לא לחזור עליהם
+      });
+      return;
+    }
+
+    // אין תשובה ידועה — זרימת המורה הרגילה (בדיקה בצד שרת)
     await requestAi({
       messageText: `בדוק את התשובה שלי: ${raw}`,
       messageKind: "CheckAnswer",
@@ -2284,12 +2319,12 @@ async function main() {
     }
   });
 
-  // מקלדת מספרים — נפתחת בלחיצה על שדה התשובה
+  // מקלדת מספרים — משולבת במסגרת: הלחיצה על הקלט מרחיבה את המסגרת ומציגה את המספרים
   function openNumPad() {
-    if (u.numPad) u.numPad.hidden = false;
+    if (u.lessonCard) u.lessonCard.classList.add("numpad-open");
   }
   function closeNumPad() {
-    if (u.numPad) u.numPad.hidden = true;
+    if (u.lessonCard) u.lessonCard.classList.remove("numpad-open");
   }
   u.answerInput.addEventListener("focus", openNumPad);
   u.answerInput.addEventListener("click", openNumPad);
@@ -2301,17 +2336,13 @@ async function main() {
     else if (k === "clear") u.answerInput.value = "";
     else u.answerInput.value += k;
   });
-  u.numPadDone?.addEventListener("click", () => {
-    closeNumPad();
-    u.checkBtn.click();
-  });
-  // סגירת המקלדת בלחיצה בחוץ (לא על השדה ולא על המקלדת)
+  // סגירה בלחיצה מחוץ למסגרת אזור התשובה
   document.addEventListener("click", (e) => {
     if (
-      u.numPad &&
-      !u.numPad.hidden &&
-      !u.numPad.contains(e.target) &&
-      e.target !== u.answerInput
+      u.lessonCard &&
+      u.lessonCard.classList.contains("numpad-open") &&
+      u.answerRowNumeric &&
+      !u.answerRowNumeric.contains(e.target)
     ) {
       closeNumPad();
     }

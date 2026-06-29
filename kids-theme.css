@@ -872,11 +872,270 @@ body.chat-resizing .chatResizeHandle::after {
    במסכים נמוכים, והשאלה + התשובה + מד ההתקדמות נשארים גלויים יחד.
    ============================================================ */
 
-/* שעון (סטטי ואינטראקטיבי) — מותאם לגובה המסך (היה min(340px,80vw)) */
+/* שעון (סטטי ואינטראקטיבי) — גדול וממורכז, מנצל את החלון הגדול של study-v2 */
 .mode-clock .interactiveClock,
 .mode-clock .problemDiagram svg {
-  width: min(220px, 28vh, 66vw);
-  height: min(220px, 28vh, 66vw);
+  width: min(500px, 54vh, 80vw);
+  height: min(500px, 54vh, 80vw);
+}
+/* במצב שעון — פחות ריווח עליון, כך שהשעון הגדול יושב ממורכז ומנצל את השטח */
+.study-v2 #lessonCard.mode-clock .problem { margin-top: clamp(8px, 3vh, 36px); }
+
+/* ===== מחשבון תשובה: מסגרת (קלט למעלה · מספרים מתחתיו) + כפתור "סיימתי" נפרד מתחת =====
+   המסגרת מעוגנת בתחתיתה (.problem סופג את הגדילה): נפתחת כלפי מעלה — הקלט עולה,
+   תחתית-המסגרת והכפתור הנפרד לא זזים, והשעון מתכווץ/גדל חלק. */
+/* מיכל חיצוני שקוף — מחזיק את המחשבון ואת כפתור "סיימתי" הנפרד שמתחתיו */
+.study-v2 #answerRowNumeric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(360px, 92%); /* המיכל — רחב, כדי שכפתור ההגשה יוכל להיות רחב */
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin-bottom: clamp(2px, 0.6vh, 8px); /* קצת יותר למטה */
+}
+/* מסגרת המחשבון — צרה (הקלט + המספרים); כפתור ההגשה שמתחת רחב ממנה בהרבה */
+.study-v2 #answerRowNumeric .numCalc {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: min(230px, 70%);
+  border: 2px solid rgb(var(--accent-rgb) / 0.18);
+  border-radius: 18px;
+  background: #fff;
+  padding: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.study-v2 #answerRowNumeric .numCalc:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.14);
+}
+/* הקלט (התשובה שלי) — ממלא את רוחב המחשבון, ולכן רחב מהמספרים שמתחתיו */
+.study-v2 #answerRowNumeric .answerBar {
+  border: 0;
+  box-shadow: none;
+  background: rgb(var(--accent-rgb) / 0.05);
+  border-radius: 12px;
+  padding: 4px 6px;
+}
+.study-v2 #lessonCard.mode-clock #answerRowNumeric .answerBar { flex-direction: row; align-items: center; }
+/* כפתור "סיימתי" — נפרד מהמחשבון, מתחתיו: רחב בהרבה מהמסגרת, צר בגובה, מעט יותר למטה */
+.study-v2 #answerRowNumeric .answerBar__btn {
+  min-width: 0 !important;
+  width: 100% !important;        /* רוחב מלא של המיכל (~360px) → רחב בהרבה מהמסגרת הצרה */
+  align-self: stretch !important;
+  margin: 11px 0 0 !important;  /* רווח מהמחשבון → נפרד ממנו, וקצת יותר למטה */
+  padding: 6px 0 !important;     /* צר יותר בגובה */
+  min-height: 42px !important;   /* גובר על min-height:50 הבסיסי → באמת דק יותר */
+  font-size: 16px;
+}
+.study-v2 #lessonCard.mode-clock #answerRowNumeric .answerBar__btn { align-self: center !important; }
+/* הנומפד — אקורדיון בגובה max-height (לא grid-template-rows: זה גרם ל"שכפול"/גרירה של השעון
+   בספארי — באג ריענון ידוע). max-height חלק ובלי טריילים. הערך גדול מהתוכן → נפתח עד התוכן. */
+.study-v2 #answerRowNumeric #numPad {
+  position: static; /* ביטול ה-position:fixed הישן של ה-popup */
+  transform: none;
+  z-index: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  max-height: 0;
+  overflow: hidden;
+  /* עקומה רכה וסימטרית (לא ease-out חד) → הפתיחה לא "מזנקת" בהתחלה, זהה במהירות לסגירה */
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), margin 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.study-v2 #lessonCard.numpad-open #answerRowNumeric #numPad {
+  /* צמוד לגובה התוכן (~219px) → אין "אזור מת" שגורם לפתיחה מהירה מדי; פתיחה=סגירה */
+  max-height: 232px;
+  margin: 8px 0 2px;
+}
+/* עטיפת-הקיפול — בלי padding (קיפול אמיתי, בלי דליפת מספרים) */
+.study-v2 #answerRowNumeric #numPad .numPad__clip {
+  min-height: 0;
+  overflow: hidden;
+}
+/* רשת המקשים — אשכול עיגולים צמוד וממורכז; ה-padding כאן (בתוך הקליפ) נותן מקום לצל-הבליטה שלא ייחתך */
+.study-v2 #answerRowNumeric #numPad .numPad__grid {
+  display: grid;
+  grid-template-columns: repeat(3, clamp(40px, 5vh, 44px));
+  justify-content: center;
+  gap: clamp(6px, 0.9vh, 9px);
+  padding: clamp(5px, 0.8vh, 8px);
+}
+/* הופעת מקשים — רכה ולא "קופצת": fade + scale-up עדין בלי overshoot (לא באונס) */
+@keyframes numKeyPop {
+  0% { opacity: 0; transform: scale(0.82); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.study-v2 #lessonCard.numpad-open #numPad .numKey {
+  animation: numKeyPop 0.34s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+.study-v2 #lessonCard.numpad-open #numPad .numKey:nth-child(-n+3) { animation-delay: 0.1s; }
+.study-v2 #lessonCard.numpad-open #numPad .numKey:nth-child(n+4):nth-child(-n+6) { animation-delay: 0.18s; }
+.study-v2 #lessonCard.numpad-open #numPad .numKey:nth-child(n+7):nth-child(-n+9) { animation-delay: 0.26s; }
+.study-v2 #lessonCard.numpad-open #numPad .numKey:nth-child(n+10) { animation-delay: 0.34s; }
+/* מקש עגול עם תחושת בליטה — לא מסגרת אלא צל: צל חיצוני רך מתחת + הדגשה לבנה עליונה פנימית */
+.study-v2 #answerRowNumeric #numPad .numKey {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  /* רקע אחיד בצבע הרקע (לבן) — בלי שום מעבר צבעים; רק הצל מגדיר את הכפתור */
+  background: #ffffff;
+  color: var(--kid-ink);
+  font-size: clamp(17px, 4.4vw, 21px);
+  font-weight: 700;
+  /* צל מכוון רק לשמאל-למעלה, דועך בהדרגה (blur) → בימין-למטה אין כלום, הכפתור משתלב ברקע */
+  box-shadow: -2.5px -2.5px 6px rgb(13 60 53 / 0.14);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+.study-v2 #answerRowNumeric #numPad .numKey:hover {
+  filter: brightness(1.02);
+}
+/* לחיצה — הצל הקטן מתכווץ והמקש שוקע מעט → תחושת מגע */
+.study-v2 #answerRowNumeric #numPad .numKey:active {
+  transform: scale(0.95);
+  box-shadow: -1px -1px 3px rgb(13 60 53 / 0.12);
+}
+.study-v2 #answerRowNumeric #numPad .numKey--util {
+  font-size: clamp(15px, 4vw, 19px);
+  color: var(--kid-sub);
+  background: #ffffff;
+}
+
+/* ===== המפתח: אזור השאלה (.problem) סופג בדיוק את הגובה שהמספרים מוסיפים =====
+   כשיש סרטוט/שעון, .problem הוא flex:1 ולכן מתכווץ פריים-אחר-פריים בדיוק כפי שהמספרים
+   נפתחים (grid-template-rows). התוצאה: תחתית אזור-התשובה — והכפתור "סיימתי" — לא זזה כלל,
+   ורק הקלט "נדחף" מעלה. השעון/הסרטוט ממלאים את .problem ולכן מתכווצים/גדלים חלק יחד איתו —
+   בלי שום איזון vh/px ובלי scale שלא משחרר מקום בלייאאוט (זו הייתה הסיבה שהכפתור ירד). */
+.study-v2 #lessonCard:has(#problemDiagram:not([hidden])) .problem {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* לא חותכים — אחרת נראית "קופסה"/חיתוך-קצה סביב השעון כשהוא מתכווץ */
+}
+.study-v2 #lessonCard:has(#problemDiagram:not([hidden])) #problemDiagram {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  padding: 4px 0; /* קצת אוויר סביב השעון */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  /* שכבת GPU + בידוד-ציור: כשהשעון זז/מתכווץ, ספארי מרענן נקי מאחוריו → בלי טריילים/שכפול */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  isolation: isolate;
+}
+/* שעון — ממלא את הגובה הפנוי וממורכז; היחס 1:1 מובנה מ-viewBox.
+   translateZ(0): שכבה נקייה לשעון עצמו → אין "30 שעונים" כשהוא מתכווץ. */
+.study-v2 #lessonCard.mode-clock #problemDiagram .interactiveClock,
+.study-v2 #lessonCard.mode-clock #problemDiagram svg {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+/* סרטוטים אחרים (לא שעון) — שומרים יחס מקורי, מתכווצים בתוך הגובה הפנוי (לא scale) */
+.study-v2 #lessonCard:not(.mode-clock) #problemDiagram svg {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+/* ===== איור חפצים (חיבור/חיסור) — מופיע רק על-פי החלטת המורה, מתחת לתרגיל, בלי שום מסגרת ===== */
+/* כשיש איור חפצים — מסדרים: שאלה, ואז התרגיל, ואז החפצים מתחת */
+.study-v2 #lessonCard .problem:has(.objViz) .problem__label { order: 0; }
+.study-v2 #lessonCard .problem:has(.objViz) .problem__text { order: 1; }
+.study-v2 #lessonCard .problem:has(.objViz) #problemDiagram { order: 2; }
+.study-v2 #problemDiagram .objViz {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 24px);
+  max-height: none !important;
+  margin-top: clamp(12px, 2.4vh, 26px); /* רווח מהתרגיל שמעליו */
+  animation: none;
+}
+/* קבוצת חפצים — בלי מסגרת/רקע/ריפוד בכלל. רק החפצים. */
+.study-v2 #problemDiagram .objViz__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 0.9vw, 11px);
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+/* האופרטור — סימן פשוט, בלי תג/עיגול */
+.study-v2 #problemDiagram .objViz__op {
+  font-size: clamp(26px, 3.6vw, 38px);
+  font-weight: 800;
+  color: var(--kid-sub);
+  margin: 0 clamp(2px, 0.5vw, 6px);
+  background: none;
+}
+/* החפצים — גדולים, עם פופ עדין ומדורג (--i מוגדר ב-app.js) */
+.study-v2 #problemDiagram .obj {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1;
+  animation: objPop 0.42s cubic-bezier(0.34, 1.25, 0.5, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 0.028s);
+}
+@keyframes objPop {
+  0% { opacity: 0; transform: scale(0.3) translateY(6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.study-v2 #problemDiagram .obj--clickable { cursor: pointer; }
+.study-v2 #problemDiagram .obj--clickable:hover { transform: scale(1.16); }
+@media (prefers-reduced-motion: reduce) {
+  .study-v2 #problemDiagram .obj { animation: none; }
+}
+
+.study-v2 #lessonCard .problem__text { transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+/* תרגיל חיבור/חיסור (לא-שעון) — גדול וקבוע (טיפה קטן יותר), לא מתכווץ כשהמספרים נפתחים */
+.study-v2 #lessonCard:not(.mode-clock) .problem__text { font-size: clamp(40px, 7vw, 64px); }
+/* התרגיל ממורכז אנכית (יושב קצת מעל אמצע המסך, כי אזור-התשובה תופס למטה).
+   flex:1 → בפתיחת המספרים הגדילה נספגת והתרגיל "עולה" מעלה בעדינות (הכפתור לא זז). */
+.study-v2 #lessonCard:not(.mode-clock) .problem {
+  margin-top: clamp(6px, 1.5vh, 16px);
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* שעון — הטקסט גדל בפתיחה (מתואם עם כיווץ השעון, אותה עקומה/משך) */
+.study-v2 #lessonCard.mode-clock.numpad-open .problem__text { font-size: clamp(20px, 3vw, 28px); }
+/* הסרת תווית "שאלה" שמעל התרגיל — מיותרת. !important + #lessonCard גוברים על חוק-הבסיס */
+.study-v2 #lessonCard .problem__label { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .study-v2 #answerRowNumeric #numPad,
+  .study-v2 #lessonCard .problem__text { transition: none; }
+  .study-v2 #lessonCard.numpad-open #numPad .numKey { animation: none; }
 }
 /* כותרת השאלה במצב שעון — ריווח הדוק כדי לפנות מקום לשעון + התשובה + המד */
 #lessonCard.mode-clock .problem__text {
