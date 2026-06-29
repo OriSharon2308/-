@@ -44,6 +44,10 @@
       .chip.back { font-size: 18px; padding: 0 12px; }
       .chip.topic { color: var(--teal); }
       .chip.topic .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); }
+      .chip.showAll { cursor: pointer; font-family: inherit; font-size: 14px; color: var(--teal); transition: transform 0.12s ease, box-shadow 0.15s ease; }
+      .chip.showAll:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(2, 6, 23, 0.1); }
+      .chip.showAll:active { transform: scale(0.96); }
+      .chip.showAll[disabled] { opacity: 0.6; cursor: default; transform: none; }
       .spacer { flex: 1; }
 
       /* כפתורי זום צפים */
@@ -460,6 +464,7 @@
     <div class="topbar">
       <a href="/learn" class="chip back" title="חזרה לאזור הלמידה">→</a>
       <span class="chip topic" id="topicChip" hidden><span class="dot"></span><span id="topicName"></span></span>
+      <button class="chip showAll" id="showAll" type="button" title="הצג את כל הכלים של המורה">✨ כל הכלים</button>
       <span class="spacer"></span>
     </div>
 
@@ -578,6 +583,61 @@
       document.getElementById("zoomIn").onclick = function () { board.zoomIn(); };
       document.getElementById("zoomOut").onclick = function () { board.zoomOut(); };
       document.getElementById("zoomReset").onclick = function () { board.organizeView(); }; // בית = סדר תצוגה כך שכל התוכן/השאלות נראים
+
+      // ───────── "כל הכלים" — גלריה דטרמיניסטית של כל היכולות (תבניות + ווידג'טים אינטראקטיביים) ─────────
+      (function showAll() {
+        var btn = document.getElementById("showAll");
+        if (!btn) return;
+
+        // ווידג'ט אינטראקטיבי 1: סרגל-מספרים שגוררים את החץ (הצמדה למספרים, תווית "+N").
+        var WIDGET_NUMLINE =
+          '<svg viewBox="0 0 380 180" width="100%" height="100%" style="display:block;touch-action:none">' +
+          '<g id="tk"></g><line x1="25" y1="120" x2="355" y2="120" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>' +
+          '<path id="ar" fill="none" stroke="#0d9488" stroke-width="3"/><circle id="hd" r="9" fill="#0d9488" stroke="#fff" stroke-width="2"/>' +
+          '<text id="lb" text-anchor="middle" font-weight="700" font-size="18" fill="#0f3b36">+0</text>' +
+          '<text x="190" y="165" text-anchor="middle" font-size="13" fill="#51706c">גרור את החץ לתשובה</text></svg>' +
+          '<script>(function(){var N=10,x0=25,x1=355,Y=120,st=3,cur=3,tg=7,NS="http://www.w3.org/2000/svg";' +
+          'var s=document.querySelector("svg"),tk=document.getElementById("tk"),ar=document.getElementById("ar"),hd=document.getElementById("hd"),lb=document.getElementById("lb");' +
+          'function px(v){return x0+(x1-x0)*v/N;}' +
+          'for(var i=0;i<=N;i++){var x=px(i);var l=document.createElementNS(NS,"line");l.setAttribute("x1",x);l.setAttribute("y1",Y-6);l.setAttribute("x2",x);l.setAttribute("y2",Y+6);l.setAttribute("stroke","#0d9488");l.setAttribute("stroke-width","2");tk.appendChild(l);var t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("y",Y+26);t.setAttribute("text-anchor","middle");t.setAttribute("font-size","13");t.setAttribute("fill","#0f3b36");t.textContent=i;tk.appendChild(t);}' +
+          'function rn(){var sx=px(st),ex=px(cur),mx=(sx+ex)/2,h=24+Math.abs(ex-sx)*0.3;ar.setAttribute("d","M"+sx+","+(Y-4)+" Q"+mx+","+(Y-h*1.7)+" "+ex+","+(Y-4));hd.setAttribute("cx",ex);hd.setAttribute("cy",Y-4);lb.setAttribute("x",mx);lb.setAttribute("y",Y-h-6);lb.textContent="+"+(cur-st);}' +
+          'function vl(cx){var r=s.getBoundingClientRect();var x=(cx-r.left)*(380/r.width);return Math.max(st,Math.min(N,Math.round((x-x0)/(x1-x0)*N)));}' +
+          'var dg=false;function mv(e){if(!dg)return;cur=vl(e.clientX!=null?e.clientX:e.touches[0].clientX);rn();if(cur===tg)parent.postMessage({type:"vela:correct"},"*");}' +
+          's.addEventListener("pointerdown",function(e){dg=true;mv(e);});window.addEventListener("pointermove",mv);window.addEventListener("pointerup",function(){dg=false;});rn();})();<\/script>';
+
+        // ווידג'ט אינטראקטיבי 2: לוח-עשר (ten-frame) — לחיצה ממלאת עיגול, הסכום מתעדכן.
+        var WIDGET_TENFRAME =
+          '<svg viewBox="0 0 300 180" width="100%" height="100%" style="display:block;touch-action:none">' +
+          '<g id="cl"></g><text id="ct" x="150" y="172" text-anchor="middle" font-weight="700" font-size="18" fill="#0f3b36">0</text></svg>' +
+          '<script>(function(){var NS="http://www.w3.org/2000/svg",cl=document.getElementById("cl"),ct=document.getElementById("ct"),f=[];' +
+          'for(var i=0;i<10;i++){f.push(false);var col=i%5,row=(i/5)|0,cx=42+col*54,cy=42+row*56;var c=document.createElementNS(NS,"circle");c.setAttribute("cx",cx);c.setAttribute("cy",cy);c.setAttribute("r",21);c.setAttribute("fill","#fff");c.setAttribute("stroke","#0d9488");c.setAttribute("stroke-width","2.5");c.setAttribute("data-i",i);c.style.cursor="pointer";cl.appendChild(c);}' +
+          'cl.addEventListener("pointerdown",function(e){var i=e.target.getAttribute&&e.target.getAttribute("data-i");if(i==null)return;i=+i;f[i]=!f[i];e.target.setAttribute("fill",f[i]?"#0d9488":"#fff");ct.textContent=f.filter(Boolean).length;});})();<\/script>';
+
+        // פריסת רשת אסתטית — 3 עמודות, מרווחים שווים. כל פריט עם כותרת מעליו.
+        var DX = 440, DY = 320, X0 = 260, Y0 = 210;
+        function cx(c) { return X0 + c * DX; }
+        function cy(r) { return Y0 + r * DY; }
+        function title(c, r, t) { board.tool("write_text", { x: cx(c), y: cy(r) - 138, text: t, size: 22 }); }
+
+        var ITEMS = [
+          [0, 0, "ציר עם קפיצות", function (x, y) { board.tool("draw_number_line", { x: x - 150, y: y, from: 0, to: 10, step: 1, length: 300, jumps: [[0, 3, "+3"], [3, 7, "+4"]] }); }],
+          [1, 0, "מוט-שבר", function (x, y) { board.tool("draw_fraction_bar", { x: x, y: y, parts: 4, shaded: 3 }); }],
+          [2, 0, "מערך כפל", function (x, y) { board.tool("draw_array", { x: x, y: y, rows: 3, cols: 4 }); }],
+          [0, 1, "בלוקי בסיס-10", function (x, y) { board.tool("draw_base_ten", { x: x, y: y, value: 142 }); }],
+          [1, 1, "מודל-מוט", function (x, y) { board.tool("draw_bar_model", { x: x, y: y, parts: [{ value: 5, label: "5" }, { value: 3, label: "3" }], total: "8" }); }],
+          [2, 1, "שעון", function (x, y) { board.tool("draw_clock", { x: x, y: y, hour: 3, minute: 0, r: 78 }); }],
+          [0, 2, "צורה (משולש)", function (x, y) { board.tool("draw_polygon", { points: [[x - 70, y + 55], [x + 70, y + 55], [x, y - 65]] }); }],
+          [1, 2, "ווידג'ט: סרגל נגרר", function (x, y) { board.tool("render_widget", { html: WIDGET_NUMLINE, x: x - 190, y: y - 90, w: 380, h: 180 }); }],
+          [2, 2, "ווידג'ט: לוח-עשר", function (x, y) { board.tool("render_widget", { html: WIDGET_TENFRAME, x: x - 150, y: y - 90, w: 300, h: 180 }); }],
+        ];
+
+        btn.addEventListener("click", function () {
+          if (board.clearTeacher) board.clearTeacher(); // מנקה תוכן-מורה קודם (לא נוגע בקישקושי הילד)
+          board.tool("write_text", { x: cx(1), y: 78, text: "כל מה שהמורה יכול להראות ✨", size: 30 });
+          ITEMS.forEach(function (it) { title(it[0], it[1], it[2]); it[3](cx(it[0]), cy(it[1])); });
+          if (board.organizeView) setTimeout(function () { board.organizeView(); }, 60); // למרכז את כל הגלריה במסך
+        });
+      })();
 
       // ───────── זיכרון לוח לפי נושא (מיקום + קישקושים + רקע) ─────────
       (function boardMemory() {

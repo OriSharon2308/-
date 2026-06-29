@@ -671,6 +671,14 @@
   VelaBoard.prototype.runTools = function (calls) { if (Array.isArray(calls)) for (var i = 0; i < calls.length; i++) if (calls[i] && calls[i].name) this.tool(calls[i].name, calls[i].input || {}); };
   VelaBoard.prototype.registerTool = function (name, h) { if (name && typeof h === "function") this._tools[name] = h; };
 
+  // מנקה רק את תוכן המורה (ציורים/תרגילים/ווידג'טים) — משאיר את קישקושי הילד. למשל ל"הצג הכל".
+  VelaBoard.prototype.clearTeacher = function () {
+    this.objects = []; this.answerBoxes = []; this.widgets = []; this._exSlot = 0; this.selectedExId = null;
+    if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
+    if (this._onWidgets) this._onWidgets(this.widgets);
+    this.render();
+  };
+
   /* ---------- ווידג'טים חיים (iframe מבודד מעל הלוח) ---------- */
   VelaBoard.prototype.onWidgets = function (cb) { this._onWidgets = typeof cb === "function" ? cb : null; };
   VelaBoard.prototype.getWidgets = function () { return this.widgets.map(function (w) { return { id: w.id, x: w.x, y: w.y, w: w.w, h: w.h, html: w.html, title: w.title }; }); };
