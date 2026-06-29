@@ -683,6 +683,9 @@
   VelaBoard.prototype.onWidgets = function (cb) { this._onWidgets = typeof cb === "function" ? cb : null; };
   VelaBoard.prototype.getWidgets = function () { return this.widgets.map(function (w) { return { id: w.id, x: w.x, y: w.y, w: w.w, h: w.h, html: w.html, title: w.title }; }); };
   VelaBoard.prototype.setWidgets = function (list) { this.widgets = Array.isArray(list) ? list.map(function (w) { return { id: w.id || "wg", x: +w.x || 0, y: +w.y || 0, w: +w.w || 380, h: +w.h || 240, html: String(w.html || ""), title: w.title || "" }; }) : []; if (this._onWidgets) this._onWidgets(this.widgets); this.render(); };
+  VelaBoard.prototype.setWidgetSize = function (id, w, h) {
+    for (var i = 0; i < this.widgets.length; i++) if (this.widgets[i].id === id) { this.widgets[i].w = clamp(w, 140, 880); this.widgets[i].h = clamp(h, 90, 660); this.render(); return; }
+  };
   // מיקומי הווידג'טים בפיקסלי-מסך (עוקבים אחרי זום/גרירה כמו תיבות-התשובה).
   VelaBoard.prototype.getWidgetRects = function () {
     var out = [];

@@ -376,12 +376,26 @@
       }
       .answerInput.is-show { display: block; }
 
-      /* ווידג'ט חי — iframe מבודד (sandbox) שהמורה מייצר; מעל הלוח אך מתחת לפקדים (סרגל/בית/בורר-רקע) */
-      .boardWidget {
-        position: fixed; z-index: 4; display: none; border: none; background: transparent;
-        border-radius: 16px; box-shadow: 0 12px 34px rgba(13, 60, 53, 0.16);
+      /* ווידג'ט חי — כרטיס במסגרת: סרגל-כותרת + iframe מבודד + ידית שינוי-גודל. מעל הלוח, מתחת לפקדים. */
+      .widgetCard {
+        position: fixed; z-index: 4; display: none; transform-origin: top left;
+        border-radius: 16px; overflow: hidden; background: #fff;
+        border: 1px solid rgba(13, 60, 53, 0.10); box-shadow: 0 16px 40px rgba(13, 60, 53, 0.18);
       }
-      .boardWidget.is-show { display: block; }
+      .widgetCard.is-show { display: block; }
+      .widgetCard__bar {
+        height: 30px; display: flex; align-items: center; gap: 7px; padding: 0 12px;
+        background: linear-gradient(180deg, rgba(13, 148, 136, 0.13), rgba(13, 148, 136, 0.05));
+        border-bottom: 1px solid rgba(13, 60, 53, 0.08);
+        font-weight: 700; font-size: 13px; color: var(--ink); white-space: nowrap; overflow: hidden;
+      }
+      .widgetCard__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex: none; }
+      .widgetCard__ttl { overflow: hidden; text-overflow: ellipsis; }
+      .widgetCard__body { display: block; border: none; background: #fff; }
+      .widgetCard__resize {
+        position: absolute; right: 3px; bottom: 3px; width: 18px; height: 18px; cursor: nwse-resize; touch-action: none;
+        background: linear-gradient(135deg, transparent 55%, rgba(13, 148, 136, 0.6) 55% 66%, transparent 66% 78%, rgba(13, 148, 136, 0.6) 78% 89%, transparent 89%);
+      }
 
       /* עורך טקסט inline (כלי הטקסט) — קו מקווקו שכותבים בתוכו, גדל עם הטקסט */
       #textEditor {
@@ -1282,9 +1296,10 @@
 
       // ───────── ווידג'טים חיים — מיני-אפליקציות שהמורה מייצר, רצות ב-iframe מבודד ─────────
       (function widgets() {
-        var frames = {}; // id → iframe
+        var cards = {}; // id → { wrap, iframe, ttl }
+        var BAR = 30;   // גובה סרגל-הכותרת
 
-        // עוטף את ה-HTML של המורה במעטפת מאובטחת: CSP חוסם רשת/משאבים חיצוניים, רק inline.
+        // עוטף את ה-HTML של הווידג'ט במעטפת מאובטחת: CSP חוסם רשת/משאבים חיצוניים, רק inline.
         function shell(inner) {
           var csp = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'";
           return '<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">'
@@ -1294,41 +1309,63 @@
             + 'overflow:hidden;background:transparent;-webkit-user-select:none;user-select:none;touch-action:none}*{box-sizing:border-box}</style>'
             + '</head><body>' + inner + '</body></html>';
         }
-        function make(id, html) {
-          var f = document.createElement("iframe");
-          f.className = "boardWidget";
-          // מבודד: allow-scripts בלי allow-same-origin → מקור אטום, אין גישה לדף/עוגיות; ה-CSP חוסם רשת.
-          f.setAttribute("sandbox", "allow-scripts");
-          f.setAttribute("title", "כלי אינטראקטיבי של המורה");
-          f.srcdoc = shell(html);
-          document.body.appendChild(f);
-          return f;
+        function make(id) {
+          var wrap = document.createElement("div"); wrap.className = "widgetCard";
+          var bar = document.createElement("div"); bar.className = "widgetCard__bar";
+          var dot = document.createElement("span"); dot.className = "widgetCard__dot";
+          var ttl = document.createElement("span"); ttl.className = "widgetCard__ttl";
+          bar.appendChild(dot); bar.appendChild(ttl);
+          var f = document.createElement("iframe"); f.className = "widgetCard__body";
+          f.setAttribute("sandbox", "allow-scripts"); // מבודד: בלי same-origin → אין גישה לדף; CSP חוסם רשת
+          f.setAttribute("title", "כלי אינטראקטיבי");
+          var rz = document.createElement("div"); rz.className = "widgetCard__resize"; rz.title = "שינוי גודל";
+          wrap.appendChild(bar); wrap.appendChild(f); wrap.appendChild(rz);
+          document.body.appendChild(wrap);
+          // שינוי-גודל בגרירת הידית: דלתא-מסך → דלתא-לוגית (חלוקה ב-scale) → setWidgetSize
+          var rs = null;
+          rz.addEventListener("pointerdown", function (e) {
+            e.preventDefault(); e.stopPropagation();
+            var r = (board.getWidgetRects ? board.getWidgetRects() : []).filter(function (x) { return x.id === id; })[0];
+            rs = { sx: e.clientX, sy: e.clientY, w: r ? r.w : 380, h: r ? r.h : 240, sc: (r && r.scale) || 1 };
+            try { rz.setPointerCapture(e.pointerId); } catch (_) {}
+          });
+          rz.addEventListener("pointermove", function (e) {
+            if (!rs) return; e.preventDefault();
+            if (board.setWidgetSize) board.setWidgetSize(id, rs.w + (e.clientX - rs.sx) / rs.sc, rs.h + (e.clientY - rs.sy) / rs.sc);
+          });
+          rz.addEventListener("pointerup", function () { rs = null; });
+          return { wrap: wrap, iframe: f, ttl: ttl };
         }
         function place() {
           var rects = board.getWidgetRects ? board.getWidgetRects() : [], seen = {};
           for (var i = 0; i < rects.length; i++) {
-            var r = rects[i], f = frames[r.id]; if (!f) continue; seen[r.id] = 1;
-            f.classList.add("is-show");
-            f.style.left = r.left + "px"; f.style.top = r.top + "px";
-            f.style.width = r.w + "px"; f.style.height = r.h + "px";
-            f.style.transform = "scale(" + r.scale + ")"; f.style.transformOrigin = "top left";
+            var r = rects[i], c = cards[r.id]; if (!c) continue; seen[r.id] = 1;
+            c.wrap.classList.add("is-show");
+            c.wrap.style.left = r.left + "px"; c.wrap.style.top = r.top + "px";
+            c.wrap.style.width = r.w + "px"; c.wrap.style.height = (BAR + r.h) + "px";
+            c.wrap.style.transform = "scale(" + r.scale + ")";
+            c.iframe.style.width = r.w + "px"; c.iframe.style.height = r.h + "px";
           }
-          Object.keys(frames).forEach(function (id) { if (!seen[id]) frames[id].classList.remove("is-show"); });
+          Object.keys(cards).forEach(function (id) { if (!seen[id]) cards[id].wrap.classList.remove("is-show"); });
         }
         board.onWidgets(function (list) {
           var ids = {};
-          list.forEach(function (wd) { ids[wd.id] = 1; if (!frames[wd.id]) frames[wd.id] = make(wd.id, wd.html); });
-          Object.keys(frames).forEach(function (id) { if (!ids[id]) { frames[id].remove(); delete frames[id]; } });
+          list.forEach(function (wd) {
+            ids[wd.id] = 1;
+            if (!cards[wd.id]) { cards[wd.id] = make(wd.id); cards[wd.id].iframe.srcdoc = shell(wd.html); } // srcdoc פעם אחת — לא לאבד מצב
+            cards[wd.id].ttl.textContent = wd.title || "כלי";
+          });
+          Object.keys(cards).forEach(function (id) { if (!ids[id]) { cards[id].wrap.remove(); delete cards[id]; } });
           place();
         });
         board.onRender(place);
 
-        // גשר תוצאות: ווידג'ט יכול לשלוח postMessage; מאמתים שהמקור הוא iframe שלנו לפני שמגיבים.
+        // גשר תוצאות: ווידג'ט יכול לשלוח postMessage; מאמתים שהמקור הוא ה-iframe שלנו לפני שמגיבים.
         var lastBridge = 0;
         window.addEventListener("message", function (e) {
-          var mine = false; for (var k in frames) { if (frames[k].contentWindow === e.source) { mine = true; break; } }
+          var mine = false; for (var k in cards) { if (cards[k].iframe.contentWindow === e.source) { mine = true; break; } }
           if (!mine) return;
-          var now = Date.now(); if (now - lastBridge < 600) return; lastBridge = now; // הגבלת-קצב — שווידג'ט לא יציף קונפטי/בועות
+          var now = Date.now(); if (now - lastBridge < 600) return; lastBridge = now; // הגבלת-קצב
           var d = e.data || {};
           if (d.type === "vela:correct") { if (window.velaConfetti) window.velaConfetti(); }
           else if (d.type === "vela:wrong") { if (window.velaBubble) window.velaBubble("כמעט! נסה/י שוב 🙂"); }
