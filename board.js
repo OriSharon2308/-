@@ -219,6 +219,7 @@
     this.widgets = [];
     this._wid = 0;
     this._oid = 0;              // מזהה יציב לכל אובייקט-מורה (להזזה/שינוי-גודל/מחיקה לפי id)
+    this._gid = 0;              // מזהה-קבוצה: כל קריאת tool() אחת = ציור לוגי אחד (שעון=16 אובייקטים) שזז כיחידה
     this._onWidgets = null;
     this._onTextEdit = null;    // עריכת טקסט inline
     this._onRenderCbs = [];     // כמה מאזינים לרינדור (תיבות, עורך טקסט)
@@ -733,6 +734,19 @@
     if (o.cx != null) o.cx += dx; if (o.cy != null) o.cy += dy;
   };
   VelaBoard.prototype._objById = function (id) { for (var i = 0; i < this.objects.length; i++) if (this.objects[i].id === id) return this.objects[i]; return null; };
+  // הזזת קבוצה שלמה (כל האובייקטים עם אותו gid) — שעון/תבנית זזים כיחידה אחת ולא מתפרקים.
+  VelaBoard.prototype._translateGroup = function (gid, dx, dy) {
+    if (gid == null) return;
+    for (var i = 0; i < this.objects.length; i++) if (this.objects[i].gid === gid) this._translateObject(this.objects[i], dx, dy);
+  };
+  VelaBoard.prototype._groupBBox = function (gid) {
+    var b = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity }, any = false;
+    for (var i = 0; i < this.objects.length; i++) if (this.objects[i].gid === gid) {
+      var ob = this._objBBox(this.objects[i]);
+      if (ob && isFinite(ob.minX)) { any = true; if (ob.minX < b.minX) b.minX = ob.minX; if (ob.minY < b.minY) b.minY = ob.minY; if (ob.maxX > b.maxX) b.maxX = ob.maxX; if (ob.maxY > b.maxY) b.maxY = ob.maxY; }
+    }
+    return any ? b : null;
+  };
   // אובייקט-מורה שרצועתו העליונה (~28 יחידות) נמצאת תחת הנקודה — אזור-הזזה בלי פס נראה. האחרון (העליון) קודם.
   VelaBoard.prototype._objTopHit = function (w) {
     var STRIP = 28;
@@ -743,13 +757,17 @@
     return null;
   };
   // פריסת הלוח: כל פריט (אובייקט-מורה/תרגיל/ווידג'ט) עם id, סוג, מלבן תוחם ותווית קצרה. החלק שהמורה "רואה".
+  // אובייקטים מאותה קבוצה (gid — ציור מורכב כמו שעון) מתמזגים לרשומה אחת עם המלבן המשולב.
   VelaBoard.prototype.getLayout = function () {
-    var out = [], i, b;
+    var out = [], i, b, groups = {}, order = [];
     for (i = 0; i < this.objects.length; i++) {
       var o = this.objects[i]; if (o.id == null) o.id = "ob" + (++this._oid); b = this._objBBox(o); if (!b || !isFinite(b.minX)) continue;
-      out.push({ id: o.id, kind: o.type || "shape", x: Math.round(b.minX), y: Math.round(b.minY), w: Math.round(b.maxX - b.minX), h: Math.round(b.maxY - b.minY),
-        label: o.type === "text" ? String(o.text || "").slice(0, 30) : (o.label != null ? String(o.label).slice(0, 30) : "") });
+      var key = o.gid || o.id, lbl = o.type === "text" ? String(o.text || "").slice(0, 30) : (o.label != null ? String(o.label).slice(0, 30) : "");
+      if (!groups[key]) { groups[key] = { id: o.id, kind: o.type || "shape", minX: b.minX, minY: b.minY, maxX: b.maxX, maxY: b.maxY, label: lbl }; order.push(key); }
+      else { var g = groups[key]; if (b.minX < g.minX) g.minX = b.minX; if (b.minY < g.minY) g.minY = b.minY; if (b.maxX > g.maxX) g.maxX = b.maxX; if (b.maxY > g.maxY) g.maxY = b.maxY; if (!g.label && lbl) g.label = lbl; }
     }
+    for (i = 0; i < order.length; i++) { var gg = groups[order[i]];
+      out.push({ id: gg.id, kind: gg.kind, x: Math.round(gg.minX), y: Math.round(gg.minY), w: Math.round(gg.maxX - gg.minX), h: Math.round(gg.maxY - gg.minY), label: gg.label }); }
     for (i = 0; i < this.answerBoxes.length; i++) { var a = this.answerBoxes[i], eb = this._exBBox(a); if (!eb) continue;
       out.push({ id: a.id, kind: "exercise", x: Math.round(eb.minX), y: Math.round(eb.minY), w: Math.round(eb.maxX - eb.minX), h: Math.round(eb.maxY - eb.minY), label: String(a.text || "").slice(0, 30) }); }
     for (i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i];
@@ -768,7 +786,10 @@
       this.answerBoxes[k].x = nx; this.answerBoxes[k].y = ny; if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); return;
     }
     for (k = 0; k < this.objects.length; k++) if (this.objects[k].id === id) {
-      var bb = this._objBBox(this.objects[k]); if (bb) this._translateObject(this.objects[k], nx - bb.minX, ny - bb.minY); return;
+      var o = this.objects[k]; // ציור מורכב (gid) זז כיחידה — לפי המלבן המשולב של הקבוצה
+      if (o.gid) { var gb = this._groupBBox(o.gid); if (gb) this._translateGroup(o.gid, nx - gb.minX, ny - gb.minY); }
+      else { var bb = this._objBBox(o); if (bb) this._translateObject(o, nx - bb.minX, ny - bb.minY); }
+      return;
     }
   };
   VelaBoard.prototype._tools.resize_item = function (i) {
@@ -792,7 +813,9 @@
     if (this.widgets.length !== n) { if (this._onWidgets) this._onWidgets(this.widgets); return; }
     n = this.answerBoxes.length; this.answerBoxes = this.answerBoxes.filter(function (x) { return x.id !== id; });
     if (this.answerBoxes.length !== n) { if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes); return; }
-    this.objects = this.objects.filter(function (x) { return x.id !== id; });
+    // אובייקט-מורה: אם הוא חלק מציור מורכב (gid) — מסירים את כל הקבוצה, אחרת רק אותו
+    var tgt = null; for (var t = 0; t < this.objects.length; t++) if (this.objects[t].id === id) { tgt = this.objects[t]; break; }
+    if (tgt) { var gg = tgt.gid; this.objects = this.objects.filter(function (x) { return gg ? x.gid !== gg : x.id !== id; }); }
   };
 
   VelaBoard.prototype.tool = function (name, input) {
@@ -800,9 +823,14 @@
     try {
       h.call(this, input || {});
       var t0 = Date.now ? Date.now() : 0; // חותמת זמן לאנימציית ההופעה
+      var newGid = null; // כל האובייקטים החדשים מהקריאה הזו → אותה קבוצה (זזים יחד)
       for (var i = 0; i < this.objects.length; i++) {
         if (this.objects[i]._t0 == null) this.objects[i]._t0 = t0;
-        if (this.objects[i].id == null) this.objects[i].id = "ob" + (++this._oid); // מזהה יציב להזזה
+        if (this.objects[i].id == null) {
+          this.objects[i].id = "ob" + (++this._oid); // מזהה יציב להזזה
+          if (newGid == null) newGid = "g" + (++this._gid);
+          this.objects[i].gid = newGid;
+        }
       }
       this.render();
       return { ok: true };
@@ -1218,9 +1246,9 @@
       }
       var hit = self._hitTest(w);
       if (hit) { evt.preventDefault(); self._select(hit); var hs = self._byId(hit); self._gesture = "move"; self._move = { id: hit, orig: clonePts(hs.points), start: w }; self.render(); return; }
-      // אזור-הזזה ברצועה העליונה של אובייקט-מורה (תבנית/צורה/טקסט) — גרירה להזזה על הלוח
+      // אזור-הזזה ברצועה העליונה של אובייקט-מורה (תבנית/צורה/טקסט) — גרירה מזיזה את כל הקבוצה (gid) יחד
       var topObj = self._objTopHit(w);
-      if (topObj) { evt.preventDefault(); if (topObj.id == null) topObj.id = "ob" + (++self._oid); self._gesture = "objmove"; self._objDrag = { id: topObj.id, last: w }; self.canvas.style.cursor = "grabbing"; return; }
+      if (topObj) { evt.preventDefault(); self._gesture = "objmove"; self._objDrag = { gid: topObj.gid, id: topObj.id, last: w }; self.canvas.style.cursor = "grabbing"; return; }
       if (self.selectedId) { self._select(null); self.render(); }
       if (self.pan) { evt.preventDefault(); self._gesture = "pan"; self._panLast = s; self._applyCursor(true); }
     }
@@ -1266,7 +1294,7 @@
       else if (self._gesture === "resize") { evt.preventDefault(); self._resizeTo(w); }
       else if (self._gesture === "vertex") { evt.preventDefault(); self._vertexTo(w); }
       else if (self._gesture === "move") { evt.preventDefault(); self._moveTo(w); }
-      else if (self._gesture === "objmove") { evt.preventDefault(); var od = self._objDrag, oo = self._objById(od.id); if (oo) { self._translateObject(oo, w.x - od.last.x, w.y - od.last.y); od.last = w; self.render(); } }
+      else if (self._gesture === "objmove") { evt.preventDefault(); var od = self._objDrag, mdx = w.x - od.last.x, mdy = w.y - od.last.y; if (od.gid) self._translateGroup(od.gid, mdx, mdy); else { var oo = self._objById(od.id); if (oo) self._translateObject(oo, mdx, mdy); } od.last = w; self.render(); }
       else if (self._gesture === "pan") { evt.preventDefault(); self.view.x += s.x - self._panLast.x; self.view.y += s.y - self._panLast.y; self._panLast = s; self.render(); }
     }
     function up(evt) {
@@ -1296,19 +1324,19 @@
       if (self._gesture === "resize") self._resize = null;
       if (self._gesture === "vertex") self._vertex = null;
       if (self._gesture === "move") self._move = null;
-      if (self._gesture === "objmove") self._objDrag = null;
+      if (self._gesture === "objmove") { self._objDrag = null; self._applyCursor(false); }
       if (self._gesture === "exmove" || self._gesture === "exresize") self._exDrag = null;
       if (self._gesture === "pinch" && n < 2) self._pinch = null;
       if (n === 0) self._gesture = "none"; else if (self._gesture === "pinch" && n < 2) self._gesture = "none";
     }
     // צביטה (pinch) או ctrl+גלגלת = זום (סביב הסמן), עדין. שתי אצבעות על הטראקפד (אנכי/אופקי) = הזזת המסך.
     function wheel(evt) {
-      if (!self.zoom) return;
+      if (!self.zoom && !self.pan) return;
       self._viewAnim = null; // אינטראקציה עוצרת אנימציית תצוגה רצה
       evt.preventDefault();
       var dx = evt.deltaX, dy = evt.deltaY;
       if (evt.deltaMode === 1) { dx *= 16; dy *= 16; } else if (evt.deltaMode === 2) { dx *= self.W; dy *= self.H; } // נרמול ליחידות פיקסל
-      if (evt.ctrlKey) {
+      if (evt.ctrlKey && self.zoom) {
         // צביטה/ctrl → זום עדין סביב הסמן (מגבילים צעד בודד כדי שלא יקפוץ)
         var d = Math.max(-40, Math.min(40, dy));
         self._zoomAt(self._screen(evt), self.view.scale * Math.exp(-d * WHEEL_ZOOM_SENS));

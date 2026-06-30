@@ -386,9 +386,9 @@
       }
       .widgetCard.is-show { display: block; }
       .widgetCard__body { display: block; border: none; background: transparent; position: relative; z-index: 1; }
-      /* רצועת-הזזה שקופה ברוחב הכרטיס, בחלק העליון — בלי פס נראה; גרירה ממנה מזיזה את הווידג'ט */
+      /* רצועת-הזזה שקופה ודקה בראש הכרטיס — בלי פס נראה; גרירה ממנה מזיזה את הווידג'ט. דקה כדי לא לחסום תוכן */
       .widgetCard__drag {
-        position: absolute; top: 0; left: 0; right: 0; height: 26px; z-index: 2;
+        position: absolute; top: 0; left: 0; right: 0; height: 16px; z-index: 2;
         cursor: grab; touch-action: none;
       }
       .widgetCard__drag:active { cursor: grabbing; }
@@ -1340,6 +1340,7 @@
             if (board.setWidgetSize) board.setWidgetSize(id, rs.w * s);
           });
           rz.addEventListener("pointerup", function () { rs = null; });
+          rz.addEventListener("pointercancel", function () { rs = null; }); // שלא ייתקע אם המחווה בוטלה
           // הזזה בגרירת הרצועה העליונה: דלתא-מסך → דלתא-לוגית (חלוקה ב-scale) → setWidgetPos
           var ds = null;
           dg.addEventListener("pointerdown", function (e) {
@@ -1353,6 +1354,7 @@
             if (board.setWidgetPos) board.setWidgetPos(id, ds.wx + (e.clientX - ds.sx) / ds.sc, ds.wy + (e.clientY - ds.sy) / ds.sc);
           });
           dg.addEventListener("pointerup", function () { ds = null; });
+          dg.addEventListener("pointercancel", function () { ds = null; }); // שלא ייתקע אם המחווה בוטלה
           return { wrap: wrap, iframe: f };
         }
         function place() {
