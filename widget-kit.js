@@ -615,10 +615,10 @@
       + 'function rn(){var ma=M*6,ha=(H%12)*30+M*0.5;var mp=pt(ma,82),hp=pt(ha,56);mh.setAttribute("x1",CX);mh.setAttribute("y1",CY);mh.setAttribute("x2",mp.x.toFixed(1));mh.setAttribute("y2",mp.y.toFixed(1));hh.setAttribute("x1",CX);hh.setAttribute("y1",CY);hh.setAttribute("x2",hp.x.toFixed(1));hh.setAttribute("y2",hp.y.toFixed(1));var hd=H%12;if(hd===0)hd=12;dg.textContent=hd+":"+(M<10?"0"+M:M);}'
       + 'function ang(e){var r=s.getBoundingClientRect();var x=(e.clientX-r.left)*(300/r.width)-CX,y=(e.clientY-r.top)*(300/r.height)-CY;var d=Math.atan2(x,-y)*180/Math.PI;return (d+360)%360;}'
       + 'function which(e){var a=ang(e),md=Math.min((a-M*6+540)%360,(M*6-a+540)%360),ha=((H%12)*30+M*0.5),hd=Math.min((a-ha+540)%360,(ha-a+540)%360);return hd<md?"h":"m";}'
-      + 's.addEventListener("pointerdown",function(e){e.preventDefault();drag=which(e);set(e);try{s.setPointerCapture(e.pointerId);}catch(_){}});'
+      + 's.addEventListener("pointerdown",function(e){e.preventDefault();drag=which(e);try{s.setPointerCapture(e.pointerId);}catch(_){}});' // בוחר מחוג; זז רק בגרירה (לא בנגיעה)
       + 's.addEventListener("pointermove",function(e){if(!drag)return;e.preventDefault();set(e);});'
       + 's.addEventListener("pointerup",function(){drag=null;});s.addEventListener("pointercancel",function(){drag=null;});'
-      + 'function set(e){var a=ang(e);if(drag==="m"){M=Math.round(a/6)%60;}else{var hf=a/30;H=Math.floor(hf)%12;}rn();}'
+      + 'function set(e){var a=ang(e);if(drag==="m"){M=Math.round(a/6)%60;}else{var hf=a/30;H=Math.floor(hf)%12;M=Math.round((hf-Math.floor(hf))*60)%60;}rn();}' // מחוג-שעה: זמן רציף מהזווית (שעה+דקות משתמעות) → המחוג עוקב חלק אחרי הסמן, בלי קפיצות
       + 'rn();})();<\/script>';
   },
   "money_coins": function (p) {
@@ -665,8 +665,11 @@
     function ci(v, lo, hi, d) { v = parseInt(v, 10); if (isNaN(v)) v = d; return v < lo ? lo : v > hi ? hi : v; }
     var from = ci(p.from, -100, 1000, 0), to = ci(p.to, from + 1, from + 1000, 10), step = ci(p.step, 1, 100, 1);
     var startN = ci(p.start, from, to, from);
-    var INK = "#0f3b36", TEAL = "#0d9488", x0 = 28, x1 = 332, Y = 120, n = Math.round((to - from) / step);
+    var INK = "#0f3b36", TEAL = "#0d9488", x0 = 28, x1 = 332, Y = 120;
+    step = Math.max(1, Math.min(step, to - from)); // הצעד לא גדול מהטווח (אחרת n=0 וחלוקה ב-0)
+    var n = Math.round((to - from) / step);
     if (n > 40) { step = Math.ceil((to - from) / 40); n = Math.round((to - from) / step); }
+    if (n < 1) n = 1; // לפחות מרווח אחד
     var ticks = "";
     for (var i = 0; i <= n; i++) { var v = from + i * step, x = x0 + (x1 - x0) * i / n; ticks += '<line x1="' + x.toFixed(1) + '" y1="' + (Y - 7) + '" x2="' + x.toFixed(1) + '" y2="' + (Y + 7) + '" stroke="' + TEAL + '" stroke-width="2"/><text x="' + x.toFixed(1) + '" y="' + (Y + 28) + '" text-anchor="middle" font-size="13" fill="' + INK + '">' + v + '</text>'; }
     return '<svg viewBox="0 0 360 180" width="100%" height="100%" style="display:block;touch-action:none">'
@@ -677,7 +680,7 @@
       + '<text id="vl" text-anchor="middle" font-size="22" font-weight="800" fill="' + TEAL + '"></text></svg>'
       + '<script>(function(){var FROM=' + from + ',TO=' + to + ',STEP=' + step + ',N=' + n + ',ST=' + startN + ',X0=' + x0 + ',X1=' + x1 + ',Y=' + Y + ';'
       + 'var s=document.querySelector("svg"),hd=document.getElementById("hd"),vl=document.getElementById("vl"),arc=document.getElementById("arc"),jl=document.getElementById("jl"),cur=ST,drag=false;'
-      + 'function px(v){return X0+(X1-X0)*(v-FROM)/(TO-FROM);}'
+      + 'function px(v){return X0+(X1-X0)*((v-FROM)/STEP)/N;}' // לפי אינדקס-שנתה (כמו ציור השנתות) → הסמן יושב בדיוק על השנתות, ומגיע לקצה
       + 'function rn(){var hx=px(cur);hd.setAttribute("cx",hx.toFixed(1));hd.setAttribute("cy",Y);vl.setAttribute("x",hx.toFixed(1));vl.setAttribute("y",Y-46);vl.textContent=cur;'
       + 'var sx=px(ST),ex=hx,mx=(sx+ex)/2,h=20+Math.abs(ex-sx)*0.28;if(Math.abs(cur-ST)<0.001){arc.setAttribute("d","");jl.textContent="";}else{arc.setAttribute("d","M"+sx+","+(Y-6)+" Q"+mx+","+(Y-h)+" "+ex+","+(Y-6));jl.setAttribute("x",mx);jl.setAttribute("y",Y-h-4);jl.textContent=(cur>=ST?"+":"\\u2212")+Math.abs(cur-ST);}}'
       + 'function setX(cx){var r=s.getBoundingClientRect();var x=(cx-r.left)*(360/r.width);var i=Math.round((x-X0)/(X1-X0)*N);i=Math.max(0,Math.min(N,i));cur=FROM+i*STEP;rn();}'
