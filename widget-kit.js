@@ -213,9 +213,9 @@
 + '</pattern>'
 + '</defs>'
 + '<rect x="0" y="0" width="360" height="220" fill="#ffffff"/>'
-+ '<text x="12" y="20" font-size="13" font-weight="bold" fill="#0f3b36">בנו את המספר</text>'
++ ''
 + '<rect x="6" y="28" width="92" height="186" rx="10" fill="#ecfdf8" stroke="#0d9488" stroke-width="1.5"/>'
-+ '<text x="52" y="44" font-size="10" text-anchor="middle" fill="#0f3b36">פלטה</text>'
++ ''
 + '<rect x="104" y="28" width="190" height="186" rx="10" fill="#f8fffd" stroke="#bfe8e0" stroke-width="1.5"/>'
 + '<text x="199" y="44" font-size="9.5" text-anchor="middle" fill="#5b8a82">גררו לכאן</text>'
 + '<rect x="300" y="28" width="54" height="186" rx="10" fill="#0d9488"/>'
@@ -662,10 +662,11 @@
     + 'function rn(){while(tray.firstChild)tray.removeChild(tray.firstChild);placed.forEach(function(c){var g=mk(c.v,c.x,c.y);g.setAttribute("class","pc");g.setAttribute("data-id",c.id);g.style.cursor="pointer";tray.appendChild(g);});tot.textContent="\\u05E1\\u05DA\\u05F4\\u05DB: "+sum()+" \\u20AA";if(hint)hint.style.opacity=placed.length?0:1;}'
     + 'function ghostAt(q){var ng=mk(gv,q.x,q.y);ng.setAttribute("pointer-events","none");ng.setAttribute("opacity","0.85");if(ghost){svg.replaceChild(ng,ghost);}else{svg.appendChild(ng);}ghost=ng;}'
     + 'svg.addEventListener("pointerdown",function(e){var t=e.target;var pc=t.closest?t.closest(".pc"):null;if(pc){var id=+pc.getAttribute("data-id");placed=placed.filter(function(c){return c.id!==id;});rn();return;}'
-    + 'var src=t.closest?t.closest(".src"):null;if(!src)return;e.preventDefault();gv=+src.getAttribute("data-v");ghostAt(toVB(e));try{svg.setPointerCapture(e.pointerId);}catch(_){}});'
+    + 'var src=t.closest?t.closest(".src"):null;if(!src||e.isPrimary===false)return;e.preventDefault();gv=+src.getAttribute("data-v");ghostAt(toVB(e));try{svg.setPointerCapture(e.pointerId);}catch(_){}});'
     + 'svg.addEventListener("pointermove",function(e){if(!ghost)return;e.preventDefault();ghostAt(toVB(e));});'
     + 'svg.addEventListener("pointerup",function(e){if(!ghost)return;var q=toVB(e);if(inTray(q)){var d=DEN[gv],hw=d.bill?d.w/2:d.r,hh=d.bill?d.h/2:d.r;var cx=Math.max(TRAY.x+hw+2,Math.min(TRAY.x+TRAY.w-hw-2,q.x)),cy=Math.max(TRAY.y+hh+2,Math.min(TRAY.y+TRAY.h-hh-2,q.y));placed.push({id:++idc,v:gv,x:cx,y:cy});rn();}svg.removeChild(ghost);ghost=null;});'
     + 'svg.addEventListener("pointercancel",function(){if(ghost){svg.removeChild(ghost);ghost=null;}});'
+    + 'function endDrag(){if(ghost){try{svg.removeChild(ghost);}catch(_){}ghost=null;}}window.addEventListener("pointerup",endDrag);window.addEventListener("pointercancel",endDrag);' // גיבוי ניקוי אם השחרור מחוץ ל-svg ולכידה נכשלה
     + 'document.getElementById("chk").addEventListener("pointerdown",function(e){e.preventDefault();e.stopPropagation();var s=sum();if(TARGET>0){if(s===TARGET){res.setAttribute("fill","#22c55e");res.textContent="\\u05E0\\u05DB\\u05D5\\u05DF! \\u2713";try{parent.postMessage({type:"vela:correct"},"*");}catch(_){}}else{res.setAttribute("fill","#ef4444");res.textContent=(s>TARGET?"\\u05D9\\u05D5\\u05EA\\u05E8 \\u05DE\\u05D3\\u05D9":"\\u05D7\\u05E1\\u05E8 \\u05E2\\u05D5\\u05D3")+" ("+s+"/"+TARGET+")";try{parent.postMessage({type:"vela:wrong"},"*");}catch(_){}}}else{res.setAttribute("fill","#0f3b36");res.textContent=s+" \\u20AA";}});'
     + 'rn();})();<\/script>';
 },

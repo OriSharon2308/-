@@ -285,8 +285,15 @@
     if (bottom < visH) this.view.y += visH - bottom;
     else if (top > this.H - visH) this.view.y -= top - (this.H - visH);
   };
-  VelaBoard.prototype.zoomIn = function () { this._zoomAt({ x: this.W / 2, y: this.H / 2 }, this.view.scale * 1.2); this.render(); };
-  VelaBoard.prototype.zoomOut = function () { this._zoomAt({ x: this.W / 2, y: this.H / 2 }, this.view.scale / 1.2); this.render(); };
+  // עוגן-זום: מרכז התוכן (בפיקסלי-מסך), תחום לתוך המסך — כך הגדלה/הקטנה שומרת את התוכן במרכז ולא מבריחה אותו.
+  VelaBoard.prototype._zoomAnchor = function () {
+    var b = this._contentBBox();
+    if (!b || !isFinite(b.minX)) return { x: this.W / 2, y: this.H / 2 };
+    var s = this.view.scale;
+    return { x: clamp(((b.minX + b.maxX) / 2) * s + this.view.x, 0, this.W), y: clamp(((b.minY + b.maxY) / 2) * s + this.view.y, 0, this.H) };
+  };
+  VelaBoard.prototype.zoomIn = function () { this._zoomAt(this._zoomAnchor(), this.view.scale * 1.2); this.render(); };
+  VelaBoard.prototype.zoomOut = function () { this._zoomAt(this._zoomAnchor(), this.view.scale / 1.2); this.render(); };
   VelaBoard.prototype.resetView = function () { this.view = { x: 0, y: 0, scale: 1 }; this.render(); };
   VelaBoard.prototype.getView = function () { return { x: this.view.x, y: this.view.y, scale: this.view.scale }; };
   VelaBoard.prototype.setView = function (v) { if (!v) return; this._viewAnim = null; this.view = { x: +v.x || 0, y: +v.y || 0, scale: clamp(+v.scale || 1, this.minScale, this.maxScale) }; this._clampView(); this.render(); };
