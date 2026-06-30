@@ -634,8 +634,9 @@
     },
     // תבנית מהירה: תרגיל שלם כאובייקט אחד (טקסט "35 + 24 =" + תיבת-תשובה צמודה), ממוקם בצד ימין, מוערם בשורות.
     draw_exercise: function (i) {
-      var tsize0 = 38, top = 116, rowH = 96, rightMargin = 44, gap0 = 16;
+      var tsize0 = 38, top = 116, rowH = 96, margin = 44, gap0 = 16;
       var kind = i.kind === "text" ? "text" : "number";
+      var side = kind === "text" ? "left" : "right"; // מילולי → תיבה משמאל (סוף משפט RTL); מספרי → תיבה מימין (אחרי ה-=)
       var bw = kind === "text" ? 150 : 60, bh = kind === "text" ? 56 : 52;
       var perCol = Math.max(1, Math.floor((this.H - top) / rowH)); // כמה תרגילים נכנסים בעמודה
       var slot = this._exSlot || 0, col = Math.floor(slot / perCol), row = slot % perCol;
@@ -645,12 +646,18 @@
       if (kind === "number") { text = text.replace(/\s*\?\s*$/, "").trim(); if (!/[=:]\s*$/.test(text)) text += " ="; }
       this.ctx.font = "700 " + tsize0 + "px Fredoka, Assistant, sans-serif";
       var tw = this.ctx.measureText(text).width;
-      var colW = bw + gap0 + tw + 70; // רוחב עמודה לערימה שמאלה
-      // עוגן לצד ימין: התיבה ליד הקצה הימני, הטקסט משמאל לה. עמודות נוספות נערמות שמאלה.
-      var boxX = this.W - rightMargin - bw / 2 - col * colW;
-      var groupLeft = boxX - bw / 2 - gap0 - tw;
-      if (groupLeft < 20) boxX += 20 - groupLeft; // הגנה: לא לצאת משמאל
-      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: 1, text: text, status: "open" });
+      var colW = bw + gap0 + tw + 70;
+      var boxX;
+      if (side === "right") { // עוגן לימין: התיבה ליד הקצה הימני, הטקסט משמאלה; עמודות נערמות שמאלה
+        boxX = this.W - margin - bw / 2 - col * colW;
+        var groupLeft = boxX - bw / 2 - gap0 - tw;
+        if (groupLeft < 20) boxX += 20 - groupLeft; // לא לצאת משמאל
+      } else { // עוגן לשמאל: התיבה ליד הקצה השמאלי, הטקסט מימינה; עמודות נערמות ימינה
+        boxX = margin + bw / 2 + col * colW;
+        var groupRight = boxX + bw / 2 + gap0 + tw;
+        if (groupRight > this.W - 20) boxX -= groupRight - (this.W - 20); // לא לצאת מימין
+      }
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: 1, text: text, status: "open" });
       this._exSlot = slot + 1;
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
@@ -965,7 +972,9 @@
   VelaBoard.prototype._exBBox = function (a) {
     var d = this._exDims(a), halfH = Math.max(d.h, d.tsize) / 2;
     var m = a.text ? 0 : 12; // תיבה בלי טקסט (ask_answer): שוליים קטנים לתפיסה מחוץ ל-input
-    return { minX: a.x - d.w / 2 - (a.text ? d.gap + d.tw : m), minY: a.y - halfH - m, maxX: a.x + d.w / 2 + m, maxY: a.y + halfH + m };
+    var textW = a.text ? d.gap + d.tw : m;
+    if (a.text && a.side === "left") return { minX: a.x - d.w / 2 - m, minY: a.y - halfH - m, maxX: a.x + d.w / 2 + textW, maxY: a.y + halfH + m }; // טקסט מימין לתיבה
+    return { minX: a.x - d.w / 2 - textW, minY: a.y - halfH - m, maxX: a.x + d.w / 2 + m, maxY: a.y + halfH + m }; // טקסט משמאל לתיבה (ברירת מחדל)
   };
   VelaBoard.prototype.getAnswerBoxRects = function () {
     var out = [];
@@ -979,11 +988,12 @@
     var ctx = this.ctx, d = this._exDims(a), x = a.x, y = a.y, w = d.w, h = d.h;
     var col = a.status === "correct" ? "#22c55e" : a.status === "wrong" ? "#ef4444" : COLORS.teacher;
     ctx.save();
-    if (a.text) { // טקסט השאלה, מיושר ימינה כך שמסתיים ממש לפני התיבה
+    if (a.text) { // טקסט השאלה צמוד לתיבה. מילולי (side=left): טקסט מימין לתיבה, RTL. מספרי: טקסט משמאל לתיבה, LTR.
       ctx.fillStyle = a.status === "correct" ? "#16794f" : COLORS.text;
       ctx.font = "700 " + d.tsize + "px Fredoka, Assistant, sans-serif";
-      ctx.textAlign = "right"; ctx.textBaseline = "middle"; ctx.direction = "ltr";
-      ctx.fillText(a.text, x - w / 2 - d.gap, y);
+      ctx.textBaseline = "middle";
+      if (a.side === "left") { ctx.direction = "rtl"; ctx.textAlign = "left"; ctx.fillText(a.text, x + w / 2 + d.gap, y); }
+      else { ctx.direction = "ltr"; ctx.textAlign = "right"; ctx.fillText(a.text, x - w / 2 - d.gap, y); }
     }
     ctx.fillStyle = "rgba(255,255,255,0.9)";
     roundRectPath(ctx, x - w / 2, y - h / 2, w, h, 12); ctx.fill();
