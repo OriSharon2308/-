@@ -393,8 +393,8 @@
       }
       .widgetCard__drag:active { cursor: grabbing; }
       .widgetCard__resize {
-        position: absolute; right: 3px; bottom: 3px; width: 18px; height: 18px; z-index: 2; cursor: nwse-resize; touch-action: none;
-        background: linear-gradient(135deg, transparent 55%, rgba(13, 148, 136, 0.6) 55% 66%, transparent 66% 78%, rgba(13, 148, 136, 0.6) 78% 89%, transparent 89%);
+        position: absolute; right: 3px; bottom: 3px; width: 16px; height: 16px; z-index: 2; cursor: nwse-resize; touch-action: none;
+        background: linear-gradient(135deg, transparent 74%, rgba(13, 148, 136, 0.6) 74% 88%, transparent 88%); /* פס יחיד קטן צמוד לפינה */
       }
 
       /* עורך טקסט inline (כלי הטקסט) — קו מקווקו שכותבים בתוכו, גדל עם הטקסט */
@@ -665,7 +665,7 @@
           [1, 4, "לוח-הכפל", widget("mult_table", 360, 360, { max: 10, hide: 6 }), 360],
           // שורה 5–6: כלים חדשים — זמן, כסף, לוח-מאה, סרגל-מספרים
           [0, 5, "שעון", widget("clock_interactive", 300, 300, { hour: 3, minute: 0 }), 300],
-          [1, 5, "כסף ₪", widget("money_coins", 360, 240, {}), 240],
+          [1, 5, "כסף ₪", widget("money_coins", 380, 300, { target: 17 }), 300],
           [2, 5, "לוח מאה", widget("hundred_chart", 300, 300, { skip: 5 }), 300],
           [1, 6, "סרגל מספרים", widget("number_line_interactive", 360, 180, { from: 0, to: 10, start: 0 }), 180],
         ];

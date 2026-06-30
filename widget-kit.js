@@ -622,27 +622,53 @@
       + 'rn();})();<\/script>';
   },
   "money_coins": function (p) {
-    p = p || {};
-    var INK = "#0f3b36", TEAL = "#0d9488";
-    var denoms = [1, 2, 5, 10, 20, 50]; // ערכים בשקלים
-    var coins = "";
-    for (var i = 0; i < denoms.length; i++) {
-      var d = denoms[i], col = i % 3, row = Math.floor(i / 3), x = 56 + col * 104, y = 52 + row * 78, isBill = d >= 20;
-      coins += '<g class="cn" data-v="' + d + '" style="cursor:pointer">'
-        + (isBill
-          ? '<rect x="' + (x - 34) + '" y="' + (y - 20) + '" width="68" height="40" rx="6" fill="#eef7f5" stroke="' + TEAL + '" stroke-width="2.5"/>'
-          : '<circle cx="' + x + '" cy="' + y + '" r="26" fill="#fff7e8" stroke="#d9a441" stroke-width="2.5"/>')
-        + '<text x="' + x + '" y="' + (y + 7) + '" text-anchor="middle" font-size="20" font-weight="800" fill="' + INK + '" style="pointer-events:none">' + d + '</text></g>';
-    }
-    return '<svg viewBox="0 0 360 240" width="100%" height="100%" style="display:block;touch-action:none">'
-      + coins
-      + '<g id="clr" style="cursor:pointer"><rect x="20" y="206" width="64" height="26" rx="13" fill="#eef2f1" stroke="#cfe0dd"/><text x="52" y="224" text-anchor="middle" font-size="14" font-weight="700" fill="' + INK + '" style="pointer-events:none">נקה</text></g>'
-      + '<text id="sum" x="340" y="226" text-anchor="end" font-size="26" font-weight="800" fill="' + TEAL + '">0 ₪</text></svg>'
-      + '<script>(function(){var total=0,s=document.querySelector("svg"),sum=document.getElementById("sum");'
-      + 'function rn(){sum.textContent=total+" \\u20AA";}'
-      + 's.addEventListener("pointerdown",function(e){var t=e.target;while(t&&t!==s&&!(t.getAttribute&&t.getAttribute("data-v")!==null)&&t.id!=="clr")t=t.parentNode;if(!t||t===s)return;'
-      + 'if(t.id==="clr"){total=0;}else{var v=t.getAttribute&&t.getAttribute("data-v");if(v==null)return;total+=parseInt(v,10);}rn();});rn();})();<\/script>';
-  },
+  p = p || {};
+  function num(v, d) { v = parseFloat(v); return isFinite(v) ? v : d; }
+  var target = Math.max(0, Math.round(num(p.target, 0))); // הסכום שהילד צריך לבנות (0 = חקירה חופשית, בלי בדיקה)
+  var INK = "#0f3b36", TEAL = "#0d9488";
+  // מטבעות/שטרות עם גודל יחסי — ערך גבוה = גדול יותר (כמו במציאות)
+  var DEN = {
+    1: { r: 16, f: "#d8c98f", e: "#a98f3e" },
+    2: { r: 19, f: "#e7cf93", e: "#b5933f" },
+    5: { r: 22, f: "#cdbe85", e: "#9c8136" },
+    10: { r: 25, f: "#e0c25c", e: "#a8842a" },
+    20: { bill: 1, w: 56, h: 32, f: "#a7d3c9", e: "#3f8d7f" },
+    50: { bill: 1, w: 60, h: 34, f: "#c2b2d8", e: "#6f5a9a" }
+  };
+  return '<svg viewBox="0 0 380 300" width="100%" height="100%" style="display:block;touch-action:none">'
+    + '<text x="190" y="17" text-anchor="middle" font-size="13.5" font-weight="700" fill="' + INK + '">' + (target > 0 ? 'גררו ' + target + ' ₪ לארנק' : 'גררו מטבעות לארנק') + '</text>'
+    + '<g id="pal"></g>'
+    + '<rect x="18" y="84" width="344" height="138" rx="14" fill="rgba(13,148,136,0.05)" stroke="' + TEAL + '" stroke-width="2" stroke-dasharray="7 6"/>'
+    + '<text id="hint" x="190" y="158" text-anchor="middle" font-size="13" fill="#9bb3ae" style="pointer-events:none">כאן הארנק — גררו לכאן</text>'
+    + '<g id="tray"></g>'
+    + '<text id="tot" x="22" y="252" font-size="20" font-weight="800" fill="' + INK + '">סך״כ: 0 ₪</text>'
+    + '<g id="chk" style="cursor:pointer"><rect x="246" y="234" width="116" height="34" rx="17" fill="' + TEAL + '"/><text x="304" y="256" text-anchor="middle" font-size="16" font-weight="800" fill="#fff" style="pointer-events:none">בדוק</text></g>'
+    + '<text id="res" x="22" y="286" font-size="15" font-weight="800" fill="' + INK + '"></text>'
+    + '</svg>'
+    + '<script>(function(){'
+    + 'var DEN=' + JSON.stringify(DEN) + ',TARGET=' + target + ',NSV="http://www.w3.org/2000/svg";'
+    + 'var svg=document.querySelector("svg"),pal=document.getElementById("pal"),tray=document.getElementById("tray"),tot=document.getElementById("tot"),res=document.getElementById("res"),hint=document.getElementById("hint");'
+    + 'var TRAY={x:18,y:84,w:344,h:138},placed=[],idc=0,ghost=null,gv=0;'
+    + 'function el(tag,a){var e=document.createElementNS(NSV,tag);for(var k in a)e.setAttribute(k,a[k]);return e;}'
+    + 'function mk(v,cx,cy){var d=DEN[v],g=el("g",{});'
+    + 'if(d.bill){g.appendChild(el("rect",{x:cx-d.w/2,y:cy-d.h/2,width:d.w,height:d.h,rx:5,fill:d.f,stroke:d.e,"stroke-width":2}));}'
+    + 'else{g.appendChild(el("circle",{cx:cx,cy:cy,r:d.r,fill:d.f,stroke:d.e,"stroke-width":2}));}'
+    + 'var t=el("text",{x:cx,y:cy+(d.bill?6:5),"text-anchor":"middle","font-size":(d.bill||d.r>20?15:12),"font-weight":800,fill:"#0f3b36",style:"pointer-events:none"});t.textContent=v;g.appendChild(t);return g;}'
+    + 'var order=[1,2,5,10,20,50],gx=24;'
+    + 'order.forEach(function(v){var d=DEN[v],w=d.bill?d.w:d.r*2,g=mk(v,gx+w/2,48);g.setAttribute("class","src");g.setAttribute("data-v",v);g.style.cursor="grab";pal.appendChild(g);gx+=w+12;});'
+    + 'function toVB(e){var r=svg.getBoundingClientRect();return {x:(e.clientX-r.left)*(380/r.width),y:(e.clientY-r.top)*(300/r.height)};}'
+    + 'function inTray(q){return q.x>=TRAY.x&&q.x<=TRAY.x+TRAY.w&&q.y>=TRAY.y&&q.y<=TRAY.y+TRAY.h;}'
+    + 'function sum(){var s=0;for(var i=0;i<placed.length;i++)s+=placed[i].v;return s;}'
+    + 'function rn(){while(tray.firstChild)tray.removeChild(tray.firstChild);placed.forEach(function(c){var g=mk(c.v,c.x,c.y);g.setAttribute("class","pc");g.setAttribute("data-id",c.id);g.style.cursor="pointer";tray.appendChild(g);});tot.textContent="\\u05E1\\u05DA\\u05F4\\u05DB: "+sum()+" \\u20AA";if(hint)hint.style.opacity=placed.length?0:1;}'
+    + 'function ghostAt(q){var ng=mk(gv,q.x,q.y);ng.setAttribute("pointer-events","none");ng.setAttribute("opacity","0.85");if(ghost){svg.replaceChild(ng,ghost);}else{svg.appendChild(ng);}ghost=ng;}'
+    + 'svg.addEventListener("pointerdown",function(e){var t=e.target;var pc=t.closest?t.closest(".pc"):null;if(pc){var id=+pc.getAttribute("data-id");placed=placed.filter(function(c){return c.id!==id;});rn();return;}'
+    + 'var src=t.closest?t.closest(".src"):null;if(!src)return;e.preventDefault();gv=+src.getAttribute("data-v");ghostAt(toVB(e));try{svg.setPointerCapture(e.pointerId);}catch(_){}});'
+    + 'svg.addEventListener("pointermove",function(e){if(!ghost)return;e.preventDefault();ghostAt(toVB(e));});'
+    + 'svg.addEventListener("pointerup",function(e){if(!ghost)return;var q=toVB(e);if(inTray(q)){var d=DEN[gv],hw=d.bill?d.w/2:d.r,hh=d.bill?d.h/2:d.r;var cx=Math.max(TRAY.x+hw+2,Math.min(TRAY.x+TRAY.w-hw-2,q.x)),cy=Math.max(TRAY.y+hh+2,Math.min(TRAY.y+TRAY.h-hh-2,q.y));placed.push({id:++idc,v:gv,x:cx,y:cy});rn();}svg.removeChild(ghost);ghost=null;});'
+    + 'svg.addEventListener("pointercancel",function(){if(ghost){svg.removeChild(ghost);ghost=null;}});'
+    + 'document.getElementById("chk").addEventListener("pointerdown",function(e){e.preventDefault();e.stopPropagation();var s=sum();if(TARGET>0){if(s===TARGET){res.setAttribute("fill","#22c55e");res.textContent="\\u05E0\\u05DB\\u05D5\\u05DF! \\u2713";try{parent.postMessage({type:"vela:correct"},"*");}catch(_){}}else{res.setAttribute("fill","#ef4444");res.textContent=(s>TARGET?"\\u05D9\\u05D5\\u05EA\\u05E8 \\u05DE\\u05D3\\u05D9":"\\u05D7\\u05E1\\u05E8 \\u05E2\\u05D5\\u05D3")+" ("+s+"/"+TARGET+")";try{parent.postMessage({type:"vela:wrong"},"*");}catch(_){}}}else{res.setAttribute("fill","#0f3b36");res.textContent=s+" \\u20AA";}});'
+    + 'rn();})();<\/script>';
+},
   "hundred_chart": function (p) {
     p = p || {};
     function ci(v, lo, hi, d) { v = parseInt(v, 10); if (isNaN(v)) v = d; return v < lo ? lo : v > hi ? hi : v; }
