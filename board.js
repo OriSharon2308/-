@@ -270,12 +270,25 @@
     ns = clamp(ns, this.minScale, this.maxScale);
     var wx = (sp.x - this.view.x) / this.view.scale, wy = (sp.y - this.view.y) / this.view.scale;
     this.view.scale = ns; this.view.x = sp.x - wx * ns; this.view.y = sp.y - wy * ns;
+    this._clampView();
+  };
+  // אי-אפשר לאבד את התוכן: גם אחרי גרירה/זום, לפחות פיסת תוכן (או אזור-הבית) תמיד נשארת על המסך — שלא "ייעלם הכל".
+  VelaBoard.prototype._clampView = function () {
+    var s = this.view.scale;
+    var b = this._contentBBox() || { minX: 0, minY: 0, maxX: this.W, maxY: this.H };
+    var left = b.minX * s + this.view.x, right = b.maxX * s + this.view.x;
+    var top = b.minY * s + this.view.y, bottom = b.maxY * s + this.view.y;
+    var visW = Math.min(140, right - left), visH = Math.min(140, bottom - top); // אם התוכן קטן מ-140px — כולו יישאר גלוי
+    if (right < visW) this.view.x += visW - right;
+    else if (left > this.W - visW) this.view.x -= left - (this.W - visW);
+    if (bottom < visH) this.view.y += visH - bottom;
+    else if (top > this.H - visH) this.view.y -= top - (this.H - visH);
   };
   VelaBoard.prototype.zoomIn = function () { this._zoomAt({ x: this.W / 2, y: this.H / 2 }, this.view.scale * 1.2); this.render(); };
   VelaBoard.prototype.zoomOut = function () { this._zoomAt({ x: this.W / 2, y: this.H / 2 }, this.view.scale / 1.2); this.render(); };
   VelaBoard.prototype.resetView = function () { this.view = { x: 0, y: 0, scale: 1 }; this.render(); };
   VelaBoard.prototype.getView = function () { return { x: this.view.x, y: this.view.y, scale: this.view.scale }; };
-  VelaBoard.prototype.setView = function (v) { if (!v) return; this._viewAnim = null; this.view = { x: +v.x || 0, y: +v.y || 0, scale: clamp(+v.scale || 1, this.minScale, this.maxScale) }; this.render(); };
+  VelaBoard.prototype.setView = function (v) { if (!v) return; this._viewAnim = null; this.view = { x: +v.x || 0, y: +v.y || 0, scale: clamp(+v.scale || 1, this.minScale, this.maxScale) }; this._clampView(); this.render(); };
 
   // אנימציית תצוגה חלקה (ease-out) — נקטעת ע"י אינטראקציה של המשתמש.
   VelaBoard.prototype.animateView = function (target, dur) {
@@ -1190,7 +1203,7 @@
   VelaBoard.prototype._startPinch = function () { var md = this._midDist(); this._pinch = { startDist: md.dist || 1, startScale: this.view.scale, midWorld: this._toWorld(md.mid) }; };
   VelaBoard.prototype._updatePinch = function () {
     var md = this._midDist(), ns = clamp(this._pinch.startScale * (md.dist / this._pinch.startDist), this.minScale, this.maxScale);
-    this.view.scale = ns; this.view.x = md.mid.x - this._pinch.midWorld.x * ns; this.view.y = md.mid.y - this._pinch.midWorld.y * ns; this.render();
+    this.view.scale = ns; this.view.x = md.mid.x - this._pinch.midWorld.x * ns; this.view.y = md.mid.y - this._pinch.midWorld.y * ns; this._clampView(); this.render();
   };
 
   VelaBoard.prototype._bindPointer = function () {
@@ -1295,7 +1308,7 @@
       else if (self._gesture === "vertex") { evt.preventDefault(); self._vertexTo(w); }
       else if (self._gesture === "move") { evt.preventDefault(); self._moveTo(w); }
       else if (self._gesture === "objmove") { evt.preventDefault(); var od = self._objDrag, mdx = w.x - od.last.x, mdy = w.y - od.last.y; if (od.gid) self._translateGroup(od.gid, mdx, mdy); else { var oo = self._objById(od.id); if (oo) self._translateObject(oo, mdx, mdy); } od.last = w; self.render(); }
-      else if (self._gesture === "pan") { evt.preventDefault(); self.view.x += s.x - self._panLast.x; self.view.y += s.y - self._panLast.y; self._panLast = s; self.render(); }
+      else if (self._gesture === "pan") { evt.preventDefault(); self.view.x += s.x - self._panLast.x; self.view.y += s.y - self._panLast.y; self._panLast = s; self._clampView(); self.render(); }
     }
     function up(evt) {
       if (!(evt.pointerId in self._pointers)) return;
@@ -1343,6 +1356,7 @@
       } else {
         // שתי אצבעות / גלגלת רגילה → הזזת הלוח (אנכי + אופקי). למטה=המסך יורד.
         self.view.x -= dx; self.view.y -= dy;
+        self._clampView(); // שלא יברח כל התוכן מהמסך
       }
       self.render();
     }
