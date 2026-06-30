@@ -692,31 +692,34 @@
     return { x: clamp(x, minX, maxX), y: maxBottom + GAP };
   };
   // דחיפת ווידג'ט ככרטיס — משותף ל-render_widget ולכלי-הערכה. x/y תחומים ובלי NaN, ולא חופפים (חוק אי-החפיפה).
-  VelaBoard.prototype._pushWidget = function (html, i, dw, dh, title) {
+  // ar (יחס רוחב/גובה טבעי) ננעל: הגובה נגזר מהרוחב, כך שהמסגרת תמיד תואמת את התוכן — בלי שוליים מסביב ובלי עיוות.
+  VelaBoard.prototype._pushWidget = function (html, i, dw, dh, title, ar) {
     html = String(html == null ? "" : html).slice(0, 60000);
     if (!html) return;
     i = i || {};
-    var w = clamp(i.w || dw, 80, 760), h = clamp(i.h || dh, 60, 520);
+    var w = clamp(i.w || dw, 80, 760), h;
+    if (ar) { h = clamp(Math.round(w / ar), 60, 520); w = Math.round(h * ar); } // נעילת-יחס: גובה מהרוחב, ואז רוחב מהגובה (אחרי clamp)
+    else { h = clamp(i.h || dh, 60, 520); ar = w / h; }                          // render_widget חופשי — היחס נקבע ממה שהמורה ביקש
     var x = clamp(i.x != null ? +i.x || 0 : Math.round((this.W - w) / 2), -200, this.W + 200);
     var y = clamp(i.y != null ? +i.y || 0 : 120, -200, this.H + 200);
     var spot = this._freeSpot(x, y, w, h); x = spot.x; y = spot.y; // לעולם לא על פריט קיים
-    this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, html: html, title: title != null ? String(title).slice(0, 60) : "" });
+    this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, ar: ar, html: html, title: title != null ? String(title).slice(0, 60) : "" });
     if (this._onWidgets) this._onWidgets(this.widgets);
   };
-  // כלי-ערכה: ווידג'טים אינטראקטיביים מוכנים מ-widget-kit.js (window.VelaWidgets). כל אחד מייצר HTML ונדחף ככרטיס.
-  function kitTool(key, dw, dh, defTitle) {
+  // כלי-ערכה: ווידג'טים אינטראקטיביים מוכנים מ-widget-kit.js. dw×dh = ה-viewBox הטבעי → היחס שננעל (בלי שוליים).
+  function kitTool(key, vbW, vbH, defTitle) {
     return function (i) {
       var kit = global.VelaWidgets;
       if (!kit || typeof kit[key] !== "function") { console.warn("VelaBoard: ערכת-ווידג'טים לא נטענה —", key); return; }
       var html; try { html = kit[key](i || {}); } catch (e) { console.warn("VelaBoard: יצירת ווידג'ט נכשלה —", key, e && e.message); return; }
-      this._pushWidget(html, i, dw, dh, (i && i.title != null) ? i.title : defTitle);
+      this._pushWidget(html, i, vbW, vbH, (i && i.title != null) ? i.title : defTitle, vbW / vbH);
     };
   }
   VelaBoard.prototype._tools.interactive_fraction = kitTool("fraction", 360, 220, "שבר");
   VelaBoard.prototype._tools.count_objects = kitTool("count_objects", 360, 220, "ספירה");
   VelaBoard.prototype._tools.ten_frame = kitTool("ten_frame", 360, 240, "לוח-עשר");
-  VelaBoard.prototype._tools.base_ten_builder = kitTool("base_ten_builder", 360, 240, "בלוקי בסיס-10");
-  VelaBoard.prototype._tools.mult_array = kitTool("mult_array", 380, 260, "מערך כפל");
+  VelaBoard.prototype._tools.base_ten_builder = kitTool("base_ten_builder", 360, 220, "בלוקי בסיס-10");
+  VelaBoard.prototype._tools.mult_array = kitTool("mult_array", 360, 240, "מערך כפל");
   VelaBoard.prototype._tools.mult_table = kitTool("mult_table", 360, 360, "לוח הכפל");
 
   // ───────── סידור-עצמי: המורה רואה את פריסת הלוח (getLayout) ויכול להזיז/לשנות-גודל/למחוק פריט לפי id ─────────
@@ -762,7 +765,10 @@
     var id = String(i.id == null ? "" : i.id); if (!id) return;
     var k;
     for (k = 0; k < this.widgets.length; k++) if (this.widgets[k].id === id) {
-      if (i.w != null) this.widgets[k].w = clamp(+i.w, 140, 880); if (i.h != null) this.widgets[k].h = clamp(+i.h, 90, 660);
+      // נעילת-יחס: רוחב/גובה מפורש, או scale שמכפיל את הרוחב הנוכחי — setWidgetSize גוזר את הצד השני מ-ar.
+      if (i.w != null) this.setWidgetSize(id, +i.w);
+      else if (i.h != null) this.setWidgetSize(id, null, +i.h);
+      else if (i.scale != null) this.setWidgetSize(id, this.widgets[k].w * (+i.scale || 1));
       if (this._onWidgets) this._onWidgets(this.widgets); return;
     }
     for (k = 0; k < this.answerBoxes.length; k++) if (this.answerBoxes[k].id === id) {
@@ -806,14 +812,25 @@
   /* ---------- ווידג'טים חיים (iframe מבודד מעל הלוח) ---------- */
   VelaBoard.prototype.onWidgets = function (cb) { this._onWidgets = typeof cb === "function" ? cb : null; };
   VelaBoard.prototype.getWidgets = function () { return this.widgets.map(function (w) { return { id: w.id, x: w.x, y: w.y, w: w.w, h: w.h, html: w.html, title: w.title }; }); };
-  VelaBoard.prototype.setWidgets = function (list) { this.widgets = Array.isArray(list) ? list.map(function (w) { return { id: w.id || "wg", x: +w.x || 0, y: +w.y || 0, w: +w.w || 380, h: +w.h || 240, html: String(w.html || ""), title: w.title || "" }; }) : []; if (this._onWidgets) this._onWidgets(this.widgets); this.render(); };
+  VelaBoard.prototype.setWidgets = function (list) { this.widgets = Array.isArray(list) ? list.map(function (w) { var ww = +w.w || 380, hh = +w.h || 240; return { id: w.id || "wg", x: +w.x || 0, y: +w.y || 0, w: ww, h: hh, ar: +w.ar || (ww / hh), html: String(w.html || ""), title: w.title || "" }; }) : []; if (this._onWidgets) this._onWidgets(this.widgets); this.render(); };
+  // שינוי-גודל בנעילת-יחס: מקבל רוחב מבוקש (או גובה), והגובה תמיד נגזר מ-ar — כך הפריט גדל/קטן בלי לעוות ובלי שוליים.
   VelaBoard.prototype.setWidgetSize = function (id, w, h) {
-    for (var i = 0; i < this.widgets.length; i++) if (this.widgets[i].id === id) { this.widgets[i].w = clamp(w, 140, 880); this.widgets[i].h = clamp(h, 90, 660); this.render(); return; }
+    for (var i = 0; i < this.widgets.length; i++) {
+      var wd = this.widgets[i];
+      if (wd.id === id) {
+        var ar = wd.ar || (wd.w / wd.h) || 1.5;
+        var reqW = (isFinite(+w) && +w > 0) ? +w : ((isFinite(+h) && +h > 0) ? +h * ar : wd.w);
+        var WMIN = Math.max(140, Math.round(90 * ar)), WMAX = Math.min(880, Math.round(660 * ar)); // גבולות הרוחב שמכבדים גם את גבולות הגובה
+        var nw = clamp(reqW, WMIN, WMAX);
+        wd.w = Math.round(nw); wd.h = Math.round(nw / ar); wd.ar = ar;
+        this.render(); return;
+      }
+    }
   };
-  // מיקומי הווידג'טים בפיקסלי-מסך (עוקבים אחרי זום/גרירה כמו תיבות-התשובה).
+  // מיקומי הווידג'טים בפיקסלי-מסך (עוקבים אחרי זום/גרירה כמו תיבות-התשובה). ar לנעילת-יחס בידית.
   VelaBoard.prototype.getWidgetRects = function () {
     var out = [];
-    for (var i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i], c = this.worldToScreen(wd.x, wd.y); out.push({ id: wd.id, left: c.x, top: c.y, w: wd.w, h: wd.h, scale: c.sx, html: wd.html, title: wd.title }); }
+    for (var i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i], c = this.worldToScreen(wd.x, wd.y); out.push({ id: wd.id, left: c.x, top: c.y, w: wd.w, h: wd.h, ar: wd.ar || (wd.w / wd.h), scale: c.sx, html: wd.html, title: wd.title }); }
     return out;
   };
 
