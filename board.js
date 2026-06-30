@@ -1372,19 +1372,22 @@
       if (self._gesture === "pinch" && n < 2) self._pinch = null;
       if (n === 0) self._gesture = "none"; else if (self._gesture === "pinch" && n < 2) self._gesture = "none";
     }
-    // צביטה (pinch) או ctrl+גלגלת = זום (סביב הסמן), עדין. שתי אצבעות על הטראקפד (אנכי/אופקי) = הזזת המסך.
+    // זום: צביטה (ctrl), גלגלת-שורות, או גלגלת-עכבר (גלילה אנכית טהורה בצעדים שלמים).
+    // הזזה: שתי אצבעות על הטראקפד (תנופה שברית ו/או רכיב אופקי).
     function wheel(evt) {
       if (!self.zoom && !self.pan) return;
       self._viewAnim = null; // אינטראקציה עוצרת אנימציית תצוגה רצה
       evt.preventDefault();
       var dx = evt.deltaX, dy = evt.deltaY;
       if (evt.deltaMode === 1) { dx *= 16; dy *= 16; } else if (evt.deltaMode === 2) { dx *= self.W; dy *= self.H; } // נרמול ליחידות פיקסל
-      if (evt.ctrlKey && self.zoom) {
-        // צביטה/ctrl → זום עדין סביב הסמן (מגבילים צעד בודד כדי שלא יקפוץ)
+      // גלגלת-עכבר: אנכי בלבד (deltaX=0) + ערך שלם (טראקפד מוסר ערכים שבריים/אלכסוניים מהתנופה).
+      var mouseWheel = evt.deltaX === 0 && Number.isInteger(evt.deltaY) && Math.abs(evt.deltaY) >= 4;
+      if ((evt.ctrlKey || evt.deltaMode !== 0 || mouseWheel) && self.zoom) {
+        // זום עדין סביב הסמן (מגבילים צעד בודד כדי שלא יקפוץ)
         var d = Math.max(-40, Math.min(40, dy));
         self._zoomAt(self._screen(evt), self.view.scale * Math.exp(-d * WHEEL_ZOOM_SENS));
       } else {
-        // שתי אצבעות / גלגלת רגילה → הזזת הלוח (אנכי + אופקי). למטה=המסך יורד.
+        // שתי אצבעות על הטראקפד → הזזת הלוח (אנכי + אופקי). למטה=המסך יורד.
         self.view.x -= dx; self.view.y -= dy;
         self._clampView(); // שלא יברח כל התוכן מהמסך
       }
