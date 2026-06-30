@@ -735,6 +735,10 @@
   VelaBoard.prototype._tools.base_ten_builder = kitTool("base_ten_builder", 360, 220, "בלוקי בסיס-10");
   VelaBoard.prototype._tools.mult_array = kitTool("mult_array", 360, 240, "מערך כפל");
   VelaBoard.prototype._tools.mult_table = kitTool("mult_table", 360, 360, "לוח הכפל");
+  VelaBoard.prototype._tools.clock_interactive = kitTool("clock_interactive", 300, 300, "שעון");
+  VelaBoard.prototype._tools.money_coins = kitTool("money_coins", 360, 240, "כסף");
+  VelaBoard.prototype._tools.hundred_chart = kitTool("hundred_chart", 300, 300, "לוח מאה");
+  VelaBoard.prototype._tools.number_line_interactive = kitTool("number_line_interactive", 360, 180, "סרגל מספרים");
 
   // ───────── סידור-עצמי: המורה רואה את פריסת הלוח (getLayout) ויכול להזיז/לשנות-גודל/למחוק פריט לפי id ─────────
   // הזזת אובייקט = הסטת כל שדות הקואורדינטות שלו (נקודות/x,y/x1..y2/cx,cy).

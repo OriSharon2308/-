@@ -593,6 +593,97 @@
   + '</script>';
 
   return html;
-}
+},
+  "clock_interactive": function (p) {
+    p = p || {};
+    function ci(v, lo, hi, d) { v = parseInt(v, 10); if (isNaN(v)) v = d; return v < lo ? lo : v > hi ? hi : v; }
+    var hour = ci(p.hour, 0, 23, 3) % 12, minute = ci(p.minute, 0, 59, 0);
+    var INK = "#0f3b36", TEAL = "#0d9488", cx = 150, cy = 145, R = 108;
+    var nums = "";
+    for (var i = 1; i <= 12; i++) { var a = (i * 30 - 90) * Math.PI / 180, nx = cx + (R - 22) * Math.cos(a), ny = cy + (R - 22) * Math.sin(a); nums += '<text x="' + nx.toFixed(1) + '" y="' + (ny + 7).toFixed(1) + '" text-anchor="middle" font-size="19" font-weight="700" fill="' + INK + '">' + i + '</text>'; }
+    var ticks = "";
+    for (var t = 0; t < 60; t++) { var ta = (t * 6 - 90) * Math.PI / 180, big = t % 5 === 0, r1 = R - (big ? 10 : 5); ticks += '<line x1="' + (cx + r1 * Math.cos(ta)).toFixed(1) + '" y1="' + (cy + r1 * Math.sin(ta)).toFixed(1) + '" x2="' + (cx + R * Math.cos(ta)).toFixed(1) + '" y2="' + (cy + R * Math.sin(ta)).toFixed(1) + '" stroke="' + (big ? TEAL : "#bcdcd8") + '" stroke-width="' + (big ? 2.5 : 1) + '"/>'; }
+    return '<svg viewBox="0 0 300 300" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<circle cx="150" cy="145" r="' + R + '" fill="#fff" stroke="' + TEAL + '" stroke-width="3"/>' + ticks + nums
+      + '<line id="hh" stroke="' + INK + '" stroke-width="7" stroke-linecap="round"/>'
+      + '<line id="mh" stroke="' + TEAL + '" stroke-width="5" stroke-linecap="round"/>'
+      + '<circle cx="150" cy="145" r="6" fill="' + INK + '"/>'
+      + '<text id="dg" x="150" y="288" text-anchor="middle" font-size="26" font-weight="800" fill="' + INK + '"></text></svg>'
+      + '<script>(function(){var CX=150,CY=145,H=' + hour + ',M=' + minute + ',NS="http://www.w3.org/2000/svg";'
+      + 'var s=document.querySelector("svg"),hh=document.getElementById("hh"),mh=document.getElementById("mh"),dg=document.getElementById("dg"),drag=null;'
+      + 'function pt(a,len){return {x:CX+len*Math.cos((a-90)*Math.PI/180),y:CY+len*Math.sin((a-90)*Math.PI/180)};}'
+      + 'function rn(){var ma=M*6,ha=(H%12)*30+M*0.5;var mp=pt(ma,82),hp=pt(ha,56);mh.setAttribute("x1",CX);mh.setAttribute("y1",CY);mh.setAttribute("x2",mp.x.toFixed(1));mh.setAttribute("y2",mp.y.toFixed(1));hh.setAttribute("x1",CX);hh.setAttribute("y1",CY);hh.setAttribute("x2",hp.x.toFixed(1));hh.setAttribute("y2",hp.y.toFixed(1));var hd=H%12;if(hd===0)hd=12;dg.textContent=hd+":"+(M<10?"0"+M:M);}'
+      + 'function ang(e){var r=s.getBoundingClientRect();var x=(e.clientX-r.left)*(300/r.width)-CX,y=(e.clientY-r.top)*(300/r.height)-CY;var d=Math.atan2(x,-y)*180/Math.PI;return (d+360)%360;}'
+      + 'function which(e){var a=ang(e),md=Math.min((a-M*6+540)%360,(M*6-a+540)%360),ha=((H%12)*30+M*0.5),hd=Math.min((a-ha+540)%360,(ha-a+540)%360);return hd<md?"h":"m";}'
+      + 's.addEventListener("pointerdown",function(e){e.preventDefault();drag=which(e);set(e);try{s.setPointerCapture(e.pointerId);}catch(_){}});'
+      + 's.addEventListener("pointermove",function(e){if(!drag)return;e.preventDefault();set(e);});'
+      + 's.addEventListener("pointerup",function(){drag=null;});s.addEventListener("pointercancel",function(){drag=null;});'
+      + 'function set(e){var a=ang(e);if(drag==="m"){M=Math.round(a/6)%60;}else{var hf=a/30;H=Math.floor(hf)%12;}rn();}'
+      + 'rn();})();<\/script>';
+  },
+  "money_coins": function (p) {
+    p = p || {};
+    var INK = "#0f3b36", TEAL = "#0d9488";
+    var denoms = [1, 2, 5, 10, 20, 50]; // ערכים בשקלים
+    var coins = "";
+    for (var i = 0; i < denoms.length; i++) {
+      var d = denoms[i], col = i % 3, row = Math.floor(i / 3), x = 56 + col * 104, y = 52 + row * 78, isBill = d >= 20;
+      coins += '<g class="cn" data-v="' + d + '" style="cursor:pointer">'
+        + (isBill
+          ? '<rect x="' + (x - 34) + '" y="' + (y - 20) + '" width="68" height="40" rx="6" fill="#eef7f5" stroke="' + TEAL + '" stroke-width="2.5"/>'
+          : '<circle cx="' + x + '" cy="' + y + '" r="26" fill="#fff7e8" stroke="#d9a441" stroke-width="2.5"/>')
+        + '<text x="' + x + '" y="' + (y + 7) + '" text-anchor="middle" font-size="20" font-weight="800" fill="' + INK + '" style="pointer-events:none">' + d + '</text></g>';
+    }
+    return '<svg viewBox="0 0 360 240" width="100%" height="100%" style="display:block;touch-action:none">'
+      + coins
+      + '<g id="clr" style="cursor:pointer"><rect x="20" y="206" width="64" height="26" rx="13" fill="#eef2f1" stroke="#cfe0dd"/><text x="52" y="224" text-anchor="middle" font-size="14" font-weight="700" fill="' + INK + '" style="pointer-events:none">נקה</text></g>'
+      + '<text id="sum" x="340" y="226" text-anchor="end" font-size="26" font-weight="800" fill="' + TEAL + '">0 ₪</text></svg>'
+      + '<script>(function(){var total=0,s=document.querySelector("svg"),sum=document.getElementById("sum");'
+      + 'function rn(){sum.textContent=total+" \\u20AA";}'
+      + 's.addEventListener("pointerdown",function(e){var t=e.target;while(t&&t!==s&&!(t.getAttribute&&t.getAttribute("data-v")!==null)&&t.id!=="clr")t=t.parentNode;if(!t||t===s)return;'
+      + 'if(t.id==="clr"){total=0;}else{var v=t.getAttribute&&t.getAttribute("data-v");if(v==null)return;total+=parseInt(v,10);}rn();});rn();})();<\/script>';
+  },
+  "hundred_chart": function (p) {
+    p = p || {};
+    function ci(v, lo, hi, d) { v = parseInt(v, 10); if (isNaN(v)) v = d; return v < lo ? lo : v > hi ? hi : v; }
+    var start = (p.start === 0 || p.start === "0") ? 0 : 1, skip = ci(p.skip, 0, 12, 0);
+    var INK = "#0f3b36", TEAL = "#0d9488", cell = 28, gx = 10, gy = 10, cells = "", pre = [];
+    for (var r = 0; r < 10; r++) for (var c = 0; c < 10; c++) {
+      var n = start + r * 10 + c, x = gx + c * cell, y = gy + r * cell, hot = skip > 0 && n > 0 && n % skip === 0;
+      if (hot) pre.push(n);
+      cells += '<g class="cl" data-n="' + n + '" style="cursor:pointer">'
+        + '<rect x="' + x + '" y="' + y + '" width="' + (cell - 2) + '" height="' + (cell - 2) + '" rx="4" fill="' + (hot ? TEAL : "#fff") + '" stroke="#cfe6e3" stroke-width="1"/>'
+        + '<text x="' + (x + cell / 2 - 1) + '" y="' + (y + cell / 2 + 4) + '" text-anchor="middle" font-size="12" font-weight="600" fill="' + (hot ? "#fff" : INK) + '" style="pointer-events:none">' + n + '</text></g>';
+    }
+    return '<svg viewBox="0 0 300 300" width="100%" height="100%" style="display:block;touch-action:none">' + cells + '</svg>'
+      + '<script>(function(){var g=document.querySelector("svg"),on={' + pre.map(function (n) { return '"' + n + '":1'; }).join(",") + '};'
+      + 'g.addEventListener("pointerdown",function(e){var t=e.target;while(t&&t!==g&&!(t.classList&&t.classList.contains("cl")))t=t.parentNode;if(!t||t===g)return;'
+      + 'var n=t.getAttribute("data-n"),rc=t.querySelector("rect"),tx=t.querySelector("text");on[n]=!on[n];rc.setAttribute("fill",on[n]?"#0d9488":"#fff");if(tx)tx.setAttribute("fill",on[n]?"#fff":"#0f3b36");});})();<\/script>';
+  },
+  "number_line_interactive": function (p) {
+    p = p || {};
+    function ci(v, lo, hi, d) { v = parseInt(v, 10); if (isNaN(v)) v = d; return v < lo ? lo : v > hi ? hi : v; }
+    var from = ci(p.from, -100, 1000, 0), to = ci(p.to, from + 1, from + 1000, 10), step = ci(p.step, 1, 100, 1);
+    var startN = ci(p.start, from, to, from);
+    var INK = "#0f3b36", TEAL = "#0d9488", x0 = 28, x1 = 332, Y = 120, n = Math.round((to - from) / step);
+    if (n > 40) { step = Math.ceil((to - from) / 40); n = Math.round((to - from) / step); }
+    var ticks = "";
+    for (var i = 0; i <= n; i++) { var v = from + i * step, x = x0 + (x1 - x0) * i / n; ticks += '<line x1="' + x.toFixed(1) + '" y1="' + (Y - 7) + '" x2="' + x.toFixed(1) + '" y2="' + (Y + 7) + '" stroke="' + TEAL + '" stroke-width="2"/><text x="' + x.toFixed(1) + '" y="' + (Y + 28) + '" text-anchor="middle" font-size="13" fill="' + INK + '">' + v + '</text>'; }
+    return '<svg viewBox="0 0 360 180" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<line x1="' + x0 + '" y1="' + Y + '" x2="' + x1 + '" y2="' + Y + '" stroke="' + TEAL + '" stroke-width="3" stroke-linecap="round"/>' + ticks
+      + '<path id="arc" fill="none" stroke="' + INK + '" stroke-width="2.5"/>'
+      + '<text id="jl" text-anchor="middle" font-size="16" font-weight="700" fill="' + INK + '"></text>'
+      + '<circle id="hd" r="10" fill="' + TEAL + '" stroke="#fff" stroke-width="2.5" style="cursor:grab"/>'
+      + '<text id="vl" text-anchor="middle" font-size="22" font-weight="800" fill="' + TEAL + '"></text></svg>'
+      + '<script>(function(){var FROM=' + from + ',TO=' + to + ',STEP=' + step + ',N=' + n + ',ST=' + startN + ',X0=' + x0 + ',X1=' + x1 + ',Y=' + Y + ';'
+      + 'var s=document.querySelector("svg"),hd=document.getElementById("hd"),vl=document.getElementById("vl"),arc=document.getElementById("arc"),jl=document.getElementById("jl"),cur=ST,drag=false;'
+      + 'function px(v){return X0+(X1-X0)*(v-FROM)/(TO-FROM);}'
+      + 'function rn(){var hx=px(cur);hd.setAttribute("cx",hx.toFixed(1));hd.setAttribute("cy",Y);vl.setAttribute("x",hx.toFixed(1));vl.setAttribute("y",Y-46);vl.textContent=cur;'
+      + 'var sx=px(ST),ex=hx,mx=(sx+ex)/2,h=20+Math.abs(ex-sx)*0.28;if(Math.abs(cur-ST)<0.001){arc.setAttribute("d","");jl.textContent="";}else{arc.setAttribute("d","M"+sx+","+(Y-6)+" Q"+mx+","+(Y-h)+" "+ex+","+(Y-6));jl.setAttribute("x",mx);jl.setAttribute("y",Y-h-4);jl.textContent=(cur>=ST?"+":"\\u2212")+Math.abs(cur-ST);}}'
+      + 'function setX(cx){var r=s.getBoundingClientRect();var x=(cx-r.left)*(360/r.width);var i=Math.round((x-X0)/(X1-X0)*N);i=Math.max(0,Math.min(N,i));cur=FROM+i*STEP;rn();}'
+      + 's.addEventListener("pointerdown",function(e){drag=true;e.preventDefault();setX(e.clientX);try{s.setPointerCapture(e.pointerId);}catch(_){}});'
+      + 's.addEventListener("pointermove",function(e){if(!drag)return;e.preventDefault();setX(e.clientX);});'
+      + 's.addEventListener("pointerup",function(){drag=false;});s.addEventListener("pointercancel",function(){drag=false;});rn();})();<\/script>';
+  }
   };
 })(typeof window !== "undefined" ? window : this);
