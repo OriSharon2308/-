@@ -697,9 +697,9 @@
     html = String(html == null ? "" : html).slice(0, 60000);
     if (!html) return;
     i = i || {};
-    var w = clamp(i.w || dw, 80, 760), h;
-    if (ar) { h = clamp(Math.round(w / ar), 60, 520); w = Math.round(h * ar); } // נעילת-יחס: גובה מהרוחב, ואז רוחב מהגובה (אחרי clamp)
-    else { h = clamp(i.h || dh, 60, 520); ar = w / h; }                          // render_widget חופשי — היחס נקבע ממה שהמורה ביקש
+    var w = clamp(i.w || dw, 80, 2400), h;
+    if (ar) { h = clamp(Math.round(w / ar), 60, 1800); w = Math.round(h * ar); } // נעילת-יחס: גובה מהרוחב, ואז רוחב מהגובה (אחרי clamp)
+    else { h = clamp(i.h || dh, 60, 1800); ar = w / h; }                          // render_widget חופשי — היחס נקבע ממה שהמורה ביקש
     var x = clamp(i.x != null ? +i.x || 0 : Math.round((this.W - w) / 2), -200, this.W + 200);
     var y = clamp(i.y != null ? +i.y || 0 : 120, -200, this.H + 200);
     var spot = this._freeSpot(x, y, w, h); x = spot.x; y = spot.y; // לעולם לא על פריט קיים
@@ -731,6 +731,16 @@
     if (o.x1 != null) o.x1 += dx; if (o.y1 != null) o.y1 += dy;
     if (o.x2 != null) o.x2 += dx; if (o.y2 != null) o.y2 += dy;
     if (o.cx != null) o.cx += dx; if (o.cy != null) o.cy += dy;
+  };
+  VelaBoard.prototype._objById = function (id) { for (var i = 0; i < this.objects.length; i++) if (this.objects[i].id === id) return this.objects[i]; return null; };
+  // אובייקט-מורה שרצועתו העליונה (~28 יחידות) נמצאת תחת הנקודה — אזור-הזזה בלי פס נראה. האחרון (העליון) קודם.
+  VelaBoard.prototype._objTopHit = function (w) {
+    var STRIP = 28;
+    for (var i = this.objects.length - 1; i >= 0; i--) {
+      var o = this.objects[i], b = this._objBBox(o);
+      if (b && isFinite(b.minX) && w.x >= b.minX - 4 && w.x <= b.maxX + 4 && w.y >= b.minY - 6 && w.y <= b.minY + STRIP) return o;
+    }
+    return null;
   };
   // פריסת הלוח: כל פריט (אובייקט-מורה/תרגיל/ווידג'ט) עם id, סוג, מלבן תוחם ותווית קצרה. החלק שהמורה "רואה".
   VelaBoard.prototype.getLayout = function () {
@@ -820,17 +830,25 @@
       if (wd.id === id) {
         var ar = wd.ar || (wd.w / wd.h) || 1.5;
         var reqW = (isFinite(+w) && +w > 0) ? +w : ((isFinite(+h) && +h > 0) ? +h * ar : wd.w);
-        var WMIN = Math.max(140, Math.round(90 * ar)), WMAX = Math.min(880, Math.round(660 * ar)); // גבולות הרוחב שמכבדים גם את גבולות הגובה
+        var WMIN = Math.max(120, Math.round(80 * ar)), WMAX = Math.min(2400, Math.round(1800 * ar)); // טווח הגדלה רחב (איכות וקטורית נשמרת), עם כיבוד גבולות הגובה
         var nw = clamp(reqW, WMIN, WMAX);
         wd.w = Math.round(nw); wd.h = Math.round(nw / ar); wd.ar = ar;
         this.render(); return;
       }
     }
   };
-  // מיקומי הווידג'טים בפיקסלי-מסך (עוקבים אחרי זום/גרירה כמו תיבות-התשובה). ar לנעילת-יחס בידית.
+  // הזזת ווידג'ט למיקום עולמי (גרירה מהרצועה העליונה) — מיקום מפורש, בלי הצמדה/אי-חפיפה.
+  VelaBoard.prototype.setWidgetPos = function (id, x, y) {
+    for (var i = 0; i < this.widgets.length; i++) if (this.widgets[i].id === id) {
+      this.widgets[i].x = isFinite(+x) ? +x : this.widgets[i].x;
+      this.widgets[i].y = isFinite(+y) ? +y : this.widgets[i].y;
+      this.render(); return;
+    }
+  };
+  // מיקומי הווידג'טים בפיקסלי-מסך (עוקבים אחרי זום/גרירה כמו תיבות-התשובה). x,y עולמיים לגרירה; ar לנעילת-יחס.
   VelaBoard.prototype.getWidgetRects = function () {
     var out = [];
-    for (var i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i], c = this.worldToScreen(wd.x, wd.y); out.push({ id: wd.id, left: c.x, top: c.y, w: wd.w, h: wd.h, ar: wd.ar || (wd.w / wd.h), scale: c.sx, html: wd.html, title: wd.title }); }
+    for (var i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i], c = this.worldToScreen(wd.x, wd.y); out.push({ id: wd.id, x: wd.x, y: wd.y, left: c.x, top: c.y, w: wd.w, h: wd.h, ar: wd.ar || (wd.w / wd.h), scale: c.sx, html: wd.html, title: wd.title }); }
     return out;
   };
 
@@ -1200,6 +1218,9 @@
       }
       var hit = self._hitTest(w);
       if (hit) { evt.preventDefault(); self._select(hit); var hs = self._byId(hit); self._gesture = "move"; self._move = { id: hit, orig: clonePts(hs.points), start: w }; self.render(); return; }
+      // אזור-הזזה ברצועה העליונה של אובייקט-מורה (תבנית/צורה/טקסט) — גרירה להזזה על הלוח
+      var topObj = self._objTopHit(w);
+      if (topObj) { evt.preventDefault(); if (topObj.id == null) topObj.id = "ob" + (++self._oid); self._gesture = "objmove"; self._objDrag = { id: topObj.id, last: w }; self.canvas.style.cursor = "grabbing"; return; }
       if (self.selectedId) { self._select(null); self.render(); }
       if (self.pan) { evt.preventDefault(); self._gesture = "pan"; self._panLast = s; self._applyCursor(true); }
     }
@@ -1216,7 +1237,7 @@
         var overHandle = false;
         if (self.selectedId || hv) { var os = self._byId(self.selectedId || hv); if (os && self._handleAt(wp, os)) overHandle = true; }
         if (hv !== self.hoverId) { self.hoverId = hv; self.render(); }
-        self.canvas.style.cursor = overHandle ? "pointer" : (hv ? "move" : (self.pan ? "grab" : "default"));
+        self.canvas.style.cursor = overHandle ? "pointer" : (hv ? "move" : (self._objTopHit(wp) ? "move" : (self.pan ? "grab" : "default")));
       }
       // תצוגה מקדימה למיקום צורה — עוקבת אחרי הסמן גם בין הלחיצות.
       if (self._place) {
@@ -1245,6 +1266,7 @@
       else if (self._gesture === "resize") { evt.preventDefault(); self._resizeTo(w); }
       else if (self._gesture === "vertex") { evt.preventDefault(); self._vertexTo(w); }
       else if (self._gesture === "move") { evt.preventDefault(); self._moveTo(w); }
+      else if (self._gesture === "objmove") { evt.preventDefault(); var od = self._objDrag, oo = self._objById(od.id); if (oo) { self._translateObject(oo, w.x - od.last.x, w.y - od.last.y); od.last = w; self.render(); } }
       else if (self._gesture === "pan") { evt.preventDefault(); self.view.x += s.x - self._panLast.x; self.view.y += s.y - self._panLast.y; self._panLast = s; self.render(); }
     }
     function up(evt) {
@@ -1274,24 +1296,26 @@
       if (self._gesture === "resize") self._resize = null;
       if (self._gesture === "vertex") self._vertex = null;
       if (self._gesture === "move") self._move = null;
+      if (self._gesture === "objmove") self._objDrag = null;
       if (self._gesture === "exmove" || self._gesture === "exresize") self._exDrag = null;
       if (self._gesture === "pinch" && n < 2) self._pinch = null;
       if (n === 0) self._gesture = "none"; else if (self._gesture === "pinch" && n < 2) self._gesture = "none";
     }
-    // גלגלת ו/או צביטה = זום (סביב הסמן), עדין. החלקה אופקית מובהקת (שתי אצבעות בצד) = הזזת המסך.
+    // צביטה (pinch) או ctrl+גלגלת = זום (סביב הסמן), עדין. שתי אצבעות על הטראקפד (אנכי/אופקי) = הזזת המסך.
     function wheel(evt) {
       if (!self.zoom) return;
       self._viewAnim = null; // אינטראקציה עוצרת אנימציית תצוגה רצה
       evt.preventDefault();
       var dx = evt.deltaX, dy = evt.deltaY;
       if (evt.deltaMode === 1) { dx *= 16; dy *= 16; } else if (evt.deltaMode === 2) { dx *= self.W; dy *= self.H; } // נרמול ליחידות פיקסל
-      // החלקה אופקית מובהקת (טראקפד בצד) → הזזת המסך; הגלגלת היא אנכית ולא תיכנס לכאן.
-      if (!evt.ctrlKey && Math.abs(dx) > Math.abs(dy) * 1.2) {
-        self.view.x -= dx; self.view.y -= dy; self.render(); return;
+      if (evt.ctrlKey) {
+        // צביטה/ctrl → זום עדין סביב הסמן (מגבילים צעד בודד כדי שלא יקפוץ)
+        var d = Math.max(-40, Math.min(40, dy));
+        self._zoomAt(self._screen(evt), self.view.scale * Math.exp(-d * WHEEL_ZOOM_SENS));
+      } else {
+        // שתי אצבעות / גלגלת רגילה → הזזת הלוח (אנכי + אופקי). למטה=המסך יורד.
+        self.view.x -= dx; self.view.y -= dy;
       }
-      // זום: מגבילים צעד בודד (גלגלת שולחת קפיצה גדולה) כדי שיהיה עדין; צביטה (deltas קטנים) נשארת חלקה.
-      var d = Math.max(-40, Math.min(40, dy));
-      self._zoomAt(self._screen(evt), self.view.scale * Math.exp(-d * WHEEL_ZOOM_SENS));
       self.render();
     }
     on(this.canvas, "pointerdown", down); on(this.canvas, "pointermove", move);

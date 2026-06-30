@@ -377,16 +377,23 @@
       .answerInput.is-show { display: block; }
 
       /* ווידג'ט חי — כרטיס במסגרת: סרגל-כותרת + iframe מבודד + ידית שינוי-גודל. מעל הלוח, מתחת לפקדים. */
-      /* מסגרת פשוטה ושקופה — רקע הלוח נראה דרכה (אפקט זכוכית), פינות מעוגלות + צל רך + ידית שינוי-גודל */
+      /* מסגרת שקופה עם זכוכית מחלבית עדינה — רקע הלוח נראה דרכה אך מעט מטושטש. פינות מעוגלות + צל רך */
       .widgetCard {
         position: fixed; z-index: 4; display: none; transform-origin: top left;
-        border-radius: 16px; background: transparent;
+        border-radius: 16px; background: rgba(255, 255, 255, 0.05);
+        -webkit-backdrop-filter: blur(2.5px); backdrop-filter: blur(2.5px);
         box-shadow: 0 12px 34px rgba(13, 60, 53, 0.16);
       }
       .widgetCard.is-show { display: block; }
-      .widgetCard__body { display: block; border: none; background: transparent; }
+      .widgetCard__body { display: block; border: none; background: transparent; position: relative; z-index: 1; }
+      /* רצועת-הזזה שקופה ברוחב הכרטיס, בחלק העליון — בלי פס נראה; גרירה ממנה מזיזה את הווידג'ט */
+      .widgetCard__drag {
+        position: absolute; top: 0; left: 0; right: 0; height: 26px; z-index: 2;
+        cursor: grab; touch-action: none;
+      }
+      .widgetCard__drag:active { cursor: grabbing; }
       .widgetCard__resize {
-        position: absolute; right: 3px; bottom: 3px; width: 18px; height: 18px; cursor: nwse-resize; touch-action: none;
+        position: absolute; right: 3px; bottom: 3px; width: 18px; height: 18px; z-index: 2; cursor: nwse-resize; touch-action: none;
         background: linear-gradient(135deg, transparent 55%, rgba(13, 148, 136, 0.6) 55% 66%, transparent 66% 78%, rgba(13, 148, 136, 0.6) 78% 89%, transparent 89%);
       }
 
@@ -617,8 +624,6 @@
         var DX = 470, DY = 390, X0 = 290, Y0 = 240;
         function cx(c) { return X0 + c * DX; }
         function cy(r) { return Y0 + r * DY; }
-        // כותרת מעל הפריט, עם מרווח שתלוי בגובהו (כדי שלא תיפול על ווידג'ט גבוה כמו לוח-הכפל)
-        function title(c, r, t, h) { board.tool("write_text", { x: cx(c), y: cy(r) - (h ? (h / 2 + 36) : 150), text: t, size: 22 }); }
         // עוזר לווידג'ט: ממקם את הכרטיס ממורכז סביב (x,y) ומעביר את הפרמטרים שלו
         function widget(name, w, h, params) {
           return function (x, y) {
@@ -649,8 +654,8 @@
 
         btn.addEventListener("click", function () {
           if (board.clearTeacher) board.clearTeacher(); // מנקה תוכן-מורה קודם (לא נוגע בקישקושי הילד)
-          board.tool("write_text", { x: cx(1), y: 70, text: "כל מה שהמורה יכול להראות ✨", size: 30 });
-          ITEMS.forEach(function (it) { title(it[0], it[1], it[2], it[4]); it[3](cx(it[0]), cy(it[1])); });
+          board.tool("write_text", { x: cx(1), y: Y0 - 120, text: "כל מה שהמורה יכול להראות ✨", size: 30 }); // כותרת ראשית במרחק סביר מעל השורה הראשונה
+          ITEMS.forEach(function (it) { it[3](cx(it[0]), cy(it[1])); }); // בלי תיאור לכל כלי — רק הפריט עצמו
           if (board.organizeView) setTimeout(function () { board.organizeView(); }, 80); // למרכז את כל הגלריה במסך
         });
       })();
@@ -1316,25 +1321,38 @@
           var f = document.createElement("iframe"); f.className = "widgetCard__body";
           f.setAttribute("sandbox", "allow-scripts"); // מבודד: בלי same-origin → אין גישה לדף; CSP חוסם רשת
           f.setAttribute("title", "כלי אינטראקטיבי");
+          var dg = document.createElement("div"); dg.className = "widgetCard__drag"; dg.title = "החזק כאן כדי להזיז";
           var rz = document.createElement("div"); rz.className = "widgetCard__resize"; rz.title = "שינוי גודל";
-          wrap.appendChild(f); wrap.appendChild(rz);
+          wrap.appendChild(f); wrap.appendChild(dg); wrap.appendChild(rz);
           document.body.appendChild(wrap);
-          // שינוי-גודל בגרירת הידית: דלתא-מסך → דלתא-לוגית (חלוקה ב-scale) → setWidgetSize
+          function rectOf() { return (board.getWidgetRects ? board.getWidgetRects() : []).filter(function (x) { return x.id === id; })[0]; }
+          // שינוי-גודל בגרירת הידית: קנה-מידה אחיד (לפי הציר הדומיננטי) — שומר יחס. setWidgetSize נועל את הגובה ל-ar.
           var rs = null;
           rz.addEventListener("pointerdown", function (e) {
             e.preventDefault(); e.stopPropagation();
-            var r = (board.getWidgetRects ? board.getWidgetRects() : []).filter(function (x) { return x.id === id; })[0];
-            rs = { sx: e.clientX, sy: e.clientY, w: r ? r.w : 380, h: r ? r.h : 240, sc: (r && r.scale) || 1 };
+            var r = rectOf(); rs = { sx: e.clientX, sy: e.clientY, w: r ? r.w : 380, h: r ? r.h : 240, sc: (r && r.scale) || 1 };
             try { rz.setPointerCapture(e.pointerId); } catch (_) {}
           });
           rz.addEventListener("pointermove", function (e) {
             if (!rs) return; e.preventDefault();
-            // קנה-מידה אחיד מהגרירה (לפי הציר הדומיננטי) — שומר על היחס, רק מגדיל/מקטין. setWidgetSize נועל את הגובה ל-ar.
             var dx = (e.clientX - rs.sx) / rs.sc, dy = (e.clientY - rs.sy) / rs.sc;
             var s = Math.max((rs.w + dx) / rs.w, (rs.h + dy) / rs.h);
             if (board.setWidgetSize) board.setWidgetSize(id, rs.w * s);
           });
           rz.addEventListener("pointerup", function () { rs = null; });
+          // הזזה בגרירת הרצועה העליונה: דלתא-מסך → דלתא-לוגית (חלוקה ב-scale) → setWidgetPos
+          var ds = null;
+          dg.addEventListener("pointerdown", function (e) {
+            e.preventDefault(); e.stopPropagation();
+            var r = rectOf(); if (!r) return;
+            ds = { sx: e.clientX, sy: e.clientY, wx: r.x, wy: r.y, sc: r.scale || 1 };
+            try { dg.setPointerCapture(e.pointerId); } catch (_) {}
+          });
+          dg.addEventListener("pointermove", function (e) {
+            if (!ds) return; e.preventDefault();
+            if (board.setWidgetPos) board.setWidgetPos(id, ds.wx + (e.clientX - ds.sx) / ds.sc, ds.wy + (e.clientY - ds.sy) / ds.sc);
+          });
+          dg.addEventListener("pointerup", function () { ds = null; });
           return { wrap: wrap, iframe: f };
         }
         function place() {
