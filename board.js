@@ -183,6 +183,7 @@
     this.zoom = !!options.zoom;
     this.minScale = options.minScale || 0.3;
     this.maxScale = options.maxScale || 4;
+    this._safe = { left: 0, right: 0, top: 0, bottom: 0 }; // שוליים בפיקסלי-מסך שסידור-התצוגה לא יציב בהם תוכן (צ'אט/סרגלים)
     this.view = { x: 0, y: 0, scale: 1 };
 
     this.W = options.width || 800;
@@ -309,13 +310,21 @@
     })();
   };
   // ממקם את התצוגה כך שתיבה תוחמת נתונה תיכנס למסך, ממורכזת, עם שוליים (לא מגדיל מעבר ל-1).
+  // קובע שוליים (פיקסלי-מסך) שסידור-התצוגה ימרכז בתוכם — כדי שתוכן לא ייפול מתחת לצ'אט/סרגלים.
+  VelaBoard.prototype.setSafeInset = function (s) {
+    s = s || {};
+    this._safe = { left: Math.max(0, +s.left || 0), right: Math.max(0, +s.right || 0), top: Math.max(0, +s.top || 0), bottom: Math.max(0, +s.bottom || 0) };
+  };
   VelaBoard.prototype.fitView = function (bbox, pad, dur) {
     if (!bbox || !isFinite(bbox.minX)) return;
     pad = pad == null ? 70 : pad;
     var bw = (bbox.maxX - bbox.minX) + pad * 2, bh = (bbox.maxY - bbox.minY) + pad * 2;
     var cx = (bbox.minX + bbox.maxX) / 2, cy = (bbox.minY + bbox.maxY) / 2;
-    var scale = clamp(Math.min(this.W / bw, this.H / bh), this.minScale, 1);
-    this.animateView({ x: this.W / 2 - cx * scale, y: this.H / 2 - cy * scale, scale: scale }, dur);
+    var s = this._safe || { left: 0, right: 0, top: 0, bottom: 0 };
+    var availW = Math.max(160, this.W - s.left - s.right), availH = Math.max(160, this.H - s.top - s.bottom);
+    var scale = clamp(Math.min(availW / bw, availH / bh), this.minScale, 1);
+    var rx = s.left + availW / 2, ry = s.top + availH / 2; // מרכז האזור הפנוי (לא מתחת לצ'אט/סרגלים)
+    this.animateView({ x: rx - cx * scale, y: ry - cy * scale, scale: scale }, dur);
   };
   // תיבה תוחמת של אובייקט בודד (מורה/ילד) — להצמדת-תצוגה.
   VelaBoard.prototype._objBBox = function (o) {

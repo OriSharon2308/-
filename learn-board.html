@@ -597,7 +597,20 @@
 
       document.getElementById("zoomIn").onclick = function () { board.zoomIn(); };
       document.getElementById("zoomOut").onclick = function () { board.zoomOut(); };
-      document.getElementById("zoomReset").onclick = function () { board.organizeView(); }; // בית = סדר תצוגה כך שכל התוכן/השאלות נראים
+
+      // מחשב שוליים פנויים (פיקסלי-מסך) כך שסידור-התצוגה לא ימקם תוכן מתחת לצ'אט/בועה/סרגלים — אלא מימינם.
+      function updateSafeInset() {
+        var left = 24, top = 70, right = 24, bottom = 100; // טופ-בר למעלה, סרגל-כלים למטה
+        var cp = document.getElementById("chatPanel");
+        if (cp && cp.classList.contains("is-open")) { var r = cp.getBoundingClientRect(); if (r.width) left = Math.max(left, r.right + 18); }
+        var tb = document.getElementById("teacherBubble");
+        if (tb && tb.classList.contains("is-show")) { var rb = tb.getBoundingClientRect(); if (rb.width) left = Math.max(left, rb.right + 18); }
+        if (board.setSafeInset) board.setSafeInset({ left: left, top: top, right: right, bottom: bottom });
+      }
+      // סידור-תצוגה שמכבד את האזור הפנוי (מימין לצ'אט) — קריאה אחת מרכזת לכאן.
+      window.arrangeBoard = function () { updateSafeInset(); if (board.organizeView) board.organizeView(); };
+
+      document.getElementById("zoomReset").onclick = function () { window.arrangeBoard(); }; // בית = סדר תצוגה (מימין לצ'אט) כך שכל התוכן/השאלות נראים
 
       // ───────── "כל הכלים" — גלריה דטרמיניסטית של כל היכולות (תבניות + ווידג'טים אינטראקטיביים) ─────────
       (function showAll() {
@@ -661,7 +674,7 @@
           if (board.clearTeacher) board.clearTeacher(); // מנקה תוכן-מורה קודם (לא נוגע בקישקושי הילד)
           board.tool("write_text", { x: cx(1), y: Y0 - 120, text: "כל מה שהמורה יכול להראות ✨", size: 30 }); // כותרת ראשית במרחק סביר מעל השורה הראשונה
           ITEMS.forEach(function (it) { it[3](cx(it[0]), cy(it[1])); }); // בלי תיאור לכל כלי — רק הפריט עצמו
-          if (board.organizeView) setTimeout(function () { board.organizeView(); }, 80); // למרכז את כל הגלריה במסך
+          if (window.arrangeBoard) setTimeout(function () { window.arrangeBoard(); }, 80); // למרכז את כל הגלריה במסך הפנוי
         });
       })();
 
@@ -941,9 +954,10 @@
           var data = await res.json();
           if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
             board.runTools(data.toolCalls);
-            // המורה הוסיף תרגילים/שאלות/ווידג'ט → לסדר את התצוגה כך שיראו אותם (מושך לבית/מארגן את המסך)
-            var addedFocus = data.toolCalls.some(function (tc) { return tc && (tc.name === "draw_exercise" || tc.name === "ask_answer" || tc.name === "render_widget"); });
-            if (addedFocus && board.organizeView) setTimeout(function () { board.organizeView(); }, 240);
+            // המורה הוסיף שאלה/תרגיל/ווידג'ט אינטראקטיבי → לסדר את התצוגה כך שייראו, מימין לצ'אט ולא מוסתרים
+            var FOCAL = { draw_exercise: 1, ask_answer: 1, render_widget: 1, interactive_fraction: 1, count_objects: 1, ten_frame: 1, base_ten_builder: 1, mult_array: 1, mult_table: 1, clock_interactive: 1, money_coins: 1, hundred_chart: 1, number_line_interactive: 1 };
+            var addedFocus = data.toolCalls.some(function (tc) { return tc && FOCAL[tc.name]; });
+            if (addedFocus && window.arrangeBoard) setTimeout(function () { window.arrangeBoard(); }, 240);
           }
           return (data && data.reply) || "";
         }
