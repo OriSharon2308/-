@@ -295,6 +295,77 @@
         animation: fabShadow 4.6s ease-in-out infinite;
       }
       @keyframes fabBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      /* מצמוץ — העיניים (והאישונים) נסגרות לרגע; JS מדליק .is-blink אקראית. הופך את האווטאר לנוכחות חיה */
+      .teacherFab__art .eye, .teacherFab__art .pupil,
+      .introAvatar .eye, .introAvatar .pupil { transform-box: fill-box; transform-origin: center; transition: transform 0.09s ease; }
+      .teacherFab.is-blink .eye, .teacherFab.is-blink .pupil,
+      .introAvatar.is-blink .eye, .introAvatar.is-blink .pupil { transform: scaleY(0.12); }
+
+      /* ✓ להמשך — הילד שולט בקצב. מרכז-תחתון, מעל חוגת-הכלים, יעד-מגע גדול לילד */
+      .advanceBtn {
+        position: fixed; bottom: 88px; left: 50%; transform: translateX(-50%) translateY(12px);
+        z-index: 32; display: inline-flex; align-items: center; gap: 10px;
+        height: 52px; padding: 0 26px; border-radius: 999px; border: none; cursor: pointer;
+        background: var(--teal); color: #fff;
+        font-family: "Fredoka", "Assistant", sans-serif; font-weight: 600; font-size: 18px;
+        box-shadow: 0 8px 22px rgba(13, 148, 136, 0.35);
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
+      }
+      .advanceBtn.is-show { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+      .advanceBtn.is-show { animation: advPulse 0.5s ease 0.6s 1; } /* פעימת-הזמנה אחת, לא לולאה */
+      .advanceBtn:disabled { opacity: 0.55; cursor: default; }
+      .advanceBtn:hover:not(:disabled) { background: #0b8378; }
+      @keyframes advPulse { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } }
+
+      /* פתיחת שיעור — המורה "מגיע" למרכז. שכבה בהירה (לא שחורה — שחור מאיים על ילד) */
+      .lessonIntro {
+        position: fixed; inset: 0; z-index: 60; display: none;
+        background: rgba(255, 255, 255, 0.55);
+        -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+        flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+      }
+      .lessonIntro.is-show { display: flex; }
+      .introAvatar {
+        width: 150px; height: 150px;
+        transform: translateY(46px) scale(0.55); opacity: 0;
+      }
+      .lessonIntro.is-show .introAvatar {
+        transform: translateY(0) scale(1); opacity: 1;
+        transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease; /* overshoot אחד ועדין — "מגיע ומתמקם" */
+      }
+      .introAvatar svg { display: block; width: 100%; height: 100%; }
+      .introBubble {
+        max-width: min(430px, calc(100vw - 48px)); min-height: 58px;
+        background: #fff; border-radius: 22px; padding: 16px 22px;
+        box-shadow: 0 16px 44px rgba(13, 60, 53, 0.18);
+        font-size: 18px; line-height: 1.65; font-weight: 500; color: var(--ink); text-align: center;
+        opacity: 0; transform: translateY(8px);
+        transition: opacity 0.35s ease 0.55s, transform 0.4s ease 0.55s;
+      }
+      .lessonIntro.is-show .introBubble { opacity: 1; transform: none; }
+      .introBubble .introLine { display: block; opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease, transform 0.32s ease; }
+      .introBubble .introLine.is-in { opacity: 1; transform: none; }
+      .introStart {
+        display: inline-flex; align-items: center; gap: 10px;
+        height: 54px; padding: 0 30px; border-radius: 999px; border: none; cursor: pointer;
+        background: var(--teal); color: #fff;
+        font-family: "Fredoka", "Assistant", sans-serif; font-weight: 600; font-size: 19px;
+        box-shadow: 0 10px 26px rgba(13, 148, 136, 0.4);
+        opacity: 0; visibility: hidden; transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
+      }
+      .introStart.is-show { opacity: 1; visibility: visible; transform: none; }
+      .introStart:hover { background: #0b8378; }
+      @media (prefers-reduced-motion: reduce) {
+        .lessonIntro.is-show .introAvatar { transition: opacity 0.15s linear; transform: none; }
+        .introAvatar { transform: none; }
+        .introBubble, .introBubble .introLine { transition: opacity 0.15s linear; transform: none; }
+        .advanceBtn { transition: opacity 0.15s linear, visibility 0.15s; transform: translateX(-50%); }
+        .advanceBtn.is-show { animation: none; transform: translateX(-50%); }
+        .introStart { transition: opacity 0.15s linear, visibility 0.15s; transform: none; }
+      }
+
       @keyframes fabShadow {
         0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.5; }
         50% { transform: translateX(-50%) scaleX(0.78); opacity: 0.3; }
@@ -437,10 +508,10 @@
           <ellipse cx="30" cy="30" rx="14" ry="10" fill="#fff" opacity="0.14"/>
           <circle cx="31" cy="50" r="5" fill="#ff8a5c" opacity="0.45"/>
           <circle cx="49" cy="50" r="5" fill="#ff8a5c" opacity="0.45"/>
-          <ellipse cx="33" cy="40" rx="5" ry="6.5" fill="#fff"/>
-          <ellipse cx="47" cy="40" rx="5" ry="6.5" fill="#fff"/>
-          <circle cx="34" cy="42" r="2.6" fill="#0f3b36"/>
-          <circle cx="48" cy="42" r="2.6" fill="#0f3b36"/>
+          <ellipse class="eye" cx="33" cy="40" rx="5" ry="6.5" fill="#fff"/>
+          <ellipse class="eye" cx="47" cy="40" rx="5" ry="6.5" fill="#fff"/>
+          <circle class="pupil" cx="34" cy="42" r="2.6" fill="#0f3b36"/>
+          <circle class="pupil" cx="48" cy="42" r="2.6" fill="#0f3b36"/>
           <path d="M34 52 Q40 58 46 52" fill="none" stroke="#0f3b36" stroke-width="2.6" stroke-linecap="round"/>
         </svg>
       </span>
@@ -449,6 +520,16 @@
     <!-- בועת דיבור של המורה (תשובת ה-✓) — מימין לדמות, בלי מסגרת, עם צל משלה -->
     <div class="teacherBubble" id="teacherBubble" role="status" aria-live="polite">
       <div class="teacherBubble__body" id="teacherBubbleBody"></div>
+    </div>
+
+    <!-- ✓ להמשך — הילד שולט בקצב השיעור. מופיע כשהמורה סיים יחידה וממתין שהילד יעכל -->
+    <button class="advanceBtn" id="advanceBtn" type="button" aria-label="הבנתי, המשך לחלק הבא">✓ הבנתי, אפשר להמשיך</button>
+
+    <!-- פתיחת שיעור: המורה "מגיע" למרכז, מברך בשם, והילד לוחץ "בוא נתחיל" -->
+    <div class="lessonIntro" id="lessonIntro" role="status" aria-live="polite">
+      <div class="introAvatar" id="introAvatar" aria-hidden="true"></div>
+      <div class="introBubble" id="introBubble"><span class="bubbleTyping"><span></span><span></span><span></span></span></div>
+      <button class="introStart" id="introStart" type="button">✓ בוא נתחיל!</button>
     </div>
 
     <!-- פאנל הצ'אט עם המורה -->
@@ -611,6 +692,15 @@
       window.arrangeBoard = function () { updateSafeInset(); if (board.organizeView) board.organizeView(); };
 
       document.getElementById("zoomReset").onclick = function () { window.arrangeBoard(); }; // בית = סדר תצוגה (מימין לצ'אט) כך שכל התוכן/השאלות נראים
+
+      // ───────── מצב-השיעור (נוהל שיעור) ─────────
+      // מכונת-מצבים דקה: opening → instruct → guided → independent → closing → done.
+      // "free" = אין נושא ב-URL → הלוח החופשי הרגיל (בלי טקס פתיחה, אבל עם ✓-להמשך אחרי פתרון).
+      window.velaLesson = (function () {
+        var topic = new URLSearchParams(location.search).get("topic") || "";
+        return { topic: topic, active: !!topic, phase: topic ? "opening" : "free" };
+      })();
+      window.velaLastRepr = ""; // הייצוג האחרון שהמורה השתמש בו — נשלח עם תשובה נכונה לזיכרון ("מה עבד")
 
       // ───────── "כל הכלים" — גלריה דטרמיניסטית של כל היכולות (תבניות + ווידג'טים אינטראקטיביים) ─────────
       (function showAll() {
@@ -936,6 +1026,16 @@
         }
 
         // קריאה ל-/api/teach: מריצה את הסרטוט ומחזירה את תשובת המורה. זורק {auth:true} ב-401.
+        // מיפוי כלי→ייצוג: כדי לזכור "מה עבד" לילד (נשלח לזיכרון עם תשובה נכונה).
+        var TOOL_REPR = {
+          draw_number_line: "ציר מספרים", number_line_interactive: "ציר מספרים",
+          draw_fraction_bar: "מוט שבר", interactive_fraction: "שבר אינטראקטיבי",
+          draw_array: "מערך נקודות", mult_array: "מערך כפל",
+          draw_base_ten: "בלוקי בסיס-10", base_ten_builder: "בלוקי בסיס-10",
+          draw_bar_model: "מודל מוט", ten_frame: "לוח עשר", hundred_chart: "לוח מאה",
+          mult_table: "לוח הכפל", count_objects: "אובייקטים לספירה", money_coins: "מטבעות",
+          clock_interactive: "שעון", draw_clock: "שעון", render_widget: "כלי מותאם",
+        };
         async function postTeach(payloadText) {
           var sc = board.getScene ? board.getScene() : null;
           var res = await fetch("/api/teach", {
@@ -943,24 +1043,37 @@
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
               messageText: payloadText,
-              topic: { title: new URLSearchParams(location.search).get("topic") || "" },
+              topic: { title: (window.velaLesson && window.velaLesson.topic) || "" },
               history: history.slice(-12),
               geometry: sc ? sc.geometry : null,
               occupied: boardOccupied(),
               layout: board.getLayout ? board.getLayout() : [], // פריסת הלוח (id+מיקום) — שהמורה יוכל לסדר בעצמו
+              phase: (window.velaLesson && window.velaLesson.phase) || "free", // שלב נוהל-השיעור
             }),
           });
           if (res.status === 401) throw { auth: true };
           var data = await res.json();
           if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
             board.runTools(data.toolCalls);
+            // זוכרים את הייצוג האחרון שהמורה השתמש בו ("מה עבד" — יישלח לזיכרון עם תשובה נכונה)
+            for (var ri = data.toolCalls.length - 1; ri >= 0; ri--) {
+              var rp = data.toolCalls[ri] && TOOL_REPR[data.toolCalls[ri].name];
+              if (rp) { window.velaLastRepr = rp; break; }
+            }
             // המורה הוסיף שאלה/תרגיל/ווידג'ט אינטראקטיבי → לסדר את התצוגה כך שייראו, מימין לצ'אט ולא מוסתרים
             var FOCAL = { draw_exercise: 1, ask_answer: 1, render_widget: 1, interactive_fraction: 1, count_objects: 1, ten_frame: 1, base_ten_builder: 1, mult_array: 1, mult_table: 1, clock_interactive: 1, money_coins: 1, hundred_chart: 1, number_line_interactive: 1 };
             var addedFocus = data.toolCalls.some(function (tc) { return tc && FOCAL[tc.name]; });
             if (addedFocus && window.arrangeBoard) setTimeout(function () { window.arrangeBoard(); }, 240);
           }
+          // בשלב ההוראה/הסגירה — אחרי שהמורה סיים לדבר, מדליקים ✓-להמשך (הילד קובע מתי ממשיכים)
+          var ph = window.velaLesson && window.velaLesson.phase;
+          if (window.velaAdvance && (ph === "instruct" || ph === "closing")) {
+            window.velaAdvance.show(ph === "closing" ? "✓ סיים שיעור" : "✓ הבנתי, אפשר להמשיך");
+          }
           return (data && data.reply) || "";
         }
+        window.velaPostTeach = postTeach; // לפתיחת-השיעור (האוברליי משתמש באותה קריאה)
+        window.velaPushHistory = function (role, content) { history.push({ role: role, content: String(content || "") }); };
 
         // שליחה רגילה: בועת "אני" + תשובת המורה (כולל סרטוט).
         async function sendToTeacher(displayText, payloadText) {
@@ -1295,6 +1408,20 @@
         });
         board.onRender(place);
 
+        // אות-למידה לזיכרון המשותף: כל תשובה (נכונה/שגויה) בשיעור מעדכנת את הפרופיל — כמו בתרגול.
+        function learnSignal(correct) {
+          var topic = (window.velaLesson && window.velaLesson.topic) || "";
+          if (!topic) return; // בלי נושא אין מפתח-זיכרון
+          try {
+            fetch("/api/learn-signal", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({ topic: topic, correct: correct, repr: correct ? (window.velaLastRepr || "") : "" }),
+            });
+          } catch (e) { /* אות-זיכרון לא חוסם את החוויה */ }
+        }
+
+        var wrongCount = {}; // id → רצף-טעויות בתיבה; 2 → המורה מתערב עם ויזואל פשוט יותר (פעם אחת)
         function submit(id, value) {
           var b = boxById(id); if (!b || b.status === "correct") return; // כבר נפתר → לא לבדוק שוב
           var val = String(value).trim(); if (!val) return;
@@ -1306,19 +1433,154 @@
           if (correct === true) {
             b.status = "correct"; board.setAnswerStatusById(id, "correct");
             if (inputs[id]) { inputs[id].blur(); inputs[id].readOnly = true; } // נעילת תיבה שנפתרה
+            wrongCount[id] = 0;
+            learnSignal(true);
             var allDone = boxes.length > 0 && boxes.every(function (x) { return x.status === "correct"; });
             if (allDone) {
+              // הילד שולט בקצב: לא מנקים ולא ממשיכים אוטומטית — שבח + ✓-להמשך, והמעבר בלחיצה שלו.
               if (window.velaConfetti) window.velaConfetti();
-              if (board.tool) board.tool("clear_board", {}); // לוח נקי לסבב חדש (מאפס מונה השורות ומסיר תיבות ישנות)
-              if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד פתר נכון את כל התרגילים. שבח אותו בחום במשפט קצר, ותן סבב חדש של תרגילים באותו נושא עם draw_exercise.)");
+              if (window.velaBubble) window.velaBubble("כל הכבוד! פתרת הכל 🎉");
+              if (window.velaAdvance) window.velaAdvance.show("✓ אפשר להמשיך");
             }
           } else if (correct === false) {
             b.status = "wrong"; board.setAnswerStatusById(id, "wrong");
-            if (window.velaBubble) window.velaBubble("כמעט! נסה/י שוב 🙂");
+            learnSignal(false);
+            wrongCount[id] = (wrongCount[id] || 0) + 1;
+            if (wrongCount[id] === 2 && window.velaTeachFollowup) {
+              // תקוע אמיתי (פעמיים באותה תיבה) — המורה מחליף ייצוג, לא חוזר על אותו הסבר. בלי לגלות את התשובה.
+              window.velaTeachFollowup("(הילד טעה פעמיים באותו תרגיל — הוא תקוע. אל תגלה את התשובה! הצג ויזואל מוחשי ופשוט יותר שממחיש בדיוק את התרגיל הזה, ועודד אותו בחום לנסות שוב.)");
+            } else if (window.velaBubble) {
+              window.velaBubble("כמעט! נסה/י שוב 🙂");
+            }
           } else {
             if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד ענה על שאלה מילולית: '" + val + "'. בדוק אם נכון; אם כן שבח ותן הבאה, אם לא עודד לנסות שוב.)");
           }
         }
+      })();
+
+      // ───────── נוהל השיעור: ✓-להמשך, מעברי-שלבים, פתיחת-שיעור, מצמוץ ─────────
+      (function lessonFlow() {
+        var L = window.velaLesson;
+        var btn = document.getElementById("advanceBtn");
+
+        // ✓-להמשך — הילד קובע מתי ממשיכים. show(label) / hide().
+        window.velaAdvance = {
+          show: function (label) { btn.textContent = label || "✓ הבנתי, אפשר להמשיך"; btn.disabled = false; btn.classList.add("is-show"); },
+          hide: function () { btn.classList.remove("is-show"); },
+        };
+
+        // מעבר-שלב: קובעים את השלב החדש לפני הקריאה (ההנחיה בשרת נגזרת ממנו), ואז המשך-שיחה.
+        function goto(phase, followupText) {
+          L.phase = phase;
+          window.velaAdvance.hide();
+          if (window.velaTeachFollowup) window.velaTeachFollowup(followupText);
+        }
+
+        btn.addEventListener("click", function () {
+          if (btn.disabled) return;
+          btn.disabled = true; // פידבק מיידי + מניעת לחיצה-כפולה (יש המתנה למורה)
+          var ph = L.phase;
+          if (ph === "instruct") {
+            goto("guided", "(הילד לחץ '✓ להמשך' — הוא הבין את ההסבר ומוכן לתרגל. עבור לשלב התרגול המודרך.)");
+          } else if (ph === "guided") {
+            if (board.tool) board.tool("clear_board", {}); // מפנים את התרגיל המודרך לפני העצמאי
+            goto("independent", "(הילד פתר את התרגיל המודרך ולחץ להמשיך. עבור לשלב התרגול העצמאי.)");
+          } else if (ph === "independent") {
+            if (board.tool) board.tool("clear_board", {});
+            goto("closing", "(הילד סיים את כל התרגול העצמאי בהצלחה. עבור לסגירת השיעור.)");
+          } else if (ph === "closing") {
+            // סיום שיעור: רושמים בפנקס ומקדמים את מספר-השיעור. הלוח נשאר פתוח לחקירה חופשית.
+            window.velaAdvance.hide();
+            try {
+              fetch("/api/lesson-end", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({ topic: L.topic, endedStatus: "completed" }),
+              });
+            } catch (e) { /* הפנקס לא חוסם */ }
+            L.phase = "free";
+            if (window.velaConfetti) window.velaConfetti();
+            if (window.velaBubble) window.velaBubble("סיימנו את השיעור — היית מדהים! אפשר להישאר ולצייר חופשי 🎨");
+          } else {
+            // מצב חופשי: "עוד סבב" אחרי שפתר הכל
+            if (board.tool) board.tool("clear_board", {});
+            window.velaAdvance.hide();
+            if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד פתר נכון את כל התרגילים ולחץ להמשיך. שבח אותו בקצרה ותן סבב חדש של תרגילים באותו נושא עם draw_exercise.)");
+          }
+        });
+
+        // ── פתיחת שיעור: המורה מגיע למרכז, מברך בשם, והילד לוחץ "בוא נתחיל" ──
+        var intro = document.getElementById("lessonIntro");
+        var introBubble = document.getElementById("introBubble");
+        var introStart = document.getElementById("introStart");
+        var introAvatar = document.getElementById("introAvatar");
+
+        function showGreeting(text) {
+          // חשיפה שורה-שורה (לא אות-אות — איטי לילד קורא-מתחיל)
+          introBubble.innerHTML = "";
+          var lines = String(text || "").split(/\n+/).filter(function (s) { return s.trim(); });
+          if (!lines.length) lines = ["שלום! מוכנים להתחיל? 😊"];
+          lines.forEach(function (ln, i) {
+            var el = document.createElement("span");
+            el.className = "introLine"; el.textContent = ln;
+            introBubble.appendChild(el);
+            setTimeout(function () { el.classList.add("is-in"); }, 120 + i * 280);
+          });
+          setTimeout(function () { introStart.classList.add("is-show"); }, 120 + lines.length * 280 + 200);
+        }
+
+        function startLesson() {
+          intro.classList.remove("is-show");
+          L.phase = "instruct";
+          if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד לחץ 'בוא נתחיל' — הוא מוכן. התחל את שלב ההוראה של השיעור.)");
+        }
+        introStart.addEventListener("click", startLesson);
+
+        if (L.active) {
+          // משכפלים את אווטאר-המורה (אותה דמות בדיוק) אל מרכז המסך
+          var fabSvg = document.querySelector("#teacherFab .teacherFab__art svg");
+          if (fabSvg && introAvatar) introAvatar.appendChild(fabSvg.cloneNode(true));
+          intro.classList.add("is-show");
+          // הברכה מגיעה מהמורה (אישית, עם הפנקס). יורים מיד — האנימציה מכסה את ההמתנה.
+          var greetP = window.velaPostTeach
+            ? window.velaPostTeach("(פתיחת שיעור: ברך את הילד לקראת השיעור של היום.)")
+            : Promise.reject(new Error("no-teach"));
+          greetP.then(function (reply) {
+            showGreeting(reply);
+            // הברכה נכנסת להיסטוריה — שהמורה יזכור מה כבר אמר ולא יברך שוב בשלב ההוראה
+            if (window.velaPushHistory) {
+              window.velaPushHistory("user", "(פתיחת שיעור)");
+              window.velaPushHistory("assistant", reply || "");
+            }
+          }).catch(function () {
+            // נפילת-רשת לא עוצרת שיעור: ברכה מקומית עם השם מ-/api/me
+            fetch("/api/me").then(function (r) { return r.json(); }).then(function (d) {
+              var nm = d && d.user && d.user.username ? " " + d.user.username : "";
+              showGreeting("שלום" + nm + "! 👋\nמוכנים להתחיל בשיעור שלנו?\nהיום נלמד על " + L.topic + ".");
+            }).catch(function () {
+              showGreeting("שלום! 👋\nמוכנים להתחיל בשיעור שלנו?\nהיום נלמד על " + L.topic + ".");
+            });
+          });
+          // דילוג: לחיצה על הרקע חושפת מיד את כפתור-ההתחלה (לא לוכדים ילד באנימציה)
+          intro.addEventListener("click", function (e) {
+            if (e.target === intro) introStart.classList.add("is-show");
+          });
+        }
+
+        // ── מצמוץ אקראי — הופך את האווטאר לנוכחות חיה. זול, שקט, לא מפריע ──
+        (function blink() {
+          var fab = document.getElementById("teacherFab");
+          function once() {
+            fab.classList.add("is-blink");
+            if (introAvatar) introAvatar.classList.add("is-blink");
+            setTimeout(function () {
+              fab.classList.remove("is-blink");
+              if (introAvatar) introAvatar.classList.remove("is-blink");
+            }, 140);
+            setTimeout(once, 3500 + Math.random() * 3500);
+          }
+          if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) setTimeout(once, 2200);
+        })();
       })();
 
       // ───────── ווידג'טים חיים — מיני-אפליקציות שהמורה מייצר, רצות ב-iframe מבודד ─────────

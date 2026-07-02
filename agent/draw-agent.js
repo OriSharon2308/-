@@ -9,9 +9,32 @@ const learnerProfile = require("../lib/learner-profile");
 const { BOARD_TOOLS } = require("../lib/board-tools");
 const { catalogPromptSection } = require("../lib/teaching-tools"); // מאגר הכלים: נושא → הויזואל → הכלי
 
+// הנחיות-שלב של נוהל-השיעור: מוזרקות להודעת-המשתמש (לא ל-system) כדי לא לשבור את ה-Prompt Cache.
+// בלוק-user ספציפי גובר בפועל על כללים גורפים ב-system (למשל "סגור כל הסבר בתרגיל" מושבת בשלב ההוראה).
+const PHASE_DIRECTIVES = {
+  opening:
+    "שלב פתיחת השיעור: אל תקרא/י לשום כלי — אל תצייר/י כלום. ברך/י את הילד בשמו בחום, אמור/י איזה מספר שיעור זה, " +
+    "ומה לומדים היום (הנושא). אם בפנקס-השיעורים יש משהו מהפעם הקודמת — הזכר/י אותו במשפט אחד חם. " +
+    "סיים/י בשאלה קצרה כמו 'מוכן להתחיל?'. בסך הכל 2–4 משפטים קצרים, בלי רשימות.",
+  instruct:
+    "שלב ההוראה: קודם הסבר/י את המושג במילים חמות ופשוטות (2–3 משפטים), ורק אז הצג/י ויזואל אחד שממחיש אותו " +
+    "(תבנית סטטית עדיפה; מניפולטיב אינטראקטיבי רק אם הפעולה עצמה היא הרעיון). " +
+    "אל תיתן/י תרגיל בשלב הזה — אל תשתמש/י ב-draw_exercise או ask_answer, גם אם הכלל הקבוע אומר לסגור בתרגיל (בשלב ההוראה מתעלמים ממנו). " +
+    "סיים/י בהזמנה קצרה: כשהוא מוכן — שילחץ על '✓ להמשך' למטה.",
+  guided:
+    "שלב תרגול מודרך: תרגיל אחד בלבד (draw_exercise) + מניפולטיב אינטראקטיבי שממחיש בדיוק את אותם מספרים לידו. " +
+    "לווה/י במשפט מנחה קצר שמסביר איך להשתמש בעזר. אם הילד טועה — אל תעבור/י הלאה: הצג/י ויזואל אחר או פשוט יותר.",
+  independent:
+    "שלב תרגול עצמאי: תן/י 2–3 תרגילים (draw_exercise, כולם יחד) בלי מניפולטיב-עזר. " +
+    "פתח/י במשפט קצר אחד כמו 'עכשיו תורך — נסה לבד, אני כאן אם צריך', ואז תן/י לו לעבוד בשקט.",
+  closing:
+    "שלב סגירת השיעור: אל תצייר/י ואל תיתן/י תרגילים. סכם/י בחום במשפט-שניים מה למדנו היום, שבח/י את הילד בשמו " +
+    "על ההתקדמות, ואמור/י בקצרה מה מחכה בפעם הבאה. בלי רשימות, בלי כלים.",
+};
+
 // ה-system קבוע (בלי מספרים משתנים) — כך הוא + הכלים נשמרים ב-Prompt Cache.
 // הגודל המדויק של הלוח והתוכן הקיים נשלחים בהודעת המשתמש (החלק המשתנה).
-function buildSystem({ gender, profileText, topic }) {
+function buildSystem({ gender, profileText, topic, name }) {
   const fem = gender === "female";
   const lines = [
     "את/ה Vela — מורה למתמטיקה חמה, סבלנית ומעודדת לילדים בכיתה א', שמדבר/ת עברית פשוטה.",
@@ -52,14 +75,27 @@ function buildSystem({ gender, profileText, topic }) {
     "כתיבת מספרים ותרגילים תמיד משמאל לימין (\"3 + 4 = 7\"), לא הפוך. אל תבקש/י מהילד 'לכתוב בצ'אט' — התיבה על הלוח היא מקום התשובה.",
     "",
     catalogPromptSection(), // מאגר הכלים + פרואקטיביות — המורה מחליט בעצמו מה להציג
+    "",
+    "כיוונון-קושי חי (חובה): אתה מקבל בפרופיל את מצב הילד בכל תת-נושא (שולט/בתהליך/מתקשה) והערה על הקושי.",
+    "- טעות בודדת אחרי רצף טוב → אל תרד רמה; אמור 'קרוב!' ותן תרגיל דומה נוסף. מעידה קורית.",
+    "- שתי טעויות ברצף → עצור את רצף התרגילים. עבור לויזואל מוחשי יותר (לוח-כפל→מערך→ספירה; מספרים→מוט; אלגוריתם→בסיס-10), פרק לצעד קטן. אל תסביר שוב באותן מילים.",
+    "- שולט (3 נכונות ברצף) → אל תיתן עוד תרגילים זהים; הצע אתגר או את הצעד הבא. נכון-אך-איטי → בסס שטף באותה רמה קודם.",
+    "- כבד בקשת-אתגר מפורשת של הילד גם אם הפרופיל שמרני. לילד מתקשה — התחל מוחשי, קצב איטי, בלי לחץ.",
+    "",
+    "היזכרות (זה מה שהופך אותך למורה אמיתי — לא מותנה בבקשה):",
+    "- יש לך פנקס-זיכרון על הילד (הפרופיל למעלה). אתה מורה שזוכר את התלמידים שלו — לא מתחיל כל שיעור מאפס. כשאתה יודע משהו מפעם קודמת, הזכר אותו בטבעיות, כאילו אתה באמת זוכר.",
+    "- כשהילד נתקע בנושא שכבר עבדתם עליו — הזכר בעדינות ('זוכר שזה קצת בלבל בפעם שעברה? בוא ננסה שוב עם...') וחזור לייצוג שכבר עבד לו (מסומן בפרופיל כ'הייצוג שעבד'), לא לייצוג חדש.",
+    "- היזכרות היא חמה, לא מאשימה: לעולם לא 'שוב טעית בזה'. תמיד 'זה היה קצת מבלבל, בוא נראה את זה ביחד'.",
+    "- אל תמציא זיכרונות! הזכר רק מה שכתוב בפנקס/בפרופיל. אם הם ריקים — זה שיעור ראשון: פתח בהיכרות חמה בלי להעמיד פנים שאתה זוכר.",
   ];
+  if (name) lines.push(`\nשם הילד: ${name}. פנה/י אליו בשמו — בפתיחה, בשבחים, וברגעים חמים (לא בכל משפט).`);
   if (topic) lines.push(`נושא הלמידה כרגע: ${topic}. בחר/י מהמאגר את הויזואל המתאים לנושא והצג/י אותו מיוזמתך.`);
   if (profileText) lines.push(`\n${profileText}`);
   return lines.join("\n");
 }
 
 /**
- * @param {{ messageText, history?, gender?, topic?, userId?, geometry?:{width,height,grid}, occupied?:Array }} p
+ * @param {{ messageText, history?, gender?, topic?, userId?, phase?, name?, geometry?:{width,height,grid}, occupied?:Array }} p
  * @returns {Promise<{reply:string, toolCalls:Array, mode:string}>}
  */
 async function teacherDraw(p = {}) {
@@ -71,6 +107,17 @@ async function teacherDraw(p = {}) {
     profileText = p.userId ? learnerProfile.toPromptText(p.userId) : "";
   } catch (e) {
     /* פרופיל לא קריטי */
+  }
+
+  // נוהל-שיעור: הנחיית-השלב + (בפתיחה) בלוק-הפנקס. בהודעת-המשתמש — לא ב-system — כדי לשמור על ה-cache.
+  const phase = typeof p.phase === "string" && PHASE_DIRECTIVES[p.phase] ? p.phase : null;
+  let phaseLine = phase ? `\n[שלב השיעור — ${phase}: ${PHASE_DIRECTIVES[phase]}]` : "";
+  if (phase === "opening" && p.userId) {
+    try {
+      phaseLine += `\n[מהפנקס: ${learnerProfile.lessonContextText(p.userId).replace(/\n/g, " ")}]`;
+    } catch (e) {
+      /* פנקס לא קריטי */
+    }
   }
 
   const geo = p.geometry || {};
@@ -95,17 +142,27 @@ async function teacherDraw(p = {}) {
       `אם משהו חופף או יושב לא טוב — סדר/י אותו, אל תוסיף/י עוד על הערימה:\n${rows}`;
   }
 
-  const system = buildSystem({ gender, profileText, topic: p.topic || "" });
+  const system = buildSystem({ gender, profileText, topic: p.topic || "", name: p.name ? String(p.name).slice(0, 40) : "" });
   const history = Array.isArray(p.history)
     ? p.history
         .filter((m) => m && (m.role === "user" || m.role === "assistant") && m.content)
         .slice(-12)
         .map((m) => ({ role: m.role, content: String(m.content) }))
     : [];
-  const msgs = [...history, { role: "user", content: `${ctxLine}${layoutLine}\n${String(p.messageText || "...")}` }];
+  const msgs = [...history, { role: "user", content: `${ctxLine}${layoutLine}${phaseLine}\n${String(p.messageText || "...")}` }];
 
   try {
     const t0 = Date.now();
+
+    // פתיחה/סגירה = דיבור בלבד. אכיפה דטרמיניסטית: בלי כלים בכלל (לא רק הנחיה) — המורה לא יכול לצייר.
+    if (phase === "opening" || phase === "closing") {
+      const talk = await llm.complete({ system, messages: msgs, maxTokens: 400, cacheSystem: true });
+      console.log(`[timing] teach-${phase}: ${Date.now() - t0}ms`);
+      let replyTxt = String(talk || "").replace(/\*\*/g, "").trim();
+      if (!replyTxt) replyTxt = phase === "opening" ? "שלום! מוכנים להתחיל את השיעור? 😊" : "כל הכבוד על שיעור מצוין! נתראה בפעם הבאה 👋";
+      return { reply: genderize(replyTxt, gender), toolCalls: [], mode: "ai", phase };
+    }
+
     const allCalls = [];
     let text = "";
     // לולאת Tool Use: מחזירים ל-Claude אישור לכל קריאה כדי שישלים ציורים מרובי-שלבים

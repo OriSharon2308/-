@@ -24,6 +24,7 @@ const adminAuth = require("./lib/admin-auth"); // אימות אזור הניהו
 const analytics = require("./lib/analytics"); // סדרות-זמן + סיכומים לתלמיד
 const assess = require("./lib/assessments"); // הערכות מורה/פסיכולוג/מתמטיקאי (מטמון)
 const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנק השאלות)
+const demo = require("./lib/demo"); // תלמיד-דוגמה קבוע (קריאה בלבד)
 
 const ROOT = __dirname;
 loadEnvFile(ROOT);
@@ -252,11 +253,18 @@ const server = http.createServer(async (req, res) => {
             },
           };
         });
+        list.unshift(demo.demoListRow()); // תלמיד-דוגמה תמיד בראש הרשימה
         return json(res, 200, { ok: true, users: list });
       }
 
       if (au.pathname === "/api/admin/user") {
         const id = q.get("id");
+        if (id === demo.DEMO_ID) {
+          return json(res, 200, {
+            ok: true, user: demo.demoUser(), summary: demo.demoSummary(),
+            daily: demo.demoDaily(), time: demo.demoTime(), mastery: demo.demoMastery(),
+          });
+        }
         const usr = id ? users.getUserAdmin(id) : null;
         if (!usr) return json(res, 404, { ok: false, error: "לא נמצא" });
         return json(res, 200, {
@@ -266,7 +274,27 @@ const server = http.createServer(async (req, res) => {
           daily: analytics.dailySeries(id),
           time: analytics.dailyTime(id),
           mastery: analytics.masteryByTopic(id),
-          assessments: await assess.getAssessments(id, usr, { force: q.get("refresh") === "1" }),
+        });
+      }
+
+      // הערכות-הצוות נטענות בנפרד — לא חוסמות את המודאל (עלולות לקרוא ל-LLM ולהתעכב)
+      if (au.pathname === "/api/admin/user/activity") {
+        const aid = q.get("id");
+        const range = q.get("range") || "week";
+        if (aid === demo.DEMO_ID) return json(res, 200, { ok: true, activity: demo.demoActivity(range) });
+        const auser = aid ? users.getUserAdmin(aid) : null;
+        if (!auser) return json(res, 404, { ok: false, error: "לא נמצא" });
+        return json(res, 200, { ok: true, activity: analytics.activity(aid, range) });
+      }
+
+      if (au.pathname === "/api/admin/user/assessments") {
+        const aid = q.get("id");
+        if (aid === demo.DEMO_ID) return json(res, 200, { ok: true, assessments: demo.demoAssessments() });
+        const auser = aid ? users.getUserAdmin(aid) : null;
+        if (!auser) return json(res, 404, { ok: false, error: "לא נמצא" });
+        return json(res, 200, {
+          ok: true,
+          assessments: await assess.getAssessments(aid, auser, { force: q.get("force") === "1" }),
         });
       }
 
@@ -274,9 +302,21 @@ const server = http.createServer(async (req, res) => {
         if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
         const body = await readJsonBody(req, res);
         if (!body) return;
+        if (body.id === demo.DEMO_ID) return json(res, 400, { ok: false, error: "חשבון הדגמה — לא ניתן לעריכה." });
         const updated = users.updateUserFields(body.id, body.patch || {});
         if (!updated) return json(res, 404, { ok: false, error: "לא נמצא" });
         return json(res, 200, { ok: true, user: updated });
+      }
+
+      // קביעת סיסמה חדשה לתלמיד — מאחורי אימות-מחדש של סיסמת האדמין
+      if (au.pathname === "/api/admin/user/set-password") {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        const body = await readJsonBody(req, res);
+        if (!body) return;
+        if (body.id === demo.DEMO_ID) return json(res, 400, { ok: false, error: "חשבון הדגמה — לא ניתן לשנות סיסמה." });
+        if (!adminAuth.verify(body.adminPassword)) return json(res, 403, { ok: false, error: "סיסמת האדמין שגויה." });
+        const r = users.setPassword(body.id, body.password);
+        return json(res, r.ok ? 200 : 400, r);
       }
 
       if (au.pathname === "/api/admin/user/delete") {
@@ -284,6 +324,7 @@ const server = http.createServer(async (req, res) => {
         const body = await readJsonBody(req, res);
         if (!body) return;
         if (!body.id) return json(res, 400, { ok: false, error: "חסר מזהה" });
+        if (body.id === demo.DEMO_ID) return json(res, 400, { ok: false, error: "חשבון הדגמה — לא ניתן למחיקה." });
         memory.deleteUserMemory(body.id);
         learnerProfile.deleteUser(body.id);
         progress.deleteUser(body.id);
@@ -420,10 +461,58 @@ const server = http.createServer(async (req, res) => {
         geometry: body.geometry || null,
         occupied: Array.isArray(body.occupied) ? body.occupied : [],
         layout: Array.isArray(body.layout) ? body.layout : [],
+        phase: typeof body.phase === "string" ? body.phase : "",
+        name: teachUser?.username || "",
         userId,
       });
       console.log(`[timing] teach total: ${Date.now() - tTeach}ms`);
       return json(res, 200, result);
+    }
+
+    /* ---------------- API: אותות-למידה — אזור הלמידה כותב לזיכרון (הפרופיל המשותף) ---------------- */
+
+    // כל תשובה (נכונה/שגויה) על תרגיל בשיעור מעדכנת את הפרופיל — כמו שהתרגול עושה.
+    // בלי זה המורה "לא זוכר את השיעור" (הפרופיל היה נכתב רק מהתרגול).
+    if (url.startsWith("/api/learn-signal")) {
+      if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+      const userId = sessions.currentUserId(req);
+      if (!userId) return json(res, 401, { error: "Not authenticated" });
+      const body = await readJsonBody(req, res);
+      if (!body) return;
+      const rawTopic = String(body.topic || "").trim().slice(0, 80);
+      if (!rawTopic) return json(res, 400, { ok: false, error: "missing_topic" });
+      // נירמול-נושא: אם הכותרת היא מפתח בתכנית-הלימודים של כיתת הילד — משתמשים בו (אותו מפתח כמו התרגול).
+      const sigUser = users.getUserById(userId);
+      let topic = rawTopic;
+      try {
+        const leaf = findLeaf(gradeToNum(sigUser?.grade), rawTopic);
+        if (leaf && leaf.key) topic = leaf.key;
+      } catch { /* נשארים עם הכותרת כפי שהיא */ }
+      const t = learnerProfile.record(userId, {
+        topic,
+        correct: body.correct === true ? true : body.correct === false ? false : null,
+        note: typeof body.note === "string" ? body.note : undefined,
+        repr: typeof body.repr === "string" ? body.repr : undefined,
+      });
+      return json(res, 200, { ok: true, status: t ? t.status : null });
+    }
+
+    // סגירת שיעור: רושמת רשומה בפנקס ומקדמת את מספר-השיעור.
+    if (url.startsWith("/api/lesson-end")) {
+      if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+      const userId = sessions.currentUserId(req);
+      if (!userId) return json(res, 401, { error: "Not authenticated" });
+      const body = await readJsonBody(req, res);
+      if (!body) return;
+      const nextN = learnerProfile.endLesson(userId, {
+        topic: body.topic,
+        subtopic: body.subtopic,
+        worked: body.worked,
+        struggle: body.struggle,
+        openLoop: body.openLoop,
+        endedStatus: body.endedStatus,
+      });
+      return json(res, 200, { ok: true, nextLesson: nextN });
     }
 
     /* ---------------- API: דיבור (STT/TTS) — דורש התחברות ---------------- */
