@@ -46,11 +46,16 @@ async function visionDescribeBoard(p = {}) {
   }
 
   const system = buildSystem({ gender, profileText, topic: p.topic || "" });
+  // אם המורה ביקש מהילד לצייר משהו — הראייה מעריכה את הציור מול הבקשה (בעדינות, בלי "טעית"):
+  // קודם מה שכן נכון, ואז רמז מה להשלים. זה הופך "תיאור" ל"בדיקת-הבנה".
+  const askCtx = p.lastTeacherMsg
+    ? `ההודעה האחרונה שלך לילד הייתה: "${String(p.lastTeacherMsg).replace(/"/g, "'")}". אם ביקשת בה ממנו לצייר משהו — בדוק/י בעדינות אם הציור תואם: שבח/י קודם את מה שכן נכון, ואם חסר משהו רמוז/י מה להשלים (בלי לומר 'טעית' ובלי לצייר במקומו). `
+    : "";
   const messages = [
     {
       role: "user",
       content: [
-        { type: "text", text: "זה מה שציירתי על הלוח. מה את/ה רואה?" },
+        { type: "text", text: askCtx + "זה מה שציירתי על הלוח. מה את/ה רואה?" },
         { type: "image", source: { type: "base64", media_type: mediaType, data: image } },
       ],
     },

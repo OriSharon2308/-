@@ -7,6 +7,7 @@ const llm = require("../lib/llm");
 const { genderize } = require("../lib/gender");
 const learnerProfile = require("../lib/learner-profile");
 const methods = require("../lib/teaching-methods"); // שיטות-לימוד שמורות — מציגים ישר, בלי לחשוב מחדש
+const course = require("../lib/course"); // מערכי-שיעור — הפרוגרסיה הפדגוגית לכל נושא
 const { BOARD_TOOLS } = require("../lib/board-tools");
 const { catalogPromptSection } = require("../lib/teaching-tools"); // מאגר הכלים: נושא → הויזואל → הכלי
 
@@ -27,7 +28,13 @@ const OPENING_TEMPLATES = [
 
 // בונה ברכת-פתיחה מתבנית + היזכרות דטרמיניסטית מהפנקס. בלי AI — אפס המתנה, אפס טוקנים.
 function buildOpeningGreeting({ name, topic, userId }) {
-  let n = 1, recall = "";
+  let n = 1, recall = "", topicLabel = topic || "מתמטיקה";
+  try {
+    // אם יש מערך-שיעור לנושא — הברכה אומרת בדיוק מה לומדים היום ("כפל: קבוצות שוות")
+    const tn = learnerProfile.topicLessonNumber(userId, topic);
+    const plan = course.planFor(topic, tn);
+    if (plan) topicLabel = `${topic}: ${plan.title}`;
+  } catch (e) { /* מערך לא קריטי */ }
   try {
     n = learnerProfile.currentLessonNumber(userId);
     const j = learnerProfile.get(userId);
@@ -42,7 +49,7 @@ function buildOpeningGreeting({ name, topic, userId }) {
   } catch (e) { /* פנקס לא קריטי */ }
   const tpl = OPENING_TEMPLATES[(n - 1) % OPENING_TEMPLATES.length];
   const who = name || "אלוף";
-  return tpl.replace(/\{name\}/g, who).replace(/\{topic\}/g, topic || "מתמטיקה").replace(/\{n\}/g, String(n)) + recall;
+  return tpl.replace(/\{name\}/g, who).replace(/\{topic\}/g, topicLabel).replace(/\{n\}/g, String(n)) + recall;
 }
 
 // הנחיות-שלב של נוהל-השיעור: מוזרקות להודעת-המשתמש (לא ל-system) כדי לא לשבור את ה-Prompt Cache.
@@ -65,7 +72,8 @@ const PHASE_DIRECTIVES = {
     "חשוב: הכלי-עזר בלי תווית-תשובה (label:\"\" בתבנית) — הילד סופר בעצמו, לא קורא את התשובה מהכלי. " +
     "לווה/י במשפט מנחה שמסביר איך להשתמש בעזר כדי לפתור. " +
     "כשהילד טועה או אומר שלא מצליח: השאלה נשארת! אל תחליף/י אותה, אל תחזור/י אחורה, אל תנקה/י את הלוח. " +
-    "קודם הסבר/י במילים ופרק/י לצעד הבא הקטן; אם צריך — הוסף/י כלי-עזר צמוד והסבר/י איך בדיוק להשתמש בו. הילד פותר את אותה שאלה עד הסוף.",
+    "קודם הסבר/י במילים ופרק/י לצעד הבא הקטן; אם צריך — הוסף/י כלי-עזר צמוד והסבר/י איך בדיוק להשתמש בו. הילד פותר את אותה שאלה עד הסוף. " +
+    "מדי פעם (כשזה מתאים לשיעור, לא בכל תרגיל) בקש/י מהילד לצייר בעצמו על הלוח ('צייר לי 3 קבוצות של 2 עיגולים') — כשיסיים וילחץ להראות לך, תראה/י את הציור בפועל ותגיב/י אליו. ציור-עצמאי הוא בדיקת-ההבנה הכי חזקה.",
   independent:
     "שלב תרגול עצמאי: תן/י 3 תרגילים (draw_exercise, כולם יחד) בלי מניפולטיב-עזר. " +
     "פתח/י במשפט קצר אחד כמו 'עכשיו תורך — נסה לבד, אני כאן אם צריך', ואז תן/י לו לעבוד בשקט. " +
@@ -159,14 +167,24 @@ async function teacherDraw(p = {}) {
     return { reply: genderize(greeting, gender), toolCalls: [], mode: "template", phase };
   }
 
+  // מערך-השיעור של הנושא (לפי כמה שיעורים הילד כבר סגר בנושא) + מפתח-השיטה — כל שיעור במערך הוא שיטה נפרדת.
+  let plan = null, methodKey = null;
+  if (p.topic) {
+    try {
+      const tn = learnerProfile.topicLessonNumber(p.userId, p.topic);
+      plan = course.planFor(p.topic, tn);
+      methodKey = methods.keyFor(p.topic, tn);
+    } catch (e) { /* מערך לא קריטי */ }
+  }
+
   // ── שלב הוראה: שיטת-לימוד שמורה ומאושרת → מציגים ישר (בלי AI, בלי לחשוב מחדש). ──
   // רק בכניסה הראשונה לשלב (הילד לחץ "בוא נתחיל"); "לא הבנתי" תמיד מגיע ל-AI כדי ללמד אחרת.
   const isInstructEntry = phase === "instruct" && /בוא נתחיל/.test(String(p.messageText || ""));
-  if (isInstructEntry && p.topic) {
-    const m = methods.getConfirmed(p.topic);
+  if (isInstructEntry && methodKey) {
+    const m = methods.getConfirmed(methodKey);
     if (m) {
-      methods.markUsed(p.topic);
-      console.log(`[method] replay for "${p.topic}" (uses=${(m.uses || 0) + 1}) — 0 tokens`);
+      methods.markUsed(methodKey);
+      console.log(`[method] replay for "${methodKey}" (uses=${(m.uses || 0) + 1}) — 0 tokens`);
       return { reply: genderize(m.reply, gender), toolCalls: m.toolCalls, mode: "method", phase };
     }
   }
@@ -182,6 +200,13 @@ async function teacherDraw(p = {}) {
 
   // נוהל-שיעור: הנחיית-השלב בהודעת-המשתמש — לא ב-system — כדי לשמור על ה-cache.
   let phaseLine = phase ? `\n[שלב השיעור — ${phase}: ${PHASE_DIRECTIVES[phase]}]` : "";
+  // מערך-השיעור: המורה מלמד את השיעור הספציפי ברצף (לא "משהו בנושא") — היסודות לפני החוקיות
+  if (plan && (phase === "instruct" || phase === "guided" || phase === "independent")) {
+    phaseLine +=
+      `\n[מערך השיעור (${plan.index}/${plan.total} בנושא): "${plan.title}". המטרה: ${plan.goal}.` +
+      (phase === "instruct" ? ` איך ללמד: ${plan.teach}` : " התרגילים חייבים לתרגל בדיוק את מטרת השיעור הזה — לא נושא כללי.") +
+      (plan.review ? " (זו חזרה והעמקה — הילד כבר עבר את זה; העלה מעט את הרמה.)" : "") + "]";
+  }
   // "לא הבנתי" בשלב ההוראה → המורה חושב מחדש ומלמד *אחרת* (לא חוזר על אותה שיטה)
   if (phase === "instruct" && !isInstructEntry) {
     phaseLine += "\n[הילד לא הבין את ההסבר הקודם — לַמד/י את אותו רעיון בדרך אחרת לגמרי: ייצוג שונה, דוגמה מהחיים, צעדים קטנים יותר. אל תחזור/י על אותו הסבר.]";
@@ -252,8 +277,8 @@ async function teacherDraw(p = {}) {
     let reply = (text || "").replace(/\*\*/g, "");
     if (!reply) reply = allCalls.length ? "הנה, סרטטתי לך על הלוח." : "ספר/י לי מה לסרטט ואני אצייר על הלוח.";
     // שיטת-לימוד חדשה (כניסה ראשונה להוראה) → נשמרת כמועמדת; תאושר כשילד ילחץ "✓ הבנתי"
-    if (isInstructEntry && p.topic && allCalls.length) {
-      try { methods.save(p.topic, { reply, toolCalls: allCalls }); } catch (e) { /* שמירת-שיטה לא קריטית */ }
+    if (isInstructEntry && methodKey && allCalls.length) {
+      try { methods.save(methodKey, { reply, toolCalls: allCalls }); } catch (e) { /* שמירת-שיטה לא קריטית */ }
     }
     reply = genderize(reply, gender);
     return { reply, toolCalls: allCalls, mode: "ai" };

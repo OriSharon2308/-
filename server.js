@@ -439,6 +439,8 @@ const server = http.createServer(async (req, res) => {
         gender: seeUser?.gender || "male",
         topic,
         userId,
+        // ההודעה האחרונה של המורה — כדי שהראייה תעריך את הציור מול מה שביקש ("צייר 3 קבוצות של 2")
+        lastTeacherMsg: typeof body.lastTeacherMsg === "string" ? body.lastTeacherMsg.slice(0, 400) : "",
       });
       console.log(`[timing] see total: ${Date.now() - tSee}ms`);
       return json(res, 200, result);
@@ -514,7 +516,10 @@ const server = http.createServer(async (req, res) => {
       if (!userId) return json(res, 401, { error: "Not authenticated" });
       const body = await readJsonBody(req, res);
       if (!body) return;
-      const ok = teachingMethods.confirm(String(body.topic || "").slice(0, 80));
+      // מפתח-השיטה זהה לזה של המורה: נושא + מספר-השיעור-בנושא (כל שיעור במערך = שיטה נפרדת)
+      const mkTopic = String(body.topic || "").slice(0, 80);
+      const mkKey = teachingMethods.keyFor(mkTopic, learnerProfile.topicLessonNumber(userId, mkTopic));
+      const ok = teachingMethods.confirm(mkKey);
       return json(res, 200, { ok });
     }
 

@@ -1151,10 +1151,17 @@
           sending = true;
           showLoadingUI(); // בדרך כלל הצ'אט סגור → בועת "חושב" ליד המורה; אם פתוח → typing בצ'אט
           try {
+            // ההודעה האחרונה של המורה מצורפת — כך הראייה בודקת את הציור מול מה שביקש ("צייר 3 קבוצות של 2")
+            var lastBot = "";
+            for (var hi = history.length - 1; hi >= 0; hi--) { if (history[hi].role === "assistant") { lastBot = history[hi].content; break; } }
             var res = await fetch("/api/see", {
               method: "POST",
               headers: { "content-type": "application/json" },
-              body: JSON.stringify({ image: imageDataUrl, topic: { title: new URLSearchParams(location.search).get("topic") || "" } }),
+              body: JSON.stringify({
+                image: imageDataUrl,
+                topic: { title: (window.velaLesson && window.velaLesson.topic) || "" },
+                lastTeacherMsg: String(lastBot).slice(0, 400),
+              }),
             });
             if (res.status === 401) { clearLoadingUI(); if (isOpen()) addMsg("bot", "צריך להתחבר מחדש 🙂"); else showBubble("צריך להתחבר מחדש 🙂"); setTimeout(function () { location.href = "/auth"; }, 1100); return; }
             var data = await res.json();
@@ -1482,6 +1489,27 @@
         var L = window.velaLesson;
         var btn = document.getElementById("advanceBtn");
 
+        // ── המשכיות: ילד שסגר טאב באמצע שיעור חוזר לאותו שלב, לא לפתיחה מחדש ──
+        var STATE_KEY = "vela_lesson_state_" + (L.topic || "");
+        function saveState() { try { localStorage.setItem(STATE_KEY, JSON.stringify({ phase: L.phase, ts: Date.now() })); } catch (e) {} }
+        function clearState() { try { localStorage.removeItem(STATE_KEY); } catch (e) {} }
+        var PHASE_HE = { instruct: "ההסבר", guided: "התרגול המודרך", independent: "התרגול העצמאי", closing: "סיכום השיעור" };
+        function tryResume() {
+          if (!L.active) return false;
+          var st = null;
+          try { st = JSON.parse(localStorage.getItem(STATE_KEY) || "null"); } catch (e) {}
+          if (!st || !PHASE_HE[st.phase]) return false;
+          if (Date.now() - (st.ts || 0) > 24 * 3600 * 1000) { clearState(); return false; } // ישן מדי → שיעור טרי
+          L.phase = st.phase;
+          // המורה מקבל את הילד בחזרה ומציג מחדש את תוכן השלב (התוכן על הלוח לא שרד את הרענון)
+          setTimeout(function () {
+            if (window.velaTeachFollowup) window.velaTeachFollowup(
+              "(הילד חזר לשיעור אחרי הפסקה, באמצע שלב " + PHASE_HE[st.phase] + ". קבל אותו בחזרה במשפט חם אחד ('איזה כיף שחזרת!') והצג מחדש את התוכן של השלב הזה.)"
+            );
+          }, 400);
+          return true;
+        }
+
         // ✓-להמשך — הילד קובע מתי ממשיכים. show(label) / hide().
         window.velaAdvance = {
           show: function (label) { btn.textContent = label || "✓ הבנתי, אפשר להמשיך"; btn.disabled = false; btn.classList.add("is-show"); },
@@ -1503,6 +1531,7 @@
             window.velaClearNext = false;
             window.velaAdvance.show(prevLabel || "✓ הבנתי, אפשר להמשיך");
           }
+          saveState(); // ההמשכיות: השלב הנוכחי נשמר — סגירת-טאב לא מאפסת את השיעור
         }
 
         btn.addEventListener("click", function () {
@@ -1520,6 +1549,7 @@
           } else if (ph === "closing") {
             // סיום שיעור: פנקס + מספר-שיעור מתקדם, ואז בחירה: תרגול / שיעור הבא / להישאר
             window.velaAdvance.hide();
+            clearState(); // השיעור נסגר — הכניסה הבאה מתחילה שיעור חדש (לא "חוזרת לאמצע")
             try {
               fetch("/api/lesson-end", {
                 method: "POST",
@@ -1590,11 +1620,12 @@
         function startLesson() {
           intro.classList.remove("is-show");
           L.phase = "instruct";
+          saveState();
           if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד לחץ 'בוא נתחיל' — הוא מוכן. התחל את שלב ההוראה של השיעור.)");
         }
         introStart.addEventListener("click", startLesson);
 
-        if (L.active) {
+        if (L.active && !tryResume()) {
           // משכפלים את אווטאר-המורה (אותה דמות בדיוק) אל מרכז המסך
           var fabSvg = document.querySelector("#teacherFab .teacherFab__art svg");
           if (fabSvg && introAvatar) introAvatar.appendChild(fabSvg.cloneNode(true));
