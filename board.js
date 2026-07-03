@@ -644,13 +644,16 @@
     draw_exercise: function (i) {
       var tsize0 = 38, top = 116, rowH = 96, margin = 44, gap0 = 16;
       var kind = i.kind === "text" ? "text" : "number";
-      var side = kind === "text" ? "left" : "right"; // מילולי → תיבה משמאל (סוף משפט RTL); מספרי → תיבה מימין (אחרי ה-=)
+      var text = String(i.text == null ? "" : i.text).slice(0, 80).trim();
+      // הצד והכיוון נקבעים לפי *שפת הטקסט*, לא לפי סוג התשובה (דטרמיניסטי — לא תלוי בסיווג של המורה):
+      // משפט בעברית ("3 עשרות ו-7 אחדות") → RTL, תיבה בסוף המשפט = שמאל. ביטוי סימבולי ("35 + 24") → LTR, תיבה מימין.
+      var hasHebrew = /[֐-׿]/.test(text);
+      var side = hasHebrew ? "left" : "right";
       var bw = kind === "text" ? 150 : 60, bh = kind === "text" ? 56 : 52;
       var perCol = Math.max(1, Math.floor((this.H - top) / rowH)); // כמה תרגילים נכנסים בעמודה
       var slot = this._exSlot || 0, col = Math.floor(slot / perCol), row = slot % perCol;
       var y = top + row * rowH;
-      // התיבה היא מקום התשובה: בתרגיל מספרי מנקים "?" מיותר ומוודאים סיום ב-"="; בשאלה מילולית משאירים את ה-"?".
-      var text = String(i.text == null ? "" : i.text).slice(0, 80).trim();
+      // התיבה היא מקום התשובה: בתרגיל מספרי מנקים "?" מיותר ומוודאים סיום ב-"=".
       if (kind === "number") { text = text.replace(/\s*\?\s*$/, "").trim(); if (!/[=:]\s*$/.test(text)) text += " ="; }
       this.ctx.font = "700 " + tsize0 + "px Fredoka, Assistant, sans-serif";
       var tw = this.ctx.measureText(text).width;
