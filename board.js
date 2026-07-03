@@ -53,7 +53,7 @@
   }
 
   // רוחב מצויר של בלוקי בסיס-10 לערך — מקור-אמת יחיד שמשמש גם ברינדור וגם ב-bbox (כדי שיהיו עקביים).
-  var B10 = { u: 6, flat: 60, gGroup: 16, gIn: 4 }; // יחידה, ריבוע-מאה, רווח בין קבוצות, רווח פנימי
+  var B10 = { u: 11, flat: 110, gGroup: 28, gIn: 7 }; // יחידה, ריבוע-מאה, רווח בין קבוצות, רווח פנימי — גדול וברור לילד
   function base10Width(value) {
     var v = clamp(Math.round(value || 0), 0, 999), nH = Math.floor(v / 100), nT = Math.floor((v % 100) / 10), nO = v % 10, w = 0;
     if (nH > 0) w += nH * B10.flat + (nH - 1) * B10.gIn;
@@ -329,7 +329,8 @@
     var cx = (bbox.minX + bbox.maxX) / 2, cy = (bbox.minY + bbox.maxY) / 2;
     var s = this._safe || { left: 0, right: 0, top: 0, bottom: 0 };
     var availW = Math.max(160, this.W - s.left - s.right), availH = Math.max(160, this.H - s.top - s.bottom);
-    var scale = clamp(Math.min(availW / bw, availH / bh), this.minScale, 1);
+    // מתקרבים עד 160% כשהתוכן קומפקטי — הילד מקבל את הדברים בגדול, הלוח "משחק עם עצמו" ומביא את התוכן קרוב
+    var scale = clamp(Math.min(availW / bw, availH / bh), this.minScale, 1.6);
     var rx = s.left + availW / 2, ry = s.top + availH / 2; // מרכז האזור הפנוי (לא מתחת לצ'אט/סרגלים)
     this.animateView({ x: rx - cx * scale, y: ry - cy * scale, scale: scale }, dur);
   };
@@ -349,7 +350,7 @@
       return { minX: o.x - ahw, minY: o.y - agh / 2 - 8, maxX: o.x + ahw, maxY: o.y + agh / 2 + 48 };
     }
     if (o.type === "bar_model") { var bw = o.w || 380, bh = o.h || 50; return { minX: o.x - bw / 2, minY: o.y - bh / 2 - 30, maxX: o.x + bw / 2, maxY: o.y + bh / 2 }; }
-    if (o.type === "base_ten") { var b10w = base10Width(o.value || 0); return { minX: o.x - b10w / 2 - 6, minY: o.y - 36, maxX: o.x + b10w / 2 + 6, maxY: o.y + 64 }; }
+    if (o.type === "base_ten") { var b10w = base10Width(o.value || 0); return { minX: o.x - b10w / 2 - 6, minY: o.y - B10.flat / 2 - 6, maxX: o.x + b10w / 2 + 6, maxY: o.y + B10.flat / 2 + 46 }; }
     if (o.x != null && o.y != null) return { minX: o.x - 20, minY: o.y - 20, maxX: o.x + 20, maxY: o.y + 20 };
     return null;
   };
@@ -562,8 +563,8 @@
       for (var tt = 0; tt < nT; tt++) { b10grid(px, topY, 1, 10); px += u + (tt < nT - 1 ? B10.gIn : 0); }
       if (nT > 0 && nO > 0) px += B10.gGroup;
       for (var oo = 0; oo < nO; oo++) b10grid(px, topY + (9 - oo) * u, 1, 1); // יחידות כעמודה
-      ctx.fillStyle = COLORS.text; ctx.font = "700 24px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top"; ctx.direction = "ltr";
-      ctx.fillText(o.label != null ? String(o.label) : String(bv), o.x, topY + flat + 10);
+      ctx.fillStyle = COLORS.text; ctx.font = "700 30px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top"; ctx.direction = "ltr";
+      ctx.fillText(o.label != null ? String(o.label) : String(bv), o.x, topY + flat + 12);
     }
   };
 
