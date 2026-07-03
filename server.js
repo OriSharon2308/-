@@ -24,6 +24,7 @@ const adminAuth = require("./lib/admin-auth"); // אימות אזור הניהו
 const analytics = require("./lib/analytics"); // סדרות-זמן + סיכומים לתלמיד
 const assess = require("./lib/assessments"); // הערכות מורה/פסיכולוג/מתמטיקאי (מטמון)
 const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנק השאלות)
+const teachingMethods = require("./lib/teaching-methods"); // שיטות-לימוד שמורות (אישור ✓-הבנתי)
 const demo = require("./lib/demo"); // תלמיד-דוגמה קבוע (קריאה בלבד)
 
 const ROOT = __dirname;
@@ -462,7 +463,7 @@ const server = http.createServer(async (req, res) => {
         occupied: Array.isArray(body.occupied) ? body.occupied : [],
         layout: Array.isArray(body.layout) ? body.layout : [],
         phase: typeof body.phase === "string" ? body.phase : "",
-        name: teachUser?.username || "",
+        name: (teachUser?.username || "").replace(/_/g, " "), // קו-תחתון → רווח: "דני_כהן" נשמע "דני כהן"
         userId,
       });
       console.log(`[timing] teach total: ${Date.now() - tTeach}ms`);
@@ -479,22 +480,42 @@ const server = http.createServer(async (req, res) => {
       if (!userId) return json(res, 401, { error: "Not authenticated" });
       const body = await readJsonBody(req, res);
       if (!body) return;
-      const rawTopic = String(body.topic || "").trim().slice(0, 80);
+      // ניקוי-קלט: הנושא נכנס לפרופיל שמוזרק ל-prompt — בלי שורות-חדשות/סוגריים (מניעת הזרקה), באורך שפוי.
+      const rawTopic = String(body.topic || "").replace(/[\n\r\[\]{}<>]/g, " ").replace(/\s+/g, " ").trim().slice(0, 60);
       if (!rawTopic) return json(res, 400, { ok: false, error: "missing_topic" });
-      // נירמול-נושא: אם הכותרת היא מפתח בתכנית-הלימודים של כיתת הילד — משתמשים בו (אותו מפתח כמו התרגול).
+      // נירמול-נושא: מאמצים מפתח-תכנית רק בהתאמה מדויקת (fallback של נושא-אב מחזיר תת-נושא ראשון — היה משנה את השם בטעות).
       const sigUser = users.getUserById(userId);
       let topic = rawTopic;
       try {
         const leaf = findLeaf(gradeToNum(sigUser?.grade), rawTopic);
-        if (leaf && leaf.key) topic = leaf.key;
+        if (leaf && leaf.key === rawTopic) topic = leaf.key;
       } catch { /* נשארים עם הכותרת כפי שהיא */ }
+      // תקרת-נושאים: פרופיל לא גדל בלי סוף (הוא נכנס ל-prompt של המורה בכל קריאה)
+      const profNow = learnerProfile.get(userId);
+      const isNewTopic = !profNow.topics[topic];
+      if (isNewTopic && Object.keys(profNow.topics).length >= 40) {
+        return json(res, 200, { ok: false, error: "too_many_topics" });
+      }
+      // repr רק מרשימת-הייצוגים המוכרת (הלקוח שולח מ-TOOL_REPR; לא טקסט חופשי ל-prompt)
+      const ALLOWED_REPR = new Set(["ציר מספרים", "מוט שבר", "שבר אינטראקטיבי", "מערך נקודות", "מערך כפל", "בלוקי בסיס-10", "מודל מוט", "לוח עשר", "לוח מאה", "לוח הכפל", "אובייקטים לספירה", "מטבעות", "שעון", "כלי מותאם"]);
+      const repr = typeof body.repr === "string" && ALLOWED_REPR.has(body.repr) ? body.repr : undefined;
       const t = learnerProfile.record(userId, {
         topic,
         correct: body.correct === true ? true : body.correct === false ? false : null,
-        note: typeof body.note === "string" ? body.note : undefined,
-        repr: typeof body.repr === "string" ? body.repr : undefined,
+        repr,
       });
       return json(res, 200, { ok: true, status: t ? t.status : null });
+    }
+
+    // אישור שיטת-לימוד: הילד לחץ "✓ הבנתי" אחרי ההסבר → השיטה עבדה ותוצג ישר לתלמיד הבא (בלי AI).
+    if (url.startsWith("/api/method-ok")) {
+      if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+      const userId = sessions.currentUserId(req);
+      if (!userId) return json(res, 401, { error: "Not authenticated" });
+      const body = await readJsonBody(req, res);
+      if (!body) return;
+      const ok = teachingMethods.confirm(String(body.topic || "").slice(0, 80));
+      return json(res, 200, { ok });
     }
 
     // סגירת שיעור: רושמת רשומה בפנקס ומקדמת את מספר-השיעור.
@@ -504,13 +525,15 @@ const server = http.createServer(async (req, res) => {
       if (!userId) return json(res, 401, { error: "Not authenticated" });
       const body = await readJsonBody(req, res);
       if (!body) return;
+      // שדות-הפנקס נבנים בשרת, לא מהלקוח (הם מוזרקים ל-prompt): worked מהפרופיל; endedStatus מרשימה סגורה.
+      const endTopic = String(body.topic || "").replace(/[\n\r\[\]{}<>]/g, " ").trim().slice(0, 80);
+      const endProf = learnerProfile.get(userId);
+      const endT = endProf.topics[endTopic];
       const nextN = learnerProfile.endLesson(userId, {
-        topic: body.topic,
-        subtopic: body.subtopic,
-        worked: body.worked,
-        struggle: body.struggle,
-        openLoop: body.openLoop,
-        endedStatus: body.endedStatus,
+        topic: endTopic,
+        subtopic: String(body.subtopic || "").replace(/[\n\r\[\]{}<>]/g, " ").trim().slice(0, 80),
+        worked: endT && endT.repr ? endT.repr : "",
+        endedStatus: body.endedStatus === "partial" ? "partial" : "completed",
       });
       return json(res, 200, { ok: true, nextLesson: nextN });
     }

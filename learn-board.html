@@ -927,10 +927,10 @@
         var form = document.getElementById("chatForm");
         var input = document.getElementById("chatInput");
         var history = [];
-        var greeted = false;
+        var greeted = window.velaLesson && window.velaLesson.active; // בשיעור — הברכה כבר קרתה באוברליי, בלי ברכה כפולה בצ'אט
         var sending = false;
-        var pendingFollowup = null; // followup שממתין אם כרגע יש קריאה בתהליך
-        function flushPending() { if (pendingFollowup && !sending) { var p = pendingFollowup; pendingFollowup = null; teacherFollowup(p); } }
+        var pendingFollowups = []; // תור followups (FIFO) — לא נדרסים זה על זה
+        function flushPending() { if (pendingFollowups.length && !sending) { teacherFollowup(pendingFollowups.shift()); } }
         var bubble = document.getElementById("teacherBubble");
         var bubbleBody = document.getElementById("teacherBubbleBody");
 
@@ -957,7 +957,12 @@
           else bubbleBody.textContent = "";
         }
         // טקסט סופי תמיד מוודא שהבועה גלויה (כדי שתשובה לא "תיכתב" לבועה מוסתרת ותאבד) + מתחיל ספירה לסגירה.
-        function setBubble(text) { bubble.classList.add("is-show"); bubbleLoading = false; bubbleBody.textContent = text; startBubbleTimer(); }
+        // בשלבי הסבר/סגירה של שיעור — הבועה לא נעלמת לבד: היא נשארת עד שהילד מאשר ✓ שהבין.
+        function setBubble(text) {
+          bubble.classList.add("is-show"); bubbleLoading = false; bubbleBody.textContent = text;
+          var ph = window.velaLesson && window.velaLesson.phase;
+          if (ph === "instruct" || ph === "closing") clearBubbleTimer(); else startBubbleTimer();
+        }
         function showBubble(text) { setBubble(text); }
         function hideBubble() { bubble.classList.remove("is-show"); bubbleLoading = false; clearBubbleTimer(); }
         bubble.addEventListener("mouseenter", function () { bubbleHover = true; clearBubbleTimer(); });
@@ -1038,6 +1043,7 @@
         };
         async function postTeach(payloadText) {
           var sc = board.getScene ? board.getScene() : null;
+          var phReq = (window.velaLesson && window.velaLesson.phase) || "free"; // השלב בזמן השליחה — לא השלב החי (מניעת מרוץ)
           var res = await fetch("/api/teach", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -1048,12 +1054,15 @@
               geometry: sc ? sc.geometry : null,
               occupied: boardOccupied(),
               layout: board.getLayout ? board.getLayout() : [], // פריסת הלוח (id+מיקום) — שהמורה יוכל לסדר בעצמו
-              phase: (window.velaLesson && window.velaLesson.phase) || "free", // שלב נוהל-השיעור
+              phase: phReq, // שלב נוהל-השיעור
             }),
           });
           if (res.status === 401) throw { auth: true };
           var data = await res.json();
           if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
+            // ניקוי-מעבר-שלב: מנקים תוכן-מורה רק עכשיו, אחרי שהתשובה החדשה הגיעה בשלום —
+            // ורק תוכן-מורה (clearTeacher): הקישקושים של הילד לעולם לא נמחקים.
+            if (window.velaClearNext) { window.velaClearNext = false; if (board.clearTeacher) board.clearTeacher(); }
             board.runTools(data.toolCalls);
             // זוכרים את הייצוג האחרון שהמורה השתמש בו ("מה עבד" — יישלח לזיכרון עם תשובה נכונה)
             for (var ri = data.toolCalls.length - 1; ri >= 0; ri--) {
@@ -1065,10 +1074,10 @@
             var addedFocus = data.toolCalls.some(function (tc) { return tc && FOCAL[tc.name]; });
             if (addedFocus && window.arrangeBoard) setTimeout(function () { window.arrangeBoard(); }, 240);
           }
-          // בשלב ההוראה/הסגירה — אחרי שהמורה סיים לדבר, מדליקים ✓-להמשך (הילד קובע מתי ממשיכים)
-          var ph = window.velaLesson && window.velaLesson.phase;
-          if (window.velaAdvance && (ph === "instruct" || ph === "closing")) {
-            window.velaAdvance.show(ph === "closing" ? "✓ סיים שיעור" : "✓ הבנתי, אפשר להמשיך");
+          // בשלב ההוראה/הסגירה — אחרי שהמורה סיים לדבר, מדליקים ✓-להמשך (הילד קובע מתי ממשיכים).
+          // לפי שלב-השליחה (phReq) ולא השלב החי — שתגובה איטית מפתיחה לא תדליק כפתור בשלב שגוי.
+          if (window.velaAdvance && (phReq === "instruct" || phReq === "closing")) {
+            window.velaAdvance.show(phReq === "closing" ? "✓ סיים שיעור" : "✓ הבנתי, אפשר להמשיך");
           }
           return (data && data.reply) || "";
         }
@@ -1102,8 +1111,9 @@
         }
 
         // המשך אוטומטי (אחרי תשובה נכונה/שגויה) — בלי בועת "אני", רק תגובת המורה.
+        // מחזיר true בהצלחה / false בכשל — כדי שמעברי-שלב יוכלו להתאושש (ולא להיתקע בשקט).
         async function teacherFollowup(payloadText) {
-          if (sending) { pendingFollowup = payloadText; return; } // ממתינים לסיום הקריאה הנוכחית
+          if (sending) { pendingFollowups.push(payloadText); return true; } // נכנס לתור, לא נדרס
           sending = true;
           history.push({ role: "user", content: payloadText });
           showLoadingUI(); // צ'אט פתוח → typing בצ'אט; סגור → בועת חשיבה ליד המורה
@@ -1114,9 +1124,13 @@
               addMsg("bot", reply); history.push({ role: "assistant", content: reply });
               if (!isOpen()) showBubble(reply); // צ'אט סגור → התשובה בבועה
             } else if (!isOpen()) hideBubble(); // אין תשובה → לסגור את בועת החשיבה
+            return true;
           } catch (err) {
             clearLoadingUI();
-            if (!isOpen()) hideBubble();
+            // כשל רשת לא נבלע בשקט — הילד מקבל הודעה ברורה במקום מסך תקוע
+            var em = err && err.auth ? "צריך להתחבר מחדש 🙂" : "אופס, הרשת נפלה לרגע. לחץ שוב על הכפתור 🙂";
+            if (isOpen()) addMsg("bot", em); else showBubble(em);
+            return false;
           } finally {
             sending = false; flushPending();
           }
@@ -1161,7 +1175,12 @@
 
         // נקודות כניסה ל"המורה יבין מה ציירתי": ראייה (תמונה) או תיאור מובנה (גיבוי).
         window.velaSeeBoard = seeBoard;
-        window.velaBubble = function (text) { openBubble(false); setBubble(text); }; // בועה עם טקסט (למשל לוח ריק)
+        // הודעת-מורה במקום אחד בלבד: צ'אט פתוח → בצ'אט; סגור → בבועה. לא בשניהם.
+        window.velaBubble = function (text) {
+          if (isOpen()) { addMsg("bot", text); return; }
+          openBubble(false); setBubble(text);
+        };
+        window.velaBubbleHide = hideBubble; // לסגירת בועת-ההסבר כשהילד לוחץ ✓ (היא לא נסגרת לבד בשלב הסבר)
         window.velaAskBoard = function (displayText, payloadText) { sendToTeacher(displayText, payloadText); };
       })();
 
@@ -1469,11 +1488,21 @@
           hide: function () { btn.classList.remove("is-show"); },
         };
 
-        // מעבר-שלב: קובעים את השלב החדש לפני הקריאה (ההנחיה בשרת נגזרת ממנו), ואז המשך-שיחה.
-        function goto(phase, followupText) {
+        // מעבר-שלב עם התאוששות: אם קריאת-ההמשך נכשלה — חוזרים לשלב הקודם ומחזירים את הכפתור
+        // (בלי זה, כשל-רשת ברגע הלחיצה היה תוקע את השיעור בלי דרך להמשיך).
+        // clearBefore: תוכן-המורה מנוקה רק אחרי שהתשובה החדשה הגיעה (velaClearNext), ורק תוכן-מורה — לא ציורי הילד.
+        async function goto(phase, followupText, clearBefore, prevLabel) {
+          var prevPhase = L.phase;
           L.phase = phase;
           window.velaAdvance.hide();
-          if (window.velaTeachFollowup) window.velaTeachFollowup(followupText);
+          if (window.velaBubbleHide) window.velaBubbleHide(); // בועת-ההסבר סיימה את תפקידה — הילד אישר
+          if (clearBefore) window.velaClearNext = true;
+          var ok = window.velaTeachFollowup ? await window.velaTeachFollowup(followupText) : false;
+          if (!ok) { // כשל → חזרה למצב הקודם, הכפתור חוזר, הילד פשוט לוחץ שוב
+            L.phase = prevPhase;
+            window.velaClearNext = false;
+            window.velaAdvance.show(prevLabel || "✓ הבנתי, אפשר להמשיך");
+          }
         }
 
         btn.addEventListener("click", function () {
@@ -1481,15 +1510,15 @@
           btn.disabled = true; // פידבק מיידי + מניעת לחיצה-כפולה (יש המתנה למורה)
           var ph = L.phase;
           if (ph === "instruct") {
-            goto("guided", "(הילד לחץ '✓ להמשך' — הוא הבין את ההסבר ומוכן לתרגל. עבור לשלב התרגול המודרך.)");
+            // הילד אישר שהבין → שיטת-הלימוד עבדה: נשמרת ותוצג ישר לתלמיד הבא (בלי AI)
+            try { fetch("/api/method-ok", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ topic: L.topic }) }); } catch (e) { /* לא חוסם */ }
+            goto("guided", "(הילד לחץ '✓ להמשך' — הוא הבין את ההסבר ומוכן לתרגל. עבור לשלב התרגול המודרך.)", true, "✓ הבנתי, אפשר להמשיך");
           } else if (ph === "guided") {
-            if (board.tool) board.tool("clear_board", {}); // מפנים את התרגיל המודרך לפני העצמאי
-            goto("independent", "(הילד פתר את התרגיל המודרך ולחץ להמשיך. עבור לשלב התרגול העצמאי.)");
+            goto("independent", "(הילד פתר את התרגיל המודרך ולחץ להמשיך. עבור לשלב התרגול העצמאי.)", true, "✓ אפשר להמשיך");
           } else if (ph === "independent") {
-            if (board.tool) board.tool("clear_board", {});
-            goto("closing", "(הילד סיים את כל התרגול העצמאי בהצלחה. עבור לסגירת השיעור.)");
+            goto("closing", "(הילד סיים את כל התרגול העצמאי בהצלחה. עבור לסגירת השיעור: שאל אותו שאלת-הבנה מילולית.)", true, "✓ אפשר להמשיך");
           } else if (ph === "closing") {
-            // סיום שיעור: רושמים בפנקס ומקדמים את מספר-השיעור. הלוח נשאר פתוח לחקירה חופשית.
+            // סיום שיעור: פנקס + מספר-שיעור מתקדם, ואז בחירה: תרגול / שיעור הבא / להישאר
             window.velaAdvance.hide();
             try {
               fetch("/api/lesson-end", {
@@ -1500,14 +1529,43 @@
             } catch (e) { /* הפנקס לא חוסם */ }
             L.phase = "free";
             if (window.velaConfetti) window.velaConfetti();
-            if (window.velaBubble) window.velaBubble("סיימנו את השיעור — היית מדהים! אפשר להישאר ולצייר חופשי 🎨");
+            showDonePanel();
           } else {
             // מצב חופשי: "עוד סבב" אחרי שפתר הכל
-            if (board.tool) board.tool("clear_board", {});
             window.velaAdvance.hide();
+            window.velaClearNext = true;
             if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד פתר נכון את כל התרגילים ולחץ להמשיך. שבח אותו בקצרה ותן סבב חדש של תרגילים באותו נושא עם draw_exercise.)");
           }
         });
+
+        // ── פאנל סיום-שיעור: התרגול והלמידה מחוברים — מסיימים שיעור ועוברים לתרגל את מה שלמדנו ──
+        function showDonePanel() {
+          var intro2 = document.getElementById("lessonIntro");
+          var bub = document.getElementById("introBubble");
+          var startB = document.getElementById("introStart");
+          startB.classList.remove("is-show");
+          bub.innerHTML = "";
+          var head = document.createElement("span");
+          head.className = "introLine is-in";
+          head.textContent = "🎉 כל הכבוד! סיימת את השיעור על " + (L.topic || "הנושא") + "!";
+          bub.appendChild(head);
+          var row = document.createElement("div");
+          row.style.cssText = "display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px";
+          [
+            ["🎯 לתרגל את מה שלמדנו", function () { location.href = "/practice"; }],
+            ["▶ לשיעור הבא", function () { location.reload(); }],
+            ["🎨 להישאר בלוח", function () { intro2.classList.remove("is-show"); }],
+          ].forEach(function (op) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.textContent = op[0];
+            b.style.cssText = "height:46px;padding:0 20px;border-radius:999px;border:none;cursor:pointer;background:var(--teal);color:#fff;font-family:Fredoka,Assistant,sans-serif;font-weight:600;font-size:16px;box-shadow:0 6px 18px rgba(13,148,136,0.3)";
+            b.addEventListener("click", op[1]);
+            row.appendChild(b);
+          });
+          bub.appendChild(row);
+          intro2.classList.add("is-show");
+        }
 
         // ── פתיחת שיעור: המורה מגיע למרכז, מברך בשם, והילד לוחץ "בוא נתחיל" ──
         var intro = document.getElementById("lessonIntro");
@@ -1541,26 +1599,31 @@
           var fabSvg = document.querySelector("#teacherFab .teacherFab__art svg");
           if (fabSvg && introAvatar) introAvatar.appendChild(fabSvg.cloneNode(true));
           intro.classList.add("is-show");
-          // הברכה מגיעה מהמורה (אישית, עם הפנקס). יורים מיד — האנימציה מכסה את ההמתנה.
-          var greetP = window.velaPostTeach
-            ? window.velaPostTeach("(פתיחת שיעור: ברך את הילד לקראת השיעור של היום.)")
-            : Promise.reject(new Error("no-teach"));
-          greetP.then(function (reply) {
-            showGreeting(reply);
-            // הברכה נכנסת להיסטוריה — שהמורה יזכור מה כבר אמר ולא יברך שוב בשלב ההוראה
-            if (window.velaPushHistory) {
+          // הברכה מגיעה מתבנית בשרת — מיידית וחינם (בלי AI). greetDone מונע מרוץ: תשובה מאוחרת לא דורסת fallback.
+          var greetDone = false;
+          function greetOnce(text, pushHist) {
+            if (greetDone) return;
+            greetDone = true;
+            showGreeting(text);
+            if (pushHist && window.velaPushHistory) {
               window.velaPushHistory("user", "(פתיחת שיעור)");
-              window.velaPushHistory("assistant", reply || "");
+              window.velaPushHistory("assistant", text || "");
             }
-          }).catch(function () {
-            // נפילת-רשת לא עוצרת שיעור: ברכה מקומית עם השם מ-/api/me
+          }
+          function localGreeting() {
             fetch("/api/me").then(function (r) { return r.json(); }).then(function (d) {
               var nm = d && d.user && d.user.username ? " " + d.user.username : "";
-              showGreeting("שלום" + nm + "! 👋\nמוכנים להתחיל בשיעור שלנו?\nהיום נלמד על " + L.topic + ".");
+              greetOnce("שלום" + nm + "! 👋\nמוכנים להתחיל בשיעור שלנו?\nהיום נלמד על " + L.topic + ".", false);
             }).catch(function () {
-              showGreeting("שלום! 👋\nמוכנים להתחיל בשיעור שלנו?\nהיום נלמד על " + L.topic + ".");
+              greetOnce("שלום! 👋\nמוכנים להתחיל בשיעור שלנו?\nהיום נלמד על " + L.topic + ".", false);
             });
-          });
+          }
+          var greetP = window.velaPostTeach
+            ? window.velaPostTeach("(פתיחת שיעור)")
+            : Promise.reject(new Error("no-teach"));
+          greetP.then(function (reply) { greetOnce(reply, true); }).catch(localGreeting);
+          // רשת-ביטחון: אם תוך 5 שניות אין ברכה — ברכה מקומית (הילד לא מחכה מול מסך ריק)
+          setTimeout(function () { if (!greetDone) localGreeting(); }, 5000);
           // דילוג: לחיצה על הרקע חושפת מיד את כפתור-ההתחלה (לא לוכדים ילד באנימציה)
           intro.addEventListener("click", function (e) {
             if (e.target === intro) introStart.classList.add("is-show");
