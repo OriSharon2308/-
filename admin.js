@@ -20,6 +20,8 @@
       method: opts.method || "GET",
       headers: opts.body ? { "content-type": "application/json" } : {},
       body: opts.body ? JSON.stringify(opts.body) : undefined,
+      cache: "no-store", // תמיד נתונים טריים מהשרת — בלי קאש
+      signal: opts.signal,
     });
     let data = {};
     try { data = await res.json(); } catch {}
@@ -60,6 +62,27 @@
     struggling: ["pill--warn", "מתקשה"], not_started: ["pill--gray", "טרם התחיל"],
   };
 
+  /* ---------------- שלדי-טעינה (skeleton) ---------------- */
+  function skelMain() {
+    const rows = Array.from({ length: 6 }, () => `<div class="skel skelRow"></div>`).join("");
+    return `<div class="viewHead"><div class="skel" style="height:30px;width:210px;border-radius:8px"></div></div>
+      <div class="skel skelStat" style="border-radius:13px;margin-bottom:18px"></div>
+      <div class="tableWrap" style="padding:8px">${rows}</div>`;
+  }
+  function skelModal() {
+    return `<div style="padding:28px 32px">
+      <div style="display:flex;gap:18px;align-items:center;margin-bottom:26px">
+        <div class="skel" style="width:60px;height:60px;border-radius:13px"></div>
+        <div style="flex:1">
+          <div class="skel" style="height:22px;width:190px;margin-bottom:9px;border-radius:6px"></div>
+          <div class="skel" style="height:13px;width:120px;border-radius:6px"></div>
+        </div>
+      </div>
+      <div class="skel" style="height:76px;border-radius:9px;margin-bottom:22px"></div>
+      <div class="skel" style="height:200px;border-radius:9px"></div>
+    </div>`;
+  }
+
   /* ---------------- תרשים קווי ---------------- */
   function niceMax(v) {
     if (v <= 5) return 5;
@@ -69,30 +92,35 @@
     return m * p;
   }
   function lineChart(series, opts = {}) {
-    const W = 680, H = 200, padL = 40, padR = 16, padT = 12, padB = 26;
+    // RTL: ציר-הערכים מימין (שם מתחילים), הזמן זורם מימין (ישן) לשמאל (חדש)
+    const W = 680, H = 200, padL = 16, padR = 70, padT = 12, padB = 26;
     const allPts = series.flatMap((s) => s.points);
     if (!allPts.length) return `<div class="empty">אין עדיין נתונים להצגה.</div>`;
     const max = opts.max || niceMax(Math.max(...allPts.map((p) => p.value), 1));
-    const xAt = (i, len) => padL + (len <= 1 ? (W - padL - padR) / 2 : (i / (len - 1)) * (W - padL - padR));
+    const xLeft = padL, xRight = W - padR, axisX = xRight + 24; // תוויות הערך מימין, בתעלה נקייה
+    const xAt = (i, len) => (len <= 1 ? (xLeft + xRight) / 2 : xRight - (i / (len - 1)) * (xRight - xLeft));
     const yAt = (v) => padT + (1 - Math.min(v, max) / max) * (H - padT - padB);
     const grid = [0, 0.25, 0.5, 0.75, 1].map((f) => {
       const g = Math.round(f * max), y = yAt(g);
-      return `<line x1="${padL}" y1="${y.toFixed(1)}" x2="${W - padR}" y2="${y.toFixed(1)}" stroke="#eef1f4"/>` +
-        `<text x="${padL - 7}" y="${(y + 3.5).toFixed(1)}" text-anchor="end" font-size="10" fill="#a7adb8">${g}${opts.unit || ""}</text>`;
+      return `<line x1="${xLeft}" y1="${y.toFixed(1)}" x2="${xRight}" y2="${y.toFixed(1)}" stroke="#eef2f5"/>` +
+        `<text x="${axisX}" y="${(y + 3.5).toFixed(1)}" text-anchor="start" font-size="10" fill="#868d99">${g}${opts.unit || ""}</text>`;
     }).join("");
     const lp = series[0].points;
     const step = Math.max(1, Math.ceil(lp.length / 7));
     const xlabels = lp.map((p, i) => (i % step === 0 || i === lp.length - 1)
-      ? `<text x="${xAt(i, lp.length).toFixed(1)}" y="${H - 8}" text-anchor="middle" font-size="9.5" fill="#a7adb8">${esc(fmtDay(p.label))}</text>` : "").join("");
+      ? `<text x="${xAt(i, lp.length).toFixed(1)}" y="${H - 8}" text-anchor="middle" font-size="9.5" fill="#868d99">${esc(fmtDay(p.label))}</text>` : "").join("");
     const body = series.map((s, si) => {
-      const pts = s.points.map((p, i) => [xAt(i, s.points.length), yAt(p.value)]);
+      const pts = s.points.map((p, i) => [xAt(i, s.points.length), yAt(p.value), p]);
       const d = pts.map((p, i) => `${i ? "L" : "M"}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
       let area = "";
       if (si === 0 && opts.fill !== false && pts.length > 1) {
-        area = `<path d="M${pts[0][0].toFixed(1)},${yAt(0).toFixed(1)} ${pts.map((p) => `L${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ")} L${pts[pts.length - 1][0].toFixed(1)},${yAt(0).toFixed(1)} Z" fill="${s.color}" opacity="0.07"/>`;
+        area = `<path d="M${pts[0][0].toFixed(1)},${yAt(0).toFixed(1)} ${pts.map((p) => `L${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ")} L${pts[pts.length - 1][0].toFixed(1)},${yAt(0).toFixed(1)} Z" fill="${s.color}" opacity="0.08"/>`;
       }
       const line = `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>`;
-      const dots = s.points.length <= 40 ? pts.map((p) => `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.4" fill="#fff" stroke="${s.color}" stroke-width="1.6"/>`).join("") : "";
+      const dots = (opts.tips || s.points.length <= 40) ? pts.map((p) => {
+        const hit = opts.tips && p[2] && p[2].detail ? `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="12" fill="transparent" data-d="${esc(p[2].detail)}"/>` : "";
+        return `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.6" fill="#fff" stroke="${s.color}" stroke-width="1.6"/>${hit}`;
+      }).join("") : "";
       return area + line + dots;
     }).join("");
     return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.title || "תרשים")}">${grid}${xlabels}${body}</svg>`;
@@ -112,35 +140,63 @@
       else showLogin(!data.configured);
     } catch { showLogin(); }
   }
-  let adminWin = null;
-  function openAppWindow() {
-    adminWin = window.open(location.pathname, "velaAdmin", "width=1280,height=880");
-    return adminWin && !adminWin.closed;
-  }
   $("#loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const errEl = $("#loginErr"); errEl.hidden = true;
     const { ok, data } = await api("/api/admin/login", { method: "POST", body: { password: $("#adminPw").value } });
     if (ok && data.ok) {
       $("#adminPw").value = "";
-      if (openAppWindow()) { $("#loginOpened").hidden = false; }
-      else { showApp(); navigate("overview"); } // נחסם חלון קופץ → נפתח באותו מסך
+      showApp(); navigate("overview"); // נכנסים לאזור הניהול באותו דף — בלי חלון קופץ
     } else { errEl.textContent = data.error || "כניסה נכשלה."; errEl.hidden = false; }
   });
-  $("#reopenBtn")?.addEventListener("click", () => { if (adminWin && !adminWin.closed) adminWin.focus(); else openAppWindow(); });
   $("#logoutBtn").addEventListener("click", async () => { await api("/api/admin/logout", { method: "POST" }); showLogin(); });
 
   /* ---------------- ניווט ---------------- */
   const nav = $("#nav");
-  nav.addEventListener("click", (e) => { const b = e.target.closest(".navBtn"); if (b) navigate(b.dataset.view); });
-  function setNav(v) { nav.querySelectorAll(".navBtn").forEach((b) => b.classList.toggle("is-active", b.dataset.view === v)); }
+  let navUserClick = false;
+  nav.addEventListener("click", (e) => { const b = e.target.closest(".navBtn"); if (!b) return; navUserClick = true; navigate(b.dataset.view); setTimeout(() => { navUserClick = false; }, 380); });
+  function setNav(v) {
+    nav.querySelectorAll(".navBtn").forEach((b) => b.classList.toggle("is-active", b.dataset.view === v));
+    positionNavSel();
+  }
+  // האינדיקטור מחליק (אנימציה) רק כשהמשתמש לוחץ; בכל מקרה אחר נצמד מיידית למקומו —
+  // כך הוא תמיד יושב נכון גם אחרי רענון/טעינת-פונט (תיקון באג המיקום).
+  function positionNavSel() {
+    const active = nav.querySelector(".navBtn.is-active");
+    const sel = nav.querySelector(".navSel");
+    if (!active || !sel || !active.offsetWidth) return;
+    if (!navUserClick) sel.style.transition = "none";
+    sel.style.left = active.offsetLeft + "px";
+    sel.style.width = active.offsetWidth + "px";
+    sel.style.opacity = "1";
+    if (!navUserClick) { void sel.offsetWidth; sel.style.transition = ""; }
+  }
+  window.addEventListener("resize", positionNavSel);
+  window.addEventListener("load", positionNavSel);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(positionNavSel);
+  // ResizeObserver — ממקם מחדש בכל שינוי פריסה (כולל reflow אחרי טעינת הפונט)
+  if (window.ResizeObserver) { try { new ResizeObserver(() => positionNavSel()).observe(nav); } catch (e) { /* noop */ } }
+  let currentView = "overview";
   function navigate(view) {
+    currentView = view;
+    document.body.classList.remove("contentPicker");
     setNav(view);
-    main.innerHTML = `<div class="empty">טוען…</div>`;
+    main.innerHTML = skelMain();
     if (view === "overview") renderOverview();
     else if (view === "students") renderStudents();
     else if (view === "content") renderContent();
   }
+  // רענון-חי: תמיד נתונים עדכניים — בכל חזרה לחלון/לשונית, וכל 20 שניות (סקירה)
+  function liveRefresh(fromInterval) {
+    if (!modal.hidden || appView.hidden) return; // מודאל פתוח / לא מחוברים — לא מפריעים
+    const ae = document.activeElement;
+    if (ae && /^(INPUT|SELECT|TEXTAREA)$/.test(ae.tagName)) return; // לא קוטעים הקלדה/עריכה
+    if (currentView === "overview") renderOverview();
+    else if (currentView === "students" && !fromInterval) renderStudents();
+  }
+  window.addEventListener("focus", () => liveRefresh(false));
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) liveRefresh(false); });
+  setInterval(() => liveRefresh(true), 20000);
 
   /* ---------------- סקירה ---------------- */
   async function renderOverview() {
@@ -237,7 +293,7 @@
   async function openStudent(id, refresh) {
     editMode = false;
     openModal();
-    modalBody.innerHTML = `<div class="empty" style="padding:80px"><span class="spin"></span></div>`;
+    modalBody.innerHTML = skelModal();
     const { data } = await api(`/api/admin/user?id=${encodeURIComponent(id)}${refresh ? "&refresh=1" : ""}`);
     if (!data.ok) { modalBody.innerHTML = `<div class="empty">${esc(data.error || "לא נמצא")}</div>`; return; }
     cur = data;
@@ -255,9 +311,10 @@
 
       <div class="pSection">
         <div class="pSection__title">פרטים אישיים<span class="spacer"></span>
-          ${editMode ? "" : `<button class="btn btn--ghost btn--sm" id="editBtn">עריכה</button>`}
+          ${editMode || user.demo ? "" : `<button class="btn btn--ghost btn--sm" id="editBtn">עריכה</button>`}
         </div>
         ${editMode ? detailsEdit(user) : detailsRead(user)}
+        ${pwBlock(user)}
       </div>
 
       <div class="kpis">
@@ -280,35 +337,155 @@
       </div>
 
       <div class="chartCard">
-        <div class="chartTitle">זמן לימוד יומי</div>
-        <div class="chartSub">דקות פעילות מוערכות לכל יום</div>
-        ${lineChart([{ name: "דקות", color: "#9a7b4f", points: time.map((d) => ({ label: d.date, value: d.minutes })) }], { unit: " דק׳", title: "זמן יומי" })}
+        <div class="chartTitle">זמן פעילות</div>
+        <div class="chartSub">דקות פעילות לפי טווח · ריחוף על נקודה מציג פירוט</div>
+        <div class="rangeSel" id="rangeSel">
+          <button class="rangeBtn" data-r="day">יום</button>
+          <button class="rangeBtn is-on" data-r="week">שבוע</button>
+          <button class="rangeBtn" data-r="month">חודש</button>
+          <button class="rangeBtn" data-r="quarter">3 חודשים</button>
+        </div>
+        <div class="chartWrap" id="actWrap"><div class="empty" style="padding:44px"><span class="spin"></span></div><div class="chartTip" id="actTip" hidden></div></div>
       </div>
 
       <div class="pSection">
-        <div class="pSection__title">חוות דעת הצוות<span class="spacer"></span><button class="btn btn--soft btn--sm" id="refreshAssess">רענון</button></div>
-        ${report(assessments)}
+        <div class="pSection__title">חוות דעת הצוות</div>
+        ${assessScaffold()}
       </div>
 
       ${summary.topics.length ? `<div class="pSection">
-        <div class="pSection__title">שליטה לפי נושא</div>
+        <div class="pSection__title">שליטה לפי נושא<span class="spacer"></span><span class="muted" style="font-weight:600;font-size:11px">לחיצה על נושא — פירוט וחוות דעת</span></div>
         <table class="miniTable"><thead><tr><th>נושא</th><th>סטטוס</th><th>דיוק</th><th>תרגילים</th></tr></thead>
-        <tbody>${summary.topics.map((t) => { const [c, l] = STATUS_PILL[t.status] || ["pill--gray", t.status];
-          return `<tr><td style="font-weight:600">${esc(t.name)}${t.note ? `<div class="cell-sub">${esc(t.note)}</div>` : ""}</td><td><span class="pill ${c}">${l}</span></td><td>${t.accuracy}%</td><td>${t.correct}/${t.attempts}</td></tr>`; }).join("")}</tbody></table>
+        <tbody>${summary.topics.map((t, i) => { const [c, l] = STATUS_PILL[t.status] || ["pill--gray", t.status];
+          return `<tr class="topicRow" data-ti="${i}"><td style="font-weight:600">${esc(t.name)}${t.note ? `<div class="cell-sub">${esc(t.note)}</div>` : ""}</td><td><span class="pill ${c}">${l}</span></td><td>${t.accuracy}%</td><td>${t.correct}/${t.attempts}</td></tr><tr class="topicDetail" data-ti="${i}" hidden><td colspan="4">${topicDetail(t, c, l)}</td></tr>`; }).join("")}</tbody></table>
       </div>` : ""}
 
       <div class="pSection" style="border-bottom:0;display:flex;align-items:center">
-        <span class="muted" style="font-size:12.5px">נרשם ${fmtDate(user.createdAt)}</span>
+        <span class="muted" style="font-size:12.5px">נרשם ${fmtDate(user.createdAt)}${user.demo ? " · חשבון הדגמה (קריאה בלבד)" : ""}</span>
         <span style="flex:1"></span>
-        <button class="btn btn--danger btn--sm" id="delUser">מחיקת תלמיד</button>
+        ${user.demo ? "" : `<button class="btn btn--danger btn--sm" id="delUser">מחיקת תלמיד</button>`}
       </div>`;
     $("#editBtn")?.addEventListener("click", () => { editMode = true; drawStudent(); });
     $("#cancelEdit")?.addEventListener("click", () => { editMode = false; drawStudent(); });
     $("#saveDetails")?.addEventListener("click", saveDetails);
-    $("#refreshAssess")?.addEventListener("click", () => openStudent(user.id, true));
     $("#delUser")?.addEventListener("click", () => delUser(user, name));
+    $("#pwToggle")?.addEventListener("click", () => { const f = $("#pwForm"); if (f) { f.hidden = !f.hidden; if (!f.hidden) $("#pwAdmin")?.focus(); } });
+    $("#pwCancel")?.addEventListener("click", () => { const f = $("#pwForm"); if (f) f.hidden = true; });
+    $("#pwSave")?.addEventListener("click", () => savePassword(user.id));
+    $("#rangeSel")?.addEventListener("click", (e) => {
+      const b = e.target.closest(".rangeBtn"); if (!b) return;
+      $("#rangeSel").querySelectorAll(".rangeBtn").forEach((x) => x.classList.toggle("is-on", x === b));
+      loadActivity(user.id, b.dataset.r);
+    });
+    loadAssessments(user.id);
+    loadActivity(user.id, "week");
+    modalBody.querySelectorAll(".topicRow").forEach((tr) => tr.addEventListener("click", () => {
+      const det = modalBody.querySelector(`.topicDetail[data-ti="${tr.dataset.ti}"]`);
+      if (det) { det.hidden = !det.hidden; tr.classList.toggle("open", !det.hidden); }
+    }));
+  }
+  function pwBlock(user) {
+    if (user.demo) {
+      return `<div class="pwBlock"><div class="detail__k">סיסמת התלמיד</div>
+        <div class="pwRow"><span class="pwDots">••••••••</span><span class="muted" style="font-size:12.5px">חשבון הדגמה</span></div></div>`;
+    }
+    return `<div class="pwBlock">
+      <div class="detail__k">סיסמת התלמיד</div>
+      <div class="pwRow">
+        <span class="pwDots" title="מוצפנת — לא ניתנת להצגה">••••••••••</span>
+        <button class="btn btn--ghost btn--sm" id="pwToggle">שינוי סיסמה</button>
+      </div>
+      <div class="pwForm" id="pwForm" hidden>
+        <p class="pwHint">הסיסמה מאוחסנת מוצפנת ולא ניתנת להצגה. כדי לקבוע לתלמיד סיסמה חדשה — אמת/י קודם את סיסמת האדמין שלך:</p>
+        <div class="pwFields">
+          <input type="password" id="pwAdmin" placeholder="סיסמת האדמין שלך" autocomplete="off"/>
+          <input type="text" id="pwNew" placeholder="סיסמה חדשה לתלמיד" autocomplete="off"/>
+          <button class="btn btn--primary btn--sm" id="pwSave">שמירה</button>
+          <button class="btn btn--ghost btn--sm" id="pwCancel">ביטול</button>
+        </div>
+        <span class="saveNote" id="pwNote"></span>
+      </div>
+    </div>`;
+  }
+  async function savePassword(id) {
+    const note = $("#pwNote");
+    const adminPassword = ($("#pwAdmin") || {}).value || "";
+    const password = ($("#pwNew") || {}).value || "";
+    if (note) { note.textContent = ""; note.className = "saveNote"; }
+    if (!adminPassword || !password) { if (note) { note.textContent = "יש למלא את שני השדות."; note.className = "saveNote err"; } return; }
+    const { ok, data } = await api("/api/admin/user/set-password", { method: "POST", body: { id, adminPassword, password } });
+    if (ok && data.ok) {
+      toast("הסיסמה עודכנה ✓");
+      const f = $("#pwForm"); if (f) f.hidden = true;
+      const a = $("#pwAdmin"); if (a) a.value = "";
+      const n = $("#pwNew"); if (n) n.value = "";
+    } else if (note) { note.textContent = (data && data.error) || "שגיאה"; note.className = "saveNote err"; }
+  }
+  /* ---- גרף פעילות לפי טווח, עם טולטיפ-פירוט בריחוף ---- */
+  async function loadActivity(id, range) {
+    const wrap = $("#actWrap"); if (!wrap) return;
+    wrap.innerHTML = `<div class="empty" style="padding:44px"><span class="spin"></span></div>`;
+    let act = null;
+    try { const { data } = await api(`/api/admin/user/activity?id=${encodeURIComponent(id)}&range=${encodeURIComponent(range)}`); act = data && data.activity; } catch {}
+    if (!cur || cur.user.id !== id || modal.hidden) return;
+    if (!act || !act.points || !act.points.length) { wrap.innerHTML = `<div class="empty">אין נתוני פעילות לטווח זה.</div>`; return; }
+    wrap.innerHTML = lineChart([{ name: "פעילות", color: "#8d6f44", points: act.points }], { unit: act.unit || " דק׳", title: "פעילות", tips: true }) + `<div class="chartTip" hidden></div>`;
+    wireTips(wrap);
+  }
+  function wireTips(wrap) {
+    const tip = wrap.querySelector(".chartTip");
+    const svg = wrap.querySelector("svg");
+    if (!tip || !svg) return;
+    svg.addEventListener("mousemove", (e) => {
+      const det = e.target && e.target.getAttribute && e.target.getAttribute("data-d");
+      if (det) {
+        const r = wrap.getBoundingClientRect();
+        tip.textContent = det; tip.hidden = false;
+        let x = e.clientX - r.left + 14, y = e.clientY - r.top + 12;
+        if (x + tip.offsetWidth + 8 > r.width) x = e.clientX - r.left - tip.offsetWidth - 14;
+        tip.style.left = Math.max(2, x) + "px"; tip.style.top = y + "px";
+      } else { tip.hidden = true; }
+    });
+    svg.addEventListener("mouseleave", () => { tip.hidden = true; });
   }
   function kpi(v, k, accent) { return `<div><div class="kpi__v ${accent ? "accent" : ""}">${esc(v)}</div><div class="kpi__k">${esc(k)}</div></div>`; }
+  /* פירוט-נושא בלחיצה: נתונים + חוות דעת קצרה של מורה/פסיכולוג/מתמטיקאי (נגזר מהסטטוס והדיוק) */
+  function topicOpinions(t) {
+    const acc = t.accuracy, st = t.status;
+    if (st === "mastered") return {
+      teacher: `שליטה יפה — ${acc}% דיוק. אפשר להעלות רמת קושי.`,
+      psychologist: "ביטחון גבוה בנושא; חוזרת אליו בהנאה.",
+      mathematician: "הבסיס מוצק; מוכנה לנושאים שנשענים עליו.",
+    };
+    if (st === "struggling") return {
+      teacher: `מתקשה כאן (${acc}%) — כדאי תרגול קצר וממוקד.`,
+      psychologist: "ייתכן תסכול קל; חשוב משוב מעודד ולא שיפוטי.",
+      mathematician: "פער במיומנות הבסיס — לחזק לפני שממשיכים.",
+    };
+    if (st === "in_progress") return {
+      teacher: `בתהליך טוב (${acc}%) — עוד תרגול והנושא יישלט.`,
+      psychologist: "מגלה התמדה; הקצב מתאים לה.",
+      mathematician: "ההבנה נבנית; כדאי לגוון סוגי תרגילים.",
+    };
+    return {
+      teacher: "טרם התחילה — אפשר לפתוח בהיכרות עדינה.",
+      psychologist: "אין עדיין רגש שלילי; התחלה נקייה.",
+      mathematician: "נושא חדש; להתחיל מהבסיס בהדרגה.",
+    };
+  }
+  function topicDetail(t, c, l) {
+    const o = topicOpinions(t);
+    return `<div class="topicCard">
+      <div class="topicCard__stats">
+        <span>סטטוס: <span class="pill ${c}">${l}</span></span>
+        <span>דיוק: <b>${t.accuracy}%</b></span>
+        <span>תרגילים: <b>${t.correct}/${t.attempts}</b></span>
+      </div>
+      <div class="topicOp"><span class="topicOp__role" style="color:#ff8c1a">מורה</span>${esc(o.teacher)}</div>
+      <div class="topicOp"><span class="topicOp__role" style="color:#00e000">פסיכולוג</span>${esc(o.psychologist)}</div>
+      <div class="topicOp"><span class="topicOp__role" style="color:#00d5ff">מתמטיקאי</span>${esc(o.mathematician)}</div>
+    </div>`;
+  }
 
   const DETAILS = [
     { k: "firstName", label: "שם פרטי" }, { k: "lastName", label: "שם משפחה" },
@@ -347,14 +524,60 @@
     else { const n = $("#saveNote"); if (n) { n.textContent = data.error || "שגיאה"; n.className = "saveNote err"; } }
   }
   function refreshListRow(u) { const i = ss.list.findIndex((x) => x.id === u.id); if (i >= 0) ss.list[i] = { ...ss.list[i], ...u }; }
-  function report(a) {
-    const t = a?.teacher?.text, p = a?.psychologist?.text, m = a?.mathematician?.text;
-    return `<div class="report">
-      <div class="report__lead">${esc(t || "אין עדיין חוות דעת — אין מספיק פעילות.")}</div>
-      ${p ? `<div class="report__sub"><div class="report__role"><span class="dot" style="background:#6d5ba6"></span>מבט הפסיכולוג</div>${esc(p)}</div>` : ""}
-      ${m ? `<div class="report__sub"><div class="report__role"><span class="dot" style="background:#a23b3b"></span>מבט המתמטיקאי</div>${esc(m)}</div>` : ""}
-      ${a?.teacher?.updatedAt ? `<div class="report__time">עודכן ${fmtDate(a.teacher.updatedAt)} · מתעדכן אוטומטית רק כשמשהו משמעותי משתנה</div>` : ""}
-    </div>`;
+  /* ---- חוות דעת הצוות: שלד עם נקודות-טעינה, טעינה אסינכרונית, וחשיפת טקסט שורה-אחר-שורה ---- */
+  const ASSESS_ROLES = [
+    { key: "teacher", label: "מבט המורה", color: "#ff8c1a" },
+    { key: "psychologist", label: "מבט הפסיכולוג", color: "#00e000" },
+    { key: "mathematician", label: "מבט המתמטיקאי", color: "#00d5ff" },
+  ];
+  function assessScaffold() {
+    const items = ASSESS_ROLES.map((r) => `
+      <div class="reportItem" data-role="${r.key}">
+        <div class="report__role" style="color:${r.color}">${esc(r.label)}<span class="typing" aria-label="כותב/ת…"><span></span><span></span><span></span></span></div>
+        <div class="report__txt" aria-live="polite"></div>
+      </div>`).join("");
+    return `<div class="report" id="reportBox">${items}</div>`;
+  }
+  function splitLines(text) {
+    const s = String(text || "").trim();
+    if (!s) return [];
+    const byNl = s.split(/\n+/).map((x) => x.trim()).filter(Boolean);
+    if (byNl.length > 1) return byNl;
+    return s.split(/(?<=[.!?…])\s+/).map((x) => x.trim()).filter(Boolean);
+  }
+  function fillAssessments(a) {
+    const box = $("#reportBox"); if (!box) return;
+    ASSESS_ROLES.forEach((r) => {
+      const item = box.querySelector(`.reportItem[data-role="${r.key}"]`); if (!item) return;
+      item.querySelector(".typing")?.remove();
+      const fallback = r.key === "teacher" ? "אין עדיין חוות דעת — אין מספיק פעילות." : "";
+      const lines = splitLines(a && a[r.key] && a[r.key].text ? a[r.key].text : fallback);
+      if (!lines.length) { item.style.display = "none"; return; }
+      item.querySelector(".report__txt").innerHTML =
+        lines.map((ln, i) => `<span class="revLine" style="--i:${i}">${esc(ln)}</span>`).join("");
+    });
+    const ts = a && a.teacher && a.teacher.updatedAt;
+    if (ts && !box.querySelector(".report__time")) {
+      const t = document.createElement("div");
+      t.className = "report__time";
+      t.textContent = `עודכן ${fmtDate(ts)} · מתעדכן אוטומטית כשמשהו משמעותי משתנה`;
+      box.appendChild(t);
+    }
+  }
+  async function loadAssessments(id) {
+    if (!$("#reportBox")) return;
+    if (cur && cur.assessmentsData) { fillAssessments(cur.assessmentsData); return; } // כבר נטען — מהמטמון
+    let assessments = null;
+    try {
+      const ctrl = new AbortController();
+      const to = setTimeout(() => ctrl.abort(), 45000);
+      const { data } = await api(`/api/admin/user/assessments?id=${encodeURIComponent(id)}`, { signal: ctrl.signal });
+      clearTimeout(to);
+      assessments = data && data.assessments;
+    } catch { assessments = null; }
+    if (!cur || cur.user.id !== id || modal.hidden) return; // המשתמש/המודאל השתנה בינתיים
+    cur.assessmentsData = assessments || {};
+    fillAssessments(cur.assessmentsData);
   }
   async function delUser(user, name) {
     if (!confirm(`למחוק לצמיתות את ${name} ואת כל הנתונים שלו/ה? פעולה בלתי הפיכה.`)) return;
@@ -364,26 +587,199 @@
   }
 
   /* ---------------- תוכן ---------------- */
-  const cs = { tree: [], grade: null, topic: null, data: null };
+  const GRADE_COLORS = {
+    1: "#00e000", 2: "#00d5ff", 3: "#ff45c8", 4: "#ff9a16", 5: "#9d5cff", 6: "#ff5a5a",
+    7: "#00c2a8", 8: "#ffd21a", 9: "#5c8cff", 10: "#ff7a3d", 11: "#b04dff", 12: "#2ee66e",
+  };
+  const cs = { tree: [], gradeNum: null, gradeLabel: "", topic: null, data: null, allQ: null, q: "" };
+
   async function renderContent() {
     const { data } = await api("/api/admin/content");
     cs.tree = data.tree || [];
+    cs.gradeNum = null; cs.topic = null; cs.data = null; cs.q = ""; cs.allQ = null;
     drawContent();
   }
   function drawContent() {
-    const sidebar = cs.tree.map((g) => `<div class="gradeBlock"><p class="gradeBlock__title">כיתה ${esc(g.grade)}</p>${g.topics.map((t) => `<button class="topicBtn ${cs.grade === g.gradeNum && cs.topic === t.key ? "is-active" : ""}" data-grade="${g.gradeNum}" data-topic="${esc(t.key)}"><span>${esc(t.label)}${t.gen ? ` <span class="gen">מחולל</span>` : ""}</span><span class="count">${t.bankCount}</span></button>`).join("")}</div>`).join("");
-    main.innerHTML = `
-      <div class="viewHead"><h1>בקרת תוכן</h1><span class="spacer"></span><span class="muted">עריכת בנק השאלות לכל כיתה ונושא</span></div>
-      <div class="contentLayout"><div class="sidebar">${sidebar || '<div class="empty">אין נושאים.</div>'}</div>
-      <div id="topicEditor"><div class="card"><div class="empty">בחר/י נושא מהרשימה כדי לערוך את השאלות.</div></div></div></div>`;
-    main.querySelectorAll(".topicBtn").forEach((b) => b.addEventListener("click", () => openTopic(Number(b.dataset.grade), b.dataset.topic)));
-    if (cs.grade && cs.topic) openTopic(cs.grade, cs.topic);
+    if (cs.gradeNum == null) drawGradePicker();
+    else drawGradeScreen();
   }
-  async function openTopic(gradeNum, topic) {
-    cs.grade = gradeNum; cs.topic = topic;
-    main.querySelectorAll(".topicBtn").forEach((b) => b.classList.toggle("is-active", Number(b.dataset.grade) === gradeNum && b.dataset.topic === topic));
-    $("#topicEditor").innerHTML = `<div class="card"><div class="empty">טוען…</div></div>`;
-    const { data } = await api(`/api/admin/content/topic?grade=${gradeNum}&topic=${encodeURIComponent(topic)}`);
+
+  /* בורר כיתות — עיגולים בלבד, עם הילה עדינה שעוקבת אחרי הסמן ב-hover */
+  function drawGradePicker() {
+    document.body.classList.add("contentPicker");
+    const circles = cs.tree.map((g) => {
+      const color = GRADE_COLORS[g.gradeNum] || "#00d5ff";
+      const letter = String(g.grade || g.gradeNum).trim()[0] || g.gradeNum;
+      return `<button class="gradeCircle" data-grade="${g.gradeNum}" style="--gc:${color}" aria-label="כיתה ${esc(g.grade)}"><span class="gradeCircle__ltr">${esc(letter)}</span></button>`;
+    }).join("");
+    main.innerHTML = `
+      <div class="viewHead"><h1>בקרת תוכן</h1><span class="spacer"></span><span class="muted">בחר/י כיתה</span></div>
+      <div class="gradePicker">${circles || '<div class="empty">אין כיתות.</div>'}</div>`;
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    main.querySelectorAll(".gradeCircle").forEach((b) => {
+      b.addEventListener("click", () => {
+        const gn = Number(b.dataset.grade);
+        if (reduceMotion) { openGrade(gn); return; }
+        // פופ-קפיץ חלק, ואז כניסה לכיתה בדיוק כשהאנימציה מסתיימת (לא חותכים אותה)
+        b.classList.remove("is-pop"); void b.offsetWidth; b.classList.add("is-pop");
+        let done = false;
+        const go = () => { if (done) return; done = true; openGrade(gn); };
+        b.addEventListener("animationend", go, { once: true });
+        setTimeout(go, 450); // גיבוי אם animationend לא נורה
+      });
+    });
+  }
+
+  async function openGrade(gradeNum) {
+    cs.gradeNum = gradeNum;
+    const g = cs.tree.find((x) => x.gradeNum === gradeNum);
+    cs.gradeLabel = g ? g.grade : ""; cs.topic = null; cs.data = null; cs.q = ""; cs.allQ = null;
+    drawGradeScreen();
+    // טוענים את כל שאלות הכיתה (כל הנושאים) כדי לאפשר חיפוש מיידי
+    const topics = g ? g.topics : [];
+    const results = await Promise.all(topics.map((t) =>
+      api(`/api/admin/content/topic?grade=${gradeNum}&topic=${encodeURIComponent(t.key)}`)
+        .then((r) => ({ t, qs: (r.data && r.data.questions) || [] }))
+        .catch(() => ({ t, qs: [] }))
+    ));
+    if (cs.gradeNum !== gradeNum) return; // המשתמש עבר כיתה בינתיים
+    const all = [];
+    for (const { t, qs } of results) for (const q of qs) all.push({ q, topicKey: t.key, topicLabel: t.label });
+    cs.allQ = all;
+    const s = $("#qSearch");
+    if (s) { s.disabled = false; s.placeholder = "הקלד/י טקסט של שאלה, או מספר רמה (1–10)…"; }
+  }
+
+  function drawGradeScreen() {
+    document.body.classList.remove("contentPicker");
+    const g = cs.tree.find((x) => x.gradeNum === cs.gradeNum);
+    const tn = g ? g.topics.length : 0;
+    const qn = g ? g.topics.reduce((a, t) => a + (t.bankCount || 0), 0) : 0;
+    const color = GRADE_COLORS[cs.gradeNum] || "#00d5ff";
+    const area = cs.area || "practice";
+    main.innerHTML = `
+      <div class="viewHead" style="align-items:center">
+        <button class="btn btn--ghost btn--sm" id="backGrades">→ כל הכיתות</button>
+        <h1 style="display:flex;align-items:center;gap:11px"><span class="gradeDot" style="background:${color}"></span>כיתה ${esc(cs.gradeLabel)}</h1>
+        <span class="spacer"></span>
+        <span class="muted">${tn} נושאים · ${qn.toLocaleString("he-IL")} שאלות</span>
+      </div>
+      <div class="areaTabs" role="tablist">
+        <button class="areaTab ${area === "practice" ? "is-active" : ""}" data-area="practice" role="tab">🎯 אזור תרגול</button>
+        <button class="areaTab ${area === "learning" ? "is-active" : ""}" data-area="learning" role="tab">📖 אזור למידה</button>
+      </div>
+      ${area === "practice" ? `<div class="toolbar"><div class="field" style="flex:1;min-width:240px"><label>חיפוש שאלה או רמה</label>
+        <input class="input search" id="qSearch" value="${esc(cs.q)}" placeholder="${cs.allQ ? "הקלד/י טקסט של שאלה, או מספר רמה (1–10)…" : "טוען חיפוש…"}" ${cs.allQ ? "" : "disabled"}/></div></div>` : ""}
+      <div id="gradeBody"></div>`;
+    $("#backGrades").addEventListener("click", () => { cs.gradeNum = null; cs.topic = null; cs.data = null; cs.q = ""; cs.allQ = null; cs.course = null; drawContent(); });
+    main.querySelectorAll(".areaTab").forEach((b) => b.addEventListener("click", () => { cs.area = b.dataset.area; cs.topic = null; drawGradeScreen(); }));
+    const qs = $("#qSearch");
+    if (qs) qs.addEventListener("input", (e) => { cs.q = e.target.value; drawGradeBody(); });
+    drawGradeBody();
+  }
+
+  function drawGradeBody() {
+    const body = $("#gradeBody"); if (!body) return;
+    if ((cs.area || "practice") === "learning") { drawLearningBody(body); return; }
+    if (cs.q.trim()) {
+      body.innerHTML = searchResultsHtml();
+      body.querySelectorAll(".searchRow").forEach((b) => b.addEventListener("click", () => { cs.q = ""; cs.topic = b.dataset.topic; drawGradeScreen(); }));
+      return;
+    }
+    const g = cs.tree.find((x) => x.gradeNum === cs.gradeNum);
+    const sidebar = (g ? g.topics : []).map((t) => `<button class="topicBtn ${cs.topic === t.key ? "is-active" : ""}" data-topic="${esc(t.key)}"><span>${esc(t.label)}${t.gen ? ` <span class="gen">מחולל</span>` : ""}</span><span class="count">${t.bankCount}</span></button>`).join("");
+    body.innerHTML = `<div class="contentLayout"><div class="sidebar">${sidebar || '<div class="empty">אין נושאים.</div>'}</div>
+      <div id="topicEditor"><div class="card"><div class="empty">בחר/י נושא מהרשימה כדי לערוך את השאלות.</div></div></div></div>`;
+    body.querySelectorAll(".topicBtn").forEach((b) => b.addEventListener("click", () => openTopic(b.dataset.topic)));
+    if (cs.topic) openTopic(cs.topic);
+  }
+
+  /* ── אזור למידה: מפת-הדרכים של כל נושא — השלבים, המטרות, המהלכים, והשיטה הקבועה ── */
+  async function drawLearningBody(body) {
+    if (!cs.course || cs.course.grade !== cs.gradeNum) {
+      body.innerHTML = `<div class="card"><div class="empty"><span class="spin"></span> טוען מפת-דרכים…</div></div>`;
+      try {
+        const { data } = await api(`/api/admin/course?grade=${cs.gradeNum}`);
+        cs.course = { grade: cs.gradeNum, topics: data.topics || [] };
+      } catch (e) {
+        body.innerHTML = `<div class="card"><div class="empty">שגיאה בטעינת מפת-הדרכים.</div></div>`;
+        return;
+      }
+      if ((cs.area || "practice") !== "learning" || !$("#gradeBody")) return; // המשתמש עבר בינתיים
+    }
+    const topics = cs.course.topics;
+    if (!cs.topic || !topics.find((t) => t.key === cs.topic)) cs.topic = topics.length ? topics[0].key : null;
+    const sidebar = topics.map((t) =>
+      `<button class="topicBtn ${cs.topic === t.key ? "is-active" : ""}" data-topic="${esc(t.key)}"><span>${esc(t.key)}</span><span class="count">${t.stages.length ? t.stages.length + " שלבים" : "—"}</span></button>`
+    ).join("");
+    body.innerHTML = `<div class="contentLayout"><div class="sidebar">${sidebar || '<div class="empty">אין נושאים.</div>'}</div>
+      <div id="roadmapPane"></div></div>`;
+    body.querySelectorAll(".topicBtn").forEach((b) => b.addEventListener("click", () => { cs.topic = b.dataset.topic; drawLearningBody(body); }));
+    drawRoadmap();
+  }
+
+  function drawRoadmap() {
+    const pane = $("#roadmapPane"); if (!pane) return;
+    const t = (cs.course.topics || []).find((x) => x.key === cs.topic);
+    if (!t) { pane.innerHTML = `<div class="card"><div class="empty">בחר/י נושא.</div></div>`; return; }
+    if (!t.stages.length) {
+      pane.innerHTML = `<div class="card"><div class="empty">לנושא הזה אין עדיין מערך-שיעורים מובנה — המורה מלמד אותו חופשי לפי מאגר-הכלים.</div></div>`;
+      return;
+    }
+    const stages = t.stages.map((s) => {
+      const m = s.method;
+      const methodHtml = m
+        ? (m.confirmed
+          ? `<details class="stageMethod stageMethod--ok"><summary>🔒 שיטה קבועה שמורה ✓ <span class="muted">(הוצגה ${m.uses} פעמים · 0 טוקנים)</span></summary><div class="stageMethod__reply">${esc(m.reply)}</div></details>`
+          : `<details class="stageMethod stageMethod--pending"><summary>⏳ שיטה מועמדת — ממתינה לאישור ילד ראשון (✓ הבנתי)</summary><div class="stageMethod__reply">${esc(m.reply)}</div></details>`)
+        : `<div class="stageMethod stageMethod--none">◯ שיטה קבועה תיווצר בשיעור הראשון ותינעל כשהילד ילחץ "✓ הבנתי"</div>`;
+      return `<div class="stage">
+        <div class="stage__rail"><div class="stage__n">${s.n}</div></div>
+        <div class="stage__body">
+          <div class="stage__title">${esc(s.title)}</div>
+          <div class="stage__row"><span class="stage__tag stage__tag--goal">🎯 המטרה</span><span>${esc(s.goal)}</span></div>
+          <div class="stage__row"><span class="stage__tag stage__tag--teach">📋 המהלך</span><span>${esc(s.teach)}</span></div>
+          ${methodHtml}
+        </div>
+      </div>`;
+    }).join("");
+    pane.innerHTML = `<div class="card roadmap">
+      <div class="roadmap__head">
+        <h2 style="margin:0">${esc(t.key)}</h2>
+        <span class="muted">${t.stages.length} שלבים · מהמוחשי למופשט · אחרי השלב האחרון — חזרה והעמקה</span>
+      </div>
+      <div class="roadmap__intro muted">כל שלב = שיעור אחד: מה המורה מציג (קבוע, כשהשיעור רץ והילד מבין), מה המטרה, ומה המהלך. כשילד לוחץ "✓ הבנתי" — השיטה ננעלת ומוצגת לכל הילדים הבאים בלי AI.</div>
+      ${stages}
+    </div>`;
+  }
+
+  function searchResultsHtml() {
+    if (cs.allQ == null) return `<div class="card"><div class="empty"><span class="spin"></span></div></div>`;
+    const q = cs.q.trim().toLowerCase();
+    const asNum = Number(q);
+    const isNum = q !== "" && Number.isFinite(asNum);
+    const res = cs.allQ.filter(({ q: item, topicLabel }) => {
+      const lvl = item.level || item.difficulty || 1;
+      if (isNum && lvl === asNum) return true;
+      const hay = `${item.text || ""} ${item.answer || ""} ${item.explanation || ""} ${topicLabel || ""}`.toLowerCase();
+      return hay.includes(q);
+    });
+    const rows = res.map(({ q: item, topicKey, topicLabel }) => `
+      <button class="searchRow" data-topic="${esc(topicKey)}">
+        <span class="searchRow__q">${esc(item.text || "(ללא טקסט)")}</span>
+        <span class="searchRow__meta"><span class="pill pill--gray">${esc(topicLabel)}</span><span class="pill pill--info">רמה ${esc(item.level || item.difficulty || 1)}</span></span>
+      </button>`).join("");
+    return `<div class="card">
+      <div class="muted" style="margin-bottom:14px">${res.length} תוצאות עבור “${esc(cs.q)}”</div>
+      ${rows || '<div class="empty">לא נמצאו שאלות תואמות.</div>'}</div>`;
+  }
+
+  async function openTopic(topicKey) {
+    cs.topic = topicKey;
+    const body = $("#gradeBody");
+    if (body) body.querySelectorAll(".topicBtn").forEach((b) => b.classList.toggle("is-active", b.dataset.topic === topicKey));
+    const ed = $("#topicEditor"); if (ed) ed.innerHTML = `<div class="card"><div class="empty">טוען…</div></div>`;
+    const { data } = await api(`/api/admin/content/topic?grade=${cs.gradeNum}&topic=${encodeURIComponent(topicKey)}`);
     cs.data = data;
     drawEditor();
   }
@@ -426,11 +822,14 @@
   }
   async function saveTopic() {
     const questions = collect();
-    const { ok, data } = await api("/api/admin/content/save", { method: "POST", body: { gradeNum: cs.grade, topic: cs.topic, questions } });
+    const { ok, data } = await api("/api/admin/content/save", { method: "POST", body: { gradeNum: cs.gradeNum, topic: cs.topic, questions } });
     if (ok && data.ok) {
       toast(`נשמרו ${data.count} שאלות`); cs.data.questions = questions;
       const t = cs.tree.flatMap((g) => g.topics).find((x) => x.key === cs.topic); if (t) t.bankCount = data.count;
-      main.querySelectorAll(".topicBtn").forEach((b) => { if (Number(b.dataset.grade) === cs.grade && b.dataset.topic === cs.topic) { const c = b.querySelector(".count"); if (c) c.textContent = data.count; } });
+      const tLabel = t ? t.label : cs.topic;
+      // רענון מטמון החיפוש לנושא שנשמר
+      if (cs.allQ) { cs.allQ = cs.allQ.filter((x) => x.topicKey !== cs.topic); for (const q of questions) cs.allQ.push({ q, topicKey: cs.topic, topicLabel: tLabel }); }
+      $("#gradeBody")?.querySelectorAll(".topicBtn").forEach((b) => { if (b.dataset.topic === cs.topic) { const c = b.querySelector(".count"); if (c) c.textContent = data.count; } });
     } else toast(data.error || "שמירה נכשלה", true);
   }
 

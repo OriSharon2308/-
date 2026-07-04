@@ -27,16 +27,16 @@ const OPENING_TEMPLATES = [
 ];
 
 // בונה ברכת-פתיחה מתבנית + היזכרות דטרמיניסטית מהפנקס. בלי AI — אפס המתנה, אפס טוקנים.
+// מספר-השיעור בברכה הוא *בנושא הזה* (שיעור ראשון בגאומטריה = "שיעור 1", גם אם היו 3 שיעורי-מספרים לפני).
 function buildOpeningGreeting({ name, topic, userId }) {
   let n = 1, recall = "", topicLabel = topic || "מתמטיקה";
   try {
+    n = learnerProfile.topicLessonNumber(userId, topic); // פר-נושא, לא גלובלי
     // אם יש מערך-שיעור לנושא — הברכה אומרת בדיוק מה לומדים היום ("כפל: קבוצות שוות")
-    const tn = learnerProfile.topicLessonNumber(userId, topic);
-    const plan = course.planFor(topic, tn);
+    const plan = course.planFor(topic, n);
     if (plan) topicLabel = `${topic}: ${plan.title}`;
   } catch (e) { /* מערך לא קריטי */ }
   try {
-    n = learnerProfile.currentLessonNumber(userId);
     const j = learnerProfile.get(userId);
     // משפט-היזכרות: הנושא האחרון שנגעו בו + מה שעבד (רק אם באמת קיים — בלי להמציא)
     const ctx = learnerProfile.lessonContextText(userId);

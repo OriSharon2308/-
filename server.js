@@ -25,7 +25,9 @@ const analytics = require("./lib/analytics"); // סדרות-זמן + סיכומ�
 const assess = require("./lib/assessments"); // הערכות מורה/פסיכולוג/מתמטיקאי (מטמון)
 const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנק השאלות)
 const teachingMethods = require("./lib/teaching-methods"); // שיטות-לימוד שמורות (אישור ✓-הבנתי)
+const courseLib = require("./lib/course"); // מערכי-שיעור — מפת-הדרכים של הלמידה (גם לאדמין)
 const demo = require("./lib/demo"); // תלמיד-דוגמה קבוע (קריאה בלבד)
+const parentAuth = require("./lib/parent-auth"); // אזור הורים — כניסה עם פרטי הילד, session נפרד
 
 const ROOT = __dirname;
 loadEnvFile(ROOT);
@@ -55,6 +57,9 @@ const PUBLIC_FILES = new Set([
   "/admin.html",
   "/admin.css",
   "/admin.js",
+  "/parent.html",
+  "/parent.css",
+  "/parent.js",
 ]);
 
 function send(res, status, headers, body) {
@@ -339,6 +344,30 @@ const server = http.createServer(async (req, res) => {
         return json(res, 200, { ok: true, tree: adminContent.tree() });
       }
 
+      // מפת-הדרכים של הלמידה: מערכי-השיעור של כל נושא בכיתה + סטטוס השיטה הקבועה של כל שלב
+      if (au.pathname === "/api/admin/course") {
+        const cGradeNum = Number.parseInt(q.get("grade"), 10);
+        const cGrade = CURRICULUM[cGradeNum];
+        if (!cGrade) return json(res, 404, { ok: false, error: "אין כיתה כזו" });
+        const topics = (cGrade.topics || []).map((t) => {
+          const plans = courseLib.courseFor(t.key) || [];
+          return {
+            key: t.key,
+            stages: plans.map((p, i) => {
+              const m = teachingMethods.get(teachingMethods.keyFor(t.key, i + 1));
+              return {
+                n: i + 1,
+                title: p.title,
+                goal: p.goal,
+                teach: p.teach,
+                method: m ? { confirmed: !!m.confirmed, uses: m.uses || 0, reply: String(m.reply || "").slice(0, 600) } : null,
+              };
+            }),
+          };
+        });
+        return json(res, 200, { ok: true, grade: cGradeNum, topics });
+      }
+
       if (au.pathname === "/api/admin/content/topic") {
         const gradeNum = Number.parseInt(q.get("grade"), 10);
         const topic = q.get("topic");
@@ -356,6 +385,50 @@ const server = http.createServer(async (req, res) => {
       }
 
       return json(res, 404, { ok: false, error: "Unknown admin endpoint" });
+    }
+
+    /* ---------------- API: אזור ההורים ---------------- */
+
+    if (url.startsWith("/api/parent/")) {
+      if (url.startsWith("/api/parent/login")) {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        const body = await readJsonBody(req, res);
+        if (!body) return;
+        const r = parentAuth.login(body.username, body.password);
+        if (!r.ok) return json(res, 401, { ok: false, error: r.error });
+        return json(res, 200, { ok: true }, { "set-cookie": parentAuth.buildSetCookie(r.token) });
+      }
+      if (url.startsWith("/api/parent/logout")) {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        parentAuth.logout(req);
+        return json(res, 200, { ok: true }, { "set-cookie": parentAuth.buildClearCookie() });
+      }
+      if (url.startsWith("/api/parent/me")) {
+        const childId = parentAuth.childIdFromRequest(req);
+        return json(res, 200, { ok: true, parent: !!childId });
+      }
+
+      // מכאן — דורש session הורה תקף; חושף אך ורק את הילד של ה-session
+      const childId = parentAuth.childIdFromRequest(req);
+      if (!childId) return json(res, 403, { ok: false, error: "Forbidden" });
+      const child = users.getUserById(childId); // publicUser — בלי סיסמה, בלי הערות-אדמין
+      if (!child) return json(res, 404, { ok: false, error: "החשבון לא נמצא" });
+
+      if (url.startsWith("/api/parent/overview")) {
+        return json(res, 200, {
+          ok: true,
+          child,
+          summary: analytics.summary(childId),
+          daily: analytics.dailySeries(childId),
+          time: analytics.dailyTime(childId),
+          month: analytics.activity(childId, "month"),
+          topicTime: analytics.topicTime(childId),
+          timeOfDay: analytics.timeOfDay(childId),
+          assessments: await assess.getAssessments(childId, child), // מהמטמון — מתעדכן רק על שינוי
+        });
+      }
+
+      return json(res, 404, { ok: false, error: "Unknown parent endpoint" });
     }
 
     /* ---------------- API: סטטוס (ציבורי) ---------------- */
@@ -736,6 +809,11 @@ const server = http.createServer(async (req, res) => {
     // אזור הניהול — שלד הדף ציבורי (הנתונים מוגנים ב-API לפי session אדמין נפרד)
     if (rel === "/admin" || rel === "/admin/" || rel === "/admin.html") {
       return serveFile(res, "/admin.html", method);
+    }
+
+    // אזור ההורים — שלד הדף ציבורי (הנתונים מוגנים ב-API לפי session הורה נפרד)
+    if (rel === "/parent" || rel === "/parent/" || rel === "/parent.html") {
+      return serveFile(res, "/parent.html", method);
     }
 
     const loggedIn = !!sessions.currentUserId(req);
