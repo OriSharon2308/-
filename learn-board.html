@@ -295,6 +295,52 @@
         animation: fabShadow 4.6s ease-in-out infinite;
       }
       @keyframes fabBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      /* ── מצב-דיבור: מסך לבן נקי, המורה במרכז, מיקרופון אחד גדול, ואיקס עדין — בלי מסגרות ──
+         "המידע עובר" דרך אותו צינור של הצ'אט (postTeach + history) — רק הקלט/פלט קוליים */
+      .voiceBtn {
+        appearance: none; border: none; background: none; cursor: pointer;
+        width: 34px; height: 34px; border-radius: 50%; flex: none;
+        display: flex; align-items: center; justify-content: center; font-size: 17px;
+        color: var(--teal); transition: background 0.15s ease, transform 0.15s ease;
+      }
+      .voiceBtn:hover { background: rgba(13, 148, 136, 0.1); transform: scale(1.08); }
+      .voiceMode {
+        position: fixed; inset: 0; z-index: 70; display: none;
+        background: #fff;
+        flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+      }
+      .voiceMode.is-show { display: flex; }
+      .voiceMode__x {
+        position: absolute; top: 18px; inset-inline-end: 22px;
+        appearance: none; border: none; background: none; cursor: pointer;
+        font-size: 34px; line-height: 1; color: #9bb3ae; padding: 8px 12px;
+        transition: color 0.15s ease, transform 0.15s ease;
+      }
+      .voiceMode__x:hover { color: var(--ink); transform: scale(1.1); }
+      .voiceMode__avatar { width: 140px; height: 140px; }
+      .voiceMode__avatar svg { display: block; width: 100%; height: 100%; }
+      .voiceMode.is-speaking .voiceMode__avatar { animation: voiceTalk 0.9s ease-in-out infinite; }
+      @keyframes voiceTalk { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-5px) scale(1.03); } }
+      .voiceMode__status { font-size: 16px; font-weight: 600; color: #5c7570; min-height: 24px; }
+      .voiceMode__text {
+        max-width: min(560px, calc(100vw - 56px)); min-height: 30px;
+        text-align: center; font-size: 18.5px; line-height: 1.7; font-weight: 500; color: var(--ink);
+      }
+      .voiceMic {
+        appearance: none; border: none; cursor: pointer;
+        width: 86px; height: 86px; border-radius: 50%; font-size: 34px;
+        background: var(--teal); color: #fff;
+        box-shadow: 0 10px 28px rgba(13, 148, 136, 0.35);
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .voiceMic:hover:not(:disabled) { transform: scale(1.05); }
+      .voiceMic:disabled { opacity: 0.45; cursor: default; }
+      .voiceMic.is-rec { background: #ef4444; box-shadow: 0 10px 28px rgba(239, 68, 68, 0.4); animation: micPulse 1.4s ease-in-out infinite; }
+      @keyframes micPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+      @media (prefers-reduced-motion: reduce) {
+        .voiceMode.is-speaking .voiceMode__avatar, .voiceMic.is-rec { animation: none; }
+      }
+
       /* מצמוץ — העיניים (והאישונים) נסגרות לרגע; JS מדליק .is-blink אקראית. הופך את האווטאר לנוכחות חיה */
       .teacherFab__art .eye, .teacherFab__art .pupil,
       .introAvatar .eye, .introAvatar .pupil { transform-box: fill-box; transform-origin: center; transition: transform 0.09s ease; }
@@ -525,6 +571,15 @@
     <!-- ✓ להמשך — הילד שולט בקצב השיעור. מופיע כשהמורה סיים יחידה וממתין שהילד יעכל -->
     <button class="advanceBtn" id="advanceBtn" type="button" aria-label="הבנתי, המשך לחלק הבא">✓ הבנתי, אפשר להמשיך</button>
 
+    <!-- מצב-דיבור: מסך לבן, המורה במרכז, מדברים ושומעים. איקס עדין סוגר וחוזרים לצ'אט -->
+    <div class="voiceMode" id="voiceMode" role="dialog" aria-label="שיחה קולית עם המורה">
+      <button class="voiceMode__x" id="voiceClose" type="button" aria-label="סגירת מצב דיבור">×</button>
+      <div class="voiceMode__avatar" id="voiceAvatar" aria-hidden="true"></div>
+      <div class="voiceMode__status" id="voiceStatus">לחץ על המיקרופון ודבר אליי 🙂</div>
+      <div class="voiceMode__text" id="voiceText" aria-live="polite"></div>
+      <button class="voiceMic" id="voiceMic" type="button" aria-label="הקלטה">🎤</button>
+    </div>
+
     <!-- פתיחת שיעור: המורה "מגיע" למרכז, מברך בשם, והילד לוחץ "בוא נתחיל" -->
     <div class="lessonIntro" id="lessonIntro" role="status" aria-live="polite">
       <div class="introAvatar" id="introAvatar" aria-hidden="true"></div>
@@ -547,6 +602,7 @@
           </svg>
         </span>
         <div class="chatPanel__title">המורה<small>כאן ללמד אותך</small></div>
+        <button class="voiceBtn" id="voiceOpen" type="button" aria-label="לדבר עם המורה בקול" title="לדבר עם המורה בקול">🎤</button>
         <button class="chatPanel__close" id="chatClose" type="button" aria-label="סגירה">×</button>
       </header>
       <div class="chatPanel__msgs" id="chatMsgs"></div>
@@ -1060,6 +1116,7 @@
           if (res.status === 401) throw { auth: true };
           var data = await res.json();
           if (data && data.lesson) window.velaLessonMeta = data.lesson; // "שיעור N מתוך M" — לצ'יפ שבראש המסך
+          window.velaLastToolCount = (data && data.toolCalls ? data.toolCalls.length : 0); // למצב-הדיבור: רמז "ציירתי על הלוח"
           if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
             // ניקוי-מעבר-שלב: מנקים תוכן-מורה רק עכשיו, אחרי שהתשובה החדשה הגיעה בשלום —
             // ורק תוכן-מורה (clearTeacher): הקישקושים של הילד לעולם לא נמחקים.
@@ -1705,6 +1762,167 @@
           }
           if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) setTimeout(once, 2200);
         })();
+      })();
+
+      // ───────── מצב-דיבור: מדברים עם המורה ושומעים אותו. אותו צינור של הצ'אט (postTeach+history) ─────────
+      (function voiceMode() {
+        var overlay = document.getElementById("voiceMode");
+        var micBtn = document.getElementById("voiceMic");
+        var statusEl = document.getElementById("voiceStatus");
+        var textEl = document.getElementById("voiceText");
+        var avatarEl = document.getElementById("voiceAvatar");
+        var openBtn = document.getElementById("voiceOpen");
+        var closeBtn = document.getElementById("voiceClose");
+        if (!overlay || !openBtn) return;
+
+        var mic = null, chunks = [], recording = false, busy = false;
+        var TARGET_RATE = 16000;
+        var ttsAudio = new Audio(); ttsAudio.preload = "auto";
+
+        function setStatus(t) { statusEl.textContent = t; }
+
+        function open() {
+          if (!avatarEl.firstChild) {
+            var fabSvg = document.querySelector("#teacherFab .teacherFab__art svg");
+            if (fabSvg) avatarEl.appendChild(fabSvg.cloneNode(true));
+          }
+          document.getElementById("chatPanel").classList.remove("is-open"); // הצ'אט מפנה את הבמה
+          overlay.classList.add("is-show");
+          textEl.textContent = "";
+          setStatus("לחץ על המיקרופון ודבר אליי 🙂");
+        }
+        function close() {
+          stopRecording(true);
+          try { ttsAudio.pause(); } catch (e) {}
+          overlay.classList.remove("is-show", "is-speaking");
+          busy = false; micBtn.disabled = false; micBtn.classList.remove("is-rec");
+        }
+        openBtn.addEventListener("click", open);
+        closeBtn.addEventListener("click", close);
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape" && overlay.classList.contains("is-show")) close(); });
+
+        /* — הקלטה: AudioContext → PCM → WAV 16kHz (אותו דפוס כמו אזור-התרגול) — */
+        async function startRecording() {
+          var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          var AC = window.AudioContext || window.webkitAudioContext;
+          var ctx = new AC();
+          if (ctx.state === "suspended") { try { await ctx.resume(); } catch (e) {} }
+          var source = ctx.createMediaStreamSource(stream);
+          var node = ctx.createScriptProcessor(4096, 1, 1);
+          chunks = [];
+          node.onaudioprocess = function (e) {
+            if (!recording) return;
+            chunks.push(new Float32Array(e.inputBuffer.getChannelData(0))); // חובה להעתיק — ה-buffer ממוחזר
+          };
+          source.connect(node); node.connect(ctx.destination); // פלט שקט
+          mic = { stream: stream, ctx: ctx, source: source, node: node, rate: ctx.sampleRate };
+          recording = true;
+        }
+        function stopRecording(discard) {
+          recording = false;
+          if (!mic) return null;
+          var m = mic; mic = null;
+          try { m.node.disconnect(); m.source.disconnect(); } catch (e) {}
+          try { m.stream.getTracks().forEach(function (t) { t.stop(); }); } catch (e) {}
+          try { m.ctx.close(); } catch (e) {}
+          if (discard) { chunks = []; return null; }
+          return buildWav(m.rate);
+        }
+        function downsample(buf, inRate, outRate) {
+          if (outRate >= inRate) return buf;
+          var ratio = inRate / outRate, outLen = Math.floor(buf.length / ratio), out = new Float32Array(outLen);
+          for (var i = 0; i < outLen; i++) {
+            var s = Math.floor(i * ratio), e = Math.floor((i + 1) * ratio), sum = 0, n = 0;
+            for (var j = s; j < e && j < buf.length; j++) { sum += buf[j]; n++; }
+            out[i] = n ? sum / n : 0;
+          }
+          return out;
+        }
+        function buildWav(rate) {
+          var len = 0; for (var i = 0; i < chunks.length; i++) len += chunks[i].length;
+          if (!len) return null;
+          var flat = new Float32Array(len), off = 0;
+          for (var j = 0; j < chunks.length; j++) { flat.set(chunks[j], off); off += chunks[j].length; }
+          chunks = [];
+          var samples = downsample(flat, rate, TARGET_RATE), dataLen = samples.length * 2;
+          var view = new DataView(new ArrayBuffer(44 + dataLen));
+          function ws(o, s) { for (var i = 0; i < s.length; i++) view.setUint8(o + i, s.charCodeAt(i)); }
+          ws(0, "RIFF"); view.setUint32(4, 36 + dataLen, true); ws(8, "WAVE");
+          ws(12, "fmt "); view.setUint32(16, 16, true); view.setUint16(20, 1, true);
+          view.setUint16(22, 1, true); view.setUint32(24, TARGET_RATE, true);
+          view.setUint32(28, TARGET_RATE * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+          ws(36, "data"); view.setUint32(40, dataLen, true);
+          var o2 = 44;
+          for (var k = 0; k < samples.length; k++) {
+            var v = Math.max(-1, Math.min(1, samples[k]));
+            view.setInt16(o2, v < 0 ? v * 0x8000 : v * 0x7fff, true); o2 += 2;
+          }
+          return new Blob([view], { type: "audio/wav" });
+        }
+
+        /* — הצינור: קול → טקסט → המורה (אותו postTeach של הצ'אט, עם השלב והזיכרון) → קול — */
+        async function transcribe(wav) {
+          var res = await fetch("/api/stt", { method: "POST", headers: { "content-type": "audio/wav; codecs=audio/pcm; samplerate=16000" }, body: wav });
+          var data = null; try { data = await res.json(); } catch (e) {}
+          if (!res.ok || !data || !data.ok) throw new Error((data && data.message) || "stt");
+          return (data.text || "").trim();
+        }
+        async function speak(text) {
+          var res = await fetch("/api/tts", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ text: text }) });
+          if (!res.ok) throw new Error("tts");
+          var blob = await res.blob();
+          var url = URL.createObjectURL(blob);
+          await new Promise(function (resolve) {
+            ttsAudio.src = url;
+            ttsAudio.onended = resolve; ttsAudio.onerror = resolve;
+            overlay.classList.add("is-speaking");
+            ttsAudio.play().catch(resolve);
+          });
+          overlay.classList.remove("is-speaking");
+          URL.revokeObjectURL(url);
+        }
+        async function handleTurn(wav) {
+          busy = true; micBtn.disabled = true;
+          try {
+            setStatus("רגע, מקשיב…");
+            var said = await transcribe(wav);
+            if (!said) { setStatus("לא שמעתי כלום — נסה שוב 🙂"); return; }
+            textEl.textContent = "„" + said + "”";
+            setStatus("חושב…");
+            if (window.velaPushHistory) window.velaPushHistory("user", said);
+            var reply = window.velaPostTeach ? await window.velaPostTeach(said) : "";
+            reply = reply || "סליחה, לא הצלחתי לענות כרגע.";
+            if (window.velaPushHistory) window.velaPushHistory("assistant", reply);
+            textEl.textContent = reply;
+            setStatus(window.velaLastToolCount > 0 ? "🎨 ציירתי משהו על הלוח — סגור כדי לראות!" : "");
+            try { await speak(reply); } catch (e) { /* בלי קול — הטקסט מוצג */ }
+            if (!statusEl.textContent) setStatus("לחץ על המיקרופון ודבר אליי 🙂");
+          } catch (err) {
+            setStatus(err && err.message === "stt" ? "שירות הדיבור לא מוגדר בשרת 🙁" : "אופס, משהו השתבש — נסה שוב 🙂");
+          } finally {
+            busy = false; micBtn.disabled = false;
+          }
+        }
+
+        micBtn.addEventListener("click", async function () {
+          if (busy) return;
+          if (recording) {
+            micBtn.classList.remove("is-rec");
+            var wav = stopRecording(false);
+            if (wav) await handleTurn(wav);
+            else setStatus("לא שמעתי כלום — נסה שוב 🙂");
+          } else {
+            try { ttsAudio.pause(); } catch (e) {}
+            try {
+              await startRecording();
+              micBtn.classList.add("is-rec");
+              setStatus("מקשיב… דבר אליי, ולחץ שוב כשתסיים");
+              textEl.textContent = "";
+            } catch (e) {
+              setStatus("אין גישה למיקרופון — בדוק הרשאות 🙁");
+            }
+          }
+        });
       })();
 
       // ───────── ווידג'טים חיים — מיני-אפליקציות שהמורה מייצר, רצות ב-iframe מבודד ─────────
