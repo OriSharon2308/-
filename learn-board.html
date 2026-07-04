@@ -1041,9 +1041,9 @@
           mult_table: "לוח הכפל", count_objects: "אובייקטים לספירה", money_coins: "מטבעות",
           clock_interactive: "שעון", draw_clock: "שעון", render_widget: "כלי מותאם",
         };
-        async function postTeach(payloadText) {
+        async function postTeach(payloadText, phaseOverride) {
           var sc = board.getScene ? board.getScene() : null;
-          var phReq = (window.velaLesson && window.velaLesson.phase) || "free"; // השלב בזמן השליחה — לא השלב החי (מניעת מרוץ)
+          var phReq = phaseOverride || (window.velaLesson && window.velaLesson.phase) || "free"; // השלב בזמן השליחה — לא השלב החי (מניעת מרוץ)
           var res = await fetch("/api/teach", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -1059,6 +1059,7 @@
           });
           if (res.status === 401) throw { auth: true };
           var data = await res.json();
+          if (data && data.lesson) window.velaLessonMeta = data.lesson; // "שיעור N מתוך M" — לצ'יפ שבראש המסך
           if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
             // ניקוי-מעבר-שלב: מנקים תוכן-מורה רק עכשיו, אחרי שהתשובה החדשה הגיעה בשלום —
             // ורק תוכן-מורה (clearTeacher): הקישקושים של הילד לעולם לא נמחקים.
@@ -1617,11 +1618,33 @@
           setTimeout(function () { introStart.classList.add("is-show"); }, 120 + lines.length * 280 + 200);
         }
 
+        // pre-fetch: בזמן שהילד קורא את הברכה, מסך-ההוראה כבר נטען ומצויר מאחורי האוברליי.
+        // לחיצה על "בוא נתחיל" חושפת לוח מוכן — אפס המתנה (ההמתנה-בין-לחיצות היא מה שהורג קשב של בן 7).
+        var INSTRUCT_ENTRY = "(הילד לחץ 'בוא נתחיל' — הוא מוכן. התחל את שלב ההוראה של השיעור.)";
+        var prefetchP = null;
+        function prefetchInstruct() {
+          if (prefetchP || !window.velaPostTeach) return;
+          prefetchP = window.velaPostTeach(INSTRUCT_ENTRY, "instruct").catch(function () { return null; });
+        }
         function startLesson() {
           intro.classList.remove("is-show");
           L.phase = "instruct";
           saveState();
-          if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד לחץ 'בוא נתחיל' — הוא מוכן. התחל את שלב ההוראה של השיעור.)");
+          if (prefetchP) {
+            // ההוראה כבר בדרך (או כבר על הלוח) — רק מציגים את דברי-המורה כשמגיעים
+            var p = prefetchP; prefetchP = null;
+            p.then(function (reply) {
+              if (reply) {
+                if (window.velaPushHistory) { window.velaPushHistory("user", INSTRUCT_ENTRY); window.velaPushHistory("assistant", reply); }
+                if (window.velaBubble) window.velaBubble(reply);
+                if (window.velaAdvance) window.velaAdvance.show("✓ הבנתי, אפשר להמשיך");
+              } else if (window.velaTeachFollowup) {
+                window.velaTeachFollowup(INSTRUCT_ENTRY); // ה-prefetch נכשל → המסלול הרגיל
+              }
+            });
+          } else if (window.velaTeachFollowup) {
+            window.velaTeachFollowup(INSTRUCT_ENTRY);
+          }
         }
         introStart.addEventListener("click", startLesson);
 
@@ -1639,6 +1662,13 @@
             if (pushHist && window.velaPushHistory) {
               window.velaPushHistory("user", "(פתיחת שיעור)");
               window.velaPushHistory("assistant", text || "");
+            }
+            prefetchInstruct(); // הילד קורא את הברכה — ההוראה נטענת ברקע ותהיה מוכנה בלחיצה
+            // הצ'יפ למעלה מציג את ההתקדמות בקורס: "כפל · שיעור 2 מתוך 6"
+            var lm = window.velaLessonMeta;
+            if (lm && lm.n) {
+              var tn = document.getElementById("topicName");
+              if (tn) tn.textContent = L.topic + " · שיעור " + lm.n + (lm.total ? " מתוך " + lm.total : "");
             }
           }
           function localGreeting() {
