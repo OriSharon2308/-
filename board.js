@@ -762,6 +762,8 @@
   VelaBoard.prototype._tools.base_ten_builder = kitTool("base_ten_builder", 360, 220, "בלוקי בסיס-10");
   VelaBoard.prototype._tools.mult_array = kitTool("mult_array", 360, 240, "מערך כפל");
   VelaBoard.prototype._tools.mult_table = kitTool("mult_table", 360, 360, "לוח הכפל");
+  // פנקס-המורה: מבוצע בשרת (כתיבה לזיכרון) — על הלוח אין מה לצייר. קיים כאן רק לשלמות (no-op).
+  VelaBoard.prototype._tools.remember_note = function () {};
   VelaBoard.prototype._tools.clock_interactive = kitTool("clock_interactive", 300, 300, "שעון");
   VelaBoard.prototype._tools.money_coins = kitTool("money_coins", 380, 300, "כסף");
   VelaBoard.prototype._tools.hundred_chart = kitTool("hundred_chart", 300, 300, "לוח מאה");

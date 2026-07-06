@@ -73,6 +73,7 @@ const PHASE_DIRECTIVES = {
     "לווה/י במשפט מנחה שמסביר איך להשתמש בעזר כדי לפתור. " +
     "כשהילד טועה או אומר שלא מצליח: השאלה נשארת! אל תחליף/י אותה, אל תחזור/י אחורה, אל תנקה/י את הלוח. " +
     "קודם הסבר/י במילים ופרק/י לצעד הבא הקטן; אם צריך — הוסף/י כלי-עזר צמוד והסבר/י איך בדיוק להשתמש בו. הילד פותר את אותה שאלה עד הסוף. " +
+    "וכשאת/ה מזהה *למה* הוא מתבלבל (ההמשגה השגויה) — רשום/רשמי אותה בפנקס עם remember_note, במילים שלך ('סופר באצבעות במקום לפרק לעשרת') — כדי שתזכור/תזכרי בפעם הבאה. " +
     "מדי פעם (כשזה מתאים לשיעור, לא בכל תרגיל) בקש/י מהילד לצייר בעצמו על הלוח ('צייר לי 3 קבוצות של 2 עיגולים') — כשיסיים וילחץ להראות לך, תראה/י את הציור בפועל ותגיב/י אליו. ציור-עצמאי הוא בדיקת-ההבנה הכי חזקה.",
   independent:
     "שלב תרגול עצמאי: תן/י 3 תרגילים (draw_exercise, כולם יחד) בלי מניפולטיב-עזר. " +
@@ -81,7 +82,8 @@ const PHASE_DIRECTIVES = {
   closing:
     "שלב סגירת השיעור — סגירה אמיתית, לא 'סיימנו ביי': " +
     "קודם שאל/י את הילד שאלת-הבנה מילולית אחת קצרה שבודקת שהוא באמת הבין את הרעיון (למשל 'תגיד לי במילים שלך — למה 3 כפול 2 זה כמו 2 כפול 3?'). " +
-    "המתן/י לתשובתו בצ'אט. אחרי שענה — תקן/י בעדינות אם צריך, סכם/י בחום מה למדנו היום, שבח/י בשמו, ואמור/י מה מחכה בפעם הבאה. בלי כלים, בלי רשימות.",
+    "המתן/י לתשובתו בצ'אט. אחרי שענה — תקן/י בעדינות אם צריך, סכם/י בחום מה למדנו היום, שבח/י בשמו, ואמור/י מה מחכה בפעם הבאה. בלי ציורים, בלי רשימות. " +
+    "ואם משהו נשאר פתוח או שזיהית קושי — רשום/רשמי בפנקס עם remember_note (note קצר על הקושי, open_loop למה שנמשיך ממנו) — זה נשמר לך לשיעור הבא.",
 };
 
 // ה-system קבוע (בלי מספרים משתנים) — כך הוא + הכלים נשמרים ב-Prompt Cache.
@@ -252,12 +254,22 @@ async function teacherDraw(p = {}) {
   try {
     const t0 = Date.now();
 
-    // סגירה = דיבור בלבד. אכיפה דטרמיניסטית: בלי כלים בכלל. גם בלי מצב-הלוח/פריסה — לא רלוונטיים לשיחה (חוסך טוקנים).
+    // סגירה = דיבור בלבד על הלוח (בלי ציור), אבל עם כלי-פנקס אחד: remember_note —
+    // כדי שהמורה יוכל לרשום מה נשאר פתוח ("open_loop") לפני הפרידה. מבוצע כאן בשרת.
     if (phase === "closing") {
       const talkMsgs = [...history, { role: "user", content: `${phaseLine}\n${String(p.messageText || "...")}` }];
-      const talk = await llm.complete({ system, messages: talkMsgs, maxTokens: 400, cacheSystem: true });
-      console.log(`[timing] teach-closing: ${Date.now() - t0}ms`);
-      let replyTxt = String(talk || "").replace(/\*\*/g, "").trim();
+      const noteTool = BOARD_TOOLS.filter((t) => t.name === "remember_note");
+      const out = await llm.completeTools({ system, messages: talkMsgs, tools: noteTool, maxTokens: 450, cacheSystem: true });
+      for (const tc of out.toolCalls || []) {
+        try {
+          const inp = tc.input || {};
+          const nTopic = String(inp.topic || p.topic || "").trim();
+          if (inp.note && nTopic && p.userId) learnerProfile.record(p.userId, { topic: nTopic, note: String(inp.note) });
+          if (inp.open_loop && p.userId) learnerProfile.noteForNextLesson(p.userId, nTopic, String(inp.open_loop));
+        } catch (e) { /* פנקס לא קריטי */ }
+      }
+      console.log(`[timing] teach-closing: ${Date.now() - t0}ms  notes=${(out.toolCalls || []).length}`);
+      let replyTxt = String(out.text || "").replace(/\*\*/g, "").trim();
       if (!replyTxt) replyTxt = "כל הכבוד על שיעור מצוין! נתראה בפעם הבאה 👋";
       return { reply: genderize(replyTxt, gender), toolCalls: [], mode: "ai", phase };
     }
@@ -280,14 +292,31 @@ async function teacherDraw(p = {}) {
       if (out.stopReason !== "tool_use" || allCalls.length >= 60) break;
     }
     console.log(`[timing] teach-draw: ${Date.now() - t0}ms  tools=${allCalls.length}`);
+
+    // הפנקס האיכותני: קריאות remember_note מבוצעות כאן בשרת (note→פרופיל, open_loop→יומן) —
+    // לא נשלחות ללוח (אין מה לצייר) ולא נשמרות בשיטה (הן אישיות לילד, השיטה גלובלית).
+    const drawCalls = [];
+    for (const tc of allCalls) {
+      if (tc.name === "remember_note") {
+        try {
+          const inp = tc.input || {};
+          const nTopic = String(inp.topic || p.topic || "").trim();
+          if (inp.note && nTopic && p.userId) learnerProfile.record(p.userId, { topic: nTopic, note: String(inp.note) });
+          if (inp.open_loop && p.userId) learnerProfile.noteForNextLesson(p.userId, nTopic, String(inp.open_loop));
+        } catch (e) { /* פנקס לא קריטי */ }
+      } else {
+        drawCalls.push(tc);
+      }
+    }
+
     let reply = (text || "").replace(/\*\*/g, "");
-    if (!reply) reply = allCalls.length ? "הנה, סרטטתי לך על הלוח." : "ספר/י לי מה לסרטט ואני אצייר על הלוח.";
+    if (!reply) reply = drawCalls.length ? "הנה, סרטטתי לך על הלוח." : "ספר/י לי מה לסרטט ואני אצייר על הלוח.";
     // שיטת-לימוד חדשה (כניסה ראשונה להוראה) → נשמרת כמועמדת; תאושר כשילד ילחץ "✓ הבנתי"
-    if (isInstructEntry && methodKey && allCalls.length) {
-      try { methods.save(methodKey, { reply, toolCalls: allCalls }); } catch (e) { /* שמירת-שיטה לא קריטית */ }
+    if (isInstructEntry && methodKey && drawCalls.length) {
+      try { methods.save(methodKey, { reply, toolCalls: drawCalls }); } catch (e) { /* שמירת-שיטה לא קריטית */ }
     }
     reply = genderize(reply, gender);
-    return { reply, toolCalls: allCalls, mode: "ai" };
+    return { reply, toolCalls: drawCalls, mode: "ai" };
   } catch (e) {
     console.error("teach-draw error:", e.message);
     return { reply: "אופס, לא הצלחתי לסרטט כרגע. ננסה שוב?", toolCalls: [], mode: "error" };
