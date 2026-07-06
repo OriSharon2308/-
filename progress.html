@@ -157,6 +157,11 @@
         font-size: 16px;
         text-align: center;
       }
+      .topicCard__metric {
+        font-size: 14px;
+        font-weight: 600;
+        color: #5a6b7b;
+      }
       .prog__hint {
         text-align: center;
         color: #5a6b7b;
@@ -227,8 +232,8 @@
         const att = t.attempts || 0;
         const cor = t.correct || 0;
         if (key === "acc") {
-          const v = att ? Math.round((cor / att) * 100) : null;
-          return { fill: v ? v / 100 : 0, target: v, fmt: (n) => n + "%" };
+          const v = att ? Math.round((cor / att) * 100) : 0; // אין נתונים → 0, לא מקף
+          return { fill: v / 100, target: v, fmt: (n) => n + "%" };
         }
         if (key === "solved") {
           // כמה פתר מתוך כמה שאלות שקיימות כרגע במאגר לנושא
@@ -243,7 +248,7 @@
           return { fill: scales.maxTimeMin ? min / scales.maxTimeMin : 0, target: min, fmt: fmtMin };
         }
         const sc = masteryScore(t);
-        return { fill: sc / 100, target: cor < 1 ? null : sc, fmt: (n) => n + "%" };
+        return { fill: sc / 100, target: sc, fmt: (n) => n + "%" };
       }
 
       function countUp(el, target, fmt) {
@@ -269,14 +274,14 @@
       }
 
       // מצייר נתון על העיגול: הטבעת תמיד מתחילה מ-0 (לא חוזרת אחורה), הטקסט מתחלף
-      function animateCircle(circle, topic, metric, scales) {
+      function animateCircle(card, topic, metric, scales) {
         const s = spec(topic, metric.key, scales);
-        const bar = circle.querySelector(".ring__bar");
-        const valEl = circle.querySelector(".ring__val");
-        const center = circle.querySelector(".ring__center");
+        const bar = card.querySelector(".ring__bar");
+        const valEl = card.querySelector(".ring__val");
+        const center = card.querySelector(".ring__center");
         bar.style.stroke = metric.color;
         valEl.style.color = metric.color;
-        circle.querySelector(".ring__label").textContent = metric.short;
+        card.querySelector(".topicCard__metric").textContent = metric.short;
         // איפוס לטבעת ריקה — בלי אנימציה, כדי שכל נתון יתחיל מ-0
         bar.style.transition = "none";
         bar.style.strokeDasharray = CIRC;
@@ -299,6 +304,13 @@
       function buildCircle(topic, scales) {
         const card = document.createElement("div");
         card.className = "topicCard";
+
+        // שם הנושא — מעל העיגול
+        const title = document.createElement("div");
+        title.className = "topicCard__title";
+        title.textContent = topic.title || topic.kind || "נושא";
+
+        // העיגול — בפנים רק מספר
         const circle = document.createElement("button");
         circle.type = "button";
         circle.className = "circle";
@@ -308,18 +320,21 @@
           '<circle class="ring__track" cx="60" cy="60" r="' + R + '"></circle>' +
           '<circle class="ring__bar" cx="60" cy="60" r="' + R + '" transform="rotate(-90 60 60)"></circle>' +
           "</svg>" +
-          '<div class="ring__center"><div class="ring__val">0</div><div class="ring__label"></div></div>';
-        const title = document.createElement("div");
-        title.className = "topicCard__title";
-        title.textContent = topic.title || topic.kind || "נושא";
-        card.appendChild(circle);
+          '<div class="ring__center"><div class="ring__val">0</div></div>';
+
+        // התווית (דיוק/שאלות/דקות/שליטה) — מתחת לעיגול
+        const metricLabel = document.createElement("div");
+        metricLabel.className = "topicCard__metric";
+
         card.appendChild(title);
+        card.appendChild(circle);
+        card.appendChild(metricLabel);
 
         let idx = 0;
-        animateCircle(circle, topic, METRICS[0], scales);
+        animateCircle(card, topic, METRICS[0], scales);
         circle.addEventListener("click", () => {
           idx = (idx + 1) % METRICS.length;
-          animateCircle(circle, topic, METRICS[idx], scales);
+          animateCircle(card, topic, METRICS[idx], scales);
         });
         return card;
       }
