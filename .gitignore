@@ -11,3 +11,8 @@ node_modules/
 .claude/settings.local.json
 # ארכיון הפונט (כפול — הקבצים כבר ב-fonts/)
 arca-morphe.zip
+
+# קבצים מקומיים שלא שייכים לענן
+Google_Sans.zip
+backup/
+.claude/launch.json

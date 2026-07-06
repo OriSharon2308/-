@@ -1064,8 +1064,19 @@ body.chat-resizing .chatResizeHandle::after {
 /* ===== איור חפצים (חיבור/חיסור) — מופיע רק על-פי החלטת המורה, מתחת לתרגיל, בלי שום מסגרת ===== */
 /* כשיש איור חפצים — מסדרים: שאלה, ואז התרגיל, ואז החפצים מתחת */
 .study-v2 #lessonCard .problem:has(.objViz) .problem__label { order: 0; }
-.study-v2 #lessonCard .problem:has(.objViz) .problem__text { order: 1; }
-.study-v2 #lessonCard .problem:has(.objViz) #problemDiagram { order: 2; }
+/* אפקט: כשהחפצים מופיעים — התרגיל "עולה" בעדינות למקומו (מעט מעל הפירות), לא קופץ */
+.study-v2 #lessonCard .problem:has(.objViz) .problem__text {
+  order: 1;
+  animation: exerciseRise 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes exerciseRise {
+  from { transform: translateY(15px); }
+  to { transform: translateY(0); }
+}
+.study-v2 #lessonCard .problem:has(.objViz) #problemDiagram {
+  order: 2;
+  flex: 0 0 auto !important; /* לא להתרחב — שהתפוחים יישבו צמוד מתחת לתרגיל, לא במרכז שטח ענק */
+}
 .study-v2 #problemDiagram .objViz {
   display: flex;
   flex-wrap: wrap;
@@ -1073,7 +1084,7 @@ body.chat-resizing .chatResizeHandle::after {
   justify-content: center;
   gap: clamp(10px, 2vw, 24px);
   max-height: none !important;
-  margin-top: clamp(12px, 2.4vh, 26px); /* רווח מהתרגיל שמעליו */
+  margin-top: clamp(6px, 1.4vh, 14px); /* רק טיפה מעל התפוחים */
   animation: none;
 }
 /* קבוצת חפצים — בלי מסגרת/רקע/ריפוד בכלל. רק החפצים. */
@@ -1110,7 +1121,8 @@ body.chat-resizing .chatResizeHandle::after {
 .study-v2 #problemDiagram .obj--clickable { cursor: pointer; }
 .study-v2 #problemDiagram .obj--clickable:hover { transform: scale(1.16); }
 @media (prefers-reduced-motion: reduce) {
-  .study-v2 #problemDiagram .obj { animation: none; }
+  .study-v2 #problemDiagram .obj,
+  .study-v2 #lessonCard .problem:has(.objViz) .problem__text { animation: none; }
 }
 
 .study-v2 #lessonCard .problem__text { transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1); }

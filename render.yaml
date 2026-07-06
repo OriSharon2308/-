@@ -6,12 +6,33 @@ services:
     buildCommand: npm install
     startCommand: node server.js
     envVars:
-      # המפתח מוזן בלוח הבקרה של Render (לא נשמר בקוד) — sync:false מבקש אותו שם
+      # מפתחות מוזנים בלוח הבקרה של Render (לא נשמרים בקוד) — sync:false מבקש אותם שם
       - key: ANTHROPIC_API_KEY
+        sync: false
+      # סיסמת אזור הניהול (/admin) — חובה להגדיר בלוח הבקרה
+      - key: ADMIN_PASSWORD
         sync: false
       - key: LLM_PROVIDER
         value: anthropic
       - key: ANTHROPIC_MODEL
-        value: claude-sonnet-4-20250514
+        value: claude-sonnet-4-6
+      # מודל מהיר לשיחות קול
+      - key: ANTHROPIC_VOICE_MODEL
+        value: claude-haiku-4-5-20251001
       - key: SAFE_CHILD_MODE
         value: "true"
+      # קול (אופציונלי): STT/TTS של Azure — בלי זה הצ'אט בכתב עובד רגיל
+      - key: AZURE_SPEECH_KEY
+        sync: false
+      - key: AZURE_SPEECH_REGION
+        sync: false
+
+    # ===== חשוב: שמירת נתונים (חשבונות/התקדמות) =====
+    # בתוכנית free הדיסק נמחק בכל deploy/הרדמה → כל החשבונות נעלמים!
+    # לבדיקה עם אנשים אמיתיים: לשדרג ל-starter ולפתוח את השורות הבאות —
+    # plan: starter
+    # disk:
+    #   name: vela-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
+    # ואז להוסיף בלוח הבקרה משתנה-סביבה: DATA_DIR=/var/data

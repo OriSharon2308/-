@@ -671,7 +671,7 @@
       ${area === "practice" ? `<div class="toolbar"><div class="field" style="flex:1;min-width:240px"><label>חיפוש שאלה או רמה</label>
         <input class="input search" id="qSearch" value="${esc(cs.q)}" placeholder="${cs.allQ ? "הקלד/י טקסט של שאלה, או מספר רמה (1–10)…" : "טוען חיפוש…"}" ${cs.allQ ? "" : "disabled"}/></div></div>` : ""}
       <div id="gradeBody"></div>`;
-    $("#backGrades").addEventListener("click", () => { cs.gradeNum = null; cs.topic = null; cs.data = null; cs.q = ""; cs.allQ = null; cs.course = null; drawContent(); });
+    $("#backGrades").addEventListener("click", () => { cs.gradeNum = null; cs.topic = null; cs.data = null; cs.q = ""; cs.allQ = null; cs.course = null; cs.learn = null; cs.leaf = null; drawContent(); });
     main.querySelectorAll(".areaTab").forEach((b) => b.addEventListener("click", () => { cs.area = b.dataset.area; cs.topic = null; drawGradeScreen(); }));
     const qs = $("#qSearch");
     if (qs) qs.addEventListener("input", (e) => { cs.q = e.target.value; drawGradeBody(); });
@@ -694,63 +694,102 @@
     if (cs.topic) openTopic(cs.topic);
   }
 
-  /* ── אזור למידה: מפת-הדרכים של כל נושא — השלבים, המטרות, המהלכים, והשיטה הקבועה ── */
+  /* ── אזור למידה: תרשים-זרימה אפל של מסע-ההוראה — מטרה עליונה, שלבים מתת-נושא לתת-נושא,
+       ולחיצה על תת-נושא חושפת את הצורה שבה המורה מלמד + הכלים שהוא משתמש בהם. ── */
   async function drawLearningBody(body) {
-    if (!cs.course || cs.course.grade !== cs.gradeNum) {
-      body.innerHTML = `<div class="card"><div class="empty"><span class="spin"></span> טוען מפת-דרכים…</div></div>`;
+    if (!cs.learn || cs.learn.grade !== cs.gradeNum) {
+      body.innerHTML = `<div class="learnView"><div class="learnLoading"><span class="spin"></span> טוען את מפת-הלמידה…</div></div>`;
       try {
-        const { data } = await api(`/api/admin/course?grade=${cs.gradeNum}`);
-        cs.course = { grade: cs.gradeNum, topics: data.topics || [] };
+        const { data } = await api(`/api/admin/learn?grade=${cs.gradeNum}`);
+        cs.learn = { grade: cs.gradeNum, flow: data.flow };
+        cs.leaf = null;
       } catch (e) {
-        body.innerHTML = `<div class="card"><div class="empty">שגיאה בטעינת מפת-הדרכים.</div></div>`;
+        body.innerHTML = `<div class="learnView"><div class="learnLoading learnLoading--empty">📖 אזור הלמידה לכיתה זו עדיין בהכנה.</div></div>`;
         return;
       }
       if ((cs.area || "practice") !== "learning" || !$("#gradeBody")) return; // המשתמש עבר בינתיים
     }
-    const topics = cs.course.topics;
-    if (!cs.topic || !topics.find((t) => t.key === cs.topic)) cs.topic = topics.length ? topics[0].key : null;
-    const sidebar = topics.map((t) =>
-      `<button class="topicBtn ${cs.topic === t.key ? "is-active" : ""}" data-topic="${esc(t.key)}"><span>${esc(t.key)}</span><span class="count">${t.stages.length ? t.stages.length + " שלבים" : "—"}</span></button>`
-    ).join("");
-    body.innerHTML = `<div class="contentLayout"><div class="sidebar">${sidebar || '<div class="empty">אין נושאים.</div>'}</div>
-      <div id="roadmapPane"></div></div>`;
-    body.querySelectorAll(".topicBtn").forEach((b) => b.addEventListener("click", () => { cs.topic = b.dataset.topic; drawLearningBody(body); }));
-    drawRoadmap();
+    renderLearn(body);
   }
 
-  function drawRoadmap() {
-    const pane = $("#roadmapPane"); if (!pane) return;
-    const t = (cs.course.topics || []).find((x) => x.key === cs.topic);
-    if (!t) { pane.innerHTML = `<div class="card"><div class="empty">בחר/י נושא.</div></div>`; return; }
-    if (!t.stages.length) {
-      pane.innerHTML = `<div class="card"><div class="empty">לנושא הזה אין עדיין מערך-שיעורים מובנה — המורה מלמד אותו חופשי לפי מאגר-הכלים.</div></div>`;
+  function learnLeafBy(key) {
+    const flow = cs.learn && cs.learn.flow;
+    if (!flow) return null;
+    for (const s of flow.stages) for (const lf of s.leaves) if (lf.key === key) return { leaf: lf, stage: s };
+    return null;
+  }
+
+  function renderLearn(body) {
+    const flow = cs.learn.flow;
+    if (!flow || !flow.stages.length) { body.innerHTML = `<div class="learnView"><div class="learnLoading learnLoading--empty">אין נתוני-למידה לכיתה זו.</div></div>`; return; }
+    const stages = flow.stages.map((s, si) => {
+      const single = s.leaves.length === 1 && s.leaves[0].key === s.key;
+      const leaves = s.leaves.map((lf) => {
+        const label = single ? s.label : lf.key;
+        return `<button class="learnLeaf ${cs.leaf === lf.key ? "is-active" : ""}" data-leaf="${esc(lf.key)}">
+            <span class="learnLeaf__dot"></span>
+            <span class="learnLeaf__txt">${esc(label)}</span>
+            <span class="learnLeaf__chev">‹</span>
+          </button>`;
+      }).join("");
+      return `<div class="learnStage ${si === flow.stages.length - 1 ? "is-last" : ""}">
+          <div class="learnStage__spine"><span class="learnStage__num">${si + 1}</span></div>
+          <div class="learnStage__body">
+            <div class="learnStage__title">${esc(s.label)}</div>
+            <div class="learnStage__leaves">${leaves}</div>
+          </div>
+        </div>`;
+    }).join("");
+    body.innerHTML = `<div class="learnView">
+      <div class="learnGoal">
+        <div class="learnGoal__tag"><span class="learnGoal__star">★</span> מטרה עליונה</div>
+        <div class="learnGoal__text">${esc(flow.goal)}</div>
+        <div class="learnGoal__sub">לאן מוליכים את התלמיד — כל שלב מטפס לעבר היעד הזה</div>
+      </div>
+      <div class="learnFlow">${stages}</div>
+      <div id="learnDetail" class="learnDetail"></div>
+    </div>`;
+    body.querySelectorAll(".learnLeaf").forEach((b) => b.addEventListener("click", () => {
+      cs.leaf = (cs.leaf === b.dataset.leaf) ? null : b.dataset.leaf;
+      body.querySelectorAll(".learnLeaf").forEach((x) => x.classList.toggle("is-active", !!cs.leaf && x.dataset.leaf === cs.leaf));
+      renderLearnDetail(true);
+    }));
+    renderLearnDetail(false);
+  }
+
+  function renderLearnDetail(doScroll) {
+    const box = $("#learnDetail"); if (!box) return;
+    const hit = cs.leaf ? learnLeafBy(cs.leaf) : null;
+    if (!hit) {
+      box.className = "learnDetail";
+      box.innerHTML = `<div class="learnHint"><span class="learnHint__ico">☞</span> לחצו על תת-נושא בתרשים כדי לראות איך המורה מלמד אותו — והכלים שבהם הוא נעזר.</div>`;
       return;
     }
-    const stages = t.stages.map((s) => {
-      const m = s.method;
-      const methodHtml = m
-        ? (m.confirmed
-          ? `<details class="stageMethod stageMethod--ok"><summary>🔒 שיטה קבועה שמורה ✓ <span class="muted">(הוצגה ${m.uses} פעמים · 0 טוקנים)</span></summary><div class="stageMethod__reply">${esc(m.reply)}</div></details>`
-          : `<details class="stageMethod stageMethod--pending"><summary>⏳ שיטה מועמדת — ממתינה לאישור ילד ראשון (✓ הבנתי)</summary><div class="stageMethod__reply">${esc(m.reply)}</div></details>`)
-        : `<div class="stageMethod stageMethod--none">◯ שיטה קבועה תיווצר בשיעור הראשון ותינעל כשהילד ילחץ "✓ הבנתי"</div>`;
-      return `<div class="stage">
-        <div class="stage__rail"><div class="stage__n">${s.n}</div></div>
-        <div class="stage__body">
-          <div class="stage__title">${esc(s.title)}</div>
-          <div class="stage__row"><span class="stage__tag stage__tag--goal">🎯 המטרה</span><span>${esc(s.goal)}</span></div>
-          <div class="stage__row"><span class="stage__tag stage__tag--teach">📋 המהלך</span><span>${esc(s.teach)}</span></div>
-          ${methodHtml}
-        </div>
-      </div>`;
-    }).join("");
-    pane.innerHTML = `<div class="card roadmap">
-      <div class="roadmap__head">
-        <h2 style="margin:0">${esc(t.key)}</h2>
-        <span class="muted">${t.stages.length} שלבים · מהמוחשי למופשט · אחרי השלב האחרון — חזרה והעמקה</span>
+    const { leaf, stage } = hit;
+    const title = leaf.key === stage.key ? stage.label : leaf.key;
+    const steps = (leaf.substeps || []).map((st, i) =>
+      `<li class="learnStep"><span class="learnStep__n">${i + 1}</span><span class="learnStep__t">${esc(st)}</span></li>`).join("");
+    const tools = (leaf.tools || []).map((t) =>
+      `<div class="learnTool"><div class="learnTool__name">${esc(t.name)}</div><div class="learnTool__desc">${esc(t.desc)}</div></div>`).join("");
+    box.className = "learnDetail is-open";
+    box.innerHTML = `
+      <div class="learnDetail__head">
+        <span class="learnDetail__crumb">${esc(stage.label)}</span>
+        <h2 class="learnDetail__title">${esc(title)}</h2>
       </div>
-      <div class="roadmap__intro muted">כל שלב = שיעור אחד: מה המורה מציג (קבוע, כשהשיעור רץ והילד מבין), מה המטרה, ומה המהלך. כשילד לוחץ "✓ הבנתי" — השיטה ננעלת ומוצגת לכל הילדים הבאים בלי AI.</div>
-      ${stages}
-    </div>`;
+      <div class="learnBlock">
+        <div class="learnBlock__label">איך המורה מלמד</div>
+        <p class="learnMethod">${esc(leaf.method)}</p>
+      </div>
+      ${steps ? `<div class="learnBlock">
+        <div class="learnBlock__label">שלבי-ההוראה</div>
+        <ol class="learnSteps">${steps}</ol>
+      </div>` : ""}
+      ${tools ? `<div class="learnBlock">
+        <div class="learnBlock__label">הכלים שבהם המורה משתמש</div>
+        <div class="learnTools">${tools}</div>
+      </div>` : ""}`;
+    if (doScroll) box.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
   }
 
   function searchResultsHtml() {

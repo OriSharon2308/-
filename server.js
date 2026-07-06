@@ -4,6 +4,11 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
+// עוגן ל-cwd תקין: תיקיית ~/Desktop מוגנת (TCC) ולעיתים process.cwd() נכשל (EPERM) כשמריצים
+// דרך ה-preview. כל הנתיבים בקוד מבוססי __dirname, אז בטוח לעגן ל-__dirname; ואם גם הוא חסום —
+// לתיקיית temp — כדי שקריאת-cwd פנימית של Node לא תפיל את השרת.
+try { process.chdir(__dirname); } catch { try { process.chdir(require("os").tmpdir()); } catch { /* מתעלמים */ } }
+
 const { loadEnvFile } = require("./lib/env");
 const { runChat, getAgentStatus } = require("./agent/orchestrator");
 const { visionDescribeBoard } = require("./agent/vision-agent"); // המורה "רואה" את ציור הילד
@@ -27,6 +32,7 @@ const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנ�
 const teachingMethods = require("./lib/teaching-methods"); // שיטות-לימוד שמורות (אישור ✓-הבנתי)
 const courseLib = require("./lib/course"); // מערכי-שיעור — מפת-הדרכים של הלמידה (גם לאדמין)
 const demo = require("./lib/demo"); // תלמיד-דוגמה קבוע (קריאה בלבד)
+const teachingFlow = require("./lib/teaching-flow"); // אזור למידה: תרשים-זרימה של שלבי-ההוראה + כלים
 const parentAuth = require("./lib/parent-auth"); // אזור הורים — כניסה עם פרטי הילד, session נפרד
 
 const ROOT = __dirname;
@@ -368,6 +374,14 @@ const server = http.createServer(async (req, res) => {
         return json(res, 200, { ok: true, grade: cGradeNum, topics });
       }
 
+      // אזור למידה: תרשים-זרימה של שלבי-ההוראה לכיתה + מטרה-עליונה, שיטה וכלים לכל תת-נושא
+      if (au.pathname === "/api/admin/learn") {
+        const lGradeNum = Number.parseInt(q.get("grade"), 10);
+        const flow = teachingFlow.learnFlow(lGradeNum);
+        if (!flow) return json(res, 404, { ok: false, error: "אזור הלמידה לכיתה זו בהכנה" });
+        return json(res, 200, { ok: true, flow });
+      }
+
       if (au.pathname === "/api/admin/content/topic") {
         const gradeNum = Number.parseInt(q.get("grade"), 10);
         const topic = q.get("topic");
@@ -425,6 +439,32 @@ const server = http.createServer(async (req, res) => {
           topicTime: analytics.topicTime(childId),
           timeOfDay: analytics.timeOfDay(childId),
           assessments: await assess.getAssessments(childId, child), // מהמטמון — מתעדכן רק על שינוי
+        });
+      }
+
+      // פירוט נושא: סטטיסטיקה + גרף + תרגילים אחרונים + חוות דעת הצוות לנושא (מטמון)
+      if (url.startsWith("/api/parent/topic")) {
+        const au = new URL(url, "http://localhost");
+        const name = au.searchParams.get("name");
+        if (!name) return json(res, 400, { ok: false, error: "חסר שם נושא" });
+        const topicStat = analytics.summary(childId).topics.find((t) => t.name === name);
+        if (!topicStat) return json(res, 404, { ok: false, error: "הנושא לא נמצא" });
+        const minutes = (analytics.topicTime(childId).find((t) => t.topic === name) || {}).minutes ?? 0;
+        const days = (analytics.masteryByTopic(childId).find((t) => t.topic === name) || {}).days || [];
+        const recent = analytics.answeredEvents(childId)
+          .filter((e) => e.topic === name)
+          .slice(-8)
+          .reverse()
+          .map((e) => ({ t: e.t, problem: e.problem || "", answer: e.studentAnswer ?? "", correct: e.correct }));
+        return json(res, 200, {
+          ok: true,
+          topic: topicStat,
+          minutes,
+          days,
+          recent,
+          assessments: await assess.getTopicAssessments(childId, child, topicStat, minutes, {
+            force: au.searchParams.get("refresh") === "1",
+          }),
         });
       }
 
