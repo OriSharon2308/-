@@ -32,8 +32,10 @@ const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנ�
 const teachingMethods = require("./lib/teaching-methods"); // שיטות-לימוד שמורות (אישור ✓-הבנתי)
 const courseLib = require("./lib/course"); // מערכי-שיעור — מפת-הדרכים של הלמידה (גם לאדמין)
 const demo = require("./lib/demo"); // תלמיד-דוגמה קבוע (קריאה בלבד)
-const teachingFlow = require("./lib/teaching-flow"); // אזור למידה: תרשים-זרימה של שלבי-ההוראה + כלים
+const lessonTools = require("./lib/lesson-tools"); // אזור למידה: זיהוי כלי-הלוח שכל שלב משתמש בהם
 const parentAuth = require("./lib/parent-auth"); // אזור הורים — כניסה עם פרטי הילד, session נפרד
+const cloudStore = require("./lib/cloud-store"); // גיבוי-ענן חינמי (Upstash) — חשבונות שורדים deploy
+const logger = require("./lib/logger"); // לוגים אחידים — קונסול (Render Logs) + קובץ יומי
 
 const ROOT = __dirname;
 loadEnvFile(ROOT);
@@ -366,20 +368,13 @@ const server = http.createServer(async (req, res) => {
                 title: p.title,
                 goal: p.goal,
                 teach: p.teach,
+                tools: lessonTools.toolsInTeach(p.teach),
                 method: m ? { confirmed: !!m.confirmed, uses: m.uses || 0, reply: String(m.reply || "").slice(0, 600) } : null,
               };
             }),
           };
         });
         return json(res, 200, { ok: true, grade: cGradeNum, topics });
-      }
-
-      // אזור למידה: תרשים-זרימה של שלבי-ההוראה לכיתה + מטרה-עליונה, שיטה וכלים לכל תת-נושא
-      if (au.pathname === "/api/admin/learn") {
-        const lGradeNum = Number.parseInt(q.get("grade"), 10);
-        const flow = teachingFlow.learnFlow(lGradeNum);
-        if (!flow) return json(res, 404, { ok: false, error: "אזור הלמידה לכיתה זו בהכנה" });
-        return json(res, 200, { ok: true, flow });
       }
 
       if (au.pathname === "/api/admin/content/topic") {
@@ -922,29 +917,67 @@ const server = http.createServer(async (req, res) => {
     }
     return serveFile(res, rel, method);
   } catch (e) {
-    console.error(e);
+    logger.error(`בקשה נכשלה ${req.method} ${req.url}`, e && e.stack ? e.stack : String(e));
     return send(res, 500, {}, "Server error");
   }
 });
 
+// לוג בקשות API (שגיאות תמיד; הצלחות רק ל-/api — בלי רעש של קבצים סטטיים)
+server.on("request", (req, res) => {
+  const t0 = Date.now();
+  res.on("finish", () => {
+    const u = (req.url || "").split("?")[0];
+    if (!u.startsWith("/api/")) return;
+    const ms = Date.now() - t0;
+    const lvl = res.statusCode >= 500 ? "error" : res.statusCode >= 400 ? "warn" : "info";
+    logger[lvl](`${req.method} ${u} → ${res.statusCode}`, `${ms}ms`);
+  });
+});
+
+// שגיאות לא-תפוסות — נרשמות ולא מפילות בשקט
+process.on("uncaughtException", (e) => logger.error("uncaughtException", e && e.stack ? e.stack : String(e)));
+process.on("unhandledRejection", (e) => logger.error("unhandledRejection", e && e.stack ? e.stack : String(e)));
+
+// כיבוי מסודר (deploy ב-Render שולח SIGTERM): מסנכרנים לענן את מה שממתין ורק אז יוצאים
+process.on("SIGTERM", async () => {
+  logger.info("SIGTERM — מסנכרן נתונים לענן לפני כיבוי…");
+  try {
+    await cloudStore.flushAll();
+    logger.info("סנכרון הושלם — נכבה.");
+  } catch (e) {
+    logger.error("סנכרון לפני כיבוי נכשל", e.message);
+  }
+  process.exit(0);
+});
+
 // מאזין רק כשמריצים את הקובץ ישירות (node server.js) — כך טעינה כמודול לא קורסת
 if (require.main === module) {
-  server.listen(PORT, "0.0.0.0", () => {
-    const status = getAgentStatus();
-    console.log("מערכת לימוד — שרת פעיל (חשבונות + 4 סוכנים)");
-    console.log(`אתר:  http://localhost:${PORT}`);
-    console.log("התחברות נדרשת — דף הרשמה/כניסה ב-/auth");
-    if (status.aiEnabled) {
-      console.log(`AI:   ${status.provider} / ${status.model}`);
-    } else {
-      console.log("AI:   מצב מקומי — הוסף מפתח ב-.env (ראה .env.example)");
-    }
-    // שמירת ה-token של Google TTS חם — קריאות המשתמש לא ישלמו את ה-token הקר
-    if ((process.env.TTS_PROVIDER || "azure").toLowerCase() === "google") {
-      googleTts.warmToken().then((ok) => console.log(`Google TTS token: ${ok ? "חם ✓" : "ייווצר בקריאה הראשונה"}`));
-      setInterval(() => googleTts.warmToken(), 50 * 60 * 1000); // רענון לפני תפוגת ה-55 דק'
-    }
-  });
+  // קודם משחזרים את הנתונים מהענן (חשבונות/התקדמות) — רק אז מתחילים לקבל בקשות
+  cloudStore
+    .restoreAll()
+    .then(({ enabled, restored }) => {
+      if (enabled) logger.info(`ענן: שוחזרו ${restored} קבצי נתונים מ-Upstash ✓`);
+      else logger.info("ענן: לא מוגדר (UPSTASH_REDIS_REST_URL/TOKEN) — נתונים מקומיים בלבד");
+    })
+    .catch((e) => logger.error("שחזור מהענן נכשל — ממשיכים עם הנתונים המקומיים", e.message))
+    .finally(() => {
+      server.listen(PORT, "0.0.0.0", () => {
+        const status = getAgentStatus();
+        console.log("מערכת לימוד — שרת פעיל (חשבונות + 4 סוכנים)");
+        console.log(`אתר:  http://localhost:${PORT}`);
+        console.log("התחברות נדרשת — דף הרשמה/כניסה ב-/auth");
+        if (status.aiEnabled) {
+          console.log(`AI:   ${status.provider} / ${status.model}`);
+        } else {
+          console.log("AI:   מצב מקומי — הוסף מפתח ב-.env (ראה .env.example)");
+        }
+        // שמירת ה-token של Google TTS חם — קריאות המשתמש לא ישלמו את ה-token הקר
+        if ((process.env.TTS_PROVIDER || "azure").toLowerCase() === "google") {
+          googleTts.warmToken().then((ok) => console.log(`Google TTS token: ${ok ? "חם ✓" : "ייווצר בקריאה הראשונה"}`));
+          setInterval(() => googleTts.warmToken(), 50 * 60 * 1000); // רענון לפני תפוגת ה-55 דק'
+        }
+      });
+    });
 }
 
 module.exports = server;

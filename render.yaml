@@ -26,13 +26,10 @@ services:
         sync: false
       - key: AZURE_SPEECH_REGION
         sync: false
-
-    # ===== חשוב: שמירת נתונים (חשבונות/התקדמות) =====
-    # בתוכנית free הדיסק נמחק בכל deploy/הרדמה → כל החשבונות נעלמים!
-    # לבדיקה עם אנשים אמיתיים: לשדרג ל-starter ולפתוח את השורות הבאות —
-    # plan: starter
-    # disk:
-    #   name: vela-data
-    #   mountPath: /var/data
-    #   sizeGB: 1
-    # ואז להוסיף בלוח הבקרה משתנה-סביבה: DATA_DIR=/var/data
+      # ===== שמירת נתונים בחינם (חשבונות/התקדמות שורדים deploy והרדמה) =====
+      # Upstash Redis (חינמי): כל כתיבה מסתנכרנת לענן, ובעליית השרת הכל משוחזר.
+      # יוצרים DB בחינם ב-console.upstash.com ומדביקים כאן את ה-REST URL וה-TOKEN.
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
