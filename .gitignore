@@ -1,9 +1,12 @@
 .env
 node_modules/
 
-# כל data/ נשאר פרטי (חשבונות, sessions, זיכרון) — חוץ ממאגר השאלות המשותף
+# כל data/ נשאר פרטי (חשבונות, sessions, זיכרון) — חוץ מתוכן משותף:
+# בנק שאלות, שיטות-לימוד שאושרו, וחומרי-עזר — אלה חלק מהמערכת ועולים לענן
 /data/*
 !/data/bank/
+!/data/methods/
+!/data/reference/
 .design-backup/
 .DS_Store
 

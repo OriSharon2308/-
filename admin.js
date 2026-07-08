@@ -664,15 +664,15 @@
         <span class="spacer"></span>
         <span class="muted">${tn} נושאים · ${qn.toLocaleString("he-IL")} שאלות</span>
       </div>
-      <div class="areaTabs" role="tablist">
+      ${area === "learning" && cs.learnTopic ? "" : `<div class="areaTabs" role="tablist">
         <button class="areaTab ${area === "practice" ? "is-active" : ""}" data-area="practice" role="tab">🎯 אזור תרגול</button>
         <button class="areaTab ${area === "learning" ? "is-active" : ""}" data-area="learning" role="tab">📖 אזור למידה</button>
-      </div>
+      </div>`}
       ${area === "practice" ? `<div class="toolbar"><div class="field" style="flex:1;min-width:240px"><label>חיפוש שאלה או רמה</label>
         <input class="input search" id="qSearch" value="${esc(cs.q)}" placeholder="${cs.allQ ? "הקלד/י טקסט של שאלה, או מספר רמה (1–10)…" : "טוען חיפוש…"}" ${cs.allQ ? "" : "disabled"}/></div></div>` : ""}
       <div id="gradeBody"></div>`;
-    $("#backGrades").addEventListener("click", () => { cs.gradeNum = null; cs.topic = null; cs.data = null; cs.q = ""; cs.allQ = null; cs.course = null; cs.learn = null; cs.leaf = null; drawContent(); });
-    main.querySelectorAll(".areaTab").forEach((b) => b.addEventListener("click", () => { cs.area = b.dataset.area; cs.topic = null; drawGradeScreen(); }));
+    $("#backGrades").addEventListener("click", () => { cs.gradeNum = null; cs.topic = null; cs.data = null; cs.q = ""; cs.allQ = null; cs.learn = null; cs.learnTopic = null; drawContent(); });
+    main.querySelectorAll(".areaTab").forEach((b) => b.addEventListener("click", () => { cs.area = b.dataset.area; cs.topic = null; cs.learnTopic = null; drawGradeScreen(); }));
     const qs = $("#qSearch");
     if (qs) qs.addEventListener("input", (e) => { cs.q = e.target.value; drawGradeBody(); });
     drawGradeBody();
@@ -694,102 +694,97 @@
     if (cs.topic) openTopic(cs.topic);
   }
 
-  /* ── אזור למידה: תרשים-זרימה אפל של מסע-ההוראה — מטרה עליונה, שלבים מתת-נושא לתת-נושא,
-       ולחיצה על תת-נושא חושפת את הצורה שבה המורה מלמד + הכלים שהוא משתמש בהם. ── */
+  /* ── אזור למידה: כרטיסי-נושאים (מסך לבן נקי) → לחיצה פותחת מסך-נושא מלא עם מפת-הדרכים.
+       לכל שלב: מטרה, שיעור-הזהב הקבוע, והכלים (שם בלבד; לחיצה חושפת תיאור). מקור: course.js. ── */
   async function drawLearningBody(body) {
     if (!cs.learn || cs.learn.grade !== cs.gradeNum) {
-      body.innerHTML = `<div class="learnView"><div class="learnLoading"><span class="spin"></span> טוען את מפת-הלמידה…</div></div>`;
+      body.innerHTML = `<div class="learnLoad"><span class="spin"></span> טוען את אזור-הלמידה…</div>`;
       try {
-        const { data } = await api(`/api/admin/learn?grade=${cs.gradeNum}`);
-        cs.learn = { grade: cs.gradeNum, flow: data.flow };
-        cs.leaf = null;
+        const { data } = await api(`/api/admin/course?grade=${cs.gradeNum}`);
+        cs.learn = { grade: cs.gradeNum, topics: data.topics || [] };
       } catch (e) {
-        body.innerHTML = `<div class="learnView"><div class="learnLoading learnLoading--empty">📖 אזור הלמידה לכיתה זו עדיין בהכנה.</div></div>`;
+        body.innerHTML = `<div class="learnLoad learnLoad--empty">אזור הלמידה לכיתה זו עדיין בהכנה.</div>`;
         return;
       }
       if ((cs.area || "practice") !== "learning" || !$("#gradeBody")) return; // המשתמש עבר בינתיים
     }
-    renderLearn(body);
+    if (cs.learnTopic && cs.learn.topics.find((t) => t.key === cs.learnTopic)) renderLearnRoadmap(body);
+    else renderLearnTopics(body);
   }
 
-  function learnLeafBy(key) {
-    const flow = cs.learn && cs.learn.flow;
-    if (!flow) return null;
-    for (const s of flow.stages) for (const lf of s.leaves) if (lf.key === key) return { leaf: lf, stage: s };
-    return null;
-  }
-
-  function renderLearn(body) {
-    const flow = cs.learn.flow;
-    if (!flow || !flow.stages.length) { body.innerHTML = `<div class="learnView"><div class="learnLoading learnLoading--empty">אין נתוני-למידה לכיתה זו.</div></div>`; return; }
-    const stages = flow.stages.map((s, si) => {
-      const single = s.leaves.length === 1 && s.leaves[0].key === s.key;
-      const leaves = s.leaves.map((lf) => {
-        const label = single ? s.label : lf.key;
-        return `<button class="learnLeaf ${cs.leaf === lf.key ? "is-active" : ""}" data-leaf="${esc(lf.key)}">
-            <span class="learnLeaf__dot"></span>
-            <span class="learnLeaf__txt">${esc(label)}</span>
-            <span class="learnLeaf__chev">‹</span>
-          </button>`;
-      }).join("");
-      return `<div class="learnStage ${si === flow.stages.length - 1 ? "is-last" : ""}">
-          <div class="learnStage__spine"><span class="learnStage__num">${si + 1}</span></div>
-          <div class="learnStage__body">
-            <div class="learnStage__title">${esc(s.label)}</div>
-            <div class="learnStage__leaves">${leaves}</div>
-          </div>
-        </div>`;
+  // מסך 1 — כרטיסי הנושאים (נקי, לבן)
+  function renderLearnTopics(body) {
+    const topics = cs.learn.topics;
+    const cards = topics.map((t) => {
+      const n = t.stages.length;
+      return `<button class="topicCard ${n ? "" : "is-soon"}" data-topic="${esc(t.key)}" ${n ? "" : "disabled"}>
+          <span class="topicCard__name">${esc(t.key)}</span>
+          <span class="topicCard__meta">${n ? n + " שלבים במפת-הדרכים" : "בקרוב"}</span>
+          <span class="topicCard__go" aria-hidden="true">←</span>
+        </button>`;
     }).join("");
-    body.innerHTML = `<div class="learnView">
-      <div class="learnGoal">
-        <div class="learnGoal__tag"><span class="learnGoal__star">★</span> מטרה עליונה</div>
-        <div class="learnGoal__text">${esc(flow.goal)}</div>
-        <div class="learnGoal__sub">לאן מוליכים את התלמיד — כל שלב מטפס לעבר היעד הזה</div>
-      </div>
-      <div class="learnFlow">${stages}</div>
-      <div id="learnDetail" class="learnDetail"></div>
-    </div>`;
-    body.querySelectorAll(".learnLeaf").forEach((b) => b.addEventListener("click", () => {
-      cs.leaf = (cs.leaf === b.dataset.leaf) ? null : b.dataset.leaf;
-      body.querySelectorAll(".learnLeaf").forEach((x) => x.classList.toggle("is-active", !!cs.leaf && x.dataset.leaf === cs.leaf));
-      renderLearnDetail(true);
+    body.innerHTML = `<div class="learnIntro">בחרו נושא כדי לראות את <b>מפת-הדרכים</b> שלו — רצף השלבים שמביא את הילד להבנה מלאה, הכלים בכל שלב, ושיעור-הזהב הקבוע.</div>
+      <div class="topicCards">${cards || '<div class="empty">אין נושאים לכיתה זו.</div>'}</div>`;
+    body.querySelectorAll(".topicCard").forEach((b) => b.addEventListener("click", () => {
+      if (b.disabled) return;
+      cs.learnTopic = b.dataset.topic;
+      drawGradeScreen();
     }));
-    renderLearnDetail(false);
   }
 
-  function renderLearnDetail(doScroll) {
-    const box = $("#learnDetail"); if (!box) return;
-    const hit = cs.leaf ? learnLeafBy(cs.leaf) : null;
-    if (!hit) {
-      box.className = "learnDetail";
-      box.innerHTML = `<div class="learnHint"><span class="learnHint__ico">☞</span> לחצו על תת-נושא בתרשים כדי לראות איך המורה מלמד אותו — והכלים שבהם הוא נעזר.</div>`;
-      return;
-    }
-    const { leaf, stage } = hit;
-    const title = leaf.key === stage.key ? stage.label : leaf.key;
-    const steps = (leaf.substeps || []).map((st, i) =>
-      `<li class="learnStep"><span class="learnStep__n">${i + 1}</span><span class="learnStep__t">${esc(st)}</span></li>`).join("");
-    const tools = (leaf.tools || []).map((t) =>
-      `<div class="learnTool"><div class="learnTool__name">${esc(t.name)}</div><div class="learnTool__desc">${esc(t.desc)}</div></div>`).join("");
-    box.className = "learnDetail is-open";
-    box.innerHTML = `
-      <div class="learnDetail__head">
-        <span class="learnDetail__crumb">${esc(stage.label)}</span>
-        <h2 class="learnDetail__title">${esc(title)}</h2>
+  // מסך 2 — מפת-הדרכים של הנושא (מסך מלא)
+  function renderLearnRoadmap(body) {
+    const t = cs.learn.topics.find((x) => x.key === cs.learnTopic);
+    if (!t) { cs.learnTopic = null; renderLearnTopics(body); return; }
+    const stages = t.stages.map((s) => {
+      const tools = (s.tools || []).map((tool, ti) =>
+        `<button class="toolChip" data-tool="${s.n}:${ti}"><span class="toolChip__dot"></span>${esc(tool.label)}</button>`).join("");
+      const toolsBlock = (s.tools && s.tools.length) ? `
+        <div class="stageBlock">
+          <div class="stageBlock__label">הכלים בשלב הזה <span class="stageBlock__hint">· לחצו לתיאור</span></div>
+          <div class="toolChips">${tools}</div>
+          <div class="toolDesc" data-for="${s.n}"></div>
+        </div>` : "";
+      const gold = String(s.teach || "").trim();
+      return `<section class="roadStage" data-n="${s.n}">
+          <div class="roadStage__rail"><span class="roadStage__num">${s.n}</span></div>
+          <div class="roadStage__card">
+            <div class="roadStage__head">
+              <h3 class="roadStage__title">${esc(s.title)}</h3>
+              ${s.goal ? `<div class="roadStage__goal"><span class="roadStage__goalTag">מטרה</span><span>${esc(s.goal)}</span></div>` : ""}
+            </div>
+            ${toolsBlock}
+            ${gold ? `<div class="stageBlock">
+              <div class="stageBlock__label goldLabel"><span class="goldStar">★</span> שיעור-הזהב הקבוע</div>
+              <div class="goldLesson">${esc(gold)}</div>
+            </div>` : ""}
+          </div>
+        </section>`;
+    }).join("");
+    body.innerHTML = `<div class="roadmap">
+      <div class="roadmap__top">
+        <button class="btn btn--ghost btn--sm" id="backTopics">→ כל הנושאים</button>
+        <div class="roadmap__titles">
+          <h2 class="roadmap__h">${esc(t.key)}</h2>
+          <span class="roadmap__sub">מפת-דרכים · ${t.stages.length} שלבים · מהמוחשי אל המופשט</span>
+        </div>
       </div>
-      <div class="learnBlock">
-        <div class="learnBlock__label">איך המורה מלמד</div>
-        <p class="learnMethod">${esc(leaf.method)}</p>
-      </div>
-      ${steps ? `<div class="learnBlock">
-        <div class="learnBlock__label">שלבי-ההוראה</div>
-        <ol class="learnSteps">${steps}</ol>
-      </div>` : ""}
-      ${tools ? `<div class="learnBlock">
-        <div class="learnBlock__label">הכלים שבהם המורה משתמש</div>
-        <div class="learnTools">${tools}</div>
-      </div>` : ""}`;
-    if (doScroll) box.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
+      <div class="roadStages">${stages || '<div class="empty">לנושא הזה עוד אין מפת-דרכים מובנית.</div>'}</div>
+    </div>`;
+    $("#backTopics").addEventListener("click", () => { cs.learnTopic = null; drawGradeScreen(); });
+    body.querySelectorAll(".toolChip").forEach((chip) => chip.addEventListener("click", () => {
+      const [nStr, tiStr] = chip.dataset.tool.split(":");
+      const stage = t.stages.find((s) => String(s.n) === nStr);
+      const tool = stage && stage.tools[Number(tiStr)];
+      const descBox = body.querySelector(`.toolDesc[data-for="${nStr}"]`);
+      if (!tool || !descBox) return;
+      const already = chip.classList.contains("is-open");
+      chip.closest(".stageBlock").querySelectorAll(".toolChip").forEach((c) => c.classList.remove("is-open"));
+      if (already) { descBox.className = "toolDesc"; descBox.innerHTML = ""; return; }
+      chip.classList.add("is-open");
+      descBox.className = "toolDesc is-open";
+      descBox.innerHTML = `<span class="toolDesc__name">${esc(tool.label)}</span>${esc(tool.desc)}`;
+    }));
   }
 
   function searchResultsHtml() {

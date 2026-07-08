@@ -1,0 +1,120 @@
+{
+  "topic": "צורות גאומטריות#1",
+  "reply": "הנה, סרטטתי לך על הלוח.",
+  "toolCalls": [
+    {
+      "id": "toolu_01JoMJHTQGEtuLEPJsTUtXdU",
+      "name": "write_text",
+      "input": {
+        "x": 560,
+        "y": 50,
+        "text": "צלעות וקודקודים",
+        "size": 38,
+        "color": "#0f3b36"
+      }
+    },
+    {
+      "id": "toolu_01H6qX9DYsSbaNMwkr66xyLX",
+      "name": "write_text",
+      "input": {
+        "x": 560,
+        "y": 100,
+        "text": "קו ישר = צלע   |   פינה = קודקוד",
+        "size": 28,
+        "color": "#0d9488"
+      }
+    },
+    {
+      "id": "toolu_01G7SJYDcdmrsHPQZnArqzph",
+      "name": "draw_polygon",
+      "input": {
+        "points": [
+          [
+            310,
+            160
+          ],
+          [
+            500,
+            420
+          ],
+          [
+            120,
+            420
+          ]
+        ],
+        "color": "#0d9488",
+        "width": 5
+      }
+    },
+    {
+      "id": "toolu_01GRVXv41tDxuwoDwituTsLL",
+      "name": "draw_point",
+      "input": {
+        "x": 310,
+        "y": 160,
+        "label": "1",
+        "color": "#e11d48"
+      }
+    },
+    {
+      "id": "toolu_01D8jCfqcetP8ZBNMnYaP3v7",
+      "name": "draw_point",
+      "input": {
+        "x": 500,
+        "y": 420,
+        "label": "2",
+        "color": "#e11d48"
+      }
+    },
+    {
+      "id": "toolu_01AZd3oZvTTNaSnwWcsYoKue",
+      "name": "draw_point",
+      "input": {
+        "x": 120,
+        "y": 420,
+        "label": "3",
+        "color": "#e11d48"
+      }
+    },
+    {
+      "id": "toolu_01UpzsqDLHH4QP7Bchg89HCK",
+      "name": "write_text",
+      "input": {
+        "x": 310,
+        "y": 470,
+        "text": "משולש: 3 צלעות, 3 קודקודים",
+        "size": 26,
+        "color": "#0f3b36"
+      }
+    },
+    {
+      "id": "toolu_01FYYaGVokiBkPD6whL7muu3",
+      "name": "draw_polygon",
+      "input": {
+        "points": [
+          [
+            820,
+            160
+          ],
+          [
+            1020,
+            160
+          ],
+          [
+            1020,
+            420
+          ],
+          [
+            820,
+            420
+          ]
+        ],
+        "color": "#0d9488",
+        "width": 5
+      }
+    }
+  ],
+  "confirmed": false,
+  "uses": 0,
+  "updatedAt": "2026-07-04T18:18:09.902Z"
+}
