@@ -1984,6 +1984,11 @@ body.agent-debug-open {
   flex-direction: column;
   gap: 10px;
 }
+/* השיחה מעוגנת לתחתית: כשיש מעט הודעות הן יושבות למטה ליד הקלט,
+   וכל הודעה חדשה נכנסת מלמטה ודוחפת את הישנות מעלה (כמו וואטסאפ) */
+.chatLog > :first-child {
+  margin-top: auto;
+}
 
 .msg {
   max-width: 88%;
