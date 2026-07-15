@@ -1,14 +1,13 @@
 /* ═══════════════════════════════════════════════════════════════
-   vela · תוכנית הבנייה — לילה קולנועי, בניין ההון, זהב על שמיים
+   vela · תוכנית הבנייה — לילה קולנועי: שמיים, בניין, אדמה חיה
+   הסצנה: כוכבים וירח ← הבניין על הדשא ← והאתר ממשיך בתוך האדמה
    ═══════════════════════════════════════════════════════════════ */
-/* פונט המותג — vela נכתב תמיד בו */
 @font-face {
   font-family: "Arca Morphe";
   src: url("/fonts/ArcaMorphe-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
-/* פונט הממשק — Google Sans (עברית+לטינית) */
 @font-face {
   font-family: "Google Sans";
   src: url("/fonts/GoogleSans.woff2") format("woff2");
@@ -20,21 +19,30 @@
   --night-0: #05080f;
   --night-1: #0a1019;
   --night-2: #0e1622;
-  --night-3: #131d2c;
   --parchment: #ece7d9;
-  --parchment-dim: #b9b4a6;
-  --muted: #7e8798;
+  --parchment-dim: #bab5a7;
+  --muted: #8b8fa0;
   --gold: #d4b56a;
-  --gold-bright: #ecd9a4;
+  --gold-bright: #f2e2b4;
   --gold-deep: #8a6f35;
   --emerald: #3ddc97;
-  --emerald-dim: #1f8f61;
+  --emerald-hi: #96f7cd;
+  --emerald-deep: #14724c;
   --window: #ffd98a;
   --danger: #e07a6a;
+  /* אדמה */
+  --grass-hi: #3f9a55;
+  --grass: #2e7d43;
+  --grass-deep: #1d5730;
+  --soil-0: #3b2b1d;
+  --soil-1: #2b1f14;
+  --soil-2: #1d150d;
+  --soil-3: #140e08;
   --font: "Google Sans", "Assistant", -apple-system, "Segoe UI", "Arial Hebrew", sans-serif;
   --serif: "Frank Ruhl Libre", Georgia, serif;
   --brand: "Arca Morphe", "Archivo Black", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * { box-sizing: border-box; }
@@ -49,10 +57,27 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 button { font-family: inherit; cursor: pointer; }
 input { font-family: inherit; }
 ::selection { background: rgba(212, 181, 106, 0.35); }
+
+/* ───── טקסט זוהר: גרדיאנט בהיר→כהה (סגנון הקובץ שצירפת) ───── */
+.gt-gold {
+  background: linear-gradient(180deg, #fdf3d7 0%, var(--gold) 52%, var(--gold-deep) 105%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 22px rgba(212, 181, 106, 0.35));
+}
+.gt-green {
+  background: linear-gradient(180deg, var(--emerald-hi) 0%, var(--emerald) 50%, var(--emerald-deep) 108%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 26px rgba(61, 220, 151, 0.45));
+}
 
 /* ---------- כפתורים ---------- */
 .btn {
@@ -62,10 +87,7 @@ input { font-family: inherit; }
   transition: filter 0.18s var(--ease), transform 0.08s var(--ease);
 }
 .btn:active { transform: translateY(1px); }
-.btn--gold {
-  background: linear-gradient(160deg, var(--gold-bright), var(--gold));
-  color: #241c07;
-}
+.btn--gold { background: linear-gradient(160deg, var(--gold-bright), var(--gold)); color: #241c07; }
 .btn--gold:hover { filter: brightness(1.06); }
 
 /* ---------- טעינה + כניסה ---------- */
@@ -80,17 +102,15 @@ input { font-family: inherit; }
 .login {
   min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;
   background:
-    radial-gradient(900px 480px at 78% 8%, rgba(236, 217, 164, 0.08), transparent 60%),
-    radial-gradient(1200px 700px at 50% 115%, var(--night-3), transparent 70%),
+    radial-gradient(900px 480px at 78% 8%, rgba(242, 226, 180, 0.07), transparent 60%),
+    radial-gradient(1200px 700px at 50% 115%, var(--night-2), transparent 70%),
     var(--night-0);
 }
-.login__card { width: min(380px, 100%); text-align: center; animation: rise 0.6s var(--ease); }
-@keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+.login__card { width: min(380px, 100%); text-align: center; animation: enterUp 0.7s var(--ease-out) both; }
 .login__brand {
   font-family: var(--brand); font-weight: 400; font-size: 74px; line-height: 1;
-  text-transform: lowercase;
-  color: var(--gold);
-  text-shadow: 0 0 34px rgba(212, 181, 106, 0.35);
+  text-transform: lowercase; color: var(--gold);
+  text-shadow: 0 0 40px rgba(212, 181, 106, 0.4);
 }
 .login__title { font-family: var(--serif); font-size: 21px; font-weight: 700; margin-top: 14px; }
 .login__sub { color: var(--muted); font-size: 14.5px; margin: 8px 0 30px; }
@@ -109,14 +129,14 @@ input { font-family: inherit; }
   position: fixed; top: 0; right: 0; left: 0; z-index: 50;
   display: flex; align-items: center; gap: 20px;
   padding: 14px clamp(18px, 4vw, 40px);
-  background: linear-gradient(180deg, rgba(5, 8, 15, 0.92), rgba(5, 8, 15, 0.55) 70%, transparent);
+  background: linear-gradient(180deg, rgba(5, 8, 15, 0.9), rgba(5, 8, 15, 0.5) 70%, transparent);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
 .topbar__brand {
-  font-family: var(--brand); font-weight: 400; font-size: 30px; line-height: 1; color: var(--gold);
-  text-transform: lowercase;
-  text-shadow: 0 0 22px rgba(212, 181, 106, 0.3);
+  font-family: var(--brand); font-weight: 400; font-size: 30px; line-height: 1;
+  text-transform: lowercase; color: var(--gold);
+  text-shadow: 0 0 22px rgba(212, 181, 106, 0.35);
 }
 .switch {
   position: relative; display: flex; gap: 2px;
@@ -139,22 +159,60 @@ input { font-family: inherit; }
 .topbar__progress { margin-inline-start: auto; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .topbar__progress b { color: var(--emerald); }
 
-/* ═══════════════ גיבור המיליון — הלילה, הירח, הבניין ═══════════════ */
+/* ═══════════════ אפקטי כניסה ═══════════════ */
+@keyframes enterUp {
+  from { opacity: 0; transform: translateY(30px); filter: blur(7px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes enterDrop {
+  from { opacity: 0; transform: translateY(-22px); filter: blur(5px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes buildRise {
+  from { opacity: 0; transform: translateY(46px) scaleY(0.94); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes treeGrow {
+  from { transform: scale(0.2) rotate(-4deg); opacity: 0; }
+  60% { transform: scale(1.06) rotate(1deg); opacity: 1; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+@keyframes moonIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.8); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.1deg); }
+  50% { transform: rotate(1.3deg); }
+}
+@keyframes firefly {
+  0%, 100% { transform: translate(0, 0); opacity: 0.15; }
+  30% { opacity: 0.95; }
+  50% { transform: translate(9px, -13px); opacity: 0.5; }
+  75% { transform: translate(-7px, -5px); opacity: 0.9; }
+}
+/* עוזרי-כניסה בטעינת הגיבור: מוחלים דרך class fx-* עם delay משתנה */
+.fx-up { animation: enterUp 0.85s var(--ease-out) both; }
+.fx-drop { animation: enterDrop 0.7s var(--ease-out) both; }
+.fx-build { animation: buildRise 0.9s var(--ease-out) both; }
+.fx-moon { animation: moonIn 1.4s var(--ease-out) both; }
+.fx-tree { transform-origin: 50% 100%; animation: treeGrow 1.3s var(--ease-out) both; }
+
+/* חשיפה בגלילה: אלמנט מתחיל גלוי כברירת-מחדל; .pre רק כשיש JS ותנועה מותרת */
+.r.pre { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+.r.in { opacity: 1; transform: none; filter: blur(0); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out), filter 0.8s var(--ease-out); transition-delay: var(--d, 0ms); }
+
+/* ═══════════════ הסצנה: שמיים, ירח, כוכבים ═══════════════ */
 .hero {
   position: relative;
-  min-height: 100vh;
   overflow: hidden;
   display: flex; flex-direction: column; align-items: center;
   background:
-    radial-gradient(1400px 900px at 50% 118%, #16233a 0%, transparent 62%),
-    linear-gradient(180deg, var(--night-0) 0%, var(--night-1) 45%, var(--night-2) 100%);
-}
-/* כוכבים — שלוש שכבות עומק */
-.stars, .stars::before, .stars::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-repeat: repeat;
+    radial-gradient(1500px 800px at 50% 108%, #142033 0%, transparent 60%),
+    linear-gradient(180deg, var(--night-0) 0%, var(--night-1) 50%, var(--night-2) 100%);
 }
 .stars {
+  position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(1.2px 1.2px at 22% 31%, rgba(255,255,255,0.9), transparent 55%),
     radial-gradient(1px 1px at 68% 12%, rgba(255,255,255,0.7), transparent 55%),
     radial-gradient(1.4px 1.4px at 84% 42%, rgba(255,255,255,0.8), transparent 55%),
@@ -164,18 +222,19 @@ input { font-family: inherit; }
     radial-gradient(0.9px 0.9px at 91% 21%, rgba(255,255,255,0.7), transparent 55%),
     radial-gradient(1px 1px at 33% 19%, rgba(255,255,255,0.5), transparent 55%);
   background-size: 640px 420px;
+  background-repeat: repeat;
   animation: twinkle 7s ease-in-out infinite alternate;
 }
-@keyframes twinkle { from { opacity: 0.65; } to { opacity: 1; } }
-/* הירח */
+@keyframes twinkle { from { opacity: 0.6; } to { opacity: 1; } }
 .moon {
-  position: absolute; top: 9%; inset-inline-start: 12%;
-  width: 92px; height: 92px; border-radius: 50%;
+  position: absolute; top: 8%; inset-inline-start: 11%;
+  width: 96px; height: 96px; border-radius: 50%;
   background: radial-gradient(circle at 38% 34%, #fffdf4, #efe6c8 58%, #d9cda4);
-  box-shadow: 0 0 70px 22px rgba(240, 230, 195, 0.22), 0 0 160px 60px rgba(240, 230, 195, 0.08);
+  box-shadow: 0 0 70px 24px rgba(240, 230, 195, 0.22), 0 0 170px 70px rgba(240, 230, 195, 0.08);
 }
+
 /* כותרת הגיבור */
-.hero__head { position: relative; z-index: 3; text-align: center; padding: 110px 20px 0; }
+.hero__head { position: relative; z-index: 3; text-align: center; padding: 116px 20px 0; }
 .hero__badge {
   display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em;
   color: var(--gold); border: 1px solid rgba(212, 181, 106, 0.4); border-radius: 999px;
@@ -183,64 +242,57 @@ input { font-family: inherit; }
 }
 .hero__title {
   font-family: var(--serif); font-weight: 900;
-  font-size: clamp(34px, 5.6vw, 62px); line-height: 1.18; letter-spacing: -0.01em;
+  font-size: clamp(34px, 5.6vw, 64px); line-height: 1.16; letter-spacing: -0.01em;
   margin: 22px 0 0; text-wrap: balance;
 }
-.hero__title em {
-  font-style: normal; color: var(--emerald);
-  text-shadow: 0 0 38px rgba(61, 220, 151, 0.35);
-}
+.hero__title .gt-gold, .hero__title .gt-green { font-weight: 900; }
+.hero__title em { font-style: normal; }
+/* המותג בתוך כותרת — בפונט המותג */
+.brand-inline { font-family: var(--brand); font-weight: 400; text-transform: lowercase; letter-spacing: 0.01em; }
 .hero__sub { max-width: 60ch; margin: 16px auto 0; color: var(--parchment-dim); font-size: 16.5px; }
-.hero__stats { display: flex; gap: clamp(18px, 4vw, 44px); justify-content: center; margin-top: 26px; flex-wrap: wrap; }
+.hero__sub b { color: var(--gold-bright); }
+.hero__stats { display: flex; gap: clamp(18px, 4vw, 46px); justify-content: center; margin-top: 26px; flex-wrap: wrap; }
 .hstat { text-align: center; }
-.hstat__v { font-family: var(--serif); font-weight: 900; font-size: 27px; color: var(--gold-bright); }
+.hstat__v { font-family: var(--serif); font-weight: 900; font-size: 30px; }
 .hstat__k { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
 
-/* ─── הבניין — צללית חיה, הקומות בתוכו ─── */
+/* ═══════════════ הבניין ═══════════════ */
+.scene { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 44px; }
 .building {
-  position: relative; z-index: 2;
-  width: min(680px, 92vw);
-  margin-top: 42px;
+  position: relative; z-index: 3;
+  width: min(660px, 90vw);
   display: flex; flex-direction: column;
-  filter: drop-shadow(0 -6px 60px rgba(22, 35, 58, 0.8));
+  filter: drop-shadow(0 18px 50px rgba(0, 0, 0, 0.55));
 }
-/* גג */
 .building__roof {
   height: 44px;
   background: linear-gradient(180deg, #1a2536, #141d2b);
   clip-path: polygon(7% 100%, 15% 32%, 85% 32%, 93% 100%);
   position: relative;
 }
-.building__roof::after { /* אנטנה עם אור מהבהב */
+.building__roof::after {
   content: ""; position: absolute; top: -26px; left: 50%; width: 2px; height: 30px;
   background: linear-gradient(180deg, transparent, #2a3a52);
 }
 .building__beacon {
   position: absolute; top: -32px; left: 50%; transform: translateX(-50%);
   width: 7px; height: 7px; border-radius: 50%; background: var(--gold-bright);
-  box-shadow: 0 0 12px 3px rgba(236, 217, 164, 0.6);
+  box-shadow: 0 0 12px 3px rgba(242, 226, 180, 0.6);
   animation: beacon 2.6s ease-in-out infinite;
 }
 @keyframes beacon { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 
-/* קומה — חלק מהבניין עצמו. בלי מסגרות. */
 .floor {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 14px;
-  width: 100%;
-  text-align: start;
-  border: 0;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 14px;
+  width: 100%; text-align: start; border: 0;
   padding: clamp(17px, 2.6vh, 26px) clamp(20px, 4vw, 40px);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 55%), linear-gradient(90deg, #121a28 0%, #172233 50%, #121a28 100%);
-  border-top: 1px solid rgba(236, 231, 217, 0.07); /* קו רצפה עדין בין קומות */
+  border-top: 1px solid rgba(236, 231, 217, 0.07);
   color: inherit;
   transition: background 0.3s var(--ease);
 }
 .floor:first-of-type { border-top: 0; }
-/* חלונות מוארים — נדלקים בריחוף */
 .floor::before {
   content: "";
   position: absolute; inset-inline-end: 22px; top: 50%; transform: translateY(-50%);
@@ -255,7 +307,6 @@ input { font-family: inherit; }
 }
 .floor:hover { background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 60%), linear-gradient(90deg, #152031 0%, #1d2b40 50%, #152031 100%); }
 .floor:hover::before { opacity: 1; filter: drop-shadow(0 0 10px rgba(255, 217, 138, 0.35)); }
-
 .floor__num {
   grid-row: span 2;
   font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 3.4vw, 36px);
@@ -267,110 +318,210 @@ input { font-family: inherit; }
   transition: text-shadow 0.3s var(--ease), color 0.3s var(--ease);
 }
 .floor__gate { font-size: 13.5px; color: var(--muted); margin-top: 2px; transition: color 0.3s var(--ease); }
-.floor__gate b { color: var(--emerald-dim); font-variant-numeric: tabular-nums; transition: color 0.3s var(--ease), text-shadow 0.3s var(--ease); }
-/* ריחוף: הטקסט זוהר */
-.floor:hover .floor__name { color: #fff; text-shadow: 0 0 18px rgba(236, 217, 164, 0.65), 0 0 44px rgba(236, 217, 164, 0.25); }
+.floor__gate b { color: var(--emerald); font-variant-numeric: tabular-nums; transition: text-shadow 0.3s var(--ease); }
+.floor:hover .floor__name { color: #fff; text-shadow: 0 0 18px rgba(242, 226, 180, 0.65), 0 0 44px rgba(242, 226, 180, 0.25); }
 .floor:hover .floor__num { color: var(--gold); text-shadow: 0 0 16px rgba(212, 181, 106, 0.5); }
 .floor:hover .floor__gate { color: var(--parchment-dim); }
-.floor:hover .floor__gate b { color: var(--emerald); text-shadow: 0 0 14px rgba(61, 220, 151, 0.5); }
-/* קומה שהושלמה */
+.floor:hover .floor__gate b { text-shadow: 0 0 14px rgba(61, 220, 151, 0.6); }
 .floor.is-done .floor__name { color: var(--emerald); }
 .floor.is-done .floor__num { color: rgba(61, 220, 151, 0.4); }
-
-/* קרקע + ערפל */
-.building__ground {
-  height: 26px;
-  background: linear-gradient(180deg, #1b2436, #0d1420);
-  clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+/* דלת כניסה בקומת הקרקע */
+.floor:last-of-type::after {
+  content: "";
+  position: absolute; inset-inline-start: 8%; bottom: 0;
+  width: 34px; height: 62%;
+  background: linear-gradient(180deg, #6b4a26, #4a3118);
+  border-radius: 8px 8px 0 0;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.25), 0 0 18px rgba(255, 217, 138, 0.15);
 }
-.hero__fog {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 180px; z-index: 4; pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(5, 8, 15, 0.85) 62%, var(--night-0));
-}
-.hero__hint { position: relative; z-index: 5; color: var(--muted); font-size: 13.5px; padding: 10px 0 34px; }
 
-/* ═══════════════ גיבור וֶלָה (קטן וחם) ═══════════════ */
-.heroV {
-  position: relative; overflow: hidden;
-  padding: 130px 22px 54px; text-align: center;
+/* ═══════════════ האדמה — דשא, עץ, גבעות ═══════════════ */
+.ground { position: relative; z-index: 2; width: 100%; margin-top: -2px; }
+/* פס הדשא */
+.grass {
+  position: relative;
+  height: 58px;
   background:
-    radial-gradient(1000px 540px at 50% -10%, rgba(61, 220, 151, 0.07), transparent 62%),
-    linear-gradient(180deg, var(--night-0), var(--night-1));
+    repeating-linear-gradient(84deg, rgba(0, 0, 0, 0.14) 0 3px, transparent 3px 9px),
+    repeating-linear-gradient(96deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 11px),
+    linear-gradient(180deg, var(--grass-hi) 0%, var(--grass) 34%, var(--grass-deep) 100%);
 }
-.heroV .hero__title { font-size: clamp(30px, 4.6vw, 50px); }
-.heroV .hero__sub b { color: var(--gold-bright); font-weight: 700; }
+/* קו הדשא העליון — גבעות רכות במקום קו ישר */
+.grass::before {
+  content: "";
+  position: absolute; top: -14px; left: 0; right: 0; height: 15px;
+  background:
+    radial-gradient(38px 15px at 6% 100%, var(--grass-hi) 98%, transparent),
+    radial-gradient(52px 17px at 17% 100%, var(--grass) 98%, transparent),
+    radial-gradient(40px 13px at 29% 100%, var(--grass-hi) 98%, transparent),
+    radial-gradient(58px 18px at 43% 100%, var(--grass) 98%, transparent),
+    radial-gradient(42px 14px at 56% 100%, var(--grass-hi) 98%, transparent),
+    radial-gradient(55px 17px at 70% 100%, var(--grass) 98%, transparent),
+    radial-gradient(40px 13px at 83% 100%, var(--grass-hi) 98%, transparent),
+    radial-gradient(50px 16px at 95% 100%, var(--grass) 98%, transparent);
+}
+/* עשבים קטנים על קו הדשא */
+.grass::after {
+  content: "";
+  position: absolute; top: -22px; left: 0; right: 0; height: 22px;
+  background:
+    radial-gradient(3px 16px at 9% 100%, var(--grass-hi) 96%, transparent),
+    radial-gradient(2.6px 12px at 13% 100%, var(--grass) 96%, transparent),
+    radial-gradient(3px 18px at 24% 100%, var(--grass) 96%, transparent),
+    radial-gradient(2.4px 11px at 38% 100%, var(--grass-hi) 96%, transparent),
+    radial-gradient(3px 15px at 52% 100%, var(--grass) 96%, transparent),
+    radial-gradient(2.6px 13px at 63% 100%, var(--grass-hi) 96%, transparent),
+    radial-gradient(3px 17px at 78% 100%, var(--grass) 96%, transparent),
+    radial-gradient(2.4px 12px at 88% 100%, var(--grass-hi) 96%, transparent);
+}
 
-/* ═══════════════ פרקים ═══════════════ */
-main { display: block; }
-.chapters { max-width: 880px; margin: 0 auto; padding: 30px clamp(18px, 4vw, 30px) 120px; }
-.chapter { padding: 54px 0 8px; scroll-margin-top: 86px; }
+/* העץ — גזע, צמרת חיה, גחליליות */
+.tree {
+  position: absolute; bottom: 34px; inset-inline-start: clamp(2%, 7vw, 12%);
+  width: 190px; height: 250px; z-index: 2;
+  pointer-events: none;
+}
+.tree__trunk {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 118px;
+  background: linear-gradient(90deg, #3a2817, #5d4225 45%, #2e1f10);
+  border-radius: 8px 10px 4px 4px;
+}
+.tree__trunk::before { /* ענף */
+  content: ""; position: absolute; top: 24px; inset-inline-start: -26px;
+  width: 36px; height: 9px;
+  background: linear-gradient(90deg, #4a3118, #5d4225);
+  border-radius: 8px; transform: rotate(24deg);
+}
+.tree__crown { position: absolute; inset: 0 0 84px 0; transform-origin: 50% 100%; animation: sway 7s ease-in-out infinite; }
+.tree__leaf {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle at 32% 26%, #58b06b, #2e7d43 55%, #1c5230);
+  box-shadow: inset -8px -10px 24px rgba(0, 0, 0, 0.3);
+}
+.tree__leaf:nth-child(1) { width: 120px; height: 96px; bottom: 34px; left: 34px; }
+.tree__leaf:nth-child(2) { width: 86px; height: 72px; bottom: 76px; left: 8px; }
+.tree__leaf:nth-child(3) { width: 92px; height: 78px; bottom: 82px; right: 4px; }
+.tree__leaf:nth-child(4) { width: 78px; height: 66px; bottom: 116px; left: 56px; }
+.firefly {
+  position: absolute; width: 4px; height: 4px; border-radius: 50%;
+  background: #ffe89a; box-shadow: 0 0 8px 2px rgba(255, 232, 154, 0.7);
+  animation: firefly 6s ease-in-out infinite;
+}
+.firefly:nth-of-type(1) { bottom: 90px; left: 18px; animation-delay: 0s; }
+.firefly:nth-of-type(2) { bottom: 140px; right: 24px; animation-delay: 2.1s; }
+.firefly:nth-of-type(3) { bottom: 60px; right: 60px; animation-delay: 3.8s; }
+
+/* שיח קטן ליד הבניין */
+.bush {
+  position: absolute; bottom: 36px; inset-inline-end: clamp(3%, 9vw, 14%);
+  width: 92px; height: 44px; z-index: 2; pointer-events: none;
+}
+.bush::before, .bush::after {
+  content: ""; position: absolute; bottom: 0; border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #4a9c5e, #27693a 60%, #1c5230);
+}
+.bush::before { width: 56px; height: 40px; left: 0; }
+.bush::after { width: 62px; height: 48px; right: 0; }
+
+/* ═══════════════ מתחת לאדמה — האתר ממשיך בתוך הקרקע ═══════════════ */
+.earth {
+  position: relative;
+  background:
+    /* אבנים פזורות */
+    radial-gradient(14px 9px at 12% 6%, rgba(120, 96, 70, 0.5) 98%, transparent),
+    radial-gradient(10px 7px at 78% 11%, rgba(110, 88, 64, 0.45) 98%, transparent),
+    radial-gradient(16px 10px at 32% 24%, rgba(100, 80, 58, 0.4) 98%, transparent),
+    radial-gradient(11px 7px at 88% 33%, rgba(120, 96, 70, 0.35) 98%, transparent),
+    radial-gradient(13px 8px at 8% 46%, rgba(110, 88, 64, 0.35) 98%, transparent),
+    radial-gradient(15px 9px at 71% 58%, rgba(100, 80, 58, 0.32) 98%, transparent),
+    radial-gradient(10px 6px at 22% 72%, rgba(120, 96, 70, 0.3) 98%, transparent),
+    radial-gradient(12px 8px at 90% 84%, rgba(110, 88, 64, 0.3) 98%, transparent),
+    /* שכבות סחף עדינות */
+    repeating-linear-gradient(178deg, transparent 0 90px, rgba(0, 0, 0, 0.16) 90px 92px, transparent 92px 200px),
+    /* גוף האדמה — בהיר למעלה, מעמיק ומחשיך */
+    linear-gradient(180deg, var(--soil-0) 0%, var(--soil-1) 22%, var(--soil-2) 60%, var(--soil-3) 100%);
+}
+/* שורשי העץ מציצים בראש האדמה */
+.earth::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 60px; pointer-events: none;
+  background:
+    radial-gradient(6px 42px at 14% 0%, rgba(78, 56, 34, 0.85) 96%, transparent),
+    radial-gradient(5px 30px at 17% 0%, rgba(64, 46, 28, 0.8) 96%, transparent),
+    radial-gradient(6px 48px at 20% 0%, rgba(78, 56, 34, 0.75) 96%, transparent),
+    radial-gradient(4px 24px at 24% 0%, rgba(64, 46, 28, 0.7) 96%, transparent);
+}
+.chapters { position: relative; max-width: 880px; margin: 0 auto; padding: 64px clamp(18px, 4vw, 30px) 130px; }
+
+/* ---------- פרקים (בתוך האדמה) ---------- */
+.chapter { padding: 56px 0 10px; scroll-margin-top: 86px; }
 .chapter__head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
 .chapter__title {
-  font-family: var(--serif); font-weight: 900; font-size: clamp(24px, 3.4vw, 34px);
-  color: var(--gold-bright); margin: 0; letter-spacing: -0.01em;
+  font-family: var(--serif); font-weight: 900; font-size: clamp(25px, 3.4vw, 36px);
+  margin: 0; letter-spacing: -0.01em;
 }
 .chapter__time {
-  font-size: 13px; font-weight: 700; color: var(--night-0);
+  font-size: 13px; font-weight: 700; color: #241c07;
   background: linear-gradient(160deg, var(--gold-bright), var(--gold));
   border-radius: 999px; padding: 4px 14px; white-space: nowrap;
+  box-shadow: 0 2px 14px rgba(212, 181, 106, 0.25);
 }
 .chapter__gate {
-  font-size: 13px; font-weight: 700; color: var(--emerald);
-  border: 1px solid rgba(61, 220, 151, 0.35); border-radius: 999px; padding: 4px 14px; white-space: nowrap;
+  font-size: 13px; font-weight: 700; color: var(--emerald-hi);
+  border: 1px solid rgba(61, 220, 151, 0.4); border-radius: 999px; padding: 4px 14px; white-space: nowrap;
+  text-shadow: 0 0 12px rgba(61, 220, 151, 0.5);
 }
 .chapter__why { color: var(--parchment-dim); font-size: 16px; margin: 14px 0 4px; max-width: 72ch; }
 .chapter__why b, .chapter__why strong { color: var(--parchment); }
 
-/* המלצה שלי — פסקת זהב */
 .advice {
   margin: 22px 0 6px; padding: 18px 22px;
-  background: linear-gradient(90deg, rgba(212, 181, 106, 0.09), rgba(212, 181, 106, 0.03));
+  background: linear-gradient(90deg, rgba(212, 181, 106, 0.12), rgba(212, 181, 106, 0.035));
   border-radius: 14px;
   font-size: 15.5px; color: var(--parchment);
+  box-shadow: inset 0 1px 0 rgba(242, 226, 180, 0.12);
 }
-.advice__tag { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 6px; }
+.advice__tag { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; color: var(--gold-bright); margin-bottom: 6px; text-shadow: 0 0 14px rgba(212, 181, 106, 0.5); }
 
-/* עובדות/מספרים בשורה */
 .numbers { display: flex; gap: clamp(14px, 3vw, 34px); flex-wrap: wrap; margin: 20px 0 4px; }
 .num { min-width: 110px; }
-.num__v { font-family: var(--serif); font-weight: 900; font-size: 24px; color: var(--emerald); font-variant-numeric: tabular-nums; }
+.num__v { font-family: var(--serif); font-weight: 900; font-size: 26px; font-variant-numeric: tabular-nums; }
 .num__k { font-size: 12.5px; color: var(--muted); }
 
-/* ─── מטרות עם וי-בעיגול וקו-השלמה ─── */
+/* מטרות עם וי-בעיגול וקו-השלמה */
 .goals { margin-top: 20px; display: flex; flex-direction: column; }
 .goal {
   display: flex; align-items: flex-start; gap: 14px;
   padding: 13px 2px;
-  border-top: 1px dashed rgba(236, 231, 217, 0.1);
+  border-top: 1px dashed rgba(236, 231, 217, 0.12);
 }
 .goal:first-child { border-top: 0; }
 .goal__check {
   flex: 0 0 auto; width: 27px; height: 27px; margin-top: 2px;
   border-radius: 50%;
-  border: 2px solid rgba(236, 231, 217, 0.3);
-  background: transparent;
-  color: transparent;
+  border: 2px solid rgba(236, 231, 217, 0.32);
+  background: transparent; color: transparent;
   font-size: 14px; font-weight: 900; line-height: 1;
   display: flex; align-items: center; justify-content: center;
   transition: border-color 0.25s var(--ease), background 0.3s var(--ease), color 0.2s var(--ease), transform 0.15s var(--ease), box-shadow 0.3s var(--ease);
 }
-.goal__check:hover { border-color: var(--emerald); transform: scale(1.08); }
+.goal__check:hover { border-color: var(--emerald); transform: scale(1.1); box-shadow: 0 0 14px rgba(61, 220, 151, 0.25); }
 .goal.is-done .goal__check {
   border-color: var(--emerald);
-  background: radial-gradient(circle at 35% 30%, #52e8a8, var(--emerald-dim));
+  background: radial-gradient(circle at 35% 30%, #52e8a8, var(--emerald-deep));
   color: #06281a;
-  box-shadow: 0 0 16px rgba(61, 220, 151, 0.35);
+  box-shadow: 0 0 18px rgba(61, 220, 151, 0.4);
   animation: checkPop 0.35s var(--ease);
 }
-@keyframes checkPop { 0% { transform: scale(0.7); } 60% { transform: scale(1.15); } 100% { transform: scale(1); } }
+@keyframes checkPop { 0% { transform: scale(0.7); } 60% { transform: scale(1.18); } 100% { transform: scale(1); } }
 .goal__body { min-width: 0; }
 .goal__text { position: relative; display: inline; font-size: 16px; font-weight: 600; transition: color 0.4s var(--ease); }
-/* קו-ההשלמה — נמתח על המטרה כשמסמנים */
 .goal__text::after {
   content: ""; position: absolute; top: 54%; inset-inline-start: -2px; inset-inline-end: -2px;
   height: 2px; border-radius: 2px;
   background: linear-gradient(90deg, var(--emerald), rgba(61, 220, 151, 0.4));
-  transform: scaleX(0); transform-origin: 100% 50%; /* RTL: נמתח מימין לשמאל */
+  transform: scaleX(0); transform-origin: 100% 50%;
   transition: transform 0.5s var(--ease);
 }
 .goal.is-done .goal__text { color: var(--muted); }
@@ -378,36 +529,36 @@ main { display: block; }
 .goal__note { display: block; font-size: 13.5px; color: var(--muted); margin-top: 3px; max-width: 68ch; }
 .goal.is-done .goal__note { opacity: 0.6; }
 
-/* התקדמות פרק */
-.chapter__bar { height: 4px; border-radius: 4px; background: rgba(236, 231, 217, 0.08); margin-top: 26px; overflow: hidden; }
-.chapter__fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--emerald-dim), var(--emerald)); width: 0%; transition: width 0.6s var(--ease); }
+.chapter__bar { height: 4px; border-radius: 4px; background: rgba(236, 231, 217, 0.1); margin-top: 26px; overflow: hidden; }
+.chapter__fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--emerald-deep), var(--emerald)); width: 0%; transition: width 0.6s var(--ease); box-shadow: 0 0 10px rgba(61, 220, 151, 0.4); }
 
-/* חשיפה עדינה בגלילה (ברירת-מחדל גלויה — רק מתעדנת פנימה) */
-.chapter { opacity: 1; }
-@media (prefers-reduced-motion: no-preference) {
-  .chapter.pre { opacity: 0; transform: translateY(22px); }
-  .chapter.in { opacity: 1; transform: none; transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-}
-
-/* טבלת השוואה (מתחרים) */
+/* טבלת השוואה */
 .compare { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 14.5px; }
-.compare th { text-align: start; color: var(--gold); font-size: 13px; padding: 9px 10px; border-bottom: 1px solid rgba(212, 181, 106, 0.25); }
-.compare td { padding: 10px; border-bottom: 1px dashed rgba(236, 231, 217, 0.08); vertical-align: top; }
+.compare th { text-align: start; color: var(--gold-bright); font-size: 13px; padding: 9px 10px; border-bottom: 1px solid rgba(212, 181, 106, 0.3); }
+.compare td { padding: 10px; border-bottom: 1px dashed rgba(236, 231, 217, 0.1); vertical-align: top; }
 .compare td:first-child { font-weight: 700; white-space: nowrap; }
 .compare .yes { color: var(--emerald); font-weight: 700; }
 .compare .no { color: var(--danger); }
 .compare .part { color: var(--gold-bright); }
 
-.smallnote { color: var(--muted); font-size: 13px; margin-top: 26px; }
+.smallnote { color: var(--muted); font-size: 13px; margin-top: 30px; }
+.hero__hint { position: relative; z-index: 4; color: var(--muted); font-size: 13.5px; text-align: center; padding: 12px 0 26px; }
 
 @media (max-width: 640px) {
   .floor::before { display: none; }
   .hero__stats { gap: 22px; }
   .topbar { gap: 12px; }
-  .topbar__brand { font-size: 20px; }
+  .topbar__brand { font-size: 22px; }
   .switch__btn { padding: 7px 13px; font-size: 13px; }
+  .tree { width: 130px; height: 180px; inset-inline-start: 1%; }
+  .tree__trunk { height: 84px; width: 15px; }
+  .tree__leaf:nth-child(1) { width: 84px; height: 66px; bottom: 26px; left: 22px; }
+  .tree__leaf:nth-child(2) { width: 58px; height: 50px; bottom: 54px; left: 4px; }
+  .tree__leaf:nth-child(3) { width: 62px; height: 54px; bottom: 58px; right: 2px; }
+  .tree__leaf:nth-child(4) { width: 52px; height: 44px; bottom: 82px; left: 38px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, .stars { animation: none !important; transition: none !important; }
+  *, .stars, .tree__crown { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
+  .r.pre { opacity: 1; transform: none; filter: none; }
 }

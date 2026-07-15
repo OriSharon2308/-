@@ -11,7 +11,7 @@
 
   const VELA = {
     hero: {
-      title: 'תוכנית <em>vela</em>',
+      title: 'תוכנית <em class="brand-inline gt-gold">vela</em>',
       sub: 'המצב: מוצר חי בענן — מורה-AI בקול, תרגול מותאם, אזורי הורים וניהול. <b>0 משתמשים אמיתיים.</b> המשימה עכשיו: הוכחה שמישהו מוכן לשלם — ורק אז לבנות עוד.',
       stats: [
         { v: "חי בענן", k: "מצב המוצר" },
@@ -165,7 +165,7 @@
   const MILLION = {
     hero: {
       badge: "THE ROADMAP · הבניין",
-      title: 'מדרגות ההון שלך<br>קומה אחרי קומה עד <em>$3M</em>',
+      title: 'מדרגות ההון שלך<br>קומה אחרי קומה עד <em class="gt-green">$3M</em>',
       sub: "כל קומה היא מדרגת כסף עם שער מספרי בסופה. המנוע: vela. המשמר: שוק ההון. לחץ על קומה כדי להיכנס לתוכנית העבודה שלה.",
       stats: [
         { v: "7–10", k: "שנים, תרחיש מוצלח" },
@@ -373,19 +373,36 @@
     return goals.length ? Math.round((done / goals.length) * 100) : 0;
   }
   function chapterHtml(c, extra = "") {
-    return `<section class="chapter pre" id="${esc(c.id)}">
-      <div class="chapter__head">
-        <h2 class="chapter__title">${esc(c.title || c.name)}</h2>
+    // כל חלק בפרק הוא יחידת-חשיפה (r) — נכנס בנפרד בגלילה, מדורג
+    return `<section class="chapter" id="${esc(c.id)}">
+      <div class="chapter__head r">
+        <h2 class="chapter__title gt-gold">${esc(c.title || c.name)}</h2>
         ${c.time ? `<span class="chapter__time">${esc(c.time)}</span>` : ""}
         ${c.gate ? `<span class="chapter__gate">${esc(c.gate)}</span>` : ""}
       </div>
-      ${c.why ? `<p class="chapter__why">${c.why}</p>` : ""}
-      ${extra}
-      ${c.advice ? `<div class="advice"><span class="advice__tag">ההמלצה שלי</span>${c.advice}</div>` : ""}
-      ${c.numbers ? `<div class="numbers">${c.numbers.map((n) => `<div class="num"><div class="num__v">${esc(n.v)}</div><div class="num__k">${esc(n.k)}</div></div>`).join("")}</div>` : ""}
-      <div class="goals">${c.goals.map(goalRow).join("")}</div>
-      <div class="chapter__bar"><div class="chapter__fill" style="width:${chapterProgress(c.goals)}%"></div></div>
+      ${c.why ? `<p class="chapter__why r">${c.why}</p>` : ""}
+      ${extra ? `<div class="r">${extra}</div>` : ""}
+      ${c.advice ? `<div class="advice r"><span class="advice__tag">ההמלצה שלי</span>${c.advice}</div>` : ""}
+      ${c.numbers ? `<div class="numbers r">${c.numbers.map((n) => `<div class="num"><div class="num__v gt-green">${esc(n.v)}</div><div class="num__k">${esc(n.k)}</div></div>`).join("")}</div>` : ""}
+      <div class="goals">${c.goals.map((g) => `<div class="r">${goalRow(g)}</div>`).join("")}</div>
+      <div class="chapter__bar r"><div class="chapter__fill" style="width:${chapterProgress(c.goals)}%"></div></div>
     </section>`;
+  }
+
+  /* הסצנה: אדמה חיה — דשא, עץ מתנועע, שיח וגחליליות */
+  function groundHtml(fxDelay = 0.7) {
+    return `<div class="ground fx-up" style="animation-delay:${fxDelay}s">
+      <div class="tree fx-tree" style="animation-delay:${fxDelay + 0.25}s">
+        <div class="tree__crown">
+          <span class="tree__leaf"></span><span class="tree__leaf"></span>
+          <span class="tree__leaf"></span><span class="tree__leaf"></span>
+        </div>
+        <div class="tree__trunk"></div>
+        <span class="firefly"></span><span class="firefly"></span><span class="firefly"></span>
+      </div>
+      <div class="bush"></div>
+      <div class="grass"></div>
+    </div>`;
   }
   function compareHtml(cmp) {
     if (!cmp) return "";
@@ -412,40 +429,48 @@
     main.innerHTML = `
       <section class="hero">
         <div class="stars"></div>
-        <div class="moon"></div>
+        <div class="moon fx-moon" style="animation-delay:.15s"></div>
         <div class="hero__head">
-          <span class="hero__badge">${esc(h.badge)}</span>
-          <h1 class="hero__title">${h.title}</h1>
-          <p class="hero__sub">${esc(h.sub)}</p>
-          <div class="hero__stats">${h.stats.map((s) => `<div class="hstat"><div class="hstat__v">${esc(s.v)}</div><div class="hstat__k">${esc(s.k)}</div></div>`).join("")}</div>
+          <span class="hero__badge fx-drop" style="animation-delay:.1s">${esc(h.badge)}</span>
+          <h1 class="hero__title fx-up" style="animation-delay:.28s">${h.title}</h1>
+          <p class="hero__sub fx-up" style="animation-delay:.48s">${esc(h.sub)}</p>
+          <div class="hero__stats">${h.stats.map((s, i) => `<div class="hstat fx-up" style="animation-delay:${(0.62 + i * 0.12).toFixed(2)}s"><div class="hstat__v gt-gold">${esc(s.v)}</div><div class="hstat__k">${esc(s.k)}</div></div>`).join("")}</div>
+          <div class="hero__hint fx-up" style="animation-delay:1.05s">לחיצה על קומה יורדת לתוכנית העבודה שלה ↓</div>
         </div>
-        <div class="building">
-          <div class="building__roof"><span class="building__beacon"></span></div>
-          ${floors}
-          <div class="building__ground"></div>
+        <div class="scene">
+          <div class="building fx-build" style="animation-delay:.5s">
+            <div class="building__roof"><span class="building__beacon"></span></div>
+            ${floors}
+          </div>
+          ${groundHtml(0.75)}
         </div>
-        <div class="hero__hint">לחיצה על קומה יורדת לתוכנית העבודה שלה ↓</div>
-        <div class="hero__fog"></div>
       </section>
-      <div class="chapters">${chapters}
-        <p class="smallnote">ההנחות: מנוי ממוצע ₪69/חודש · נטו ≈ ₪55 אחרי מע"מ ועמלות · עלות AI ≈ ₪8–15 לתלמיד פעיל · תשואת מדדים 7% שנתי ממוצע. המספרים משוערים — מתעדכנים מול המציאות בכל שער.</p>
-      </div>`;
+      <div class="earth"><div class="chapters">${chapters}
+        <p class="smallnote r">ההנחות: מנוי ממוצע ₪69/חודש · נטו ≈ ₪55 אחרי מע"מ ועמלות · עלות AI ≈ ₪8–15 לתלמיד פעיל · תשואת מדדים 7% שנתי ממוצע. המספרים משוערים — מתעדכנים מול המציאות בכל שער.</p>
+      </div></div>`;
     wire();
   }
 
   function renderVela() {
     const h = VELA.hero;
     const chapters = VELA.chapters.map((c) => chapterHtml(c, c.compare ? compareHtml(c.compare) : "")).join("");
+    // אותה סצנת לילה — בלי הבניין: העץ הוא הגיבור (העסק שצומח מהאדמה)
     main.innerHTML = `
-      <section class="heroV">
+      <section class="hero">
         <div class="stars"></div>
-        <h1 class="hero__title">${h.title}</h1>
-        <p class="hero__sub">${h.sub}</p>
-        <div class="hero__stats">${h.stats.map((s) => `<div class="hstat"><div class="hstat__v">${esc(s.v)}</div><div class="hstat__k">${esc(s.k)}</div></div>`).join("")}</div>
+        <div class="moon fx-moon" style="animation-delay:.15s"></div>
+        <div class="hero__head">
+          <h1 class="hero__title fx-up" style="animation-delay:.2s">${h.title}</h1>
+          <p class="hero__sub fx-up" style="animation-delay:.42s">${h.sub}</p>
+          <div class="hero__stats">${h.stats.map((s, i) => `<div class="hstat fx-up" style="animation-delay:${(0.58 + i * 0.12).toFixed(2)}s"><div class="hstat__v gt-gold">${esc(s.v)}</div><div class="hstat__k">${esc(s.k)}</div></div>`).join("")}</div>
+        </div>
+        <div class="scene" style="margin-top:64px">
+          ${groundHtml(0.5)}
+        </div>
       </section>
-      <div class="chapters">${chapters}
-        <p class="smallnote">תוכנית vela היא קומות 0–1 של תוכנית המיליון: כשנפתח שער ₪30K — עוברים לטאב השני וממשיכים לטפס.</p>
-      </div>`;
+      <div class="earth"><div class="chapters">${chapters}
+        <p class="smallnote r">תוכנית vela היא קומות 0–1 של תוכנית המיליון: כשנפתח שער ₪30K — עוברים לטאב השני וממשיכים לטפס.</p>
+      </div></div>`;
     wire();
   }
 
@@ -473,14 +498,22 @@
         try { await api("/api/admin/plan/toggle", { method: "POST", body: { id, value } }); } catch { /* ישמר בפעם הבאה */ }
       })
     );
-    // חשיפה עדינה בגלילה
-    if (window.matchMedia && !window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    // חשיפה מדורגת בגלילה: כל יחידה (r) נכנסת בנפרד, עם השהיה גדלה בתוך הפרק
+    const motionOk = window.matchMedia && !window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window;
+    if (motionOk) {
+      main.querySelectorAll(".chapter").forEach((ch) => {
+        ch.querySelectorAll(".r").forEach((el, i) => {
+          el.classList.add("pre");
+          el.style.setProperty("--d", `${Math.min(i * 55, 440)}ms`);
+        });
+      });
+      main.querySelectorAll(".smallnote.r").forEach((el) => el.classList.add("pre"));
       const io = new IntersectionObserver((ents) => {
-        ents.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); en.target.classList.remove("pre"); io.unobserve(en.target); } });
-      }, { rootMargin: "0px 0px -8% 0px" });
-      main.querySelectorAll(".chapter.pre").forEach((c) => io.observe(c));
-    } else {
-      main.querySelectorAll(".chapter.pre").forEach((c) => c.classList.remove("pre"));
+        ents.forEach((en) => {
+          if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+        });
+      }, { rootMargin: "0px 0px -6% 0px" });
+      main.querySelectorAll(".r.pre").forEach((el) => io.observe(el));
     }
     renderTopProgress();
     movePill();
