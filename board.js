@@ -668,8 +668,11 @@
         boxX = textRight - tw - gap0 - bw / 2;
         if (boxX - bw / 2 < 20) boxX = 20 + bw / 2; // לא לצאת משמאל
       }
+      // מיקום מדויק (שיעורי-זהב/עורך): x,y מפורשים עוקפים את הסידור האוטומטי — לא מקדמים slot
+      var exactPos = i.x != null && i.y != null && isFinite(+i.x) && isFinite(+i.y);
+      if (exactPos) { boxX = +i.x; y = +i.y; }
       this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: 1, text: text, status: "open" });
-      this._exSlot = slot + 1;
+      if (!exactPos) this._exSlot = slot + 1;
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
     // תבנית מהירה: שעון שלם (עיגול + 12 מספרים + מחוגים) בקריאה אחת.

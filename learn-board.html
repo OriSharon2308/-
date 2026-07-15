@@ -1111,12 +1111,15 @@
               occupied: boardOccupied(),
               layout: board.getLayout ? board.getLayout() : [], // פריסת הלוח (id+מיקום) — שהמורה יוכל לסדר בעצמו
               phase: phReq, // שלב נוהל-השיעור
+              goldenScreen: window.velaGoldenNext || 0, // מסך-ההוראה בשיעור-זהב מרובה-מסכים
             }),
           });
           if (res.status === 401) throw { auth: true };
           var data = await res.json();
           if (data && data.lesson) window.velaLessonMeta = data.lesson; // "שיעור N מתוך M" — לצ'יפ שבראש המסך
           window.velaLastToolCount = (data && data.toolCalls ? data.toolCalls.length : 0); // למצב-הדיבור: רמז "ציירתי על הלוח"
+          window.velaGoldenNext = 0; // אופס אחרי כל בקשה
+          window.velaGoldenMeta = (data && data.goldenTotal > 1) ? { screen: data.goldenScreen || 0, total: data.goldenTotal } : null;
           if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
             // ניקוי-מעבר-שלב: מנקים תוכן-מורה רק עכשיו, אחרי שהתשובה החדשה הגיעה בשלום —
             // ורק תוכן-מורה (clearTeacher): הקישקושים של הילד לעולם לא נמחקים.
@@ -1597,6 +1600,15 @@
           btn.disabled = true; // פידבק מיידי + מניעת לחיצה-כפולה (יש המתנה למורה)
           var ph = L.phase;
           if (ph === "instruct") {
+            var gm = window.velaGoldenMeta;
+            if (gm && gm.screen + 1 < gm.total) {
+              // עוד מסך-הסבר בשיעור-הזהב: נשארים בהוראה, מנקים את הקודם, ומציגים את הבא — הכל מהקובץ (0 טוקנים)
+              window.velaGoldenNext = gm.screen + 1;
+              window.velaClearNext = "teacher";
+              if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד לחץ ✓ — הצג את מסך הבא של ההסבר.)");
+              saveState();
+              return;
+            }
             // הילד אישר שהבין → שיטת-הלימוד עבדה: נשמרת ותוצג ישר לתלמיד הבא (בלי AI)
             try { fetch("/api/method-ok", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ topic: L.topic }) }); } catch (e) { /* לא חוסם */ }
             goto("guided", "(הילד לחץ '✓ להמשך' — הוא הבין את ההסבר ומוכן לתרגל. עבור לשלב התרגול המודרך.)", true, "✓ הבנתי, אפשר להמשיך");

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>וֶלָה · תוכנית הבנייה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/plan.css?v=1" />
+  </head>
+  <body>
+    <div id="bootView" class="boot"><span class="spin"></span></div>
+
+    <!-- כניסה — סיסמת הבעלים (אותה סיסמה של אזור הניהול) -->
+    <div id="loginView" class="login" hidden>
+      <form id="loginForm" class="login__card" autocomplete="off">
+        <div class="login__brand">וֶלָה</div>
+        <div class="login__title">תוכנית הבנייה</div>
+        <p class="login__sub">האזור הפרטי שלך — הדרך, הקצב והמטרות</p>
+        <input id="planPw" type="password" class="login__input" placeholder="סיסמת ניהול" autocomplete="current-password" />
+        <button type="submit" class="btn btn--gold login__btn">כניסה</button>
+        <div id="loginErr" class="login__err" hidden></div>
+      </form>
+    </div>
+
+    <!-- האתר -->
+    <div id="app" hidden>
+      <header class="topbar">
+        <div class="topbar__brand">וֶלָה</div>
+        <nav class="switch" id="planSwitch" role="tablist" aria-label="בחירת תוכנית">
+          <span class="switch__pill" aria-hidden="true"></span>
+          <button class="switch__btn" data-plan="vela" role="tab">תוכנית וֶלָה</button>
+          <button class="switch__btn" data-plan="million" role="tab">תוכנית המיליון</button>
+        </nav>
+        <div class="topbar__progress" id="topProgress" title="התקדמות כללית"></div>
+      </header>
+      <main id="main"></main>
+    </div>
+
+    <script src="/plan.js?v=1"></script>
+  </body>
+</html>

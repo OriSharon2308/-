@@ -188,18 +188,19 @@ async function teacherDraw(p = {}) {
 
   // ── כניסות-שלב: הודעות-המעבר הסטנדרטיות מהלקוח (✓-להמשך). "לא הבנתי"/עזרה לא מתאימים לאף אחת → תמיד AI. ──
   const entryMsg = String(p.messageText || "");
-  const isInstructEntry = phase === "instruct" && /בוא נתחיל|הצג מחדש/.test(entryMsg);
+  const isInstructEntry = phase === "instruct" && /בוא נתחיל|הצג מחדש|מסך הבא/.test(entryMsg);
   const isGuidedEntry = phase === "guided" && /התרגול המודרך/.test(entryMsg);
   const isIndependentEntry = phase === "independent" && /התרגול העצמאי/.test(entryMsg);
 
   // ── שיעור-זהב: המערך המוכן של אורי — עדיפות ראשונה, רץ בלי AI (אפס טוקנים, אפס המתנה). ──
+  // הוראה יכולה להיות כמה מסכים (goldenScreen מהלקוח); ✓ בין מסך למסך — הכל מהקובץ.
   if ((isInstructEntry || isGuidedEntry || isIndependentEntry) && p.topic) {
     try {
       const tn = learnerProfile.topicLessonNumber(p.userId, p.topic);
-      const g = golden.phase(p.topic, tn, phase);
+      const g = golden.phase(p.topic, tn, phase, phase === "instruct" ? +p.goldenScreen || 0 : 0);
       if (g) {
-        console.log(`[golden] "${p.topic}"#${tn}/${phase} — 0 tokens`);
-        return { reply: genderize(g.reply, gender), toolCalls: g.toolCalls, mode: "golden", phase };
+        console.log(`[golden] "${p.topic}"#${tn}/${phase}${g.totalScreens > 1 ? ` מסך ${g.screen + 1}/${g.totalScreens}` : ""} — 0 tokens`);
+        return { reply: genderize(g.reply, gender), toolCalls: g.toolCalls, mode: "golden", phase, goldenScreen: g.screen, goldenTotal: g.totalScreens };
       }
     } catch (e) { /* זהב לא קריטי */ }
   }

@@ -1,0 +1,395 @@
+/* ═══════════════════════════════════════════════════════════════
+   וֶלָה · תוכנית הבנייה — לילה קולנועי, בניין ההון, זהב על שמיים
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --night-0: #05080f;
+  --night-1: #0a1019;
+  --night-2: #0e1622;
+  --night-3: #131d2c;
+  --parchment: #ece7d9;
+  --parchment-dim: #b9b4a6;
+  --muted: #7e8798;
+  --gold: #d4b56a;
+  --gold-bright: #ecd9a4;
+  --gold-deep: #8a6f35;
+  --emerald: #3ddc97;
+  --emerald-dim: #1f8f61;
+  --window: #ffd98a;
+  --danger: #e07a6a;
+  --font: "Assistant", -apple-system, "Segoe UI", "Arial Hebrew", sans-serif;
+  --serif: "Frank Ruhl Libre", Georgia, serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  background: var(--night-0);
+  color: var(--parchment);
+  font-size: 16.5px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+button { font-family: inherit; cursor: pointer; }
+input { font-family: inherit; }
+::selection { background: rgba(212, 181, 106, 0.35); }
+
+/* ---------- כפתורים ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border: 0; border-radius: 10px; padding: 12px 22px;
+  font-size: 15.5px; font-weight: 700;
+  transition: filter 0.18s var(--ease), transform 0.08s var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+.btn--gold {
+  background: linear-gradient(160deg, var(--gold-bright), var(--gold));
+  color: #241c07;
+}
+.btn--gold:hover { filter: brightness(1.06); }
+
+/* ---------- טעינה + כניסה ---------- */
+.boot { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.spin {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2.5px solid rgba(212, 181, 106, 0.25); border-top-color: var(--gold);
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.login {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;
+  background:
+    radial-gradient(900px 480px at 78% 8%, rgba(236, 217, 164, 0.08), transparent 60%),
+    radial-gradient(1200px 700px at 50% 115%, var(--night-3), transparent 70%),
+    var(--night-0);
+}
+.login__card { width: min(380px, 100%); text-align: center; animation: rise 0.6s var(--ease); }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+.login__brand {
+  font-family: var(--serif); font-weight: 900; font-size: 54px; line-height: 1;
+  color: var(--gold);
+  text-shadow: 0 0 34px rgba(212, 181, 106, 0.35);
+}
+.login__title { font-family: var(--serif); font-size: 21px; font-weight: 700; margin-top: 14px; }
+.login__sub { color: var(--muted); font-size: 14.5px; margin: 8px 0 30px; }
+.login__input {
+  width: 100%; padding: 13px 16px; font-size: 16px; text-align: center;
+  color: var(--parchment); background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(236, 231, 217, 0.16); border-radius: 10px; outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.login__input:focus { border-color: var(--gold); background: rgba(255, 255, 255, 0.06); box-shadow: 0 0 0 4px rgba(212, 181, 106, 0.12); }
+.login__btn { width: 100%; margin-top: 16px; }
+.login__err { margin-top: 16px; color: var(--danger); font-size: 14px; }
+
+/* ---------- סרגל עליון ---------- */
+.topbar {
+  position: fixed; top: 0; right: 0; left: 0; z-index: 50;
+  display: flex; align-items: center; gap: 20px;
+  padding: 14px clamp(18px, 4vw, 40px);
+  background: linear-gradient(180deg, rgba(5, 8, 15, 0.92), rgba(5, 8, 15, 0.55) 70%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.topbar__brand {
+  font-family: var(--serif); font-weight: 900; font-size: 24px; color: var(--gold);
+  text-shadow: 0 0 22px rgba(212, 181, 106, 0.3);
+}
+.switch {
+  position: relative; display: flex; gap: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(236, 231, 217, 0.1);
+  border-radius: 999px; padding: 4px;
+}
+.switch__btn {
+  position: relative; z-index: 1;
+  background: none; border: 0; color: var(--parchment-dim);
+  padding: 8px 20px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
+  transition: color 0.25s var(--ease);
+}
+.switch__btn.is-on { color: #241c07; }
+.switch__pill {
+  position: absolute; top: 4px; bottom: 4px; border-radius: 999px;
+  background: linear-gradient(160deg, var(--gold-bright), var(--gold));
+  transition: left 0.35s var(--ease), width 0.35s var(--ease);
+}
+.topbar__progress { margin-inline-start: auto; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.topbar__progress b { color: var(--emerald); }
+
+/* ═══════════════ גיבור המיליון — הלילה, הירח, הבניין ═══════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex; flex-direction: column; align-items: center;
+  background:
+    radial-gradient(1400px 900px at 50% 118%, #16233a 0%, transparent 62%),
+    linear-gradient(180deg, var(--night-0) 0%, var(--night-1) 45%, var(--night-2) 100%);
+}
+/* כוכבים — שלוש שכבות עומק */
+.stars, .stars::before, .stars::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-repeat: repeat;
+}
+.stars {
+  background-image: radial-gradient(1.2px 1.2px at 22% 31%, rgba(255,255,255,0.9), transparent 55%),
+    radial-gradient(1px 1px at 68% 12%, rgba(255,255,255,0.7), transparent 55%),
+    radial-gradient(1.4px 1.4px at 84% 42%, rgba(255,255,255,0.8), transparent 55%),
+    radial-gradient(1px 1px at 42% 8%, rgba(255,255,255,0.6), transparent 55%),
+    radial-gradient(1px 1px at 8% 15%, rgba(255,255,255,0.75), transparent 55%),
+    radial-gradient(1.1px 1.1px at 55% 26%, rgba(255,255,255,0.65), transparent 55%),
+    radial-gradient(0.9px 0.9px at 91% 21%, rgba(255,255,255,0.7), transparent 55%),
+    radial-gradient(1px 1px at 33% 19%, rgba(255,255,255,0.5), transparent 55%);
+  background-size: 640px 420px;
+  animation: twinkle 7s ease-in-out infinite alternate;
+}
+@keyframes twinkle { from { opacity: 0.65; } to { opacity: 1; } }
+/* הירח */
+.moon {
+  position: absolute; top: 9%; inset-inline-start: 12%;
+  width: 92px; height: 92px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 34%, #fffdf4, #efe6c8 58%, #d9cda4);
+  box-shadow: 0 0 70px 22px rgba(240, 230, 195, 0.22), 0 0 160px 60px rgba(240, 230, 195, 0.08);
+}
+/* כותרת הגיבור */
+.hero__head { position: relative; z-index: 3; text-align: center; padding: 110px 20px 0; }
+.hero__badge {
+  display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--gold); border: 1px solid rgba(212, 181, 106, 0.4); border-radius: 999px;
+  padding: 6px 18px; background: rgba(212, 181, 106, 0.07);
+}
+.hero__title {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(34px, 5.6vw, 62px); line-height: 1.18; letter-spacing: -0.01em;
+  margin: 22px 0 0; text-wrap: balance;
+}
+.hero__title em {
+  font-style: normal; color: var(--emerald);
+  text-shadow: 0 0 38px rgba(61, 220, 151, 0.35);
+}
+.hero__sub { max-width: 60ch; margin: 16px auto 0; color: var(--parchment-dim); font-size: 16.5px; }
+.hero__stats { display: flex; gap: clamp(18px, 4vw, 44px); justify-content: center; margin-top: 26px; flex-wrap: wrap; }
+.hstat { text-align: center; }
+.hstat__v { font-family: var(--serif); font-weight: 900; font-size: 27px; color: var(--gold-bright); }
+.hstat__k { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ─── הבניין — צללית חיה, הקומות בתוכו ─── */
+.building {
+  position: relative; z-index: 2;
+  width: min(680px, 92vw);
+  margin-top: 42px;
+  display: flex; flex-direction: column;
+  filter: drop-shadow(0 -6px 60px rgba(22, 35, 58, 0.8));
+}
+/* גג */
+.building__roof {
+  height: 44px;
+  background: linear-gradient(180deg, #1a2536, #141d2b);
+  clip-path: polygon(7% 100%, 15% 32%, 85% 32%, 93% 100%);
+  position: relative;
+}
+.building__roof::after { /* אנטנה עם אור מהבהב */
+  content: ""; position: absolute; top: -26px; left: 50%; width: 2px; height: 30px;
+  background: linear-gradient(180deg, transparent, #2a3a52);
+}
+.building__beacon {
+  position: absolute; top: -32px; left: 50%; transform: translateX(-50%);
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gold-bright);
+  box-shadow: 0 0 12px 3px rgba(236, 217, 164, 0.6);
+  animation: beacon 2.6s ease-in-out infinite;
+}
+@keyframes beacon { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+/* קומה — חלק מהבניין עצמו. בלי מסגרות. */
+.floor {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: start;
+  border: 0;
+  padding: clamp(17px, 2.6vh, 26px) clamp(20px, 4vw, 40px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 55%), linear-gradient(90deg, #121a28 0%, #172233 50%, #121a28 100%);
+  border-top: 1px solid rgba(236, 231, 217, 0.07); /* קו רצפה עדין בין קומות */
+  color: inherit;
+  transition: background 0.3s var(--ease);
+}
+.floor:first-of-type { border-top: 0; }
+/* חלונות מוארים — נדלקים בריחוף */
+.floor::before {
+  content: "";
+  position: absolute; inset-inline-end: 22px; top: 50%; transform: translateY(-50%);
+  width: clamp(60px, 12vw, 118px); height: 54%;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 217, 138, 0.13) 0 12px, transparent 12px 24px),
+    repeating-linear-gradient(0deg, rgba(255, 217, 138, 0.13) 0 9px, transparent 9px 18px);
+  border-radius: 2px;
+  opacity: 0.45;
+  transition: opacity 0.35s var(--ease), filter 0.35s var(--ease);
+  pointer-events: none;
+}
+.floor:hover { background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 60%), linear-gradient(90deg, #152031 0%, #1d2b40 50%, #152031 100%); }
+.floor:hover::before { opacity: 1; filter: drop-shadow(0 0 10px rgba(255, 217, 138, 0.35)); }
+
+.floor__num {
+  grid-row: span 2;
+  font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 3.4vw, 36px);
+  color: rgba(236, 231, 217, 0.22);
+  transition: color 0.3s var(--ease), text-shadow 0.3s var(--ease);
+}
+.floor__name {
+  font-family: var(--serif); font-weight: 700; font-size: clamp(18px, 2.6vw, 24px);
+  transition: text-shadow 0.3s var(--ease), color 0.3s var(--ease);
+}
+.floor__gate { font-size: 13.5px; color: var(--muted); margin-top: 2px; transition: color 0.3s var(--ease); }
+.floor__gate b { color: var(--emerald-dim); font-variant-numeric: tabular-nums; transition: color 0.3s var(--ease), text-shadow 0.3s var(--ease); }
+/* ריחוף: הטקסט זוהר */
+.floor:hover .floor__name { color: #fff; text-shadow: 0 0 18px rgba(236, 217, 164, 0.65), 0 0 44px rgba(236, 217, 164, 0.25); }
+.floor:hover .floor__num { color: var(--gold); text-shadow: 0 0 16px rgba(212, 181, 106, 0.5); }
+.floor:hover .floor__gate { color: var(--parchment-dim); }
+.floor:hover .floor__gate b { color: var(--emerald); text-shadow: 0 0 14px rgba(61, 220, 151, 0.5); }
+/* קומה שהושלמה */
+.floor.is-done .floor__name { color: var(--emerald); }
+.floor.is-done .floor__num { color: rgba(61, 220, 151, 0.4); }
+
+/* קרקע + ערפל */
+.building__ground {
+  height: 26px;
+  background: linear-gradient(180deg, #1b2436, #0d1420);
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+}
+.hero__fog {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 180px; z-index: 4; pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(5, 8, 15, 0.85) 62%, var(--night-0));
+}
+.hero__hint { position: relative; z-index: 5; color: var(--muted); font-size: 13.5px; padding: 10px 0 34px; }
+
+/* ═══════════════ גיבור וֶלָה (קטן וחם) ═══════════════ */
+.heroV {
+  position: relative; overflow: hidden;
+  padding: 130px 22px 54px; text-align: center;
+  background:
+    radial-gradient(1000px 540px at 50% -10%, rgba(61, 220, 151, 0.07), transparent 62%),
+    linear-gradient(180deg, var(--night-0), var(--night-1));
+}
+.heroV .hero__title { font-size: clamp(30px, 4.6vw, 50px); }
+.heroV .hero__sub b { color: var(--gold-bright); font-weight: 700; }
+
+/* ═══════════════ פרקים ═══════════════ */
+main { display: block; }
+.chapters { max-width: 880px; margin: 0 auto; padding: 30px clamp(18px, 4vw, 30px) 120px; }
+.chapter { padding: 54px 0 8px; scroll-margin-top: 86px; }
+.chapter__head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.chapter__title {
+  font-family: var(--serif); font-weight: 900; font-size: clamp(24px, 3.4vw, 34px);
+  color: var(--gold-bright); margin: 0; letter-spacing: -0.01em;
+}
+.chapter__time {
+  font-size: 13px; font-weight: 700; color: var(--night-0);
+  background: linear-gradient(160deg, var(--gold-bright), var(--gold));
+  border-radius: 999px; padding: 4px 14px; white-space: nowrap;
+}
+.chapter__gate {
+  font-size: 13px; font-weight: 700; color: var(--emerald);
+  border: 1px solid rgba(61, 220, 151, 0.35); border-radius: 999px; padding: 4px 14px; white-space: nowrap;
+}
+.chapter__why { color: var(--parchment-dim); font-size: 16px; margin: 14px 0 4px; max-width: 72ch; }
+.chapter__why b, .chapter__why strong { color: var(--parchment); }
+
+/* המלצה שלי — פסקת זהב */
+.advice {
+  margin: 22px 0 6px; padding: 18px 22px;
+  background: linear-gradient(90deg, rgba(212, 181, 106, 0.09), rgba(212, 181, 106, 0.03));
+  border-radius: 14px;
+  font-size: 15.5px; color: var(--parchment);
+}
+.advice__tag { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 6px; }
+
+/* עובדות/מספרים בשורה */
+.numbers { display: flex; gap: clamp(14px, 3vw, 34px); flex-wrap: wrap; margin: 20px 0 4px; }
+.num { min-width: 110px; }
+.num__v { font-family: var(--serif); font-weight: 900; font-size: 24px; color: var(--emerald); font-variant-numeric: tabular-nums; }
+.num__k { font-size: 12.5px; color: var(--muted); }
+
+/* ─── מטרות עם וי-בעיגול וקו-השלמה ─── */
+.goals { margin-top: 20px; display: flex; flex-direction: column; }
+.goal {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 13px 2px;
+  border-top: 1px dashed rgba(236, 231, 217, 0.1);
+}
+.goal:first-child { border-top: 0; }
+.goal__check {
+  flex: 0 0 auto; width: 27px; height: 27px; margin-top: 2px;
+  border-radius: 50%;
+  border: 2px solid rgba(236, 231, 217, 0.3);
+  background: transparent;
+  color: transparent;
+  font-size: 14px; font-weight: 900; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.25s var(--ease), background 0.3s var(--ease), color 0.2s var(--ease), transform 0.15s var(--ease), box-shadow 0.3s var(--ease);
+}
+.goal__check:hover { border-color: var(--emerald); transform: scale(1.08); }
+.goal.is-done .goal__check {
+  border-color: var(--emerald);
+  background: radial-gradient(circle at 35% 30%, #52e8a8, var(--emerald-dim));
+  color: #06281a;
+  box-shadow: 0 0 16px rgba(61, 220, 151, 0.35);
+  animation: checkPop 0.35s var(--ease);
+}
+@keyframes checkPop { 0% { transform: scale(0.7); } 60% { transform: scale(1.15); } 100% { transform: scale(1); } }
+.goal__body { min-width: 0; }
+.goal__text { position: relative; display: inline; font-size: 16px; font-weight: 600; transition: color 0.4s var(--ease); }
+/* קו-ההשלמה — נמתח על המטרה כשמסמנים */
+.goal__text::after {
+  content: ""; position: absolute; top: 54%; inset-inline-start: -2px; inset-inline-end: -2px;
+  height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--emerald), rgba(61, 220, 151, 0.4));
+  transform: scaleX(0); transform-origin: 100% 50%; /* RTL: נמתח מימין לשמאל */
+  transition: transform 0.5s var(--ease);
+}
+.goal.is-done .goal__text { color: var(--muted); }
+.goal.is-done .goal__text::after { transform: scaleX(1); }
+.goal__note { display: block; font-size: 13.5px; color: var(--muted); margin-top: 3px; max-width: 68ch; }
+.goal.is-done .goal__note { opacity: 0.6; }
+
+/* התקדמות פרק */
+.chapter__bar { height: 4px; border-radius: 4px; background: rgba(236, 231, 217, 0.08); margin-top: 26px; overflow: hidden; }
+.chapter__fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--emerald-dim), var(--emerald)); width: 0%; transition: width 0.6s var(--ease); }
+
+/* חשיפה עדינה בגלילה (ברירת-מחדל גלויה — רק מתעדנת פנימה) */
+.chapter { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .chapter.pre { opacity: 0; transform: translateY(22px); }
+  .chapter.in { opacity: 1; transform: none; transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+}
+
+/* טבלת השוואה (מתחרים) */
+.compare { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 14.5px; }
+.compare th { text-align: start; color: var(--gold); font-size: 13px; padding: 9px 10px; border-bottom: 1px solid rgba(212, 181, 106, 0.25); }
+.compare td { padding: 10px; border-bottom: 1px dashed rgba(236, 231, 217, 0.08); vertical-align: top; }
+.compare td:first-child { font-weight: 700; white-space: nowrap; }
+.compare .yes { color: var(--emerald); font-weight: 700; }
+.compare .no { color: var(--danger); }
+.compare .part { color: var(--gold-bright); }
+
+.smallnote { color: var(--muted); font-size: 13px; margin-top: 26px; }
+
+@media (max-width: 640px) {
+  .floor::before { display: none; }
+  .hero__stats { gap: 22px; }
+  .topbar { gap: 12px; }
+  .topbar__brand { font-size: 20px; }
+  .switch__btn { padding: 7px 13px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, .stars { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}

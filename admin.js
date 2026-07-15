@@ -751,6 +751,7 @@
           <div class="roadStage__card">
             <div class="roadStage__head">
               <h3 class="roadStage__title">${esc(s.title)}</h3>
+              <button class="gStudioBtn" data-studio="${s.n}" title="עיצוב ויזואלי של מסכי השיעור">🖊 עיצוב בסטודיו</button>
               ${s.goal ? `<div class="roadStage__goal"><span class="roadStage__goalTag">מטרה</span><span>${esc(s.goal)}</span></div>` : ""}
             </div>
             ${toolsBlock}
@@ -773,6 +774,13 @@
       <div class="roadStages">${stages || '<div class="empty">לנושא הזה עוד אין מפת-דרכים מובנית.</div>'}</div>
     </div>`;
     $("#backTopics").addEventListener("click", () => { cs.learnTopic = null; drawGradeScreen(); });
+    // סטודיו שיעורי-הזהב: עיצוב ויזואלי מלא של מסכי השלב (admin-golden.js)
+    body.querySelectorAll(".gStudioBtn").forEach((btn) => btn.addEventListener("click", () => {
+      const n = Number(btn.dataset.studio);
+      const stage = t.stages.find((s) => s.n === n);
+      if (window.VelaGoldenEditor) window.VelaGoldenEditor.open(t.key, n, stage ? stage.title : "");
+      else alert("הסטודיו לא נטען — רענן/י את הדף");
+    }));
     body.querySelectorAll(".toolChip").forEach((chip) => chip.addEventListener("click", () => {
       const [nStr, tiStr] = chip.dataset.tool.split(":");
       const stage = t.stages.find((s) => String(s.n) === nStr);

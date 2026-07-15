@@ -66,6 +66,12 @@ const PUBLIC_FILES = new Set([
   "/admin.html",
   "/admin.css",
   "/admin.js",
+  "/admin-golden.js",
+  "/board.js",
+  "/widget-kit.js",
+  "/plan.html",
+  "/plan.css",
+  "/plan.js",
   "/parent.html",
   "/parent.css",
   "/parent.js",
@@ -379,6 +385,26 @@ const server = http.createServer(async (req, res) => {
         return json(res, 200, { ok: true, grade: cGradeNum, topics });
       }
 
+      // עורך שיעורי-הזהב: קריאת המערך המלא (או שלד ריק מהמערך-הפדגוגי) ושמירה מהעורך
+      if (au.pathname === "/api/admin/golden") {
+        const gTopic = String(q.get("topic") || "").trim().slice(0, 80);
+        const gN = Math.max(1, Number.parseInt(q.get("lesson"), 10) || 1);
+        if (!gTopic) return json(res, 400, { ok: false, error: "חסר topic" });
+        let data = goldenLessons.get(gTopic, gN);
+        if (!data) {
+          const plan = courseLib.planFor(gTopic, gN);
+          data = { topic: gTopic, lesson: gN, title: plan ? plan.title : "", phases: {} };
+        }
+        return json(res, 200, { ok: true, golden: data });
+      }
+      if (au.pathname === "/api/admin/golden/save") {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        const body = await readJsonBody(req, res, 2 * 1024 * 1024);
+        if (!body) return;
+        const r = goldenLessons.save(String(body.topic || ""), Number.parseInt(body.lesson, 10) || 1, body.data || {});
+        return json(res, r.ok ? 200 : 400, r);
+      }
+
       if (au.pathname === "/api/admin/content/topic") {
         const gradeNum = Number.parseInt(q.get("grade"), 10);
         const topic = q.get("topic");
@@ -393,6 +419,25 @@ const server = http.createServer(async (req, res) => {
         const r = adminContent.saveTopic(Number.parseInt(body.gradeNum, 10), body.topic, body.questions);
         if (!r.ok) return json(res, 400, { ok: false, error: r.error });
         return json(res, 200, { ok: true, count: r.count });
+      }
+
+      // תוכנית העבודה (/plan) — סימוני ✓ על מטרות, נשמרים ומסונכרנים לענן
+      if (au.pathname === "/api/admin/plan") {
+        const { readJson } = require("./lib/store");
+        const planFile = path.join(require("./lib/store").DATA_DIR, "plan-progress.json");
+        return json(res, 200, { ok: true, done: readJson(planFile, {}) });
+      }
+      if (au.pathname === "/api/admin/plan/toggle") {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        const body = await readJsonBody(req, res);
+        if (!body || typeof body.id !== "string" || !body.id) return json(res, 400, { ok: false, error: "חסר מזהה" });
+        const store = require("./lib/store");
+        const planFile = path.join(store.DATA_DIR, "plan-progress.json");
+        const done = store.readJson(planFile, {});
+        if (body.value) done[body.id] = true;
+        else delete done[body.id];
+        store.writeJson(planFile, done);
+        return json(res, 200, { ok: true, done });
       }
 
       return json(res, 404, { ok: false, error: "Unknown admin endpoint" });
@@ -575,6 +620,7 @@ const server = http.createServer(async (req, res) => {
         occupied: Array.isArray(body.occupied) ? body.occupied : [],
         layout: Array.isArray(body.layout) ? body.layout : [],
         phase: typeof body.phase === "string" ? body.phase : "",
+        goldenScreen: Number.isFinite(+body.goldenScreen) ? +body.goldenScreen : 0,
         name: (teachUser?.username || "").replace(/_/g, " "), // קו-תחתון → רווח: "דני_כהן" נשמע "דני כהן"
         userId,
       });
@@ -851,6 +897,11 @@ const server = http.createServer(async (req, res) => {
     // אזור ההורים — שלד הדף ציבורי (הנתונים מוגנים ב-API לפי session הורה נפרד)
     if (rel === "/parent" || rel === "/parent/" || rel === "/parent.html") {
       return serveFile(res, "/parent.html", method);
+    }
+
+    // תוכנית העבודה של הבעלים — שלד ציבורי, התוכן נפתח רק עם session אדמין
+    if (rel === "/plan" || rel === "/plan/" || rel === "/plan.html") {
+      return serveFile(res, "/plan.html", method);
     }
 
     const loggedIn = !!sessions.currentUserId(req);
