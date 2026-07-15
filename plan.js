@@ -400,11 +400,11 @@
     ).join("");
     switch (id) {
       case "m5": return `<div class="roofgarden"><span class="g-tree"></span><span class="g-bush"></span><span class="g-bush g-bush--2"></span></div><div class="penthouse"></div><div class="roofdeck"></div>`;
-      case "m4": return wins("", 5);
-      case "m3": return wins("", 5, "bigwin--lit");
+      case "m4": return wins("bigwin--warm", 4);
+      case "m3": return wins("", 4, "bigwin--lit");
       case "m2": return `<span class="col"></span>${wins("bigwin--m2", 4)}<span class="col"></span>`;
-      case "m1": return wins("bigwin--gold", 6);
-      case "m0": return `<span class="gwin"></span><span class="gwin"></span><div class="ddoor"><span></span><span></span></div><span class="gwin"></span><span class="gwin"></span>`;
+      case "m1": return wins("bigwin--warm", 5);
+      case "m0": return `<span class="bush-s"></span><span class="gwin"></span><div class="ddoor"><span></span><span></span></div><span class="gwin"></span><span class="bush-s"></span>`;
       default: return "";
     }
   }

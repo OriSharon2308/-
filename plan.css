@@ -35,12 +35,12 @@ button { font: inherit; color: inherit; }
 .latin { direction: ltr; unicode-bidi: isolate; font-style: normal; }
 em { font-style: normal; }
 
-/* טקסט-גרדיאנט — בדיוק כמו הדוגמה: בהיר למעלה → כהה למטה + זוהר עדין */
+/* טקסט-גרדיאנט — טורקיז עז כמו הדוגמה: כמעט-לבן למעלה → טורקיז רווי + הילה חזקה */
 .gt-green {
-  background: linear-gradient(180deg, #e9fff3 0%, #93f1c4 28%, #37cb8e 66%, #159068 100%);
+  background: linear-gradient(180deg, #f4fffc 0%, #a0ffe3 22%, #3fe9bd 56%, #0fae87 100%);
   -webkit-background-clip: text; background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 3px 22px rgba(64, 220, 160, 0.28));
+  filter: drop-shadow(0 0 18px rgba(60, 235, 185, 0.5)) drop-shadow(0 0 52px rgba(60, 235, 185, 0.3));
 }
 .gt-gold {
   background: linear-gradient(180deg, #fff4d8 0%, #f2d49a 38%, #d5a95c 72%, #a87c33 100%);
@@ -151,10 +151,13 @@ body.is-scrolled .topbar {
 
 /* ═══════════ טיפוגרפיית Hero (משותפת) ═══════════ */
 .hero__title {
-  font-size: clamp(2.5rem, 6.2vw, 4.4rem);
+  font-size: clamp(2.6rem, 6.4vw, 4.6rem);
   font-weight: 900; line-height: 1.16; letter-spacing: -0.02em;
-  text-wrap: balance; color: var(--ink);
+  text-wrap: balance; color: #f7f2e3;
+  text-shadow: 0 0 34px rgba(240, 230, 200, 0.26);
 }
+/* השורה של "קומה אחרי קומה עד $3M" — גדולה יותר, בלי צל חם מאחורי הטורקיז */
+.hero__title em { font-size: 1.18em; line-height: 1.15; text-shadow: none; }
 .hero__sub {
   margin: 22px auto 0; max-width: 62ch;
   color: var(--ink-soft); font-size: 17px; line-height: 1.85; font-weight: 400;
@@ -282,76 +285,92 @@ body.is-scrolled .topbar {
   z-index: 4;
 }
 
-/* כרכוב — הרצועה הבהירה שמפרידה קומות, כמו בווילה אמיתית */
+/* כרכוב — מרפסת/רצועה בהירה שמפרידה קומות, כמו בווילה אמיתית */
 .has-ledge::after {
   content: ""; position: absolute; bottom: -4px; inset-inline: -2.5%;
   height: 8px; border-radius: 3px;
-  background: linear-gradient(180deg, #ded5bd, #bdb296);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.32);
+  background: linear-gradient(180deg, #f6efdc, #d5c9ab);
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.3);
   z-index: 2;
 }
 
-/* קירות הקומות */
+/* קירות הקומות — סטוקו קרם של וילה, לא לבנים */
 .vrow--m4 { --h: 88px; }
 .vrow--m3 { --h: 88px; }
 .vrow--m2 { --h: 88px; }
 .vrow--m1 { --h: 88px; }
 .vrow--m0 { --h: 106px; }
-.slab--m4 { background: linear-gradient(180deg, #2f4d63, #28425a); }
-.slab--m3 { background: linear-gradient(180deg, #2b4459, #243a4e); }
-.slab--m2 { background: linear-gradient(180deg, #e9e0c8, #d9cdb0); }
-.slab--m1 { background: linear-gradient(180deg, #253139, #1d272e); }
+.slab--m4 { background: linear-gradient(180deg, #f0e8d4, #e0d5ba); }
+.slab--m3 { background: linear-gradient(180deg, #e6dcc4, #d6cab0); }
+.slab--m2 { background: linear-gradient(180deg, #f4edda, #e4dac2); }
+.slab--m1 { background: linear-gradient(180deg, #ece2cb, #dcd1b6); }
 .slab--m0 {
   background:
-    repeating-linear-gradient(0deg, transparent 0 16px, rgba(0, 0, 0, 0.1) 16px 17px),
-    repeating-linear-gradient(90deg, transparent 0 42px, rgba(0, 0, 0, 0.07) 42px 43px),
-    linear-gradient(180deg, #7d5a49, #6b4a3b);
+    repeating-linear-gradient(0deg, transparent 0 20px, rgba(120, 100, 70, 0.08) 20px 21px),
+    linear-gradient(180deg, #ded2b8, #cbbe9f);
   border-radius: 0 0 12px 12px;
   align-items: flex-end; padding-bottom: 0;
 }
+/* מעקה זכוכית טורקיז — פס מרפסת של וילה מודרנית */
+.slab--m4::before, .slab--m1::before {
+  content: ""; position: absolute; bottom: 5px; inset-inline: 8%;
+  height: 10px; border-radius: 4px;
+  background: linear-gradient(180deg, rgba(127, 231, 199, 0.55), rgba(63, 191, 154, 0.32));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
 
-/* חלונות גדולים — זכוכית כהה עם ברק, מסגרת דקה */
+/* חלונות וילה — אור חם וזוהר, מסגרת ברונזה */
 .bigwin {
-  flex: 1 1 0; max-width: 84px; height: 62%;
-  border-radius: 6px; position: relative; overflow: hidden;
-  background: linear-gradient(180deg, #1c3244, #152738);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  flex: 1 1 0; max-width: 84px; height: 58%;
+  border-radius: 7px; position: relative; overflow: hidden;
+  background: linear-gradient(180deg, #2c4257, #1e3243);
+  border: 2px solid rgba(85, 66, 40, 0.45);
 }
 .bigwin::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(118deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+  background: linear-gradient(118deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
 }
 .bigwin--lit::before {
   content: ""; position: absolute; top: 28%; inset-inline-start: 16%;
   width: 12px; height: 10px; border-radius: 2px;
-  background: #e9c064; box-shadow: 0 0 10px rgba(255, 205, 110, 0.55);
+  background: #ffd98a; box-shadow: 0 0 12px rgba(255, 205, 110, 0.65);
 }
-.bigwin--gold {
-  background: linear-gradient(180deg, #ecca7c, #c69a48);
-  border-color: rgba(0, 0, 0, 0.28);
+.bigwin--warm {
+  background: linear-gradient(180deg, #ffeec2, #f0c377);
+  border-color: rgba(85, 66, 40, 0.5);
+  box-shadow: 0 0 18px rgba(255, 210, 130, 0.45);
 }
-.bigwin--gold::after { background: linear-gradient(118deg, transparent 38%, rgba(255, 255, 255, 0.22) 50%, transparent 62%); }
+.bigwin--warm::after { background: linear-gradient(118deg, transparent 38%, rgba(255, 255, 255, 0.3) 50%, transparent 62%); }
+.bigwin--m2 { background: linear-gradient(180deg, #2c4257, #1e3243); }
 
-/* קומת הקרם — קולונדה */
+/* קולונדה — עמודי וילה */
 .col {
   width: 14px; height: 76%; flex: none;
   border-radius: 6px 6px 0 0;
-  background: linear-gradient(90deg, #f4ecd6, #cfc4a6);
+  background: linear-gradient(90deg, #faf3e0, #d5c9ab);
   box-shadow: inset -2px 0 3px rgba(0, 0, 0, 0.12);
 }
 
-/* קומת הקרקע — חלונות זהב קטנים ודלת כפולה */
+/* קומת הקרקע — כניסת וילה: דלת עץ-דבש, חלונות חמים ושיחים */
 .gwin {
-  width: 30px; height: 22px; border-radius: 4px; flex: none;
-  margin-bottom: 38px;
-  background: linear-gradient(180deg, #ffe9b8, #ecc179);
-  box-shadow: 0 0 12px rgba(255, 216, 140, 0.35);
+  width: 32px; height: 24px; border-radius: 5px; flex: none;
+  margin-bottom: 36px;
+  border: 2px solid rgba(85, 66, 40, 0.5);
+  background: linear-gradient(180deg, #ffeec2, #f0c377);
+  box-shadow: 0 0 16px rgba(255, 216, 140, 0.45);
 }
 .ddoor { display: flex; gap: 3px; flex: none; }
 .ddoor span {
-  width: 21px; height: 58px; border-radius: 9px 9px 0 0;
-  background: linear-gradient(180deg, #33261f, #241a15);
-  box-shadow: inset 0 0 0 1.5px rgba(233, 201, 138, 0.3), 0 0 14px rgba(255, 205, 130, 0.22);
+  width: 22px; height: 60px; border-radius: 11px 11px 0 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 12px, rgba(60, 40, 20, 0.14) 12px 14px),
+    linear-gradient(180deg, #c69a5c, #8f6335);
+  box-shadow: inset 0 0 0 2px rgba(60, 40, 20, 0.32), 0 0 20px rgba(255, 205, 130, 0.35);
+}
+.bush-s {
+  width: 36px; height: 20px; flex: none; align-self: flex-end;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(180deg, #5d8a4e, #446e3c);
 }
 
 /* הגג — דק, גינה ירוקה ופנטהאוז זכוכית */
@@ -361,7 +380,7 @@ body.is-scrolled .topbar {
 .roofdeck {
   position: absolute; bottom: 0; inset-inline: -3%;
   height: 11px; border-radius: 4px; z-index: 2;
-  background: linear-gradient(180deg, #ece4cd, #cabfa1);
+  background: linear-gradient(180deg, #f6efdc, #d5c9ab);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
 }
 .roofgarden {
