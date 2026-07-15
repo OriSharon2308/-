@@ -1,6 +1,21 @@
 /* ═══════════════════════════════════════════════════════════════
-   וֶלָה · תוכנית הבנייה — לילה קולנועי, בניין ההון, זהב על שמיים
+   vela · תוכנית הבנייה — לילה קולנועי, בניין ההון, זהב על שמיים
    ═══════════════════════════════════════════════════════════════ */
+/* פונט המותג — vela נכתב תמיד בו */
+@font-face {
+  font-family: "Arca Morphe";
+  src: url("/fonts/ArcaMorphe-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+/* פונט הממשק — Google Sans (עברית+לטינית) */
+@font-face {
+  font-family: "Google Sans";
+  src: url("/fonts/GoogleSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
 :root {
   --night-0: #05080f;
   --night-1: #0a1019;
@@ -16,8 +31,9 @@
   --emerald-dim: #1f8f61;
   --window: #ffd98a;
   --danger: #e07a6a;
-  --font: "Assistant", -apple-system, "Segoe UI", "Arial Hebrew", sans-serif;
+  --font: "Google Sans", "Assistant", -apple-system, "Segoe UI", "Arial Hebrew", sans-serif;
   --serif: "Frank Ruhl Libre", Georgia, serif;
+  --brand: "Arca Morphe", "Archivo Black", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -71,7 +87,8 @@ input { font-family: inherit; }
 .login__card { width: min(380px, 100%); text-align: center; animation: rise 0.6s var(--ease); }
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } }
 .login__brand {
-  font-family: var(--serif); font-weight: 900; font-size: 54px; line-height: 1;
+  font-family: var(--brand); font-weight: 400; font-size: 74px; line-height: 1;
+  text-transform: lowercase;
   color: var(--gold);
   text-shadow: 0 0 34px rgba(212, 181, 106, 0.35);
 }
@@ -97,7 +114,8 @@ input { font-family: inherit; }
   -webkit-backdrop-filter: blur(6px);
 }
 .topbar__brand {
-  font-family: var(--serif); font-weight: 900; font-size: 24px; color: var(--gold);
+  font-family: var(--brand); font-weight: 400; font-size: 30px; line-height: 1; color: var(--gold);
+  text-transform: lowercase;
   text-shadow: 0 0 22px rgba(212, 181, 106, 0.3);
 }
 .switch {
