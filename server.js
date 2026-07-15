@@ -390,12 +390,11 @@ const server = http.createServer(async (req, res) => {
         const gTopic = String(q.get("topic") || "").trim().slice(0, 80);
         const gN = Math.max(1, Number.parseInt(q.get("lesson"), 10) || 1);
         if (!gTopic) return json(res, 400, { ok: false, error: "חסר topic" });
+        const gPlan = courseLib.planFor(gTopic, gN);
         let data = goldenLessons.get(gTopic, gN);
-        if (!data) {
-          const plan = courseLib.planFor(gTopic, gN);
-          data = { topic: gTopic, lesson: gN, title: plan ? plan.title : "", phases: {} };
-        }
-        return json(res, 200, { ok: true, golden: data });
+        if (!data) data = { topic: gTopic, lesson: gN, title: gPlan ? gPlan.title : "", phases: {} };
+        // המערך הפדגוגי מוצג בסטודיו לצד העיצוב: מטרת השיעור + גישת-ההוראה + מיקום ברצף
+        return json(res, 200, { ok: true, golden: data, plan: gPlan ? { title: gPlan.title, goal: gPlan.goal || "", teach: gPlan.teach || "", index: gPlan.index || gN, total: gPlan.total || 0 } : null });
       }
       if (au.pathname === "/api/admin/golden/save") {
         if (method !== "POST") return json(res, 405, { error: "Method not allowed" });

@@ -1124,7 +1124,8 @@
             // ניקוי-מעבר-שלב: מנקים תוכן-מורה רק עכשיו, אחרי שהתשובה החדשה הגיעה בשלום —
             // ורק תוכן-מורה (clearTeacher): הקישקושים של הילד לעולם לא נמחקים.
             if (window.velaClearNext) { window.velaClearNext = false; if (board.clearTeacher) board.clearTeacher(); }
-            board.runTools(data.toolCalls);
+            // שיעור-זהב: המסך עוצב ידנית בסטודיו — בלי המסדר-האוטומטי, מה שאורי עיצב זה מה שהילד רואה 1:1
+            board.runTools(data.toolCalls, { tidy: data.mode !== "golden" });
             // זוכרים את הייצוג האחרון שהמורה השתמש בו ("מה עבד" — יישלח לזיכרון עם תשובה נכונה)
             for (var ri = data.toolCalls.length - 1; ri >= 0; ri--) {
               var rp = data.toolCalls[ri] && TOOL_REPR[data.toolCalls[ri].name];

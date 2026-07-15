@@ -335,7 +335,14 @@
     this.animateView({ x: rx - cx * scale, y: ry - cy * scale, scale: scale }, dur);
   };
   // תיבה תוחמת של אובייקט בודד (מורה/ילד) — להצמדת-תצוגה.
+  // אובייקט עם קנה-מידה (_k, מהעורך/שיעור-זהב) — התיבה הגולמית נמתחת סביב נקודת-העוגן שלו.
   VelaBoard.prototype._objBBox = function (o) {
+    var b = this._objBBoxRaw(o);
+    if (!b || !o || !o._k || o._k === 1 || !isFinite(o._kax)) return b;
+    var k = o._k, ax = o._kax, ay = o._kay;
+    return { minX: ax + (b.minX - ax) * k, minY: ay + (b.minY - ay) * k, maxX: ax + (b.maxX - ax) * k, maxY: ay + (b.maxY - ay) * k };
+  };
+  VelaBoard.prototype._objBBoxRaw = function (o) {
     if (!o) return null;
     if (o.points && o.points.length) return bboxOf(o.points);
     if (o.type === "circle") return { minX: o.x - o.r, minY: o.y - o.r, maxX: o.x + o.r, maxY: o.y + o.r };
@@ -395,8 +402,11 @@
     var animating = false;
     for (var i = 0; i < this.objects.length; i++) {
       var o = this.objects[i], pr = this._revealProgress(o, now);
+      var hasK = o._k && o._k !== 1 && isFinite(o._kax); // קנה-מידה של קבוצה — טרנספורם סביב העוגן
+      if (hasK) { ctx.save(); ctx.translate(o._kax, o._kay); ctx.scale(o._k, o._k); ctx.translate(-o._kax, -o._kay); }
       if (pr < 1) { animating = true; this._drawObjectReveal(o, pr); }
       else this._drawObject(o);
+      if (hasK) ctx.restore();
     }
     for (var j = 0; j < this.childStrokes.length; j++) this._drawStroke(this.childStrokes[j]);
     if (this._currentStroke) this._drawStroke(this._currentStroke);
@@ -637,7 +647,7 @@
     ask_answer: function (i) {
       var kind = i.kind === "text" ? "text" : "number";
       var bw = kind === "text" ? 150 : 60, bh = kind === "text" ? 56 : 52;
-      this.answerBoxes.push({ id: "ab" + (++this._abid), x: +i.x, y: +i.y, kind: kind, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: 0, gap0: 16, scale: 1, text: "", status: "open" });
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: +i.x, y: +i.y, kind: kind, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: 0, gap0: 16, scale: i.scale ? clamp(+i.scale, 0.4, 3) : 1, text: "", status: "open" });
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
     // תבנית מהירה: תרגיל שלם כאובייקט אחד (טקסט "35 + 24 =" + תיבת-תשובה צמודה), ממוקם בצד ימין, מוערם בשורות.
@@ -671,7 +681,7 @@
       // מיקום מדויק (שיעורי-זהב/עורך): x,y מפורשים עוקפים את הסידור האוטומטי — לא מקדמים slot
       var exactPos = i.x != null && i.y != null && isFinite(+i.x) && isFinite(+i.y);
       if (exactPos) { boxX = +i.x; y = +i.y; }
-      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: 1, text: text, status: "open" });
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: i.scale ? clamp(+i.scale, 0.4, 3) : 1, text: text, status: "open" });
       if (!exactPos) this._exSlot = slot + 1;
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
@@ -746,7 +756,7 @@
     else { h = clamp(i.h || dh, 60, 1800); ar = w / h; }                          // render_widget חופשי — היחס נקבע ממה שהמורה ביקש
     var x = clamp(i.x != null ? +i.x || 0 : Math.round((this.W - w) / 2), -200, this.W + 200);
     var y = clamp(i.y != null ? +i.y || 0 : 120, -200, this.H + 200);
-    var spot = this._freeSpot(x, y, w, h); x = spot.x; y = spot.y; // לעולם לא על פריט קיים
+    if (!i.exact) { var spot = this._freeSpot(x, y, w, h); x = spot.x; y = spot.y; } // מיקום מעוצב-ידנית (exact) לא זז; אחרת — לעולם לא על פריט קיים
     this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, ar: ar, html: html, title: title != null ? String(title).slice(0, 60) : "" });
     if (this._onWidgets) this._onWidgets(this.widgets);
   };
@@ -781,6 +791,7 @@
     if (o.x1 != null) o.x1 += dx; if (o.y1 != null) o.y1 += dy;
     if (o.x2 != null) o.x2 += dx; if (o.y2 != null) o.y2 += dy;
     if (o.cx != null) o.cx += dx; if (o.cy != null) o.cy += dy;
+    if (o._kax != null) o._kax += dx; if (o._kay != null) o._kay += dy; // עוגן קנה-המידה נוסע עם האובייקט
   };
   VelaBoard.prototype._objById = function (id) { for (var i = 0; i < this.objects.length; i++) if (this.objects[i].id === id) return this.objects[i]; return null; };
   // הזזת קבוצה שלמה (כל האובייקטים עם אותו gid) — שעון/תבנית זזים כיחידה אחת ולא מתפרקים.
@@ -881,13 +892,29 @@
           this.objects[i].gid = newGid;
         }
       }
+      // קנה-מידה מהקריאה (עורך-הזהב): כל הקבוצה נמתחת סביב נקודת-העוגן של הקלט — דטרמיניסטי וחוזר על עצמו
+      var ks = input && +input.scale;
+      if (newGid != null && isFinite(ks) && ks > 0 && ks !== 1) this._applyGroupScale(newGid, clamp(ks, 0.35, 3), input);
       this.render();
       return { ok: true };
     } catch (e) { console.error("VelaBoard tool error:", name, e); return { ok: false, error: String(e && e.message) }; }
   };
-  VelaBoard.prototype.runTools = function (calls) {
+  VelaBoard.prototype.runTools = function (calls, opts) {
     if (Array.isArray(calls)) for (var i = 0; i < calls.length; i++) if (calls[i] && calls[i].name) this.tool(calls[i].name, calls[i].input || {});
-    this.resolveOverlaps(); // חוק אי-החפיפה נאכף בקוד על *כל* מה שהמורה צייר — לא רק הנחיה
+    // חוק אי-החפיפה נאכף בקוד על *כל* מה שהמורה צייר — חוץ משיעורי-זהב (tidy:false), שם המיקום עוצב ידנית 1:1
+    if (!opts || opts.tidy !== false) this.resolveOverlaps();
+  };
+  // מתיחת קבוצה סביב עוגן: x/y של הקלט (או x1/y1 / נקודה ראשונה / מרכז התיבה) — כך שהעוגן לא זז,
+  // והרצה חוזרת של אותו הכלי עם אותו scale מייצרת בדיוק את אותה תוצאה (העורך והשיעור זהים).
+  VelaBoard.prototype._applyGroupScale = function (gid, k, input) {
+    var ax = null, ay = null;
+    if (input && isFinite(+input.x) && isFinite(+input.y)) { ax = +input.x; ay = +input.y; }
+    else if (input && isFinite(+input.x1) && isFinite(+input.y1)) { ax = +input.x1; ay = +input.y1; }
+    else if (input && input.points && input.points[0]) { ax = +input.points[0][0]; ay = +input.points[0][1]; }
+    if (ax == null) { var b = this._groupBBox(gid); if (!b) return; ax = (b.minX + b.maxX) / 2; ay = (b.minY + b.maxY) / 2; }
+    for (var i = 0; i < this.objects.length; i++) if (this.objects[i].gid === gid) {
+      this.objects[i]._k = k; this.objects[i]._kax = ax; this.objects[i]._kay = ay;
+    }
   };
 
   // המסדר האוטומטי: אחרי שהמורה סיים לצייר, אף פריט לא נשאר על פריט אחר.
