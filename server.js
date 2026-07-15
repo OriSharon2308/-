@@ -30,7 +30,8 @@ const analytics = require("./lib/analytics"); // סדרות-זמן + סיכומ�
 const assess = require("./lib/assessments"); // הערכות מורה/פסיכולוג/מתמטיקאי (מטמון)
 const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנק השאלות)
 const teachingMethods = require("./lib/teaching-methods"); // שיטות-לימוד שמורות (אישור ✓-הבנתי)
-const courseLib = require("./lib/course"); // מערכי-שיעור — מפת-הדרכים של הלמידה (גם לאדמין)
+const courseLib = require("./lib/course");
+const goldenLessons = require("./lib/golden-lessons"); // שיעורי-זהב — מוצגים באדמין // מערכי-שיעור — מפת-הדרכים של הלמידה (גם לאדמין)
 const demo = require("./lib/demo"); // תלמיד-דוגמה קבוע (קריאה בלבד)
 const lessonTools = require("./lib/lesson-tools"); // אזור למידה: זיהוי כלי-הלוח שכל שלב משתמש בהם
 const parentAuth = require("./lib/parent-auth"); // אזור הורים — כניסה עם פרטי הילד, session נפרד
@@ -369,6 +370,7 @@ const server = http.createServer(async (req, res) => {
                 goal: p.goal,
                 teach: p.teach,
                 tools: lessonTools.toolsInTeach(p.teach),
+                golden: (() => { const gs = goldenLessons.stagesFor(t.key, i + 1); return gs.length ? gs : null; })(),
                 method: m ? { confirmed: !!m.confirmed, uses: m.uses || 0, reply: String(m.reply || "").slice(0, 600) } : null,
               };
             }),

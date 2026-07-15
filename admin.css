@@ -668,3 +668,5 @@ body.contentPicker { background: #fff; }
   .roadmap { animation: none; }
   .topicCard, .toolChip, .topicCard__go, .toolDesc { transition: none; }
 }
+.goldLive { font-size: 12px; font-weight: 700; color: #1d7d4f; background: #e9f8f0; padding: 2px 10px; border-radius: 999px; margin-inline-start: 8px; }
+.goldEditHint { margin-top: 8px; font-size: 12px; color: var(--muted); direction: ltr; text-align: left; font-family: Consolas, Menlo, monospace; }

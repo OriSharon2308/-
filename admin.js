@@ -755,8 +755,9 @@
             </div>
             ${toolsBlock}
             ${gold ? `<div class="stageBlock">
-              <div class="stageBlock__label goldLabel"><span class="goldStar">★</span> שיעור-הזהב הקבוע</div>
+              <div class="stageBlock__label goldLabel"><span class="goldStar">★</span> שיעור-הזהב הקבוע${s.golden ? ` <span class="goldLive">🏆 פעיל — רץ בלי AI (${s.golden.map((x) => ({ instruct: "הוראה", guided: "מודרך", independent: "עצמאי" })[x] || x).join(" · ")})</span>` : ""}</div>
               <div class="goldLesson">${esc(gold)}</div>
+              ${s.golden ? `<div class="goldEditHint">עריכת המיקומים והנוסח: golden/${esc(t.key).replace(/ /g, "_")}#${s.n}.json</div>` : ""}
             </div>` : ""}
           </div>
         </section>`;

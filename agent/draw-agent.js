@@ -8,6 +8,7 @@ const { genderize } = require("../lib/gender");
 const learnerProfile = require("../lib/learner-profile");
 const methods = require("../lib/teaching-methods"); // שיטות-לימוד שמורות — מציגים ישר, בלי לחשוב מחדש
 const course = require("../lib/course"); // מערכי-שיעור — הפרוגרסיה הפדגוגית לכל נושא
+const golden = require("../lib/golden-lessons"); // שיעורי-זהב: מערך מוכן בשליטת אורי — רץ בלי AI
 const { BOARD_TOOLS } = require("../lib/board-tools");
 const { catalogPromptSection } = require("../lib/teaching-tools"); // מאגר הכלים: נושא → הויזואל → הכלי
 
@@ -185,9 +186,26 @@ async function teacherDraw(p = {}) {
     } catch (e) { /* מערך לא קריטי */ }
   }
 
+  // ── כניסות-שלב: הודעות-המעבר הסטנדרטיות מהלקוח (✓-להמשך). "לא הבנתי"/עזרה לא מתאימים לאף אחת → תמיד AI. ──
+  const entryMsg = String(p.messageText || "");
+  const isInstructEntry = phase === "instruct" && /בוא נתחיל|הצג מחדש/.test(entryMsg);
+  const isGuidedEntry = phase === "guided" && /התרגול המודרך/.test(entryMsg);
+  const isIndependentEntry = phase === "independent" && /התרגול העצמאי/.test(entryMsg);
+
+  // ── שיעור-זהב: המערך המוכן של אורי — עדיפות ראשונה, רץ בלי AI (אפס טוקנים, אפס המתנה). ──
+  if ((isInstructEntry || isGuidedEntry || isIndependentEntry) && p.topic) {
+    try {
+      const tn = learnerProfile.topicLessonNumber(p.userId, p.topic);
+      const g = golden.phase(p.topic, tn, phase);
+      if (g) {
+        console.log(`[golden] "${p.topic}"#${tn}/${phase} — 0 tokens`);
+        return { reply: genderize(g.reply, gender), toolCalls: g.toolCalls, mode: "golden", phase };
+      }
+    } catch (e) { /* זהב לא קריטי */ }
+  }
+
   // ── שלב הוראה: שיטת-לימוד שמורה ומאושרת → מציגים ישר (בלי AI, בלי לחשוב מחדש). ──
-  // רק בכניסה הראשונה לשלב (הילד לחץ "בוא נתחיל"); "לא הבנתי" תמיד מגיע ל-AI כדי ללמד אחרת.
-  const isInstructEntry = phase === "instruct" && /בוא נתחיל/.test(String(p.messageText || ""));
+  // רק בכניסה הראשונה לשלב; "לא הבנתי" תמיד מגיע ל-AI כדי ללמד אחרת.
   if (isInstructEntry && methodKey) {
     const m = methods.getConfirmed(methodKey);
     if (m) {

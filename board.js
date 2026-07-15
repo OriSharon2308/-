@@ -663,10 +663,10 @@
         boxX = this.W - margin - bw / 2 - col * colW;
         var groupLeft = boxX - bw / 2 - gap0 - tw;
         if (groupLeft < 20) boxX += 20 - groupLeft; // לא לצאת משמאל
-      } else { // עוגן לשמאל: התיבה ליד הקצה השמאלי, הטקסט מימינה; עמודות נערמות ימינה
-        boxX = margin + bw / 2 + col * colW;
-        var groupRight = boxX + bw / 2 + gap0 + tw;
-        if (groupRight > this.W - 20) boxX -= groupRight - (this.W - 20); // לא לצאת מימין
+      } else { // עברית: המשפט מתחיל בקצה הימני (כמו שעין קוראת RTL), והתיבה בסוף המשפט — משמאל לטקסט
+        var textRight = this.W - margin - col * colW; // תחילת המשפט צמודה לימין; עמודות נערמות שמאלה
+        boxX = textRight - tw - gap0 - bw / 2;
+        if (boxX - bw / 2 < 20) boxX = 20 + bw / 2; // לא לצאת משמאל
       }
       this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: 1, text: text, status: "open" });
       this._exSlot = slot + 1;
@@ -882,7 +882,44 @@
       return { ok: true };
     } catch (e) { console.error("VelaBoard tool error:", name, e); return { ok: false, error: String(e && e.message) }; }
   };
-  VelaBoard.prototype.runTools = function (calls) { if (Array.isArray(calls)) for (var i = 0; i < calls.length; i++) if (calls[i] && calls[i].name) this.tool(calls[i].name, calls[i].input || {}); };
+  VelaBoard.prototype.runTools = function (calls) {
+    if (Array.isArray(calls)) for (var i = 0; i < calls.length; i++) if (calls[i] && calls[i].name) this.tool(calls[i].name, calls[i].input || {});
+    this.resolveOverlaps(); // חוק אי-החפיפה נאכף בקוד על *כל* מה שהמורה צייר — לא רק הנחיה
+  };
+
+  // המסדר האוטומטי: אחרי שהמורה סיים לצייר, אף פריט לא נשאר על פריט אחר.
+  // קבוצות-ציור (gid — שעון שלם, ציר עם קפיצות) זזות כיחידה; תרגילים/ווידג'טים = מכשולים קבועים
+  // (הם כבר ממוקמים דטרמיניסטית); קישקושי-הילד לא זזים לעולם. הזזה: כלפי מטה — צפוי ויציב.
+  VelaBoard.prototype.resolveOverlaps = function () {
+    var GAP = 24, fixed = [], self = this, i;
+    function bump(list, b) { if (b && isFinite(b.minX) && b.maxX > b.minX) list.push(b); }
+    for (i = 0; i < this.widgets.length; i++) { var wd = this.widgets[i]; bump(fixed, { minX: wd.x, minY: wd.y, maxX: wd.x + wd.w, maxY: wd.y + wd.h }); }
+    for (i = 0; i < this.answerBoxes.length; i++) bump(fixed, this._exBBox(this.answerBoxes[i]));
+    // קבוצות-אובייקטים בסדר יצירה: מוקדם נשאר, מאוחר זז
+    var seen = {}, groups = [];
+    for (i = 0; i < this.objects.length; i++) {
+      var o = this.objects[i], key = o.gid || o.id || ("i" + i);
+      if (seen[key]) continue;
+      seen[key] = 1;
+      groups.push({ gid: o.gid, obj: o, bbox: o.gid ? this._groupBBox(o.gid) : this._objBBox(o) });
+    }
+    function hits(a, b) { return a.minX < b.maxX + GAP && a.maxX + GAP > b.minX && a.minY < b.maxY + GAP && a.maxY + GAP > b.minY; }
+    for (i = 0; i < groups.length; i++) {
+      var g = groups[i];
+      if (!g.bbox || !isFinite(g.bbox.minX)) continue;
+      var guard = 0;
+      while (guard++ < 40) {
+        var pushTo = null;
+        for (var f = 0; f < fixed.length; f++) if (hits(g.bbox, fixed[f])) pushTo = Math.max(pushTo == null ? -Infinity : pushTo, fixed[f].maxY);
+        if (pushTo == null) break;
+        var dy = (pushTo + GAP) - g.bbox.minY;
+        if (!(dy > 0)) break;
+        if (g.gid) this._translateGroup(g.gid, 0, dy); else this._translateObject(g.obj, 0, dy);
+        g.bbox = { minX: g.bbox.minX, minY: g.bbox.minY + dy, maxX: g.bbox.maxX, maxY: g.bbox.maxY + dy };
+      }
+      bump(fixed, g.bbox); // מהרגע שהתמקם — הוא מכשול לבאים אחריו
+    }
+  };
   VelaBoard.prototype.registerTool = function (name, h) { if (name && typeof h === "function") this._tools[name] = h; };
 
   // מנקה רק את תוכן המורה (ציורים/תרגילים/ווידג'טים) — משאיר את קישקושי הילד. למשל ל"הצג הכל".
