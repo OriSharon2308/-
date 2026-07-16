@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>מפת ההוראה · כיתה א׳ · vela</title>
+<style>
+  /* ─── vela · מפת ההוראה — כהה, נקי, הכל דיאגרמות ─── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Assistant, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #f4f5f7; line-height: 1.6;
+    background:
+      radial-gradient(1100px 560px at 88% -8%, rgba(45,212,191,.08), transparent 62%),
+      radial-gradient(900px 520px at 8% 30%, rgba(238,199,79,.04), transparent 55%),
+      #0c0d10;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 40px 26px 120px; }
+
+  /* כותרות */
+  .brand { font-size: 13px; color: #6e7380; letter-spacing: .04em; margin-bottom: 6px; }
+  .brand b { color: #2dd4bf; font-weight: 800; letter-spacing: 0; }
+  .kicker { font-size: 12px; letter-spacing: .07em; color: #eec74f; font-weight: 700; margin: 42px 0 8px; }
+  h1 { font-size: 36px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 10px; }
+  h2 { font-size: 24px; font-weight: 800; letter-spacing: -.01em; }
+  .lead { color: #a8adb8; font-size: 15px; max-width: 640px; }
+
+  .draft {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+    font-size: 12.5px; font-weight: 700; color: #eec74f;
+    border: 1px dashed rgba(238,199,79,.45); border-radius: 999px; padding: 6px 16px;
+  }
+
+  /* תוכן עניינים */
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .toc a {
+    font-size: 12.5px; font-weight: 650; color: #c6cad2; text-decoration: none;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 999px; padding: 6px 14px; transition: all .15s ease;
+  }
+  .toc a:hover { color: #fff; border-color: rgba(45,212,191,.5); background: rgba(45,212,191,.08); }
+
+  /* קלף-סקשן */
+  section.card {
+    background: #131418; border: 1px solid rgba(255,255,255,.07); border-radius: 22px;
+    padding: 28px 26px 34px; margin-top: 26px;
+  }
+  .sechead { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .sechead .n {
+    flex: none; width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center;
+    background: rgba(45,212,191,.13); color: #2dd4bf; font-weight: 800; font-size: 15px; align-self: center;
+  }
+  .secsub { color: #6e7380; font-size: 13px; margin-bottom: 20px; }
+
+  /* ─── תרשים זרימה ─── */
+  .flow { display: flex; flex-direction: column; align-items: center; max-width: 560px; margin: 0 auto; }
+  .fn {
+    width: 100%; max-width: 460px; text-align: center;
+    background: #1a1c22; border: 1px solid rgba(255,255,255,.12); border-radius: 14px;
+    padding: 11px 16px; position: relative;
+  }
+  .fn b { display: block; font-size: 14px; font-weight: 750; }
+  .fn span { display: block; font-size: 12px; color: #a8adb8; margin-top: 2px; line-height: 1.5; }
+  .fn .stage {
+    position: absolute; top: -9px; inset-inline-start: 14px;
+    font-size: 10px; font-weight: 800; color: #6e7380; letter-spacing: .05em;
+    background: #131418; padding: 1px 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,.1);
+  }
+  .fn .tool {
+    display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 700;
+    color: #7de8d8; background: rgba(45,212,191,.1); border: 1px solid rgba(45,212,191,.28);
+    border-radius: 999px; padding: 2px 10px;
+  }
+  .fn--start { background: linear-gradient(180deg, rgba(45,212,191,.16), rgba(45,212,191,.06)); border-color: rgba(45,212,191,.4); border-radius: 999px; max-width: 380px; }
+  .fn--q { border-color: rgba(238,199,79,.5); background: linear-gradient(180deg, rgba(238,199,79,.1), rgba(238,199,79,.03)); }
+  .fn--q b::after { content: " ?"; color: #eec74f; }
+  .fn--good { border-color: rgba(74,222,128,.4); background: rgba(74,222,128,.06); }
+  .fn--bad { border-color: rgba(248,113,113,.4); background: rgba(248,113,113,.06); }
+  .fn--end { background: linear-gradient(180deg, rgba(238,199,79,.14), rgba(238,199,79,.05)); border-color: rgba(238,199,79,.45); border-radius: 999px; max-width: 400px; }
+  .fn--loop { border-style: dashed; background: transparent; }
+
+  .fa { width: 2px; height: 26px; background: rgba(255,255,255,.22); position: relative; flex: none; }
+  .fa::after {
+    content: ""; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%);
+    border: 5px solid transparent; border-top: 7px solid rgba(255,255,255,.34); border-bottom: 0;
+  }
+  .fa--loop { background: repeating-linear-gradient(180deg, rgba(238,199,79,.5) 0 4px, transparent 4px 8px); }
+  .fa--loop::after { border-top-color: rgba(238,199,79,.6); }
+
+  /* התפצלות */
+  .fork { width: 100%; }
+  .fsplit, .fmerge { width: 100%; height: 34px; display: block; }
+  .fsplit path, .fmerge path { stroke: rgba(255,255,255,.22); stroke-width: 1.6; fill: none; }
+  .fbranches { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; }
+  .fbr { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+  .fbr .fn { max-width: 100%; }
+  .flab {
+    font-size: 11.5px; font-weight: 800; border-radius: 999px; padding: 3px 13px; margin-bottom: 10px;
+  }
+  .flab--yes { color: #4ade80; background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.35); }
+  .flab--no { color: #f87171; background: rgba(248,113,113,.1); border: 1px solid rgba(248,113,113,.35); }
+
+  /* מפת תתי-נושאים */
+  .cols { display: grid; grid-template-columns: 300px minmax(0,1fr); gap: 30px; margin-top: 22px; }
+  @media (max-width: 820px) { .cols { grid-template-columns: 1fr; } }
+  .colhead { font-size: 12px; font-weight: 800; letter-spacing: .06em; color: #6e7380; margin-bottom: 14px; }
+  .submap { display: flex; flex-direction: column; align-items: stretch; }
+  .sm { display: flex; gap: 12px; align-items: flex-start; }
+  .sm .dot {
+    flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+    background: #1a1c22; border: 1px solid rgba(255,255,255,.16); color: #a8adb8;
+    font-size: 12px; font-weight: 800; margin-top: 1px;
+  }
+  .sm .txt b { display: block; font-size: 13.5px; font-weight: 750; }
+  .sm .txt span { display: block; font-size: 12px; color: #8b909c; line-height: 1.5; margin-top: 1px; }
+  .smline { width: 2px; height: 20px; background: rgba(255,255,255,.12); margin-inline-start: 12px; }
+  .smplus {
+    margin-top: 14px; font-size: 11.5px; color: #eec74f; font-weight: 700;
+    border: 1px dashed rgba(238,199,79,.35); border-radius: 12px; padding: 8px 12px;
+  }
+
+  /* ציטוט מורה (נספח פונקציות) */
+  .fn--say { text-align: right; }
+  .fn--say span { color: #d9dce2; font-size: 12.5px; }
+  .fn--say span::before { content: "💬 "; }
+
+  /* פוטר */
+  .approve {
+    margin-top: 40px; text-align: center; padding: 30px;
+    border: 1px dashed rgba(45,212,191,.4); border-radius: 22px;
+    background: linear-gradient(180deg, rgba(45,212,191,.06), transparent);
+  }
+  .approve b { font-size: 17px; }
+  .approve p { color: #a8adb8; font-size: 13.5px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand"><b>vela</b> · מסמך תכנון פנימי</div>
+  <h1>מפת ההוראה — כיתה א׳</h1>
+  <p class="lead">מה מלמדים בכל נושא, ובאיזו זרימה המורה מלמד אותו — לפי סטנדרט שלבי-השיעור של אורי. כל שיעור-זהב שייבנה מכאן והלאה ממפה את עצמו על השלד הזה.</p>
+  <div class="draft">✎ טיוטה לאישור — אחרי אישור: בונים את מערך "מספרים עד 100"</div>
+
+  <nav class="toc">
+    <a href="#std">הסטנדרט</a>
+    <a href="#t1">מספרים עד 100</a>
+    <a href="#t2">חיבור עד 20</a>
+    <a href="#t3">חיסור עד 20</a>
+    <a href="#t4">חיבור וחיסור עד 100</a>
+    <a href="#t5">צורות גאומטריות</a>
+    <a href="#t6">כסף ומטבעות</a>
+    <a href="#t7">שעון</a>
+    <a href="#fx">נספח: פונקציות</a>
+  </nav>
+
+  <!-- ═══════════ הסטנדרט ═══════════ -->
+  <div class="kicker" id="std">הבסיס לכל שיעור</div>
+  <section class="card">
+    <div class="sechead"><h2>הסטנדרט — שלבי שיעור</h2></div>
+    <div class="secsub">השלד הקבוע. שיעור-הזהב מכסה את המסלול הירוק; ה-AI נכנס רק בענף האדום ("לא הבין").</div>
+
+    <div class="flow">
+      <div class="fn fn--start"><b>פתיחת שיעור</b><span>ברכה אישית — אוטומטית, 0 טוקנים</span></div>
+      <div class="fa"></div>
+      <div class="fn"><span class="stage">שלב 1</span><b>הצגת כלי / בסיס</b><span>הבנה מלאה של ההקשר והתוכן — מוחשי, לפני כל מתמטיקה</span></div>
+      <div class="fa"></div>
+      <div class="fn"><span class="stage">שלב 2</span><b>קישוריות לחומר</b><span>איך הבסיס המוחשי מתבטא במתמטיקה — סימנים וכתיב</span></div>
+      <div class="fa"></div>
+      <div class="fn"><span class="stage">שלב 3</span><b>הסבר שאלות</b><span>מַמחישים איך שאלה נבנית ואיך פותרים אותה</span></div>
+      <div class="fa"></div>
+      <div class="fn"><span class="stage">שלב 4</span><b>שאלת בסיס ראשונה</b><span>הילד פותר בעצמו על הלוח</span></div>
+      <div class="fa"></div>
+      <div class="fn"><span class="stage">שלב 5</span><b>כמה שאלות קטנות</b><span>הבנה ראשונית — בהשראת שאלת הבסיס ובסגנונה</span></div>
+      <div class="fa"></div>
+      <div class="fn"><span class="stage">שלב 6</span><b>הרחבה</b><span>סעיף נוסף / קושי נלווה / הרחבת תחום השאלה</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--q"><span class="stage">שלב 7</span><b>חשיפה ראשונית — שאלת הדמיה</b><span>האם הילד מבין בכלל מה רוצים ממנו</span></div>
+
+      <div class="fork">
+        <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+        <div class="fbranches">
+          <div class="fbr">
+            <div class="flab flab--yes">הבין ✓</div>
+            <div class="fn fn--good"><span class="stage">שלב 8</span><b>אימות + חיזוק</b><span>הסבר קטן לוודא שבאמת הבין — ומחמאה</span></div>
+          </div>
+          <div class="fbr">
+            <div class="flab flab--no">לא הבין ✗</div>
+            <div class="fn fn--bad"><span class="stage">שלב 9</span><b>הסבר + שאלות מנחות</b><span>יוצרים בעיה קטנה ונותנים לילד לנסות להגיע לפתרון בעצמו</span></div>
+            <div class="fa fa--loop"></div>
+            <div class="fn fn--loop"><b>↻ לא הצליח? ממשיכים</b><span>עוד שאלה מנחה, עוד חלק מההסבר — עד סיום ההסבר המלא</span></div>
+          </div>
+        </div>
+        <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+      </div>
+
+      <div class="fn"><span class="stage">שלב 10</span><b>הסבר סופי עם הדמיה</b><span>מראים על השאלה עצמה איך פתרנו אותה — סוגרים את התמונה</span></div>
+      <div class="fa"></div>
+      <div class="fn"><span class="stage">שלב 11</span><b>שאלות נוספות לתרגול כללי</b><span>הילד עובד לבד; המורה עוקב</span></div>
+      <div class="fa fa--loop"></div>
+      <div class="fn fn--loop"><b>↻ חוזרים על המחזור</b><span>עד סיום התת-נושא — ואז עוברים לתת-הנושא הבא</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--end"><b>סיום שיעור</b><span>סיכום, מחמאה ופתק למחברת-המורה — אוטומטי</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ נושא 1: מספרים עד 100 ═══════════ -->
+  <div class="kicker" id="t1">נושא 1 · חמישה שיעורים · המערך הראשון שנבנה</div>
+  <section class="card">
+    <div class="sechead"><span class="n">1</span><h2>מספרים עד 100</h2></div>
+    <div class="cols">
+      <div>
+        <div class="colhead">מה מלמדים — התתי-נושאים בסדר</div>
+        <div class="submap">
+          <div class="sm"><span class="dot">1</span><div class="txt"><b>לוח העשר — יחידות</b><span>10 יחידות מתאגדות לעשרת אחת</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">2</span><div class="txt"><b>עשרות — המוטות הגדולים</b><span>10, 20, 30… ספירה בקפיצות של 10</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">3</span><div class="txt"><b>מבנה המספר</b><span>פירוק והרכבה: 23 = 2 עשרות ו-3 אחדות</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">4</span><div class="txt"><b>לוח המאה — החוקיות</b><span>שורה = ‎+1, עמודה = ‎+10</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">5</span><div class="txt"><b>קפיצות של 10 והשוואה</b><span>‎+10/‎−10 בקלות; מי גדול ולמה</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="colhead">איך מלמדים — הזרימה (כל תת-נושא עובר אותה)</div>
+        <div class="flow">
+          <div class="fn"><b>הצגת כלי</b><span>בונים מספרים ביד, רואים עשרות ואחדות</span><span class="tool">🔢 בלוקי בסיס-10</span> <span class="tool">💯 לוח מאה</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>קישור למתמטיקה</b><span>"2 מוטות ו-3 קוביות — ככה כותבים 23"</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הסבר שאלה + שאלת בסיס</b><span>"כמה זה 3 עשרות ו-4 אחדות?" — פותרים יחד, ואז הילד לבד</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>שאלות קטנות</b><span>פירוק והרכבה של עוד מספרים באותו סגנון</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הרחבה</b><span>קפיצות של 10 על לוח המאה; השוואה — איזה מספר גדול ולמה</span></div>
+          <div class="fa"></div>
+          <div class="fn fn--q"><b>שאלת הדמיה</b><span>"בנה את 47 בבלוקים" — בלי עזרה</span></div>
+          <div class="fork">
+            <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+            <div class="fbranches">
+              <div class="fbr"><div class="flab flab--yes">הבין ✓</div><div class="fn fn--good"><b>אימות וחיזוק</b><span>"איך ידעת שצריך 4 מוטות?" — מסביר במילים שלו</span></div></div>
+              <div class="fbr"><div class="flab flab--no">לא הבין ✗</div><div class="fn fn--bad"><b>חוזרים למוחשי</b><span>סופרים יחידות אחת-אחת עד שנולדת עשרת; שאלות מנחות בלולאה</span></div></div>
+            </div>
+            <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+          </div>
+          <div class="fn"><b>הסבר סופי בהדמיה → תרגול</b><span>מראים את 47 בבלוקים ובספרות זה-לצד-זה; תרגילי פירוק/הרכבה חופשיים</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ נושא 2: חיבור עד 20 ═══════════ -->
+  <div class="kicker" id="t2">נושא 2 · חמישה שיעורים + שאלות מילוליות</div>
+  <section class="card">
+    <div class="sechead"><span class="n">2</span><h2>חיבור עד 20</h2></div>
+    <div class="cols">
+      <div>
+        <div class="colhead">מה מלמדים</div>
+        <div class="submap">
+          <div class="sm"><span class="dot">1</span><div class="txt"><b>חיבור זה לשים ביחד</b><span>איחוד שתי קבוצות וספירת הכל</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">2</span><div class="txt"><b>לספור קדימה</b><span>מתחילים מהגדול: 7+2 = שבע… שמונה, תשע</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">3</span><div class="txt"><b>החברים של 10</b><span>7+3, 6+4, 8+2 — ההשלמות</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">4</span><div class="txt"><b>מעבר העשרת</b><span>8+5 = 8+2+3 = 10+3 = 13</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">5</span><div class="txt"><b>חיבור גדולים</b><span>עשרות עם עשרות, אחדות עם אחדות</span></div></div>
+          <div class="smplus">＋ שאלות מילוליות של חיבור — משולבות בסוף כל תת-נושא (לצייר את הסיפור לפני שמחשבים)</div>
+        </div>
+      </div>
+      <div>
+        <div class="colhead">איך מלמדים</div>
+        <div class="flow">
+          <div class="fn"><b>הצגת כלי</b><span>שתי קבוצות תפוחים — לוחצים וסופרים בקול</span><span class="tool">🍎 ספירת אובייקטים</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>קישור למתמטיקה</b><span>"לשים ביחד = חיבור. ככה כותבים: ‎3 + 2 = 5"</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הסבר שאלה + שאלת בסיס</b><span>"‎4 + 3 =" — איך קוראים תרגיל ואיפה כותבים תשובה</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>שאלות קטנות</b><span>חיבורים עד 10 באותו סגנון</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הרחבה</b><span>להתחיל מהגדול → החברים של 10 → מעבר העשרת דרך התחנה</span><span class="tool">🔟 לוח-עשר</span></div>
+          <div class="fa"></div>
+          <div class="fn fn--q"><b>שאלת הדמיה</b><span>"יש 8 בלוח-העשר. כמה חסר ל-10, ומה נשאר מה-5?"</span></div>
+          <div class="fork">
+            <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+            <div class="fbranches">
+              <div class="fbr"><div class="flab flab--yes">הבין ✓</div><div class="fn fn--good"><b>אימות וחיזוק</b><span>הילד מסביר את שיטת ה"תחנה" במילים שלו</span></div></div>
+              <div class="fbr"><div class="flab flab--no">לא הבין ✗</div><div class="fn fn--bad"><b>חוזרים לתפוחים</b><span>סופרים הכל אחד-אחד; מנחים: "כמה צריך כדי למלא את השורה?"</span></div></div>
+            </div>
+            <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+          </div>
+          <div class="fn"><b>הסבר סופי בהדמיה → תרגול</b><span>‎8+5 שלב-שלב על לוח-העשר; ואז תרגילים חופשיים ושאלה מילולית אחת</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ נושא 3: חיסור עד 20 ═══════════ -->
+  <div class="kicker" id="t3">נושא 3 · חמישה שיעורים + שאלות מילוליות</div>
+  <section class="card">
+    <div class="sechead"><span class="n">3</span><h2>חיסור עד 20</h2></div>
+    <div class="cols">
+      <div>
+        <div class="colhead">מה מלמדים</div>
+        <div class="submap">
+          <div class="sm"><span class="dot">1</span><div class="txt"><b>חיסור זה להוריד</b><span>מורידים מקבוצה וסופרים מה שנשאר</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">2</span><div class="txt"><b>לספור אחורה על הציר</b><span>9−3: תשע… שמונה, שבע, שש</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">3</span><div class="txt"><b>מעבר העשרת אחורה</b><span>13−5 = 13−3−2 = 10−2 = 8</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">4</span><div class="txt"><b>חיבור וחיסור — משפחה</b><span>3+4=7 ↔ 7−4=3 — אותם שלושה מספרים</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">5</span><div class="txt"><b>חיסור גדולים — פריטה</b><span>32−15 כולל פריטת עשרת</span></div></div>
+          <div class="smplus">＋ שאלות מילוליות של חיסור — "מה שואלים אותי: חלק או שלם?"</div>
+        </div>
+      </div>
+      <div>
+        <div class="colhead">איך מלמדים</div>
+        <div class="flow">
+          <div class="fn"><b>הצגת כלי</b><span>5 בלונים, מפוצצים 2 — כמה נשארו?</span><span class="tool">🎈 ספירת אובייקטים</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>קישור למתמטיקה</b><span>"להוריד = חיסור. ככה כותבים: ‎5 − 2 = 3"</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הסבר שאלה + שאלת בסיס</b><span>"‎7 − 2 =" — הילד פותר על הלוח</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>שאלות קטנות</b><span>חיסורים עד 10 באותו סגנון</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הרחבה</b><span>ספירה אחורה על הציר → מעבר עשרת אחורה → משפחת המספרים</span><span class="tool">📐 ציר מספרים</span></div>
+          <div class="fa"></div>
+          <div class="fn fn--q"><b>שאלת הדמיה</b><span>"‎13 − 5: עצור קודם ב-10. כמה הורדת, כמה נשאר להוריד?"</span></div>
+          <div class="fork">
+            <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+            <div class="fbranches">
+              <div class="fbr"><div class="flab flab--yes">הבין ✓</div><div class="fn fn--good"><b>אימות וחיזוק</b><span>"למה עצרנו דווקא ב-10?" — הסבר במילים שלו</span></div></div>
+              <div class="fbr"><div class="flab flab--no">לא הבין ✗</div><div class="fn fn--bad"><b>חוזרים לבלונים</b><span>מורידים אחד-אחד וסופרים; קפיצות קטנות על הציר בלולאה</span></div></div>
+            </div>
+            <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+          </div>
+          <div class="fn"><b>הסבר סופי בהדמיה → תרגול</b><span>‎13−5 בקפיצות על הציר; תרגילים + שאלה מילולית</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ נושא 4: חיבור וחיסור עד 100 ═══════════ -->
+  <div class="kicker" id="t4">נושא 4 · ארבעה שיעורים · נשען על נושאים 1–3</div>
+  <section class="card">
+    <div class="sechead"><span class="n">4</span><h2>חיבור וחיסור עד 100</h2></div>
+    <div class="cols">
+      <div>
+        <div class="colhead">מה מלמדים</div>
+        <div class="submap">
+          <div class="sm"><span class="dot">1</span><div class="txt"><b>קפיצות של 10 על הלוח</b><span>34+10, 52−10 — צעד בעמודה</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">2</span><div class="txt"><b>עשרות עגולות</b><span>30+20, 70−40 — דרך העובדות הקטנות</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">3</span><div class="txt"><b>מספר שלם ועוד עשרות</b><span>34+20 — רק ספרת העשרות זזה</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">4</span><div class="txt"><b>חיבור מלא בפירוק</b><span>36+27 — עשרות עם עשרות, אחדות עם אחדות</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="colhead">איך מלמדים</div>
+        <div class="flow">
+          <div class="fn"><b>הצגת כלי</b><span>מוצאים מספר בלוח המאה — מגלים ששורה = ‎+1 ועמודה = ‎+10</span><span class="tool">💯 לוח מאה</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>קישור למתמטיקה</b><span>"צעד למטה בלוח = ‎+10. ככה: ‎34 + 10 = 44"</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הסבר שאלה + שאלת בסיס</b><span>"‎34 + 10 =" — הילד מוצא בלוח ופותר</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>שאלות קטנות</b><span>‎+10 ו-‎−10 מכל מיני מספרים</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הרחבה</b><span>עשרות עגולות → מספר+עשרות → פירוק מלא (36+27)</span><span class="tool">🔢 בלוקי בסיס-10</span></div>
+          <div class="fa"></div>
+          <div class="fn fn--q"><b>שאלת הדמיה</b><span>"מצא את 52. איפה נמצא ‎52+10? ולמה דווקא שם?"</span></div>
+          <div class="fork">
+            <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+            <div class="fbranches">
+              <div class="fbr"><div class="flab flab--yes">הבין ✓</div><div class="fn fn--good"><b>אימות וחיזוק</b><span>"מה ההבדל בין צעד ימינה לצעד למטה?"</span></div></div>
+              <div class="fbr"><div class="flab flab--no">לא הבין ✗</div><div class="fn fn--bad"><b>חוזרים לבלוקים</b><span>מוסיפים מוט-של-עשר ביד ורואים שהאחדות לא זזו</span></div></div>
+            </div>
+            <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+          </div>
+          <div class="fn"><b>הסבר סופי בהדמיה → תרגול</b><span>‎36+27 בפירוק מלא על הלוח; תרגילים חופשיים</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ נושא 5: צורות גאומטריות ═══════════ -->
+  <div class="kicker" id="t5">נושא 5 · ארבעה שיעורים</div>
+  <section class="card">
+    <div class="sechead"><span class="n">5</span><h2>צורות גאומטריות</h2></div>
+    <div class="cols">
+      <div>
+        <div class="colhead">מה מלמדים</div>
+        <div class="submap">
+          <div class="sm"><span class="dot">1</span><div class="txt"><b>צלעות וקודקודים</b><span>צלע = קו ישר, קודקוד = פינה — וסופרים</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">2</span><div class="txt"><b>משפחת המרובעים</b><span>ריבוע (4 שוות) מול מלבן (2 ו-2)</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">3</span><div class="txt"><b>עיגול ומשולש</b><span>בכל גודל ובכל כיוון — עיגול בלי צלעות!</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">4</span><div class="txt"><b>צורות בונות צורות</b><span>2 משולשים = ריבוע</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="colhead">איך מלמדים</div>
+        <div class="flow">
+          <div class="fn"><b>הצגת כלי</b><span>המורה מצייר משולש וריבוע — עוברים עם האצבע על כל קו</span><span class="tool">📐 ציור צורות</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>קישור למתמטיקה</b><span>"קו ישר = צֶלַע. פינה = קודקוד. לצורות יש שמות לפי הספירה"</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הסבר שאלה + שאלת בסיס</b><span>"כמה צלעות יש למשולש?" — סופרים יחד בהדגשה</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>שאלות קטנות</b><span>ספירת צלעות וקודקודים בצורות שונות</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הרחבה</b><span>ריבוע מול מלבן → עיגול ומשולש בכל כיוון → צורות בונות צורות</span></div>
+          <div class="fa"></div>
+          <div class="fn fn--q"><b>שאלת הדמיה</b><span>מלבן מסובב באלכסון — "כמה קודקודים יש לו?"</span></div>
+          <div class="fork">
+            <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+            <div class="fbranches">
+              <div class="fbr"><div class="flab flab--yes">הבין ✓</div><div class="fn fn--good"><b>אימות וחיזוק</b><span>"איך ידעת שזה עדיין מלבן גם כשהוא עקום?"</span></div></div>
+              <div class="fbr"><div class="flab flab--no">לא הבין ✗</div><div class="fn fn--bad"><b>מדגישים ביחד</b><span>צובעים כל צלע בצבע אחר וסופרים אחת-אחת בלולאה</span></div></div>
+            </div>
+            <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+          </div>
+          <div class="fn"><b>הסבר סופי בהדמיה → תרגול</b><span>הילד מצייר צורות בעצמו על הלוח וסופר; המורה בודק</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ נושא 6: כסף ומטבעות ═══════════ -->
+  <div class="kicker" id="t6">נושא 6 · שלושה שיעורים</div>
+  <section class="card">
+    <div class="sechead"><span class="n">6</span><h2>כסף ומטבעות</h2></div>
+    <div class="cols">
+      <div>
+        <div class="colhead">מה מלמדים</div>
+        <div class="submap">
+          <div class="sm"><span class="dot">1</span><div class="txt"><b>מכירים את המטבעות</b><span>1, 2, 5, 10 — מה שווה יותר</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">2</span><div class="txt"><b>לבנות סכום</b><span>7 ₪ — ביותר מדרך אחת</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">3</span><div class="txt"><b>כמה עודף מגיע לי?</b><span>שילמתי 10, עלה 7 — כמה חזרה?</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="colhead">איך מלמדים</div>
+        <div class="flow">
+          <div class="fn"><b>הצגת כלי</b><span>מטבעות אמיתיים על הלוח — גוררים, מסתכלים, משווים</span><span class="tool">🪙 מטבעות ₪</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>קישור למתמטיקה</b><span>"לכל מטבע יש ערך. מטבע של 5 = חמישה מטבעות של 1"</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הסבר שאלה + שאלת בסיס</b><span>"גרור מטבעות לבנות 7 ₪" — בונים יחד ואז לבד</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>שאלות קטנות</b><span>בניית סכומים שונים</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הרחבה</b><span>אותו סכום בכמה דרכים → חישוב עודף (זה חיסור!)</span></div>
+          <div class="fa"></div>
+          <div class="fn fn--q"><b>שאלת הדמיה</b><span>"בנה 8 ₪ בשתי דרכים שונות"</span></div>
+          <div class="fork">
+            <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+            <div class="fbranches">
+              <div class="fbr"><div class="flab flab--yes">הבין ✓</div><div class="fn fn--good"><b>אימות וחיזוק</b><span>"איזו דרך הכי מהירה? למה?"</span></div></div>
+              <div class="fbr"><div class="flab flab--no">לא הבין ✗</div><div class="fn fn--bad"><b>סופרים בקול</b><span>כל מטבע בנפרד ומחברים צעד-צעד בלולאה</span></div></div>
+            </div>
+            <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+          </div>
+          <div class="fn"><b>הסבר סופי בהדמיה → תרגול</b><span>עודף מ-10 ₪ על קנייה של 7 ₪; עוד קניות לתרגול</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ נושא 7: שעון ═══════════ -->
+  <div class="kicker" id="t7">נושא 7 · שלושה שיעורים</div>
+  <section class="card">
+    <div class="sechead"><span class="n">7</span><h2>שעון</h2></div>
+    <div class="cols">
+      <div>
+        <div class="colhead">מה מלמדים</div>
+        <div class="submap">
+          <div class="sm"><span class="dot">1</span><div class="txt"><b>שני המחוגים</b><span>קצר = שעות, ארוך = דקות; שעה עגולה</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">2</span><div class="txt"><b>חצי שעה</b><span>"וחצי" — הארוך על 6, הקצר בין מספרים</span></div></div>
+          <div class="smline"></div>
+          <div class="sm"><span class="dot">3</span><div class="txt"><b>רבע שעה והדקות</b><span>רבע (על 3), רבע-ל (על 9); כל מספר = 5 דקות</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="colhead">איך מלמדים</div>
+        <div class="flow">
+          <div class="fn"><b>הצגת כלי</b><span>שעון חי — מזיזים מחוגים ביד ורואים מה קורה</span><span class="tool">⏰ שעון מחוגים</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>קישור למתמטיקה</b><span>"הקצר אומר איזו שעה, הארוך אומר כמה דקות"</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הסבר שאלה + שאלת בסיס</b><span>"כוון את השעון ל-3:00" — הילד מזיז בעצמו</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>שאלות קטנות</b><span>שעות עגולות — קריאה וכיוון</span></div>
+          <div class="fa"></div>
+          <div class="fn"><b>הרחבה</b><span>"וחצי" → רבע ורבע-ל → כל מספר שווה 5 דקות</span></div>
+          <div class="fa"></div>
+          <div class="fn fn--q"><b>שאלת הדמיה</b><span>"הארוך על 6 והקצר בין 4 ל-5 — מה השעה?"</span></div>
+          <div class="fork">
+            <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+            <div class="fbranches">
+              <div class="fbr"><div class="flab flab--yes">הבין ✓</div><div class="fn fn--good"><b>אימות וחיזוק</b><span>"למה הקצר באמצע ולא בדיוק על 4?"</span></div></div>
+              <div class="fbr"><div class="flab flab--no">לא הבין ✗</div><div class="fn fn--bad"><b>מזיזים ביד</b><span>מסובבים את הארוך צעד-צעד ורואים את הקצר זוחל — בלולאה</span></div></div>
+            </div>
+            <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+          </div>
+          <div class="fn"><b>הסבר סופי בהדמיה → תרגול</b><span>קוראים ומכוונים שעות מעורבות; המורה בודק</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ נספח: פונקציות ═══════════ -->
+  <div class="kicker" id="fx">נספח · התבנית לעתיד — כיתות גבוהות</div>
+  <section class="card">
+    <div class="sechead"><h2>שיעור הפונקציות — כמו שאורי הכתיב</h2></div>
+    <div class="secsub">הדוגמה שמדגימה את הסטנדרט בחומר מתקדם. נשמרה גם בזיכרון הפרויקט — כשנגיע לפונקציות, זה השיעור.</div>
+    <div class="flow">
+      <div class="fn fn--start"><b>תנאי קדם</b><span>הילד כבר יודע מה זה x ואיך פותרים משוואה</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--say"><b>שלב 1 — הצלחה מכוונת</b><span>המורה מציג משוואה פשוטה (x + 2 = 5). הילד פותר בקלות — כי הוא יודע.</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--say"><b>שלב 2 — כישלון מכוון</b><span>המורה מחליף את המספר בצד התשובה באות y‏ (x + 2 = y) ומבקש: "פתור".</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--q"><b>הילד מצליח</b><span>(הוא לא אמור — זו הנקודה)</span></div>
+      <div class="fork">
+        <svg class="fsplit" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M50,0 C50,14 25,16 25,34" /><path d="M50,0 C50,14 75,16 75,34" /></svg>
+        <div class="fbranches">
+          <div class="fbr"><div class="flab flab--yes">הצליח ✓</div><div class="fn fn--good"><b>מפתיע!</b><span>שואלים איך — ומדייקים את ההבנה שכבר יש</span></div></div>
+          <div class="fbr"><div class="flab flab--no">נתקע ✗</div><div class="fn fn--bad fn--say"><b>ההסבר</b><span>"אי אפשר לפתור — כי בשני הצדדים יש נעלמים"</span><span>"אם נציב במקום ה-y מספר, כמו קודם — נבין מה ה-x, נכון?"</span><span>"כל אחד מהם משפיע על השני"</span></div></div>
+        </div>
+        <svg class="fmerge" viewBox="0 0 100 34" preserveAspectRatio="none"><path d="M25,0 C25,18 50,20 50,34" /><path d="M75,0 C75,18 50,20 50,34" /></svg>
+      </div>
+      <div class="fn fn--q"><b>הילד מאשר שהבין</b><span>ממשיכים רק אחרי אישור</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--say"><b>שלב 3 — פותחים צירים</b><span>"בוא נקרא לאחד ציר y ולאחד ציר x. נפרוס מספרים וניקח את המשוואה שיצרנו."</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--say"><b>שלב 4 — הצבה ראשונה</b><span>"בוא נציב ב-x את 1 — ותגיד לי מה יצא ה-y." הילד פותר.</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--say"><b>שלב 5 — מהמספר לנקודה</b><span>"מצוין. עכשיו בוא נמצא על הלוח נקודה שמתאימה לערך ה-x ולערך ה-y שקיבלנו." הילד מוצא.</span></div>
+      <div class="fa"></div>
+      <div class="fn fn--say"><b>שלב 6 — הכתיב (x,y)</b><span>"לנקודה יש תצוגה: ‎(x, y). בכל נקודה מחליפים את האותיות במספרים המתאימים — וככה נדע להציב נקודות."</span></div>
+      <div class="fa fa--loop"></div>
+      <div class="fn fn--loop"><b>↻ עוד הצבות, עוד נקודות</b><span>לאט לאט מתגלה הקו — ומשם: m = שיפוע, נקודת החיתוך עם ציר y. עד הסוף.</span></div>
+    </div>
+  </section>
+
+  <div class="approve">
+    <b>ממתין לאישור שלך ✋</b>
+    <p>אחרי האישור — בונים בסטודיו את חמשת שיעורי-הזהב של "מספרים עד 100" לפי הסטנדרט הזה, ואז ממשיכים נושא-נושא.</p>
+  </div>
+
+</div>
+</body>
+</html>
