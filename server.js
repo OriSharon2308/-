@@ -903,6 +903,11 @@ const server = http.createServer(async (req, res) => {
       return serveFile(res, "/plan.html", method);
     }
 
+    // מפת ההוראה — מסמך התכנון של כיתה א׳ (הסטנדרט + תרשימי הזרימה)
+    if (rel === "/מפת-הוראה" || rel === "/teaching-map" || rel === "/docs/מפת-הוראה-כיתה-א.html") {
+      return serveFile(res, "/docs/מפת-הוראה-כיתה-א.html", method);
+    }
+
     const loggedIn = !!sessions.currentUserId(req);
 
     // שורש: דף הבית (אם מחובר), אחרת → התחברות
