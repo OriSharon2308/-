@@ -67,6 +67,8 @@ const PUBLIC_FILES = new Set([
   "/admin.css",
   "/admin.js",
   "/admin-golden.js",
+  "/admin-curriculum.js",
+  "/curriculum-data.js",
   "/board.js",
   "/widget-kit.js",
   "/plan.html",

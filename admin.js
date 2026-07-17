@@ -667,6 +667,7 @@
       ${area === "learning" && cs.learnTopic ? "" : `<div class="areaTabs" role="tablist">
         <button class="areaTab ${area === "practice" ? "is-active" : ""}" data-area="practice" role="tab">🎯 אזור תרגול</button>
         <button class="areaTab ${area === "learning" ? "is-active" : ""}" data-area="learning" role="tab">📖 אזור למידה</button>
+        <button class="areaTab ${area === "curriculum" ? "is-active" : ""}" data-area="curriculum" role="tab">📚 נושאי תלמיד</button>
       </div>`}
       ${area === "practice" ? `<div class="toolbar"><div class="field" style="flex:1;min-width:240px"><label>חיפוש שאלה או רמה</label>
         <input class="input search" id="qSearch" value="${esc(cs.q)}" placeholder="${cs.allQ ? "הקלד/י טקסט של שאלה, או מספר רמה (1–10)…" : "טוען חיפוש…"}" ${cs.allQ ? "" : "disabled"}/></div></div>` : ""}
@@ -681,6 +682,11 @@
   function drawGradeBody() {
     const body = $("#gradeBody"); if (!body) return;
     if ((cs.area || "practice") === "learning") { drawLearningBody(body); return; }
+    if ((cs.area || "practice") === "curriculum") {
+      if (window.VelaCurriculumUI) window.VelaCurriculumUI.render(body, cs.gradeNum, cs.gradeLabel);
+      else body.innerHTML = `<div class="curEmpty"><div class="curEmpty__ico">📚</div><div class="curEmpty__t">הדפדפן לא נטען — רענן/י את הדף</div></div>`;
+      return;
+    }
     if (cs.q.trim()) {
       body.innerHTML = searchResultsHtml();
       body.querySelectorAll(".searchRow").forEach((b) => b.addEventListener("click", () => { cs.q = ""; cs.topic = b.dataset.topic; drawGradeScreen(); }));
