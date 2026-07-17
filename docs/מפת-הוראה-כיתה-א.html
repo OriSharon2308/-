@@ -573,7 +573,7 @@ function renderStandard(){
       const f=el("div","forkmini");
       f.innerHTML=`
         <div class="fm fm-yes"><b>הבין ✓</b><span>הסבר קטן לאימות + חיזוק ומחמאה</span></div>
-        <div class="fm fm-no"><b>לא הבין ✗</b><span>הסבר + שאלות מנחות בלולאה — עד סיום ההסבר המלא</span></div>`;
+        <div class="fm fm-no"><b>לא הבין ✗</b><span>מסבירים ומעלים שאלות מנחות. נכשל גם בהן? המורה מסביר ופותר איתו את <b>אותן שאלות מנחות עצמן</b>, אחת-אחת — עד ההסבר המלא</span></div>`;
       box.appendChild(f);
     }
   });
@@ -608,7 +608,7 @@ function branchNode(s){
   if(s.no.txts){noInner+=s.no.txts.map(t=>`<div class="say">${t}</div>`).join("");}
   else if(s.no.say){noInner+=`<div class="say">${s.no.say}</div>`;}
   else if(s.no.txt){noInner+=`<div>${s.no.txt}</div>`;}
-  if(s.no.loop){noInner+=`<div class="loop">🔁 לא הצליח? ממשיכים — עוד שאלה מנחה, עד סיום ההסבר.</div>`;}
+  if(s.no.loop){noInner+=`<div class="loop">🔁 עדיין תקוע? <b>לא</b> עוד שאלות חדשות — המורה מסביר ופותר איתו את השאלות המנחות עצמן, אחת-אחת, עד ההסבר המלא.</div>`;}
   noInner+=`</div>`;
   n.innerHTML=noInner;
   cols.appendChild(y);cols.appendChild(n);
