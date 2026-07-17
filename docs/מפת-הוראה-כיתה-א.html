@@ -68,6 +68,36 @@
   .topichead h2{font-size:26px;font-weight:850;letter-spacing:-.01em}
   .topichead .cnt{font-size:13px;color:var(--mut);margin-top:2px}
 
+  /* ── אקורדיון: נושא → שיעורים → סדר ── */
+  .acc{margin-top:8px}
+  .acard{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-top:12px;overflow:hidden;
+    box-shadow:0 1px 2px rgba(20,30,45,.03)}
+  .acard__head{width:100%;display:flex;align-items:center;gap:12px;padding:17px 20px;background:none;border:0;
+    cursor:pointer;font:inherit;text-align:right;color:var(--ink);transition:background .12s ease}
+  .acard__head:hover{background:var(--wash)}
+  .acard__ic{font-size:22px;flex:none;line-height:1}
+  .acard__ttl{font-size:19px;font-weight:800;letter-spacing:-.01em}
+  .acard__sub{font-size:13px;color:var(--mut);font-weight:600}
+  .acc-chev{margin-inline-start:auto;color:var(--mut);font-size:12px;transition:transform .22s ease}
+  .acard.is-open>.acard__head .acc-chev,.lcard.is-open>.lcard__head .acc-chev{transform:rotate(180deg)}
+  .acard__body{display:none;padding:4px 20px 20px}
+  .acard.is-open>.acard__body{display:block}
+  .std-sub{color:var(--mut);font-size:13.5px;line-height:1.6;padding:6px 0 14px}
+
+  .lessons-wrap{margin-top:4px}
+  .lcard{border:1px solid var(--line);border-radius:13px;margin-top:10px;overflow:hidden;background:var(--paper)}
+  .lcard__head{width:100%;display:flex;flex-wrap:wrap;align-items:baseline;gap:7px 12px;padding:13px 16px;
+    background:none;border:0;cursor:pointer;font:inherit;text-align:right;color:var(--ink);transition:background .12s ease}
+  .lcard__head:hover{background:var(--wash)}
+  .lcard.is-open>.lcard__head{background:var(--teal-soft)}
+  .lcard__num{flex:none;font-size:11.5px;font-weight:800;color:var(--teal);background:var(--teal-bg);border-radius:6px;padding:3px 10px}
+  .lcard__ttl{font-size:15.5px;font-weight:750}
+  .lcard__goal{flex-basis:100%;font-size:12.5px;color:var(--ink2);display:flex;gap:7px;align-items:baseline}
+  .lcard__tag{flex:none;font-size:10px;font-weight:800;color:var(--teal);background:var(--teal-bg);border-radius:5px;padding:1px 7px}
+  .lcard__body{display:none;padding:2px 8px 10px;border-top:1px solid var(--line2)}
+  .lcard.is-open>.lcard__body{display:block}
+  .lcard__body .steps{padding:6px 8px 4px}
+
   /* בנק סוגי-שאלות (תרגול/למידה) */
   .qbank{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:15px 18px;margin-top:12px;
     box-shadow:0 1px 2px rgba(20,30,45,.03)}
@@ -149,19 +179,10 @@
 
   <div class="brand"><b>vela</b> · מסמך תכנון פנימי</div>
   <h1>מפת ההוראה — כיתה א׳</h1>
-  <p class="lead">כל שיעור פרוס כאן שלב אחרי שלב — מה המורה מראה, מה הוא אומר במילים שלו, מתי תור הילד, ואיפה ההתפצלות "הבין / לא הבין". זה בדיוק מה שנבנה בסטודיו כשיעור-זהב.</p>
+  <p class="lead">בחר נושא כדי לפתוח את השיעורים שבו — ולחץ על שיעור כדי לראות רק את הסדר שלו, שלב אחרי שלב. זה בדיוק מה שנבנה בסטודיו כשיעור-זהב.</p>
   <div class="draft">✎ טיוטה לאישור — אחרי אישור: בונים את חמשת השיעורים של "מספרים עד 100"</div>
 
-  <nav class="toc" id="toc"></nav>
-
-  <div class="kicker">הבסיס לכל שיעור</div>
-  <section class="std" id="std">
-    <h2>הסטנדרט — שלבי שיעור</h2>
-    <div class="sub">השלד הקבוע שכל שיעור-זהב יושב עליו. המורה עובר את השלבים לפי הקצב של הילד (✓ להמשך). ה-AI נכנס רק בענף "לא הבין". <b>בכל שלב — המורה מדבר בשפה פשוטה וקצרה, של ילד, לא מילים גבוהות.</b></div>
-    <div id="stdrows"></div>
-  </section>
-
-  <div id="topics"></div>
+  <div id="acc" class="acc"></div>
 
   <div class="approve">
     <b>ממתין לאישור שלך ✋</b>
@@ -592,8 +613,8 @@ const PRACTICE_HINT = {
 };
 const el = (t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
 
-function renderStandard(){
-  const box=document.getElementById("stdrows");
+function buildStandard(box){
+  box.appendChild(el("div","std-sub","השלד הקבוע שכל שיעור-זהב יושב עליו. המורה עובר את השלבים לפי הקצב של הילד (✓ להמשך). ה-AI נכנס רק בענף \"לא הבין\". <b>בכל שלב — המורה מדבר בשפה פשוטה וקצרה, של ילד, לא מילים גבוהות.</b>"));
   STANDARD.forEach(s=>{
     const r=el("div","stdrow"+(s.fork?" is-fork":""));
     r.innerHTML=`<div class="sn">${s.n}</div><div><b>${s.t}</b><span>${s.d}</span></div>`;
@@ -647,54 +668,60 @@ function branchNode(s){
   return node;
 }
 
-function lessonNode(L){
-  const card=el("div","lesson");
-  card.innerHTML=`<div class="lhead">
-    <span class="lnum">שיעור ${L.n} מתוך ${L.total}</span>
-    <h3>${L.title}</h3>
-    <div class="goal"><span class="tag">מטרה</span><span>${L.goal}</span></div>
-  </div>`;
-  const steps=el("div","steps");
-  L.steps.forEach(s=>{ steps.appendChild(s.type==="branch"?branchNode(s):stepNode(s)); });
-  card.appendChild(steps);
-  return card;
+// כרטיס מתקפל: כותרת-כפתור + גוף. אקורדיון — פתיחת אחד סוגרת את אחיו באותו מיכל.
+function makeCard(container, level, headHtml){
+  const cls = level==="lesson" ? "lcard" : "acard";
+  const card=el("div",cls);
+  const head=el("button",cls+"__head"); head.type="button";
+  head.innerHTML=headHtml+`<span class="acc-chev">▾</span>`;
+  const body=el("div",cls+"__body");
+  card.appendChild(head); card.appendChild(body);
+  head.addEventListener("click",()=>{
+    const open=card.classList.contains("is-open");
+    container.querySelectorAll(":scope > ."+cls+".is-open").forEach(c=>{ if(c!==card) c.classList.remove("is-open"); });
+    card.classList.toggle("is-open",!open);
+    if(!open) head.scrollIntoView({block:"nearest",behavior:"smooth"});
+  });
+  container.appendChild(card);
+  return body;
+}
+function stepsInto(box, steps){
+  const s=el("div","steps");
+  steps.forEach(x=>s.appendChild(x.type==="branch"?branchNode(x):stepNode(x)));
+  box.appendChild(s);
+}
+function lessonsInto(box, lessons){
+  const wrap=el("div","lessons-wrap"); box.appendChild(wrap);
+  lessons.forEach(L=>{
+    const b=makeCard(wrap,"lesson",
+      `<span class="lcard__num">שיעור ${L.n}</span><span class="lcard__ttl">${L.title}</span><span class="lcard__goal"><span class="lcard__tag">תת-נושא</span>${L.goal}</span>`);
+    stepsInto(b,L.steps);
+  });
 }
 
-function renderTopics(){
-  const root=document.getElementById("topics");
-  const toc=document.getElementById("toc");
-  toc.appendChild(Object.assign(el("a"),{href:"#std",textContent:"הסטנדרט"}));
+function render(){
+  const acc=document.getElementById("acc");
+  // הסטנדרט
+  const stdBody=makeCard(acc,"topic",`<span class="acard__ic">🧭</span><span class="acard__ttl">הסטנדרט — שלבי שיעור</span><span class="acard__sub">השלד של כל שיעור</span>`);
+  buildStandard(stdBody);
+  // נושאים
   TOPICS.forEach(T=>{
-    toc.appendChild(Object.assign(el("a"),{href:"#"+T.key,textContent:T.topic}));
-    const wrap=el("div","topic");wrap.id=T.key;
-    const cnt=T.lessons.length;
-    wrap.innerHTML=`<div class="topichead"><div class="tic">${T.icon}</div>
-      <div><h2>${T.topic}</h2><div class="cnt">${cnt} שיעורים · מהמוחשי אל המופשט</div></div></div>`;
+    const body=makeCard(acc,"topic",`<span class="acard__ic">${T.icon}</span><span class="acard__ttl">${T.topic}</span><span class="acard__sub">${T.lessons.length} שיעורים</span>`);
     if(T.qbank){
       const qb=el("div","qbank");
       qb.innerHTML=`<div class="qbank__t">🧩 סוגי שאלות — לאזור התרגול וללמידה</div>`+
         T.qbank.map(x=>`<div class="qbank__row"><span class="qbank__area qbank__area--${x.area==="תרגול"?"p":x.area==="למידה"?"l":"b"}">${x.area}</span><span>${x.q}</span></div>`).join("");
-      wrap.appendChild(qb);
+      body.appendChild(qb);
     }
-    T.lessons.forEach(L=>wrap.appendChild(lessonNode(L)));
-    root.appendChild(wrap);
+    lessonsInto(body,T.lessons);
   });
   // נספח פונקציות
-  toc.appendChild(Object.assign(el("a"),{href:"#fx",textContent:"נספח: פונקציות"}));
-  const fx=el("div","topic");fx.id="fx";
-  fx.innerHTML=`<div class="topichead"><div class="tic">📈</div>
-    <div><h2>נספח · ${FX.title}</h2><div class="cnt">${FX.sub}</div></div></div>`;
-  const card=el("div","lesson");
-  card.innerHTML=`<div class="lhead"><span class="lnum">התבנית לעתיד</span><h3>${FX.title}</h3>
-    <div class="goal"><span class="tag">קדם</span><span>${FX.pre}</span></div></div>`;
-  const steps=el("div","steps");
-  FX.steps.forEach(s=>steps.appendChild(s.type==="branch"?branchNode(s):stepNode(s)));
-  card.appendChild(steps);fx.appendChild(card);
-  root.appendChild(fx);
+  const fxBody=makeCard(acc,"topic",`<span class="acard__ic">📈</span><span class="acard__ttl">נספח · ${FX.title}</span><span class="acard__sub">התבנית לעתיד</span>`);
+  fxBody.appendChild(el("div","std-sub",FX.sub));
+  lessonsInto(fxBody,[{n:"—",title:FX.title,goal:FX.pre,steps:FX.steps}]);
 }
 
-renderStandard();
-renderTopics();
+render();
 </script>
 </body>
 </html>
