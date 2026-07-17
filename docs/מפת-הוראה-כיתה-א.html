@@ -90,6 +90,8 @@
   .step .stg{font-size:10.5px;font-weight:800;letter-spacing:.05em;color:var(--mut);text-transform:uppercase;margin-bottom:2px}
   .step .txt{font-size:14.5px;line-height:1.6}
   .step .txt b{font-weight:750}
+  .step .hint{margin-top:7px;font-size:12px;font-weight:650;color:var(--teal);background:var(--teal-soft);
+    border:1px dashed #bfe3dc;border-radius:9px;padding:6px 11px;display:inline-block}
 
   /* סוגי שלבים */
   .ic-show{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
@@ -165,11 +167,11 @@ const STANDARD = [
   {n:2, t:"קישוריות לחומר", d:"איך הבסיס המוחשי מתבטא במתמטיקה — סימנים וכתיב"},
   {n:3, t:"הסבר שאלות", d:"מַמחישים איך שאלה נבנית ואיך פותרים אותה"},
   {n:4, t:"שאלת בסיס ראשונה", d:"הילד פותר בעצמו על הלוח"},
-  {n:5, t:"כמה שאלות קטנות", d:"הבנה ראשונית — בהשראת שאלת הבסיס ובסגנונה"},
+  {n:5, t:"כמה שאלות קטנות", d:"הבנה ראשונית בסגנון שאלת הבסיס — שאלה אחת בכל פעם, שיתמקד (לא ערימה). בתרגילים הראשונים: כלי-עזר על הלוח שיעזור לו לפתור"},
   {n:6, t:"הרחבה", d:"סעיף נוסף / קושי נלווה / הרחבת תחום השאלה"},
   {n:7, t:"חשיפה ראשונית — שאלת הדמיה", d:"האם הילד מבין בכלל מה רוצים ממנו", fork:true},
   {n:8, t:"הסבר סופי עם הדמיה", d:"מראים על השאלה עצמה איך פתרנו אותה — סוגרים את התמונה"},
-  {n:9, t:"שאלות נוספות לתרגול", d:"הילד עובד לבד; המורה עוקב — וחוזרים על המחזור עד סיום התת-נושא"},
+  {n:9, t:"שאלות נוספות לתרגול", d:"שאלה אחת בכל פעם; הילד עובד לבד, המורה עוקב — וחוזרים על המחזור עד סיום התת-נושא"},
 ];
 
 /* ═══════════ השיעורים ═══════════
@@ -561,6 +563,11 @@ const FX = {
 
 /* ═══════════ רינדור ═══════════ */
 const ICONS = {show:"👁", say:"🗣", write:"✍️", child:"🙋", q:"❓", gate:"✅", loop:"🔁"};
+// עיקרון-תרגול קבוע לכל שיעור: שאלה אחת בכל פעם (שיתמקד), וכלי-עזר על הלוח בראשונות
+const PRACTICE_HINT = {
+  "שאלות קטנות": "🎯 שאלה אחת בכל פעם — שיתמקד · 🧩 בראשונות: כלי-עזר על הלוח לצדו",
+  "תרגול": "🎯 שאלה אחת בכל פעם — לא ערימה",
+};
 const el = (t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
 
 function renderStandard(){
@@ -589,7 +596,8 @@ function stepNode(s){
   else{bodyHtml=`<div class="txt">${s.txt}</div>`;}
   node.innerHTML=`<div class="ic ${icCls}">${ic}</div>
     <div class="body">${s.stage?`<div class="stg">${s.stage}</div>`:""}${bodyHtml}
-      ${s.tool?`<div class="tool">🧩 ${s.tool}</div>`:""}</div>`;
+      ${s.tool?`<div class="tool">🧩 ${s.tool}</div>`:""}
+      ${PRACTICE_HINT[s.stage]?`<div class="hint">${PRACTICE_HINT[s.stage]}</div>`:""}</div>`;
   return node;
 }
 
