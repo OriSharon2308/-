@@ -1723,6 +1723,8 @@
           var fabSvg = document.querySelector("#teacherFab .teacherFab__art svg");
           if (fabSvg && introAvatar) introAvatar.appendChild(fabSvg.cloneNode(true));
           intro.classList.add("is-show");
+          // המסך המוכן נטען *במקביל לברכה* (לא אחריה) — שיהיה מצויר ומוכן על הלוח לפני שהילד בכלל לוחץ "בוא נתחיל".
+          prefetchInstruct();
           // הברכה מגיעה מתבנית בשרת — מיידית וחינם (בלי AI). greetDone מונע מרוץ: תשובה מאוחרת לא דורסת fallback.
           var greetDone = false;
           function greetOnce(text, pushHist) {
