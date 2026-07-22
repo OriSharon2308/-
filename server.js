@@ -518,6 +518,12 @@ const server = http.createServer(async (req, res) => {
           speech: speech.info(), // STT (Azure)
           tts: useGoogle ? googleTts.info() : { ttsProvider: "azure", voice: speech.info().voice },
           ttsStream: useGoogle && googleTts.streamEnabled() && googleTts.isEnabled(),
+          // אבחון סביבה (ללא סודות): האם משתני הקול של גוגל בכלל מגיעים לתהליך
+          envDiag: {
+            ttsProviderRaw: String(process.env.TTS_PROVIDER || "(לא מוגדר)").slice(0, 24),
+            gcpProjectSet: !!process.env.GCP_PROJECT,
+            gcpKeySet: !!(process.env.GCP_SA_KEY || process.env.GCP_SA_KEY_B64 || process.env.GOOGLE_APPLICATION_CREDENTIALS),
+          },
         });
       }
     }
