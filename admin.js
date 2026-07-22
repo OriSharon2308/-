@@ -460,18 +460,18 @@
   }
   function kpi(v, k, accent) { return `<div><div class="kpi__v ${accent ? "accent" : ""}">${esc(v)}</div><div class="kpi__k">${esc(k)}</div></div>`; }
 
-  // עלות ה-AI של התלמיד: כמה טוקנים וכמה $ — עד דיוק סנט, עם פירוט לפי-סוכן
+  // עלות ה-AI של התלמיד — מקטע רגיל (קו-מבדיל וכותרת כמו שאר האזורים), בלי מסגרת
   function costSection(u) {
     const t = u && u.tokens;
     if (!t || !t.total) {
-      return `<div class="costCard"><div class="costCard__head"><span class="costCard__label">עלות ה-AI של התלמיד</span></div>
-        <div class="costCard__empty">עדיין לא נצברה עלות — המעקב נספר מהרגע שהופעל.</div></div>`;
+      return `<div class="pSection"><div class="pSection__title">עלות ה-AI של התלמיד</div>
+        <div class="costEmpty">עדיין לא נצברה עלות — המעקב נספר מהרגע שהופעל.</div></div>`;
     }
     const agents = (u.byAgent || []).filter((a) => a.tokens > 0)
       .map((a) => `<div class="costAgent"><span>${esc(a.name)}</span><span class="costAgent__v">${usdFmt(a.costUSD)} · ${tokFmt(a.tokens)} טוקנים</span></div>`).join("");
-    return `<div class="costCard">
-      <div class="costCard__head"><span class="costCard__label">עלות ה-AI של התלמיד</span><span class="costCard__total">${usdFmt(u.costUSD)}</span></div>
-      <div class="costCard__sub">${tokFmt(t.total)} טוקנים · ${(u.calls || 0).toLocaleString("he-IL")} קריאות</div>
+    return `<div class="pSection">
+      <div class="pSection__title">עלות ה-AI של התלמיד<span class="spacer"></span><span class="costTotal">${usdFmt(u.costUSD)}</span></div>
+      <div class="costSub">${tokFmt(t.total)} טוקנים · ${(u.calls || 0).toLocaleString("he-IL")} קריאות</div>
       <div class="costChips">
         <span class="costChip">קלט ${tokFmt(t.input)}</span>
         <span class="costChip">פלט ${tokFmt(t.output)}</span>
