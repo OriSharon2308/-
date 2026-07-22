@@ -42,6 +42,11 @@ loadEnvFile(ROOT);
 
 const PORT = Number.parseInt(process.env.PORT || "8787", 10);
 
+// ספק הדיבור מהסביבה — עמיד לרווחים/מרכאות שנדבקים בטעות בדשבורד של Render
+function ttsProviderIsGoogle() {
+  return String(process.env.TTS_PROVIDER || "azure").replace(/["']/g, "").trim().toLowerCase() === "google";
+}
+
 const MIME = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -507,7 +512,7 @@ const server = http.createServer(async (req, res) => {
     if (url.startsWith("/api/status")) {
       if (method !== "GET") return json(res, 405, { error: "Method not allowed" });
       {
-        const useGoogle = (process.env.TTS_PROVIDER || "azure").toLowerCase() === "google";
+        const useGoogle = ttsProviderIsGoogle();
         return json(res, 200, {
           ...getAgentStatus(),
           speech: speech.info(), // STT (Azure)
@@ -716,7 +721,7 @@ const server = http.createServer(async (req, res) => {
     if (url.startsWith("/api/tts")) {
       if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
       if (!sessions.currentUserId(req)) return json(res, 401, { error: "Not authenticated" });
-      const useGoogle = (process.env.TTS_PROVIDER || "azure").toLowerCase() === "google";
+      const useGoogle = ttsProviderIsGoogle();
       const ttsEnabled = useGoogle ? googleTts.isEnabled() : speech.isEnabled();
       if (!ttsEnabled)
         return json(res, 503, { ok: false, error: "speech_disabled", message: "שירות הדיבור אינו מוגדר בשרת" });
@@ -745,7 +750,7 @@ const server = http.createServer(async (req, res) => {
       if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
       if (!sessions.currentUserId(req)) return json(res, 401, { error: "Not authenticated" });
       const streamOn =
-        (process.env.TTS_PROVIDER || "azure").toLowerCase() === "google" &&
+        ttsProviderIsGoogle() &&
         googleTts.streamEnabled() &&
         googleTts.isEnabled();
       if (!streamOn) return json(res, 503, { ok: false, error: "stream_disabled" }); // → fallback בלקוח
@@ -1024,7 +1029,7 @@ if (require.main === module) {
           console.log("AI:   מצב מקומי — הוסף מפתח ב-.env (ראה .env.example)");
         }
         // שמירת ה-token של Google TTS חם — קריאות המשתמש לא ישלמו את ה-token הקר
-        if ((process.env.TTS_PROVIDER || "azure").toLowerCase() === "google") {
+        if (ttsProviderIsGoogle()) {
           googleTts.warmToken().then((ok) => console.log(`Google TTS token: ${ok ? "חם ✓" : "ייווצר בקריאה הראשונה"}`));
           setInterval(() => googleTts.warmToken(), 50 * 60 * 1000); // רענון לפני תפוגת ה-55 דק'
         }
