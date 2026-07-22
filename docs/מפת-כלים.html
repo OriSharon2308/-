@@ -7,12 +7,9 @@
 <style>
   :root{
     --ink:#1c2430; --ink2:#5a6472; --mut:#8b95a3; --line:#e7ebf0; --line2:#eef1f5;
-    --paper:#fff; --wash:#f6f8fb;
-    --teal:#0d9488; --teal-bg:#e7f6f3; --teal-soft:#f0faf8;
-    --gold:#b7791f; --gold-bg:#fdf6e6;
-    --build:#b45309; --build-bg:#fdf1e3; --build-line:#f0d9bd;
+    --paper:#fff; --wash:#f6f8fb; --teal:#0d9488; --teal-bg:#e7f6f3; --teal-soft:#f0faf8;
+    --gold:#b7791f; --gold-bg:#fdf6e6; --build:#b91c1c; --build-bg:#fdeeee; --build-line:#f2cccc;
     --have:#15803d; --have-bg:#eaf7ee; --have-line:#bfe3ca;
-    --k-man:#6d28d9; --k-int:#0369a1; --k-draw:#4b5563;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Assistant,sans-serif;
@@ -22,161 +19,137 @@
   .brand b{color:var(--teal);font-weight:800}
   h1{font-size:37px;font-weight:850;letter-spacing:-.02em;margin-bottom:12px}
   .lead{color:var(--ink2);font-size:15.5px;max-width:680px}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 16px}
+  .stat b{font-size:22px;font-weight:850;display:block}
+  .stat span{font-size:12px;color:var(--mut)}
+  .stat--build b{color:var(--build)} .stat--have b{color:var(--have)}
 
-  .stat{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-  .stat .s{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 18px;box-shadow:0 1px 2px rgba(20,30,45,.03)}
-  .stat .s b{font-size:24px;font-weight:850;display:block}
-  .stat .s span{font-size:12.5px;color:var(--mut)}
+  .kicker{font-size:11.5px;letter-spacing:.09em;color:var(--teal);font-weight:800;margin:42px 0 10px;text-transform:uppercase}
 
-  .kicker{font-size:11.5px;letter-spacing:.09em;color:var(--build);font-weight:800;margin:40px 0 10px;text-transform:uppercase}
-  .build-master{background:var(--paper);border:1px solid var(--build-line);border-radius:18px;padding:20px 22px}
-  .build-master .bm-row{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid var(--line2)}
-  .build-master .bm-row:first-of-type{border-top:0}
-  .bm-n{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--build-bg);color:var(--build);font-weight:800;font-size:12px}
-  .bm-name{font-size:15px;font-weight:750}
-  .bm-does{font-size:13px;color:var(--ink2);margin-top:1px}
-  .bm-where{font-size:11.5px;color:var(--mut);margin-top:3px}
+  /* רשימת-אב: מה צריך לבנות */
+  .build{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(20,30,45,.03)}
+  .brow{display:flex;gap:12px;align-items:baseline;padding:12px 18px;border-top:1px solid var(--line2)}
+  .brow:first-child{border-top:0}
+  .brow__grades{flex:none;display:flex;gap:3px}
+  .gbadge{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:12px;font-weight:800;background:var(--teal-bg);color:var(--teal)}
+  .brow__name{font-size:14.5px;font-weight:750;flex:none}
+  .brow__kind{flex:none;font-size:10.5px;font-weight:700;color:var(--gold);background:var(--gold-bg);border-radius:5px;padding:2px 8px}
+  .brow__does{font-size:13px;color:var(--ink2)}
 
+  /* אקורדיון כיתה→נושא→כלים */
   .acc{margin-top:8px}
   .acard{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-top:12px;overflow:hidden;box-shadow:0 1px 2px rgba(20,30,45,.03)}
-  .acard__head{width:100%;display:flex;align-items:center;gap:12px;padding:17px 20px;background:none;border:0;cursor:pointer;font:inherit;text-align:right;color:var(--ink);transition:background .12s ease}
-  .acard__head:hover{background:var(--wash)}
-  .acard__ic{font-size:22px;flex:none}
-  .acard__ttl{font-size:19px;font-weight:800}
-  .acard__sub{font-size:13px;color:var(--mut);font-weight:600}
-  .acard__build{margin-inline-start:auto;font-size:11.5px;font-weight:800;color:var(--build);background:var(--build-bg);border:1px solid var(--build-line);border-radius:999px;padding:3px 11px}
-  .acc-chev{color:var(--mut);font-size:12px;transition:transform .22s ease;margin-inline-start:10px}
-  .acard.is-open>.acard__head .acc-chev,.tcard.is-open>.tcard__head .acc-chev{transform:rotate(180deg)}
-  .acard__body{display:none;padding:4px 20px 20px}
-  .acard.is-open>.acard__body{display:block}
+  .ahead{width:100%;display:flex;align-items:center;gap:12px;padding:16px 20px;background:none;border:0;cursor:pointer;font:inherit;text-align:right;color:var(--ink)}
+  .ahead:hover{background:var(--wash)}
+  .ahead__ic{font-size:20px}
+  .ahead__ttl{font-size:19px;font-weight:800}
+  .ahead__sub{font-size:12.5px;color:var(--mut);font-weight:600}
+  .chev{margin-inline-start:auto;color:var(--mut);font-size:12px;transition:transform .2s ease}
+  .acard.is-open>.ahead .chev,.tcard.is-open>.thead .chev{transform:rotate(180deg)}
+  .abody{display:none;padding:2px 16px 16px}
+  .acard.is-open>.abody{display:block}
 
-  .tcard{border:1px solid var(--line);border-radius:13px;margin-top:10px;overflow:hidden}
-  .tcard__head{width:100%;display:flex;align-items:center;gap:10px;padding:13px 16px;background:none;border:0;cursor:pointer;font:inherit;text-align:right;color:var(--ink);transition:background .12s ease}
-  .tcard__head:hover{background:var(--wash)}
-  .tcard.is-open>.tcard__head{background:var(--teal-soft)}
-  .tcard__ttl{font-size:15.5px;font-weight:750}
-  .tcard__cnt{font-size:11.5px;color:var(--mut)}
-  .tcard__build{margin-inline-start:auto;font-size:10.5px;font-weight:800;color:var(--build);background:var(--build-bg);border-radius:6px;padding:2px 8px}
-  .tcard__body{display:none;padding:6px 14px 14px;border-top:1px solid var(--line2)}
-  .tcard.is-open>.tcard__body{display:block}
+  .tcard{border:1px solid var(--line);border-radius:12px;margin-top:10px;overflow:hidden}
+  .thead{width:100%;display:flex;align-items:center;gap:10px;padding:12px 15px;background:none;border:0;cursor:pointer;font:inherit;text-align:right;color:var(--ink)}
+  .thead:hover{background:var(--wash)}
+  .tcard.is-open>.thead{background:var(--teal-soft)}
+  .thead__ttl{font-size:15px;font-weight:750}
+  .thead__cnt{font-size:11px;color:var(--mut);margin-inline-start:auto;display:flex;gap:6px}
+  .pill{font-size:10.5px;font-weight:800;border-radius:999px;padding:2px 9px}
+  .pill--have{color:var(--have);background:var(--have-bg)}
+  .pill--build{color:var(--build);background:var(--build-bg)}
+  .tbody{display:none;padding:4px 14px 12px}
+  .tcard.is-open>.tbody{display:block}
 
-  .tool{border:1px solid var(--line2);border-radius:11px;padding:12px 14px;margin-top:10px;background:var(--wash)}
-  .tool--build{background:var(--build-bg);border-color:var(--build-line)}
-  .tool__top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-  .tool__name{font-size:15px;font-weight:800}
-  .badge{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 8px}
-  .badge--have{color:var(--have);background:#fff;border:1px solid var(--have-line)}
-  .badge--build{color:var(--build);background:#fff;border:1px solid var(--build-line)}
-  .badge--kind{color:#fff}
-  .k-man{background:var(--k-man)} .k-int{background:var(--k-int)} .k-draw{background:var(--k-draw)}
-  .tool__code{font-size:11px;color:var(--mut);font-family:ui-monospace,Menlo,monospace}
-  .tool__row{font-size:13px;color:var(--ink2);margin-top:6px;display:flex;gap:7px}
-  .tool__row b{color:var(--ink);font-weight:700;flex:none}
-  .foot{margin-top:34px;text-align:center;color:var(--mut);font-size:12px}
-  .empty{padding:60px;text-align:center;color:var(--mut)}
+  .tool{display:grid;grid-template-columns:26px 1fr;gap:11px;padding:11px 0;border-top:1px solid var(--line2)}
+  .tool:first-child{border-top:0}
+  .tool__dot{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px}
+  .tool__dot--have{background:var(--have-bg);color:var(--have)}
+  .tool__dot--build{background:var(--build-bg);color:var(--build)}
+  .tool__name{font-size:14.5px;font-weight:750;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+  .tool__kind{font-size:10px;font-weight:700;color:var(--gold);background:var(--gold-bg);border-radius:5px;padding:1px 7px}
+  .tool__st{font-size:10px;font-weight:800;border-radius:5px;padding:1px 8px}
+  .tool__st--have{color:var(--have);background:var(--have-bg)} .tool__st--build{color:var(--build);background:var(--build-bg)}
+  .tool__does{font-size:13px;color:var(--ink2);margin-top:3px}
+  .tool__serves{font-size:12.5px;color:var(--mut);margin-top:3px}
+  .tool__serves b{color:var(--teal);font-weight:700}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="brand"><b>vela</b> · מסמך תכנון פנימי</div>
-  <h1>מפת הכלים — מה צריך לבנות</h1>
-  <p class="lead">כל כלי וסוג-סרטוט שנצטרך כדי לתמוך בכל סוגי השאלות, לכל נושא בכל כיתה — מסומן אם כבר קיים או שצריך לבנות. בחר כיתה → נושא כדי לראות את הכלים שלו.</p>
-  <div class="stat" id="stat"></div>
+  <h1>מפת הכלים — א׳ עד ו׳</h1>
+  <p class="lead">כל הכלים והסרטוטים שנצטרך כדי לתמוך בכל סוגי השאלות, לכל נושא בכל כיתה — מוצלב מול 30 הכלים הקיימים. ירוק = כבר קיים, אדום = לבנות.</p>
+  <div class="stats" id="stats"></div>
 
-  <div class="kicker">רשימת הבנייה — כלים חדשים (ללא כפילויות)</div>
-  <div class="build-master" id="buildMaster"></div>
+  <div class="kicker">מה צריך לבנות — רשימת-אב</div>
+  <div class="build" id="buildList"></div>
 
-  <div class="kicker" style="color:var(--teal)">לפי כיתה ונושא</div>
-  <div id="acc" class="acc"><div class="empty">טוען…</div></div>
-
-  <div class="foot">vela · מפת הכלים · נוצר ממיפוי תכנית-הלימודים מול הכלים הקיימים</div>
+  <div class="kicker">הכל לפי כיתה → נושא → כלים</div>
+  <div class="acc" id="acc"></div>
 </div>
 
-<script src="/tools-data.js"></script>
+<script src="/tools-inventory.js"></script>
 <script>
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const INV=window.VelaToolsInventory||{}, BUILD=window.VelaToolsToBuild||[];
+const LET=["א","ב","ג","ד","ה","ו"];
+
 (function(){
-  const D = (window.VelaToolsData && window.VelaToolsData.grades) || [];
-  const LABEL = {"א":"כיתה א׳","ב":"כיתה ב׳","ג":"כיתה ג׳","ד":"כיתה ד׳","ה":"כיתה ה׳","ו":"כיתה ו׳"};
-  const ICON = {"א":"1️⃣","ב":"2️⃣","ג":"3️⃣","ד":"4️⃣","ה":"5️⃣","ו":"6️⃣"};
-  const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
-  const esc=(s)=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  const kindCls=(k)=>/מניפולטיב/.test(k)?"k-man":/אינטראקטיב/.test(k)?"k-int":"k-draw";
+  let have=0,build=0;
+  LET.forEach(l=>{ if(!INV[l])return; INV[l].topics.forEach(t=>(t.tools||[]).forEach(x=>{ x.status==="לבנות"?build++:have++; })); });
+  const s=document.getElementById("stats");
+  s.appendChild(el("div","stat","<b>"+(have+build)+"</b><span>כלים בסך הכל</span>"));
+  s.appendChild(el("div","stat stat--have","<b>"+have+"</b><span>כבר קיימים</span>"));
+  s.appendChild(el("div","stat stat--build","<b>"+build+"</b><span>לבנות</span>"));
+  s.appendChild(el("div","stat","<b>"+BUILD.length+"</b><span>ייחודיים לבנייה</span>"));
+})();
 
-  function tool(t){
-    const build=t.status==="לבנות";
-    const node=el("div","tool"+(build?" tool--build":""));
-    node.innerHTML=`<div class="tool__top">
-        <span class="tool__name">${esc(t.name)}</span>
-        <span class="badge ${build?"badge--build":"badge--have"}">${build?"לבנות":"קיים"}</span>
-        <span class="badge badge--kind ${kindCls(t.kind)}">${esc(t.kind||"")}</span>
-        ${t.existing?`<span class="tool__code">${esc(t.existing)}</span>`:""}
-      </div>
-      ${t.does?`<div class="tool__row"><b>מה:</b><span>${esc(t.does)}</span></div>`:""}
-      ${t.interaction?`<div class="tool__row"><b>הפעלה:</b><span>${esc(t.interaction)}</span></div>`:""}
-      ${t.serves?`<div class="tool__row"><b>משרת:</b><span>${esc(t.serves)}</span></div>`:""}`;
-    return node;
-  }
-
-  function makeCard(container, cls, headHtml){
-    const card=el("div",cls);
-    const head=el("button",cls+"__head");head.type="button";
-    head.innerHTML=headHtml+`<span class="acc-chev">▾</span>`;
-    const body=el("div",cls+"__body");
-    card.appendChild(head);card.appendChild(body);
-    head.addEventListener("click",()=>{
-      const open=card.classList.contains("is-open");
-      container.querySelectorAll(":scope > ."+cls+".is-open").forEach(c=>{if(c!==card)c.classList.remove("is-open");});
-      card.classList.toggle("is-open",!open);
-    });
-    container.appendChild(card);
-    return body;
-  }
-
-  // סטטיסטיקה + רשימת-בנייה מרוכזת (ללא כפילויות לפי שם)
-  let totalTools=0, buildCount=0;
-  const buildMap={};
-  D.forEach(g=>(g.topics||[]).forEach(t=>(t.tools||[]).forEach(x=>{
-    totalTools++;
-    if(x.status==="לבנות"){
-      buildCount++;
-      const key=x.name.trim();
-      if(!buildMap[key]) buildMap[key]={name:x.name,does:x.does,where:[]};
-      buildMap[key].where.push(LABEL[g.grade]+" · "+t.topic);
-    }
-  })));
-  const uniqBuild=Object.values(buildMap);
-
-  const stat=document.getElementById("stat");
-  stat.innerHTML=`
-    <div class="s"><b>${D.length}</b><span>כיתות</span></div>
-    <div class="s"><b>${totalTools}</b><span>כלים בסך הכל</span></div>
-    <div class="s"><b>${uniqBuild.length}</b><span>כלים חדשים לבנות</span></div>`;
-
-  const bm=document.getElementById("buildMaster");
-  bm.innerHTML="";
-  uniqBuild.sort((a,b)=>b.where.length-a.where.length).forEach((x,i)=>{
-    const row=el("div","bm-row");
-    row.innerHTML=`<div class="bm-n">${i+1}</div><div>
-      <div class="bm-name">${esc(x.name)}</div>
-      ${x.does?`<div class="bm-does">${esc(x.does)}</div>`:""}
-      <div class="bm-where">${esc(x.where.slice(0,4).join("  ·  "))}${x.where.length>4?`  +${x.where.length-4}`:""}</div>
-    </div>`;
-    bm.appendChild(row);
+(function(){
+  const box=document.getElementById("buildList");
+  BUILD.forEach(x=>{
+    const r=el("div","brow");
+    r.innerHTML=`<span class="brow__grades">${(x.grades||[]).map(g=>`<span class="gbadge">${g}</span>`).join("")}</span>`+
+      `<span class="brow__name">${esc(x.name)}</span>`+
+      (x.kind?`<span class="brow__kind">${esc(x.kind)}</span>`:"")+
+      `<span class="brow__does">${esc((x.does||"").slice(0,110))}</span>`;
+    box.appendChild(r);
   });
+})();
 
-  // אקורדיון כיתה → נושא → כלים
-  const acc=document.getElementById("acc");
-  acc.innerHTML="";
-  if(!D.length){ acc.innerHTML='<div class="empty">אין נתונים עדיין</div>'; return; }
-  D.forEach(g=>{
-    const gBuild=(g.topics||[]).reduce((s,t)=>s+(t.tools||[]).filter(x=>x.status==="לבנות").length,0);
-    const body=makeCard(acc,"acard",
-      `<span class="acard__ic">${ICON[g.grade]||"📘"}</span><span class="acard__ttl">${esc(LABEL[g.grade]||g.grade)}</span><span class="acard__sub">${(g.topics||[]).length} נושאים</span><span class="acard__build">${gBuild} לבנות</span>`);
-    (g.topics||[]).forEach(t=>{
-      const tb=(t.tools||[]).filter(x=>x.status==="לבנות").length;
-      const tbody=makeCard(body,"tcard",
-        `<span class="tcard__ttl">${esc(t.topic)}</span><span class="tcard__cnt">${(t.tools||[]).length} כלים</span>${tb?`<span class="tcard__build">${tb} לבנות</span>`:""}`);
-      (t.tools||[]).forEach(x=>tbody.appendChild(tool(x)));
+function acc(container,cls,headHtml){
+  const card=el("div",cls==="t"?"tcard":"acard");
+  const head=el("button",cls==="t"?"thead":"ahead"); head.type="button";
+  head.innerHTML=headHtml+`<span class="chev">▾</span>`;
+  const body=el("div",cls==="t"?"tbody":"abody");
+  card.appendChild(head);card.appendChild(body);
+  head.addEventListener("click",()=>{const o=card.classList.contains("is-open");
+    container.querySelectorAll(":scope > ."+(cls==="t"?"tcard":"acard")+".is-open").forEach(c=>{if(c!==card)c.classList.remove("is-open");});
+    card.classList.toggle("is-open",!o);});
+  container.appendChild(card);return body;
+}
+(function(){
+  const root=document.getElementById("acc");
+  LET.forEach(l=>{ if(!INV[l])return; const G=INV[l];
+    let gHave=0,gBuild=0; G.topics.forEach(t=>(t.tools||[]).forEach(x=>x.status==="לבנות"?gBuild++:gHave++));
+    const gbody=acc(root,"a",`<span class="ahead__ic">📚</span><span class="ahead__ttl">${esc(G.gradeLabel||l)}</span><span class="ahead__sub">${G.topics.length} נושאים · ${gHave+gBuild} כלים (${gBuild} לבנות)</span>`);
+    G.topics.forEach(t=>{
+      const tools=t.tools||[]; const th=tools.filter(x=>x.status!=="לבנות").length, tb=tools.length-th;
+      const tbody=acc(gbody,"t",`<span class="thead__ttl">${esc(t.topic)}</span><span class="thead__cnt"><span class="pill pill--have">${th} קיים</span><span class="pill pill--build">${tb} לבנות</span></span>`);
+      tools.forEach(x=>{
+        const build=x.status==="לבנות";
+        const node=el("div","tool");
+        node.innerHTML=`<div class="tool__dot tool__dot--${build?"build":"have"}">${build?"🔨":"✓"}</div>`+
+          `<div><div class="tool__name">${esc(x.name)}`+
+          (x.kind?`<span class="tool__kind">${esc(x.kind)}</span>`:"")+
+          `<span class="tool__st tool__st--${build?"build":"have"}">${build?"לבנות":"קיים"+(x.existing?" · "+esc(x.existing):"")}</span></div>`+
+          (x.does?`<div class="tool__does">${esc(x.does)}</div>`:"")+
+          (x.serves?`<div class="tool__serves"><b>משרת:</b> ${esc(x.serves)}</div>`:"")+
+          `</div>`;
+        tbody.appendChild(node);
+      });
     });
   });
 })();

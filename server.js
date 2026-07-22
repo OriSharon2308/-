@@ -73,6 +73,7 @@ const PUBLIC_FILES = new Set([
   "/admin-golden.js",
   "/admin-curriculum.js",
   "/curriculum-data.js",
+  "/tools-inventory.js",
   "/tools-data.js",
   "/board.js",
   "/widget-kit.js",
@@ -912,6 +913,11 @@ const server = http.createServer(async (req, res) => {
     // מפת ההוראה — מסמך התכנון של כיתה א׳ (הסטנדרט + תרשימי הזרימה)
     if (rel === "/מפת-הוראה" || rel === "/teaching-map" || rel === "/docs/מפת-הוראה-כיתה-א.html") {
       return serveFile(res, "/docs/מפת-הוראה-כיתה-א.html", method);
+    }
+
+    // מפת הכלים — אילו כלים/סרטוטים צריך לכל נושא בכל כיתה (מול הקיימים)
+    if (rel === "/מפת-כלים" || rel === "/tools-map" || rel === "/docs/מפת-כלים.html") {
+      return serveFile(res, "/docs/מפת-כלים.html", method);
     }
 
     // מפת הכלים — אילו כלים/סרטוטים צריך לבנות לכל נושא בכל כיתה
