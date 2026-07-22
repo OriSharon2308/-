@@ -762,6 +762,8 @@
       (function showAll() {
         var btn = document.getElementById("showAll");
         if (!btn) return;
+        // כפתור פיתוח בלבד: בענן (Render) מוסתר — קיים רק בהרצה מקומית
+        if (!/^(localhost|127\.0\.0\.1|\[?::1\]?)$/.test(location.hostname)) { btn.remove(); return; }
 
         // ווידג'ט אינטראקטיבי 1: סרגל-מספרים שגוררים את החץ (הצמדה למספרים, תווית "+N").
         var WIDGET_NUMLINE =

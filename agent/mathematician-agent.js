@@ -48,7 +48,7 @@ function legacyProblem(level) {
 }
 
 /** ה-AI יוצר שאלה לנושא שאין לו מחולל אלגוריתמי (שברים, שאלות מילוליות וכו'). */
-async function aiGenerate(gradeNum, topicKey, level) {
+async function aiGenerate(gradeNum, topicKey, level, userId = null) {
   if (!llm.isEnabled()) return null;
   const gradeLabel = CURRICULUM[gradeNum] ? CURRICULUM[gradeNum].grade : String(gradeNum);
   const system = "אתה מורה למתמטיקה שבונה תרגילים לילדים. החזר JSON תקין בלבד, בלי טקסט נוסף.";
@@ -63,7 +63,7 @@ async function aiGenerate(gradeNum, topicKey, level) {
 
   let raw;
   try {
-    raw = await llm.complete({ system, messages: [{ role: "user", content: user }], maxTokens: 500 });
+    raw = await llm.complete({ system, messages: [{ role: "user", content: user }], maxTokens: 500, userId, label: "מתמטיקאי" });
   } catch {
     return null;
   }
@@ -141,7 +141,7 @@ async function mathematicianCreate(payload = {}) {
   }
 
   // 3) נושא בלי מחולל (שברים, שאלות מילוליות) → AI יוצר ושומר למאגר
-  const ai = await aiGenerate(gradeNum, topic, level);
+  const ai = await aiGenerate(gradeNum, topic, level, payload.userId || null);
   if (ai) {
     const stored = bank.addQuestion(gradeNum, topic, ai);
     return { problem: stored, mode: "ai", topic, gradeNum };

@@ -64,7 +64,7 @@ async function visionDescribeBoard(p = {}) {
   try {
     const t0 = Date.now();
     // החלק הקבוע (persona + פרופיל) נשמר ב-Prompt Cache; התמונה היא החלק המשתנה.
-    let reply = await llm.complete({ system, messages, maxTokens: 240, cacheSystem: true });
+    let reply = await llm.complete({ system, messages, maxTokens: 240, cacheSystem: true, userId: p.userId, label: "ראייה" });
     console.log(`[timing] vision (llm.complete): ${Date.now() - t0}ms`);
     reply = genderize(reply || "אני לא בטוח/ה מה זה — תספר/י לי מה ציירת?", gender).replace(/\*\*/g, "");
     return { reply, mode: "ai" };

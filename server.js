@@ -33,6 +33,7 @@ const teachingMethods = require("./lib/teaching-methods"); // שיטות-לימ�
 const courseLib = require("./lib/course");
 const goldenLessons = require("./lib/golden-lessons"); // שיעורי-זהב — מוצגים באדמין // מערכי-שיעור — מפת-הדרכים של הלמידה (גם לאדמין)
 const lessonTools = require("./lib/lesson-tools"); // אזור למידה: זיהוי כלי-הלוח שכל שלב משתמש בהם
+const tokenUsage = require("./lib/token-usage"); // מעקב-טוקנים ועלות ($) לכל תלמיד
 const parentAuth = require("./lib/parent-auth"); // אזור הורים — כניסה עם פרטי הילד, session נפרד
 const cloudStore = require("./lib/cloud-store"); // גיבוי-ענן חינמי (Upstash) — חשבונות שורדים deploy
 const logger = require("./lib/logger"); // לוגים אחידים — קונסול (Render Logs) + קובץ יומי
@@ -227,6 +228,7 @@ const server = http.createServer(async (req, res) => {
       learnerProfile.deleteUser(userId);
       progress.deleteUser(userId);
       assess.deleteUser(userId);
+      tokenUsage.deleteUser(userId);
       users.deleteUser(userId);
       sessions.destroyAllForUser(userId);
       return json(res, 200, { ok: true }, { "set-cookie": sessions.buildClearCookie() });
@@ -264,7 +266,10 @@ const server = http.createServer(async (req, res) => {
       const q = au.searchParams;
 
       if (au.pathname === "/api/admin/overview") {
-        return json(res, 200, { ok: true, overview: analytics.overview(users.getAllUsers()) });
+        const allU = users.getAllUsers();
+        const ov = analytics.overview(allU);
+        ov.usage = tokenUsage.totals(allU.map((u) => u.id)); // סה"כ טוקנים ועלות $ לכל התלמידים
+        return json(res, 200, { ok: true, overview: ov });
       }
 
       if (au.pathname === "/api/admin/users") {
@@ -296,6 +301,7 @@ const server = http.createServer(async (req, res) => {
           daily: analytics.dailySeries(id),
           time: analytics.dailyTime(id),
           mastery: analytics.masteryByTopic(id),
+          usage: tokenUsage.get(id), // טוקנים ועלות $ שהילד צבר
         });
       }
 
@@ -346,6 +352,7 @@ const server = http.createServer(async (req, res) => {
         learnerProfile.deleteUser(body.id);
         progress.deleteUser(body.id);
         assess.deleteUser(body.id);
+        tokenUsage.deleteUser(body.id);
         users.deleteUser(body.id);
         sessions.destroyAllForUser(body.id);
         return json(res, 200, { ok: true });
@@ -525,6 +532,8 @@ const server = http.createServer(async (req, res) => {
             gcpProjectSet: !!process.env.GCP_PROJECT,
             gcpKeySet: !!(process.env.GCP_SA_KEY || process.env.GCP_SA_KEY_B64 || process.env.GOOGLE_APPLICATION_CREDENTIALS),
           },
+          // שמירת-נתונים: האם Upstash מוגדר (הנתונים שורדים deploy). false = deploy ימחק הכל!
+          persistence: { cloud: cloudStore.isEnabled(), dataDirEnvSet: !!process.env.DATA_DIR },
         });
       }
     }

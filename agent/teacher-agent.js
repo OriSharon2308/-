@@ -108,6 +108,7 @@ function localReply({ messageKind, problem, correct, student }) {
  */
 async function teacherReply(params) {
   const {
+    userId = null,
     messageKind,
     messageText = "",
     problem,
@@ -157,6 +158,8 @@ async function teacherReply(params) {
       messages,
       maxTokens: voice ? 160 : 500,
       model: voice ? voiceModel : null,
+      userId,
+      label: "מורה",
     });
     console.log(`[timing]   └ Claude (llm.complete${voice ? " · " + voiceModel : ""}): ${Date.now() - tLlm}ms`);
     if (reply) return { reply, mode: "ai" };

@@ -208,13 +208,21 @@
         ${stat("תלמידים רשומים", o.totalUsers ?? 0, "", true)}
         ${stat("פעילים היום", o.activeToday ?? 0)}
         ${stat("סה״כ תרגילים", (o.totalAttempts ?? 0).toLocaleString("he-IL"))}
-        ${stat("תשובות נכונות", (o.totalCorrect ?? 0).toLocaleString("he-IL"))}
         ${stat("דיוק ממוצע", (o.accuracy ?? 0) + "%")}
+        ${stat("עלות כוללת (AI)", usdFmt(o.usage?.costUSD), tokFmt(o.usage?.tokens) + " טוקנים")}
       </div>
       <div class="note">בלשונית <b>תלמידים</b> מופיעה רשימת כל המשתמשים — לחיצה על תלמיד פותחת חלון עם כל הנתונים שלו: פרטים אישיים, גרף התקדמות, גרף זמן לימוד יומי וחוות דעת הצוות. בלשונית <b>תוכן</b> ניתן לערוך את חומר השאלות לכל כיתה ונושא.</div>`;
   }
   function stat(label, value, sub, accent) {
     return `<div class="stat"><div class="stat__label">${esc(label)}</div><div class="stat__value ${accent ? "accent" : ""}">${esc(value)}</div>${sub ? `<div class="stat__sub">${esc(sub)}</div>` : ""}</div>`;
+  }
+  // עלות $ עד דיוק סנט (0.01); טוקנים בקיצור K/M
+  function usdFmt(n) { return "$" + (Number(n) || 0).toFixed(2); }
+  function tokFmt(n) {
+    n = Number(n) || 0;
+    if (n >= 1e6) return (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + "M";
+    if (n >= 1e3) return (n / 1e3).toFixed(n >= 1e4 ? 0 : 1) + "K";
+    return String(n);
   }
 
   /* ---------------- רשימת תלמידים (מינימלית) ---------------- */
@@ -300,7 +308,7 @@
     drawStudent();
   }
   function drawStudent() {
-    const { user, summary, daily, time, assessments } = cur;
+    const { user, summary, daily, time, assessments, usage } = cur;
     const name = [user.firstName, user.lastName].filter(Boolean).join(" ") || user.username;
     const initials = (name.trim()[0] || "?");
     modalBody.innerHTML = `
@@ -325,6 +333,8 @@
         ${kpi(summary.dayStreak, "רצף ימים")}
         ${kpi(summary.masteredCount + "/" + summary.topicsCount, "נושאים נשלטים")}
       </div>
+
+      ${costSection(usage)}
 
       <div class="chartCard">
         <div class="chartTitle">התקדמות לאורך זמן</div>
@@ -449,6 +459,27 @@
     svg.addEventListener("mouseleave", () => { tip.hidden = true; });
   }
   function kpi(v, k, accent) { return `<div><div class="kpi__v ${accent ? "accent" : ""}">${esc(v)}</div><div class="kpi__k">${esc(k)}</div></div>`; }
+
+  // עלות ה-AI של התלמיד: כמה טוקנים וכמה $ — עד דיוק סנט, עם פירוט לפי-סוכן
+  function costSection(u) {
+    const t = u && u.tokens;
+    if (!t || !t.total) {
+      return `<div class="costCard"><div class="costCard__head"><span class="costCard__label">עלות ה-AI של התלמיד</span></div>
+        <div class="costCard__empty">עדיין לא נצברה עלות — המעקב נספר מהרגע שהופעל.</div></div>`;
+    }
+    const agents = (u.byAgent || []).filter((a) => a.tokens > 0)
+      .map((a) => `<div class="costAgent"><span>${esc(a.name)}</span><span class="costAgent__v">${usdFmt(a.costUSD)} · ${tokFmt(a.tokens)} טוקנים</span></div>`).join("");
+    return `<div class="costCard">
+      <div class="costCard__head"><span class="costCard__label">עלות ה-AI של התלמיד</span><span class="costCard__total">${usdFmt(u.costUSD)}</span></div>
+      <div class="costCard__sub">${tokFmt(t.total)} טוקנים · ${(u.calls || 0).toLocaleString("he-IL")} קריאות</div>
+      <div class="costChips">
+        <span class="costChip">קלט ${tokFmt(t.input)}</span>
+        <span class="costChip">פלט ${tokFmt(t.output)}</span>
+        <span class="costChip">מטמון ${tokFmt(t.cacheRead)}</span>
+      </div>
+      ${agents ? `<div class="costAgents">${agents}</div>` : ""}
+    </div>`;
+  }
   /* פירוט-נושא בלחיצה: נתונים + חוות דעת קצרה של מורה/פסיכולוג/מתמטיקאי (נגזר מהסטטוס והדיוק) */
   function topicOpinions(t) {
     const acc = t.accuracy, st = t.status;

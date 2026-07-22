@@ -136,6 +136,8 @@ async function updateTeacherProfile(userId) {
       system,
       messages: [{ role: "user", content: user }],
       maxTokens: 180,
+      userId,
+      label: "פרופיל",
     });
     if (text) memory.updateProfile("teacher", userId, text);
   } catch {
@@ -226,6 +228,7 @@ async function runChat(payload = {}) {
     const requestedTopic =
       psy.focusTopic || mapUiToCurriculum(topic, gradeNum) || pickRandom(candidateTopics);
     const math = await mathematicianCreate({
+      userId,
       gradeNum,
       topic: requestedTopic,
       level: student.level || 1,
@@ -274,6 +277,7 @@ async function runChat(payload = {}) {
 
   // המורה עונה
   const teacher = await teacherReply({
+    userId,
     messageKind,
     messageText,
     problem: activeProblem,

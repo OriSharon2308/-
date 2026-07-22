@@ -278,7 +278,7 @@ async function teacherDraw(p = {}) {
     if (phase === "closing") {
       const talkMsgs = [...history, { role: "user", content: `${phaseLine}\n${String(p.messageText || "...")}` }];
       const noteTool = BOARD_TOOLS.filter((t) => t.name === "remember_note");
-      const out = await llm.completeTools({ system, messages: talkMsgs, tools: noteTool, maxTokens: 450, cacheSystem: true });
+      const out = await llm.completeTools({ system, messages: talkMsgs, tools: noteTool, maxTokens: 450, cacheSystem: true, userId: p.userId, label: "סרטוט" });
       for (const tc of out.toolCalls || []) {
         try {
           const inp = tc.input || {};
@@ -298,7 +298,7 @@ async function teacherDraw(p = {}) {
     // לולאת Tool Use: מחזירים ל-Claude אישור לכל קריאה כדי שישלים ציורים מרובי-שלבים
     // (למשל שעון = עיגול + 12 מספרים + מחוגים). עוצרים כשסיים (end_turn) או בתקרה.
     for (let iter = 0; iter < 8; iter++) {
-      const out = await llm.completeTools({ system, messages: msgs, tools: BOARD_TOOLS, maxTokens: 1200, cacheSystem: true });
+      const out = await llm.completeTools({ system, messages: msgs, tools: BOARD_TOOLS, maxTokens: 1200, cacheSystem: true, userId: p.userId, label: "סרטוט" });
       if (out.text) text = out.text;
       if (out.toolCalls.length) {
         for (const tc of out.toolCalls) allCalls.push(tc);
