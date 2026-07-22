@@ -32,7 +32,6 @@ const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנ�
 const teachingMethods = require("./lib/teaching-methods"); // שיטות-לימוד שמורות (אישור ✓-הבנתי)
 const courseLib = require("./lib/course");
 const goldenLessons = require("./lib/golden-lessons"); // שיעורי-זהב — מוצגים באדמין // מערכי-שיעור — מפת-הדרכים של הלמידה (גם לאדמין)
-const demo = require("./lib/demo"); // תלמיד-דוגמה קבוע (קריאה בלבד)
 const lessonTools = require("./lib/lesson-tools"); // אזור למידה: זיהוי כלי-הלוח שכל שלב משתמש בהם
 const parentAuth = require("./lib/parent-auth"); // אזור הורים — כניסה עם פרטי הילד, session נפרד
 const cloudStore = require("./lib/cloud-store"); // גיבוי-ענן חינמי (Upstash) — חשבונות שורדים deploy
@@ -69,6 +68,7 @@ const PUBLIC_FILES = new Set([
   "/admin-golden.js",
   "/admin-curriculum.js",
   "/curriculum-data.js",
+  "/tools-data.js",
   "/board.js",
   "/widget-kit.js",
   "/plan.html",
@@ -276,18 +276,11 @@ const server = http.createServer(async (req, res) => {
             },
           };
         });
-        list.unshift(demo.demoListRow()); // תלמיד-דוגמה תמיד בראש הרשימה
         return json(res, 200, { ok: true, users: list });
       }
 
       if (au.pathname === "/api/admin/user") {
         const id = q.get("id");
-        if (id === demo.DEMO_ID) {
-          return json(res, 200, {
-            ok: true, user: demo.demoUser(), summary: demo.demoSummary(),
-            daily: demo.demoDaily(), time: demo.demoTime(), mastery: demo.demoMastery(),
-          });
-        }
         const usr = id ? users.getUserAdmin(id) : null;
         if (!usr) return json(res, 404, { ok: false, error: "לא נמצא" });
         return json(res, 200, {
@@ -304,7 +297,6 @@ const server = http.createServer(async (req, res) => {
       if (au.pathname === "/api/admin/user/activity") {
         const aid = q.get("id");
         const range = q.get("range") || "week";
-        if (aid === demo.DEMO_ID) return json(res, 200, { ok: true, activity: demo.demoActivity(range) });
         const auser = aid ? users.getUserAdmin(aid) : null;
         if (!auser) return json(res, 404, { ok: false, error: "לא נמצא" });
         return json(res, 200, { ok: true, activity: analytics.activity(aid, range) });
@@ -312,7 +304,6 @@ const server = http.createServer(async (req, res) => {
 
       if (au.pathname === "/api/admin/user/assessments") {
         const aid = q.get("id");
-        if (aid === demo.DEMO_ID) return json(res, 200, { ok: true, assessments: demo.demoAssessments() });
         const auser = aid ? users.getUserAdmin(aid) : null;
         if (!auser) return json(res, 404, { ok: false, error: "לא נמצא" });
         return json(res, 200, {
@@ -325,7 +316,6 @@ const server = http.createServer(async (req, res) => {
         if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
         const body = await readJsonBody(req, res);
         if (!body) return;
-        if (body.id === demo.DEMO_ID) return json(res, 400, { ok: false, error: "חשבון הדגמה — לא ניתן לעריכה." });
         const updated = users.updateUserFields(body.id, body.patch || {});
         if (!updated) return json(res, 404, { ok: false, error: "לא נמצא" });
         return json(res, 200, { ok: true, user: updated });
@@ -336,7 +326,6 @@ const server = http.createServer(async (req, res) => {
         if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
         const body = await readJsonBody(req, res);
         if (!body) return;
-        if (body.id === demo.DEMO_ID) return json(res, 400, { ok: false, error: "חשבון הדגמה — לא ניתן לשנות סיסמה." });
         if (!adminAuth.verify(body.adminPassword)) return json(res, 403, { ok: false, error: "סיסמת האדמין שגויה." });
         const r = users.setPassword(body.id, body.password);
         return json(res, r.ok ? 200 : 400, r);
@@ -347,7 +336,6 @@ const server = http.createServer(async (req, res) => {
         const body = await readJsonBody(req, res);
         if (!body) return;
         if (!body.id) return json(res, 400, { ok: false, error: "חסר מזהה" });
-        if (body.id === demo.DEMO_ID) return json(res, 400, { ok: false, error: "חשבון הדגמה — לא ניתן למחיקה." });
         memory.deleteUserMemory(body.id);
         learnerProfile.deleteUser(body.id);
         progress.deleteUser(body.id);
@@ -908,6 +896,11 @@ const server = http.createServer(async (req, res) => {
     // מפת ההוראה — מסמך התכנון של כיתה א׳ (הסטנדרט + תרשימי הזרימה)
     if (rel === "/מפת-הוראה" || rel === "/teaching-map" || rel === "/docs/מפת-הוראה-כיתה-א.html") {
       return serveFile(res, "/docs/מפת-הוראה-כיתה-א.html", method);
+    }
+
+    // מפת הכלים — אילו כלים/סרטוטים צריך לבנות לכל נושא בכל כיתה
+    if (rel === "/מפת-כלים" || rel === "/tools-map" || rel === "/docs/מפת-כלים.html") {
+      return serveFile(res, "/docs/מפת-כלים.html", method);
     }
 
     const loggedIn = !!sessions.currentUserId(req);
