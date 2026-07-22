@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>מפת הכלים · vela</title>
+<style>
+  :root{
+    --ink:#1c2430; --ink2:#5a6472; --mut:#8b95a3; --line:#e7ebf0; --line2:#eef1f5;
+    --paper:#fff; --wash:#f6f8fb;
+    --teal:#0d9488; --teal-bg:#e7f6f3; --teal-soft:#f0faf8;
+    --gold:#b7791f; --gold-bg:#fdf6e6;
+    --build:#b45309; --build-bg:#fdf1e3; --build-line:#f0d9bd;
+    --have:#15803d; --have-bg:#eaf7ee; --have-line:#bfe3ca;
+    --k-man:#6d28d9; --k-int:#0369a1; --k-draw:#4b5563;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Assistant,sans-serif;
+    -webkit-font-smoothing:antialiased;color:var(--ink);line-height:1.6;background:var(--wash)}
+  .wrap{max-width:960px;margin:0 auto;padding:44px 24px 140px}
+  .brand{font-size:13px;color:var(--mut);margin-bottom:8px}
+  .brand b{color:var(--teal);font-weight:800}
+  h1{font-size:37px;font-weight:850;letter-spacing:-.02em;margin-bottom:12px}
+  .lead{color:var(--ink2);font-size:15.5px;max-width:680px}
+
+  .stat{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+  .stat .s{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 18px;box-shadow:0 1px 2px rgba(20,30,45,.03)}
+  .stat .s b{font-size:24px;font-weight:850;display:block}
+  .stat .s span{font-size:12.5px;color:var(--mut)}
+
+  .kicker{font-size:11.5px;letter-spacing:.09em;color:var(--build);font-weight:800;margin:40px 0 10px;text-transform:uppercase}
+  .build-master{background:var(--paper);border:1px solid var(--build-line);border-radius:18px;padding:20px 22px}
+  .build-master .bm-row{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid var(--line2)}
+  .build-master .bm-row:first-of-type{border-top:0}
+  .bm-n{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--build-bg);color:var(--build);font-weight:800;font-size:12px}
+  .bm-name{font-size:15px;font-weight:750}
+  .bm-does{font-size:13px;color:var(--ink2);margin-top:1px}
+  .bm-where{font-size:11.5px;color:var(--mut);margin-top:3px}
+
+  .acc{margin-top:8px}
+  .acard{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-top:12px;overflow:hidden;box-shadow:0 1px 2px rgba(20,30,45,.03)}
+  .acard__head{width:100%;display:flex;align-items:center;gap:12px;padding:17px 20px;background:none;border:0;cursor:pointer;font:inherit;text-align:right;color:var(--ink);transition:background .12s ease}
+  .acard__head:hover{background:var(--wash)}
+  .acard__ic{font-size:22px;flex:none}
+  .acard__ttl{font-size:19px;font-weight:800}
+  .acard__sub{font-size:13px;color:var(--mut);font-weight:600}
+  .acard__build{margin-inline-start:auto;font-size:11.5px;font-weight:800;color:var(--build);background:var(--build-bg);border:1px solid var(--build-line);border-radius:999px;padding:3px 11px}
+  .acc-chev{color:var(--mut);font-size:12px;transition:transform .22s ease;margin-inline-start:10px}
+  .acard.is-open>.acard__head .acc-chev,.tcard.is-open>.tcard__head .acc-chev{transform:rotate(180deg)}
+  .acard__body{display:none;padding:4px 20px 20px}
+  .acard.is-open>.acard__body{display:block}
+
+  .tcard{border:1px solid var(--line);border-radius:13px;margin-top:10px;overflow:hidden}
+  .tcard__head{width:100%;display:flex;align-items:center;gap:10px;padding:13px 16px;background:none;border:0;cursor:pointer;font:inherit;text-align:right;color:var(--ink);transition:background .12s ease}
+  .tcard__head:hover{background:var(--wash)}
+  .tcard.is-open>.tcard__head{background:var(--teal-soft)}
+  .tcard__ttl{font-size:15.5px;font-weight:750}
+  .tcard__cnt{font-size:11.5px;color:var(--mut)}
+  .tcard__build{margin-inline-start:auto;font-size:10.5px;font-weight:800;color:var(--build);background:var(--build-bg);border-radius:6px;padding:2px 8px}
+  .tcard__body{display:none;padding:6px 14px 14px;border-top:1px solid var(--line2)}
+  .tcard.is-open>.tcard__body{display:block}
+
+  .tool{border:1px solid var(--line2);border-radius:11px;padding:12px 14px;margin-top:10px;background:var(--wash)}
+  .tool--build{background:var(--build-bg);border-color:var(--build-line)}
+  .tool__top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .tool__name{font-size:15px;font-weight:800}
+  .badge{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 8px}
+  .badge--have{color:var(--have);background:#fff;border:1px solid var(--have-line)}
+  .badge--build{color:var(--build);background:#fff;border:1px solid var(--build-line)}
+  .badge--kind{color:#fff}
+  .k-man{background:var(--k-man)} .k-int{background:var(--k-int)} .k-draw{background:var(--k-draw)}
+  .tool__code{font-size:11px;color:var(--mut);font-family:ui-monospace,Menlo,monospace}
+  .tool__row{font-size:13px;color:var(--ink2);margin-top:6px;display:flex;gap:7px}
+  .tool__row b{color:var(--ink);font-weight:700;flex:none}
+  .foot{margin-top:34px;text-align:center;color:var(--mut);font-size:12px}
+  .empty{padding:60px;text-align:center;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><b>vela</b> · מסמך תכנון פנימי</div>
+  <h1>מפת הכלים — מה צריך לבנות</h1>
+  <p class="lead">כל כלי וסוג-סרטוט שנצטרך כדי לתמוך בכל סוגי השאלות, לכל נושא בכל כיתה — מסומן אם כבר קיים או שצריך לבנות. בחר כיתה → נושא כדי לראות את הכלים שלו.</p>
+  <div class="stat" id="stat"></div>
+
+  <div class="kicker">רשימת הבנייה — כלים חדשים (ללא כפילויות)</div>
+  <div class="build-master" id="buildMaster"></div>
+
+  <div class="kicker" style="color:var(--teal)">לפי כיתה ונושא</div>
+  <div id="acc" class="acc"><div class="empty">טוען…</div></div>
+
+  <div class="foot">vela · מפת הכלים · נוצר ממיפוי תכנית-הלימודים מול הכלים הקיימים</div>
+</div>
+
+<script src="/tools-data.js"></script>
+<script>
+(function(){
+  const D = (window.VelaToolsData && window.VelaToolsData.grades) || [];
+  const LABEL = {"א":"כיתה א׳","ב":"כיתה ב׳","ג":"כיתה ג׳","ד":"כיתה ד׳","ה":"כיתה ה׳","ו":"כיתה ו׳"};
+  const ICON = {"א":"1️⃣","ב":"2️⃣","ג":"3️⃣","ד":"4️⃣","ה":"5️⃣","ו":"6️⃣"};
+  const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+  const esc=(s)=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const kindCls=(k)=>/מניפולטיב/.test(k)?"k-man":/אינטראקטיב/.test(k)?"k-int":"k-draw";
+
+  function tool(t){
+    const build=t.status==="לבנות";
+    const node=el("div","tool"+(build?" tool--build":""));
+    node.innerHTML=`<div class="tool__top">
+        <span class="tool__name">${esc(t.name)}</span>
+        <span class="badge ${build?"badge--build":"badge--have"}">${build?"לבנות":"קיים"}</span>
+        <span class="badge badge--kind ${kindCls(t.kind)}">${esc(t.kind||"")}</span>
+        ${t.existing?`<span class="tool__code">${esc(t.existing)}</span>`:""}
+      </div>
+      ${t.does?`<div class="tool__row"><b>מה:</b><span>${esc(t.does)}</span></div>`:""}
+      ${t.interaction?`<div class="tool__row"><b>הפעלה:</b><span>${esc(t.interaction)}</span></div>`:""}
+      ${t.serves?`<div class="tool__row"><b>משרת:</b><span>${esc(t.serves)}</span></div>`:""}`;
+    return node;
+  }
+
+  function makeCard(container, cls, headHtml){
+    const card=el("div",cls);
+    const head=el("button",cls+"__head");head.type="button";
+    head.innerHTML=headHtml+`<span class="acc-chev">▾</span>`;
+    const body=el("div",cls+"__body");
+    card.appendChild(head);card.appendChild(body);
+    head.addEventListener("click",()=>{
+      const open=card.classList.contains("is-open");
+      container.querySelectorAll(":scope > ."+cls+".is-open").forEach(c=>{if(c!==card)c.classList.remove("is-open");});
+      card.classList.toggle("is-open",!open);
+    });
+    container.appendChild(card);
+    return body;
+  }
+
+  // סטטיסטיקה + רשימת-בנייה מרוכזת (ללא כפילויות לפי שם)
+  let totalTools=0, buildCount=0;
+  const buildMap={};
+  D.forEach(g=>(g.topics||[]).forEach(t=>(t.tools||[]).forEach(x=>{
+    totalTools++;
+    if(x.status==="לבנות"){
+      buildCount++;
+      const key=x.name.trim();
+      if(!buildMap[key]) buildMap[key]={name:x.name,does:x.does,where:[]};
+      buildMap[key].where.push(LABEL[g.grade]+" · "+t.topic);
+    }
+  })));
+  const uniqBuild=Object.values(buildMap);
+
+  const stat=document.getElementById("stat");
+  stat.innerHTML=`
+    <div class="s"><b>${D.length}</b><span>כיתות</span></div>
+    <div class="s"><b>${totalTools}</b><span>כלים בסך הכל</span></div>
+    <div class="s"><b>${uniqBuild.length}</b><span>כלים חדשים לבנות</span></div>`;
+
+  const bm=document.getElementById("buildMaster");
+  bm.innerHTML="";
+  uniqBuild.sort((a,b)=>b.where.length-a.where.length).forEach((x,i)=>{
+    const row=el("div","bm-row");
+    row.innerHTML=`<div class="bm-n">${i+1}</div><div>
+      <div class="bm-name">${esc(x.name)}</div>
+      ${x.does?`<div class="bm-does">${esc(x.does)}</div>`:""}
+      <div class="bm-where">${esc(x.where.slice(0,4).join("  ·  "))}${x.where.length>4?`  +${x.where.length-4}`:""}</div>
+    </div>`;
+    bm.appendChild(row);
+  });
+
+  // אקורדיון כיתה → נושא → כלים
+  const acc=document.getElementById("acc");
+  acc.innerHTML="";
+  if(!D.length){ acc.innerHTML='<div class="empty">אין נתונים עדיין</div>'; return; }
+  D.forEach(g=>{
+    const gBuild=(g.topics||[]).reduce((s,t)=>s+(t.tools||[]).filter(x=>x.status==="לבנות").length,0);
+    const body=makeCard(acc,"acard",
+      `<span class="acard__ic">${ICON[g.grade]||"📘"}</span><span class="acard__ttl">${esc(LABEL[g.grade]||g.grade)}</span><span class="acard__sub">${(g.topics||[]).length} נושאים</span><span class="acard__build">${gBuild} לבנות</span>`);
+    (g.topics||[]).forEach(t=>{
+      const tb=(t.tools||[]).filter(x=>x.status==="לבנות").length;
+      const tbody=makeCard(body,"tcard",
+        `<span class="tcard__ttl">${esc(t.topic)}</span><span class="tcard__cnt">${(t.tools||[]).length} כלים</span>${tb?`<span class="tcard__build">${tb} לבנות</span>`:""}`);
+      (t.tools||[]).forEach(x=>tbody.appendChild(tool(x)));
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -657,11 +657,16 @@ const server = http.createServer(async (req, res) => {
       // repr רק מרשימת-הייצוגים המוכרת (הלקוח שולח מ-TOOL_REPR; לא טקסט חופשי ל-prompt)
       const ALLOWED_REPR = new Set(["ציר מספרים", "מוט שבר", "שבר אינטראקטיבי", "מערך נקודות", "מערך כפל", "בלוקי בסיס-10", "מודל מוט", "לוח עשר", "לוח מאה", "לוח הכפל", "אובייקטים לספירה", "מטבעות", "שעון", "כלי מותאם"]);
       const repr = typeof body.repr === "string" && ALLOWED_REPR.has(body.repr) ? body.repr : undefined;
-      const t = learnerProfile.record(userId, {
-        topic,
-        correct: body.correct === true ? true : body.correct === false ? false : null,
-        repr,
-      });
+      const correct = body.correct === true ? true : body.correct === false ? false : null;
+      const t = learnerProfile.record(userId, { topic, correct, repr });
+      // גם ציר-הזמן — כדי שהכרטיסים והגרפים למעלה (תרגילים/דיוק/מוטיבציה/פעילות) יכללו גם פעילות-למידה,
+      // בדיוק כמו התרגול. בלי זה תלמיד ש"רק למד" נראה ריק בראש-הדף.
+      if (typeof correct === "boolean") {
+        try {
+          memory.appendEvent("teacher", userId, { topic, correct, note: "שיעור" });
+          memory.appendEvent("mathematician", userId, { topic, correct, note: "שיעור" });
+        } catch { /* רישום-זיכרון לא חוסם */ }
+      }
       return json(res, 200, { ok: true, status: t ? t.status : null });
     }
 
