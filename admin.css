@@ -1036,7 +1036,7 @@ body.contentPicker { background: #fff; }
 .curTestItem__a.is-on { display: block; }
 
 /* ══ עלות ה-AI לתלמיד — מקטע רגיל (קו-מבדיל וכותרת), בלי מסגרת ══ */
-.costTotal { font-size: 38px; font-weight: 800; color: var(--accent); letter-spacing: -.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.costTotal { font-size: 56px; font-weight: 800; color: var(--accent); letter-spacing: -.02em; line-height: 1; font-variant-numeric: tabular-nums; }
 .costSub { font-size: 13px; color: var(--muted); margin-top: -8px; }
 .costEmpty { font-size: 13px; color: var(--muted); }
 .costChips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
