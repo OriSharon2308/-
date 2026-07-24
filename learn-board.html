@@ -1488,7 +1488,7 @@
         }
 
         board.onAnswerBoxes(function (list) {
-          boxes = list.map(function (b) { return { id: b.id, kind: b.kind, answer: b.answer, status: b.status }; });
+          boxes = list.map(function (b) { return { id: b.id, kind: b.kind, answer: b.answer, status: b.status, hint: b.hint || "", praise: b.praise || "" }; });
           var ids = {};
           boxes.forEach(function (b) { ids[b.id] = 1; if (!inputs[b.id]) inputs[b.id] = makeInput(b.id); });
           Object.keys(inputs).forEach(function (id) { if (!ids[id]) { inputs[id].remove(); delete inputs[id]; } });
@@ -1531,6 +1531,8 @@
               if (window.velaConfetti) window.velaConfetti();
               if (window.velaBubble) window.velaBubble("כל הכבוד! פתרת הכל 🎉");
               if (window.velaAdvance) window.velaAdvance.show("✓ אפשר להמשיך");
+            } else if (b.praise && window.velaBubble) {
+              window.velaBubble(b.praise); // שבח מוכן-מראש מהשיעור-הזהב — 0 טוקנים
             }
           } else if (correct === false) {
             b.status = "wrong"; board.setAnswerStatusById(id, "wrong");
@@ -1540,7 +1542,8 @@
               // תקוע אמיתי (פעמיים באותה תיבה) — המורה מחליף ייצוג, לא חוזר על אותו הסבר. בלי לגלות את התשובה.
               window.velaTeachFollowup("(הילד טעה פעמיים באותו תרגיל — הוא תקוע. אל תגלה את התשובה! הצג ויזואל מוחשי ופשוט יותר שממחיש בדיוק את התרגיל הזה, ועודד אותו בחום לנסות שוב.)");
             } else if (window.velaBubble) {
-              window.velaBubble("כמעט! נסה/י שוב 🙂");
+              // רמז מוכן-מראש מהשיעור-הזהב (0 טוקנים); בלעדיו — עידוד כללי. ה-AI נכנס רק בטעות השנייה.
+              window.velaBubble(b.hint ? b.hint : "כמעט! נסה/י שוב 🙂");
             }
           } else {
             if (window.velaTeachFollowup) window.velaTeachFollowup("(הילד ענה על שאלה מילולית: '" + val + "'. בדוק אם נכון; אם כן שבח ותן הבאה, אם לא עודד לנסות שוב.)");

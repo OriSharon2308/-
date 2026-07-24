@@ -647,7 +647,7 @@
     ask_answer: function (i) {
       var kind = i.kind === "text" ? "text" : "number";
       var bw = kind === "text" ? 150 : 60, bh = kind === "text" ? 56 : 52;
-      this.answerBoxes.push({ id: "ab" + (++this._abid), x: +i.x, y: +i.y, kind: kind, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: 0, gap0: 16, scale: i.scale ? clamp(+i.scale, 0.4, 3) : 1, text: "", status: "open" });
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: +i.x, y: +i.y, kind: kind, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: 0, gap0: 16, scale: i.scale ? clamp(+i.scale, 0.4, 3) : 1, text: "", status: "open", hint: i.hint != null ? String(i.hint).slice(0, 220) : "", praise: i.praise != null ? String(i.praise).slice(0, 140) : "" });
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
     // תבנית מהירה: תרגיל שלם כאובייקט אחד (טקסט "35 + 24 =" + תיבת-תשובה צמודה), ממוקם בצד ימין, מוערם בשורות.
@@ -681,7 +681,7 @@
       // מיקום מדויק (שיעורי-זהב/עורך): x,y מפורשים עוקפים את הסידור האוטומטי — לא מקדמים slot
       var exactPos = i.x != null && i.y != null && isFinite(+i.x) && isFinite(+i.y);
       if (exactPos) { boxX = +i.x; y = +i.y; }
-      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: i.scale ? clamp(+i.scale, 0.4, 3) : 1, text: text, status: "open" });
+      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: i.scale ? clamp(+i.scale, 0.4, 3) : 1, text: text, status: "open", hint: i.hint != null ? String(i.hint).slice(0, 220) : "", praise: i.praise != null ? String(i.praise).slice(0, 140) : "" });
       if (!exactPos) this._exSlot = slot + 1;
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
