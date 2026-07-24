@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>vela · המורה — לולאת ריחוף</title>
+<style>
+  /* ─── דף-תצוגה בלבד (לא חלק מהרכיב) ─── */
+  html, body { margin: 0; height: 100%; }
+  body { display: grid; place-items: center; background:
+    radial-gradient(1200px 700px at 50% 30%, #f0fbfa, #dff4f2 60%, #cfeeeb); }
+
+  /*
+   * ─── הרכיב: vela-teacher — לולאת-ריחוף של המורה ───
+   * שכבות מ-loop-src/assets לפי elements.json (מרחב 1254×1254, מיקומים ב-%).
+   * שקוף לגמרי — אפשר לשים על כל רקע. להעתקה לאפליקציה: הבלוק הזה + התיקייה assets.
+   */
+  .vela-teacher { position: relative; width: min(78vmin, 620px); aspect-ratio: 1; }
+  .vela-teacher img { position: absolute; display: block; user-select: none; -webkit-user-drag: none; }
+
+  /* צל-קרקע: מתכווץ ומתבהר כשהדמות עולה — "עוגן" שמוכיח את הריחוף */
+  .vt-shadow {
+    position: absolute; left: 26%; top: 84%; width: 48%; height: 7%;
+    background: radial-gradient(ellipse at center, rgba(13,110,103,0.30), rgba(13,110,103,0.10) 55%, transparent 72%);
+    border-radius: 50%;
+    animation: vt-shadow 4.6s ease-in-out infinite;
+  }
+
+  /* הגוף: ריחוף אנכי עדין + נטייה זעירה — נשימה אחת רגועה, לא "ריצוד" */
+  .vt-body-wrap {
+    position: absolute; inset: 0;
+    animation: vt-hover 4.6s ease-in-out infinite;
+    will-change: transform;
+  }
+  .vt-body { inset: 0; width: 100%; height: 100%; z-index: 2; }
+
+  /* זנב-הג'יני: מוסתר מאחורי הגוף, מתנדנד סביב נקודת-החיבור העליונה */
+  .vt-tail {
+    left: 15.87%; top: 65.87%; width: 50.4%; height: 22.97%; z-index: 1;
+    transform-origin: 50% 12%;
+    animation: vt-tail 4.6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* אלמנטים צפים: כל אחד בקצב, עיכוב ומשרעת משלו — עולם חי, לא מקהלה מסונכרנת */
+  .vt-el { will-change: transform; animation: vt-float var(--d, 6s) ease-in-out var(--dl, 0s) infinite; }
+  .vt-el.spin { animation: vt-float var(--d, 6s) ease-in-out var(--dl, 0s) infinite,
+                           vt-spin  var(--sd, 14s) linear infinite; }
+
+  @keyframes vt-hover  { 0%,100% { transform: translateY(0) rotate(0.001deg); }
+                         50%     { transform: translateY(-1.6%) rotate(-0.5deg); } }
+  @keyframes vt-shadow { 0%,100% { transform: scaleX(1); opacity: 1; }
+                         50%     { transform: scaleX(0.86); opacity: 0.62; } }
+  @keyframes vt-tail   { 0%,100% { transform: rotate(2.2deg) translateX(1.2%); }
+                         50%     { transform: rotate(-2.6deg) translateX(-1.4%); } }
+  @keyframes vt-float  { 0%,100% { transform: translate(0, 0); }
+                         50%     { transform: translate(var(--dx, 0px), var(--dy, -10px)); } }
+  @keyframes vt-spin   { to { transform: rotate(360deg); } }
+  /* סיבוב+ציפה יחד: העטיפה צפה, התמונה מסתובבת */
+  .vt-el-wrap { position: absolute; animation: vt-float var(--d, 6s) ease-in-out var(--dl, 0s) infinite; will-change: transform; }
+  .vt-el-wrap img { position: static; width: 100%; height: 100%; }
+  .vt-el-wrap.spin img { animation: vt-spin var(--sd, 16s) linear infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vt-body-wrap, .vt-tail, .vt-shadow, .vt-el, .vt-el-wrap, .vt-el-wrap img { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<figure class="vela-teacher" role="img" aria-label="וֶלה — המורה של האפליקציה, מרחף עם כוכבים וצורות קסם">
+  <div class="vt-shadow"></div>
+
+  <!-- אלמנטים צפים — מיקומים מ-elements.json (אחוזים מתוך 1254) -->
+  <!-- צד שמאל-עליון (ימין של הדמות): כוכבים קטנים -->
+  <div class="vt-el-wrap spin" style="left:75.4%; top:16.3%; width:2.4%; height:2.5%; --d:5.2s; --dl:.3s; --dx:3px; --dy:-8px; --sd:18s;"><img src="loop-src/assets/el-01.png" alt=""></div>
+  <div class="vt-el-wrap spin" style="left:78.1%; top:21.5%; width:4.4%; height:4.5%; --d:6.4s; --dl:1.1s; --dx:-4px; --dy:-12px; --sd:22s;"><img src="loop-src/assets/el-02.png" alt=""></div>
+  <div class="vt-el-wrap" style="left:74.5%; top:25.4%; width:2.3%; height:2.2%; --d:4.8s; --dl:2s; --dx:2px; --dy:-7px;"><img src="loop-src/assets/el-03.png" alt=""></div>
+  <!-- האטום הגדול — ליד היד הפתוחה -->
+  <div class="vt-el-wrap" style="left:68.4%; top:33.3%; width:19.9%; height:17.1%; --d:5.6s; --dl:.6s; --dx:-3px; --dy:-14px;"><img src="loop-src/assets/el-04.png" alt=""></div>
+  <!-- נקודות קטנות מימין -->
+  <div class="vt-el-wrap" style="left:82.5%; top:52.1%; width:2.3%; height:2.4%; --d:5s; --dl:1.6s; --dx:3px; --dy:-9px;"><img src="loop-src/assets/el-09.png" alt=""></div>
+  <div class="vt-el-wrap" style="left:79.8%; top:56.5%; width:2.4%; height:2.4%; --d:6.8s; --dl:.9s; --dx:-2px; --dy:-11px;"><img src="loop-src/assets/el-10.png" alt=""></div>
+  <div class="vt-el-wrap" style="left:75.8%; top:60%; width:3.7%; height:4%; --d:5.9s; --dl:2.4s; --dx:4px; --dy:-8px;"><img src="loop-src/assets/el-12.png" alt=""></div>
+  <!-- הקובייה -->
+  <div class="vt-el-wrap" style="left:73.9%; top:65.1%; width:9.4%; height:9.7%; --d:7.2s; --dl:.2s; --dx:-5px; --dy:-13px;"><img src="loop-src/assets/el-05.png" alt=""></div>
+  <div class="vt-el-wrap" style="left:71.7%; top:78.1%; width:2.3%; height:2.3%; --d:5.4s; --dl:1.3s; --dx:2px; --dy:-7px;"><img src="loop-src/assets/el-13.png" alt=""></div>
+  <!-- צד ימין (שמאל של הדמות): כוכב, נקודות, אורב והפירמידה -->
+  <div class="vt-el-wrap spin" style="left:13.2%; top:38.7%; width:6.7%; height:7.6%; --d:6.1s; --dl:.5s; --dx:4px; --dy:-12px; --sd:26s;"><img src="loop-src/assets/el-06.png" alt=""></div>
+  <div class="vt-el-wrap" style="left:11.6%; top:51.4%; width:5%; height:4.6%; --d:5.3s; --dl:1.8s; --dx:-3px; --dy:-9px;"><img src="loop-src/assets/el-07.png" alt=""></div>
+  <div class="vt-el-wrap" style="left:18.3%; top:59.4%; width:4.5%; height:4.5%; --d:6.6s; --dl:.1s; --dx:3px; --dy:-10px;"><img src="loop-src/assets/el-11.png" alt=""></div>
+  <div class="vt-el-wrap" style="left:12%; top:67.6%; width:20.7%; height:13.5%; --d:7.8s; --dl:1s; --dx:5px; --dy:-12px;"><img src="loop-src/assets/el-08.png" alt=""></div>
+
+  <!-- הדמות: זנב מאחור, גוף מעל — נעים יחד בריחוף אחד -->
+  <div class="vt-body-wrap">
+    <img class="vt-tail" src="loop-src/assets/tail.png" alt="">
+    <img class="vt-body" src="loop-src/assets/body.png" alt="">
+  </div>
+</figure>
+
+</body>
+</html>
