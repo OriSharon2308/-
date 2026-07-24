@@ -625,7 +625,7 @@ const server = http.createServer(async (req, res) => {
         messageText: String(body.messageText || ""),
         history: Array.isArray(body.history) ? body.history : [],
         gender: teachUser?.gender || "male",
-        topic: body.topic && body.topic.title ? String(body.topic.title) : "",
+        topic: body.topic && body.topic.title ? String(body.topic.title) : typeof body.topic === "string" ? body.topic : "",
         geometry: body.geometry || null,
         occupied: Array.isArray(body.occupied) ? body.occupied : [],
         layout: Array.isArray(body.layout) ? body.layout : [],
@@ -925,11 +925,6 @@ const server = http.createServer(async (req, res) => {
     }
 
     // מפת הכלים — אילו כלים/סרטוטים צריך לכל נושא בכל כיתה (מול הקיימים)
-    if (rel === "/מפת-כלים" || rel === "/tools-map" || rel === "/docs/מפת-כלים.html") {
-      return serveFile(res, "/docs/מפת-כלים.html", method);
-    }
-
-    // מפת הכלים — אילו כלים/סרטוטים צריך לבנות לכל נושא בכל כיתה
     if (rel === "/מפת-כלים" || rel === "/tools-map" || rel === "/docs/מפת-כלים.html") {
       return serveFile(res, "/docs/מפת-כלים.html", method);
     }
