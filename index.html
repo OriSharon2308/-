@@ -39,10 +39,14 @@
         outline: 2px solid #0d9488;
         outline-offset: 3px;
       }
-      .mascotSlot svg {
+      .mascotSlot svg,
+      .mascotSlot img {
         width: 100%;
         height: 100%;
         display: block;
+        object-fit: contain;
+        user-select: none;
+        -webkit-user-drag: none;
         filter: drop-shadow(0 4px 10px rgba(13, 148, 136, 0.28));
         animation: mascotBob 4.5s ease-in-out infinite;
       }
@@ -58,7 +62,8 @@
         transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); /* איטי וחלק יותר */
         /* width/height (=הגודל הסופי) נקבעים ב-JS; ה-scale בתוך transform מקטין בהתחלה */
       }
-      .mascotSlot.is-fly svg {
+      .mascotSlot.is-fly svg,
+      .mascotSlot.is-fly img {
         /* ריחוף עדין גם כשפתוח (translateY בלבד → נשאר חד). הצל מתחת (mascotFloatShadow) נע איתו */
         animation: mascotFloatBig 4.6s ease-in-out infinite;
         filter: drop-shadow(0 16px 26px rgba(13, 148, 136, 0.26));
@@ -563,7 +568,8 @@
         animation: mascotTalk 0.46s ease-in-out infinite;
       }
       /* גוף: ניתור חי + סקייל זעיר (מחליף את הריחוף האיטי) + זוהר תכלת רך פועם — שני אנימציות מתחברות (transform + filter) */
-      .chatSidebar__header.is-speaking .mascotSlot svg {
+      .chatSidebar__header.is-speaking .mascotSlot svg,
+      .chatSidebar__header.is-speaking .mascotSlot img {
         animation: mascotSpeak 0.9s ease-in-out infinite, mascotGlow 1.5s ease-in-out infinite;
       }
       .chatSidebar__header.is-speaking .mascotFloatShadow {
@@ -596,13 +602,15 @@
       @media (prefers-reduced-motion: reduce) {
         .chatSidebar__header.is-speaking .mascotMouthG,
         .chatSidebar__header.is-speaking .mascotSlot svg,
+        .chatSidebar__header.is-speaking .mascotSlot img,
         .chatSidebar__header.is-speaking .mascotFloatShadow {
           animation: none;
         }
         .chatSidebar__header.is-speaking .mascotMouthG { opacity: 1; transform: scaleY(0.7); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .mascotSlot svg {
+        .mascotSlot svg,
+        .mascotSlot img {
           animation: none;
         }
         .chatSidebar__header.is-talk,
@@ -624,6 +632,7 @@
         }
         /* סמלים מרחפים + צל + ריחוף המורה — בלי תנועה: הופעה רגועה בלבד */
         .mascotSlot.is-fly svg,
+        .mascotSlot.is-fly img,
         .orbitSym__b,
         .chatSidebar__header.is-open .mascotFloatShadow {
           animation: none;
@@ -726,28 +735,8 @@
             </div>
             <!-- דמות המורה (מסקוט Vela). לחיצה מרחיבה את הפס הלבן עצמו לריבוע, והמורה גדל וזז למרכז -->
             <button class="mascotSlot" id="mascotSlot" type="button" aria-label="המורה שלי — לחצו לפתיחה" aria-haspopup="dialog">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <defs>
-                  <linearGradient id="mTeal" x1="0" y1="0" x2="0.35" y2="1">
-                    <stop offset="0" stop-color="#22d3c0" /><stop offset="1" stop-color="#0d9488" />
-                  </linearGradient>
-                  <radialGradient id="mGloss" cx="0.5" cy="0.26" r="0.72">
-                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.5" /><stop offset="0.62" stop-color="#ffffff" stop-opacity="0" />
-                  </radialGradient>
-                </defs>
-                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mTeal)" />
-                <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#mGloss)" />
-                <circle cx="20" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
-                <circle cx="44" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
-                <circle cx="25" cy="30" r="6.2" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" /><circle cx="24.3" cy="29.3" r="1.1" fill="#fff" />
-                <circle cx="43" cy="30" r="6.2" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" /><circle cx="42.3" cy="29.3" r="1.1" fill="#fff" />
-                <path class="mascotSmile" d="M25 43 Q34 50 43 43" fill="none" stroke="#0f3b36" stroke-width="3" stroke-linecap="round" />
-                <g class="mascotMouthG">
-                  <ellipse cx="34" cy="45.5" rx="5" ry="3.4" fill="#0f3b36" />
-                  <ellipse cx="34" cy="47.1" rx="2.4" ry="1.4" fill="#ff8a73" />
-                </g>
-                <path d="M52.5 15 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#fff" opacity="0.92" />
-              </svg>
+              <!-- דמות המורה החדשה (teacher-character): גוף+זנב-ג'יני משוטחים לתמונה אחת -->
+              <img src="/teacher-character/loop-src/assets/character.png" alt="" aria-hidden="true" draggable="false" />
             </button>
             <div class="chatSidebar__titleWrap">
               <div class="chatSidebar__title">צ’אט עם המורה</div>
@@ -912,20 +901,8 @@
 
     <!-- study-v2: אווטאר מורה קטן בפינה שמאל-למטה — פתיחת הצ'אט עם המורה -->
     <button class="teacherDock" id="teacherDock" type="button" aria-label="המורה — פתיחת צ'אט">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="tdTeal" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#22d3c0" /><stop offset="1" stop-color="#0d9488" /></linearGradient>
-          <radialGradient id="tdGloss" cx="0.5" cy="0.26" r="0.72"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5" /><stop offset="0.62" stop-color="#ffffff" stop-opacity="0" /></radialGradient>
-        </defs>
-        <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#tdTeal)" />
-        <rect x="7" y="8" width="50" height="48" rx="19" fill="url(#tdGloss)" />
-        <circle cx="20" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
-        <circle cx="44" cy="40" r="3.8" fill="#ff9d73" opacity="0.45" />
-        <circle cx="25" cy="30" r="6.2" fill="#fff" /><circle cx="26" cy="31" r="3" fill="#0f3b36" /><circle cx="24.3" cy="29.3" r="1.1" fill="#fff" />
-        <circle cx="43" cy="30" r="6.2" fill="#fff" /><circle cx="44" cy="31" r="3" fill="#0f3b36" /><circle cx="42.3" cy="29.3" r="1.1" fill="#fff" />
-        <path d="M25 43 Q34 50 43 43" fill="none" stroke="#0f3b36" stroke-width="3" stroke-linecap="round" />
-        <path d="M52.5 15 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#fff" opacity="0.92" />
-      </svg>
+      <!-- דמות המורה החדשה (teacher-character) -->
+      <img src="/teacher-character/loop-src/assets/character.png" alt="" aria-hidden="true" draggable="false" />
     </button>
 
     <!-- חלונית: סיימת את כל שאלות הרמה -->

@@ -1500,10 +1500,14 @@ body:has(.study-v2) .footer { display: none; }
   transition: transform 0.18s ease;
   animation: teacherDockBob 4.5s ease-in-out infinite;
 }
-.teacherDock svg {
+.teacherDock svg,
+.teacherDock img {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
   filter: drop-shadow(0 6px 13px rgb(13 148 136 / 0.34));
 }
 .teacherDock:hover { transform: translateY(-3px) scale(1.06); }
