@@ -278,33 +278,34 @@
       @media (prefers-reduced-motion: reduce) { .askChip { transition: opacity 0.12s linear, visibility 0.12s; transform: translateX(-50%) !important; } }
 
       /* ───────── כפתור המורה (מרחף) + צ'אט ───────── */
+      /* המורה ענק בפינת המסך — גבולות-המסך הם מה שחותך אותו (לא מסגרת) */
       .teacherFab {
-        position: fixed; left: 20px; bottom: 16px; z-index: 20;
-        width: 78px; height: 92px; padding: 0; border: none; background: none; cursor: pointer;
+        position: fixed; left: -48px; bottom: -130px; z-index: 20;
+        width: 320px; height: 420px; padding: 0; border: none; background: none; cursor: pointer;
       }
       .teacherFab__art {
-        display: block; width: 72px; height: 72px; margin: 0 auto;
+        display: block; width: 100%; height: 100%; margin: 0;
         animation: fabBob 4.6s ease-in-out infinite;
+      }
+      @media (max-width: 640px) {
+        .teacherFab { width: 220px; height: 289px; left: -34px; bottom: -90px; }
       }
       .teacherFab__art svg { display: block; width: 100%; height: 100%; transition: transform 0.2s ease; }
       .teacherFab:hover .teacherFab__art svg { transform: scale(1.06); }
-      /* דמות חדשה: חיתוך-פנים — רואים ראש+כובע, בלי רקע ובלי מסגרת (הדמות נקייה על המסך) */
+      /* הדמות בגוף מלא — המסך חותך את החלק התחתון; בלי רקע ובלי מסגרת */
       .teacherFab__art img {
         display: block; width: 100%; height: 100%;
-        object-fit: cover; object-position: 50% 10%;
+        object-fit: contain; object-position: center bottom;
         transition: transform 0.2s ease;
         user-select: none; -webkit-user-drag: none;
       }
-      .teacherFab:hover .teacherFab__art img { transform: scale(1.06); }
+      .teacherFab:hover .teacherFab__art img { transform: scale(1.03); }
       .chatPanel__avatar img {
         display: block; width: 100%; height: 100%;
         object-fit: cover; object-position: 50% 10%;
       }
       .teacherFab__shadow {
-        position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%);
-        width: 50px; height: 11px; border-radius: 50%;
-        background: rgba(13, 60, 53, 0.2); filter: blur(2px);
-        animation: fabShadow 4.6s ease-in-out infinite;
+        display: none; /* המורה "צומח" מקצה-המסך — אין צורך בצל-ריחוף */
       }
       @keyframes fabBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
       /* ── מצב-דיבור: מסך לבן נקי, המורה במרכז, מיקרופון אחד גדול, ואיקס עדין — בלי מסגרות ──
@@ -479,8 +480,8 @@
 
       /* בועת דיבור של המורה (תשובת ה-✓) — מימין לדמות, צל רך משלה (בלי החשכת מסך) */
       .teacherBubble {
-        position: fixed; left: 92px; bottom: 90px; z-index: 38;
-        max-width: min(320px, calc(100vw - 112px));
+        position: fixed; left: 250px; bottom: 240px; z-index: 38;
+        max-width: min(320px, calc(100vw - 270px));
         background: #fff; color: var(--ink);
         /* פינה שמאלית-תחתונה ישרה (חדה) — הבועה מצביעה באלכסון אל המורה, בלי חץ */
         border-radius: 24px 24px 24px 0; padding: 13px 17px;

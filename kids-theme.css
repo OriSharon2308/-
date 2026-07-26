@@ -1482,12 +1482,13 @@ body:has(.study-v2) .footer { display: none; }
 .study-v2 .msg--user { border-bottom-right-radius: 5px; }
 
 /* אווטאר המורה בפינה שמאל-למטה — פתיחת הצ'אט (שלב ב' יהפוך אותו לרקע מלא) */
+/* המורה ענק בפינה — גבולות-המסך חותכים אותו (לא מסגרת) */
 .teacherDock {
   position: fixed;
-  left: 20px;
-  bottom: 12px;
-  width: 112px;
-  height: 112px;
+  left: -40px;
+  bottom: -110px;
+  width: 270px;
+  height: 355px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -1510,10 +1511,13 @@ body:has(.study-v2) .footer { display: none; }
   -webkit-user-drag: none;
   filter: drop-shadow(0 6px 13px rgb(13 148 136 / 0.34));
 }
-/* דמות חדשה: חיתוך-פנים גדול — בלי רקע ובלי מסגרת, הדמות נקייה על המסך */
+/* הדמות בגוף מלא — המסך חותך את החלק התחתון */
 .teacherDock img {
-  object-fit: cover;
-  object-position: 50% 10%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+@media (max-width: 640px) {
+  .teacherDock { width: 190px; height: 250px; left: -28px; bottom: -78px; }
 }
 .teacherDock:hover { transform: translateY(-3px) scale(1.06); }
 .teacherDock:active { transform: scale(0.96); }
