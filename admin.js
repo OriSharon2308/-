@@ -781,16 +781,24 @@
   };
   const PHASE_HE = { instruct: "הסבר", guided: "תרגול מודרך", independent: "תרגול עצמאי" };
 
-  // צ'יפ לכל פריט על הלוח: כיתוב/תרגיל מציגים גם את התוכן עצמו
-  function goldItemChip(tc) {
-    const name = TOOL_HE[tc.name] || tc.name;
+  // פריט על הלוח: כיתוב ותרגיל נערכים ישירות כאן; שאר הכלים — צ'יפ (עיצוב מלא בסטודיו)
+  function goldItemHtml(tc, ph, idx, ti) {
     const inp = tc.input || {};
-    if (tc.name === "write_text" && inp.text) return `<span class="goldItem">✏️ ${esc(String(inp.text).slice(0, 30))}</span>`;
-    if (tc.name === "draw_exercise") {
-      const hint = inp.hint ? ` <b class="goldItem__hint" title="${esc(String(inp.hint))}">רמז✓</b>` : "";
-      return `<span class="goldItem goldItem--ex">📝 ${esc(String(inp.text || "").slice(0, 24))} <b>[${esc(String(inp.answer ?? ""))}]</b>${hint}</span>`;
+    const d = `data-ph="${ph}" data-idx="${idx}" data-tc="${ti}"`;
+    if (tc.name === "write_text") {
+      return `<div class="goldEd goldEd--text"><span class="goldEd__ico" title="כיתוב על הלוח">✏️</span>
+        <input class="goldField" ${d} data-field="text" maxlength="40" value="${esc(String(inp.text || ""))}" placeholder="כיתוב על הלוח" /></div>`;
     }
-    return `<span class="goldItem">${esc(name)}</span>`;
+    if (tc.name === "draw_exercise") {
+      return `<div class="goldEd goldEd--ex"><span class="goldEd__ico" title="תרגיל עם תיבת-תשובה">📝</span>
+        <div class="goldEd__grid">
+          <label>שאלה<input class="goldField" ${d} data-field="text" maxlength="80" value="${esc(String(inp.text || ""))}" /></label>
+          <label class="goldEd__ans">תשובה<input class="goldField" ${d} data-field="answer" maxlength="20" value="${esc(String(inp.answer ?? ""))}" /></label>
+          <label class="goldEd__wide">רמז (בטעות ראשונה — בלי לגלות!)<input class="goldField" ${d} data-field="hint" maxlength="220" value="${esc(String(inp.hint || ""))}" /></label>
+          <label class="goldEd__wide">שבח (בתשובה נכונה)<input class="goldField" ${d} data-field="praise" maxlength="140" value="${esc(String(inp.praise || ""))}" /></label>
+        </div></div>`;
+    }
+    return `<span class="goldItem">${esc(TOOL_HE[tc.name] || tc.name)}</span>`;
   }
 
   // תוכן השיעור-המוכן בתוך כרטיס-השלב: תיבת-עריכה לכל מסך + מה שמוצג על הלוח
@@ -804,12 +812,19 @@
       const screens = Array.isArray(raw) ? raw : [raw];
       screens.forEach((scr, idx) => {
         const head = PHASE_HE[ph] + (screens.length > 1 ? ` · מסך ${idx + 1}/${screens.length}` : "");
-        const items = (scr.toolCalls || []).map(goldItemChip).join("");
+        const editors = [];
+        const chips = [];
+        (scr.toolCalls || []).forEach((tc, ti) => {
+          const h = goldItemHtml(tc, ph, idx, ti);
+          if (h.startsWith("<span")) chips.push(h); else editors.push(h);
+        });
         const rows = Math.min(6, Math.max(2, Math.ceil(String(scr.reply || "").length / 70)));
         blocks.push(`<div class="goldScreen">
             <div class="goldScreen__head">${esc(head)}</div>
-            <textarea class="goldReply" data-ph="${ph}" data-idx="${idx}" rows="${rows}" placeholder="מה המורה אומר/ת במסך הזה…">${esc(String(scr.reply || ""))}</textarea>
-            ${items ? `<div class="goldItems"><span class="goldItems__label">על הלוח:</span>${items}</div>` : ""}
+            <div class="goldScreen__replyLabel">🗣 המורה אומר/ת:</div>
+            <textarea class="goldReply goldField" data-ph="${ph}" data-idx="${idx}" data-field="reply" rows="${rows}" placeholder="מה המורה אומר/ת במסך הזה…">${esc(String(scr.reply || ""))}</textarea>
+            ${editors.join("")}
+            ${chips.length ? `<div class="goldItems"><span class="goldItems__label">עוד על הלוח:</span>${chips.join("")}</div>` : ""}
           </div>`);
       });
     }
@@ -818,6 +833,33 @@
         <button class="btn btn--sm goldSaveBtn" data-save="${s.n}">💾 שמירת הנוסח</button>
         <span class="goldSaveMsg" data-msg="${s.n}"></span>
       </div>`;
+  }
+
+  // איסוף העריכות מהמסך → עדכון עותק של המערך → שמירה לשרת (אותו קובץ שהילדים מקבלים)
+  async function saveGoldStage(t, s, card) {
+    const g = JSON.parse(JSON.stringify(s.goldenData));
+    card.querySelectorAll(".goldField").forEach((f) => {
+      const ph = f.dataset.ph, idx = +f.dataset.idx, field = f.dataset.field;
+      const raw = g.phases[ph];
+      const scr = Array.isArray(raw) ? raw[idx] : raw;
+      if (!scr) return;
+      if (field === "reply") scr.reply = f.value;
+      else {
+        const tc = (scr.toolCalls || [])[+f.dataset.tc];
+        if (tc) { tc.input = tc.input || {}; tc.input[field] = f.value; }
+      }
+    });
+    const msg = card.querySelector(`[data-msg="${s.n}"]`);
+    try {
+      const res = await fetch("/api/admin/golden/save", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ topic: t.key, lesson: s.n, data: { title: g.title || "", phases: g.phases } }),
+      });
+      const out = await res.json().catch(() => null);
+      if (out && out.ok) { s.goldenData = g; if (msg) { msg.textContent = "נשמר ✓ — זה מה שהילדים יקבלו"; msg.className = "goldSaveMsg is-ok"; } }
+      else if (msg) { msg.textContent = "השמירה נכשלה" + (out && out.error ? ": " + out.error : ""); msg.className = "goldSaveMsg is-bad"; }
+    } catch (e) { if (msg) { msg.textContent = "השמירה נכשלה — בעיית רשת"; msg.className = "goldSaveMsg is-bad"; } }
+    if (msg) setTimeout(() => { msg.textContent = ""; }, 4000);
   }
 
   // מסך 2 — מפת-הדרכים של הנושא (מסך מלא)
@@ -876,34 +918,12 @@
       if (window.VelaGoldenEditor) window.VelaGoldenEditor.open(t.key, n, stage ? stage.title : "");
       else alert("הסטודיו לא נטען — רענן/י את הדף");
     }));
-    // שמירת-נוסח ישירה ממפת-הדרכים: תיבות-הטקסט נשמרות אל קובץ-הזהב — זה מה שהילדים מקבלים
-    body.querySelectorAll(".goldSaveBtn").forEach((btn) => btn.addEventListener("click", async () => {
+    // שמירת עריכות-הנוסח שנעשו ישירות במפה (דברי-מורה, שאלות, תשובות, רמזים)
+    body.querySelectorAll(".goldSaveBtn").forEach((btn) => btn.addEventListener("click", () => {
       const n = Number(btn.dataset.save);
       const stage = t.stages.find((s) => s.n === n);
-      const msg = body.querySelector(`.goldSaveMsg[data-msg="${n}"]`);
-      if (!stage || !stage.goldenData) return;
-      const data = JSON.parse(JSON.stringify(stage.goldenData));
-      body.querySelectorAll(`.goldPhases[data-goldstage="${n}"] .goldReply`).forEach((ta) => {
-        const ph = ta.dataset.ph, idx = Number(ta.dataset.idx);
-        const raw = data.phases[ph];
-        if (!raw) return;
-        if (Array.isArray(raw)) { if (raw[idx]) raw[idx].reply = ta.value; }
-        else if (idx === 0) raw.reply = ta.value;
-      });
-      btn.disabled = true;
-      if (msg) msg.textContent = "שומר…";
-      try {
-        const res = await fetch("/api/admin/golden/save", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ topic: t.key, lesson: n, data: { title: data.title, phases: data.phases } }),
-        });
-        const out = await res.json().catch(() => null);
-        if (out && out.ok) { stage.goldenData = data; if (msg) msg.textContent = "נשמר ✓ — זה מה שהילדים יקבלו"; }
-        else if (msg) msg.textContent = "השמירה נכשלה" + (out && out.error ? ": " + out.error : "");
-      } catch (e) { if (msg) msg.textContent = "השמירה נכשלה — בדקו חיבור"; }
-      btn.disabled = false;
-      if (msg) setTimeout(() => { msg.textContent = ""; }, 4000);
+      const card = btn.closest(".roadStage__card");
+      if (stage && card) saveGoldStage(t, stage, card);
     }));
     body.querySelectorAll(".toolChip").forEach((chip) => chip.addEventListener("click", () => {
       const [nStr, tiStr] = chip.dataset.tool.split(":");

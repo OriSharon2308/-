@@ -1063,3 +1063,19 @@ body.contentPicker { background: #fff; }
 .goldTeach { margin-top: 10px; font-size: 12.5px; color: #6b7280; }
 .goldTeach summary { cursor: pointer; }
 .goldTeach p { margin: 6px 0 0; line-height: 1.55; }
+.goldExplain { font-size: 12.5px; color: #6b7280; margin: 4px 0 2px; line-height: 1.5; }
+.goldPhases { display: flex; flex-direction: column; gap: 4px; }
+.goldScreen__replyLabel { font-size: 12px; color: #0d9488; font-weight: 600; margin: 6px 0 3px; }
+/* עורכי-פריטים: כיתוב על הלוח + תרגיל (שאלה/תשובה/רמז/שבח) */
+.goldEd { display: flex; gap: 8px; align-items: flex-start; margin-top: 8px; }
+.goldEd__ico { flex: none; font-size: 15px; margin-top: 7px; }
+.goldEd--text .goldField { flex: 1; }
+.goldEd__grid { flex: 1; display: grid; grid-template-columns: 1fr 110px; gap: 6px 8px; }
+.goldEd__grid label { display: flex; flex-direction: column; gap: 2px; font-size: 11.5px; color: #92700c; font-weight: 600; }
+.goldEd__wide { grid-column: 1 / -1; }
+.goldField { box-sizing: border-box; direction: rtl; font: inherit; font-size: 13.5px; color: #1f2937; background: #fffdf5; border: 1px solid #eadfbc; border-radius: 8px; padding: 6px 10px; transition: border-color .15s ease, box-shadow .15s ease; }
+.goldField:focus { outline: none; border-color: #d9a514; box-shadow: 0 0 0 3px rgba(217,165,20,.12); }
+textarea.goldField { background: #fff; border-color: #e5e7eb; }
+.goldSaveBtn { background: #0d9488; color: #fff; border: 0; }
+.goldSaveBtn:hover { background: #0b7f75; }
+.goldSaveMsg.is-bad { color: #b91c1c; }

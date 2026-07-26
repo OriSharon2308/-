@@ -82,7 +82,8 @@
   const COLOR_CHOICES = [["", "#0d9488"], ["#ef4444", "#ef4444"], ["#3b82f6", "#3b82f6"], ["#22c55e", "#22c55e"], ["#f59e0b", "#f59e0b"], ["#111827", "#111827"]];
   const FIELDS = {
     write_text: [{ k: "text", t: "text", l: "הטקסט", max: 40 }, { k: "color", t: "color", l: "צבע" }],
-    draw_exercise: [{ k: "text", t: "text", l: "התרגיל", max: 80 }, { k: "answer", t: "text", l: "התשובה הנכונה", max: 20 }],
+    draw_exercise: [{ k: "text", t: "text", l: "התרגיל", max: 80 }, { k: "answer", t: "text", l: "התשובה הנכונה", max: 20 },
+      { k: "hint", t: "text", l: "רמז (מוצג בטעות ראשונה, בלי לגלות)", max: 220 }, { k: "praise", t: "text", l: "שבח לתשובה נכונה", max: 140 }],
     draw_base_ten: [{ k: "value", t: "int", l: "המספר", min: 1, max: 999 }],
     draw_number_line: [{ k: "from", t: "int", l: "מ-", min: -100, max: 1000 }, { k: "to", t: "int", l: "עד", min: -100, max: 1000 }, { k: "step", t: "int", l: "קפיצה", min: 1, max: 100 }],
     draw_array: [{ k: "rows", t: "int", l: "שורות", min: 1, max: 12 }, { k: "cols", t: "int", l: "עמודות", min: 1, max: 12 }],
