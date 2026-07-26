@@ -19,8 +19,8 @@
       }
       .mascotSlot {
         flex: 0 0 auto;
-        width: 46px;
-        height: 46px;
+        width: 72px;
+        height: 72px;
         padding: 0;
         border: 0;
         background: transparent;
@@ -49,6 +49,20 @@
         -webkit-user-drag: none;
         filter: drop-shadow(0 4px 10px rgba(13, 148, 136, 0.28));
         animation: mascotBob 4.5s ease-in-out infinite;
+      }
+      /* במנוחה: חיתוך-פנים עגול וגדול — רואים ראש+כובע, לא את כל הגוף */
+      .mascotSlot img {
+        object-fit: cover;
+        object-position: 50% 10%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 35%, #e9fbf8, #cdeeea);
+      }
+      /* בפתיחה (מצב-שיחה): הדמות המלאה — הרגע שבו המורה "מגיע" */
+      .mascotSlot.is-fly img {
+        object-fit: contain;
+        object-position: center;
+        border-radius: 0;
+        background: transparent;
       }
       /* בפתיחה: המורה גדל ונע. הקופסה בגודל הסופי (SVG מצויר גדול → חד), והאנימציה רק על transform (GPU → חלק לגמרי, בלי reflow לכל פריים) */
       .mascotSlot.is-fly {

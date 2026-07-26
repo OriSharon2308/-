@@ -288,6 +288,22 @@
       }
       .teacherFab__art svg { display: block; width: 100%; height: 100%; transition: transform 0.2s ease; }
       .teacherFab:hover .teacherFab__art svg { transform: scale(1.06); }
+      /* דמות חדשה: חיתוך-פנים עגול — רואים ראש+כובע, לא את כל הגוף */
+      .teacherFab__art img {
+        display: block; width: 100%; height: 100%;
+        object-fit: cover; object-position: 50% 10%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 35%, #e9fbf8, #cdeeea);
+        transition: transform 0.2s ease;
+        user-select: none; -webkit-user-drag: none;
+      }
+      .teacherFab:hover .teacherFab__art img { transform: scale(1.06); }
+      .chatPanel__avatar img {
+        display: block; width: 100%; height: 100%;
+        object-fit: cover; object-position: 50% 10%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 35%, #e9fbf8, #cdeeea);
+      }
       .teacherFab__shadow {
         position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%);
         width: 50px; height: 11px; border-radius: 50%;
@@ -318,7 +334,7 @@
       }
       .voiceMode__x:hover { color: var(--ink); transform: scale(1.1); }
       .voiceMode__avatar { width: 140px; height: 140px; }
-      .voiceMode__avatar svg { display: block; width: 100%; height: 100%; }
+      .voiceMode__avatar svg, .voiceMode__avatar img { display: block; width: 100%; height: 100%; object-fit: contain; }
       .voiceMode.is-speaking .voiceMode__avatar { animation: voiceTalk 0.9s ease-in-out infinite; }
       @keyframes voiceTalk { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-5px) scale(1.03); } }
       .voiceMode__status { font-size: 16px; font-weight: 600; color: #5c7570; min-height: 24px; }
@@ -380,7 +396,7 @@
         transform: translateY(0) scale(1); opacity: 1;
         transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease; /* overshoot אחד ועדין — "מגיע ומתמקם" */
       }
-      .introAvatar svg { display: block; width: 100%; height: 100%; }
+      .introAvatar svg, .introAvatar img { display: block; width: 100%; height: 100%; object-fit: contain; }
       .introBubble {
         max-width: min(430px, calc(100vw - 48px)); min-height: 58px;
         background: #fff; border-radius: 22px; padding: 16px 22px;
@@ -548,18 +564,8 @@
     <button class="teacherFab" id="teacherFab" type="button" aria-label="פתיחת צ'אט עם המורה">
       <span class="teacherFab__shadow" aria-hidden="true"></span>
       <span class="teacherFab__art" aria-hidden="true">
-        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="velaGfab" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#1ad3bd"/><stop offset="1" stop-color="#0d9488"/></linearGradient></defs>
-          <rect x="12" y="12" width="56" height="56" rx="20" fill="url(#velaGfab)"/>
-          <ellipse cx="30" cy="30" rx="14" ry="10" fill="#fff" opacity="0.14"/>
-          <circle cx="31" cy="50" r="5" fill="#ff8a5c" opacity="0.45"/>
-          <circle cx="49" cy="50" r="5" fill="#ff8a5c" opacity="0.45"/>
-          <ellipse class="eye" cx="33" cy="40" rx="5" ry="6.5" fill="#fff"/>
-          <ellipse class="eye" cx="47" cy="40" rx="5" ry="6.5" fill="#fff"/>
-          <circle class="pupil" cx="34" cy="42" r="2.6" fill="#0f3b36"/>
-          <circle class="pupil" cx="48" cy="42" r="2.6" fill="#0f3b36"/>
-          <path d="M34 52 Q40 58 46 52" fill="none" stroke="#0f3b36" stroke-width="2.6" stroke-linecap="round"/>
-        </svg>
+        <!-- דמות המורה החדשה — חיתוך-פנים (ראש+כובע), הגוף המלא מופיע בפתיחה ובמצב-דיבור -->
+        <img src="/teacher-character/loop-src/assets/character.png" alt="" draggable="false" />
       </span>
     </button>
 
@@ -591,15 +597,7 @@
     <div class="chatPanel" id="chatPanel" role="dialog" aria-label="צ'אט עם המורה">
       <header class="chatPanel__head">
         <span class="chatPanel__avatar" aria-hidden="true">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="velaGhead" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#1ad3bd"/><stop offset="1" stop-color="#0d9488"/></linearGradient></defs>
-            <rect x="12" y="12" width="56" height="56" rx="20" fill="url(#velaGhead)"/>
-            <ellipse cx="33" cy="40" rx="5" ry="6.5" fill="#fff"/>
-            <ellipse cx="47" cy="40" rx="5" ry="6.5" fill="#fff"/>
-            <circle cx="34" cy="42" r="2.6" fill="#0f3b36"/>
-            <circle cx="48" cy="42" r="2.6" fill="#0f3b36"/>
-            <path d="M34 52 Q40 58 46 52" fill="none" stroke="#0f3b36" stroke-width="2.6" stroke-linecap="round"/>
-          </svg>
+          <img src="/teacher-character/loop-src/assets/character.png" alt="" draggable="false" />
         </span>
         <div class="chatPanel__title">המורה<small>כאן ללמד אותך</small></div>
         <button class="voiceBtn" id="voiceOpen" type="button" aria-label="לדבר עם המורה בקול" title="לדבר עם המורה בקול">🎤</button>
@@ -1724,9 +1722,13 @@
         introStart.addEventListener("click", startLesson);
 
         if (L.active && !tryResume()) {
-          // משכפלים את אווטאר-המורה (אותה דמות בדיוק) אל מרכז המסך
-          var fabSvg = document.querySelector("#teacherFab .teacherFab__art svg");
-          if (fabSvg && introAvatar) introAvatar.appendChild(fabSvg.cloneNode(true));
+          // דמות המורה בגוף מלא "מגיעה" למרכז המסך (בכפתור הצף — רק הפנים)
+          if (introAvatar && !introAvatar.firstChild) {
+            var introImg = document.createElement("img");
+            introImg.src = "/teacher-character/loop-src/assets/character.png";
+            introImg.alt = "";
+            introAvatar.appendChild(introImg);
+          }
           intro.classList.add("is-show");
           // המסך המוכן נטען *במקביל לברכה* (לא אחריה) — שיהיה מצויר ומוכן על הלוח לפני שהילד בכלל לוחץ "בוא נתחיל".
           prefetchInstruct();
@@ -1803,8 +1805,11 @@
 
         function open() {
           if (!avatarEl.firstChild) {
-            var fabSvg = document.querySelector("#teacherFab .teacherFab__art svg");
-            if (fabSvg) avatarEl.appendChild(fabSvg.cloneNode(true));
+            // מצב-דיבור: המורה במרכז הבמה — גוף מלא
+            var voiceImg = document.createElement("img");
+            voiceImg.src = "/teacher-character/loop-src/assets/character.png";
+            voiceImg.alt = "";
+            avatarEl.appendChild(voiceImg);
           }
           document.getElementById("chatPanel").classList.remove("is-open"); // הצ'אט מפנה את הבמה
           overlay.classList.add("is-show");

@@ -146,14 +146,28 @@
         display: flex;
         justify-content: center;
       }
-      .heroArt svg {
-        width: min(420px, 90%);
-        height: auto;
-        animation: bobArt 5.5s ease-in-out infinite;
+      /* דמות המורה החדשה (teacher-character) — לולאת-ריחוף חיה משכבות */
+      .heroArt .velaHero { position: relative; width: min(420px, 90%); aspect-ratio: 1; }
+      .heroArt .velaHero img { position: absolute; display: block; user-select: none; -webkit-user-drag: none; }
+      .heroArt .vhShadow {
+        position: absolute; left: 26%; top: 84%; width: 48%; height: 7%;
+        background: radial-gradient(ellipse at center, rgba(13,110,103,0.30), rgba(13,110,103,0.10) 55%, transparent 72%);
+        border-radius: 50%;
+        animation: vhShadow 4.6s ease-in-out infinite;
       }
-      @keyframes bobArt {
-        50% { transform: translateY(-12px); }
+      .heroArt .vhBody { position: absolute; inset: 0; animation: vhHover 4.6s ease-in-out infinite; will-change: transform; }
+      .heroArt .vhBody .vhBodyImg { inset: 0; width: 100%; height: 100%; z-index: 2; }
+      .heroArt .vhBody .vhTail {
+        left: 15.87%; top: 65.87%; width: 50.4%; height: 22.97%; z-index: 1;
+        transform-origin: 50% 12%;
+        animation: vhTail 4.6s ease-in-out infinite;
       }
+      .heroArt .vhEl { position: absolute; animation: vhFloat var(--d, 6s) ease-in-out var(--dl, 0s) infinite; will-change: transform; }
+      .heroArt .vhEl img { position: static; width: 100%; height: 100%; }
+      @keyframes vhHover  { 0%,100% { transform: translateY(0) rotate(0.001deg); } 50% { transform: translateY(-1.6%) rotate(-0.5deg); } }
+      @keyframes vhShadow { 0%,100% { transform: scaleX(1); opacity: 1; } 50% { transform: scaleX(0.86); opacity: 0.62; } }
+      @keyframes vhTail   { 0%,100% { transform: rotate(2.2deg) translateX(1.2%); } 50% { transform: rotate(-2.6deg) translateX(-1.4%); } }
+      @keyframes vhFloat  { 0%,100% { transform: translate(0, 0); } 50% { transform: translate(var(--dx, 0px), var(--dy, -10px)); } }
 
       /* סטטיסטיקות — אריחים צבעוניים רכים */
       .home__stats {
@@ -196,10 +210,10 @@
         .heroText { text-align: center; }
         .heroActions { justify-content: center; }
         .heroArt { order: -1; }
-        .heroArt svg { width: min(280px, 70%); }
+        .heroArt .velaHero { width: min(280px, 70%); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .heroArt svg { animation: none; }
+        .heroArt .vhBody, .heroArt .vhTail, .heroArt .vhShadow, .heroArt .vhEl { animation: none; }
         .home .home__greeting .ch { opacity: 1; }
         .home .home__greeting .ch--on { animation: none; }
       }
@@ -248,51 +262,27 @@
           </div>
 
           <div class="heroArt" aria-hidden="true">
-            <svg viewBox="0 0 440 400" xmlns="http://www.w3.org/2000/svg" role="img">
-              <title>מסקוט Vela</title>
-              <defs>
-                <linearGradient id="velaTeal" x1="0" y1="0" x2="0.4" y2="1">
-                  <stop offset="0" stop-color="#1ad3bd" />
-                  <stop offset="1" stop-color="#0d9488" />
-                </linearGradient>
-              </defs>
-
-              <!-- צל קרקע -->
-              <ellipse cx="220" cy="362" rx="120" ry="16" fill="rgba(13,60,53,0.10)" />
-
-              <!-- צורות מרחפות -->
-              <circle cx="70" cy="96" r="28" fill="#ff7a59" />
-              <text x="70" y="107" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="32" font-weight="700" fill="#fff">+</text>
-
-              <rect x="346" y="78" width="54" height="54" rx="16" fill="#f6b73c" transform="rotate(10 373 105)" />
-              <text x="373" y="115" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="30" font-weight="700" fill="#fff" transform="rotate(10 373 105)">7</text>
-
-              <polygon points="392,300 424,300 408,270" fill="#8b7cf0" />
-              <text x="58" y="312" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="34" font-weight="700" fill="rgba(13,148,136,0.55)">×</text>
-
-              <!-- כוכבים -->
-              <path d="M404 196 l5 12 13 1 -10 9 3 13 -11 -7 -11 7 3 -13 -10 -9 13 -1z" fill="#fbbf24" />
-              <path d="M44 196 l4 9 10 1 -8 7 3 10 -9 -6 -9 6 3 -10 -8 -7 10 -1z" fill="#fbbf24" opacity="0.85" />
-
-              <!-- גוף המסקוט -->
-              <rect x="128" y="120" width="184" height="184" rx="64" fill="url(#velaTeal)" />
-              <ellipse cx="178" cy="168" rx="42" ry="30" fill="#fff" opacity="0.14" />
-
-              <!-- לחיים -->
-              <circle cx="170" cy="236" r="13" fill="#ff8a5c" opacity="0.45" />
-              <circle cx="270" cy="236" r="13" fill="#ff8a5c" opacity="0.45" />
-
-              <!-- עיניים -->
-              <ellipse cx="186" cy="205" rx="15" ry="19" fill="#fff" />
-              <ellipse cx="254" cy="205" rx="15" ry="19" fill="#fff" />
-              <circle cx="189" cy="208" r="7.5" fill="#0f3b36" />
-              <circle cx="257" cy="208" r="7.5" fill="#0f3b36" />
-              <circle cx="192" cy="205" r="2.4" fill="#fff" />
-              <circle cx="260" cy="205" r="2.4" fill="#fff" />
-
-              <!-- חיוך -->
-              <path d="M196 250 Q220 276 244 250" fill="none" stroke="#0f3b36" stroke-width="7" stroke-linecap="round" />
-            </svg>
+            <!-- דמות המורה החדשה: שכבות מ-teacher-character (גוף, זנב-ג'יני, אלמנטים צפים, צל נושם) -->
+            <div class="velaHero" role="img" aria-label="וֶלה — המורה">
+              <div class="vhShadow"></div>
+              <div class="vhEl" style="left:75.4%; top:16.3%; width:2.4%; height:2.5%; --d:5.2s; --dl:.3s; --dx:3px; --dy:-8px;"><img src="/teacher-character/loop-src/assets/el-01.png" alt="" /></div>
+              <div class="vhEl" style="left:78.1%; top:21.5%; width:4.4%; height:4.5%; --d:6.4s; --dl:1.1s; --dx:-4px; --dy:-12px;"><img src="/teacher-character/loop-src/assets/el-02.png" alt="" /></div>
+              <div class="vhEl" style="left:74.5%; top:25.4%; width:2.3%; height:2.2%; --d:4.8s; --dl:2s; --dx:2px; --dy:-7px;"><img src="/teacher-character/loop-src/assets/el-03.png" alt="" /></div>
+              <div class="vhEl" style="left:68.4%; top:33.3%; width:19.9%; height:17.1%; --d:5.6s; --dl:.6s; --dx:-3px; --dy:-14px;"><img src="/teacher-character/loop-src/assets/el-04.png" alt="" /></div>
+              <div class="vhEl" style="left:82.5%; top:52.1%; width:2.3%; height:2.4%; --d:5s; --dl:1.6s; --dx:3px; --dy:-9px;"><img src="/teacher-character/loop-src/assets/el-09.png" alt="" /></div>
+              <div class="vhEl" style="left:79.8%; top:56.5%; width:2.4%; height:2.4%; --d:6.8s; --dl:.9s; --dx:-2px; --dy:-11px;"><img src="/teacher-character/loop-src/assets/el-10.png" alt="" /></div>
+              <div class="vhEl" style="left:75.8%; top:60%; width:3.7%; height:4%; --d:5.9s; --dl:2.4s; --dx:4px; --dy:-8px;"><img src="/teacher-character/loop-src/assets/el-12.png" alt="" /></div>
+              <div class="vhEl" style="left:73.9%; top:65.1%; width:9.4%; height:9.7%; --d:7.2s; --dl:.2s; --dx:-5px; --dy:-13px;"><img src="/teacher-character/loop-src/assets/el-05.png" alt="" /></div>
+              <div class="vhEl" style="left:71.7%; top:78.1%; width:2.3%; height:2.3%; --d:5.4s; --dl:1.3s; --dx:2px; --dy:-7px;"><img src="/teacher-character/loop-src/assets/el-13.png" alt="" /></div>
+              <div class="vhEl" style="left:13.2%; top:38.7%; width:6.7%; height:7.6%; --d:6.1s; --dl:.5s; --dx:4px; --dy:-12px;"><img src="/teacher-character/loop-src/assets/el-06.png" alt="" /></div>
+              <div class="vhEl" style="left:11.6%; top:51.4%; width:5%; height:4.6%; --d:5.3s; --dl:1.8s; --dx:-3px; --dy:-9px;"><img src="/teacher-character/loop-src/assets/el-07.png" alt="" /></div>
+              <div class="vhEl" style="left:18.3%; top:59.4%; width:4.5%; height:4.5%; --d:6.6s; --dl:.1s; --dx:3px; --dy:-10px;"><img src="/teacher-character/loop-src/assets/el-11.png" alt="" /></div>
+              <div class="vhEl" style="left:12%; top:67.6%; width:20.7%; height:13.5%; --d:7.8s; --dl:1s; --dx:5px; --dy:-12px;"><img src="/teacher-character/loop-src/assets/el-08.png" alt="" /></div>
+              <div class="vhBody">
+                <img class="vhTail" src="/teacher-character/loop-src/assets/tail.png" alt="" />
+                <img class="vhBodyImg" src="/teacher-character/loop-src/assets/body.png" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
