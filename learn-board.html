@@ -280,15 +280,15 @@
       /* ───────── כפתור המורה (מרחף) + צ'אט ───────── */
       /* המורה ענק בפינת המסך — גבולות-המסך הם מה שחותך אותו (לא מסגרת) */
       .teacherFab {
-        position: fixed; left: -48px; bottom: -130px; z-index: 20;
-        width: 320px; height: 420px; padding: 0; border: none; background: none; cursor: pointer;
+        position: fixed; left: -38px; bottom: -105px; z-index: 20;
+        width: 260px; height: 342px; padding: 0; border: none; background: none; cursor: pointer;
       }
       .teacherFab__art {
         display: block; width: 100%; height: 100%; margin: 0;
         animation: fabBob 4.6s ease-in-out infinite;
       }
       @media (max-width: 640px) {
-        .teacherFab { width: 220px; height: 289px; left: -34px; bottom: -90px; }
+        .teacherFab { width: 180px; height: 237px; left: -28px; bottom: -74px; }
       }
       .teacherFab__art svg { display: block; width: 100%; height: 100%; transition: transform 0.2s ease; }
       .teacherFab:hover .teacherFab__art svg { transform: scale(1.06); }
@@ -480,8 +480,8 @@
 
       /* בועת דיבור של המורה (תשובת ה-✓) — מימין לדמות, צל רך משלה (בלי החשכת מסך) */
       .teacherBubble {
-        position: fixed; left: 250px; bottom: 240px; z-index: 38;
-        max-width: min(320px, calc(100vw - 270px));
+        position: fixed; left: 210px; bottom: 200px; z-index: 38;
+        max-width: min(320px, calc(100vw - 230px));
         background: #fff; color: var(--ink);
         /* פינה שמאלית-תחתונה ישרה (חדה) — הבועה מצביעה באלכסון אל המורה, בלי חץ */
         border-radius: 24px 24px 24px 0; padding: 13px 17px;
