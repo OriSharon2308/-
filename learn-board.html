@@ -288,12 +288,10 @@
       }
       .teacherFab__art svg { display: block; width: 100%; height: 100%; transition: transform 0.2s ease; }
       .teacherFab:hover .teacherFab__art svg { transform: scale(1.06); }
-      /* דמות חדשה: חיתוך-פנים עגול — רואים ראש+כובע, לא את כל הגוף */
+      /* דמות חדשה: חיתוך-פנים — רואים ראש+כובע, בלי רקע ובלי מסגרת (הדמות נקייה על המסך) */
       .teacherFab__art img {
         display: block; width: 100%; height: 100%;
         object-fit: cover; object-position: 50% 10%;
-        border-radius: 50%;
-        background: radial-gradient(circle at 50% 35%, #e9fbf8, #cdeeea);
         transition: transform 0.2s ease;
         user-select: none; -webkit-user-drag: none;
       }
@@ -301,8 +299,6 @@
       .chatPanel__avatar img {
         display: block; width: 100%; height: 100%;
         object-fit: cover; object-position: 50% 10%;
-        border-radius: 50%;
-        background: radial-gradient(circle at 50% 35%, #e9fbf8, #cdeeea);
       }
       .teacherFab__shadow {
         position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%);

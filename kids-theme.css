@@ -1510,12 +1510,10 @@ body:has(.study-v2) .footer { display: none; }
   -webkit-user-drag: none;
   filter: drop-shadow(0 6px 13px rgb(13 148 136 / 0.34));
 }
-/* דמות חדשה: חיתוך-פנים עגול וגדול — לא רואים את כל הגוף */
+/* דמות חדשה: חיתוך-פנים גדול — בלי רקע ובלי מסגרת, הדמות נקייה על המסך */
 .teacherDock img {
   object-fit: cover;
   object-position: 50% 10%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 35%, #e9fbf8, #cdeeea);
 }
 .teacherDock:hover { transform: translateY(-3px) scale(1.06); }
 .teacherDock:active { transform: scale(0.96); }
