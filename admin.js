@@ -769,6 +769,57 @@
     }));
   }
 
+  // שמות-כלים ידידותיים לתצוגת "מה מוצג על הלוח" במפת-הדרכים
+  const TOOL_HE = {
+    write_text: "כיתוב", draw_exercise: "תרגיל", ten_frame: "לוח-עשר", count_objects: "ספירת-חפצים",
+    draw_base_ten: "בלוקי-10", base_ten_builder: "בניית-10", hundred_chart: "לוח-מאה",
+    draw_number_line: "ציר-מספרים", number_line_interactive: "סרגל-חי", clock_interactive: "שעון-חי",
+    draw_clock: "שעון", money_coins: "מטבעות", mult_array: "מערך-כפל", mult_table: "לוח-הכפל",
+    draw_array: "מערך-נקודות", draw_fraction_bar: "מוט-שבר", interactive_fraction: "שבר-לחיץ",
+    draw_bar_model: "מודל-מוט", draw_polygon: "מצולע", draw_circle: "עיגול", draw_line: "קו",
+    draw_arrow: "חץ", draw_point: "נקודה", render_widget: "ווידג'ט",
+  };
+  const PHASE_HE = { instruct: "הסבר", guided: "תרגול מודרך", independent: "תרגול עצמאי" };
+
+  // צ'יפ לכל פריט על הלוח: כיתוב/תרגיל מציגים גם את התוכן עצמו
+  function goldItemChip(tc) {
+    const name = TOOL_HE[tc.name] || tc.name;
+    const inp = tc.input || {};
+    if (tc.name === "write_text" && inp.text) return `<span class="goldItem">✏️ ${esc(String(inp.text).slice(0, 30))}</span>`;
+    if (tc.name === "draw_exercise") {
+      const hint = inp.hint ? ` <b class="goldItem__hint" title="${esc(String(inp.hint))}">רמז✓</b>` : "";
+      return `<span class="goldItem goldItem--ex">📝 ${esc(String(inp.text || "").slice(0, 24))} <b>[${esc(String(inp.answer ?? ""))}]</b>${hint}</span>`;
+    }
+    return `<span class="goldItem">${esc(name)}</span>`;
+  }
+
+  // תוכן השיעור-המוכן בתוך כרטיס-השלב: תיבת-עריכה לכל מסך + מה שמוצג על הלוח
+  function goldContentHtml(s) {
+    const g = s.goldenData;
+    if (!g || !g.phases) return "";
+    const blocks = [];
+    for (const ph of ["instruct", "guided", "independent"]) {
+      const raw = g.phases[ph];
+      if (!raw) continue;
+      const screens = Array.isArray(raw) ? raw : [raw];
+      screens.forEach((scr, idx) => {
+        const head = PHASE_HE[ph] + (screens.length > 1 ? ` · מסך ${idx + 1}/${screens.length}` : "");
+        const items = (scr.toolCalls || []).map(goldItemChip).join("");
+        const rows = Math.min(6, Math.max(2, Math.ceil(String(scr.reply || "").length / 70)));
+        blocks.push(`<div class="goldScreen">
+            <div class="goldScreen__head">${esc(head)}</div>
+            <textarea class="goldReply" data-ph="${ph}" data-idx="${idx}" rows="${rows}" placeholder="מה המורה אומר/ת במסך הזה…">${esc(String(scr.reply || ""))}</textarea>
+            ${items ? `<div class="goldItems"><span class="goldItems__label">על הלוח:</span>${items}</div>` : ""}
+          </div>`);
+      });
+    }
+    return `<div class="goldPhases" data-goldstage="${s.n}">${blocks.join("")}</div>
+      <div class="goldActions">
+        <button class="btn btn--sm goldSaveBtn" data-save="${s.n}">💾 שמירת הנוסח</button>
+        <span class="goldSaveMsg" data-msg="${s.n}"></span>
+      </div>`;
+  }
+
   // מסך 2 — מפת-הדרכים של הנושא (מסך מלא)
   function renderLearnRoadmap(body) {
     const t = cs.learn.topics.find((x) => x.key === cs.learnTopic);
@@ -783,20 +834,27 @@
           <div class="toolDesc" data-for="${s.n}"></div>
         </div>` : "";
       const gold = String(s.teach || "").trim();
+      const hasGolden = !!(s.goldenData && s.goldenData.phases);
+      const goldBlock = hasGolden
+        ? `<div class="stageBlock stageBlock--goldLive">
+            <div class="stageBlock__label goldLabel"><span class="goldStar">★</span> השיעור המוכן${s.goldenData.title ? ` — ${esc(s.goldenData.title)}` : ""} <span class="goldLive">🏆 רץ לילדים בלי AI</span></div>
+            ${goldContentHtml(s)}
+            ${gold ? `<details class="goldTeach"><summary>גישת-ההוראה (מהמפה)</summary><p>${esc(gold)}</p></details>` : ""}
+          </div>`
+        : (gold ? `<div class="stageBlock">
+            <div class="stageBlock__label goldLabel"><span class="goldStar">★</span> שיעור-הזהב הקבוע <span class="goldMissing">עוד לא נבנה — לחצו על הסטודיו</span></div>
+            <div class="goldLesson">${esc(gold)}</div>
+          </div>` : "");
       return `<section class="roadStage" data-n="${s.n}">
           <div class="roadStage__rail"><span class="roadStage__num">${s.n}</span></div>
           <div class="roadStage__card">
             <div class="roadStage__head">
               <h3 class="roadStage__title">${esc(s.title)}</h3>
-              <button class="gStudioBtn" data-studio="${s.n}" title="עיצוב ויזואלי של מסכי השיעור">🖊 עיצוב בסטודיו</button>
+              <button class="gStudioBtn" data-studio="${s.n}" title="שליטה מלאה במה שמוצג על הלוח — עריכה ויזואלית">🖊 ${hasGolden ? "עריכת הלוח בסטודיו" : "עיצוב בסטודיו"}</button>
               ${s.goal ? `<div class="roadStage__goal"><span class="roadStage__goalTag">מטרה</span><span>${esc(s.goal)}</span></div>` : ""}
             </div>
             ${toolsBlock}
-            ${gold ? `<div class="stageBlock">
-              <div class="stageBlock__label goldLabel"><span class="goldStar">★</span> שיעור-הזהב הקבוע${s.golden ? ` <span class="goldLive">🏆 פעיל — רץ בלי AI (${s.golden.map((x) => ({ instruct: "הוראה", guided: "מודרך", independent: "עצמאי" })[x] || x).join(" · ")})</span>` : ""}</div>
-              <div class="goldLesson">${esc(gold)}</div>
-              ${s.golden ? `<div class="goldEditHint">עריכת המיקומים והנוסח: golden/${esc(t.key).replace(/ /g, "_")}#${s.n}.json</div>` : ""}
-            </div>` : ""}
+            ${goldBlock}
           </div>
         </section>`;
     }).join("");
@@ -817,6 +875,35 @@
       const stage = t.stages.find((s) => s.n === n);
       if (window.VelaGoldenEditor) window.VelaGoldenEditor.open(t.key, n, stage ? stage.title : "");
       else alert("הסטודיו לא נטען — רענן/י את הדף");
+    }));
+    // שמירת-נוסח ישירה ממפת-הדרכים: תיבות-הטקסט נשמרות אל קובץ-הזהב — זה מה שהילדים מקבלים
+    body.querySelectorAll(".goldSaveBtn").forEach((btn) => btn.addEventListener("click", async () => {
+      const n = Number(btn.dataset.save);
+      const stage = t.stages.find((s) => s.n === n);
+      const msg = body.querySelector(`.goldSaveMsg[data-msg="${n}"]`);
+      if (!stage || !stage.goldenData) return;
+      const data = JSON.parse(JSON.stringify(stage.goldenData));
+      body.querySelectorAll(`.goldPhases[data-goldstage="${n}"] .goldReply`).forEach((ta) => {
+        const ph = ta.dataset.ph, idx = Number(ta.dataset.idx);
+        const raw = data.phases[ph];
+        if (!raw) return;
+        if (Array.isArray(raw)) { if (raw[idx]) raw[idx].reply = ta.value; }
+        else if (idx === 0) raw.reply = ta.value;
+      });
+      btn.disabled = true;
+      if (msg) msg.textContent = "שומר…";
+      try {
+        const res = await fetch("/api/admin/golden/save", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ topic: t.key, lesson: n, data: { title: data.title, phases: data.phases } }),
+        });
+        const out = await res.json().catch(() => null);
+        if (out && out.ok) { stage.goldenData = data; if (msg) msg.textContent = "נשמר ✓ — זה מה שהילדים יקבלו"; }
+        else if (msg) msg.textContent = "השמירה נכשלה" + (out && out.error ? ": " + out.error : "");
+      } catch (e) { if (msg) msg.textContent = "השמירה נכשלה — בדקו חיבור"; }
+      btn.disabled = false;
+      if (msg) setTimeout(() => { msg.textContent = ""; }, 4000);
     }));
     body.querySelectorAll(".toolChip").forEach((chip) => chip.addEventListener("click", () => {
       const [nStr, tiStr] = chip.dataset.tool.split(":");

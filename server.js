@@ -384,6 +384,7 @@ const server = http.createServer(async (req, res) => {
                 teach: p.teach,
                 tools: lessonTools.toolsInTeach(p.teach),
                 golden: (() => { const gs = goldenLessons.stagesFor(t.key, i + 1); return gs.length ? gs : null; })(),
+                goldenData: goldenLessons.get(t.key, i + 1), // המערך המלא — למפת-הדרכים באדמין (עריכת-נוסח ישירה)
                 method: m ? { confirmed: !!m.confirmed, uses: m.uses || 0, reply: String(m.reply || "").slice(0, 600) } : null,
               };
             }),
