@@ -1485,7 +1485,7 @@ body:has(.study-v2) .footer { display: none; }
 /* המורה ענק בפינה — גבולות-המסך חותכים אותו (לא מסגרת) */
 .teacherDock {
   position: fixed;
-  left: -32px;
+  left: -20px;
   bottom: -88px;
   width: 220px;
   height: 289px;
@@ -1517,7 +1517,7 @@ body:has(.study-v2) .footer { display: none; }
   object-position: center bottom;
 }
 @media (max-width: 640px) {
-  .teacherDock { width: 160px; height: 210px; left: -24px; bottom: -66px; }
+  .teacherDock { width: 160px; height: 210px; left: -14px; bottom: -66px; }
 }
 .teacherDock:hover { transform: translateY(-3px) scale(1.06); }
 .teacherDock:active { transform: scale(0.96); }
