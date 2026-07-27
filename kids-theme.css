@@ -1653,3 +1653,377 @@ body:has(.study-v2):not(.chat-collapsed) main.study-v2.layout {
 body:has(.study-v2):not(.chat-collapsed) .lesson {
   width: 100%;
 }
+
+/* ===================================================================
+   מסך הנושאים — טבעת התקדמות לכל נושא ("כמה מהנושא סיימתי")
+   טורקיז = בתהליך · ירוק = סיימת. שני גוונים בלבד.
+   =================================================================== */
+.tMap {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px 18px 72px;
+  background:
+    radial-gradient(820px 560px at 92% -8%, rgba(249, 168, 96, 0.16), transparent 58%),
+    radial-gradient(760px 600px at 4% 6%, rgba(20, 184, 166, 0.18), transparent 58%),
+    radial-gradient(720px 640px at 70% 118%, rgba(139, 124, 240, 0.13), transparent 58%),
+    #eef6f4;
+}
+body.tMap-open {
+  overflow: hidden;
+}
+body.tMap-open .layout,
+body.tMap-open .drawer,
+body.tMap-open .overlay {
+  display: none;
+}
+
+.tMap__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.tMap__head {
+  position: relative;
+  text-align: center;
+  padding: 4px 60px 14px;
+}
+.tMap__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f3b36;
+}
+.tMap__sub {
+  margin-top: 4px;
+  font-size: 13.5px;
+  color: #46615f;
+}
+.tMap__close {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-start: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1.5px solid rgb(13 60 53 / 0.1);
+  background: rgba(255, 255, 255, 0.86);
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  color: #0f3b36;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.05);
+}
+.tMap__close:hover {
+  background: #fff;
+}
+.tMap__close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(13 148 136 / 0.3);
+}
+.tMap__link {
+  display: block;
+  margin: 26px auto 0;
+  padding: 8px 14px;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 13px;
+  color: #46615f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* כרטיס "ממשיכים ב…" */
+.tMapGo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 660px;
+  margin: 4px auto 22px;
+  padding: 14px 18px;
+  border-radius: 28px;
+  border: 1.5px solid rgb(13 148 136 / 0.28);
+  background: #d6f4ef;
+  box-shadow: 0 8px 22px rgb(13 60 53 / 0.08);
+}
+.tMapGo__teacher {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+.tMapGo__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: start;
+}
+.tMapGo__kicker {
+  font-size: 12.5px;
+  color: #46615f;
+}
+.tMapGo__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f3b36;
+}
+.tMapGo__left {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d9488;
+}
+.tMapGo__btn {
+  flex: 0 0 auto;
+}
+
+.tMapGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: 18px;
+}
+
+/* אריח נושא */
+.tTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 22px 16px 18px;
+  border-radius: 28px;
+  border: 1.5px solid rgb(13 60 53 / 0.1);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 6px 18px rgb(13 60 53 / 0.06);
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.22s ease,
+    border-color 0.18s ease;
+}
+.tTile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgb(13 60 53 / 0.12);
+}
+.tTile:active {
+  transform: translateY(0) scale(0.985);
+}
+.tTile:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(13 148 136 / 0.3);
+}
+.tTile--current {
+  border-color: rgb(13 148 136 / 0.45);
+  background: #d6f4ef;
+}
+.tTile--done {
+  border-color: rgba(22, 163, 74, 0.42);
+}
+.tTile__parent {
+  margin-top: 2px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #7c8f8c;
+  line-height: 1.2;
+}
+.tTile__title {
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #0f3b36;
+}
+.tTile__parent + .tTile__title {
+  margin-top: -4px;
+}
+.tTile__meta {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0d9488;
+}
+.tTile--new .tTile__meta {
+  color: #46615f;
+}
+.tTile--done .tTile__meta {
+  color: #15803d;
+}
+.tTile__note {
+  font-size: 11.5px;
+  color: #5a6b68;
+}
+
+/* פסי-רמה */
+.tPips {
+  display: flex;
+  gap: 5px;
+  margin-top: 3px;
+}
+.tPip {
+  width: 22px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgb(13 60 53 / 0.12);
+}
+.tPip--part {
+  background: rgb(13 148 136 / 0.32);
+}
+.tPip--full {
+  background: #0d9488;
+}
+.tTile--done .tPip--full {
+  background: #16a34a;
+}
+
+/* ===== הטבעת ===== */
+.tRing {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+}
+.tRing svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.tRing circle {
+  fill: none;
+  stroke-width: 11;
+  stroke-linecap: round;
+}
+.tRing__track {
+  stroke: rgba(13, 60, 53, 0.12);
+}
+.tRing__track--dash {
+  stroke: rgba(13, 60, 53, 0.14);
+  stroke-dasharray: 3 7;
+  stroke-linecap: butt;
+}
+/* הערך הסופי מגיע מה-style השורתי — הטבעת נכונה גם בלי אנימציה.
+   המילוי-מאפס מתווסף רק כשהדף גלוי ותנועה מותרת (המחלקה is-anim). */
+.tRing__seg {
+  stroke: #0d9488;
+}
+.tMap.is-anim .tRing__seg {
+  animation: tSegFill 0.85s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+@keyframes tSegFill {
+  from {
+    stroke-dasharray: 0 326.73;
+  }
+}
+.tRing__in {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Fredoka", "Assistant", sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: #0d9488;
+}
+.tRing__in i {
+  font-style: normal;
+  font-size: 0.5em;
+  font-weight: 700;
+  color: #46615f;
+}
+.tRing--new .tRing__in {
+  font-size: 30px;
+  color: #0d9488;
+}
+.tRing--free .tRing__in {
+  font-size: 15px;
+  font-weight: 700;
+}
+.tRing--full {
+  filter: drop-shadow(0 0 12px rgba(22, 163, 74, 0.42));
+}
+.tRing--full .tRing__seg {
+  stroke: #16a34a;
+}
+.tRing--full .tRing__in {
+  font-size: 44px;
+  color: #15803d;
+}
+.tRing--mini {
+  width: 64px;
+  height: 64px;
+}
+.tRing--mini .tRing__in {
+  font-size: 20px;
+}
+.tRing--mini.tRing--full .tRing__in {
+  font-size: 26px;
+}
+
+@keyframes tSegPop {
+  0% {
+    stroke-width: 11;
+  }
+  45% {
+    stroke-width: 14.5;
+  }
+  100% {
+    stroke-width: 11;
+  }
+}
+.tRing__seg.is-pop {
+  animation: tSegPop 0.5s ease-in-out;
+}
+
+@media (max-width: 560px) {
+  .tMap {
+    padding: 14px 12px 60px;
+  }
+  .tMapGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .tTile {
+    padding: 16px 10px 14px;
+    border-radius: 22px;
+  }
+  .tRing {
+    width: 84px;
+    height: 84px;
+  }
+  .tRing__in {
+    font-size: 27px;
+  }
+  .tRing--full .tRing__in {
+    font-size: 34px;
+  }
+  .tMapGo {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .tMapGo__teacher {
+    width: 58px;
+    height: 58px;
+  }
+  .tMap__title {
+    font-size: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tMap.is-anim .tRing__seg,
+  .tRing__seg.is-pop {
+    animation: none;
+  }
+  .tTile {
+    transition: none;
+  }
+}

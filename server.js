@@ -826,7 +826,33 @@ const server = http.createServer(async (req, res) => {
           topicLevels[t.key] = bank.levelCounts(gradeNum, t.key);
         }
       }
-      return json(res, 200, { ok: true, grade: user?.grade || null, gradeNum, topics, topicLevels });
+      // כמה שאלות נפתרו נכון בכל נושא — לטבעת ההתקדמות במסך הנושאים
+      const solved = gradeNum ? progress.allSolved(userId, gradeNum) : {};
+      return json(res, 200, { ok: true, grade: user?.grade || null, gradeNum, topics, topicLevels, solved });
+    }
+
+    // דיווח שאלות שנפתרו נכון (לפי רמה) — מיזוג "הגבוה מנצח" בשרת
+    if (url.startsWith("/api/solved")) {
+      if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+      const userId = sessions.currentUserId(req);
+      if (!userId) return json(res, 401, { error: "Not authenticated" });
+      const body = await readJsonBody(req, res);
+      if (!body) return;
+      const user = users.getUserById(userId);
+      const gradeNum = gradeToNum(user?.grade);
+      if (!gradeNum || typeof body.topic !== "string") return json(res, 400, { ok: false, error: "bad_request" });
+      // רק מפתח-עלה מדויק — בלי נפילת-האב של findLeaf (שמחזירה את תת-הנושא הראשון)
+      const leaf = leafTopics(gradeNum).find((t) => t.key === body.topic);
+      if (!leaf) return json(res, 400, { ok: false, error: "unknown_topic" });
+      // רק הרמות שקיימות באמת לנושא — מונע ניפוח הקובץ במפתחות מומצאים
+      const allowedLevels = [
+        ...new Set([
+          ...(Array.isArray(leaf.levels) ? leaf.levels : []).map(String),
+          ...Object.keys(bank.levelCounts(gradeNum, body.topic)),
+        ]),
+      ];
+      const merged = progress.mergeSolved(userId, gradeNum, body.topic, body.counts || {}, allowedLevels);
+      return json(res, 200, { ok: true, topic: body.topic, solved: merged });
     }
 
     if (url.startsWith("/api/problem")) {

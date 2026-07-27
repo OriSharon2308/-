@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css?v=47" />
     <!-- שכבת עיצוב ילדים (רידיזיין) — נטענת אחרי styles.css, דורסת מראה+מיקומים. הסרה = חזרה למקור -->
-    <link rel="stylesheet" href="./kids-theme.css?v=71" />
+    <link rel="stylesheet" href="./kids-theme.css?v=75" />
     <style>
       /* מקום שמור לדמות המדברת (מסקוט) בראש הצ'אט — נותן פנים למורה */
       .chatSidebar__header {
@@ -701,7 +701,7 @@
         <!-- תצוגה 1: הנושאים שכבר נפתחו -->
         <div id="topicsListView">
           <div class="drawer__actions">
-            <button id="newTopicBtn" class="btn btn--primary" type="button">+ נושא חדש</button>
+            <button id="newTopicBtn" class="btn btn--primary" type="button">כל הנושאים</button>
           </div>
           <div id="topicsList" class="topicsList" aria-label="רשימת נושאים"></div>
         </div>
@@ -716,6 +716,20 @@
         </div>
       </div>
     </aside>
+
+    <!-- מסך הנושאים — טבעת התקדמות לכל נושא, לחיצה נכנסת לתרגול -->
+    <section id="topicsMap" class="tMap" tabindex="-1" hidden aria-label="הנושאים שלי">
+      <div class="tMap__inner">
+        <div class="tMap__head">
+          <button id="tMapCloseBtn" class="tMap__close" type="button" aria-label="חזרה לתרגיל">✕</button>
+          <div class="tMap__title" id="tMapGreet">הנושאים שלי</div>
+          <div class="tMap__sub" id="tMapSummary"></div>
+        </div>
+        <div id="tMapGo" class="tMapGo" hidden></div>
+        <div id="tMapGrid" class="tMapGrid"></div>
+        <button id="tMapDrawerLink" class="tMap__link" type="button">הנושאים שפתחתי</button>
+      </div>
+    </section>
 
     <main class="layout study-v2">
       <button
@@ -943,7 +957,7 @@
     <!-- numPad הועבר לתוך #answerRowNumeric (משולב במסגרת אזור התשובה) -->
 
 
-    <script src="./app.js?v=59" defer></script>
+    <script src="./app.js?v=64" defer></script>
 
     <!-- חלונית המורה: הפס הלבן האמיתי (#chatHeader) גדל כלפי מטה לריבוע, והמורה גדל (width/height — חד) ונע למרכז. סגירה ב-X / Esc -->
     <script>

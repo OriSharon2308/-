@@ -233,6 +233,10 @@ function createTopic(kind, title) {
     levelLocked: false,
     levelCounts: {}, // כמה שאלות בכל רמה (מהשרת, גדל ככל שמייצרים)
     solvedByLevel: {}, // כמה נפתרו נכון בכל רמה (מתמשך)
+    levels: [], // סולם הרמות של הנושא מתכנית הלימוד (נקפא בפתיחה)
+    levelGoals: {}, // יעד קפוא לכל רמה — לא זז כשהמאגר גדל
+    bestPct: 0, // גלגל-שיניים: האחוז הגבוה שהוצג אי-פעם (לא יורד)
+    celebratedPct: 0, // עד איזה אחוז כבר חגגנו
     attempts: 0,
     correct: 0,
     streak: 0,
@@ -391,6 +395,14 @@ function ui() {
     topicsCloseBtn: document.getElementById("topicsCloseBtn"),
     newTopicBtn: document.getElementById("newTopicBtn"),
     topicsList: document.getElementById("topicsList"),
+    // מסך הנושאים (טבעות ההתקדמות)
+    topicsMap: document.getElementById("topicsMap"),
+    tMapGrid: document.getElementById("tMapGrid"),
+    tMapGo: document.getElementById("tMapGo"),
+    tMapGreet: document.getElementById("tMapGreet"),
+    tMapSummary: document.getElementById("tMapSummary"),
+    tMapCloseBtn: document.getElementById("tMapCloseBtn"),
+    tMapDrawerLink: document.getElementById("tMapDrawerLink"),
     topicsListView: document.getElementById("topicsListView"),
     topicPickerView: document.getElementById("topicPickerView"),
     topicPicker: document.getElementById("topicPicker"),
@@ -1163,6 +1175,9 @@ async function callTutorApi(payload) {
 let GRADE_TOPICS = []; // [{ key, sub: [...] }]
 let GRADE_NUM = null;
 let GRADE_LEVEL_COUNTS = {}; // { "חיבור עד 20": {1:5,...}, ... } — למד השאלות
+let GRADE_SOLVED = {}; // { "<נושא-עלה>": { "<רמה>": כמה נפתרו נכון } } — מהשרת
+let GRADE_LEVELS = {}; // { "<נושא-עלה>": [1,2,3] } — סולם הרמות מתכנית הלימוד
+let GRADE_REPEATABLE = {}; // { "ציור צורות": true } — נושא חופשי, בלי מסלול
 
 async function fetchGradeTopics() {
   try {
@@ -1173,9 +1188,50 @@ async function fetchGradeTopics() {
       GRADE_TOPICS = data.topics.map((t) => (typeof t === "string" ? { key: t, sub: [] } : t));
       GRADE_NUM = data.gradeNum || null;
       GRADE_LEVEL_COUNTS = data.topicLevels || {};
+      GRADE_SOLVED = data.solved || {};
+      GRADE_LEVELS = {};
+      GRADE_REPEATABLE = {};
+      for (const t of GRADE_TOPICS) {
+        const kids = Array.isArray(t.sub) && t.sub.length ? t.sub : [t];
+        for (const s of kids) {
+          const k = typeof s === "string" ? s : s.key;
+          if (!k) continue;
+          GRADE_LEVELS[k] = Array.isArray(s.levels) ? s.levels : [];
+          GRADE_REPEATABLE[k] = !!s.repeatable;
+        }
+      }
     }
   } catch {
     // ignore
+  }
+}
+
+/* דיווח לשרת על שאלות שנפתרו נכון — מקובץ (debounce) כדי לא להציף בקשות */
+let solvedSyncTimer = null;
+let solvedSyncQueue = new Map();
+function queueSolvedSync(topic) {
+  if (!topic || !topic.kind) return;
+  solvedSyncQueue.set(topic.kind, { ...(topic.solvedByLevel || {}) });
+  if (solvedSyncTimer) clearTimeout(solvedSyncTimer);
+  solvedSyncTimer = setTimeout(flushSolvedSync, 400);
+}
+async function flushSolvedSync() {
+  solvedSyncTimer = null;
+  const items = Array.from(solvedSyncQueue.entries());
+  solvedSyncQueue = new Map();
+  for (const [topicKey, counts] of items) {
+    try {
+      const res = await fetch("/api/solved", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ topic: topicKey, counts }),
+      });
+      if (!res.ok) continue;
+      const data = await res.json();
+      if (data?.ok && data.solved) GRADE_SOLVED[topicKey] = data.solved;
+    } catch {
+      // אופליין — הנתון כבר ב-localStorage; ננסה שוב בתשובה הנכונה הבאה
+    }
   }
 }
 
@@ -1375,9 +1431,20 @@ async function main() {
     topicsState.topics = topicsState.topics.filter((t) => gradeKeys.includes(t.kind));
   }
 
+  // מיזוג ההתקדמות מהשרת (הגבוה מנצח) — כך הטבעות נכונות גם ממכשיר אחר
+  for (const t of topicsState.topics) {
+    const remote = GRADE_SOLVED[t.kind];
+    if (!remote) continue;
+    if (!t.solvedByLevel) t.solvedByLevel = {};
+    for (const lv of Object.keys(remote)) {
+      t.solvedByLevel[lv] = Math.max(Number(t.solvedByLevel[lv]) || 0, Number(remote[lv]) || 0);
+    }
+  }
+
   let uiState = {
     chatCollapsed: uiLoaded?.chatCollapsed ?? false,
     chatWidth: Number.isFinite(uiLoaded?.chatWidth) ? uiLoaded.chatWidth : 360,
+    lastMapDay: uiLoaded?.lastMapDay || null, // מסך הנושאים נפתח פעם ביום
   };
 
   function setChatWidth(px) {
@@ -1485,7 +1552,24 @@ async function main() {
     let topic = topicsState.topics.find((t) => t.kind === key);
     if (!topic) {
       topic = createTopic(key, label || key);
+      // אם הנושא נמחק בעבר — מחזירים את ההתקדמות שנשמרה בארכיון
+      const arch = (topicsState.archive || {})[key];
+      if (arch) {
+        topic.solvedByLevel = arch.solvedByLevel || {};
+        topic.levelGoals = arch.levelGoals || {};
+        topic.bestPct = arch.bestPct || 0;
+        topic.celebratedPct = arch.celebratedPct || 0;
+      }
       topicsState.topics.unshift(topic);
+    }
+    if (!topic.levels || !topic.levels.length) topic.levels = (GRADE_LEVELS[key] || []).slice();
+    // מיזוג ההתקדמות מהשרת גם לנושא שנפתח עכשיו (לא רק לנושאים שהיו ב-localStorage)
+    const remote = GRADE_SOLVED[key];
+    if (remote) {
+      if (!topic.solvedByLevel) topic.solvedByLevel = {};
+      for (const lv of Object.keys(remote)) {
+        topic.solvedByLevel[lv] = Math.max(Number(topic.solvedByLevel[lv]) || 0, Number(remote[lv]) || 0);
+      }
     }
     topicsState.currentTopicId = topic.id;
     switchToTopic(topic.id);
@@ -1576,6 +1660,87 @@ async function main() {
       .filter((n) => c[n] > 0)
       .sort((a, b) => a - b);
   }
+  /* ═══════ מסלול הנושא — הבסיס לטבעת ההתקדמות ═══════
+     "כמה מהנושא סיימתי" = כמה שאלות נפתרו נכון, מתוך יעד קבוע לכל רמה.
+     היעד נקפא בפעם הראשונה שיש נתון אמיתי — כך שגידול המאגר לא מזיז את הטבעת אחורה. */
+  const LEVEL_GOAL = 10; // כמה תשובות נכונות "מסיימות" רמה
+  const TOPICS_MAP = true; // false ⇒ חוזרים בדיוק להתנהגות המגירה הישנה
+
+  function ladderFor(kind, topic) {
+    if (topic && Array.isArray(topic.levels) && topic.levels.length) return topic.levels;
+    const cur = GRADE_LEVELS[kind];
+    if (Array.isArray(cur) && cur.length) {
+      if (topic) topic.levels = cur.slice();
+      return cur;
+    }
+    const c = GRADE_LEVEL_COUNTS[kind] || {};
+    const fromBank = Object.keys(c)
+      .map(Number)
+      .filter((n) => c[n] > 0)
+      .sort((a, b) => a - b);
+    return fromBank.length ? fromBank : [1, 2, 3];
+  }
+
+  function bankCountFor(kind, topic, level) {
+    const c =
+      topic && topic.levelCounts && Object.keys(topic.levelCounts).length
+        ? topic.levelCounts
+        : GRADE_LEVEL_COUNTS[kind] || {};
+    return c[level] || c[String(level)] || 0;
+  }
+
+  function levelGoalFor(kind, topic, level) {
+    const frozen = topic && topic.levelGoals && topic.levelGoals[level];
+    if (frozen) return frozen;
+    const n = bankCountFor(kind, topic, level);
+    const goal = n ? Math.min(LEVEL_GOAL, n) : LEVEL_GOAL;
+    if (n && topic) {
+      if (!topic.levelGoals) topic.levelGoals = {};
+      topic.levelGoals[level] = goal;
+    }
+    return goal;
+  }
+
+  function solvedMapFor(kind, topic) {
+    const local = (topic && topic.solvedByLevel) || {};
+    const remote = GRADE_SOLVED[kind] || {};
+    const out = {};
+    for (const k of new Set([...Object.keys(local), ...Object.keys(remote)])) {
+      out[k] = Math.max(Number(local[k]) || 0, Number(remote[k]) || 0);
+    }
+    return out;
+  }
+
+  function topicRoute(kind, topic) {
+    const levels = ladderFor(kind, topic);
+    const solved = solvedMapFor(kind, topic);
+    const segs = levels.map((l) => {
+      const goal = levelGoalFor(kind, topic, l);
+      const done = Math.min(Number(solved[l]) || 0, goal);
+      return { level: l, goal, done, p: goal ? done / goal : 0, full: goal > 0 && done >= goal };
+    });
+    const goal = segs.reduce((s, x) => s + x.goal, 0);
+    const done = segs.reduce((s, x) => s + x.done, 0);
+    let bonus = 0;
+    for (const k of Object.keys(solved)) {
+      const seg = segs.find((x) => String(x.level) === String(k));
+      bonus += Math.max(0, (Number(solved[k]) || 0) - (seg ? seg.goal : 0));
+    }
+    const live = goal ? Math.min(100, Math.round((done / goal) * 100)) : 0;
+    const pct = Math.max(live, (topic && topic.bestPct) || 0);
+    const bankTotal = Object.values(GRADE_LEVEL_COUNTS[kind] || {}).reduce((s, n) => s + (Number(n) || 0), 0);
+    return {
+      segs,
+      goal,
+      done,
+      left: Math.max(0, goal - done),
+      bonus,
+      pct,
+      free: !!GRADE_REPEATABLE[kind],
+      bankLeft: Math.max(0, bankTotal - done - bonus),
+    };
+  }
+
   // ודא שהרמה קיימת במאגר, וצייר את המד
   function ensureMeter(topic) {
     if (!topic) return;
@@ -1617,9 +1782,18 @@ async function main() {
     const topic = getCurrentTopic();
     if (!topic) return;
     if (!topic.solvedByLevel) topic.solvedByLevel = {};
-    topic.solvedByLevel[topic.level] = (topic.solvedByLevel[topic.level] || 0) + 1;
     const cp = getCurrentProblem(topic);
+    const already = !!(cp && cp.solved); // שאלה שכבר נפתרה — לא נספרת פעמיים
+    if (!already) {
+      // סופרים מהערך הממוזג (מקומי + שרת) — אחרת נושא שנפתח במכשיר חדש מתחיל מ-0
+      const merged = solvedMapFor(topic.kind, topic);
+      topic.solvedByLevel[topic.level] = (Number(merged[topic.level]) || 0) + 1;
+    }
     if (cp) cp.solved = true; // מסמן את השאלה הספציפית הזו כפתורה
+    if (!already) {
+      topic.bestPct = Math.max(topic.bestPct || 0, topicRoute(topic.kind, topic).pct);
+      queueSolvedSync(topic);
+    }
     renderMeter(topic);
     renderSolved(topic);
     saveAll();
@@ -1783,6 +1957,215 @@ async function main() {
     if (u.topicLabel) u.topicLabel.textContent = `— ${topic.title}`;
   }
 
+  /* ═══════════ מסך הנושאים — טבעת התקדמות לכל נושא ═══════════ */
+  const RING_C = 326.73; // היקף המעגל: 2π·52
+
+  function leavesOfGrade() {
+    return GRADE_TOPICS.flatMap((t) =>
+      Array.isArray(t.sub) && t.sub.length
+        ? t.sub.map((s) => ({ key: s.key || s, label: s.label || s.key || s, parent: t.key }))
+        : [{ key: t.key, label: t.key, parent: null }]
+    );
+  }
+
+  function ringSvg(route, extraCls) {
+    const zero = route.pct === 0 && !route.free;
+    let arcs = "";
+    if (route.free || zero) {
+      arcs = `<circle class="tRing__track${zero ? " tRing__track--dash" : ""}" cx="60" cy="60" r="52" transform="rotate(-90 60 60)"></circle>`;
+    } else {
+      const n = route.segs.length || 1;
+      const gap = n === 1 ? 0 : n <= 4 ? 10 : 6;
+      const seg = (RING_C - gap * n) / n;
+      route.segs.forEach((s, i) => {
+        const off = -(i * (seg + gap));
+        const len = seg * s.p;
+        arcs += `<circle class="tRing__track" cx="60" cy="60" r="52" transform="rotate(-90 60 60)" style="stroke-dasharray:${seg.toFixed(1)} ${RING_C};stroke-dashoffset:${off.toFixed(1)}"></circle>`;
+        // הערך הסופי כתוב ישירות — הטבעת נכונה גם אם האנימציה לא רצה (טאב מוסתר/הפחתת-תנועה)
+        if (len > 0.4) {
+          arcs += `<circle class="tRing__seg" cx="60" cy="60" r="52" transform="rotate(-90 60 60)" style="stroke-dasharray:${len.toFixed(1)} ${RING_C};stroke-dashoffset:${off.toFixed(1)};animation-delay:${Math.min(i * 90, 270)}ms"></circle>`;
+        }
+      });
+    }
+    const mid = route.free ? "חופשי" : zero ? "▶" : route.pct === 100 ? "✓" : `${route.pct}<i>%</i>`;
+    const state = route.free ? " tRing--free" : zero ? " tRing--new" : route.pct === 100 ? " tRing--full" : "";
+    return `<span class="tRing${state}${extraCls ? " " + extraCls : ""}"><svg viewBox="0 0 120 120" aria-hidden="true">${arcs}</svg><span class="tRing__in">${mid}</span></span>`;
+  }
+
+  function tileMeta(route) {
+    if (route.free) return "תרגול חופשי — כמה שרוצים";
+    if (route.pct === 0) return "נתחיל?";
+    if (route.pct === 100) return route.bonus > 0 ? `סיימת את המסלול · +${route.bonus} בונוס` : "סיימת את המסלול 🎉";
+    return route.left <= 5 ? `כמעט! עוד ${route.left} שאלות` : `עוד ${route.left} שאלות לסיום`;
+  }
+  function tileNote(route) {
+    if (route.free) return "";
+    if (route.pct === 0) return ""; // נושא שלא התחיל — בלי "0 מתוך…"
+    if (route.pct === 100) return route.bankLeft > 0 ? `יש עוד ${route.bankLeft} שאלות לתרגול חופשי` : "";
+    return `${route.done} מתוך ${route.goal} שאלות במסלול`;
+  }
+
+  function renderTopicsMap() {
+    if (!u.tMapGrid) return;
+    // המילוי-מאפס רק כשהדף גלוי — בטאב מוסתר שעון-האנימציות קפוא והטבעת הייתה נראית ריקה
+    if (u.topicsMap) u.topicsMap.classList.toggle("is-anim", !document.hidden && !prefersReducedMotion());
+    const byKind = new Map((topicsState.topics || []).map((t) => [t.kind, t]));
+    const leaves = leavesOfGrade();
+    u.tMapGrid.innerHTML = "";
+    if (!leaves.length) {
+      u.tMapGrid.innerHTML = '<div class="tTile__note">אין נושאים מוגדרים לכיתה שלך.</div>';
+      if (u.tMapGo) u.tMapGo.hidden = true;
+      return;
+    }
+    const cur = getCurrentTopic();
+    let doneCount = 0;
+    let goCount = 0;
+    let best = null;
+    const toCelebrate = [];
+
+    for (const leaf of leaves) {
+      const topic = byKind.get(leaf.key) || null;
+      const route = topicRoute(leaf.key, topic);
+      if (!route.free && route.pct === 100) doneCount++;
+      if (!route.free && route.pct > 0 && route.pct < 100) {
+        goCount++;
+        if (!best || route.pct > best.route.pct) best = { leaf, topic, route };
+      }
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className =
+        "tTile" +
+        (topic && cur && topic.id === cur.id ? " tTile--current" : "") +
+        (route.pct === 100 && !route.free ? " tTile--done" : "") +
+        (route.pct === 0 && !route.free ? " tTile--new" : "");
+      const full = leaf.parent ? `${leaf.parent} · ${leaf.label}` : leaf.label;
+      btn.setAttribute(
+        "aria-label",
+        route.free ? `${full} — תרגול חופשי` : `${full} — סיימת ${route.pct} אחוז מהמסלול`
+      );
+      const note = tileNote(route);
+      btn.innerHTML =
+        ringSvg(route) +
+        (leaf.parent ? `<span class="tTile__parent"></span>` : "") +
+        `<span class="tTile__title"></span>` +
+        `<span class="tTile__meta">${tileMeta(route)}</span>` +
+        (note ? `<span class="tTile__note">${note}</span>` : "") +
+        (route.free
+          ? ""
+          : `<span class="tPips">${route.segs
+              .map((s) => `<span class="tPip${s.full ? " tPip--full" : s.done > 0 ? " tPip--part" : ""}"></span>`)
+              .join("")}</span>`);
+      // טקסט מהנתונים — נכתב כטקסט, לא כ-HTML
+      btn.querySelector(".tTile__title").textContent = leaf.label;
+      if (leaf.parent) btn.querySelector(".tTile__parent").textContent = leaf.parent;
+      btn.addEventListener("click", () => {
+        closeTopicsMap();
+        openTopicByKey(leaf.key, leaf.label);
+      });
+      u.tMapGrid.appendChild(btn);
+      if (topic && route.pct > (topic.celebratedPct || 0)) toCelebrate.push({ topic, route });
+    }
+
+    if (u.tMapGreet) {
+      u.tMapGreet.textContent = CURRENT_USER?.username ? `הנושאים של ${CURRENT_USER.username}` : "הנושאים שלי";
+    }
+    if (u.tMapSummary) {
+      u.tMapSummary.textContent =
+        doneCount + goCount === 0
+          ? "מתחילים! בחר/י נושא ונצא לדרך"
+          : `סיימת ${doneCount} נושאים · ${goCount} בדרך`;
+    }
+    renderMapGo(best);
+    celebrate(toCelebrate);
+  }
+
+  function renderMapGo(best) {
+    if (!u.tMapGo) return;
+    if (!best) {
+      u.tMapGo.hidden = true;
+      u.tMapGo.innerHTML = "";
+      return;
+    }
+    u.tMapGo.hidden = false;
+    u.tMapGo.innerHTML =
+      `<img class="tMapGo__teacher" src="/teacher-character/loop-src/assets/character.png" alt="" aria-hidden="true" draggable="false" />` +
+      `<div class="tMapGo__text"><div class="tMapGo__kicker">ממשיכים ב…</div>` +
+      `<div class="tMapGo__title"></div>` +
+      `<div class="tMapGo__left">עוד ${best.route.left} שאלות לסיום המסלול</div></div>` +
+      ringSvg(best.route, "tRing--mini") +
+      `<button class="btn btn--primary tMapGo__btn" type="button">יאללה!</button>`;
+    u.tMapGo.querySelector(".tMapGo__title").textContent = best.leaf.label;
+    u.tMapGo.querySelector(".tMapGo__btn").addEventListener("click", () => {
+      closeTopicsMap();
+      if (best.topic) switchToTopic(best.topic.id);
+      else openTopicByKey(best.leaf.key, best.leaf.label);
+    });
+  }
+
+  // חגיגה על מה שהתמלא מאז הפעם הקודמת שנכנסנו למסך
+  function celebrate(items) {
+    if (!items.length) return;
+    const hitFull = items.some((x) => x.route.pct === 100);
+    for (const x of items) {
+      x.topic.celebratedPct = x.route.pct;
+    }
+    saveAll();
+    if (prefersReducedMotion()) return;
+    window.setTimeout(() => {
+      u.tMapGrid.querySelectorAll(".tRing__seg").forEach((c) => {
+        if (Number(c.dataset.len) > 0) {
+          c.classList.add("is-pop");
+          c.addEventListener("animationend", () => c.classList.remove("is-pop"), { once: true });
+        }
+      });
+      if (hitFull) launchConfetti();
+    }, 900);
+  }
+
+  let mapReturnFocus = null;
+  function mapKeydown(e) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeTopicsMap();
+      return;
+    }
+    if (e.key !== "Tab" || !u.topicsMap) return;
+    const f = Array.from(u.topicsMap.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])')).filter(
+      (el) => !el.disabled && el.offsetParent !== null
+    );
+    if (!f.length) return;
+    const first = f[0];
+    const last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+  function openTopicsMap() {
+    if (!u.topicsMap) return;
+    mapReturnFocus = document.activeElement;
+    renderTopicsMap();
+    u.topicsMap.hidden = false;
+    document.body.classList.add("tMap-open");
+    const layout = document.querySelector(".layout");
+    if (layout) layout.setAttribute("inert", "");
+    document.addEventListener("keydown", mapKeydown, true);
+    u.topicsMap.focus();
+  }
+  function closeTopicsMap() {
+    if (!u.topicsMap || u.topicsMap.hidden) return;
+    u.topicsMap.hidden = true;
+    document.body.classList.remove("tMap-open");
+    const layout = document.querySelector(".layout");
+    if (layout) layout.removeAttribute("inert");
+    document.removeEventListener("keydown", mapKeydown, true);
+    if (mapReturnFocus && mapReturnFocus.focus) mapReturnFocus.focus();
+    mapReturnFocus = null;
+  }
+
   // רשימת הנושאים שכבר נפתחו — מעבר בלחיצה, מחיקה בנפרד
   function renderTopicsList() {
     if (!u.topicsList) return;
@@ -1908,6 +2291,15 @@ async function main() {
 
     const ok = confirm(`למחוק את הנושא "${topic.title}"?\nזה ימחק גם את היסטוריית השאלות והצ’אט של הנושא.`);
     if (!ok) return;
+
+    // שומרים את ההתקדמות בארכיון — מחיקת נושא לא מוחקת את טבעת ההתקדמות
+    if (!topicsState.archive) topicsState.archive = {};
+    topicsState.archive[topic.kind] = {
+      solvedByLevel: topic.solvedByLevel || {},
+      levelGoals: topic.levelGoals || {},
+      bestPct: topic.bestPct || 0,
+      celebratedPct: topic.celebratedPct || 0,
+    };
 
     topicsState.topics = topicsState.topics.filter((t) => t.id !== topicId);
 
@@ -2227,6 +2619,15 @@ async function main() {
     u.problemText.textContent = "אין נושאים מוגדרים לכיתה שלך עדיין.";
   }
   saveAll();
+
+  // מסך הנושאים נפתח בכניסה הראשונה של היום — משם בוחרים נושא
+  if (TOPICS_MAP) {
+    const today = new Date().toISOString().slice(0, 10);
+    const firstToday = uiState.lastMapDay !== today;
+    uiState.lastMapDay = today;
+    saveUi(uiState);
+    if (firstToday) openTopicsMap();
+  }
 
   setChatWidth(uiState.chatWidth);
   uiState.chatCollapsed = true; // study-v2: ריבוע השאלה על כל הרוחב — הצ'אט נפתח דרך אווטאר המורה
@@ -2571,16 +2972,33 @@ async function main() {
     drawerReturnFocus = null;
   }
 
-  // לחיצה על המבורגר/ה-X — פותחת או סוגרת
+  // לחיצה על המבורגר/ה-X — פותחת את מסך הנושאים (או את המגירה הישנה)
   u.topicsBtn?.addEventListener("click", () => {
+    if (TOPICS_MAP) {
+      if (u.topicsMap && !u.topicsMap.hidden) closeTopicsMap();
+      else openTopicsMap();
+      return;
+    }
     if (u.topicsDrawer.classList.contains("drawer--open")) closeTopicsDrawer();
     else openTopicsDrawer();
   });
   u.topicsCloseBtn?.addEventListener("click", closeTopicsDrawer);
   u.topicsOverlay?.addEventListener("click", closeTopicsDrawer);
+  u.tMapCloseBtn?.addEventListener("click", closeTopicsMap);
+  u.tMapDrawerLink?.addEventListener("click", () => {
+    closeTopicsMap();
+    openTopicsDrawer();
+  });
 
-  // "נושא חדש" פותח בורר עם נושאי הכיתה בלבד (לא הקלדה חופשית)
-  u.newTopicBtn?.addEventListener("click", () => showTopicPickerView());
+  // "כל הנושאים" — מסך הנושאים; בלי הדגל, הבורר הישן
+  u.newTopicBtn?.addEventListener("click", () => {
+    if (TOPICS_MAP) {
+      closeTopicsDrawer();
+      openTopicsMap();
+    } else {
+      showTopicPickerView();
+    }
+  });
   u.pickerBackBtn?.addEventListener("click", () => showTopicListView());
 
   // Drag to resize chat
