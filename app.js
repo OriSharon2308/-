@@ -1712,8 +1712,14 @@ async function main() {
   }
 
   function topicRoute(kind, topic) {
-    const levels = ladderFor(kind, topic);
     const solved = solvedMapFor(kind, topic);
+    // הסולם = רמות תכנית-הלימוד + כל רמה שהילד כבר פתר בה (המאגר מגיש לפעמים רמות
+    // שלא רשומות בתכנית — בלעדי האיחוד העבודה שלו הייתה נעלמת מהטבעת)
+    const base = ladderFor(kind, topic);
+    const extra = Object.keys(solved)
+      .map(Number)
+      .filter((n) => Number.isFinite(n) && n > 0 && (Number(solved[n]) || 0) > 0 && !base.includes(n));
+    const levels = extra.length ? [...base, ...extra].sort((a, b) => a - b) : base;
     const segs = levels.map((l) => {
       const goal = levelGoalFor(kind, topic, l);
       const done = Math.min(Number(solved[l]) || 0, goal);
@@ -1968,7 +1974,42 @@ async function main() {
     );
   }
 
-  function ringSvg(route, extraCls) {
+  /* איור לכל נושא — קובץ ב-images/topics/<slug>.png (ואם אין, .svg).
+     ההתאמה לפי מילות-מפתח בשם הנושא, כך שגם כיתות חדשות מקבלות איור בלי קוד נוסף.
+     הסדר קובע: "חיבור וחיסור" לפני "חיבור", "מילולי" לפני הפעולה. */
+  const TOPIC_IMAGES = [
+    [/חיבור\s*וחיסור/, "add-sub"],
+    [/מילולי/, "word-problems"],
+    [/כסף|מטבע|שטר/, "money"],
+    [/שעון|שעה/, "clock"],
+    [/צלע|קודקוד|צורה|צורות|גאומטר|משולש|ריבוע/, "shapes"],
+    [/כפל/, "multiplication"],
+    [/חילוק/, "division"],
+    [/שבר/, "fractions"],
+    [/אחוז/, "percent"],
+    [/עשרוני/, "decimals"],
+    [/מדיד|אורך|משקל|נפח|שטח|היקף/, "measure"],
+    [/נעלם|משוו/, "equations"],
+    [/יחס|פרופור/, "ratio"],
+    [/חיבור/, "addition"],
+    [/חיסור/, "subtraction"],
+    [/מספר|ספיר|מנ[יי]ה/, "numbers"],
+  ];
+  function topicImageSlug(key, parent) {
+    for (const src of [key, parent]) {
+      if (!src) continue;
+      for (const [re, slug] of TOPIC_IMAGES) if (re.test(src)) return slug;
+    }
+    return null;
+  }
+  /** האיור בתוך הטבעת. נופל ל-svg אם אין png, ונעלם בשקט אם אין בכלל. */
+  function topicImgHtml(slug) {
+    if (!slug) return "";
+    return `<img class="tRing__img" src="/images/topics/${slug}.png" alt="" aria-hidden="true" draggable="false"
+      onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src='/images/topics/${slug}.svg'}else{this.remove()}" />`;
+  }
+
+  function ringSvg(route, extraCls, slug) {
     const zero = route.pct === 0 && !route.free;
     let arcs = "";
     if (route.free || zero) {
@@ -1987,9 +2028,16 @@ async function main() {
         }
       });
     }
-    const mid = route.free ? "חופשי" : zero ? "▶" : route.pct === 100 ? "✓" : `${route.pct}<i>%</i>`;
+    const img = topicImgHtml(slug);
+    // כשיש איור — הוא ממלא את הטבעת, והמצב עובר לתג קטן מתחת. בלי איור נשאר המספר במרכז.
+    const mid = img
+      ? ""
+      : `<span class="tRing__in">${route.free ? "חופשי" : zero ? "▶" : route.pct === 100 ? "✓" : `${route.pct}<i>%</i>`}</span>`;
+    const badge = img
+      ? `<span class="tRing__badge">${route.free ? "חופשי" : zero ? "▶" : route.pct === 100 ? "✓" : `${route.pct}<i>%</i>`}</span>`
+      : "";
     const state = route.free ? " tRing--free" : zero ? " tRing--new" : route.pct === 100 ? " tRing--full" : "";
-    return `<span class="tRing${state}${extraCls ? " " + extraCls : ""}"><svg viewBox="0 0 120 120" aria-hidden="true">${arcs}</svg><span class="tRing__in">${mid}</span></span>`;
+    return `<span class="tRing${state}${img ? " tRing--img" : ""}${extraCls ? " " + extraCls : ""}"><svg viewBox="0 0 120 120" aria-hidden="true">${arcs}</svg>${img}${mid}${badge}</span>`;
   }
 
   function tileMeta(route) {
@@ -2045,7 +2093,7 @@ async function main() {
       );
       const note = tileNote(route);
       btn.innerHTML =
-        ringSvg(route) +
+        ringSvg(route, "", topicImageSlug(leaf.key, leaf.parent)) +
         (leaf.parent ? `<span class="tTile__parent"></span>` : "") +
         `<span class="tTile__title"></span>` +
         `<span class="tTile__meta">${tileMeta(route)}</span>` +
@@ -2092,7 +2140,7 @@ async function main() {
       `<div class="tMapGo__text"><div class="tMapGo__kicker">ממשיכים ב…</div>` +
       `<div class="tMapGo__title"></div>` +
       `<div class="tMapGo__left">עוד ${best.route.left} שאלות לסיום המסלול</div></div>` +
-      ringSvg(best.route, "tRing--mini") +
+      ringSvg(best.route, "tRing--mini", topicImageSlug(best.leaf.key, best.leaf.parent)) +
       `<button class="btn btn--primary tMapGo__btn" type="button">יאללה!</button>`;
     u.tMapGo.querySelector(".tMapGo__title").textContent = best.leaf.label;
     u.tMapGo.querySelector(".tMapGo__btn").addEventListener("click", () => {
