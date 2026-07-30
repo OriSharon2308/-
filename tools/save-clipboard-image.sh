@@ -25,6 +25,8 @@ end try
 EOF
 
 if [ -s "$OUT" ] && file "$OUT" | grep -q "PNG image"; then
+  # לוח-ההעתקה של macOS מרכיב שקיפות על שחור → פינות מעוגלות יוצאות שחורות
+  python3 "$(dirname "$0")/fix-clip-bg.py" "$OUT" 2>/dev/null || true
   SIZE=$(file "$OUT" | sed 's/.*PNG image data, //; s/,.*//')
   BYTES=$(wc -c < "$OUT" | tr -d ' ')
   echo "✓ נשמר: images/topics/$SLUG.png  ($SIZE, $BYTES בייטים)"
