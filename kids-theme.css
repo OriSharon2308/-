@@ -1779,6 +1779,26 @@ body.tMap-open .overlay {
 .tMapGo__btn {
   flex: 0 0 auto;
 }
+.tMapGo__art {
+  flex: 0 0 auto;
+  width: 76px;
+}
+.tMapGo__art .tHead__img {
+  max-width: 76px;
+}
+.tMapGo__art .tRing {
+  width: 64px;
+  height: 64px;
+}
+.tMapGo__art .tRing__in {
+  font-size: 20px;
+}
+.tMapGo__art .tHead.has-img .tHead__badge {
+  min-width: 0;
+  padding: 1px 8px;
+  font-size: 11.5px;
+  border-width: 1.5px;
+}
 
 .tMapGrid {
   display: grid;
@@ -1888,35 +1908,41 @@ body.tMap-open .overlay {
   display: grid;
   place-items: center;
 }
-/* עם איור: הטבעת גדלה והופכת למסגרת סביב האיור */
-.tRing--img {
-  width: 128px;
-  height: 128px;
-  margin-bottom: 8px;
+/* ===== ראש האריח: התמונה של הנושא =====
+   התמונה מחליפה את הטבעת לגמרי. הטבעת נשארת רק כגיבוי לנושא שאין לו עדיין תמונה. */
+.tHead {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
 }
-.tRing__img {
-  position: absolute;
-  width: 74%;
-  height: 74%;
+.tHead__img {
+  display: block;
+  width: 100%;
+  max-width: 168px;
+  aspect-ratio: 1;
   object-fit: contain;
-  border-radius: 50%;
   pointer-events: none;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.tTile:hover .tRing__img {
-  transform: scale(1.06);
+.tTile:hover .tHead__img {
+  transform: scale(1.05) rotate(-1.5deg);
 }
-.tRing--new .tRing__img {
-  opacity: 0.9;
+/* יש תמונה → הטבעת יורדת מהמסך */
+.tHead.has-img .tRing {
+  display: none;
 }
-/* תג ההתקדמות — יושב על שפת הטבעת */
-.tRing__badge {
+/* תג ההתקדמות — רק כשיש תמונה, פינה תחתונה */
+.tHead__badge {
+  display: none;
+}
+.tHead.has-img .tHead__badge {
+  display: block;
   position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 42px;
-  padding: 3px 10px;
+  bottom: 2px;
+  inset-inline-end: 4px;
+  min-width: 40px;
+  padding: 3px 11px;
   border-radius: 999px;
   background: #0d9488;
   color: #fff;
@@ -1925,26 +1951,20 @@ body.tMap-open .overlay {
   font-size: 14px;
   line-height: 1.35;
   text-align: center;
-  box-shadow: 0 3px 10px rgb(13 60 53 / 0.22);
+  box-shadow: 0 3px 10px rgb(13 60 53 / 0.24);
   border: 2px solid #fff;
 }
-.tRing__badge i {
+.tHead__badge i {
   font-style: normal;
   font-size: 0.72em;
   opacity: 0.85;
 }
-.tRing--new .tRing__badge {
-  background: #eef3f2;
-  color: #46615f;
-  font-size: 12px;
-  padding: 3px 12px;
-}
-.tRing--free .tRing__badge {
-  background: #f3ede3;
-  color: #8a6a3a;
+.tHead.is-free .tHead__badge {
+  background: #e8dcc4;
+  color: #7a5c2e;
   font-size: 12px;
 }
-.tRing--full .tRing__badge {
+.tHead.is-full .tHead__badge {
   background: #16a34a;
   font-size: 15px;
   padding: 2px 12px;

@@ -43,6 +43,26 @@ loadEnvFile(ROOT);
 
 const PORT = Number.parseInt(process.env.PORT || "8787", 10);
 
+// תמונות הנושאים — הרשימה חייבת להתאים ל-TOPIC_IMAGES ב-app.js
+const TOPIC_IMAGE_SLUGS = [
+  { slug: "numbers", label: "מספרים / ספירה" },
+  { slug: "addition", label: "חיבור" },
+  { slug: "subtraction", label: "חיסור" },
+  { slug: "add-sub", label: "חיבור וחיסור" },
+  { slug: "word-problems", label: "שאלות מילוליות" },
+  { slug: "shapes", label: "צורות, צלעות וקודקודים" },
+  { slug: "money", label: "כסף ומטבעות" },
+  { slug: "clock", label: "שעון" },
+  { slug: "multiplication", label: "כפל" },
+  { slug: "division", label: "חילוק" },
+  { slug: "fractions", label: "שברים" },
+  { slug: "percent", label: "אחוזים" },
+  { slug: "decimals", label: "עשרוניים" },
+  { slug: "measure", label: "מדידות (אורך/משקל/נפח)" },
+  { slug: "equations", label: "משוואות ונעלם" },
+  { slug: "ratio", label: "יחס ופרופורציה" },
+];
+
 // ספק הדיבור מהסביבה — עמיד לרווחים/מרכאות שנדבקים בטעות בדשבורד של Render
 function ttsProviderIsGoogle() {
   return String(process.env.TTS_PROVIDER || "azure").replace(/["']/g, "").trim().toLowerCase() === "google";
@@ -85,6 +105,8 @@ const PUBLIC_FILES = new Set([
   "/plan.html",
   "/plan.css",
   "/plan.js",
+  "/topic-images.html",
+  "/topic-art.js",
   "/parent.html",
   "/parent.css",
   "/parent.js",
@@ -434,6 +456,62 @@ const server = http.createServer(async (req, res) => {
         const planFile = path.join(require("./lib/store").DATA_DIR, "plan-progress.json");
         return json(res, 200, { ok: true, done: readJson(planFile, {}) });
       }
+      /* תמונות הנושאים — העלאה, רשימה ומחיקה (images/topics/<slug>.png) */
+      if (au.pathname === "/api/admin/topic-images") {
+        if (method !== "GET") return json(res, 405, { error: "Method not allowed" });
+        const dir = path.join(ROOT, "images", "topics");
+        let files = [];
+        try { files = fs.readdirSync(dir); } catch { /* התיקייה עוד לא קיימת */ }
+        const have = {};
+        for (const f of files) {
+          const m = /^([a-z0-9-]+)\.(png|jpg|jpeg|webp|svg)$/i.exec(f);
+          if (m) have[m[1]] = f;
+        }
+        return json(res, 200, { ok: true, slugs: TOPIC_IMAGE_SLUGS, have });
+      }
+
+      if (au.pathname === "/api/admin/topic-image") {
+        const slug = String(q.get("slug") || "");
+        if (!TOPIC_IMAGE_SLUGS.some((s) => s.slug === slug)) {
+          return json(res, 400, { ok: false, error: "שם תמונה לא מוכר" });
+        }
+        const dir = path.join(ROOT, "images", "topics");
+        if (method === "DELETE") {
+          let removed = 0;
+          for (const ext of ["png", "jpg", "jpeg", "webp", "svg"]) {
+            try { fs.unlinkSync(path.join(dir, `${slug}.${ext}`)); removed++; } catch { /* אין קובץ כזה */ }
+          }
+          return json(res, 200, { ok: true, removed });
+        }
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        let buf;
+        try {
+          buf = await readRawBody(req, 6 * 1024 * 1024); // עד 6MB
+        } catch {
+          return json(res, 413, { ok: false, error: "הקובץ גדול מדי (עד 6MB)" });
+        }
+        // זיהוי לפי חתימת הקובץ — לא לפי מה שהדפדפן הצהיר
+        const isPng = buf.length > 8 && buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47;
+        const isJpg = buf.length > 3 && buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff;
+        const isWebp = buf.length > 12 && buf.slice(0, 4).toString() === "RIFF" && buf.slice(8, 12).toString() === "WEBP";
+        if (!isPng && !isJpg && !isWebp) {
+          return json(res, 400, { ok: false, error: "רק PNG / JPG / WEBP" });
+        }
+        const ext = isPng ? "png" : isJpg ? "jpg" : "webp";
+        try {
+          fs.mkdirSync(dir, { recursive: true });
+          // מוחקים גרסאות קודמות בפורמטים אחרים כדי שלא יישאר קובץ ישן שגובר
+          for (const e of ["png", "jpg", "jpeg", "webp", "svg"]) {
+            if (e !== ext) { try { fs.unlinkSync(path.join(dir, `${slug}.${e}`)); } catch { /* אין */ } }
+          }
+          fs.writeFileSync(path.join(dir, `${slug}.${ext}`), buf);
+        } catch (e) {
+          return json(res, 500, { ok: false, error: "שמירה נכשלה: " + e.message });
+        }
+        logger.info(`תמונת נושא נשמרה: ${slug}.${ext} (${buf.length} בייטים)`);
+        return json(res, 200, { ok: true, slug, ext, bytes: buf.length });
+      }
+
       if (au.pathname === "/api/admin/plan/toggle") {
         if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
         const body = await readJsonBody(req, res);
@@ -948,6 +1026,11 @@ const server = http.createServer(async (req, res) => {
     // תוכנית העבודה של הבעלים — שלד ציבורי, התוכן נפתח רק עם session אדמין
     if (rel === "/plan" || rel === "/plan/" || rel === "/plan.html") {
       return serveFile(res, "/plan.html", method);
+    }
+
+    // תמונות הנושאים — העלאה בגרירה (השלד ציבורי; ה-API מוגן בסיסמת ניהול)
+    if (rel === "/topic-images" || rel === "/topic-images/" || rel === "/topic-images.html") {
+      return serveFile(res, "/topic-images.html", method);
     }
 
     // מפת ההוראה — מסמך התכנון של כיתה א׳ (הסטנדרט + תרשימי הזרימה)

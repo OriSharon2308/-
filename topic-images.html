@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>vela · תמונות הנושאים</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      [hidden] { display: none !important; }
+      body {
+        font-family: "Assistant", -apple-system, sans-serif;
+        color: #0f3b36;
+        min-height: 100dvh;
+        background:
+          radial-gradient(820px 560px at 92% -8%, rgba(249, 168, 96, 0.16), transparent 58%),
+          radial-gradient(760px 600px at 4% 6%, rgba(20, 184, 166, 0.18), transparent 58%),
+          #eef6f4;
+        padding: 28px 18px 80px;
+      }
+      .wrap { max-width: 1060px; margin: 0 auto; }
+      h1 {
+        font-family: "Fredoka", sans-serif;
+        font-size: 30px;
+        text-align: center;
+      }
+      .sub { text-align: center; color: #46615f; margin: 6px 0 26px; font-size: 15px; }
+      .sub b { color: #0d9488; }
+
+      /* כניסה */
+      .login { display: grid; place-items: center; min-height: 70vh; }
+      .login__card {
+        width: min(380px, 100%);
+        background: #fff;
+        border-radius: 22px;
+        padding: 34px 28px;
+        text-align: center;
+        box-shadow: 0 12px 34px rgb(13 60 53 / 0.1);
+      }
+      .login__card input {
+        width: 100%;
+        margin: 16px 0;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1.5px solid rgb(13 60 53 / 0.15);
+        font: inherit;
+        text-align: center;
+      }
+      .login__card input:focus { outline: none; border-color: #0d9488; }
+      .btn {
+        border: none;
+        border-radius: 999px;
+        background: #0d9488;
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        padding: 11px 22px;
+        cursor: pointer;
+      }
+      .btn:hover { background: #0b8177; }
+      .err { color: #c2410c; font-size: 14px; margin-top: 10px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px dashed rgb(13 60 53 / 0.18);
+        border-radius: 22px;
+        padding: 14px;
+        text-align: center;
+        transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        cursor: pointer;
+        position: relative;
+      }
+      .card:hover { border-color: #0d9488; transform: translateY(-2px); }
+      .card.drag { border-color: #0d9488; background: #d6f4ef; }
+      .card.has { border-style: solid; border-color: rgba(22, 163, 74, 0.4); background: #fff; }
+      .card__box {
+        height: 132px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 8px;
+      }
+      .card__box img { max-width: 100%; max-height: 132px; object-fit: contain; }
+      .card__empty { color: #93a1b5; font-size: 34px; }
+      .card__name { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 15px; }
+      .card__slug { color: #7c8f8c; font-size: 12px; direction: ltr; margin-top: 2px; }
+      .card__del {
+        position: absolute;
+        top: 8px;
+        inset-inline-end: 8px;
+        border: none;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 999px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 15px;
+        box-shadow: 0 2px 6px rgb(13 60 53 / 0.15);
+      }
+      .card__del:hover { background: #fee2e2; }
+      .status {
+        text-align: center;
+        margin-top: 20px;
+        color: #46615f;
+        font-size: 14px;
+        min-height: 20px;
+      }
+      .status.ok { color: #15803d; font-weight: 600; }
+      .status.bad { color: #c2410c; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <div id="loginView" class="login" hidden>
+      <form id="loginForm" class="login__card">
+        <h1 style="font-size: 22px">תמונות הנושאים</h1>
+        <p class="sub" style="margin: 8px 0 0">נדרשת סיסמת הניהול</p>
+        <input id="pw" type="password" placeholder="סיסמת ניהול" autocomplete="current-password" />
+        <button class="btn" type="submit" style="width: 100%">כניסה</button>
+        <div id="loginErr" class="err" hidden></div>
+      </form>
+    </div>
+
+    <div id="app" class="wrap" hidden>
+      <h1>תמונות הנושאים</h1>
+      <p class="sub">
+        גררו תמונה לכל ריבוע (או לחצו לבחירה). היא תופיע מיד באזור התרגול — <b>PNG / JPG / WEBP</b>, רצוי ריבועית.
+      </p>
+      <div id="grid" class="grid"></div>
+      <div id="status" class="status"></div>
+    </div>
+
+    <input id="filePicker" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+      let SLUGS = [];
+      let HAVE = {};
+      let pickTarget = null;
+
+      function setStatus(msg, kind) {
+        const el = $("#status");
+        el.textContent = msg || "";
+        el.className = "status" + (kind ? " " + kind : "");
+      }
+
+      async function load() {
+        const res = await fetch("/api/admin/topic-images", { cache: "no-store" });
+        if (res.status === 403) return showLogin();
+        const data = await res.json();
+        SLUGS = data.slugs || [];
+        HAVE = data.have || {};
+        $("#loginView").hidden = true;
+        $("#app").hidden = false;
+        render();
+      }
+
+      function render() {
+        const grid = $("#grid");
+        grid.innerHTML = "";
+        for (const s of SLUGS) {
+          const file = HAVE[s.slug];
+          const card = document.createElement("div");
+          card.className = "card" + (file ? " has" : "");
+          card.dataset.slug = s.slug;
+          const box = document.createElement("div");
+          box.className = "card__box";
+          if (file) {
+            const img = document.createElement("img");
+            img.src = "/images/topics/" + file + "?t=" + Date.now();
+            img.alt = "";
+            box.appendChild(img);
+          } else {
+            const e = document.createElement("div");
+            e.className = "card__empty";
+            e.textContent = "＋";
+            box.appendChild(e);
+          }
+          card.appendChild(box);
+          const name = document.createElement("div");
+          name.className = "card__name";
+          name.textContent = s.label;
+          card.appendChild(name);
+          const slug = document.createElement("div");
+          slug.className = "card__slug";
+          slug.textContent = s.slug + ".png";
+          card.appendChild(slug);
+          if (file) {
+            const del = document.createElement("button");
+            del.className = "card__del";
+            del.type = "button";
+            del.title = "מחיקה";
+            del.textContent = "🗑";
+            del.addEventListener("click", async (e) => {
+              e.stopPropagation();
+              if (!confirm(`למחוק את התמונה של "${s.label}"?`)) return;
+              const r = await fetch("/api/admin/topic-image?slug=" + encodeURIComponent(s.slug), { method: "DELETE" });
+              if (r.ok) { delete HAVE[s.slug]; render(); setStatus("נמחק", "ok"); }
+            });
+            card.appendChild(del);
+          }
+          card.addEventListener("click", () => {
+            pickTarget = s.slug;
+            $("#filePicker").value = "";
+            $("#filePicker").click();
+          });
+          card.addEventListener("dragover", (e) => { e.preventDefault(); card.classList.add("drag"); });
+          card.addEventListener("dragleave", () => card.classList.remove("drag"));
+          card.addEventListener("drop", (e) => {
+            e.preventDefault();
+            card.classList.remove("drag");
+            const f = e.dataTransfer.files && e.dataTransfer.files[0];
+            if (f) upload(s.slug, f);
+          });
+          grid.appendChild(card);
+        }
+      }
+
+      $("#filePicker").addEventListener("change", (e) => {
+        const f = e.target.files && e.target.files[0];
+        if (f && pickTarget) upload(pickTarget, f);
+      });
+
+      async function upload(slug, file) {
+        if (file.size > 6 * 1024 * 1024) return setStatus("הקובץ גדול מדי (עד 6MB)", "bad");
+        setStatus("מעלה…");
+        try {
+          const res = await fetch("/api/admin/topic-image?slug=" + encodeURIComponent(slug), {
+            method: "POST",
+            headers: { "content-type": file.type || "application/octet-stream" },
+            body: file,
+          });
+          const data = await res.json();
+          if (!res.ok || !data.ok) return setStatus(data.error || "העלאה נכשלה", "bad");
+          HAVE[slug] = slug + "." + data.ext;
+          render();
+          setStatus("נשמר ✓ — כבר מופיע באזור התרגול", "ok");
+        } catch (err) {
+          setStatus("שגיאת רשת", "bad");
+        }
+      }
+
+      function showLogin() {
+        $("#app").hidden = true;
+        $("#loginView").hidden = false;
+        setTimeout(() => $("#pw").focus(), 50);
+      }
+
+      $("#loginForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const res = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ password: $("#pw").value }),
+        });
+        const data = await res.json();
+        if (data.ok) { $("#pw").value = ""; load(); }
+        else { const el = $("#loginErr"); el.textContent = data.error || "סיסמה שגויה"; el.hidden = false; }
+      });
+
+      load().catch(showLogin);
+    </script>
+  </body>
+</html>
