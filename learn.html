@@ -119,25 +119,23 @@
         outline: 3px solid #0d9488;
         outline-offset: 3px;
       }
+      /* מקום האיור — ריבועי וקבוע, כך שכל האריחים באותו גובה
+         (גם אלה שעדיין מציגים אימוג'י עד שיעלו להם תמונה) */
       .topicTile__icon {
-        width: 58px;
-        height: 58px;
+        width: 100%;
+        max-width: 190px;
+        aspect-ratio: 1;
+        margin-inline: auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 18px;
-        font-size: 30px;
-        box-shadow: inset 0 0 0 1px rgba(2, 6, 23, 0.04);
-      }
-      /* יש איור לנושא — הוא תופס את מקום האימוג'י, בגדול ובלי רקע */
-      .topicTile__icon--art {
-        width: 104px;
-        height: 104px;
         border-radius: 22px;
+        font-size: 64px;
         background: none !important;
         box-shadow: none;
+      }
+      .topicTile__icon--art {
         position: relative;
-        align-self: center;
       }
       .topicTile__img {
         width: 100%;
@@ -195,12 +193,13 @@
       }
 
       /* גוונים מתחלפים לאריחים */
-      .topicTile:nth-child(6n + 1) .topicTile__icon { background: #d6f4ef; }
-      .topicTile:nth-child(6n + 2) .topicTile__icon { background: #ffe7df; }
-      .topicTile:nth-child(6n + 3) .topicTile__icon { background: #fff0c9; }
-      .topicTile:nth-child(6n + 4) .topicTile__icon { background: #eae6ff; }
-      .topicTile:nth-child(6n + 5) .topicTile__icon { background: #dbeafe; }
-      .topicTile:nth-child(6n + 6) .topicTile__icon { background: #fde2f3; }
+      /* גוני-רקע רק לאריחים שעדיין באימוג'י — האיורים נשארים על רקע נקי */
+      .topicTile:nth-child(6n + 1) .topicTile__icon:not(.topicTile__icon--art) { background: #d6f4ef !important; }
+      .topicTile:nth-child(6n + 2) .topicTile__icon:not(.topicTile__icon--art) { background: #ffe7df !important; }
+      .topicTile:nth-child(6n + 3) .topicTile__icon:not(.topicTile__icon--art) { background: #fff0c9 !important; }
+      .topicTile:nth-child(6n + 4) .topicTile__icon:not(.topicTile__icon--art) { background: #eae6ff !important; }
+      .topicTile:nth-child(6n + 5) .topicTile__icon:not(.topicTile__icon--art) { background: #dbeafe !important; }
+      .topicTile:nth-child(6n + 6) .topicTile__icon:not(.topicTile__icon--art) { background: #fde2f3 !important; }
 
       .learnEmpty {
         text-align: center;
@@ -286,7 +285,7 @@
 
     <div class="learnToast" id="learnToast" role="status" aria-live="polite"></div>
 
-    <script src="/topic-art.js?v=1"></script>
+    <script src="/topic-art.js?v=2"></script>
     <script>
       // אימוג'י לכל נושא לפי מילות מפתח בשם הנושא
       function topicIcon(key) {
