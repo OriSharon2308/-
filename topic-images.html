@@ -83,6 +83,24 @@
       .card:hover { border-color: #0d9488; transform: translateY(-2px); }
       .card.drag { border-color: #0d9488; background: #d6f4ef; }
       .card.has { border-style: solid; border-color: rgba(22, 163, 74, 0.4); background: #fff; }
+      .card.sel {
+        border-style: solid;
+        border-color: #0d9488;
+        background: #d6f4ef;
+        box-shadow: 0 0 0 4px rgb(13 148 136 / 0.18);
+      }
+      .card.sel::after {
+        content: "⌘V";
+        position: absolute;
+        top: 8px;
+        inset-inline-start: 8px;
+        background: #0d9488;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 3px 9px;
+        border-radius: 999px;
+      }
       .card__box {
         height: 132px;
         display: grid;
@@ -132,7 +150,8 @@
     <div id="app" class="wrap" hidden>
       <h1>תמונות הנושאים</h1>
       <p class="sub">
-        גררו תמונה לכל ריבוע (או לחצו לבחירה). היא תופיע מיד באזור התרגול — <b>PNG / JPG / WEBP</b>, רצוי ריבועית.
+        <b>הכי מהיר:</b> העתיקו תמונה (לחיצה ימנית ← העתק תמונה) ← לחצו על הנושא ← <b>⌘V</b>.
+        אפשר גם לגרור תמונה ישר לריבוע, או ללחוץ ולבחור קובץ.
       </p>
       <div id="grid" class="grid"></div>
       <div id="status" class="status"></div>
@@ -145,6 +164,55 @@
       let SLUGS = [];
       let HAVE = {};
       let pickTarget = null;
+      let selected = null; // הנושא שנבחר — לשם תודבק התמונה ב-⌘V
+
+      function labelOf(slug) {
+        const s = SLUGS.find((x) => x.slug === slug);
+        return s ? s.label : slug;
+      }
+      function selectCard(slug) {
+        selected = slug;
+        document.querySelectorAll(".card").forEach((c) => c.classList.toggle("sel", c.dataset.slug === slug));
+        setStatus(`נבחר: ${labelOf(slug)} — עכשיו ⌘V כדי להדביק תמונה`);
+      }
+
+      /** מוציא תמונה מאירוע גרירה/הדבקה — קובץ, פריט, או כתובת תמונה. */
+      async function imageFromTransfer(dt) {
+        if (!dt) return null;
+        if (dt.files && dt.files.length && dt.files[0].type.startsWith("image/")) return dt.files[0];
+        if (dt.items) {
+          for (const it of dt.items) {
+            if (it.kind === "file") {
+              const f = it.getAsFile();
+              if (f && f.type.startsWith("image/")) return f;
+            }
+          }
+        }
+        // גרירה מאפליקציה אחרת מגיעה לפעמים ככתובת/HTML עם <img src>
+        let url = dt.getData ? dt.getData("text/uri-list") || dt.getData("text/plain") : "";
+        if (!url && dt.getData) {
+          const html = dt.getData("text/html") || "";
+          const m = /<img[^>]+src=["']([^"']+)["']/i.exec(html);
+          if (m) url = m[1];
+        }
+        if (url && /^(https?:|data:|blob:)/.test(url)) {
+          try {
+            const res = await fetch(url);
+            const blob = await res.blob();
+            if (blob.type.startsWith("image/")) return blob;
+          } catch { /* חוצה-מקורות — לא ניתן להביא */ }
+        }
+        return null;
+      }
+
+      // ⌘V בכל מקום בעמוד → מעלה לנושא שנבחר
+      document.addEventListener("paste", async (e) => {
+        const f = await imageFromTransfer(e.clipboardData);
+        if (!f) return;
+        e.preventDefault();
+        if (!selected) return setStatus("קודם לחצו על הנושא שאליו להדביק", "bad");
+        upload(selected, f);
+      });
 
       function setStatus(msg, kind) {
         const el = $("#status");
@@ -207,19 +275,23 @@
             });
             card.appendChild(del);
           }
-          card.addEventListener("click", () => {
+          // לחיצה = בוחרת את הנושא (ואז ⌘V מדביק לתוכו); לחיצה כפולה פותחת בורר קבצים
+          card.addEventListener("click", () => selectCard(s.slug));
+          card.addEventListener("dblclick", () => {
             pickTarget = s.slug;
             $("#filePicker").value = "";
             $("#filePicker").click();
           });
           card.addEventListener("dragover", (e) => { e.preventDefault(); card.classList.add("drag"); });
           card.addEventListener("dragleave", () => card.classList.remove("drag"));
-          card.addEventListener("drop", (e) => {
+          card.addEventListener("drop", async (e) => {
             e.preventDefault();
             card.classList.remove("drag");
-            const f = e.dataTransfer.files && e.dataTransfer.files[0];
+            const f = await imageFromTransfer(e.dataTransfer);
             if (f) upload(s.slug, f);
+            else setStatus("לא זוהתה תמונה בגרירה — נסו העתקה ואז ⌘V", "bad");
           });
+          if (s.slug === selected) card.classList.add("sel");
           grid.appendChild(card);
         }
       }

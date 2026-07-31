@@ -508,8 +508,19 @@ const server = http.createServer(async (req, res) => {
         } catch (e) {
           return json(res, 500, { ok: false, error: "שמירה נכשלה: " + e.message });
         }
-        logger.info(`תמונת נושא נשמרה: ${slug}.${ext} (${buf.length} בייטים)`);
-        return json(res, 200, { ok: true, slug, ext, bytes: buf.length });
+        // חיתוך שוליים ריקים — כדי שהאיור ימלא את האריח בלי מסגרת סביבו
+        if (ext === "png") {
+          try {
+            require("child_process").execFileSync(
+              "python3",
+              [path.join(ROOT, "tools", "trim-topic-image.py"), path.join(dir, `${slug}.png`)],
+              { timeout: 20000, stdio: "ignore" }
+            );
+          } catch { /* בלי Python/PIL — התמונה נשמרת כמו שהיא */ }
+        }
+        const finalBytes = (() => { try { return fs.statSync(path.join(dir, `${slug}.${ext}`)).size; } catch { return buf.length; } })();
+        logger.info(`תמונת נושא נשמרה: ${slug}.${ext} (${finalBytes} בייטים)`);
+        return json(res, 200, { ok: true, slug, ext, bytes: finalBytes });
       }
 
       if (au.pathname === "/api/admin/plan/toggle") {
