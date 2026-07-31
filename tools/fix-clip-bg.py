@@ -19,38 +19,6 @@ def lum(p):
     return 0.299 * p[0] + 0.587 * p[1] + 0.114 * p[2]
 
 
-def whiten_halo(im, px, w, h, thresh=205):
-    """הרקע/הצל שסביב האיור → לבן צרוף.
-    מציף מהשוליים פנימה כל מה שכמעט-לבן ועוצר בקצה האיור עצמו.
-    בלי זה נשאר "ריבוע" אפרפר סביב האיור כשהוא מוצג על רקע צבעוני."""
-    seen = bytearray(w * h)
-    q = deque()
-
-    def near_white(p):
-        return min(p) >= thresh
-
-    for x in range(w):
-        for y in (0, h - 1):
-            if near_white(px[x, y]) and not seen[y * w + x]:
-                seen[y * w + x] = 1
-                q.append((x, y))
-    for y in range(h):
-        for x in (0, w - 1):
-            if near_white(px[x, y]) and not seen[y * w + x]:
-                seen[y * w + x] = 1
-                q.append((x, y))
-
-    n = 0
-    while q:
-        x, y = q.popleft()
-        px[x, y] = (255, 255, 255)
-        n += 1
-        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            nx, ny = x + dx, y + dy
-            if 0 <= nx < w and 0 <= ny < h and not seen[ny * w + nx] and near_white(px[nx, ny]):
-                seen[ny * w + nx] = 1
-                q.append((nx, ny))
-    return n
 
 
 def main(path):
@@ -60,13 +28,8 @@ def main(path):
 
     corners = [px[0, 0], px[w - 1, 0], px[0, h - 1], px[w - 1, h - 1]]
     if not any(lum(c) < DARK for c in corners):
-        # אין רקע שחור — עדיין מנקים את הילת-הצל סביב האיור
-        n = whiten_halo(im, px, w, h)
-        if n:
-            im.save(path, "PNG")
-            print(f"נוקה צל/הילה: {n} פיקסלים → לבן")
-        else:
-            print("נקי — לא שונה דבר")
+        # אין רקע שחור — אין מה לתקן. הצל והרקע של האיור נשארים כפי שהם.
+        print("אין רקע שחור — לא שונה דבר")
         return 0
 
     seen = bytearray(w * h)
@@ -109,9 +72,8 @@ def main(path):
             int(b + (255 - b) * t),
         )
 
-    halo = whiten_halo(im, px, w, h)
     im.save(path, "PNG")
-    print(f"תוקן: {filled} ברקע + {len(edge)} בשוליים + {halo} בהילה → לבן")
+    print(f"תוקן: {filled} פיקסלים ברקע + {len(edge)} בשוליים → לבן")
     return 0
 
 
