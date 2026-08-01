@@ -28,7 +28,7 @@
         min-height: 100vh;
       }
       .learn {
-        max-width: 1040px;
+        max-width: 1180px;
         margin: 0 auto;
         padding: 22px clamp(16px, 4vw, 40px) 80px;
       }
@@ -93,7 +93,7 @@
          כל פריט ממוקם ממשתנה אחד: --d (המרחק מהמרכז), שנקבע ב-JS. */
       .carousel {
         position: relative;
-        height: 430px;
+        height: 540px;
         margin-top: 4px;
         touch-action: pan-y;
         user-select: none;
@@ -108,7 +108,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        width: min(330px, 74vw);
+        width: min(430px, 80vw);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -220,7 +220,7 @@
          (גם אלה שעדיין מציגים אימוג'י עד שיעלו להם תמונה) */
       .topicTile__icon {
         width: 100%;
-        max-width: 250px;
+        max-width: 340px;
         aspect-ratio: 1;
         margin-inline: auto;
         display: flex;
@@ -346,12 +346,7 @@
   <body class="learnBody">
     <main class="learn">
       <header class="home__top">
-        <a href="/" class="brand" style="text-decoration: none">
-          <div class="brand__mark" aria-hidden="true">∑</div>
-          <div class="brand__text">
-            <div class="brand__title">Vela</div>
-          </div>
-        </a>
+        <span class="brand brand--hidden" aria-hidden="true"></span>
         <div class="home__topRight">
           <span id="userChip" class="userChip" hidden>
             <span class="userChip__icon" aria-hidden="true">👤</span>
@@ -507,7 +502,7 @@
       // מרחק בין שכנים — לעולם לא 0 (חילוק ב-0 היה מייצר NaN וכל הפריטים נערמו במרכז)
       const STEP = () => {
         const w = window.innerWidth || document.documentElement.clientWidth || 900;
-        return Math.max(140, Math.min(300, w * 0.34));
+        return Math.max(180, Math.min(355, w * 0.36));
       };
       const reduceMotion = () =>
         window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -519,10 +514,11 @@
           const d = i - active - drag / step; // מרחק רציף (כולל גרירה)
           const ad = Math.abs(d);
           // מיקום: ‎-d‎ → הפריט הבא נע שמאלה (כיוון הקריאה בעברית)
-          let x = -d * step * (ad > 1 ? 0.82 : 1); // הרחוקים נדחסים קצת
+          let x = -d * step;
           if (!Number.isFinite(x)) x = 0;
-          const s = Math.max(0.34, 1 - ad * 0.38);
-          const o = ad > 2.2 ? 0 : ad > 1.6 ? 0.35 : ad > 0.5 ? 0.9 : 1;
+          const s = Math.max(0.55, 1 - ad * 0.3);
+          // רק שכן אחד בכל צד — מה שרחוק יותר נעלם לגמרי
+          const o = ad > 1.5 ? 0 : ad > 0.5 ? 0.85 : 1;
           const z = 30 - Math.round(ad * 10);
           tile.style.setProperty("--x", x.toFixed(1) + "px");
           tile.style.setProperty("--s", s.toFixed(3));
@@ -534,9 +530,9 @@
           const isActive = Math.round(d) === 0;
           tile.classList.toggle("topicTile--active", isActive);
           tile.classList.toggle("topicTile--side", !isActive);
-          tile.classList.toggle("topicTile--hidden", ad > 2.2);
-          tile.setAttribute("aria-hidden", ad > 2.2 ? "true" : "false");
-          tile.tabIndex = isActive ? 0 : ad <= 1.6 ? 0 : -1;
+          tile.classList.toggle("topicTile--hidden", ad > 1.5);
+          tile.setAttribute("aria-hidden", ad > 1.5 ? "true" : "false");
+          tile.tabIndex = isActive ? 0 : ad <= 1.2 ? 0 : -1;
         });
         updateDots();
         const prev = document.getElementById("cPrev");
