@@ -1741,9 +1741,13 @@ body.tMap-open .overlay {
   display: flex;
   align-items: center;
   gap: 14px;
-  max-width: 620px;
+  max-width: 340px;
   margin: clamp(76px, 15vh, 180px) auto 0;
-  padding: 13px 20px;
+  padding: 12px 22px;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
   border-radius: 24px;
   border: 1px solid rgb(13 148 136 / 0.1);
   background: rgb(255 255 255 / 0.16);
@@ -1757,9 +1761,18 @@ body.tMap-open .overlay {
   flex: 0 0 auto;
 }
 .tMapGo__text {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
-  text-align: start;
+  text-align: center;
+}
+.tMapGo:hover {
+  background: rgb(255 255 255 / 0.42);
+  border-color: rgb(13 148 136 / 0.24);
+  transform: translateY(-2px);
+}
+.tMapGo:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(13 148 136 / 0.25);
 }
 .tMapGo__kicker {
   font-family: "Fredoka", "Assistant", sans-serif;

@@ -2183,18 +2183,21 @@ async function main() {
       return;
     }
     u.tMapGo.hidden = false;
+    // רק שתי שורות: "ממשיכים..." וכמה נשאר. הכרטיס כולו לחיץ.
     u.tMapGo.innerHTML =
       `<div class="tMapGo__text"><div class="tMapGo__kicker">ממשיכים...</div>` +
-      `<div class="tMapGo__title"></div>` +
-      `<div class="tMapGo__left">עוד ${best.route.left} שאלות לסיום המסלול</div></div>` +
-      `<span class="tMapGo__art">${tileHeadHtml(best.route, topicImageSlug(best.leaf.key, best.leaf.parent))}</span>` +
-      `<button class="btn btn--primary tMapGo__btn" type="button">יאללה!</button>`;
-    u.tMapGo.querySelector(".tMapGo__title").textContent = best.leaf.label;
-    u.tMapGo.querySelector(".tMapGo__btn").addEventListener("click", () => {
+      `<div class="tMapGo__left">עוד ${best.route.left} תרגילים</div></div>`;
+    u.tMapGo.setAttribute("role", "button");
+    u.tMapGo.setAttribute("tabindex", "0");
+    const go = () => {
       closeTopicsMap();
       if (best.topic) switchToTopic(best.topic.id);
       else openTopicByKey(best.leaf.key, best.leaf.label);
-    });
+    };
+    u.tMapGo.onclick = go;
+    u.tMapGo.onkeydown = (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+    };
   }
 
   // חגיגה על מה שהתמלא מאז הפעם הקודמת שנכנסנו למסך
