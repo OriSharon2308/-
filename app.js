@@ -2065,7 +2065,7 @@ async function main() {
       btn.innerHTML =
         tileHeadHtml(route, topicImageSlug(leaf.key, leaf.parent)) +
         `<span class="tTile__text">` +
-        (leaf.parent ? `<span class="tTile__parent"></span>` : "") +
+        `<span class="tTile__parent"></span>` +
         `<span class="tTile__title"></span>` +
         `<span class="tTile__meta">${tileMeta(route)}</span>` +
         (note ? `<span class="tTile__note">${note}</span>` : "") +
@@ -2077,7 +2077,7 @@ async function main() {
         `</span>`;
       // טקסט מהנתונים — נכתב כטקסט, לא כ-HTML
       btn.querySelector(".tTile__title").textContent = leaf.label;
-      if (leaf.parent) btn.querySelector(".tTile__parent").textContent = leaf.parent;
+      btn.querySelector(".tTile__parent").textContent = leaf.parent || "";
       // הצצה בצד → מסתובבת לחזית. הכרטיס שבחזית → נכנסים לתרגול.
       btn.addEventListener("click", () => {
         const i = MAP_TILES.indexOf(btn);

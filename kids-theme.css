@@ -1684,6 +1684,9 @@ body.tMap-open .overlay {
   max-width: 1080px;
   margin: 0 auto;
 }
+.tMap__inner:has(.tStage) {
+  max-width: 1280px;
+}
 .tMap__head {
   position: relative;
   text-align: center;
@@ -2131,8 +2134,9 @@ body.tMap-open .overlay {
 .tMapGrid .tTile {
   position: absolute;
   top: 50%;
-  left: 56%;
+  left: 59%;
   width: min(820px, 88%);
+  height: clamp(230px, 38vh, 340px);
   min-height: 0;
   flex-direction: row;
   align-items: center;
@@ -2168,7 +2172,7 @@ body.tMap-open .overlay {
 /* האיור — הגיבור, בצד ימין */
 .tMapGrid .tHead {
   flex: 0 0 auto;
-  width: clamp(200px, 31vw, 330px);
+  width: clamp(175px, 26vw, 285px);
 }
 .tMapGrid .tHead__img {
   max-width: none;
@@ -2176,12 +2180,16 @@ body.tMap-open .overlay {
 }
 /* הטקסט — משמאל לאיור */
 .tTile__text {
-  flex: 1 1 auto;
+  flex: 1 1 240px;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
   gap: 5px;
+  /* נעוץ לגובה קבוע — הכותרת תמיד באותו מקום, והשאר מתארך כלפי מטה */
+  align-self: flex-start;
+  padding-top: clamp(46px, 9vh, 96px);
   /* מופיע רק אחרי שהאיור של הנושא החדש התייצב — התזמון ב-JS */
   opacity: 0;
   transform: translateY(8px);
@@ -2190,11 +2198,23 @@ body.tMap-open .overlay {
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .tMapGrid .tTile__title {
-  font-size: clamp(25px, 3.6vw, 38px);
+  font-size: clamp(21px, 2.9vw, 32px);
   line-height: 1.2;
+  text-wrap: balance;
 }
 .tMapGrid .tTile__parent {
   font-size: clamp(13px, 1.6vw, 16px);
+  /* שורה אחת בגובה קבוע — אחרת הכותרת מתחת זזה בין נושא לנושא */
+  height: 1.5em;
+  line-height: 1.5em;
+  margin-top: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tMapGrid .tTile__parent + .tTile__title {
+  margin-top: 0;
 }
 .tMapGrid .tTile__meta {
   font-size: clamp(15px, 1.9vw, 19px);
@@ -2235,15 +2255,15 @@ body.tMap-open .overlay {
   display: grid;
   place-items: center;
   color: #0d9488;
-  opacity: 0.45;
-  transition: opacity 0.25s ease;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
 }
 .tArrow svg {
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.2;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -2252,16 +2272,16 @@ body.tMap-open .overlay {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 16px;
-  border: 1.5px solid rgb(13 148 136 / 0.28);
-  background: rgb(255 255 255 / 0.28);
+  border-radius: 18px;
+  border: 1px solid rgb(13 148 136 / 0.1);
+  background: rgb(255 255 255 / 0.14);
   opacity: 0;
   transform: scaleY(0.82);
   transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .tArrow:hover,
 .tArrow:focus-visible {
-  opacity: 1;
+  opacity: 0.6;
   outline: none;
 }
 .tArrow:hover::before,
