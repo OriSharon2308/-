@@ -2133,6 +2133,7 @@ body.tMap-open .overlay {
   top: 50%;
   left: 56%;
   width: min(820px, 88%);
+  height: clamp(230px, 38vh, 340px);
   min-height: 0;
   flex-direction: row;
   align-items: center;
@@ -2181,13 +2182,17 @@ body.tMap-open .overlay {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
   gap: 5px;
+  /* נעוץ לראש הכרטיס — הכותרת תמיד באותו גובה, והשאר מתארך כלפי מטה */
+  align-self: flex-start;
+  padding-top: clamp(40px, 8vh, 84px);
   /* מופיע רק אחרי שהאיור של הנושא החדש התייצב — התזמון ב-JS */
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(12px);
   transition:
-    opacity 0.45s ease,
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.85s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .tMapGrid .tTile__title {
   font-size: clamp(25px, 3.6vw, 38px);
@@ -2195,6 +2200,17 @@ body.tMap-open .overlay {
 }
 .tMapGrid .tTile__parent {
   font-size: clamp(13px, 1.6vw, 16px);
+  /* שורה אחת בגובה קבוע — אחרת הכותרת מתחתיה קופצת בין נושא לנושא */
+  height: 1.5em;
+  line-height: 1.5em;
+  margin-top: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tMapGrid .tTile__parent + .tTile__title {
+  margin-top: 0;
 }
 .tMapGrid .tTile__meta {
   font-size: clamp(15px, 1.9vw, 19px);
