@@ -504,18 +504,23 @@
       let dragMoved = false;
 
       const carouselEl = () => document.getElementById("carousel");
-      const STEP = () => Math.min(300, window.innerWidth * 0.34); // מרחק בין שכנים
+      // מרחק בין שכנים — לעולם לא 0 (חילוק ב-0 היה מייצר NaN וכל הפריטים נערמו במרכז)
+      const STEP = () => {
+        const w = window.innerWidth || document.documentElement.clientWidth || 900;
+        return Math.max(140, Math.min(300, w * 0.34));
+      };
       const reduceMotion = () =>
         window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       function layout(instant, dragPx) {
-        const drag = dragPx || 0;
-        const step = STEP();
+        const drag = Number(dragPx) || 0;
+        const step = STEP() || 1;
         TILES.forEach((tile, i) => {
           const d = i - active - drag / step; // מרחק רציף (כולל גרירה)
           const ad = Math.abs(d);
           // מיקום: ‎-d‎ → הפריט הבא נע שמאלה (כיוון הקריאה בעברית)
-          const x = -d * step * (ad > 1 ? 0.82 : 1); // הרחוקים נדחסים קצת
+          let x = -d * step * (ad > 1 ? 0.82 : 1); // הרחוקים נדחסים קצת
+          if (!Number.isFinite(x)) x = 0;
           const s = Math.max(0.34, 1 - ad * 0.38);
           const o = ad > 2.2 ? 0 : ad > 1.6 ? 0.35 : ad > 0.5 ? 0.9 : 1;
           const z = 30 - Math.round(ad * 10);
