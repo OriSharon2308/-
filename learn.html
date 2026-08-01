@@ -88,16 +88,27 @@
         color: #c2410c;
       }
 
-      /* רשת נושאים */
+      /* ===== קרוסלת הנושאים =====
+         הנושא הפעיל גדול במרכז, והשכנים מציצים משני הצדדים.
+         כל פריט ממוקם ממשתנה אחד: --d (המרחק מהמרכז), שנקבע ב-JS. */
+      .carousel {
+        position: relative;
+        height: 430px;
+        margin-top: 4px;
+        touch-action: pan-y;
+        user-select: none;
+        overflow: hidden;
+      }
       .topicGrid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 18px;
-        margin-top: 8px;
+        position: absolute;
+        inset: 0;
       }
       /* בלי מסגרת — האיור יושב ישר על רקע העמוד */
       .topicTile {
-        position: relative;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: min(330px, 74vw);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -110,27 +121,113 @@
         box-shadow: none;
         cursor: pointer;
         font-family: inherit;
-        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translate(-50%, -50%) translateX(var(--x, 0px)) scale(var(--s, 1));
+        opacity: var(--o, 1);
+        z-index: var(--z, 1);
+        transition:
+          transform 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.45s ease;
+        will-change: transform;
       }
-      .topicTile:hover {
-        transform: translateY(-6px);
+      /* בזמן גרירה — עוקב אחרי האצבע בלי השהיה */
+      .carousel.is-dragging .topicTile {
+        transition: none;
+      }
+      /* הצצה בצד: ריחוף מבליט אותה החוצה ומגדיל קצת */
+      .topicTile--side {
+        cursor: pointer;
+      }
+      .topicTile--side:hover,
+      .topicTile--side:focus-visible {
+        transform: translate(-50%, -50%) translateX(calc(var(--x, 0px) + var(--push, 0px)))
+          scale(calc(var(--s, 1) * 1.09));
+        opacity: 1;
+      }
+      /* בהצצות מציגים רק את האיור והשם — בלי צ'יפים וקריאה-לפעולה */
+      .topicTile--side .topicTile__subs,
+      .topicTile--side .topicTile__go {
+        display: none;
+      }
+      .topicTile--side .topicTile__name {
+        font-size: 16px;
+        opacity: 0.75;
+      }
+      .topicTile--hidden {
+        pointer-events: none;
       }
       .topicTile:focus-visible {
         outline: 3px solid #0d9488;
-        outline-offset: 3px;
+        outline-offset: 6px;
+        border-radius: 28px;
+      }
+
+      /* חיצי ניווט */
+      .cNav {
+        position: absolute;
+        top: 44%;
+        z-index: 40;
+        width: 46px;
+        height: 46px;
+        border-radius: 999px;
+        border: 1.5px solid rgb(13 60 53 / 0.12);
+        background: rgba(255, 255, 255, 0.82);
+        color: #0d9488;
+        font-size: 22px;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 4px 14px rgb(13 60 53 / 0.1);
+        transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+      }
+      .cNav:hover {
+        background: #fff;
+        transform: scale(1.09);
+      }
+      .cNav:disabled {
+        opacity: 0.25;
+        cursor: default;
+      }
+      .cNav--prev { inset-inline-end: 4px; }
+      .cNav--next { inset-inline-start: 4px; }
+
+      /* נקודות מתחת */
+      .cDots {
+        position: absolute;
+        bottom: 2px;
+        inset-inline: 0;
+        display: flex;
+        justify-content: center;
+        gap: 7px;
+        z-index: 40;
+      }
+      .cDot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        border: none;
+        padding: 0;
+        background: rgb(13 60 53 / 0.16);
+        cursor: pointer;
+        transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s;
+      }
+      .cDot.is-on {
+        width: 24px;
+        background: #0d9488;
       }
       /* מקום האיור — ריבועי וקבוע, כך שכל האריחים באותו גובה
          (גם אלה שעדיין מציגים אימוג'י עד שיעלו להם תמונה) */
       .topicTile__icon {
         width: 100%;
-        max-width: 190px;
+        max-width: 250px;
         aspect-ratio: 1;
         margin-inline: auto;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 22px;
-        font-size: 64px;
+        font-size: 96px;
         background: none !important;
         box-shadow: none;
       }
@@ -141,12 +238,11 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
-        /* הרקע הלבן של האיור נעלם לתוך רקע העמוד — בלי ריבוע לבן מסביב */
-        mix-blend-mode: multiply;
         transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
-      .topicTile:hover .topicTile__img {
-        transform: scale(1.06) rotate(-1.5deg);
+      /* הנושא הפעיל "נושם" קלות בריחוף; בהצצות ההגדלה כבר בכרטיס עצמו */
+      .topicTile--active:hover .topicTile__img {
+        transform: scale(1.05) rotate(-1.5deg);
       }
       /* האימוג'י מוצג רק כשאין קובץ איור */
       .topicTile__icon--art.has-art .topicTile__emoji {
@@ -284,8 +380,13 @@
       </section>
 
       <section aria-label="נושאים ללמידה">
-        <div class="topicGrid" id="topicGrid">
-          <div class="learnEmpty" id="loadingMsg">טוען נושאים…</div>
+        <div class="carousel" id="carousel">
+          <div class="topicGrid" id="topicGrid">
+            <div class="learnEmpty" id="loadingMsg">טוען נושאים…</div>
+          </div>
+          <button class="cNav cNav--prev" id="cPrev" type="button" aria-label="הנושא הקודם" hidden>›</button>
+          <button class="cNav cNav--next" id="cNext" type="button" aria-label="הנושא הבא" hidden>‹</button>
+          <div class="cDots" id="cDots"></div>
         </div>
       </section>
     </main>
@@ -378,13 +479,164 @@
           go.innerHTML = '<span>בואו נלמד</span><span class="arrow" aria-hidden="true">←</span>';
           tile.appendChild(go);
 
+          // לחיצה על הצצה בצד → מביאה אותה למרכז. לחיצה על המרכז → נכנסים לשיעור.
           tile.addEventListener("click", () => {
-            // לחיצה על נושא → עמוד הלמידה (דף המשבצות במסך מלא), עם שם הנושא ב-URL.
+            const i = TILES.indexOf(tile);
+            if (i !== active) { setActive(i); return; }
+            if (dragMoved) return; // הייתה גרירה — לא נחשב כלחיצה
             window.location.href = "/learn-board?topic=" + encodeURIComponent(t.key);
           });
 
           grid.appendChild(tile);
+          TILES.push(tile);
         }
+        buildDots();
+        active = Math.floor((TILES.length - 1) / 2); // מתחילים באמצע — הצצות משני הצדדים
+        layout(true);
+        wireCarousel();
+      }
+
+      /* ═══════════ קרוסלה ═══════════
+         כל פריט ממוקם לפי המרחק שלו מהמרכז (d). ב-RTL "הבא" נע שמאלה,
+         ולכן ההיסט הוא ‎-d‎ — הפריט הבא ברשימה מציץ מצד שמאל. */
+      const TILES = [];
+      let active = 0;
+      let dragMoved = false;
+
+      const carouselEl = () => document.getElementById("carousel");
+      const STEP = () => Math.min(300, window.innerWidth * 0.34); // מרחק בין שכנים
+      const reduceMotion = () =>
+        window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function layout(instant, dragPx) {
+        const drag = dragPx || 0;
+        const step = STEP();
+        TILES.forEach((tile, i) => {
+          const d = i - active - drag / step; // מרחק רציף (כולל גרירה)
+          const ad = Math.abs(d);
+          // מיקום: ‎-d‎ → הפריט הבא נע שמאלה (כיוון הקריאה בעברית)
+          const x = -d * step * (ad > 1 ? 0.82 : 1); // הרחוקים נדחסים קצת
+          const s = Math.max(0.34, 1 - ad * 0.38);
+          const o = ad > 2.2 ? 0 : ad > 1.6 ? 0.35 : ad > 0.5 ? 0.9 : 1;
+          const z = 30 - Math.round(ad * 10);
+          tile.style.setProperty("--x", x.toFixed(1) + "px");
+          tile.style.setProperty("--s", s.toFixed(3));
+          tile.style.setProperty("--o", o.toFixed(2));
+          tile.style.setProperty("--z", String(z));
+          // ריחוף מבליט את ההצצה החוצה — ימינה לימניות, שמאלה לשמאליות
+          tile.style.setProperty("--push", (d < 0 ? 18 : -18) + "px");
+
+          const isActive = Math.round(d) === 0;
+          tile.classList.toggle("topicTile--active", isActive);
+          tile.classList.toggle("topicTile--side", !isActive);
+          tile.classList.toggle("topicTile--hidden", ad > 2.2);
+          tile.setAttribute("aria-hidden", ad > 2.2 ? "true" : "false");
+          tile.tabIndex = isActive ? 0 : ad <= 1.6 ? 0 : -1;
+        });
+        updateDots();
+        const prev = document.getElementById("cPrev");
+        const next = document.getElementById("cNext");
+        if (prev && next) {
+          prev.hidden = next.hidden = TILES.length < 2;
+          prev.disabled = active <= 0;
+          next.disabled = active >= TILES.length - 1;
+        }
+        if (instant) {
+          // ציור ראשון בלי אנימציה
+          carouselEl()?.classList.add("is-dragging");
+          void carouselEl()?.offsetWidth;
+          requestAnimationFrame(() => carouselEl()?.classList.remove("is-dragging"));
+        }
+      }
+
+      function setActive(i) {
+        const n = TILES.length;
+        if (!n) return;
+        active = Math.max(0, Math.min(n - 1, i));
+        layout();
+        const t = TILES[active];
+        if (t && document.activeElement && document.activeElement.closest(".carousel")) t.focus();
+      }
+      const move = (delta) => setActive(active + delta);
+
+      function buildDots() {
+        const dots = document.getElementById("cDots");
+        if (!dots) return;
+        dots.innerHTML = "";
+        if (TILES.length < 2) return;
+        TILES.forEach((_, i) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "cDot";
+          b.setAttribute("aria-label", `נושא ${i + 1}`);
+          b.addEventListener("click", () => setActive(i));
+          dots.appendChild(b);
+        });
+      }
+      function updateDots() {
+        const dots = document.getElementById("cDots");
+        if (!dots) return;
+        [...dots.children].forEach((d, i) => d.classList.toggle("is-on", i === active));
+      }
+
+      function wireCarousel() {
+        const el = carouselEl();
+        if (!el || el.dataset.wired) return;
+        el.dataset.wired = "1";
+
+        document.getElementById("cPrev")?.addEventListener("click", () => move(-1));
+        document.getElementById("cNext")?.addEventListener("click", () => move(1));
+
+        // מקלדת: ← → (ב-RTL החץ שמאלה מקדם קדימה)
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") { e.preventDefault(); move(1); }
+          else if (e.key === "ArrowRight") { e.preventDefault(); move(-1); }
+          else if (e.key === "Home") { e.preventDefault(); setActive(0); }
+          else if (e.key === "End") { e.preventDefault(); setActive(TILES.length - 1); }
+        });
+
+        // גלגלת/טראקפד — עם חסם כדי שגלילה אחת לא תדלג על חמישה נושאים
+        let wheelLock = 0;
+        el.addEventListener(
+          "wheel",
+          (e) => {
+            const dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
+            if (!dx) return; // גלילה אנכית — משאירים לעמוד
+            e.preventDefault();
+            const now = Date.now();
+            if (now < wheelLock || Math.abs(dx) < 12) return;
+            wheelLock = now + 380;
+            move(dx > 0 ? -1 : 1);
+          },
+          { passive: false }
+        );
+
+        // גרירה/החלקה — עוקבת אחרי האצבע ומתייצבת לקרוב ביותר
+        let startX = null;
+        let dx = 0;
+        const down = (x) => { startX = x; dx = 0; dragMoved = false; el.classList.add("is-dragging"); };
+        const moveTo = (x) => {
+          if (startX === null) return;
+          dx = x - startX;
+          if (Math.abs(dx) > 6) dragMoved = true;
+          layout(false, -dx);
+        };
+        const up = () => {
+          if (startX === null) return;
+          el.classList.remove("is-dragging");
+          const step = STEP();
+          const jumped = Math.round(-dx / step);
+          startX = null;
+          if (jumped) setActive(active + jumped);
+          else layout();
+          setTimeout(() => (dragMoved = false), 30);
+        };
+        el.addEventListener("pointerdown", (e) => { if (e.button === 0) down(e.clientX); });
+        window.addEventListener("pointermove", (e) => moveTo(e.clientX));
+        window.addEventListener("pointerup", up);
+        window.addEventListener("pointercancel", up);
+
+        window.addEventListener("resize", () => layout(true));
       }
 
       (async function init() {
