@@ -2076,7 +2076,10 @@ async function main() {
       // טקסט מהנתונים — נכתב כטקסט, לא כ-HTML
       btn.querySelector(".tTile__title").textContent = leaf.label;
       if (leaf.parent) btn.querySelector(".tTile__parent").textContent = leaf.parent;
+      // הצצה בצד → מסתובבת לחזית. הכרטיס שבחזית → נכנסים לתרגול.
       btn.addEventListener("click", () => {
+        const i = MAP_TILES.indexOf(btn);
+        if (i >= 0 && i !== mapActive) { setMapActive(i); return; }
         closeTopicsMap();
         openTopicByKey(leaf.key, leaf.label);
       });
@@ -2095,6 +2098,66 @@ async function main() {
     }
     renderMapGo(best);
     celebrate(toCelebrate);
+    // קרוסלה: נושא אחד בחזית — הנושא שבו הילד נמצא כרגע
+    MAP_TILES = [...u.tMapGrid.querySelectorAll(".tTile")];
+    const curIdx = MAP_TILES.findIndex((t) => t.classList.contains("tTile--current"));
+    mapActive = curIdx >= 0 ? curIdx : 0;
+    layoutMapCarousel(true);
+    wireMapCarousel();
+  }
+
+  /* ═══════════ קרוסלת הנושאים (אזור תרגול) ═══════════
+     בחזית נושא אחד; משני הצדדים מציצה פיסה לבנה של הכרטיסים השכנים.
+     ריחוף מבליט את הפיסה, ולחיצה מביאה אותה לחזית. */
+  let MAP_TILES = [];
+  let mapActive = 0;
+
+  function layoutMapCarousel(instant) {
+    if (!u.tMapGrid || !MAP_TILES.length) return;
+    const w = u.tMapGrid.getBoundingClientRect().width || window.innerWidth || 900;
+    const card = Math.min(340, w * 0.62); // רוחב הכרטיס בחזית
+    const n = MAP_TILES.length;
+    MAP_TILES.forEach((tile, i) => {
+      // מרחק מעגלי: תמיד יש שכנים משני הצדדים
+      let d = i - mapActive;
+      if (d > n / 2) d -= n;
+      if (d < -n / 2) d += n;
+      const ad = Math.abs(d);
+      // ‎-d‎ → הנושא הבא מציץ משמאל, בכיוון הקריאה בעברית
+      const x = -Math.sign(d) * (card * 0.5 + (ad - 1) * 26 + 22);
+      const s = ad === 0 ? 1 : Math.max(0.82, 0.94 - (ad - 1) * 0.05);
+      tile.style.setProperty("--mx", (d === 0 ? 0 : x).toFixed(1) + "px");
+      tile.style.setProperty("--ms", s.toFixed(3));
+      tile.style.setProperty("--mz", String(30 - ad));
+      tile.style.setProperty("--mpush", (d < 0 ? 22 : -22) + "px");
+      tile.classList.toggle("tTile--front", d === 0);
+      tile.classList.toggle("tTile--peek", d !== 0);
+      tile.classList.toggle("tTile--gone", ad > 3);
+      tile.setAttribute("aria-hidden", ad > 3 ? "true" : "false");
+      tile.tabIndex = ad <= 1 ? 0 : -1;
+    });
+    if (instant) {
+      u.tMapGrid.classList.add("is-instant");
+      void u.tMapGrid.offsetWidth;
+      requestAnimationFrame(() => u.tMapGrid.classList.remove("is-instant"));
+    }
+  }
+
+  function setMapActive(i) {
+    const n = MAP_TILES.length;
+    if (!n) return;
+    mapActive = ((i % n) + n) % n; // מעגלי — מהאחרון חוזרים לראשון
+    layoutMapCarousel();
+  }
+
+  function wireMapCarousel() {
+    if (!u.tMapGrid || u.tMapGrid.dataset.wired) return;
+    u.tMapGrid.dataset.wired = "1";
+    u.tMapGrid.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); setMapActive(mapActive + 1); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); setMapActive(mapActive - 1); }
+    });
+    window.addEventListener("resize", () => layoutMapCarousel(true));
   }
 
   function renderMapGo(best) {
