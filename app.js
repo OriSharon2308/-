@@ -2133,6 +2133,19 @@ async function main() {
       tile.style.setProperty("--mz", String(d === 0 ? 30 : 1));
       tile.classList.toggle("tTile--front", d === 0);
       tile.classList.toggle("tTile--gone", d !== 0);
+      // הטקסט מופיע בעדינות רק אחרי שהאיור של הנושא החדש הגיע
+      const tx = tile.querySelector(".tTile__text");
+      if (tx) {
+        clearTimeout(tile._txTimer);
+        tx.style.opacity = "0";
+        tx.style.transform = "translateY(8px)";
+        if (d === 0) {
+          tile._txTimer = setTimeout(() => {
+            tx.style.opacity = "1";
+            tx.style.transform = "none";
+          }, 340);
+        }
+      }
       tile.setAttribute("aria-hidden", d === 0 ? "false" : "true");
       tile.tabIndex = d === 0 ? 0 : -1;
     });

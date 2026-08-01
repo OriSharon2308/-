@@ -2131,7 +2131,7 @@ body.tMap-open .overlay {
 .tMapGrid .tTile {
   position: absolute;
   top: 50%;
-  left: 53%;
+  left: 56%;
   width: min(820px, 88%);
   min-height: 0;
   flex-direction: row;
@@ -2182,6 +2182,12 @@ body.tMap-open .overlay {
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
+  /* מופיע רק אחרי שהאיור של הנושא החדש התייצב — התזמון ב-JS */
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .tMapGrid .tTile__title {
   font-size: clamp(25px, 3.6vw, 38px);
@@ -2204,8 +2210,10 @@ body.tMap-open .overlay {
 .tMapGrid .tTile__note {
   text-align: start;
 }
-/* המורה — עומד בקצה שמאל ולא זז עם הקרוסלה */
+/* המורה — עומד בקצה שמאל ולא זז עם הקרוסלה.
+   ה-margin דוחף את החץ והתוכן ימינה, בלי להזיז אותו. */
 .tStage__teacher {
+  margin-inline-start: clamp(16px, 5vw, 90px);
   flex: 0 0 auto;
   width: clamp(160px, 23vw, 300px);
   height: auto;
@@ -2218,8 +2226,8 @@ body.tMap-open .overlay {
 .tArrow {
   position: relative;
   flex: 0 0 auto;
-  width: 40px;
-  height: 132px;
+  width: 44px;
+  height: clamp(210px, 34vh, 340px);
   border: none;
   background: none;
   padding: 0;
@@ -2273,8 +2281,8 @@ body.tMap-open .overlay {
     display: none;
   }
   .tArrow {
-    width: 32px;
-    height: 104px;
+    width: 34px;
+    height: clamp(150px, 26vh, 220px);
   }
 }
 
