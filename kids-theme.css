@@ -2131,8 +2131,8 @@ body.tMap-open .overlay {
 .tMapGrid .tTile {
   position: absolute;
   top: 50%;
-  left: 50%;
-  width: min(880px, 92%);
+  left: 53%;
+  width: min(820px, 88%);
   min-height: 0;
   flex-direction: row;
   align-items: center;
@@ -2207,7 +2207,7 @@ body.tMap-open .overlay {
 /* המורה — עומד בקצה שמאל ולא זז עם הקרוסלה */
 .tStage__teacher {
   flex: 0 0 auto;
-  width: clamp(120px, 17vw, 210px);
+  width: clamp(160px, 23vw, 300px);
   height: auto;
   object-fit: contain;
   pointer-events: none;
