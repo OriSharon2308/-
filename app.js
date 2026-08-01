@@ -2074,8 +2074,7 @@ async function main() {
           : `<span class="tPips">${route.segs
               .map((s) => `<span class="tPip${s.full ? " tPip--full" : s.done > 0 ? " tPip--part" : ""}"></span>`)
               .join("")}</span>`) +
-        `</span>` +
-        `<img class="tTile__teacher" src="/teacher-character/loop-src/assets/character.png" alt="" aria-hidden="true" draggable="false" />`;
+        `</span>`;
       // טקסט מהנתונים — נכתב כטקסט, לא כ-HTML
       btn.querySelector(".tTile__title").textContent = leaf.label;
       if (leaf.parent) btn.querySelector(".tTile__parent").textContent = leaf.parent;

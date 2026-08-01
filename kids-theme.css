@@ -2124,7 +2124,7 @@ body.tMap-open .overlay {
   display: block;
   position: relative;
   flex: 1 1 auto;
-  height: 300px;
+  height: 390px;
   overflow: hidden;
   touch-action: pan-y;
 }
@@ -2150,9 +2150,7 @@ body.tMap-open .overlay {
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.4s ease;
 }
-.tMapGrid .tTile--gone .tTile__teacher {
-  visibility: hidden;
-}
+
 .tMapGrid.is-instant .tTile {
   transition: none;
 }
@@ -2170,7 +2168,7 @@ body.tMap-open .overlay {
 /* האיור — הגיבור, בצד ימין */
 .tMapGrid .tHead {
   flex: 0 0 auto;
-  width: clamp(150px, 24vw, 240px);
+  width: clamp(200px, 31vw, 330px);
 }
 .tMapGrid .tHead__img {
   max-width: none;
@@ -2186,19 +2184,34 @@ body.tMap-open .overlay {
   gap: 5px;
 }
 .tMapGrid .tTile__title {
-  font-size: clamp(19px, 2.6vw, 26px);
+  font-size: clamp(25px, 3.6vw, 38px);
+  line-height: 1.2;
+}
+.tMapGrid .tTile__parent {
+  font-size: clamp(13px, 1.6vw, 16px);
+}
+.tMapGrid .tTile__meta {
+  font-size: clamp(15px, 1.9vw, 19px);
+}
+.tMapGrid .tTile__note {
+  font-size: clamp(12px, 1.5vw, 14px);
+}
+.tMapGrid .tPip {
+  width: 30px;
+  height: 8px;
 }
 .tMapGrid .tTile__meta,
 .tMapGrid .tTile__note {
   text-align: start;
 }
-/* המורה — בקצה שמאל */
-.tTile__teacher {
+/* המורה — עומד בקצה שמאל ולא זז עם הקרוסלה */
+.tStage__teacher {
   flex: 0 0 auto;
-  width: clamp(72px, 12vw, 116px);
+  width: clamp(120px, 17vw, 210px);
   height: auto;
   object-fit: contain;
   pointer-events: none;
+  align-self: center;
 }
 
 /* חצים עדינים — קו-מתאר בלבד, בלי רקע */
@@ -2251,12 +2264,12 @@ body.tMap-open .overlay {
 
 @media (max-width: 560px) {
   .tMapGrid {
-    height: 250px;
+    height: 290px;
   }
   .tMapGrid .tTile {
     gap: 12px;
   }
-  .tTile__teacher {
+  .tStage__teacher {
     display: none;
   }
   .tArrow {
