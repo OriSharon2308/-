@@ -2110,12 +2110,21 @@ body.tMap-open .overlay {
 }
 
 /* ===================================================================
-   קרוסלת הנושאים באזור התרגול — נושא אחד בחזית, פיסה לבנה בצדדים
+   קרוסלת הנושאים באזור התרגול — מלבן לרוחב, בלי רקע ובלי מסגרת
+   סדר (RTL): איור מימין · טקסט באמצע · המורה בקצה שמאל
    =================================================================== */
+.tStage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
 .tMapGrid {
   display: block;
   position: relative;
-  height: 520px;
+  flex: 1 1 auto;
+  height: 300px;
   overflow: hidden;
   touch-action: pan-y;
 }
@@ -2123,62 +2132,142 @@ body.tMap-open .overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(286px, 56vw);
-  min-height: 440px;
-  justify-content: center;
+  width: min(880px, 92%);
+  min-height: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(14px, 3vw, 34px);
+  padding: 10px 6px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  text-align: start;
   transform: translate(-50%, -50%) translateX(var(--mx, 0px)) scale(var(--ms, 1));
+  opacity: 1;
   z-index: var(--mz, 1);
   transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease,
-    opacity 0.35s ease;
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+}
+.tMapGrid .tTile--gone .tTile__teacher {
+  visibility: hidden;
 }
 .tMapGrid.is-instant .tTile {
   transition: none;
 }
-/* הכרטיס בחזית — מלא ובולט */
-.tTile--front {
-  box-shadow: 0 22px 48px rgb(13 60 53 / 0.16);
+.tMapGrid .tTile:hover {
+  transform: translate(-50%, -50%) translateX(var(--mx, 0px)) scale(calc(var(--ms, 1) * 1.015));
+  box-shadow: none;
 }
-/* ההצצות — כרטיס לבן נקי, בלי תוכן */
-.tTile--peek {
-  background: #fff;
-  border-color: rgb(13 60 53 / 0.08);
-  box-shadow: 0 10px 26px rgb(13 60 53 / 0.1);
+/* מוצג אחד בלבד — השאר ממתינים מחוץ למסך.
+   הסלקטור חייב להיות ספציפי לפחות כמו ‎.tMapGrid .tTile‎, אחרת opacity:1 גובר. */
+.tMapGrid .tTile--gone {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* האיור — הגיבור, בצד ימין */
+.tMapGrid .tHead {
+  flex: 0 0 auto;
+  width: clamp(150px, 24vw, 240px);
+}
+.tMapGrid .tHead__img {
+  max-width: none;
+  width: 100%;
+}
+/* הטקסט — משמאל לאיור */
+.tTile__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+.tMapGrid .tTile__title {
+  font-size: clamp(19px, 2.6vw, 26px);
+}
+.tMapGrid .tTile__meta,
+.tMapGrid .tTile__note {
+  text-align: start;
+}
+/* המורה — בקצה שמאל */
+.tTile__teacher {
+  flex: 0 0 auto;
+  width: clamp(72px, 12vw, 116px);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* חצים עדינים — קו-מתאר בלבד, בלי רקע */
+.tArrow {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 132px;
+  border: none;
+  background: none;
+  padding: 0;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #0d9488;
+  opacity: 0.45;
+  transition: opacity 0.25s ease;
 }
-.tTile--peek > * {
+.tArrow svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* בריחוף — מסגרת שקופה גבוהה סביב החץ */
+.tArrow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1.5px solid rgb(13 148 136 / 0.28);
+  background: rgb(255 255 255 / 0.28);
   opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  transform: scaleY(0.82);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.tTile--peek:hover,
-.tTile--peek:focus-visible {
-  transform: translate(-50%, -50%) translateX(calc(var(--mx, 0px) + var(--mpush, 0px)))
-    scale(calc(var(--ms, 1) * 1.04));
-  box-shadow: 0 18px 40px rgb(13 60 53 / 0.16);
+.tArrow:hover,
+.tArrow:focus-visible {
+  opacity: 1;
+  outline: none;
 }
-.tTile--gone {
-  opacity: 0;
-  pointer-events: none;
-}
-/* כותרות-אב לא רלוונטיות בקרוסלה */
-.tMapGrid .tMapSection {
-  display: none;
+.tArrow:hover::before,
+.tArrow:focus-visible::before {
+  opacity: 1;
+  transform: scaleY(1);
 }
 
 @media (max-width: 560px) {
   .tMapGrid {
-    height: 460px;
+    height: 250px;
   }
   .tMapGrid .tTile {
-    width: min(240px, 66vw);
-    min-height: 380px;
+    gap: 12px;
+  }
+  .tTile__teacher {
+    display: none;
+  }
+  .tArrow {
+    width: 32px;
+    height: 104px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tMapGrid .tTile {
+  .tMapGrid .tTile,
+  .tArrow::before {
     transition: none;
   }
 }

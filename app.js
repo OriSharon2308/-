@@ -2064,6 +2064,7 @@ async function main() {
       const note = tileNote(route);
       btn.innerHTML =
         tileHeadHtml(route, topicImageSlug(leaf.key, leaf.parent)) +
+        `<span class="tTile__text">` +
         (leaf.parent ? `<span class="tTile__parent"></span>` : "") +
         `<span class="tTile__title"></span>` +
         `<span class="tTile__meta">${tileMeta(route)}</span>` +
@@ -2072,7 +2073,9 @@ async function main() {
           ? ""
           : `<span class="tPips">${route.segs
               .map((s) => `<span class="tPip${s.full ? " tPip--full" : s.done > 0 ? " tPip--part" : ""}"></span>`)
-              .join("")}</span>`);
+              .join("")}</span>`) +
+        `</span>` +
+        `<img class="tTile__teacher" src="/teacher-character/loop-src/assets/character.png" alt="" aria-hidden="true" draggable="false" />`;
       // טקסט מהנתונים — נכתב כטקסט, לא כ-HTML
       btn.querySelector(".tTile__title").textContent = leaf.label;
       if (leaf.parent) btn.querySelector(".tTile__parent").textContent = leaf.parent;
@@ -2115,7 +2118,7 @@ async function main() {
   function layoutMapCarousel(instant) {
     if (!u.tMapGrid || !MAP_TILES.length) return;
     const w = u.tMapGrid.getBoundingClientRect().width || window.innerWidth || 900;
-    const card = Math.min(286, w * 0.56); // רוחב הכרטיס בחזית — תואם ל-CSS
+    const card = Math.min(880, w * 0.92); // רוחב הכרטיס — תואם ל-CSS
     const n = MAP_TILES.length;
     MAP_TILES.forEach((tile, i) => {
       // מרחק מעגלי: תמיד יש שכנים משני הצדדים
@@ -2123,18 +2126,16 @@ async function main() {
       if (d > n / 2) d -= n;
       if (d < -n / 2) d += n;
       const ad = Math.abs(d);
-      // ‎-d‎ → הנושא הבא מציץ משמאל, בכיוון הקריאה בעברית
-      const x = -Math.sign(d) * (card * 0.5 + (ad - 1) * 26 + 22);
-      const s = ad === 0 ? 1 : Math.max(0.82, 0.94 - (ad - 1) * 0.05);
-      tile.style.setProperty("--mx", (d === 0 ? 0 : x).toFixed(1) + "px");
-      tile.style.setProperty("--ms", s.toFixed(3));
-      tile.style.setProperty("--mz", String(30 - ad));
-      tile.style.setProperty("--mpush", (d < 0 ? 22 : -22) + "px");
+      // מוצג נושא אחד בלבד. השכנים ממתינים מחוץ למסך ושקופים —
+      // ‎-d‎ → הבא מחליק פנימה משמאל, בכיוון הקריאה בעברית.
+      const x = d === 0 ? 0 : -Math.sign(d) * card * 0.85;
+      tile.style.setProperty("--mx", x.toFixed(1) + "px");
+      tile.style.setProperty("--ms", d === 0 ? "1" : "0.9");
+      tile.style.setProperty("--mz", String(d === 0 ? 30 : 1));
       tile.classList.toggle("tTile--front", d === 0);
-      tile.classList.toggle("tTile--peek", d !== 0);
-      tile.classList.toggle("tTile--gone", ad > 3);
-      tile.setAttribute("aria-hidden", ad > 3 ? "true" : "false");
-      tile.tabIndex = ad <= 1 ? 0 : -1;
+      tile.classList.toggle("tTile--gone", d !== 0);
+      tile.setAttribute("aria-hidden", d === 0 ? "false" : "true");
+      tile.tabIndex = d === 0 ? 0 : -1;
     });
     if (instant) {
       u.tMapGrid.classList.add("is-instant");
@@ -2153,6 +2154,8 @@ async function main() {
   function wireMapCarousel() {
     if (!u.tMapGrid || u.tMapGrid.dataset.wired) return;
     u.tMapGrid.dataset.wired = "1";
+    document.getElementById("tPrev")?.addEventListener("click", () => setMapActive(mapActive - 1));
+    document.getElementById("tNext")?.addEventListener("click", () => setMapActive(mapActive + 1));
     u.tMapGrid.addEventListener("keydown", (e) => {
       if (e.key === "ArrowLeft") { e.preventDefault(); setMapActive(mapActive + 1); }
       else if (e.key === "ArrowRight") { e.preventDefault(); setMapActive(mapActive - 1); }

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css?v=47" />
     <!-- שכבת עיצוב ילדים (רידיזיין) — נטענת אחרי styles.css, דורסת מראה+מיקומים. הסרה = חזרה למקור -->
-    <link rel="stylesheet" href="./kids-theme.css?v=80" />
+    <link rel="stylesheet" href="./kids-theme.css?v=83" />
     <style>
       /* מקום שמור לדמות המדברת (מסקוט) בראש הצ'אט — נותן פנים למורה */
       .chatSidebar__header {
@@ -726,7 +726,15 @@
           <div class="tMap__sub" id="tMapSummary"></div>
         </div>
         <div id="tMapGo" class="tMapGo" hidden></div>
-        <div id="tMapGrid" class="tMapGrid"></div>
+        <div class="tStage">
+          <button id="tPrev" class="tArrow tArrow--prev" type="button" aria-label="הנושא הקודם">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9,5 17,12 9,19"></polyline></svg>
+          </button>
+          <div id="tMapGrid" class="tMapGrid"></div>
+          <button id="tNext" class="tArrow tArrow--next" type="button" aria-label="הנושא הבא">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15,5 7,12 15,19"></polyline></svg>
+          </button>
+        </div>
         <button id="tMapDrawerLink" class="tMap__link" type="button">הנושאים שפתחתי</button>
       </div>
     </section>
@@ -958,7 +966,7 @@
 
 
     <script src="./topic-art.js?v=2"></script>
-    <script src="./app.js?v=70" defer></script>
+    <script src="./app.js?v=73" defer></script>
 
     <!-- חלונית המורה: הפס הלבן האמיתי (#chatHeader) גדל כלפי מטה לריבוע, והמורה גדל (width/height — חד) ונע למרכז. סגירה ב-X / Esc -->
     <script>
