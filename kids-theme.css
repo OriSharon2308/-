@@ -1741,13 +1741,14 @@ body.tMap-open .overlay {
   display: flex;
   align-items: center;
   gap: 14px;
-  max-width: 560px;
-  margin: 10px auto 0;
-  padding: 10px 16px;
-  border-radius: 28px;
-  border: 1.5px solid rgb(13 148 136 / 0.28);
-  background: #d6f4ef;
-  box-shadow: 0 8px 22px rgb(13 60 53 / 0.08);
+  max-width: 620px;
+  margin: clamp(18px, 4vh, 46px) auto 0;
+  padding: 13px 20px;
+  border-radius: 24px;
+  border: 1.5px solid rgb(13 148 136 / 0.22);
+  background: rgb(255 255 255 / 0.34);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 6px 20px rgb(13 60 53 / 0.05);
 }
 .tMapGo__teacher {
   width: 78px;
@@ -1762,19 +1763,28 @@ body.tMap-open .overlay {
 }
 .tMapGo__kicker {
   font-size: 12.5px;
-  color: #46615f;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #6b8481;
 }
 .tMapGo__title {
   font-family: "Fredoka", "Assistant", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
+  line-height: 1.25;
   color: #0f3b36;
 }
 .tMapGo__left {
-  margin-top: 2px;
+  margin-top: 1px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   color: #0d9488;
+}
+.tMapGo__art {
+  order: -1;
+}
+.tMapGo__btn {
+  margin-inline-start: auto;
 }
 .tMapGo__btn {
   flex: 0 0 auto;
@@ -2119,6 +2129,7 @@ body.tMap-open .overlay {
   align-items: center;
   justify-content: center;
   gap: 6px;
+  margin-top: clamp(24px, 6vh, 74px);
 }
 .tMapGrid {
   display: block;

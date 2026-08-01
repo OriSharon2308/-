@@ -30,7 +30,7 @@
       .learn {
         max-width: 1180px;
         margin: 0 auto;
-        padding: 22px clamp(16px, 4vw, 40px) 80px;
+        padding: 12px clamp(16px, 4vw, 40px) 60px;
       }
 
       .learn .brand__mark {
@@ -55,7 +55,7 @@
       /* כותרת האזור */
       .learnHead {
         text-align: center;
-        margin: 26px 0 30px;
+        margin: 2px 0 18px;
       }
       .learnHead__eyebrow {
         display: inline-flex;
@@ -71,12 +71,12 @@
       }
       .learnHead__title {
         font-family: "Dana Yad", cursive;
-        font-size: clamp(38px, 6vw, 64px);
-        line-height: 1.12;
+        font-size: clamp(48px, 7.6vw, 86px);
+        line-height: 1.08;
         font-weight: 700;
         color: #0f3b36;
         -webkit-text-stroke: 0.5px #0f3b36;
-        margin: 14px 0 6px;
+        margin: 0 0 8px;
       }
       .learnHead__subtitle {
         font-size: clamp(15px, 2.2vw, 19px);
@@ -94,7 +94,7 @@
       .carousel {
         position: relative;
         height: 540px;
-        margin-top: 4px;
+        margin-top: -18px;
         touch-action: pan-y;
         user-select: none;
         overflow: hidden;
@@ -367,10 +367,10 @@
       </header>
 
       <section class="learnHead">
-        <span class="learnHead__eyebrow">📚 אזור הלמידה</span>
         <h1 class="learnHead__title">מה בא לך ללמוד?</h1>
         <p class="learnHead__subtitle">
-          בחרו נושא מכיתה <span class="learnHead__grade" id="gradeLabel">—</span> ונצא ללמוד אותו יחד
+          בחרו נושא ונצא ללמוד אותו יחד
+          <span class="learnHead__grade" id="gradeLabel" hidden></span>
         </p>
       </section>
 
@@ -539,8 +539,8 @@
         const next = document.getElementById("cNext");
         if (prev && next) {
           prev.hidden = next.hidden = TILES.length < 2;
-          prev.disabled = active <= 0;
-          next.disabled = active >= TILES.length - 1;
+          prev.disabled = active >= TILES.length - 1;
+          next.disabled = active <= 0;
         }
         if (instant) {
           // ציור ראשון בלי אנימציה
@@ -585,8 +585,9 @@
         if (!el || el.dataset.wired) return;
         el.dataset.wired = "1";
 
-        document.getElementById("cPrev")?.addEventListener("click", () => move(-1));
-        document.getElementById("cNext")?.addEventListener("click", () => move(1));
+        // הכפתור הימני מקדם קדימה והשמאלי אחורה (הוחלף לפי בקשה)
+        document.getElementById("cPrev")?.addEventListener("click", () => move(1));
+        document.getElementById("cNext")?.addEventListener("click", () => move(-1));
 
         // מקלדת: ← → (ב-RTL החץ שמאלה מקדם קדימה)
         el.addEventListener("keydown", (e) => {

@@ -2184,7 +2184,7 @@ async function main() {
     }
     u.tMapGo.hidden = false;
     u.tMapGo.innerHTML =
-      `<div class="tMapGo__text"><div class="tMapGo__kicker">ממשיכים ב…</div>` +
+      `<div class="tMapGo__text"><div class="tMapGo__kicker">ממשיכים...</div>` +
       `<div class="tMapGo__title"></div>` +
       `<div class="tMapGo__left">עוד ${best.route.left} שאלות לסיום המסלול</div></div>` +
       `<span class="tMapGo__art">${tileHeadHtml(best.route, topicImageSlug(best.leaf.key, best.leaf.parent))}</span>` +
