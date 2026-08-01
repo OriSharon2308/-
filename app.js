@@ -2115,7 +2115,7 @@ async function main() {
   function layoutMapCarousel(instant) {
     if (!u.tMapGrid || !MAP_TILES.length) return;
     const w = u.tMapGrid.getBoundingClientRect().width || window.innerWidth || 900;
-    const card = Math.min(340, w * 0.62); // רוחב הכרטיס בחזית
+    const card = Math.min(286, w * 0.56); // רוחב הכרטיס בחזית — תואם ל-CSS
     const n = MAP_TILES.length;
     MAP_TILES.forEach((tile, i) => {
       // מרחק מעגלי: תמיד יש שכנים משני הצדדים

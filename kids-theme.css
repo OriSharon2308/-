@@ -2115,7 +2115,7 @@ body.tMap-open .overlay {
 .tMapGrid {
   display: block;
   position: relative;
-  height: 430px;
+  height: 520px;
   overflow: hidden;
   touch-action: pan-y;
 }
@@ -2123,7 +2123,9 @@ body.tMap-open .overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(340px, 62vw);
+  width: min(286px, 56vw);
+  min-height: 440px;
+  justify-content: center;
   transform: translate(-50%, -50%) translateX(var(--mx, 0px)) scale(var(--ms, 1));
   z-index: var(--mz, 1);
   transition:
@@ -2167,10 +2169,11 @@ body.tMap-open .overlay {
 
 @media (max-width: 560px) {
   .tMapGrid {
-    height: 380px;
+    height: 460px;
   }
   .tMapGrid .tTile {
-    width: min(290px, 74vw);
+    width: min(240px, 66vw);
+    min-height: 380px;
   }
 }
 
