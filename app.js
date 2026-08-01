@@ -2184,7 +2184,6 @@ async function main() {
     }
     u.tMapGo.hidden = false;
     u.tMapGo.innerHTML =
-      `<img class="tMapGo__teacher" src="/teacher-character/loop-src/assets/character.png" alt="" aria-hidden="true" draggable="false" />` +
       `<div class="tMapGo__text"><div class="tMapGo__kicker">ממשיכים ב…</div>` +
       `<div class="tMapGo__title"></div>` +
       `<div class="tMapGo__left">עוד ${best.route.left} שאלות לסיום המסלול</div></div>` +
