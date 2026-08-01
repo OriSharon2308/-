@@ -2133,7 +2133,7 @@ body.tMap-open .overlay {
   top: 50%;
   left: 56%;
   width: min(820px, 88%);
-  height: clamp(230px, 38vh, 340px);
+  height: clamp(290px, 46vh, 420px);
   min-height: 0;
   flex-direction: row;
   align-items: center;
@@ -2169,7 +2169,7 @@ body.tMap-open .overlay {
 /* האיור — הגיבור, בצד ימין */
 .tMapGrid .tHead {
   flex: 0 0 auto;
-  width: clamp(200px, 31vw, 330px);
+  width: clamp(235px, 35vw, 390px);
 }
 .tMapGrid .tHead__img {
   max-width: none;
@@ -2186,7 +2186,7 @@ body.tMap-open .overlay {
   gap: 5px;
   /* נעוץ לראש הכרטיס — הכותרת תמיד באותו גובה, והשאר מתארך כלפי מטה */
   align-self: flex-start;
-  padding-top: clamp(40px, 8vh, 84px);
+  padding-top: clamp(2px, 1vh, 12px);
   /* מופיע רק אחרי שהאיור של הנושא החדש התייצב — התזמון ב-JS */
   opacity: 0;
   transform: translateY(12px);
@@ -2195,14 +2195,18 @@ body.tMap-open .overlay {
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .tMapGrid .tTile__title {
-  font-size: clamp(25px, 3.6vw, 38px);
-  line-height: 1.2;
+  font-size: clamp(28px, 4.1vw, 46px);
+  line-height: 1.18;
+  text-wrap: balance;
 }
 .tMapGrid .tTile__parent {
-  font-size: clamp(13px, 1.6vw, 16px);
-  /* שורה אחת בגובה קבוע — אחרת הכותרת מתחתיה קופצת בין נושא לנושא */
-  height: 1.5em;
-  line-height: 1.5em;
+  font-size: clamp(15px, 1.9vw, 19px);
+  /* שורה אחת בגובה קבוע בפיקסלים — ביחידות יחסיות הגובה השתנה
+     בין נושא עם שורת-אב לנושא בלעדיה, והכותרת מתחתיה קפצה */
+  height: 30px;
+  min-height: 30px;
+  line-height: 30px;
+  flex: 0 0 30px;
   margin-top: 0;
   max-width: 100%;
   white-space: nowrap;
@@ -2213,14 +2217,14 @@ body.tMap-open .overlay {
   margin-top: 0;
 }
 .tMapGrid .tTile__meta {
-  font-size: clamp(15px, 1.9vw, 19px);
+  font-size: clamp(17px, 2.2vw, 23px);
 }
 .tMapGrid .tTile__note {
-  font-size: clamp(12px, 1.5vw, 14px);
+  font-size: clamp(14px, 1.7vw, 17px);
 }
 .tMapGrid .tPip {
-  width: 30px;
-  height: 8px;
+  width: 38px;
+  height: 10px;
 }
 .tMapGrid .tTile__meta,
 .tMapGrid .tTile__note {
@@ -2242,8 +2246,8 @@ body.tMap-open .overlay {
 .tArrow {
   position: relative;
   flex: 0 0 auto;
-  width: 44px;
-  height: clamp(210px, 34vh, 340px);
+  width: 60px;
+  height: clamp(260px, 42vh, 420px);
   border: none;
   background: none;
   padding: 0;
@@ -2255,11 +2259,11 @@ body.tMap-open .overlay {
   transition: opacity 0.25s ease;
 }
 .tArrow svg {
-  width: 26px;
-  height: 26px;
+  width: 34px;
+  height: 34px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.2;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
