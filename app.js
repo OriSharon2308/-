@@ -1954,8 +1954,27 @@ async function main() {
       launchConfetti();
       window.setTimeout(leapToNextQuestion, 1100);
     } else {
-      setFeedback(u.feedbackBox, "❌ לא מדויק — נסה/י שוב, או בקש/י רמז.", "feedback--danger");
+      // בלי הודעת טקסט — בר התשובה מסמן "לא" באדום עדין ורעידה קצרה
+      u.feedbackBox.hidden = true;
+      u.feedbackBox.classList.add("feedback--hidden");
+      shakeAnswerBar();
     }
+  }
+
+  /** בר התשובה מנענע ראש לשלילה — אדום עדין ורעידה של 0.4 שנייה. */
+  function shakeAnswerBar() {
+    const bar =
+      (u.answerRowNumeric && !u.answerRowNumeric.hidden && u.answerRowNumeric.querySelector(".answerBar")) ||
+      document.querySelector(".answerRow:not([hidden]) .answerBar") ||
+      document.querySelector(".answerBar");
+    if (!bar) return;
+    bar.classList.remove("answerBar--no");
+    void bar.offsetWidth; // מאפס את האנימציה כדי שתרוץ שוב בטעות רצופה
+    bar.classList.add("answerBar--no");
+    if (!prefersReducedMotion() && navigator.vibrate) {
+      try { navigator.vibrate(35); } catch { /* לא נתמך */ }
+    }
+    window.setTimeout(() => bar.classList.remove("answerBar--no"), 900);
   }
 
   function renderTopicLabel() {
