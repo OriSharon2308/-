@@ -2183,10 +2183,14 @@ async function main() {
       return;
     }
     u.tMapGo.hidden = false;
-    // רק שתי שורות: "ממשיכים..." וכמה נשאר. הכרטיס כולו לחיץ.
+    // האיור מזהה את הנושא; הטקסט הוא רק "ממשיכים..." וכמה נשאר.
+    const goSlug = topicImageSlug(best.leaf.key, best.leaf.parent);
+    const goArt = window.velaTopicArt ? window.velaTopicArt.imgHtml(goSlug, "tMapGo__img") : "";
     u.tMapGo.innerHTML =
+      goArt +
       `<div class="tMapGo__text"><div class="tMapGo__kicker">ממשיכים...</div>` +
       `<div class="tMapGo__left">עוד ${best.route.left} תרגילים</div></div>`;
+    u.tMapGo.setAttribute("aria-label", `ממשיכים ב${best.leaf.label} — עוד ${best.route.left} תרגילים`);
     u.tMapGo.setAttribute("role", "button");
     u.tMapGo.setAttribute("tabindex", "0");
     const go = () => {
