@@ -506,13 +506,16 @@
       }
       .answerInput.is-show { display: block; }
 
-      /* ווידג'ט חי — כרטיס במסגרת: סרגל-כותרת + iframe מבודד + ידית שינוי-גודל. מעל הלוח, מתחת לפקדים. */
-      /* מסגרת שקופה עם זכוכית מחלבית עדינה — רקע הלוח נראה דרכה אך מעט מטושטש. פינות מעוגלות + צל רך */
+      /* ווידג'ט חי — לוח-זכוכית: שקוף, רקע-הלוח נראה דרכו מטושטש (glassmorphism). פינות מעוגלות + צל רך */
       .widgetCard {
         position: fixed; z-index: 4; display: none; transform-origin: top left;
-        border-radius: 16px; background: rgba(255, 255, 255, 0.05);
-        -webkit-backdrop-filter: blur(2.5px); backdrop-filter: blur(2.5px);
-        box-shadow: 0 12px 34px rgba(13, 60, 53, 0.16);
+        overflow: hidden;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.30));
+        -webkit-backdrop-filter: blur(10px) saturate(1.35);
+        backdrop-filter: blur(10px) saturate(1.35);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        box-shadow: 0 12px 34px rgba(13, 60, 53, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.7);
       }
       .widgetCard.is-show { display: block; }
       .widgetCard__body { display: block; border: none; background: transparent; position: relative; z-index: 1; }
@@ -1120,7 +1123,12 @@
           if (data && Array.isArray(data.toolCalls) && data.toolCalls.length && board.runTools) {
             // ניקוי-מעבר-שלב: מנקים תוכן-מורה רק עכשיו, אחרי שהתשובה החדשה הגיעה בשלום —
             // ורק תוכן-מורה (clearTeacher): הקישקושים של הילד לעולם לא נמחקים.
-            if (window.velaClearNext) { window.velaClearNext = false; if (board.clearTeacher) board.clearTeacher(); }
+            if (window.velaClearNext) {
+              window.velaClearNext = false;
+              if (board.clearTeacher) board.clearTeacher();
+              // סיימנו קטע — מנקים גם את ציורי-הילד: מסך חדש מתחיל נקי (העיגולים מהמשימה הקודמת לא נשארים)
+              if (board.clearChildStrokes) board.clearChildStrokes();
+            }
             // שיעור-זהב: המסך עוצב ידנית בסטודיו — בלי המסדר-האוטומטי, מה שאורי עיצב זה מה שהילד רואה 1:1
             board.runTools(data.toolCalls, { tidy: data.mode !== "golden" });
             // זוכרים את הייצוג האחרון שהמורה השתמש בו ("מה עבד" — יישלח לזיכרון עם תשובה נכונה)
