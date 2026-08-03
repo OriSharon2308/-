@@ -1547,9 +1547,31 @@
             reveal();
             done();
           };
+          // מציע ניגון-חוזר תחת המחווה הבאה (לחיצה/מקש/נגיעה) — פותר חסימת-autoplay ופלט תקוע
+          function armRetry() {
+            var retry = function () {
+              document.removeEventListener("click", retry, true);
+              document.removeEventListener("keydown", retry, true);
+              document.removeEventListener("touchstart", retry, true);
+              try { ttsAudio.play().then(function () { setStatus(""); }).catch(function () {}); } catch (e) {}
+            };
+            document.addEventListener("click", retry, true);
+            document.addEventListener("keydown", retry, true);
+            document.addEventListener("touchstart", retry, true);
+          }
           try {
             console.log("[voice] מנגן WAV דרך <audio> — bytes:", blob.size, "| muted:", ttsAudio.muted, "| volume:", ttsAudio.volume);
             ttsAudio.muted = false; ttsAudio.volume = 1; // ליתר ביטחון
+            // שומר-שקט: play() יכול "להצליח" בלי שיישמע דבר (פלט תקוע/מושתק במערכת).
+            // אם אחרי 2.5 שניות האודיו לא באמת התקדם — לחשוף את הטקסט ולהציע ניגון-חוזר במקום שקט.
+            window.setTimeout(function () {
+              if (shownText) return;                       // onplaying כבר רץ → הכל בסדר
+              if (ttsAudio.src !== ttsUrl) return;         // כבר עברנו לתור הבא
+              console.warn("[voice] אין ניגון בפועל — paused:", ttsAudio.paused, "| currentTime:", ttsAudio.currentTime, "| readyState:", ttsAudio.readyState);
+              setStatus("🔊 הקש/י במסך כדי לשמוע את המורה");
+              reveal();
+              armRetry();
+            }, 2500);
             var pr = ttsAudio.play();
             if (pr && pr.catch) {
               pr.catch(function (err) {
@@ -1557,16 +1579,7 @@
                 console.warn("[voice] play נחסם:", err && err.name, err && err.message);
                 setStatus("🔊 הקש/י במסך כדי לשמוע את המורה");
                 reveal();
-                // ניסיון-ניגון חוזר בלחיצה/מקש/נגיעה הבאים — מתחת למחווה זה יעבוד
-                var retry = function () {
-                  document.removeEventListener("click", retry, true);
-                  document.removeEventListener("keydown", retry, true);
-                  document.removeEventListener("touchstart", retry, true);
-                  try { ttsAudio.play().then(function () { setStatus(""); }).catch(function () {}); } catch (e) {}
-                };
-                document.addEventListener("click", retry, true);
-                document.addEventListener("keydown", retry, true);
-                document.addEventListener("touchstart", retry, true);
+                armRetry(); // ניסיון-ניגון חוזר במחווה הבאה — מתחתיה זה יעבוד
                 done();
               });
             }
@@ -1795,6 +1808,7 @@
            דרך פתיחת/סגירת ה-is-open הסמוי (המנגנון המלא של הקול נשאר זהה). */
         window.vela = window.vela || {};
         window.vela.flyMic = flyMic; // app.js מפעיל אחרי קביעת צבע ה-is-recording (כניסה ויציאה)
+        window.vela.speakTest = function (t) { unlockAudio(); return speak(t || "שלום, בדיקת קול"); }; // בדיקת-קול ידנית מהקונסול
         window.vela.voiceToggle = function () {
           unlockAudio(); // תחת מחוות-המשתמש (לחיצה) → ניגון לא ייחסם בספארי
           var opening = !header.classList.contains("is-open");
