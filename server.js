@@ -24,6 +24,7 @@ const learnerProfile = require("./lib/learner-profile"); // פרופיל ילד 
 const progress = require("./lib/progress");
 const speech = require("./lib/speech"); // STT + TTS (Azure Speech)
 const googleTts = require("./lib/google-tts"); // TTS חלופי: Google Gemini (קול Orus) דרך Vertex+ADC
+const googleStt = require("./lib/google-stt"); // STT: Google Speech-to-Text v2 (chirp_2) — אותן הרשאות
 const { CURRICULUM, gradeToNum, topicsForApi, leafTopics, findLeaf } = require("./lib/curriculum");
 const adminAuth = require("./lib/admin-auth"); // אימות אזור הניהול (נפרד מתלמידים)
 const analytics = require("./lib/analytics"); // סדרות-זמן + סיכומים לתלמיד
@@ -66,6 +67,16 @@ const TOPIC_IMAGE_SLUGS = [
 // ספק הדיבור מהסביבה — עמיד לרווחים/מרכאות שנדבקים בטעות בדשבורד של Render
 function ttsProviderIsGoogle() {
   return String(process.env.TTS_PROVIDER || "azure").replace(/["']/g, "").trim().toLowerCase() === "google";
+}
+
+/* ספק התמלול. ברירת המחדל היא גוגל בכל מקום שיש בו פרויקט GCP — Azure Speech
+   נשאר רק כגיבוי (המפתח שלו פג ביולי 2026 והשאיר את השיחה הקולית ללא תשובה).
+   אפשר לכפות ידנית ב-STT_PROVIDER=azure. */
+function sttProviderIsGoogle() {
+  const raw = String(process.env.STT_PROVIDER || "").replace(/["']/g, "").trim().toLowerCase();
+  if (raw === "azure") return false;
+  if (raw === "google") return true;
+  return googleStt.isEnabled(); // אוטומטי: יש GCP_PROJECT → גוגל
 }
 
 const MIME = {
@@ -617,7 +628,7 @@ const server = http.createServer(async (req, res) => {
         const useGoogle = ttsProviderIsGoogle();
         return json(res, 200, {
           ...getAgentStatus(),
-          speech: speech.info(), // STT (Azure)
+          speech: sttProviderIsGoogle() ? googleStt.info() : { ...speech.info(), sttProvider: "azure" }, // STT
           tts: useGoogle ? googleTts.info() : { ttsProvider: "azure", voice: speech.info().voice },
           ttsStream: useGoogle && googleTts.streamEnabled() && googleTts.isEnabled(),
           // אבחון סביבה (ללא סודות): האם משתני הקול של גוגל בכלל מגיעים לתהליך
@@ -814,7 +825,8 @@ const server = http.createServer(async (req, res) => {
     if (url.startsWith("/api/stt")) {
       if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
       if (!sessions.currentUserId(req)) return json(res, 401, { error: "Not authenticated" });
-      if (!speech.isEnabled())
+      const sttGoogle = sttProviderIsGoogle();
+      if (!(sttGoogle ? googleStt.isEnabled() : speech.isEnabled()))
         return json(res, 503, { ok: false, error: "speech_disabled", message: "שירות הדיבור אינו מוגדר בשרת" });
       let audio;
       try {
@@ -824,8 +836,21 @@ const server = http.createServer(async (req, res) => {
       }
       try {
         const t0 = Date.now();
-        const text = await speech.transcribe(audio, req.headers["content-type"] || "audio/wav");
-        console.log(`[timing] STT (Azure): ${Date.now() - t0}ms  (${audio.length}B → "${String(text).slice(0, 24)}")`);
+        let text;
+        try {
+          text = sttGoogle
+            ? await googleStt.transcribe(audio)
+            : await speech.transcribe(audio, req.headers["content-type"] || "audio/wav");
+        } catch (primaryErr) {
+          // גיבוי חוצה-ספקים: אם הראשי נופל (מפתח שפג / שירות מושבת) — מנסים את השני
+          const fallbackReady = sttGoogle ? speech.isEnabled() : googleStt.isEnabled();
+          if (!fallbackReady) throw primaryErr;
+          console.warn(`[stt] ${sttGoogle ? "גוגל" : "Azure"} נכשל (${primaryErr.message.slice(0, 80)}) → מנסה את הספק השני`);
+          text = sttGoogle
+            ? await speech.transcribe(audio, req.headers["content-type"] || "audio/wav")
+            : await googleStt.transcribe(audio);
+        }
+        console.log(`[timing] STT (${sttGoogle ? "Google chirp_2" : "Azure"}): ${Date.now() - t0}ms  (${audio.length}B → "${String(text).slice(0, 24)}")`);
         return json(res, 200, { ok: true, text });
       } catch (e) {
         return json(res, 502, { ok: false, error: "stt_failed", message: e.message });
