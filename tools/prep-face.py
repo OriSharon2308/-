@@ -18,9 +18,14 @@ from PIL import Image
 
 WHITE = 238        # מעליו = רקע לבן ודאי
 SOFT = 200         # מתחתיו = כבר איור
-INNER_R = 0.40     # עד כאן הפנים/הכובע — לא נוגעים
-OUTER_R = 0.50     # מכאן החוצה הטבעת נמחקת לגמרי
-MAX_SIDE = 360
+# נמדד על האיורים עצמם: טבעת-המערבולת ברוויה 0.03–0.07, ואילו *כל* מה
+# ששייך לראש נמצא ב-0.17 ומעלה (עור 0.17, זהב 0.22, שיער 0.22–0.72).
+# לכן הרוויה — ולא הבהירות — היא מה שמפריד ביניהם.
+SAT_MAX = 0.14     # מתחתיו = רקע
+LIGHT_MIN = 0.80   # ומעליו = בהיר
+INNER_R = 0.34     # קצה השיער/הכובע — עד לכאן לא נוגעים
+OUTER_R = 0.38     # מכאן החוצה מוחקים במלוא העוצמה
+MAX_SIDE = 460
 
 
 def flood_transparent(im):
@@ -80,10 +85,14 @@ def strip_halo(im):
             if d < INNER_R:
                 continue  # אזור הפנים — לא נוגעים
             mx, mn = max(r, g, b), min(r, g, b)
-            sat = 0 if mx == 0 else (mx - mn) / mx  # רוויה: כוכב צבעוני ~גבוה, הילה ~0
+            sat = 0 if mx == 0 else (mx - mn) / mx  # רוויה: כוכב צבעוני ~גבוה, טבעת ~0
             light = mx / 255
             # לבן-וחיוור בלבד נמחק; ככל שרחוק יותר — אגרסיבי יותר
-            pale = max(0.0, min(1.0, (light - 0.72) / 0.28)) * max(0.0, min(1.0, (0.22 - sat) / 0.22))
+            # מדרון חד בכוונה: מדרון מתון השאיר 40% מהטבעת כרפאים על המסך.
+            # בפער שנמדד (רוויה 0.07 מול 0.17) אפשר להרשות לעצמנו סף כמעט-בינארי.
+            pale = max(0.0, min(1.0, (light - LIGHT_MIN) / 0.08)) * max(
+                0.0, min(1.0, (SAT_MAX - sat) / 0.04)
+            )
             reach = min(1.0, (d - INNER_R) / (OUTER_R - INNER_R))
             drop = pale * reach
             if drop > 0.01:
@@ -92,16 +101,74 @@ def strip_halo(im):
     return n
 
 
+def keep_head_only(im):
+    """משאיר את הראש ואת סמלי-ההבעה, ומעיף את קישוטי-הרקע.
+
+    הכוכבים והנקודות המרחפים הם רכיבי-קשירות נפרדים מהראש — וכך גם
+    סימן-השאלה של "חושב" והנורה של "רעיון", שאסור לאבד: בלעדיהם ההבעה
+    לא אומרת כלום. נמדד על האיורים עצמם:
+
+        הראש           100%
+        סימן-שאלה/נורה 1.1% – 8.8%   ← נשמרים
+        כוכבים/נקודות  0.4% ומטה     ← מוסרים
+
+    לכן הסף על 0.6% מהגוש הגדול — עם מרווח לשני הכיוונים.
+    """
+    KEEP_RATIO = 0.006
+    w, h = im.size
+    a = im.split()[3].load()
+    px = im.load()
+    ALPHA = 40  # מתחת לזה נחשב ריק
+    label = [0] * (w * h)
+    sizes = {}
+    cur = 0
+
+    for sy in range(h):
+        for sx in range(w):
+            if label[sy * w + sx] or a[sx, sy] < ALPHA:
+                continue
+            cur += 1
+            size = 0
+            stack = [(sx, sy)]
+            label[sy * w + sx] = cur
+            while stack:
+                x, y = stack.pop()
+                size += 1
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < w and 0 <= ny < h and not label[ny * w + nx] and a[nx, ny] >= ALPHA:
+                        label[ny * w + nx] = cur
+                        stack.append((nx, ny))
+            sizes[cur] = size
+
+    if not sizes:
+        return 0, 0
+    biggest = max(sizes.values())
+    keep = {cid for cid, s in sizes.items() if s >= biggest * KEEP_RATIO}
+
+    dropped = 0
+    for y in range(h):
+        row = y * w
+        for x in range(w):
+            if label[row + x] not in keep:
+                r, g, b, al = px[x, y]
+                if al:
+                    px[x, y] = (r, g, b, 0)
+                    dropped += 1
+    return cur - len(keep), dropped
+
+
 def main(src, dst):
     im = Image.open(src).convert("RGBA")
     flood_transparent(im)
     n = strip_halo(im)
+    parts, dropped = keep_head_only(im)
     bb = im.split()[3].getbbox()
     if bb:
         im = im.crop(bb)
     im.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
     im.save(dst, "PNG", optimize=True)
-    print(f"{dst.split('/')[-1]:<16} {im.size}  הילה: {n} פיקסלים")
+    print(f"{dst.split('/')[-1]:<16} {str(im.size):<12} הילה {n:>6}  |  {parts} גושי-רקע הוסרו ({dropped} פיקסלים)")
     return 0
 
 
