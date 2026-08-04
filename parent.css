@@ -303,6 +303,136 @@ button {
   color: var(--muted);
 }
 
+/* ---------- בלוק תוכן (גרף, מתי לומדים) ---------- */
+.block {
+  padding: 46px 0 0;
+}
+.block__title {
+  font-family: "Frank Ruhl Libre", Georgia, serif;
+  font-size: 27px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+.block__lede {
+  margin: 8px 0 0;
+  color: var(--ink-2);
+  font-size: 15.5px;
+  max-width: 66ch;
+}
+.block__lede b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- גרף ---------- */
+.chart__wrap {
+  margin-top: 26px;
+}
+/* יחס-גובה נשמר (בלי preserveAspectRatio="none") — אחרת נקודות-הקצה
+   נמתחות לאליפסות ועובי הקו משתנה לפי רוחב החלון. */
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.chart__tick {
+  font-family: "Assistant", sans-serif;
+  font-size: 11px;
+  fill: var(--muted);
+  text-anchor: end;
+}
+.chart__tick--start {
+  text-anchor: end;
+}
+.chart__tick--end {
+  text-anchor: start;
+}
+.legend {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.legend__i {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.legend__k {
+  width: 18px;
+  height: 0;
+  border-top: 2.4px solid var(--accent);
+  border-radius: 2px;
+}
+.legend__k--dash {
+  border-top: 1.8px dashed var(--muted);
+}
+
+/* ---------- מתי לומדים ---------- */
+.clock {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+.clock__row {
+  display: grid;
+  grid-template-columns: 128px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.clock__track {
+  height: 6px;
+  background: var(--line-soft);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.clock__track i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.75;
+  border-radius: 3px;
+}
+.clock__val {
+  color: var(--muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  min-width: 84px;
+  text-align: start;
+}
+
+/* ---------- מתג המומחים ---------- */
+.roles {
+  display: flex;
+  gap: 18px;
+  margin: 0 0 14px;
+  flex-wrap: wrap;
+}
+.roles__b {
+  border: 0;
+  background: none;
+  padding: 2px 0 5px;
+  font-size: 13.5px;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.16s ease, border-color 0.16s ease;
+}
+.roles__b:hover {
+  color: var(--ink-2);
+}
+.roles__b.is-on {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--accent);
+}
+
 /* ---------- תחום (למידה / תרגול) ---------- */
 .domain {
   padding: 46px 0 0;
@@ -575,6 +705,20 @@ button {
   .verdict__face {
     width: 62px;
     height: 62px;
+  }
+  .clock__row {
+    grid-template-columns: 92px 1fr;
+    gap: 10px;
+  }
+  .clock__val {
+    grid-column: 2;
+    justify-self: start;
+    min-width: 0;
+  }
+  /* גודל הטקסט ב-SVG הוא ביחידות ה-viewBox, ולכן הוא מתכווץ יחד עם הגרף.
+     בערך פי 2 במסך 375px — ומכאן 22 במקום 11. */
+  .chart__tick {
+    font-size: 22px;
   }
 }
 

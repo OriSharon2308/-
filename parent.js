@@ -2,12 +2,13 @@
 /**
  * vela · אזור הורים — דף אחד.
  *
- * מבנה: שם הילד → שורת מספרים → שני תחומים (למידה, תרגול).
- * כל תחום נפתח "לעומק" לרשימת נושאים, וכל נושא נפתח לחוות דעת המורה.
+ * מבנה: שם הילד → חוות דעת הצוות → מספרים → גרף התקדמות → מתי לומדים
+ *        → אזור הלמידה → אזור התרגול.
+ * כל תחום נפתח "לעומק" לרשימת נושאים, וכל נושא נפתח לחוות דעת הצוות עליו.
  *
- * חוות הדעת נטענת רק כשההורה פותח נושא (/api/parent/topic) — היא מגיעה
- * ממודל שפה ולכן יקרה; טעינה מראש של 14 נושאים הייתה מבזבזת טוקנים על
- * מה שאיש לא יקרא. אחרי הטעינה היא נשמרת בזיכרון הדף.
+ * חוות הדעת נטענות בעצלתיים: הכוללת אחרי שהדף כבר על המסך, ושל נושא רק
+ * כשההורה פותח אותו. הן מגיעות ממודל שפה, ולכן טעינה מראש של 14 נושאים
+ * הייתה משלמת טוקנים על מה שאיש לא יקרא.
  */
 (function () {
   "use strict";
@@ -18,6 +19,14 @@
   const main = $("#main");
 
   const FACE = "/teacher-character/faces/";
+
+  /* שלושת המומחים. כל אחד מקבל הבעה אחרת של אותה דמות — כך ההורה מזהה
+     במבט מי מדבר, בלי להמציא שלוש דמויות שלא קיימות. */
+  const ROLES = [
+    { key: "teacher", label: "המורה", face: "friendly.png" },
+    { key: "psychologist", label: "הפסיכולוג", face: "tilt.png" },
+    { key: "mathematician", label: "המתמטיקאי", face: "idea.png" },
+  ];
 
   /* ---------------- עזרים ---------------- */
   function esc(s) {
@@ -55,7 +64,14 @@
     return `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
   }
 
-  /** "היום" / "אתמול" / "לפני 4 ימים" / תאריך — קריא להורה, בלי ISO. */
+  function shortDate(iso) {
+    if (!iso) return "";
+    const d = new Date(iso.length <= 10 ? iso + "T00:00:00" : iso);
+    if (isNaN(d)) return "";
+    return `${d.getDate()}.${d.getMonth() + 1}`;
+  }
+
+  /** "היום" / "אתמול" / "לפני 4 ימים" — קריא להורה, בלי ISO. */
   function whenHe(iso) {
     if (!iso) return "";
     const d = new Date(iso.length <= 10 ? iso + "T00:00:00" : iso);
@@ -68,6 +84,15 @@
     if (diff < 14) return "לפני שבוע";
     if (diff < 31) return `לפני ${Math.round(diff / 7)} שבועות`;
     return `${d.getDate()} ב${MONTHS[d.getMonth()]}`;
+  }
+
+  function minutesHe(m) {
+    if (!m) return "";
+    if (m < 60) return `${m} דקות`;
+    const h = Math.floor(m / 60);
+    const r = m % 60;
+    const hh = h === 1 ? "שעה" : h === 2 ? "שעתיים" : `${h} שעות`;
+    return r ? `${hh} ו-${r} דק׳` : hh;
   }
 
   function genderWord(g) {
@@ -91,6 +116,13 @@
       lead = (sp > 40 ? cut.slice(0, sp) : cut).trim();
     }
     return { lead, rest: t.slice(lead.length).trim() };
+  }
+
+  function markedHtml(text) {
+    const { lead, rest } = splitLead(text);
+    return `<p class="verdict__text">${
+      lead ? `<span class="verdict__lead">${esc(lead)}</span> ` : ""
+    }${esc(rest)}</p>`;
   }
 
   function showLogin() {
@@ -131,6 +163,61 @@
     location.reload();
   });
 
+  /* ---------------- גרף ---------------- */
+
+  /**
+   * גרף-קו של אחוזים לאורך זמן. SVG טהור, בלי ספרייה.
+   * viewBox קבוע + width:100% → מתאים את עצמו לכל רוחב בלי לחשב מחדש.
+   * ציר-ה-x הוא *מיקום ברשימת הימים הפעילים*, לא זמן אמיתי — כך שבוע של
+   * הפסקה לא מותח את הגרף לקו שטוח ארוך.
+   */
+  function lineChart(series, opts = {}) {
+    const W = 720;
+    const H = 150; // נמוך בכוונה — ציר האחוזים מעוגן ב-0 (כך זה כנה), ובגובה
+                   // גדול יותר החצי התחתון היה נשאר ריק ברוב המקרים.
+    const padR = 8;
+    const padL = 8;
+    const padT = 14;
+    const padB = 26;
+    const pts = series.filter((s) => Array.isArray(s.values) && s.values.length);
+    if (!pts.length || pts[0].values.length < 2) return "";
+
+    const n = pts[0].values.length;
+    // RTL: הזמן זורם מימין לשמאל — הנקודה הראשונה בימין
+    const x = (i) => W - padR - (i / (n - 1)) * (W - padL - padR);
+    const y = (v) => padT + (1 - Math.max(0, Math.min(100, v)) / 100) * (H - padT - padB);
+
+    const grid = [0, 50, 100]
+      .map((v) => `<line x1="${padL}" y1="${y(v)}" x2="${W - padR}" y2="${y(v)}"
+        stroke="var(--line-soft)" stroke-width="1" />
+        <text x="${W - padR}" y="${y(v) - 5}" class="chart__tick">${v}%</text>`)
+      .join("");
+
+    const paths = pts
+      .map((s) => {
+        const d = s.values.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+        const last = s.values[s.values.length - 1];
+        // non-scaling-stroke: עובי הקו נשאר קבוע בפיקסלים בכל רוחב מסך.
+        // בלעדיו הקו נעלם כמעט לגמרי במובייל, כי ה-SVG מתכווץ פי ~2.
+        return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="${s.width || 2.2}"
+            vector-effect="non-scaling-stroke"
+            stroke-linecap="round" stroke-linejoin="round"${s.dash ? ` stroke-dasharray="${s.dash}"` : ""} />
+          <circle cx="${x(n - 1).toFixed(1)}" cy="${y(last).toFixed(1)}" r="4.5" fill="${s.color}" />`;
+      })
+      .join("");
+
+    const labels = opts.labels || [];
+    const xLabels = labels.length
+      ? `<text x="${x(0)}" y="${H - 6}" class="chart__tick chart__tick--start">${esc(labels[0])}</text>
+         <text x="${x(n - 1)}" y="${H - 6}" class="chart__tick chart__tick--end">${esc(labels[labels.length - 1])}</text>`
+      : "";
+
+    return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img"
+      aria-label="${esc(opts.aria || "גרף התקדמות")}">
+      ${grid}${paths}${xLabels}
+    </svg>`;
+  }
+
   /* ---------------- תבניות ---------------- */
 
   const AREAS = [
@@ -165,14 +252,68 @@
       .join("")}</section>`;
   }
 
-  function topicHtml(t, areaKey) {
+  /** מתג-מומחים: שלושה כפתורי-טקסט שקטים, הפעיל בקו-תחתון. */
+  function rolesTabsHtml(active = "teacher") {
+    return `<div class="roles" role="tablist">${ROLES.map(
+      (r) => `<button class="roles__b${r.key === active ? " is-on" : ""}" type="button"
+        role="tab" aria-selected="${r.key === active}" data-role="${r.key}">${esc(r.label)}</button>`
+    ).join("")}</div>`;
+  }
+
+  function chartHtml(daily) {
+    if (!Array.isArray(daily) || daily.length < 2) return "";
+    const labels = daily.map((d) => shortDate(d.date));
+    const svg = lineChart(
+      [
+        { values: daily.map((d) => d.mastery), color: "var(--accent)", width: 2.4 },
+        { values: daily.map((d) => d.motivation), color: "var(--muted)", width: 1.6, dash: "4 5" },
+      ],
+      { labels, aria: "שליטה ומוטיבציה לאורך זמן" }
+    );
+    if (!svg) return "";
+    const last = daily[daily.length - 1];
+    return `<section class="block">
+      <h2 class="block__title">ההתקדמות לאורך זמן</h2>
+      <p class="block__lede">כל נקודה היא יום שבו ${"התלמיד/ה"} תרגל. <b>שליטה</b> היא אחוז התשובות הנכונות המצטבר —
+        היא מטפסת לאט ומראה את הכיוון הכללי. <b>מוטיבציה</b> מורכבת מכמות התרגול באותו יום ומההצלחה בו, ולכן היא קופצנית יותר.</p>
+      <div class="chart__wrap">${svg}</div>
+      <div class="legend">
+        <span class="legend__i"><i class="legend__k legend__k--solid"></i>שליטה — ${last.mastery}% כרגע</span>
+        <span class="legend__i"><i class="legend__k legend__k--dash"></i>מוטיבציה — ${last.motivation}% כרגע</span>
+      </div>
+    </section>`;
+  }
+
+  function timeOfDayHtml(rows) {
+    const list = (rows || []).filter((r) => r.minutes > 0);
+    if (!list.length) return "";
+    const top = list.reduce((a, b) => (b.minutes > a.minutes ? b : a));
+    return `<section class="block">
+      <h2 class="block__title">מתי לומדים</h2>
+      <p class="block__lede">רוב זמן הלמידה נופל ב${esc(top.label.replace(/\s*\(.*\)/, ""))}.</p>
+      <div class="clock">${list
+        .map(
+          (r) => `<div class="clock__row">
+            <span class="clock__label">${esc(r.label)}</span>
+            <span class="clock__track"><i style="width:${r.pct}%"></i></span>
+            <span class="clock__val">${esc(minutesHe(r.minutes))}</span>
+          </div>`
+        )
+        .join("")}</div>
+    </section>`;
+  }
+
+  function topicHtml(t, areaKey, minutes) {
     const acc = t.accuracy;
     const warn = acc < 70;
+    const bits = [`${t.attempts} תרגילים`];
+    if (minutes) bits.push(minutesHe(minutes));
+    if (t.last) bits.push(whenHe(t.last));
     return `<div class="topic" data-topic="${esc(t.name)}" data-area="${areaKey}">
       <button class="topic__row" type="button" aria-expanded="false">
         <span>
           <span class="topic__name">${esc(t.name)}</span>
-          <span class="topic__sub">${t.attempts} תרגילים · ${whenHe(t.last)}</span>
+          <span class="topic__sub">${esc(bits.join(" · "))}</span>
         </span>
         <span class="topic__bar${warn ? " topic__bar--warn" : ""}" aria-hidden="true"><i style="width:${acc}%"></i></span>
         <span class="topic__acc">${acc}<small>%</small></span>
@@ -181,7 +322,7 @@
         <div class="verdict__body">
           <img class="verdict__face" src="${FACE}friendly.png" alt="" />
           <div>
-            <p class="verdict__who">חוות דעת המורה</p>
+            ${rolesTabsHtml()}
             <div class="verdict__slot"><p class="verdict__none">טוען…</p></div>
           </div>
         </div>
@@ -189,7 +330,7 @@
     </div>`;
   }
 
-  function areaHtml(area, data) {
+  function areaHtml(area, data, topicMinutes) {
     const has = data.attempts > 0;
     return `<section class="domain">
       <h2 class="domain__title">${esc(area.title)}</h2>
@@ -207,7 +348,9 @@
               <span class="depth__chev" aria-hidden="true"></span>
             </button>
             <div class="topics" id="topics-${area.key}"><div class="topics__inner">
-              <div class="topics__list">${data.topics.map((t) => topicHtml(t, area.key)).join("")}</div>
+              <div class="topics__list">${data.topics
+                .map((t) => topicHtml(t, area.key, topicMinutes.get(t.name)))
+                .join("")}</div>
             </div></div>`
           : `<p class="empty">${esc(area.emptyText)}</p>`
       }
@@ -218,6 +361,7 @@
     const c = d.child || {};
     const s = d.summary || {};
     const areas = d.areas || { learn: {}, practice: {} };
+    const minutes = new Map((d.topicTime || []).map((t) => [t.topic, t.minutes]));
 
     const meta = [
       c.age ? `${genderWord(c.gender)} ${c.age}` : "",
@@ -236,46 +380,84 @@
         <div class="verdict__inner"><div class="verdict__body">
           <img class="verdict__face" src="${FACE}friendly.png" alt="" />
           <div>
-            <p class="verdict__who">המורה על ${esc(c.username || "התלמיד/ה")}</p>
+            ${rolesTabsHtml()}
             <div class="verdict__slot"></div>
           </div>
         </div></div>
       </section>
       ${pulseHtml(s)}
-      ${AREAS.map((a) => areaHtml(a, areas[a.key] || { attempts: 0, topics: [] })).join("")}
+      ${chartHtml(d.daily)}
+      ${timeOfDayHtml(d.timeOfDay)}
+      ${AREAS.map((a) => areaHtml(a, areas[a.key] || { attempts: 0, topics: [] }, minutes)).join("")}
     `;
 
+    // "התלמיד/ה" בהסבר הגרף → השם האמיתי
+    const lede = main.querySelector(".block__lede");
+    if (lede && c.username) lede.innerHTML = lede.innerHTML.replace("התלמיד/ה", esc(c.username));
+
     $("#footNote").textContent =
-      "חוות הדעת נכתבות על-ידי המורה של vela לפי הפעילות בפועל, ומתעדכנות כשיש התקדמות משמעותית.";
+      "חוות הדעת נכתבות על-ידי צוות vela לפי הפעילות בפועל, ומתעדכנות כשיש התקדמות משמעותית.";
 
     wire();
     loadOverall(); // רצה אחרי שהדף כבר על המסך — היצירה במודל עלולה לקחת זמן
+  }
+
+  /* ---------------- חוות דעת ---------------- */
+
+  const overallRoles = {}; // key → טקסט
+  const topicRoles = new Map(); // "area::topic" → {teacher, psychologist, mathematician}
+
+  /** מסמן איזו לשונית פעילה, בלי לגעת בטקסט. */
+  function markActiveRole(box, roleKey) {
+    box.querySelectorAll(".roles__b").forEach((b) => {
+      const on = b.dataset.role === roleKey;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-selected", String(on));
+    });
+  }
+
+  /** מצייר את חוות הדעת של תפקיד מסוים לתוך בלוק (כללי או של נושא). */
+  function paintRole(box, texts, roleKey) {
+    const role = ROLES.find((r) => r.key === roleKey) || ROLES[0];
+    const slot = box.querySelector(".verdict__slot");
+    const face = box.querySelector(".verdict__face");
+    face.src = FACE + role.face;
+    const text = texts && texts[roleKey];
+    slot.innerHTML = text
+      ? markedHtml(text)
+      : `<p class="verdict__none">אין עדיין חוות דעת מ${esc(role.label)} — צריך קצת יותר פעילות.</p>`;
+    markActiveRole(box, roleKey);
+    // ההדגשה נמתחת מחדש בכל החלפת מומחה
+    box.classList.remove("is-marked");
+    requestAnimationFrame(() => box.classList.add("is-marked"));
   }
 
   /** חוות הדעת הכוללת — נכנסת מתחת לשם ברגע שהיא מוכנה. */
   async function loadOverall() {
     const box = $("#overall");
     if (!box) return;
-    let text = "";
+    let a = null;
     try {
       const { ok, data } = await api("/api/parent/verdict");
-      text = (ok && data.assessments && data.assessments.teacher && data.assessments.teacher.text) || "";
+      a = (ok && data.assessments) || null;
     } catch {
       return; // 403 כבר החזיר למסך הכניסה
     }
-    if (!text) return; // אין עדיין מספיק פעילות — פשוט לא מציגים כלום
-    const { lead, rest } = splitLead(text);
-    box.querySelector(".verdict__slot").innerHTML = `<p class="verdict__text">${
-      lead ? `<span class="verdict__lead">${esc(lead)}</span> ` : ""
-    }${esc(rest)}</p>`;
+    if (!a) return;
+    let any = false;
+    for (const r of ROLES) {
+      overallRoles[r.key] = (a[r.key] && a[r.key].text) || "";
+      if (overallRoles[r.key]) any = true;
+    }
+    if (!any) return; // אין עדיין מספיק פעילות — פשוט לא מציגים כלום
     box.hidden = false;
-    // ההדגשה נמתחת רק אחרי שהאלמנט באמת נמדד — אחרת ה-transition לא נורה
-    requestAnimationFrame(() => box.classList.add("is-marked"));
+    paintRole(box, overallRoles, "teacher");
+    box.querySelectorAll(".roles__b").forEach((b) => {
+      b.addEventListener("click", () => paintRole(box, overallRoles, b.dataset.role));
+    });
   }
 
   /* ---------------- אינטראקציה ---------------- */
-
-  const verdictCache = new Map(); // "area::topic" → HTML מוכן
 
   function wire() {
     // פתיחת תחום
@@ -284,9 +466,7 @@
         const box = $(`#topics-${btn.dataset.area}`);
         const open = btn.getAttribute("aria-expanded") === "true";
         btn.setAttribute("aria-expanded", open ? "false" : "true");
-        btn.querySelector(".depth__label").textContent = open
-          ? "לעומק — נושא אחרי נושא"
-          : "סגירה";
+        btn.querySelector(".depth__label").textContent = open ? "לעומק — נושא אחרי נושא" : "סגירה";
         box.classList.toggle("is-open", !open);
       });
     });
@@ -294,6 +474,22 @@
     // פתיחת נושא → חוות דעת
     main.querySelectorAll(".topic__row").forEach((row) => {
       row.addEventListener("click", () => openTopic(row));
+    });
+
+    // מתג-מומחים בתוך נושא. אם הטקסט עוד בדרך רק זוכרים את הבחירה —
+    // בלי זה הלחיצה הייתה מוחקת את "טוען…" ומציגה "אין חוות דעת" בטעות.
+    main.querySelectorAll(".topic .roles__b").forEach((b) => {
+      b.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const topic = b.closest(".topic");
+        topic.dataset.role = b.dataset.role;
+        const key = `${topic.dataset.area}::${topic.dataset.topic}`;
+        if (!topicRoles.has(key)) {
+          markActiveRole(topic.querySelector(".verdict"), b.dataset.role); // רק הדגשת הלשונית
+          return;
+        }
+        paintRole(topic.querySelector(".verdict"), topicRoles.get(key), b.dataset.role);
+      });
     });
   }
 
@@ -308,29 +504,24 @@
 
     const name = topic.dataset.topic;
     const key = `${topic.dataset.area}::${name}`;
-    const slot = topic.querySelector(".verdict__slot");
-    if (verdictCache.has(key)) {
-      slot.innerHTML = verdictCache.get(key);
+    const wanted = () => topic.dataset.role || "teacher";
+    if (topicRoles.has(key)) {
+      paintRole(verdict, topicRoles.get(key), wanted());
       return;
     }
 
     const { ok, data } = await api(`/api/parent/topic?name=${encodeURIComponent(name)}`);
-    const text = (ok && data.assessments && data.assessments.teacher && data.assessments.teacher.text) || "";
-    let html;
-    if (!text) {
-      html = `<p class="verdict__none">${
-        ok
-          ? "עוד אין מספיק פעילות בנושא הזה כדי לכתוב חוות דעת."
-          : "לא הצלחנו לטעון את חוות הדעת כרגע."
-      }</p>`;
-    } else {
-      const { lead, rest } = splitLead(text);
-      html = `<p class="verdict__text">${
-        lead ? `<span class="verdict__lead">${esc(lead)}</span> ` : ""
-      }${esc(rest)}</p>`;
+    const a = (ok && data.assessments) || {};
+    const texts = {};
+    for (const r of ROLES) texts[r.key] = (a[r.key] && a[r.key].text) || "";
+    topicRoles.set(key, texts);
+    if (!ok) {
+      topicRoles.delete(key); // כשל רשת — לא לשמור במטמון, שהפתיחה הבאה תנסה שוב
+      verdict.querySelector(".verdict__slot").innerHTML =
+        `<p class="verdict__none">לא הצלחנו לטעון את חוות הדעת כרגע.</p>`;
+      return;
     }
-    verdictCache.set(key, html);
-    slot.innerHTML = html;
+    paintRole(verdict, texts, wanted()); // המומחה שההורה בחר בזמן ההמתנה
   }
 
   /* ---------------- עלייה ---------------- */
