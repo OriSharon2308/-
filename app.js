@@ -1030,7 +1030,74 @@ function revealChars(bodyEl, text) {
 }
 
 /** מציג בועת "כותב…" עם שלוש נקודות מקפצות (כמו בוואטסאפ). */
+/* ---------------------------------------------------------------
+   הבעות הפנים של המורה (teacher-character/faces)
+
+   הראש שבפינת הצ'אט מחליף הבעה לפי מה שקורה בשיחה:
+     thinking → שני איורים עם סימן-שאלה, מתחלפים כל 900ms (מבט "מתלבט")
+     happy    → עיניים עצומות מחייכות — ההבעה שאורי ביקש כשיש תשובה
+     friendly → מנוחה
+   ההחלפה נעשית דרך opacity (0.16s) כדי שלא תהיה קפיצה.
+   --------------------------------------------------------------- */
+const FACE_SRC = {
+  friendly: "/teacher-character/faces/friendly.png",
+  thinking: ["/teacher-character/faces/thinking-1.png", "/teacher-character/faces/thinking-2.png"],
+  happy: "/teacher-character/faces/happy.png",
+  delighted: "/teacher-character/faces/delighted.png",
+};
+let faceTimer = null;
+let faceRestore = null;
+let faceState = "friendly";
+
+/** טוען מראש — כדי שהחלפת ההבעה תהיה מיידית ובלי הבהוב בפעם הראשונה. */
+function preloadFaces() {
+  const all = [FACE_SRC.friendly, ...FACE_SRC.thinking, FACE_SRC.happy, FACE_SRC.delighted];
+  for (const src of all) {
+    const im = new Image();
+    im.src = src;
+  }
+}
+
+/**
+ * קובע את הבעת המורה.
+ * @param {"friendly"|"thinking"|"happy"|"delighted"} state
+ * @param {{holdMs?: number}} [opts] — holdMs: לחזור ל-friendly אחרי X מילישניות
+ */
+function setTeacherFace(state, opts = {}) {
+  const img = document.getElementById("teacherFace");
+  if (!img) return;
+  // showTyping נקרא כמה פעמים בתור אחד — בלי זה כל קריאה מאפסת את חילוף
+  // ההבעות ו-thinking-2 לא מספיק להופיע לפני שהתשובה חוזרת
+  if (state === faceState && state === "thinking") return;
+  faceState = state;
+  if (faceTimer) { clearInterval(faceTimer); faceTimer = null; }
+  if (faceRestore) { clearTimeout(faceRestore); faceRestore = null; }
+
+  const swap = (src) => {
+    if (img.getAttribute("src") === src) return;
+    img.style.opacity = "0";
+    window.setTimeout(() => {
+      img.setAttribute("src", src);
+      img.style.opacity = "1";
+    }, 160);
+  };
+
+  if (state === "thinking") {
+    let i = 0;
+    swap(FACE_SRC.thinking[0]);
+    faceTimer = window.setInterval(() => {
+      i = (i + 1) % FACE_SRC.thinking.length;
+      swap(FACE_SRC.thinking[i]);
+    }, 900);
+    return;
+  }
+
+  swap(FACE_SRC[state] || FACE_SRC.friendly);
+  if (opts.holdMs) faceRestore = window.setTimeout(() => setTeacherFace("friendly"), opts.holdMs);
+}
+
 function showTyping(chatLogEl) {
+  setTeacherFace("thinking"); // התשובה בדרך — המורה "מתלבט"
   if (!chatLogEl || chatLogEl.querySelector(".msg--typing")) return;
   const el = document.createElement("div");
   el.className = "msg msg--bot msg--typing";
@@ -1043,6 +1110,8 @@ function showTyping(chatLogEl) {
 
 /** מסיר את בועת ההקלדה. */
 function hideTyping(chatLogEl) {
+  // יש תשובה → חיוך עם עיניים עצומות, וכעבור 6 שניות חזרה למנוחה
+  setTeacherFace("happy", { holdMs: 6000 });
   const el = chatLogEl?.querySelector(".msg--typing");
   if (el) el.remove();
 }
@@ -2751,6 +2820,7 @@ async function main() {
   }
 
   setChatWidth(uiState.chatWidth);
+  preloadFaces(); // ההבעות בזיכרון מראש — ההחלפה מיידית ובלי הבהוב
   uiState.chatCollapsed = true; // study-v2: ריבוע השאלה על כל הרוחב — הצ'אט נפתח דרך אווטאר המורה
   renderChatCollapsed();
 
