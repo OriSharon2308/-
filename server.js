@@ -582,12 +582,26 @@ const server = http.createServer(async (req, res) => {
           ok: true,
           child,
           summary: analytics.summary(childId),
+          areas: analytics.areaBreakdown(childId), // אזור-למידה מול אזור-תרגול, בנפרד
           daily: analytics.dailySeries(childId),
           time: analytics.dailyTime(childId),
           month: analytics.activity(childId, "month"),
           topicTime: analytics.topicTime(childId),
           timeOfDay: analytics.timeOfDay(childId),
-          assessments: await assess.getAssessments(childId, child), // מהמטמון — מתעדכן רק על שינוי
+        });
+        // הערכות-הצוות *אינן* כאן בכוונה: יצירתן הראשונה לוקחת עשרות שניות במודל,
+        // וזה היה משאיר את ההורה מול ספינר לפני שראה ולו מספר אחד. הן נמשכות
+        // בנפרד ב-/api/parent/verdict אחרי שהדף כבר על המסך.
+      }
+
+      // חוות הדעת הכוללת של המורה — נטענת בנפרד כי היא עלולה להיווצר עכשיו
+      if (url.startsWith("/api/parent/verdict")) {
+        const vu = new URL(url, "http://localhost");
+        return json(res, 200, {
+          ok: true,
+          assessments: await assess.getAssessments(childId, child, {
+            force: vu.searchParams.get("refresh") === "1",
+          }),
         });
       }
 
@@ -1136,6 +1150,12 @@ const server = http.createServer(async (req, res) => {
 
     // קבצי פונט — ציבוריים (גם מסך ההתחברות צריך אותם)
     if (rel.startsWith("/fonts/")) {
+      return serveFile(res, rel, method);
+    }
+
+    // ראשי המורה — איורים בלבד, בלי שום מידע על משתמש. ציבוריים כי אזור ההורים
+    // רץ על session נפרד (psid) ואין לו sid של תלמיד; בלי זה האייקון היה מפנה ל-/auth.
+    if (rel.startsWith("/teacher-character/faces/")) {
       return serveFile(res, rel, method);
     }
 
