@@ -317,6 +317,7 @@
         </span>
         <span class="topic__bar${warn ? " topic__bar--warn" : ""}" aria-hidden="true"><i style="width:${acc}%"></i></span>
         <span class="topic__acc">${acc}<small>%</small></span>
+        <span class="topic__chev" aria-hidden="true"></span>
       </button>
       <div class="verdict"><div class="verdict__inner">
         <div class="verdict__body">

@@ -5,8 +5,10 @@
    עובר לפה: אין Fredoka, אין צבעים רוויים, אין כרטיסים מרובי-צל.
    דיו על נייר, קו-שיער אחד להפרדה, וטורקיז אחד ויחיד לסימון.
 
-   טיפוגרפיה על ציר-ניגוד אמיתי: Frank Ruhl Libre (סריף עברי) לשם
-   ולכותרות, Assistant (סאנס) לכל השאר — שתי משפחות שאי-אפשר לבלבל.
+   טיפוגרפיה: Rubik בלבד, במשקלים 300–700. הסריף שהיה כאן (Frank Ruhl
+   Libre) קרא כמו עיתון ישן ולא כמו מוצר. משפחה אחת עם טווח משקלים רחב
+   נותנת היררכיה חזקה בלי להתנגש — ורוביק בעברית חם, מודרני וקריא מאוד.
+   המידות גדולות בכוונה: ההורה קורא כאן טקסט, לא סורק לוח-מחוונים.
    =================================================================== */
 
 :root {
@@ -20,7 +22,8 @@
   --accent: #0d7d72; /* טורקיז עמוק — 5.1:1 על לבן */
   --accent-soft: #d8ede9;
   --warn: #a8582f;
-  --page: 1060px;
+  --page: 1040px;
+  --font: "Rubik", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 * {
@@ -39,9 +42,9 @@ body {
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "Assistant", system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 button {
@@ -84,7 +87,7 @@ button {
   padding: 24px;
 }
 .login__card {
-  width: min(400px, 100%);
+  width: min(440px, 100%);
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -100,35 +103,36 @@ button {
   margin: 0 auto 10px;
 }
 .login__brand {
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: 0.18em;
   color: var(--accent);
   font-weight: 600;
 }
 .login__title {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
-  font-size: 30px;
-  font-weight: 500;
-  margin: 6px 0 4px;
+  font-family: var(--font);
+  font-size: 34px;
+  font-weight: 600;
+  margin: 8px 0 4px;
   letter-spacing: -0.01em;
 }
 .login__sub {
   margin: 0 0 22px;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: 16px;
 }
 .login__label {
   display: block;
   text-align: right;
-  font-size: 13.5px;
+  font-size: 15px;
   color: var(--ink-2);
-  margin: 14px 0 6px;
+  margin: 16px 0 7px;
   font-weight: 500;
 }
 .login__input {
   width: 100%;
-  height: 46px;
-  padding: 0 14px;
+  height: 52px;
+  padding: 0 16px;
+  font-size: 17px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: #fff;
@@ -143,14 +147,14 @@ button {
 }
 .login__btn {
   width: 100%;
-  height: 48px;
-  margin-top: 22px;
+  height: 54px;
+  margin-top: 24px;
   border: 0;
   border-radius: 10px;
   background: var(--ink);
   color: #fff;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 17.5px;
   cursor: pointer;
   transition: background 0.16s ease, transform 0.12s ease;
 }
@@ -163,13 +167,13 @@ button {
 .login__err {
   margin: 14px 0 0;
   color: var(--warn);
-  font-size: 14px;
+  font-size: 15.5px;
 }
 .login__back {
   display: inline-block;
   margin-top: 18px;
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: 15px;
   text-decoration: none;
   border-bottom: 1px solid var(--line);
   padding-bottom: 1px;
@@ -187,7 +191,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px max(20px, calc((100vw - var(--page)) / 2));
+  padding: 14px max(20px, calc((100vw - var(--page)) / 2));
   background: rgb(251 252 252 / 0.86);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -199,18 +203,18 @@ button {
   gap: 10px;
 }
 .bar__face {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
   display: block;
 }
 .bar__word {
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: 0.04em;
 }
 .bar__tag {
-  font-size: 12.5px;
+  font-size: 14.5px;
   color: var(--muted);
   padding-inline-start: 10px;
   margin-inline-start: 2px;
@@ -220,10 +224,10 @@ button {
   border: 1px solid var(--line);
   background: transparent;
   color: var(--ink-2);
-  height: 34px;
-  padding: 0 14px;
-  border-radius: 8px;
-  font-size: 14px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-size: 15.5px;
   cursor: pointer;
   transition: border-color 0.16s ease, color 0.16s ease;
 }
@@ -243,7 +247,7 @@ button {
   margin: 0 auto;
   padding: 0 20px 40px;
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 14px;
 }
 
 /* ---------- כותרת: שם הילד ---------- */
@@ -251,18 +255,18 @@ button {
   padding: 56px 0 30px;
 }
 .hero__name {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
-  font-size: clamp(42px, 6.4vw, 74px);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  font-family: var(--font);
+  font-size: clamp(46px, 6.8vw, 82px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
   margin: 0;
   text-wrap: balance;
 }
 .hero__meta {
-  margin: 14px 0 0;
+  margin: 16px 0 0;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: 16.5px;
 }
 .hero__meta span:not(:last-child)::after {
   content: "·";
@@ -273,33 +277,33 @@ button {
 /* ---------- שורת המספרים ---------- */
 .pulse {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 .pulse__cell {
-  padding: 22px 4px 20px;
+  padding: 26px 4px 24px;
   border-inline-start: 1px solid var(--line-soft);
 }
 .pulse__cell:first-child {
   border-inline-start: 0;
 }
 .pulse__n {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
-  font-size: 34px;
-  font-weight: 500;
+  font-family: var(--font);
+  font-size: 44px;
+  font-weight: 600;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.028em;
   font-variant-numeric: tabular-nums;
 }
 .pulse__n small {
-  font-size: 17px;
+  font-size: 22px;
   color: var(--muted);
   margin-inline-start: 2px;
 }
 .pulse__k {
-  margin-top: 7px;
-  font-size: 13px;
+  margin-top: 9px;
+  font-size: 15px;
   color: var(--muted);
 }
 
@@ -308,16 +312,16 @@ button {
   padding: 46px 0 0;
 }
 .block__title {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
-  font-size: 27px;
-  font-weight: 500;
+  font-family: var(--font);
+  font-size: 31px;
+  font-weight: 600;
   margin: 0;
   letter-spacing: -0.015em;
 }
 .block__lede {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   color: var(--ink-2);
-  font-size: 15.5px;
+  font-size: 17.5px;
   max-width: 66ch;
 }
 .block__lede b {
@@ -338,7 +342,7 @@ button {
   overflow: visible;
 }
 .chart__tick {
-  font-family: "Assistant", sans-serif;
+  font-family: var(--font);
   font-size: 11px;
   fill: var(--muted);
   text-anchor: end;
@@ -351,10 +355,10 @@ button {
 }
 .legend {
   display: flex;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
-  margin-top: 14px;
-  font-size: 13.5px;
+  margin-top: 16px;
+  font-size: 15.5px;
   color: var(--muted);
 }
 .legend__i {
@@ -380,14 +384,14 @@ button {
 }
 .clock__row {
   display: grid;
-  grid-template-columns: 128px 1fr auto;
+  grid-template-columns: 150px 1fr auto;
   align-items: center;
-  gap: 16px;
-  font-size: 14px;
+  gap: 18px;
+  font-size: 16px;
   color: var(--ink-2);
 }
 .clock__track {
-  height: 6px;
+  height: 8px;
   background: var(--line-soft);
   border-radius: 3px;
   overflow: hidden;
@@ -401,24 +405,24 @@ button {
 }
 .clock__val {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   font-variant-numeric: tabular-nums;
-  min-width: 84px;
+  min-width: 104px;
   text-align: start;
 }
 
 /* ---------- מתג המומחים ---------- */
 .roles {
   display: flex;
-  gap: 18px;
-  margin: 0 0 14px;
+  gap: 22px;
+  margin: 0 0 16px;
   flex-wrap: wrap;
 }
 .roles__b {
   border: 0;
   background: none;
-  padding: 2px 0 5px;
-  font-size: 13.5px;
+  padding: 3px 0 7px;
+  font-size: 16px;
   color: var(--muted);
   cursor: pointer;
   border-bottom: 1.5px solid transparent;
@@ -431,6 +435,7 @@ button {
   color: var(--ink);
   font-weight: 600;
   border-bottom-color: var(--accent);
+  border-bottom-width: 2px;
 }
 
 /* ---------- תחום (למידה / תרגול) ---------- */
@@ -438,59 +443,62 @@ button {
   padding: 46px 0 0;
 }
 .domain__title {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
-  font-size: 27px;
-  font-weight: 500;
+  font-family: var(--font);
+  font-size: 31px;
+  font-weight: 600;
   margin: 0;
   letter-spacing: -0.015em;
 }
 .domain__lede {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   color: var(--ink-2);
-  font-size: 15.5px;
+  font-size: 17.5px;
   max-width: 62ch;
 }
 .domain__figs {
   display: flex;
-  gap: 26px;
-  margin: 20px 0 0;
+  gap: 30px;
+  margin: 24px 0 0;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: 16px;
   flex-wrap: wrap;
 }
 .domain__figs b {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
-  font-size: 19px;
-  font-weight: 500;
+  font-family: var(--font);
+  font-size: 23px;
+  font-weight: 600;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
   margin-inline-end: 5px;
 }
 
 /* "לעומק" — קו-תחתון דק שנפתח, לא כפתור מלא */
+/* כפתור אמיתי ולא קו-תחתון: הקודם לא נראה לחיץ, וההורה לא ידע שיש
+   בכלל עומק מתחתיו. עדיין שקט — מסגרת דקה, בלי מילוי. */
 .depth {
-  margin-top: 18px;
-  border: 0;
-  background: none;
-  padding: 4px 0;
+  margin-top: 22px;
+  border: 1px solid var(--accent-soft);
+  background: #fff;
+  padding: 11px 20px;
+  border-radius: 999px;
   color: var(--accent);
-  font-size: 14.5px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  border-bottom: 1px solid var(--accent-soft);
-  transition: border-color 0.18s ease;
+  gap: 10px;
+  transition: border-color 0.18s ease, background 0.18s ease;
 }
 .depth:hover {
-  border-bottom-color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 /* גבולות פיזיים בכוונה: border-inline-end מתהפך ב-RTL, ואז ה-rotate(45deg)
    מייצר חץ שמצביע שמאלה במקום למטה. */
 .depth__chev {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-right: 1.8px solid currentColor;
   border-bottom: 1.8px solid currentColor;
   transform: rotate(45deg) translateY(-2px);
@@ -523,10 +531,10 @@ button {
 .topic__row {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto auto auto;
   align-items: center;
-  gap: 18px;
-  padding: 17px 2px;
+  gap: 20px;
+  padding: 22px 4px;
   background: none;
   border: 0;
   text-align: start;
@@ -537,32 +545,49 @@ button {
   background: #f6f9f9;
 }
 .topic__name {
-  font-size: 16.5px;
+  font-size: 19px;
   font-weight: 600;
   letter-spacing: -0.005em;
 }
 .topic__sub {
   display: block;
-  margin-top: 3px;
-  font-size: 13px;
+  margin-top: 4px;
+  font-size: 15px;
   color: var(--muted);
   font-weight: 400;
 }
 .topic__acc {
-  font-family: "Frank Ruhl Libre", Georgia, serif;
-  font-size: 21px;
-  font-weight: 500;
+  font-family: var(--font);
+  font-size: 26px;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 .topic__acc small {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
+}
+
+/* חץ בקצה השורה: בלעדיו אין שום רמז שאפשר ללחוץ ולפתוח חוות דעת */
+.topic__chev {
+  width: 11px;
+  height: 11px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.16s ease;
+}
+.topic__row:hover .topic__chev {
+  border-color: var(--accent);
+}
+.topic__row[aria-expanded="true"] .topic__chev {
+  transform: rotate(-135deg) translateY(-2px);
+  border-color: var(--accent);
 }
 
 /* פס-שליטה דק — הצורה היחידה בדף שמראה יחס */
 .topic__bar {
-  width: 74px;
-  height: 4px;
+  width: 92px;
+  height: 5px;
   border-radius: 2px;
   background: var(--line);
   overflow: hidden;
@@ -594,13 +619,13 @@ button {
 }
 .verdict__body {
   display: grid;
-  grid-template-columns: 92px 1fr;
-  gap: 20px;
-  padding: 6px 0 30px;
+  grid-template-columns: 104px 1fr;
+  gap: 24px;
+  padding: 8px 0 34px;
 }
 .verdict__face {
-  width: 92px;
-  height: 92px;
+  width: 104px;
+  height: 104px;
   object-fit: contain;
   display: block;
   align-self: start;
@@ -612,10 +637,10 @@ button {
 }
 .verdict__text {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 18px;
+  line-height: 1.85;
   color: var(--ink-2);
-  max-width: 66ch;
+  max-width: 62ch;
 }
 /* הסימון של המורה: מרקר שנמתח על המילים הראשונות, כאילו סומן ביד.
    נעשה דרך background-size ולא דרך ::after — פסאודו ממוקם נותן תיבה אחת
@@ -646,17 +671,17 @@ button {
   animation: riseIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .overall .verdict__body {
-  grid-template-columns: 112px 1fr;
-  gap: 24px;
+  grid-template-columns: 128px 1fr;
+  gap: 28px;
   padding: 0;
 }
 .overall .verdict__face {
-  width: 112px;
-  height: 112px;
+  width: 128px;
+  height: 128px;
 }
 .overall .verdict__text {
-  font-size: 17px;
-  line-height: 1.85;
+  font-size: 19.5px;
+  line-height: 1.9;
 }
 @keyframes riseIn {
   from {
@@ -676,39 +701,61 @@ button {
 }
 .verdict__none {
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16.5px;
   margin: 0;
 }
 
 /* ---------- מצב ריק ---------- */
 .empty {
-  padding: 24px 0 4px;
+  padding: 26px 0 4px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 @media (max-width: 640px) {
   .hero {
     padding: 34px 0 22px;
   }
+  /* במובייל השם והשורה-המשנית זקוקים לרוחב; האחוז והחץ מתכווצים. */
   .topic__row {
-    grid-template-columns: 1fr auto;
-    gap: 12px;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    padding: 18px 2px;
+  }
+  .topic__name {
+    font-size: 17.5px;
+  }
+  .topic__sub {
+    font-size: 14px;
+  }
+  .topic__acc {
+    font-size: 22px;
+  }
+  .topic__acc small {
+    font-size: 13px;
+  }
+  .depth {
+    width: 100%;
+    justify-content: center;
   }
   .topic__bar {
     display: none;
   }
   .verdict__body {
-    grid-template-columns: 62px 1fr;
+    grid-template-columns: 68px 1fr;
     gap: 14px;
   }
   .verdict__face {
-    width: 62px;
-    height: 62px;
+    width: 68px;
+    height: 68px;
+  }
+  .verdict__text {
+    font-size: 17px;
   }
   .clock__row {
-    grid-template-columns: 92px 1fr;
+    grid-template-columns: 108px 1fr;
     gap: 10px;
+    font-size: 15px;
   }
   .clock__val {
     grid-column: 2;
