@@ -103,6 +103,10 @@ const PUBLIC_FILES = new Set([
   "/auth.css",
   "/styles.css",
   "/favicon.ico",
+  // אייקוני-הלשונית: ראש המורה לאזור הילדים וההורים, סמל ה-v לאזור הניהול.
+  // ציבוריים כי הדפדפן מבקש אותם גם במסך ההתחברות, לפני שיש session.
+  "/favicon-teacher.png",
+  "/favicon-v.png",
   "/admin.html",
   "/admin.css",
   "/admin.js",
