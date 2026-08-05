@@ -240,13 +240,14 @@
       { n: s.totalAttempts, k: "תרגילים נפתרו" },
       { n: s.accuracy, unit: "%", k: "דיוק כללי" },
       { n: s.activeDays, k: "ימי פעילות" },
-      { n: s.masteredCount, k: `נושאים בשליטה מתוך ${s.topicsCount}` },
+      { n: s.masteredCount, unit: `מתוך ${s.topicsCount}`, k: "נושאים בשליטה" },
     ];
+    // הכותרת קודם ואז המספר — אורי: "נתון עם כותרת קטנה מתחתיו זה לא טוב"
     return `<section class="pulse">${cells
       .map(
         (c) => `<div class="pulse__cell">
-          <div class="pulse__n">${c.n}${c.unit ? `<small>${c.unit}</small>` : ""}</div>
           <div class="pulse__k">${esc(c.k)}</div>
+          <div class="pulse__n">${c.n}${c.unit ? `<small>${c.unit}</small>` : ""}</div>
         </div>`
       )
       .join("")}</section>`;
@@ -339,10 +340,10 @@
       ${
         has
           ? `<div class="domain__figs">
-              <span><b>${data.attempts}</b>תרגילים</span>
-              <span><b>${data.accuracy}%</b>דיוק</span>
-              <span><b>${data.topics.length}</b>נושאים</span>
-              <span><b>${data.activeDays}</b>ימי פעילות</span>
+              <span><em>תרגילים</em><b>${data.attempts}</b></span>
+              <span><em>דיוק</em><b>${data.accuracy}%</b></span>
+              <span><em>נושאים</em><b>${data.topics.length}</b></span>
+              <span><em>ימי פעילות</em><b>${data.activeDays}</b></span>
             </div>
             <button class="depth" type="button" aria-expanded="false" data-area="${area.key}">
               <span class="depth__label">לעומק — נושא אחרי נושא</span>

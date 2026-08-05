@@ -284,27 +284,38 @@ button {
 .pulse__cell {
   padding: 26px 4px 24px;
   border-inline-start: 1px solid var(--line-soft);
+  /* עמודת-פלקס שנדחפת למטה: אם כותרת אחת נשברת לשתי שורות, המספרים
+     של כל התאים עדיין מיושרים על אותו קו. */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .pulse__cell:first-child {
   border-inline-start: 0;
 }
+/* הכותרת מעל המספר וגדולה בעצמה — היא מה שאומר להורה מה הוא רואה.
+   מספר גדול עם תווית זעירה מתחתיו מכריח לחפש את המשמעות. */
+.pulse__k {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink-2);
+  line-height: 1.35;
+}
 .pulse__n {
+  margin-top: 10px;
   font-family: var(--font);
-  font-size: 44px;
+  font-size: 46px;
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.028em;
   font-variant-numeric: tabular-nums;
 }
 .pulse__n small {
-  font-size: 22px;
+  font-size: 21px;
+  font-weight: 400;
   color: var(--muted);
-  margin-inline-start: 2px;
-}
-.pulse__k {
-  margin-top: 9px;
-  font-size: 15px;
-  color: var(--muted);
+  margin-inline-start: 6px;
+  letter-spacing: 0;
 }
 
 /* ---------- בלוק תוכן (גרף, מתי לומדים) ---------- */
@@ -457,19 +468,31 @@ button {
 }
 .domain__figs {
   display: flex;
-  gap: 30px;
-  margin: 24px 0 0;
-  color: var(--muted);
-  font-size: 16px;
+  gap: 40px;
+  margin: 26px 0 0;
   flex-wrap: wrap;
 }
+.domain__figs span {
+  display: flex;
+  flex-direction: column;
+}
+/* גם כאן הכותרת מעל, ובגודל קריא */
+.domain__figs em {
+  font-style: normal;
+  font-size: 16.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+  line-height: 1.3;
+}
 .domain__figs b {
+  margin-top: 5px;
   font-family: var(--font);
-  font-size: 23px;
+  font-size: 30px;
   font-weight: 600;
   color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
-  margin-inline-end: 5px;
 }
 
 /* "לעומק" — קו-תחתון דק שנפתח, לא כפתור מלא */
@@ -733,6 +756,22 @@ button {
   }
   .topic__acc small {
     font-size: 13px;
+  }
+  .pulse__k {
+    font-size: 16.5px;
+    min-height: 0;
+  }
+  .pulse__n {
+    font-size: 38px;
+  }
+  .domain__figs {
+    gap: 28px 32px;
+  }
+  .domain__figs em {
+    font-size: 15.5px;
+  }
+  .domain__figs b {
+    font-size: 26px;
   }
   .depth {
     width: 100%;
