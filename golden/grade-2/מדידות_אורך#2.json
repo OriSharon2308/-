@@ -1,0 +1,276 @@
+{
+  "topic": "מדידות אורך",
+  "lesson": 2,
+  "title": "הסרגל — מתחילים תמיד מ-0",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "זוכר/ת את הקטעים של הסנטימטר? מישהו חכם הדביק הרבה מהם על פס אחד — וככה נולד הסרגל. תראה/י: המרחק בין כל שני קווים שכנים הוא בדיוק 1 ס״מ, כמו הקטע האדום. והמספרים למטה סופרים בשבילנו כמה ס״מ עברנו. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הסרגל — הרבה ס״מ בשורה",
+              "x": 480,
+              "y": 80,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 860 180\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"20\" y=\"70\" width=\"820\" height=\"72\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><rect x=\"68\" y=\"70\" width=\"62\" height=\"72\" fill=\"#F87171\" opacity=\"0.55\"/><line x1=\"68\" y1=\"70\" x2=\"68\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"68\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">0</text><line x1=\"130\" y1=\"70\" x2=\"130\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"130\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">1</text><line x1=\"192\" y1=\"70\" x2=\"192\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"192\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">2</text><line x1=\"254\" y1=\"70\" x2=\"254\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"254\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">3</text><line x1=\"316\" y1=\"70\" x2=\"316\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"316\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">4</text><line x1=\"378\" y1=\"70\" x2=\"378\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"378\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">5</text><line x1=\"440\" y1=\"70\" x2=\"440\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"440\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">6</text><line x1=\"502\" y1=\"70\" x2=\"502\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"502\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">7</text><line x1=\"564\" y1=\"70\" x2=\"564\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"564\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">8</text><line x1=\"626\" y1=\"70\" x2=\"626\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"626\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">9</text><line x1=\"688\" y1=\"70\" x2=\"688\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"688\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">10</text><line x1=\"750\" y1=\"70\" x2=\"750\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"750\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">11</text><line x1=\"812\" y1=\"70\" x2=\"812\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"812\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">12</text></svg>",
+              "title": "סרגל",
+              "x": 70,
+              "y": 170,
+              "w": 860,
+              "h": 180
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "המרחק בין שני קווים = 1 ס״מ",
+              "x": 480,
+              "y": 420,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ככה מודדים: מצמידים את ההתחלה של החפץ בדיוק ל-0. עכשיו מסתכלים איפה החפץ נגמר — הוא נגמר על 6. אז העיפרון הוא 6 ס״מ. פשוט! ה-0 הוא מקום ההתחלה, והמספר שבו נגמרים הוא התשובה. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מתחילים מ-0",
+              "x": 480,
+              "y": 75,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 860 180\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"20\" y=\"70\" width=\"820\" height=\"72\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><line x1=\"68\" y1=\"70\" x2=\"68\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"68\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">0</text><line x1=\"130\" y1=\"70\" x2=\"130\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"130\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">1</text><line x1=\"192\" y1=\"70\" x2=\"192\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"192\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">2</text><line x1=\"254\" y1=\"70\" x2=\"254\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"254\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">3</text><line x1=\"316\" y1=\"70\" x2=\"316\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"316\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">4</text><line x1=\"378\" y1=\"70\" x2=\"378\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"378\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">5</text><line x1=\"440\" y1=\"70\" x2=\"440\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"440\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">6</text><line x1=\"502\" y1=\"70\" x2=\"502\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"502\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">7</text><line x1=\"564\" y1=\"70\" x2=\"564\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"564\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">8</text><line x1=\"626\" y1=\"70\" x2=\"626\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"626\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">9</text><line x1=\"688\" y1=\"70\" x2=\"688\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"688\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">10</text><line x1=\"750\" y1=\"70\" x2=\"750\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"750\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">11</text><line x1=\"812\" y1=\"70\" x2=\"812\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"812\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">12</text><rect x=\"68\" y=\"24\" width=\"372\" height=\"30\" rx=\"7\" fill=\"#2563EB\"/></svg>",
+              "title": "מודדים עיפרון",
+              "x": 70,
+              "y": 150,
+              "w": 860,
+              "h": 180
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מתחיל ב-0, נגמר ב-6 → 6 ס״מ",
+              "x": 480,
+              "y": 400,
+              "size": 30
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו שתי טעויות שכולם עושים — ואת/ה לא תעשה/י! טעות ראשונה: להתחיל מהקצה של הסרגל. תראה/י למעלה — לסרגל יש פיסת פלסטיק לפני ה-0, ואם מצמידים לשם כל המדידה זזה. למטה זה נכון: מצמידים ל-0 עצמו. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "טעות 1: מתחילים מהקצה",
+              "x": 480,
+              "y": 75,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 950 380\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"20\" y=\"90\" width=\"820\" height=\"72\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><line x1=\"68\" y1=\"90\" x2=\"68\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"68\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">0</text><line x1=\"130\" y1=\"90\" x2=\"130\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"130\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">1</text><line x1=\"192\" y1=\"90\" x2=\"192\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"192\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">2</text><line x1=\"254\" y1=\"90\" x2=\"254\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"254\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">3</text><line x1=\"316\" y1=\"90\" x2=\"316\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"316\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">4</text><line x1=\"378\" y1=\"90\" x2=\"378\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"378\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">5</text><line x1=\"440\" y1=\"90\" x2=\"440\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"440\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">6</text><line x1=\"502\" y1=\"90\" x2=\"502\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"502\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">7</text><line x1=\"564\" y1=\"90\" x2=\"564\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"564\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">8</text><line x1=\"626\" y1=\"90\" x2=\"626\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"626\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">9</text><line x1=\"688\" y1=\"90\" x2=\"688\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"688\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">10</text><line x1=\"750\" y1=\"90\" x2=\"750\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"750\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">11</text><line x1=\"812\" y1=\"90\" x2=\"812\" y2=\"122\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"812\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">12</text><rect x=\"20\" y=\"44\" width=\"372\" height=\"30\" rx=\"7\" fill=\"#93C5FD\"/><text x=\"898\" y=\"122\" text-anchor=\"middle\" font-size=\"56\" font-weight=\"700\" fill=\"#DC2626\">✗</text><rect x=\"20\" y=\"280\" width=\"820\" height=\"72\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><line x1=\"68\" y1=\"280\" x2=\"68\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"68\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">0</text><line x1=\"130\" y1=\"280\" x2=\"130\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"130\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">1</text><line x1=\"192\" y1=\"280\" x2=\"192\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"192\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">2</text><line x1=\"254\" y1=\"280\" x2=\"254\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"254\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">3</text><line x1=\"316\" y1=\"280\" x2=\"316\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"316\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">4</text><line x1=\"378\" y1=\"280\" x2=\"378\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"378\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">5</text><line x1=\"440\" y1=\"280\" x2=\"440\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"440\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">6</text><line x1=\"502\" y1=\"280\" x2=\"502\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"502\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">7</text><line x1=\"564\" y1=\"280\" x2=\"564\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"564\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">8</text><line x1=\"626\" y1=\"280\" x2=\"626\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"626\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">9</text><line x1=\"688\" y1=\"280\" x2=\"688\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"688\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">10</text><line x1=\"750\" y1=\"280\" x2=\"750\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"750\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">11</text><line x1=\"812\" y1=\"280\" x2=\"812\" y2=\"312\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"812\" y=\"340\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">12</text><rect x=\"68\" y=\"234\" width=\"372\" height=\"30\" rx=\"7\" fill=\"#2563EB\"/><text x=\"898\" y=\"312\" text-anchor=\"middle\" font-size=\"56\" font-weight=\"700\" fill=\"#16A34A\">✓</text></svg>",
+              "title": "מהקצה או מה-0?",
+              "x": 60,
+              "y": 130,
+              "w": 880,
+              "h": 352
+            }
+          }
+        ]
+      },
+      {
+        "reply": "טעות שנייה: לספור את הקווים. תראה/י — הספירה האדומה סופרת קווים ויוצא 5, אבל זה יותר מדי, כי גם קו ההתחלה נספר. הסנטימטר הוא המרחק בין שני קווים, לא הקו עצמו. אז סופרים מרווחים — הספירה הירוקה. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "טעות 2: סופרים קווים",
+              "x": 480,
+              "y": 75,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 820 300\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"60\" y=\"130\" width=\"700\" height=\"110\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><line x1=\"120\" y1=\"130\" x2=\"120\" y2=\"240\" stroke=\"#92400E\" stroke-width=\"5\"/><text x=\"120\" y=\"274\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#78350F\">0</text><text x=\"120\" y=\"112\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"#DC2626\">1</text><line x1=\"280\" y1=\"130\" x2=\"280\" y2=\"240\" stroke=\"#92400E\" stroke-width=\"5\"/><text x=\"280\" y=\"274\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#78350F\">1</text><text x=\"280\" y=\"112\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"#DC2626\">2</text><line x1=\"440\" y1=\"130\" x2=\"440\" y2=\"240\" stroke=\"#92400E\" stroke-width=\"5\"/><text x=\"440\" y=\"274\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#78350F\">2</text><text x=\"440\" y=\"112\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"#DC2626\">3</text><line x1=\"600\" y1=\"130\" x2=\"600\" y2=\"240\" stroke=\"#92400E\" stroke-width=\"5\"/><text x=\"600\" y=\"274\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#78350F\">3</text><text x=\"600\" y=\"112\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"#DC2626\">4</text><line x1=\"760\" y1=\"130\" x2=\"760\" y2=\"240\" stroke=\"#92400E\" stroke-width=\"5\"/><text x=\"760\" y=\"274\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#78350F\">4</text><text x=\"760\" y=\"112\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"700\" fill=\"#DC2626\">5</text><text x=\"200\" y=\"202\" text-anchor=\"middle\" font-size=\"40\" font-weight=\"700\" fill=\"#15803D\">1</text><text x=\"360\" y=\"202\" text-anchor=\"middle\" font-size=\"40\" font-weight=\"700\" fill=\"#15803D\">2</text><text x=\"520\" y=\"202\" text-anchor=\"middle\" font-size=\"40\" font-weight=\"700\" fill=\"#15803D\">3</text><text x=\"680\" y=\"202\" text-anchor=\"middle\" font-size=\"40\" font-weight=\"700\" fill=\"#15803D\">4</text><text x=\"410\" y=\"34\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#DC2626\">קווים</text></svg>",
+              "title": "קווים או מרווחים?",
+              "x": 90,
+              "y": 130,
+              "w": 820,
+              "h": 300
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "סופרים מרווחים — לא קווים",
+              "x": 480,
+              "y": 480,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ועכשיו משהו חכם! תראה/י את העיפרון — הוא לא מתחיל ב-0. הוא מתחיל ב-3 ונגמר ב-11. אז כמה הוא? לא 11! ה-3 הראשונים הם לפני העיפרון, הם לא שלו. אז מורידים אותם: 11 פחות 3. וזה חיסור שאת/ה כבר יודע/ת — 8 ס״מ. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כשלא מתחילים מ-0",
+              "x": 480,
+              "y": 75,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 860 180\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"20\" y=\"70\" width=\"820\" height=\"72\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><line x1=\"68\" y1=\"70\" x2=\"68\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"68\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">0</text><line x1=\"130\" y1=\"70\" x2=\"130\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"130\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">1</text><line x1=\"192\" y1=\"70\" x2=\"192\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"192\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">2</text><line x1=\"254\" y1=\"70\" x2=\"254\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"254\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">3</text><line x1=\"316\" y1=\"70\" x2=\"316\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"316\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">4</text><line x1=\"378\" y1=\"70\" x2=\"378\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"378\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">5</text><line x1=\"440\" y1=\"70\" x2=\"440\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"440\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">6</text><line x1=\"502\" y1=\"70\" x2=\"502\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"502\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">7</text><line x1=\"564\" y1=\"70\" x2=\"564\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"564\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">8</text><line x1=\"626\" y1=\"70\" x2=\"626\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"626\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">9</text><line x1=\"688\" y1=\"70\" x2=\"688\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"688\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">10</text><line x1=\"750\" y1=\"70\" x2=\"750\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"750\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">11</text><line x1=\"812\" y1=\"70\" x2=\"812\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"812\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">12</text><rect x=\"254\" y=\"24\" width=\"496\" height=\"30\" rx=\"7\" fill=\"#2563EB\"/></svg>",
+              "title": "עיפרון מ-3 עד 11",
+              "x": 70,
+              "y": 150,
+              "w": 860,
+              "h": 180
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "11 − 3 = 8 ס״מ",
+              "x": 480,
+              "y": 400,
+              "size": 40
+            }
+          }
+        ]
+      },
+      {
+        "reply": "אז ככה עונים על שאלת סרגל: קודם מנחשים בלב. אחר כך מסתכלים איפה החפץ מתחיל ואיפה הוא נגמר. אם התחיל ב-0 — התשובה היא המספר שבו נגמר. ואם התחיל במקום אחר — מחסרים: הסוף פחות ההתחלה. מוכן/ה? לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הסוף פחות ההתחלה",
+              "x": 480,
+              "y": 75,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 860 180\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"20\" y=\"70\" width=\"820\" height=\"72\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><line x1=\"68\" y1=\"70\" x2=\"68\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"68\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">0</text><line x1=\"130\" y1=\"70\" x2=\"130\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"130\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">1</text><line x1=\"192\" y1=\"70\" x2=\"192\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"192\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">2</text><line x1=\"254\" y1=\"70\" x2=\"254\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"254\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">3</text><line x1=\"316\" y1=\"70\" x2=\"316\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"316\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">4</text><line x1=\"378\" y1=\"70\" x2=\"378\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"378\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">5</text><line x1=\"440\" y1=\"70\" x2=\"440\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"440\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">6</text><line x1=\"502\" y1=\"70\" x2=\"502\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"502\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">7</text><line x1=\"564\" y1=\"70\" x2=\"564\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"564\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">8</text><line x1=\"626\" y1=\"70\" x2=\"626\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"626\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">9</text><line x1=\"688\" y1=\"70\" x2=\"688\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"688\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">10</text><line x1=\"750\" y1=\"70\" x2=\"750\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"750\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">11</text><line x1=\"812\" y1=\"70\" x2=\"812\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"812\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">12</text><rect x=\"192\" y=\"24\" width=\"434\" height=\"30\" rx=\"7\" fill=\"#2563EB\"/></svg>",
+              "title": "מ-2 עד 9",
+              "x": 70,
+              "y": 150,
+              "w": 860,
+              "h": 180
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "9 − 2 = 7 ס״מ",
+              "x": 480,
+              "y": 400,
+              "size": 40
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד! על הסרגל מונח עיפרון. קודם נחש/י בלב כמה ס״מ הוא. ועכשיו בדוק/בדקי: איפה הוא מתחיל? על 0. ואיפה הוא נגמר? תסתכל/י על המספר שמתחתיו. כשמתחילים מ-0 — המספר בסוף הוא התשובה. כתוב/כתבי אותו בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "אורך העיפרון בס״מ?",
+            "answer": "7",
+            "kind": "number",
+            "hint": "העיפרון מתחיל בדיוק על ה-0. עכשיו לך/י עם האצבע עד הקצה השני שלו — על איזה מספר הוא נגמר? זה בדיוק האורך. אפשר גם לספור מרווחים.",
+            "praise": "מצוין! התחלת מ-0 וקראת את המספר שבסוף — בדיוק ככה מודדים."
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox=\"0 0 860 180\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"20\" y=\"70\" width=\"820\" height=\"72\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><line x1=\"68\" y1=\"70\" x2=\"68\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"68\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">0</text><line x1=\"130\" y1=\"70\" x2=\"130\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"130\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">1</text><line x1=\"192\" y1=\"70\" x2=\"192\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"192\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">2</text><line x1=\"254\" y1=\"70\" x2=\"254\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"254\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">3</text><line x1=\"316\" y1=\"70\" x2=\"316\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"316\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">4</text><line x1=\"378\" y1=\"70\" x2=\"378\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"378\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">5</text><line x1=\"440\" y1=\"70\" x2=\"440\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"440\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">6</text><line x1=\"502\" y1=\"70\" x2=\"502\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"502\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">7</text><line x1=\"564\" y1=\"70\" x2=\"564\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"564\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">8</text><line x1=\"626\" y1=\"70\" x2=\"626\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"626\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">9</text><line x1=\"688\" y1=\"70\" x2=\"688\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"688\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">10</text><line x1=\"750\" y1=\"70\" x2=\"750\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"750\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">11</text><line x1=\"812\" y1=\"70\" x2=\"812\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"812\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">12</text><rect x=\"68\" y=\"24\" width=\"434\" height=\"30\" rx=\"7\" fill=\"#2563EB\"/></svg>",
+            "title": "העיפרון על הסרגל",
+            "x": 70,
+            "y": 210,
+            "w": 860,
+            "h": 180
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד. שאלה אחת בכל פעם. בראשונה יש לך סרגל על הלוח — והעיפרון לא מתחיל ב-0, אז זכור/זכרי: הסוף פחות ההתחלה. בשתיים הבאות אין ציור, רק מספרים — ואת/ה כבר יודע/ת בדיוק מה לעשות איתם 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "אורך העיפרון בס״מ?",
+            "answer": "6",
+            "kind": "number",
+            "hint": "העיפרון מתחיל ב-2 ונגמר ב-8. ה-2 הראשונים הם לא שלו. אז מחסרים: 8 פחות 2. אפשר גם לספור את המרווחים מ-2 עד 8.",
+            "praise": "כל הכבוד! חיסרת נכון — התחלת מהמקום הנכון."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "חפץ מונח מ-4 עד 9. אורכו בס״מ?",
+            "answer": "5",
+            "kind": "number",
+            "hint": "הסוף הוא 9 וההתחלה היא 4. כל מה שלפני 4 הוא לא של החפץ. אז מחסרים: 9 פחות 4. אפשר גם לספור קפיצות מ-4 עד 9.",
+            "praise": "יפה! גם בלי ציור זכרת: הסוף פחות ההתחלה."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "עיפרון מונח מ-5 עד 12. אורכו בס״מ?",
+            "answer": "7",
+            "kind": "number",
+            "hint": "12 זה איפה שהוא נגמר, 5 זה איפה שהוא מתחיל. חסר/י: 12 פחות 5. ואם קשה — ספור/י מ-5 קדימה עד 12, וכמה קפיצות עשית.",
+            "praise": "וואו! מדדת כמו מודד/ת אמיתי/ת — גם כשהחפץ לא מתחיל ב-0 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox=\"0 0 860 180\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"20\" y=\"70\" width=\"820\" height=\"72\" rx=\"10\" fill=\"#FDE68A\" stroke=\"#B45309\" stroke-width=\"3\"/><line x1=\"68\" y1=\"70\" x2=\"68\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"68\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">0</text><line x1=\"130\" y1=\"70\" x2=\"130\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"130\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">1</text><line x1=\"192\" y1=\"70\" x2=\"192\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"192\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">2</text><line x1=\"254\" y1=\"70\" x2=\"254\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"254\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">3</text><line x1=\"316\" y1=\"70\" x2=\"316\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"316\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">4</text><line x1=\"378\" y1=\"70\" x2=\"378\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"378\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">5</text><line x1=\"440\" y1=\"70\" x2=\"440\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"440\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">6</text><line x1=\"502\" y1=\"70\" x2=\"502\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"502\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">7</text><line x1=\"564\" y1=\"70\" x2=\"564\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"564\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">8</text><line x1=\"626\" y1=\"70\" x2=\"626\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"626\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">9</text><line x1=\"688\" y1=\"70\" x2=\"688\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"688\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">10</text><line x1=\"750\" y1=\"70\" x2=\"750\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"750\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">11</text><line x1=\"812\" y1=\"70\" x2=\"812\" y2=\"102\" stroke=\"#92400E\" stroke-width=\"3\"/><text x=\"812\" y=\"130\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#78350F\">12</text><rect x=\"192\" y=\"24\" width=\"372\" height=\"30\" rx=\"7\" fill=\"#2563EB\"/></svg>",
+            "title": "הסרגל של שאלה 1",
+            "x": 120,
+            "y": 380,
+            "w": 760,
+            "h": 159
+          }
+        }
+      ]
+    }
+  }
+}

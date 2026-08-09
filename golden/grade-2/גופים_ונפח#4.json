@@ -1,0 +1,251 @@
+{
+  "topic": "גופים ונפח",
+  "lesson": 4,
+  "title": "מי מחזיק יותר? — משווים נפחים",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "שאלה מהחיים 🙂 על הלוח שתי כוסות. אחת רחבה ונמוכה, אחת צרה וגבוהה. מי מחזיקה יותר מיץ? תנחש/י בלב... ועכשיו האמת: בעין אי אפשר לדעת! העיניים מרמות אותנו. צריך דרך אחרת לבדוק. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מי מחזיקה יותר מיץ?",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 720 320' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 425,150 L 438,265 A 82,23 0 0 0 602,265 L 615,150 Z' fill='#e6f7f3' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='520' cy='150' rx='95' ry='27' fill='#ffffff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='520' y='306' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כוס רחבה</text><path d='M 148,60 L 156,265 A 44,12 0 0 0 244,265 L 252,60 Z' fill='#e6f7f3' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='200' cy='60' rx='52' ry='15' fill='#ffffff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='200' y='306' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כוס גבוהה</text><text x='360' y='200' text-anchor='middle' font-size='76' font-weight='700' fill='#ef4444'>?</text></svg>",
+              "title": "שתי כוסות",
+              "x": 140,
+              "y": 140,
+              "w": 720,
+              "h": 320
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בעין אי אפשר לדעת",
+              "x": 480,
+              "y": 500,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "הנה הדרך: ממלאים את שתי הכוסות באותו דבר בדיוק וסופרים. בחרנו כוסית קטנה. לכוס הרחבה נכנסו 6 כוסיות. לכוס הגבוהה נכנסו רק 4. אז מי מחזיקה יותר? הרחבה — כי 6 גדול מ-4. הגובה לא קובע, הספירה קובעת. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ממלאים וסופרים",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 820 330' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 512,60 L 522,175 A 68,19 0 0 0 658,175 L 668,60 Z' fill='#e6f7f3' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='590' cy='60' rx='78' ry='22' fill='#ffffff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='590' y='222' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>6 כוסיות</text><path d='M 524,231.5 L 530.16,268.5 L 561.84,268.5 L 568,231.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='546' cy='231.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 524,283.5 L 530.16,320.5 L 561.84,320.5 L 568,283.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='546' cy='283.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 568,231.5 L 574.16,268.5 L 605.84,268.5 L 612,231.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='590' cy='231.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 568,283.5 L 574.16,320.5 L 605.84,320.5 L 612,283.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='590' cy='283.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 612,231.5 L 618.16,268.5 L 649.84,268.5 L 656,231.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='634' cy='231.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 612,283.5 L 618.16,320.5 L 649.84,320.5 L 656,283.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='634' cy='283.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 174,30 L 180,175 A 40,11 0 0 0 260,175 L 266,30 Z' fill='#e6f7f3' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='220' cy='30' rx='46' ry='13' fill='#ffffff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='220' y='222' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>4 כוסיות</text><path d='M 174,231.5 L 180.16,268.5 L 211.84,268.5 L 218,231.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='196' cy='231.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 174,283.5 L 180.16,320.5 L 211.84,320.5 L 218,283.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='196' cy='283.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 222,231.5 L 228.16,268.5 L 259.84,268.5 L 266,231.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='244' cy='231.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 222,283.5 L 228.16,320.5 L 259.84,320.5 L 266,283.5 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='244' cy='283.5' rx='22' ry='7' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='410' y1='20' x2='410' y2='320' stroke='#0f3b36' stroke-width='2' stroke-linecap='round' stroke-dasharray='8 8'/></svg>",
+              "title": "מודדים בכוסיות",
+              "x": 90,
+              "y": 135,
+              "w": 820,
+              "h": 330
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הרחבה מחזיקה יותר",
+              "x": 480,
+              "y": 500,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "אבל יש חוק אחד חשוב: חייבים אותה יחידה בדיוק לשתי הכוסות. תראה/י מה קורה כשלא: כוס אחת מדדנו בכפיות קטנות ויצאו 12, והשנייה בכוסיות גדולות ויצאו 4. אי אפשר להשוות! 12 כפיות זה לא יותר מ-4 כוסיות. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "חייבים אותה יחידה!",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 820 310' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 528,45 L 538,195 A 62,17 0 0 0 662,195 L 672,45 Z' fill='#e6f7f3' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='600' cy='45' rx='72' ry='20' fill='#ffffff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='600' y='232' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>12 כפיות</text><ellipse cx='520' cy='251.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='520' y1='257.48' x2='520' y2='272.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='520' cy='285.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='520' y1='291.48' x2='520' y2='306.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='550' cy='251.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='550' y1='257.48' x2='550' y2='272.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='550' cy='285.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='550' y1='291.48' x2='550' y2='306.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='580' cy='251.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='580' y1='257.48' x2='580' y2='272.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='580' cy='285.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='580' y1='291.48' x2='580' y2='306.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='610' cy='251.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='610' y1='257.48' x2='610' y2='272.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='610' cy='285.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='610' y1='291.48' x2='610' y2='306.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='640' cy='251.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='640' y1='257.48' x2='640' y2='272.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='640' cy='285.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='640' y1='291.48' x2='640' y2='306.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='670' cy='251.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='670' y1='257.48' x2='670' y2='272.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><ellipse cx='670' cy='285.5' rx='10.4' ry='7.280000000000001' fill='#ffe6b0' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='670' y1='291.48' x2='670' y2='306.3' stroke='#0f3b36' stroke-width='2.5' stroke-linecap='round'/><path d='M 148,45 L 158,195 A 62,17 0 0 0 282,195 L 292,45 Z' fill='#e6f7f3' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='220' cy='45' rx='72' ry='20' fill='#ffffff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='220' y='232' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>4 כוסיות</text><path d='M 124,254 L 129.88,290 L 160.12,290 L 166,254 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='145' cy='254' rx='21' ry='6' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 171,254 L 176.88,290 L 207.12,290 L 213,254 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='192' cy='254' rx='21' ry='6' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 218,254 L 223.88,290 L 254.12,290 L 260,254 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='239' cy='254' rx='21' ry='6' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><path d='M 265,254 L 270.88,290 L 301.12,290 L 307,254 Z' fill='#bfe9ff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='286' cy='254' rx='21' ry='6' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/><line x1='390' y1='120' x2='450' y2='180' stroke='#ef4444' stroke-width='9' stroke-linecap='round'/><line x1='450' y1='120' x2='390' y2='180' stroke='#ef4444' stroke-width='9' stroke-linecap='round'/></svg>",
+              "title": "לא אותה יחידה",
+              "x": 90,
+              "y": 140,
+              "w": 820,
+              "h": 310
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כפית וכוסית — אי אפשר להשוות",
+              "x": 480,
+              "y": 495,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "אפשר למדוד גם בקוביות. תראה/י קופסה שקופה מלאה קוביות. איך סופרים בלי להתבלבל? לא קובייה-קובייה — אלא שכבה-שכבה! בשכבה התחתונה 4 קוביות. מעליה עוד שכבה של 4. 4 ועוד 4 — 8 קוביות בקופסה. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "סופרים שכבה-שכבה",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 500 320' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 131,91 L 131,249 L 413,249 L 413,91' fill='none' stroke='#0f3b36' stroke-width='4' stroke-linejoin='round' stroke-linecap='round' opacity='.85'/><polygon points='329,181 345,165 401,165 385,181' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='385,181 401,165 401,221 385,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='329,181 385,181 385,237 329,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='267,181 283,165 339,165 323,181' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='323,181 339,165 339,221 323,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='267,181 323,181 323,237 267,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='205,181 221,165 277,165 261,181' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='261,181 277,165 277,221 261,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='205,181 261,181 261,237 205,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='143,181 159,165 215,165 199,181' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='199,181 215,165 215,221 199,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='143,181 199,181 199,237 143,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='329,119 345,103 401,103 385,119' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='385,119 401,103 401,159 385,175' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='329,119 385,119 385,175 329,175' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='267,119 283,103 339,103 323,119' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='323,119 339,103 339,159 323,175' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='267,119 323,119 323,175 267,175' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='205,119 221,103 277,103 261,119' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='261,119 277,103 277,159 261,175' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='205,119 261,119 261,175 205,175' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='143,119 159,103 215,103 199,119' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='199,119 215,103 215,159 199,175' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='143,119 199,119 199,175 143,175' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='62' y='145' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>שכבה 2</text><text x='62' y='215' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>שכבה 1</text><line x1='120' y1='138' x2='112' y2='138' stroke='#0f3b36' stroke-width='4' stroke-linecap='round'/><polygon points='96,138 114,127 114,149' fill='#0f3b36'/><line x1='120' y1='208' x2='112' y2='208' stroke='#0f3b36' stroke-width='4' stroke-linecap='round'/><polygon points='96,208 114,197 114,219' fill='#0f3b36'/><text x='250' y='290' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>קודם למטה, אחר כך מעל</text></svg>",
+              "title": "קוביות בקופסה",
+              "x": 250,
+              "y": 145,
+              "w": 500,
+              "h": 320
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "4 ועוד 4 — 8 קוביות",
+              "x": 480,
+              "y": 505,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו משווים שתי קופסאות. בימנית נכנסו 8 קוביות, בשמאלית 6. מי מחזיקה יותר? הימנית — כי נכנסו לה יותר קוביות. ככה עונים תמיד: סופרים בשתיהן באותה יחידה, ומשווים את שני המספרים. בלי חשבונות. עכשיו תורך!",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מי מחזיקה יותר?",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 860 320' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 551,101 L 551,237 L 791,237 L 791,101' fill='none' stroke='#0f3b36' stroke-width='4' stroke-linejoin='round' stroke-linecap='round' opacity='.85'/><polygon points='719,179 733,165 779,165 765,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='765,179 779,165 779,211 765,225' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='719,179 765,179 765,225 719,225' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='667,179 681,165 727,165 713,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='713,179 727,165 727,211 713,225' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='667,179 713,179 713,225 667,225' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='615,179 629,165 675,165 661,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='661,179 675,165 675,211 661,225' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='615,179 661,179 661,225 615,225' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='563,179 577,165 623,165 609,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='609,179 623,165 623,211 609,225' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='563,179 609,179 609,225 563,225' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='719,127 733,113 779,113 765,127' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='765,127 779,113 779,159 765,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='719,127 765,127 765,173 719,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='667,127 681,113 727,113 713,127' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='713,127 727,113 727,159 713,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='667,127 713,127 713,173 667,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='615,127 629,113 675,113 661,127' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='661,127 675,113 675,159 661,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='615,127 661,127 661,173 615,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='563,127 577,113 623,113 609,127' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='609,127 623,113 623,159 609,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='563,127 609,127 609,173 563,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='670' y='268' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>8 קוביות</text><path d='M 171,101 L 171,237 L 359,237 L 359,101' fill='none' stroke='#0f3b36' stroke-width='4' stroke-linejoin='round' stroke-linecap='round' opacity='.85'/><polygon points='287,179 301,165 347,165 333,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='333,179 347,165 347,211 333,225' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='287,179 333,179 333,225 287,225' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='235,179 249,165 295,165 281,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='281,179 295,165 295,211 281,225' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='235,179 281,179 281,225 235,225' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='183,179 197,165 243,165 229,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,179 243,165 243,211 229,225' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='183,179 229,179 229,225 183,225' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='287,127 301,113 347,113 333,127' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='333,127 347,113 347,159 333,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='287,127 333,127 333,173 287,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='235,127 249,113 295,113 281,127' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='281,127 295,113 295,159 281,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='235,127 281,127 281,173 235,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='183,127 197,113 243,113 229,127' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,127 243,113 243,159 229,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='183,127 229,127 229,173 183,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='265' y='268' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>6 קוביות</text><text x='455' y='168' text-anchor='middle' font-size='28' font-weight='700' fill='#ef4444'>8 גדול מ-6</text></svg>",
+              "title": "משווים",
+              "x": 70,
+              "y": 140,
+              "w": 860,
+              "h": 320
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "יותר קוביות = מחזיקה יותר",
+              "x": 480,
+              "y": 500,
+              "size": 28
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד! על הלוח קופסה שקופה עם קוביות. ספור/ספרי שכבה-שכבה, לא קובייה-קובייה. קודם רק השכבה התחתונה — כמה קוביות בה? אחר כך רק השכבה שמעליה. עכשיו חבר/י את שתיהן וכתוב/כתבי כמה יש בסך הכול.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה קוביות בקופסה?",
+            "answer": "10",
+            "kind": "number",
+            "hint": "אל תספור/תספרי הכול ביחד — מתבלבלים. שים/שימי אצבע רק על השכבה התחתונה וספור/ספרי אותה. עכשיו רק על השכבה שמעליה — יש בה בדיוק אותו מספר. ועכשיו חבר/י את השתיים.",
+            "praise": "מעולה! 10 קוביות. ספרת שכבה-שכבה בדיוק כמו שצריך 🙂"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 600 320' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 121,86 L 121,249 L 476,249 L 476,86' fill='none' stroke='#0f3b36' stroke-width='4' stroke-linejoin='round' stroke-linecap='round' opacity='.85'/><polygon points='389,179 406,162 464,162 447,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='447,179 464,162 464,220 447,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='389,179 447,179 447,237 389,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='325,179 342,162 400,162 383,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='383,179 400,162 400,220 383,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='325,179 383,179 383,237 325,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='261,179 278,162 336,162 319,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='319,179 336,162 336,220 319,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='261,179 319,179 319,237 261,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='197,179 214,162 272,162 255,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='255,179 272,162 272,220 255,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='197,179 255,179 255,237 197,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='133,179 150,162 208,162 191,179' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='191,179 208,162 208,220 191,237' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='133,179 191,179 191,237 133,237' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='389,115 406,98 464,98 447,115' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='447,115 464,98 464,156 447,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='389,115 447,115 447,173 389,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='325,115 342,98 400,98 383,115' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='383,115 400,98 400,156 383,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='325,115 383,115 383,173 325,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='261,115 278,98 336,98 319,115' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='319,115 336,98 336,156 319,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='261,115 319,115 319,173 261,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='197,115 214,98 272,98 255,115' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='255,115 272,98 272,156 255,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='197,115 255,115 255,173 197,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='133,115 150,98 208,98 191,115' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='191,115 208,98 208,156 191,173' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='133,115 191,115 191,173 133,173' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='62' y='140' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>שכבה</text><text x='62' y='212' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>שכבה</text><line x1='112' y1='133' x2='106' y2='133' stroke='#0f3b36' stroke-width='4' stroke-linecap='round'/><polygon points='90,133 108,122 108,144' fill='#0f3b36'/><line x1='112' y1='205' x2='106' y2='205' stroke='#0f3b36' stroke-width='4' stroke-linecap='round'/><polygon points='90,205 108,194 108,216' fill='#0f3b36'/></svg>",
+            "title": "הקופסה שעל הלוח",
+            "x": 200,
+            "y": 180,
+            "w": 600,
+            "h": 320
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "תורך לבד! בראשונה יש קופסה על הלוח — ספור/ספרי שכבה-שכבה. בשנייה אין ציור: בקופסה 3 שכבות, ובכל שכבה 5 קוביות — כמה בסך הכול? ובשלישית: לכלי אחד נכנסו 8 קוביות ולשני 6 — כתוב/כתבי כמה קוביות בכלי שמחזיק יותר.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה קוביות כאן?",
+            "answer": "12",
+            "kind": "number",
+            "hint": "שכבה-שכבה! ספור/ספרי רק את השכבה התחתונה. עכשיו רק את זו שמעליה — אותו מספר. ועוד שכבה למעלה — שוב אותו מספר. עכשיו חבר/י את שלוש השכבות ביחד.",
+            "praise": "יופי! 12 קוביות. שלוש שכבות ולא התבלבלת אף פעם!"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 330 260' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 61,36 L 61,224 L 301,224 L 301,36' fill='none' stroke='#0f3b36' stroke-width='4' stroke-linejoin='round' stroke-linecap='round' opacity='.85'/><polygon points='229,166 243,152 289,152 275,166' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='275,166 289,152 289,198 275,212' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,166 275,166 275,212 229,212' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,166 191,152 237,152 223,166' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='223,166 237,152 237,198 223,212' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,166 223,166 223,212 177,212' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,166 139,152 185,152 171,166' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='171,166 185,152 185,198 171,212' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,166 171,166 171,212 125,212' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,166 87,152 133,152 119,166' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='119,166 133,152 133,198 119,212' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,166 119,166 119,212 73,212' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,114 243,100 289,100 275,114' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='275,114 289,100 289,146 275,160' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,114 275,114 275,160 229,160' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,114 191,100 237,100 223,114' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='223,114 237,100 237,146 223,160' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,114 223,114 223,160 177,160' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,114 139,100 185,100 171,114' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='171,114 185,100 185,146 171,160' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,114 171,114 171,160 125,160' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,114 87,100 133,100 119,114' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='119,114 133,100 133,146 119,160' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,114 119,114 119,160 73,160' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,62 243,48 289,48 275,62' fill='#e2dcff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='275,62 289,48 289,94 275,108' fill='#8574e0' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,62 275,62 275,108 229,108' fill='#bcb0ff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,62 191,48 237,48 223,62' fill='#e2dcff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='223,62 237,48 237,94 223,108' fill='#8574e0' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,62 223,62 223,108 177,108' fill='#bcb0ff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,62 139,48 185,48 171,62' fill='#e2dcff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='171,62 185,48 185,94 171,108' fill='#8574e0' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,62 171,62 171,108 125,108' fill='#bcb0ff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,62 87,48 133,48 119,62' fill='#e2dcff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='119,62 133,48 133,94 119,108' fill='#8574e0' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,62 119,62 119,108 73,108' fill='#bcb0ff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>",
+            "title": "הקופסה שעל הלוח",
+            "x": 40,
+            "y": 105,
+            "w": 330,
+            "h": 260
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "3 שכבות של 5 — כמה?",
+            "answer": "15",
+            "kind": "number",
+            "hint": "אין ציור, אז נעשה את זה בראש. בכל שכבה 5 קוביות, ויש 3 שכבות. אז 5 ועוד 5 — כמה? ועכשיו הוסף/הוסיפי עוד 5 בשביל השכבה השלישית.",
+            "praise": "מצוין! 15 קוביות. ספרת בקפיצות של 5 בלי לראות ציור 🙂"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "מי יותר — 8 או 6?",
+            "answer": "8",
+            "kind": "number",
+            "hint": "לשני הכלים מדדנו באותה יחידה בדיוק — קוביות. אז אפשר פשוט להשוות את שני המספרים. איזה מספר גדול יותר, 8 או 6? הכלי שלו מחזיק יותר.",
+            "praise": "נכון! 8 גדול מ-6, אז הכלי הזה מחזיק יותר. סיימת את הנושא 🏆"
+          }
+        }
+      ]
+    }
+  }
+}

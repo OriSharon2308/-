@@ -1,0 +1,138 @@
+{
+  "topic": "חיבור וחיסור עד 100",
+  "lesson": 5,
+  "title": "המאונך — לסדר את החישוב בקומות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום לא נלמד לפתור משהו חדש — אתה/את כבר יודע/ת! נלמד רק דרך מסודרת לכתוב. תראה/י: 24 + 37. במקום לכתוב בשורה אחת, נכתוב בקומות — מספר אחד מעל השני. ככה הרבה יותר קשה להתבלבל.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "24 + 37", "x": 480, "y": 80, "size": 40 } },
+          { "name": "write_text", "input": { "text": "אותו תרגיל — רק כתיבה אחרת", "x": 480, "y": 150, "size": 28 } },
+          { "name": "write_text", "input": { "text": "2", "x": 450, "y": 250, "size": 46 } },
+          { "name": "write_text", "input": { "text": "4", "x": 540, "y": 250, "size": 46 } },
+          { "name": "write_text", "input": { "text": "+", "x": 370, "y": 320, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 450, "y": 320, "size": 46 } },
+          { "name": "write_text", "input": { "text": "7", "x": 540, "y": 320, "size": 46 } },
+          { "name": "draw_line", "input": { "x1": 350, "y1": 360, "x2": 590, "y2": 360 } },
+          { "name": "write_text", "input": { "text": "כל ספרה בקומה שלה", "x": 480, "y": 450, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "החוק היחיד: יחידות מתחת ליחידות, עשרות מתחת לעשרות. תסתכל/י — ה-4 וה-7 הם יחידות, אז הם בטור אחד. ה-2 וה-3 הם עשרות, בטור השני. ומתחילים לפתור תמיד מימין — מהיחידות.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "עשרות", "x": 450, "y": 140, "size": 20 } },
+          { "name": "write_text", "input": { "text": "יחידות", "x": 540, "y": 140, "size": 20 } },
+          { "name": "draw_line", "input": { "x1": 496, "y1": 165, "x2": 496, "y2": 355 } },
+          { "name": "write_text", "input": { "text": "2", "x": 450, "y": 230, "size": 46 } },
+          { "name": "write_text", "input": { "text": "4", "x": 540, "y": 230, "size": 46 } },
+          { "name": "write_text", "input": { "text": "+", "x": 370, "y": 300, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 450, "y": 300, "size": 46 } },
+          { "name": "write_text", "input": { "text": "7", "x": 540, "y": 300, "size": 46 } },
+          { "name": "draw_line", "input": { "x1": 350, "y1": 355, "x2": 590, "y2": 355 } },
+          { "name": "draw_arrow", "input": { "x1": 660, "y1": 300, "x2": 590, "y2": 300 } },
+          { "name": "write_text", "input": { "text": "מתחילים מימין — מהיחידות", "x": 480, "y": 450, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "מתחילים ביחידות: 4 ועוד 7 זה 11. אבל בקומת היחידות יש מקום רק לספרה אחת! ו-11 זה מוט אחד ועוד קובייה. אז עשר היחידות מתאגדות למוט — בדיוק כמו בשיעור הקודם — והמוט עולה לקומת העשרות. כותבים 1 קטן למעלה.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "4 + 7 = 11", "x": 480, "y": 90, "size": 36 } },
+          { "name": "draw_base_ten", "input": { "value": 11, "x": 170, "y": 260, "label": "" } },
+          { "name": "write_text", "input": { "text": "מוט אחד ועוד קובייה", "x": 170, "y": 390, "size": 22 } },
+          { "name": "write_text", "input": { "text": "1", "x": 450, "y": 165, "size": 24, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "2", "x": 450, "y": 235, "size": 46 } },
+          { "name": "write_text", "input": { "text": "4", "x": 540, "y": 235, "size": 46 } },
+          { "name": "write_text", "input": { "text": "+", "x": 370, "y": 305, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 450, "y": 305, "size": 46 } },
+          { "name": "write_text", "input": { "text": "7", "x": 540, "y": 305, "size": 46 } },
+          { "name": "draw_line", "input": { "x1": 350, "y1": 350, "x2": 590, "y2": 350 } },
+          { "name": "write_text", "input": { "text": "1", "x": 540, "y": 400, "size": 46 } },
+          { "name": "write_text", "input": { "text": "10 יחידות = מוט שעולה למעלה", "x": 480, "y": 480, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו קומת העשרות: יש את ה-1 שעלה, ועוד 2, ועוד 3 — ביחד 6 עשרות. כותבים 6 מתחת לעשרות. וקיבלנו 61! בדיוק אותה תשובה שהיינו מקבלים בדרך של הבלוקים, רק מסודר יותר.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "1 + 2 + 3 = 6 עשרות", "x": 480, "y": 90, "size": 32 } },
+          { "name": "write_text", "input": { "text": "1", "x": 450, "y": 165, "size": 24, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "2", "x": 450, "y": 235, "size": 46 } },
+          { "name": "write_text", "input": { "text": "4", "x": 540, "y": 235, "size": 46 } },
+          { "name": "write_text", "input": { "text": "+", "x": 370, "y": 305, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 450, "y": 305, "size": 46 } },
+          { "name": "write_text", "input": { "text": "7", "x": 540, "y": 305, "size": 46 } },
+          { "name": "draw_line", "input": { "x1": 350, "y1": 350, "x2": 590, "y2": 350 } },
+          { "name": "write_text", "input": { "text": "6", "x": 450, "y": 400, "size": 46 } },
+          { "name": "write_text", "input": { "text": "1", "x": 540, "y": 400, "size": 46 } },
+          { "name": "write_text", "input": { "text": "24 + 37 = 61", "x": 480, "y": 480, "size": 36 } }
+        ]
+      },
+      {
+        "reply": "עכשיו חיסור במאונך: 57 פחות 18. מתחילים מהיחידות: 7 פחות 8 — אין מספיק. אז פורטים, בדיוק כמו בשיעור הקודם: לוקחים עשרת אחת ומעבירים 10 יחידות. עכשיו יש 4 עשרות ו-17 יחידות. 17 פחות 8 זה 9, ו-4 פחות 1 זה 3. התשובה 39.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "57 − 18", "x": 480, "y": 80, "size": 36 } },
+          { "name": "write_text", "input": { "text": "4", "x": 420, "y": 165, "size": 26, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "17", "x": 570, "y": 165, "size": 26, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "5", "x": 450, "y": 235, "size": 46 } },
+          { "name": "write_text", "input": { "text": "7", "x": 540, "y": 235, "size": 46 } },
+          { "name": "draw_line", "input": { "x1": 436, "y1": 255, "x2": 464, "y2": 215, "color": "#ef4444" } },
+          { "name": "draw_line", "input": { "x1": 526, "y1": 255, "x2": 554, "y2": 215, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "−", "x": 370, "y": 305, "size": 40 } },
+          { "name": "write_text", "input": { "text": "1", "x": 450, "y": 305, "size": 46 } },
+          { "name": "write_text", "input": { "text": "8", "x": 540, "y": 305, "size": 46 } },
+          { "name": "draw_line", "input": { "x1": 350, "y1": 350, "x2": 590, "y2": 350 } },
+          { "name": "write_text", "input": { "text": "3", "x": 450, "y": 400, "size": 46 } },
+          { "name": "write_text", "input": { "text": "9", "x": 540, "y": 400, "size": 46 } },
+          { "name": "write_text", "input": { "text": "פורטים עשרת ומעבירים 10", "x": 480, "y": 480, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "והכי חשוב במאונך: לכתוב ישר. אם הספרות לא בדיוק אחת מתחת לשנייה — הכול מתבלבל. משמאל תראה/י כתיבה עקומה, ומימין כתיבה ישרה. תמיד: יחידות מתחת ליחידות, עשרות מתחת לעשרות, ומתחילים מימין. עכשיו תורך/ה!",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הכי חשוב: לכתוב ישר", "x": 480, "y": 80, "size": 34 } },
+          { "name": "write_text", "input": { "text": "2", "x": 230, "y": 200, "size": 40, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "4", "x": 285, "y": 200, "size": 40, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "3", "x": 285, "y": 270, "size": 40, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "7", "x": 340, "y": 270, "size": 40, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "עקום — טעות", "x": 280, "y": 350, "size": 24, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "2", "x": 650, "y": 200, "size": 40 } },
+          { "name": "write_text", "input": { "text": "4", "x": 720, "y": 200, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 650, "y": 270, "size": 40 } },
+          { "name": "write_text", "input": { "text": "7", "x": 720, "y": 270, "size": 40 } },
+          { "name": "write_text", "input": { "text": "ישר — נכון", "x": 685, "y": 350, "size": 24 } },
+          { "name": "write_text", "input": { "text": "יחידות מתחת ליחידות", "x": 480, "y": 440, "size": 28 } },
+          { "name": "write_text", "input": { "text": "ומתחילים תמיד מימין", "x": 480, "y": 495, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "ביחד! 35 + 27 במאונך. סידרתי לך את הקומות על הלוח. תתחיל/י מהיחידות: 5 ועוד 7. אם יוצא יותר מ-9 — אל תשכח/י להעלות 1 לעשרות. אחר כך תחבר/י את העשרות. כתוב/כתבי את כל התשובה בתיבה.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "35 + 27 =", "answer": "62", "kind": "number", "hint": "יחידות: 5 ועוד 7 זה 12 — כותבים 2 ומעלים 1 לעשרות. עשרות: 1 ועוד 3 ועוד 2. עכשיו הרכב/י את המספר.", "praise": "מעולה! עשית נשיאה במאונך כמו גדול/ה 🙂" } },
+        { "name": "write_text", "input": { "text": "עשרות", "x": 250, "y": 160, "size": 20 } },
+        { "name": "write_text", "input": { "text": "יחידות", "x": 340, "y": 160, "size": 20 } },
+        { "name": "write_text", "input": { "text": "3", "x": 250, "y": 240, "size": 46 } },
+        { "name": "write_text", "input": { "text": "5", "x": 340, "y": 240, "size": 46 } },
+        { "name": "write_text", "input": { "text": "+", "x": 170, "y": 310, "size": 40 } },
+        { "name": "write_text", "input": { "text": "2", "x": 250, "y": 310, "size": 46 } },
+        { "name": "write_text", "input": { "text": "7", "x": 340, "y": 310, "size": 46 } },
+        { "name": "draw_line", "input": { "x1": 150, "y1": 355, "x2": 400, "y2": 355 } },
+        { "name": "write_text", "input": { "text": "קודם יחידות, אחר כך עשרות", "x": 280, "y": 430, "size": 26 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד! בראשון סידרתי לך את הקומות. בשניים הבאים סדר/סדרי בראש — יחידות מתחת ליחידות. וזכור/זכרי: בחיסור, אם אין מספיק יחידות — פורטים עשרת.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "46 + 38 =", "answer": "84", "kind": "number", "hint": "יחידות: 6 ועוד 8 זה 14 — כותבים 4 ומעלים 1 לעשרות. עשרות: 1 ועוד 4 ועוד 3.", "praise": "יופי! הנשיאה עבדה בול." } },
+        { "name": "write_text", "input": { "text": "4", "x": 240, "y": 230, "size": 44 } },
+        { "name": "write_text", "input": { "text": "6", "x": 330, "y": 230, "size": 44 } },
+        { "name": "write_text", "input": { "text": "+", "x": 160, "y": 300, "size": 38 } },
+        { "name": "write_text", "input": { "text": "3", "x": 240, "y": 300, "size": 44 } },
+        { "name": "write_text", "input": { "text": "8", "x": 330, "y": 300, "size": 44 } },
+        { "name": "draw_line", "input": { "x1": 145, "y1": 345, "x2": 390, "y2": 345 } },
+        { "name": "draw_exercise", "input": { "text": "63 − 27 =", "answer": "36", "kind": "number", "hint": "יחידות: 3 פחות 7 לא הולך — פורטים עשרת. עכשיו 13 פחות 7. והעשרות: נשארו 5, פחות 2.", "praise": "מצוין! פרטת עשרת במאונך." } },
+        { "name": "draw_exercise", "input": { "text": "72 − 35 =", "answer": "37", "kind": "number", "hint": "אין מספיק יחידות: 2 פחות 5. פורטים עשרת — 12 פחות 5. ואז העשרות: נשארו 6, פחות 3.", "praise": "אלוף/ה! נשיאה ופריטה במאונך 🏆" } }
+      ]
+    }
+  }
+}

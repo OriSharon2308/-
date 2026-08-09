@@ -1,0 +1,571 @@
+{
+  "topic": "מדידות אורך",
+  "lesson": 1,
+  "title": "למה צריך יחידה אחת לכולם",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! רואה/ה את הסרט הכחול על הלוח? בוא/י נגלה כמה הוא ארוך. אין לנו סרגל, אז נמדוד בצעדים: צעד, צעד, צעד — לאורך כל הסרט. ספרנו ביחד ויצא 8. הסרט הוא 8 צעדים שלך! לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כמה ארוך הסרט?",
+              "x": 480,
+              "y": 80,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 780 170\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"50\" y=\"20\" width=\"640\" height=\"28\" rx=\"14\" fill=\"#60A5FA\"/><line x1=\"50\" y1=\"50\" x2=\"50\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"130\" y1=\"50\" x2=\"130\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"210\" y1=\"50\" x2=\"210\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"290\" y1=\"50\" x2=\"290\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"370\" y1=\"50\" x2=\"370\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"450\" y1=\"50\" x2=\"450\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"530\" y1=\"50\" x2=\"530\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"610\" y1=\"50\" x2=\"610\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"690\" y1=\"50\" x2=\"690\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><ellipse cx=\"90\" cy=\"102\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"90\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">1</text><ellipse cx=\"170\" cy=\"102\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"170\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">2</text><ellipse cx=\"250\" cy=\"102\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"250\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">3</text><ellipse cx=\"330\" cy=\"102\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"330\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">4</text><ellipse cx=\"410\" cy=\"102\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"410\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">5</text><ellipse cx=\"490\" cy=\"102\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"490\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">6</text><ellipse cx=\"570\" cy=\"102\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"570\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">7</text><ellipse cx=\"650\" cy=\"102\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"650\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">8</text><text x=\"750\" y=\"116\" text-anchor=\"middle\" font-size=\"46\" font-weight=\"700\" fill=\"#10B981\">8</text></svg>",
+              "title": "הצעדים שלך",
+              "x": 100,
+              "y": 170,
+              "w": 780,
+              "h": 170
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "8 צעדים שלך",
+              "x": 480,
+              "y": 420,
+              "size": 32
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו אני מודד את אותו הסרט בדיוק. אבל הרגליים שלי גדולות, אז הצעד שלי ענק. צעד... צעד... צעד... צעד. נגמר! רק 4 צעדים. רגע — אותו סרט, ואצלך יצא 8 ואצלי 4. מי צודק? לחץ/י ✓ ונגלה.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ואצלי? רק 4 צעדים",
+              "x": 480,
+              "y": 80,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 780 170\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"50\" y=\"20\" width=\"640\" height=\"28\" rx=\"14\" fill=\"#60A5FA\"/><line x1=\"50\" y1=\"50\" x2=\"50\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"210\" y1=\"50\" x2=\"210\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"370\" y1=\"50\" x2=\"370\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"530\" y1=\"50\" x2=\"530\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"690\" y1=\"50\" x2=\"690\" y2=\"72\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><ellipse cx=\"130\" cy=\"102\" rx=\"34\" ry=\"18\" fill=\"#F97316\"/><text x=\"130\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">1</text><ellipse cx=\"290\" cy=\"102\" rx=\"34\" ry=\"18\" fill=\"#F97316\"/><text x=\"290\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">2</text><ellipse cx=\"450\" cy=\"102\" rx=\"34\" ry=\"18\" fill=\"#F97316\"/><text x=\"450\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">3</text><ellipse cx=\"610\" cy=\"102\" rx=\"34\" ry=\"18\" fill=\"#F97316\"/><text x=\"610\" y=\"148\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">4</text><text x=\"750\" y=\"116\" text-anchor=\"middle\" font-size=\"46\" font-weight=\"700\" fill=\"#F97316\">4</text></svg>",
+              "title": "הצעדים שלי",
+              "x": 100,
+              "y": 170,
+              "w": 780,
+              "h": 170
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אותו סרט — ושתי תשובות!",
+              "x": 480,
+              "y": 420,
+              "size": 30
+            }
+          }
+        ]
+      },
+      {
+        "reply": "התשובה: שניכם צודקים! הסרט לא השתנה — הצעדים השתנו. צעד קטן, אז נכנסים הרבה. צעד גדול, אז נכנסים מעט. אז איך נדע מי צודק באמת? צריך יחידה אחת שכולם בעולם מסכימים עליה. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "שניכם צודקים!",
+              "x": 480,
+              "y": 75,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox=\"0 0 780 330\" width=\"100%\" height=\"100%\" style=\"display:block\"><rect x=\"50\" y=\"15\" width=\"640\" height=\"28\" rx=\"14\" fill=\"#60A5FA\"/><line x1=\"50\" y1=\"45\" x2=\"50\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"130\" y1=\"45\" x2=\"130\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"210\" y1=\"45\" x2=\"210\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"290\" y1=\"45\" x2=\"290\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"370\" y1=\"45\" x2=\"370\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"450\" y1=\"45\" x2=\"450\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"530\" y1=\"45\" x2=\"530\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"610\" y1=\"45\" x2=\"610\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"690\" y1=\"45\" x2=\"690\" y2=\"67\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><ellipse cx=\"90\" cy=\"97\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"90\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">1</text><ellipse cx=\"170\" cy=\"97\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"170\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">2</text><ellipse cx=\"250\" cy=\"97\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"250\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">3</text><ellipse cx=\"330\" cy=\"97\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"330\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">4</text><ellipse cx=\"410\" cy=\"97\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"410\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">5</text><ellipse cx=\"490\" cy=\"97\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"490\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">6</text><ellipse cx=\"570\" cy=\"97\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"570\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">7</text><ellipse cx=\"650\" cy=\"97\" rx=\"27.200000000000003\" ry=\"18\" fill=\"#10B981\"/><text x=\"650\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">8</text><text x=\"750\" y=\"111\" text-anchor=\"middle\" font-size=\"46\" font-weight=\"700\" fill=\"#10B981\">8</text><rect x=\"50\" y=\"180\" width=\"640\" height=\"28\" rx=\"14\" fill=\"#60A5FA\"/><line x1=\"50\" y1=\"210\" x2=\"50\" y2=\"232\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"210\" y1=\"210\" x2=\"210\" y2=\"232\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"370\" y1=\"210\" x2=\"370\" y2=\"232\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"530\" y1=\"210\" x2=\"530\" y2=\"232\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><line x1=\"690\" y1=\"210\" x2=\"690\" y2=\"232\" stroke=\"#94A3B8\" stroke-width=\"3\" stroke-dasharray=\"5 4\"/><ellipse cx=\"130\" cy=\"262\" rx=\"34\" ry=\"18\" fill=\"#F97316\"/><text x=\"130\" y=\"308\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">1</text><ellipse cx=\"290\" cy=\"262\" rx=\"34\" ry=\"18\" fill=\"#F97316\"/><text x=\"290\" y=\"308\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">2</text><ellipse cx=\"450\" cy=\"262\" rx=\"34\" ry=\"18\" fill=\"#F97316\"/><text x=\"450\" y=\"308\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">3</text><ellipse cx=\"610\" cy=\"262\" rx=\"34\" ry=\"18\" fill=\"#F97316\"/><text x=\"610\" y=\"308\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">4</text><text x=\"750\" y=\"276\" text-anchor=\"middle\" font-size=\"46\" font-weight=\"700\" fill=\"#F97316\">4</text></svg>",
+              "title": "צעד קטן מול צעד גדול",
+              "x": 100,
+              "y": 120,
+              "w": 780,
+              "h": 330
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "צעד קטן = הרבה. צעד גדול = מעט",
+              "x": 480,
+              "y": 490,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "אז המציאו יחידה אחת לכל העולם: הסנטימטר. תראה/י את הקו — חילקתי אותו לקטעים קטנים ושווים. כל קטע כזה הוא סנטימטר אחד. הקטע האדום זה בדיוק 1 ס״מ. והוא אותו גודל אצלי, אצלך, ואצל כל ילד בעולם. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הסנטימטר — היחידה של כולם",
+              "x": 480,
+              "y": 80,
+              "size": 34
+            }
+          },
+          {
+            "name": "draw_line",
+            "input": {
+              "x1": 240,
+              "y1": 270,
+              "x2": 720,
+              "y2": 270,
+              "color": "#0F766E",
+              "width": 5
+            }
+          },
+          {
+            "name": "draw_line",
+            "input": {
+              "x1": 240,
+              "y1": 270,
+              "x2": 320,
+              "y2": 270,
+              "color": "#E11D48",
+              "width": 11
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 240,
+              "y": 270,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 320,
+              "y": 270,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 400,
+              "y": 270,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 480,
+              "y": 270,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 560,
+              "y": 270,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 640,
+              "y": 270,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 720,
+              "y": 270,
+              "label": ""
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "1 ס״מ",
+              "x": 280,
+              "y": 225,
+              "size": 26,
+              "color": "#E11D48"
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כל קטע קטן = 1 ס״מ בדיוק",
+              "x": 480,
+              "y": 350,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו מודדים! פשוט סופרים כמה קטעים יש: אחד, שניים, שלוש, ארבע, חמש, שש. הקו הוא 6 ס״מ. וטיפ של מודדים: לפני שסופרים — מנחשים! אני ניחשתי 5, ויצא 6. הייתי קרוב. לניחוש הזה קוראים אומדן. עכשיו תורך, לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "סופרים קטעים — וזה האורך",
+              "x": 480,
+              "y": 80,
+              "size": 34
+            }
+          },
+          {
+            "name": "draw_line",
+            "input": {
+              "x1": 240,
+              "y1": 280,
+              "x2": 720,
+              "y2": 280,
+              "color": "#0F766E",
+              "width": 5
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 240,
+              "y": 280,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 320,
+              "y": 280,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 400,
+              "y": 280,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 480,
+              "y": 280,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 560,
+              "y": 280,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 640,
+              "y": 280,
+              "label": ""
+            }
+          },
+          {
+            "name": "draw_point",
+            "input": {
+              "x": 720,
+              "y": 280,
+              "label": ""
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "1",
+              "x": 280,
+              "y": 235,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "2",
+              "x": 360,
+              "y": 235,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "3",
+              "x": 440,
+              "y": 235,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "4",
+              "x": 520,
+              "y": 235,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "5",
+              "x": 600,
+              "y": 235,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "6",
+              "x": 680,
+              "y": 235,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "6 קטעים = 6 ס״מ",
+              "x": 480,
+              "y": 360,
+              "size": 32
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קודם מנחשים, אחר כך סופרים",
+              "x": 480,
+              "y": 435,
+              "size": 26
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד! על הלוח קו חדש עם נקודות. קודם נחש/י בלב כמה ס״מ הוא. ועכשיו ספור/י: כל קטע בין שתי נקודות הוא 1 ס״מ. שים/י אצבע על הקטע הראשון ותתקדם/י — אחת, שתיים... כמה יצא לך? כתוב/כתבי את המספר בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "אורך הקו בס״מ?",
+            "answer": "5",
+            "kind": "number",
+            "hint": "ספור/י את הקטעים — את המרווחים בין הנקודות, לא את הנקודות עצמן. שים/י אצבע על הקטע הראשון ותתקדם/י אחד-אחד עד הסוף.",
+            "praise": "יופי גדול! ספרת קטעים — ככה בדיוק מודדים בסנטימטרים."
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "הקו שלך",
+            "x": 340,
+            "y": 215,
+            "size": 28
+          }
+        },
+        {
+          "name": "draw_line",
+          "input": {
+            "x1": 140,
+            "y1": 300,
+            "x2": 540,
+            "y2": 300,
+            "color": "#0F766E",
+            "width": 5
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 140,
+            "y": 300,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 220,
+            "y": 300,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 300,
+            "y": 300,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 380,
+            "y": 300,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 460,
+            "y": 300,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 540,
+            "y": 300,
+            "label": ""
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "כל קטע בין נקודות = 1 ס״מ",
+            "x": 340,
+            "y": 380,
+            "size": 26
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד! שאלה אחת בכל פעם, בלי למהר. בראשונה השארתי לך קו עם נקודות — ספור/י קטעים. בשתיים הבאות תחשוב/תחשבי לבד, את/ה כבר יודע/ת את הסוד: מה שקובע זו היחידה. בשיעור הבא נכיר את הסרגל האמיתי 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "אורך הקו בס״מ?",
+            "answer": "4",
+            "kind": "number",
+            "hint": "תסתכל/י על הקו למטה. ספור/י את הקטעים שבין הנקודות — לא את הנקודות. אחד, שתיים... כמה קטעים יצאו לך?",
+            "praise": "מעולה! ספרת קטעים נכון — זו מדידה אמיתית."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "2 ס״מ ועוד 3 ס״מ ביחד?",
+            "answer": "5",
+            "kind": "number",
+            "hint": "אם מדביקים קו של 2 ס״מ לקו של 3 ס״מ, הקטעים פשוט מצטרפים. ספור/י: 2 קטעים, ועוד 3 קטעים. כמה קטעים יש עכשיו בסך הכול?",
+            "praise": "יפה! קטעים מצטרפים — וזה בדיוק חיבור."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "מי עושה יותר צעדים — ילד או ענק?",
+            "answer": "ילד",
+            "kind": "text",
+            "hint": "לענק יש רגליים ענקיות, אז צעד אחד שלו עובר דרך גדולה והוא מסיים מהר. הצעד של הילד קטן, אז צריך הרבה כאלה. מי יספור יותר?",
+            "praise": "בדיוק! צעד קטן — יותר צעדים. לכן צריך יחידה אחת לכולם: הסנטימטר."
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "הקו של השאלה הראשונה",
+            "x": 250,
+            "y": 400,
+            "size": 26
+          }
+        },
+        {
+          "name": "draw_line",
+          "input": {
+            "x1": 120,
+            "y1": 450,
+            "x2": 360,
+            "y2": 450,
+            "color": "#0F766E",
+            "width": 5
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 120,
+            "y": 450,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 180,
+            "y": 450,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 240,
+            "y": 450,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 300,
+            "y": 450,
+            "label": ""
+          }
+        },
+        {
+          "name": "draw_point",
+          "input": {
+            "x": 360,
+            "y": 450,
+            "label": ""
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "כל קטע = 1 ס״מ",
+            "x": 240,
+            "y": 505,
+            "size": 24
+          }
+        }
+      ]
+    }
+  }
+}

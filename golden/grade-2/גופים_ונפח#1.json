@@ -1,0 +1,326 @@
+{
+  "topic": "גופים ונפח",
+  "lesson": 1,
+  "title": "צורה שטוחה מול גוף",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! היום נגלה עולם חדש 🙂 מימין ריבוע. הוא שטוח — ציור על דף, אי אפשר להחזיק אותו ביד. משמאל קובייה. היא כבר לא ציור! אפשר להרים אותה, יש לה עובי, והיא תופסת מקום על השולחן. לצורה שאפשר להחזיק ביד קוראים גוף. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "שטוחה או גוף?",
+              "x": 480,
+              "y": 78,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 340 300' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='70,90 120,40 270,40 220,90' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='220,90 270,40 270,190 220,240' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='70,90 220,90 220,240 70,240' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='170' y='282' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>קובייה — גוף</text></svg>",
+              "title": "קובייה",
+              "x": 120,
+              "y": 160,
+              "w": 340,
+              "h": 300
+            }
+          },
+          {
+            "name": "draw_polygon",
+            "input": {
+              "points": [
+                [
+                  620,
+                  180
+                ],
+                [
+                  840,
+                  180
+                ],
+                [
+                  840,
+                  400
+                ],
+                [
+                  620,
+                  400
+                ]
+              ],
+              "fill": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ריבוע — שטוח",
+              "x": 730,
+              "y": 442,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עוד זוג! מימין עיגול — שוב ציור שטוח על דף. משמאל שני גופים שאפשר להחזיק: כדור וגליל. הכדור עגול מכל צד, כמו כדורגל. הגליל הוא כמו פחית — עיגול למטה, עיגול למעלה, ובאמצע קיר ישר. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "עיגול, כדור וגליל",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 460 290' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><circle cx='120' cy='140' r='70' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='120' cy='140' rx='70' ry='21' fill='none' stroke='#0f3b36' stroke-width='2' stroke-dasharray='7 6' opacity='.5'/><ellipse cx='96.2' cy='112' rx='16.8' ry='10.5' fill='#ffffff' opacity='.6'/><text x='120' y='262' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כדור</text><path d='M 268,90 L 268,210 A 62,20 0 0 0 392,210 L 392,90 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='330' cy='90' rx='62' ry='20' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='330' y='262' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>גליל</text></svg>",
+              "title": "כדור וגליל",
+              "x": 90,
+              "y": 155,
+              "w": 460,
+              "h": 290
+            }
+          },
+          {
+            "name": "draw_circle",
+            "input": {
+              "x": 770,
+              "y": 290,
+              "r": 100
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "עיגול — שטוח",
+              "x": 770,
+              "y": 432,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "בוא/י נחפש גופים בבית שלך! קופסת דגנים — זו תיבה. קוביית משחק — קובייה. פחית שתייה — גליל. כדורגל — כדור. הם נמצאים אצלך בכל מקום, רק לא ידעת איך קוראים להם. תגיד/י בקול את השם של כל אחד. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ארבעה גופים מהבית",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 880 300' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='670,110 710,70 850,70 810,110' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='810,110 850,70 850,160 810,200' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='670,110 810,110 810,200 670,200' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='760' y='252' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>תיבה</text><text x='760' y='284' text-anchor='middle' font-size='20' font-weight='700' fill='#4b7d75'>קופסת דגנים</text><polygon points='490,110 525,75 630,75 595,110' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='595,110 630,75 630,180 595,215' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='490,110 595,110 595,215 490,215' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='560' y='252' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>קובייה</text><text x='560' y='284' text-anchor='middle' font-size='20' font-weight='700' fill='#4b7d75'>קוביית משחק</text><path d='M 288,95 L 288,205 A 52,17 0 0 0 392,205 L 392,95 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='340' cy='95' rx='52' ry='17' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='340' y='252' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>גליל</text><text x='340' y='284' text-anchor='middle' font-size='20' font-weight='700' fill='#4b7d75'>פחית</text><circle cx='140' cy='150' r='60' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='140' cy='150' rx='60' ry='18' fill='none' stroke='#0f3b36' stroke-width='2' stroke-dasharray='7 6' opacity='.5'/><ellipse cx='119.6' cy='126' rx='14.399999999999999' ry='9' fill='#ffffff' opacity='.6'/><text x='140' y='252' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כדור</text><text x='140' y='284' text-anchor='middle' font-size='20' font-weight='700' fill='#4b7d75'>כדורגל</text></svg>",
+              "title": "גופים מהבית",
+              "x": 60,
+              "y": 140,
+              "w": 880,
+              "h": 300
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אפשר להחזיק את כולם ביד",
+              "x": 480,
+              "y": 485,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "מה ההבדל בין קובייה לתיבה? תסתכל/י טוב. בקובייה כל הצדדים באותו גודל בדיוק — כמו קוביית משחק. בתיבה יש צדדים ארוכים וצדדים קצרים — כמו קופסת דגנים. שתיהן דומות, אבל רק הקובייה שווה בכל מקום. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קובייה או תיבה?",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 820 320' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='560,110 602,68 732,68 690,110' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='690,110 732,68 732,198 690,240' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='560,110 690,110 690,240 560,240' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='630' y='272' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>קובייה</text><text x='630' y='302' text-anchor='middle' font-size='22' font-weight='700' fill='#4b7d75'>כל הצדדים שווים</text><polygon points='180,120 222,78 442,78 400,120' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='400,120 442,78 442,178 400,220' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='180,120 400,120 400,220 180,220' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='300' y='272' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>תיבה</text><text x='300' y='302' text-anchor='middle' font-size='22' font-weight='700' fill='#4b7d75'>יש צדדים ארוכים</text></svg>",
+              "title": "קובייה ותיבה",
+              "x": 90,
+              "y": 140,
+              "w": 820,
+              "h": 320
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קובייה = כל הפאות שוות",
+              "x": 480,
+              "y": 500,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו טעות שכולם עושים, ואנחנו לא 🙂 ריבוע זה לא קובייה! צבעתי בכתום צד אחד של הקובייה — הצד הזה הוא באמת ריבוע. אבל לקובייה יש עוד צדדים כאלה, מסביב ומאחור. הריבוע הוא רק צד אחד ממנה. עכשיו תורך — לחץ/י ✓!",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ריבוע הוא רק צד אחד",
+              "x": 480,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 400 310' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='110,110 162,58 322,58 270,110' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='270,110 322,58 322,218 270,270' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='110,110 270,110 270,270 110,270' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>",
+              "title": "קובייה",
+              "x": 520,
+              "y": 150,
+              "w": 400,
+              "h": 310
+            }
+          },
+          {
+            "name": "draw_polygon",
+            "input": {
+              "points": [
+                [
+                  150,
+                  235
+                ],
+                [
+                  330,
+                  235
+                ],
+                [
+                  330,
+                  415
+                ],
+                [
+                  150,
+                  415
+                ]
+              ],
+              "color": "#f59e0b",
+              "fill": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ריבוע",
+              "x": 240,
+              "y": 455,
+              "size": 28
+            }
+          },
+          {
+            "name": "draw_arrow",
+            "input": {
+              "x1": 490,
+              "y1": 325,
+              "x2": 360,
+              "y2": 325
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "רק פאה אחת מהקובייה",
+              "x": 480,
+              "y": 505,
+              "size": 26
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד! על הלוח יש גוף אחד. תסתכל/י עליו טוב: עיגול למטה, עיגול למעלה, ובאמצע קיר ישר. הוא נראה בדיוק כמו פחית שתייה. איך קוראים לגוף הזה? כתוב/כתבי את השם בתיבה.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "איזה גוף זה?",
+            "answer": "גליל",
+            "kind": "text",
+            "hint": "תראה/י — למטה עיגול, למעלה עיגול, ובאמצע קיר ישר. אם שוכבים אותו הוא מתגלגל. איזה חפץ בבית נראה בדיוק ככה? פחית! ולגוף הזה קראנו בשם שמתחיל באות ג׳.",
+            "praise": "בדיוק! זה גליל. זיהית אותו לפי שני העיגולים — יופי!"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 440 330' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 130,60 L 130,265 A 90,30 0 0 0 310,265 L 310,60 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='220' cy='60' rx='90' ry='30' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>",
+            "title": "הגוף שעל הלוח",
+            "x": 280,
+            "y": 180,
+            "w": 440,
+            "h": 330
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "תורך לבד 🙂 בשאלה הראשונה יש שלוש צורות על הלוח — תספור/תספרי רק את אלה שאפשר להחזיק ביד. בשנייה: קופסת דגנים — איזה גוף היא? ובשלישית: כדורגל — איזה גוף הוא? שאלה אחת בכל פעם, בלי למהר.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה גופים יש כאן?",
+            "answer": "2",
+            "kind": "number",
+            "hint": "עבור/עברי על שלוש הצורות אחת-אחת ושאל/י על כל אחת: אפשר להחזיק אותה ביד? צורה שטוחה היא רק ציור על דף — היא לא נספרת. ספור/ספרי רק את אלה שתופסות מקום.",
+            "praise": "מצוין! שני גופים בלבד — הצורה השטוחה לא נספרת. שמת לב להבדל!"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 340 220' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='232' y='62' width='82' height='82' fill='#c7d2fe' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='120,80 145,55 217,55 192,80' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='192,80 217,55 217,127 192,152' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='120,80 192,80 192,152 120,152' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><path d='M 21,70 L 21,165 A 34,12 0 0 0 89,165 L 89,70 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='55' cy='70' rx='34' ry='12' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>",
+            "title": "שלוש צורות",
+            "x": 40,
+            "y": 110,
+            "w": 340,
+            "h": 220
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "קופסת דגנים =",
+            "answer": "תיבה",
+            "kind": "text",
+            "hint": "תדמיין/י קופסת דגנים על השולחן: יש לה צדדים ארוכים וצדדים קצרים, והיא לא כדור ולא פחית. איך קראנו לגוף שנראה כמו קופסה עם צדדים ארוכים?",
+            "praise": "נכון! קופסת דגנים היא תיבה. מצאת גוף בתוך הבית 🙂"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כדורגל הוא...",
+            "answer": "כדור",
+            "kind": "text",
+            "hint": "תחשוב/תחשבי על כדורגל: הוא עגול מכל צד בדיוק, אין לו שום פינה ואין לו צד שטוח. איך קראנו לגוף החלק והעגול הזה?",
+            "praise": "יופי! כדורגל הוא כדור. סיימת את השיעור כמו אלוף/ה 🏆"
+          }
+        }
+      ]
+    }
+  }
+}
