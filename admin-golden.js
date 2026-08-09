@@ -131,13 +131,13 @@
   }
 
   /* ══════════════ פתיחה ══════════════ */
-  async function open(topic, lesson, title) {
+  async function open(topic, lesson, title, grade) {
     let data = null;
-    try { data = await (await fetch(`/api/admin/golden?topic=${encodeURIComponent(topic)}&lesson=${lesson}`)).json(); } catch (e) {}
+    try { data = await (await fetch(`/api/admin/golden?topic=${encodeURIComponent(topic)}&lesson=${lesson}${grade ? "&grade=" + grade : ""}`)).json(); } catch (e) {}
     if (!data || !data.ok) { toastGlobal("שגיאה בטעינת שיעור-הזהב"); return; }
     const g = data.golden;
     st = {
-      topic, lesson,
+      topic, lesson, grade: grade || null,
       title: g.title || (data.plan && data.plan.title) || title || "",
       plan: data.plan || null,
       phases: {
@@ -995,7 +995,7 @@
     try {
       const res = await fetch("/api/admin/golden/save", {
         method: "POST", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ topic: st.topic, lesson: st.lesson, data: { title: st.title, phases } }),
+        body: JSON.stringify({ topic: st.topic, lesson: st.lesson, grade: st.grade || null, data: { title: st.title, phases } }),
       });
       out = await res.json().catch(() => null);
     } catch (e) {}

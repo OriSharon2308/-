@@ -408,10 +408,14 @@ const server = http.createServer(async (req, res) => {
         const cGradeNum = Number.parseInt(q.get("grade"), 10);
         const cGrade = CURRICULUM[cGradeNum];
         if (!cGrade) return json(res, 404, { ok: false, error: "אין כיתה כזו" });
-        const topics = (cGrade.topics || []).map((t) => {
-          const plans = courseLib.courseFor(t.key) || [];
+        // רשימת הנושאים: מערכי-הכיתה (ב׳–ו׳) הם מקור-האמת; אחרת נושאי תכנית-הלימודים (א׳)
+        const planKeys = courseLib.topicsForGrade(cGradeNum);
+        const topicList = planKeys.length ? planKeys.map((k) => ({ key: k })) : (cGrade.topics || []);
+        const topics = topicList.map((t) => {
+          const plans = courseLib.courseFor(t.key, cGradeNum) || [];
           return {
             key: t.key,
+            map: courseLib.topicMap(t.key, cGradeNum), // entry / target / roadmap — מפת-הדרכים של הנושא
             stages: plans.map((p, i) => {
               const m = teachingMethods.get(teachingMethods.keyFor(t.key, i + 1));
               return {
@@ -420,8 +424,8 @@ const server = http.createServer(async (req, res) => {
                 goal: p.goal,
                 teach: p.teach,
                 tools: lessonTools.toolsInTeach(p.teach),
-                golden: (() => { const gs = goldenLessons.stagesFor(t.key, i + 1); return gs.length ? gs : null; })(),
-                goldenData: goldenLessons.get(t.key, i + 1), // המערך המלא — למפת-הדרכים באדמין (עריכת-נוסח ישירה)
+                golden: (() => { const gs = goldenLessons.stagesFor(t.key, i + 1, cGradeNum); return gs.length ? gs : null; })(),
+                goldenData: goldenLessons.get(t.key, i + 1, cGradeNum), // המערך המלא — למפת-הדרכים באדמין (עריכת-נוסח ישירה)
                 method: m ? { confirmed: !!m.confirmed, uses: m.uses || 0, reply: String(m.reply || "").slice(0, 600) } : null,
               };
             }),
@@ -435,8 +439,9 @@ const server = http.createServer(async (req, res) => {
         const gTopic = String(q.get("topic") || "").trim().slice(0, 80);
         const gN = Math.max(1, Number.parseInt(q.get("lesson"), 10) || 1);
         if (!gTopic) return json(res, 400, { ok: false, error: "חסר topic" });
-        const gPlan = courseLib.planFor(gTopic, gN);
-        let data = goldenLessons.get(gTopic, gN);
+        const gGrade = Number.parseInt(q.get("grade"), 10) || null;
+        const gPlan = courseLib.planFor(gTopic, gN, gGrade);
+        let data = goldenLessons.get(gTopic, gN, gGrade);
         if (!data) data = { topic: gTopic, lesson: gN, title: gPlan ? gPlan.title : "", phases: {} };
         // המערך הפדגוגי מוצג בסטודיו לצד העיצוב: מטרת השיעור + גישת-ההוראה + מיקום ברצף
         return json(res, 200, { ok: true, golden: data, plan: gPlan ? { title: gPlan.title, goal: gPlan.goal || "", teach: gPlan.teach || "", index: gPlan.index || gN, total: gPlan.total || 0 } : null });
@@ -445,7 +450,7 @@ const server = http.createServer(async (req, res) => {
         if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
         const body = await readJsonBody(req, res, 2 * 1024 * 1024);
         if (!body) return;
-        const r = goldenLessons.save(String(body.topic || ""), Number.parseInt(body.lesson, 10) || 1, body.data || {});
+        const r = goldenLessons.save(String(body.topic || ""), Number.parseInt(body.lesson, 10) || 1, body.data || {}, Number.parseInt(body.grade, 10) || null);
         return json(res, r.ok ? 200 : 400, r);
       }
 
@@ -755,6 +760,7 @@ const server = http.createServer(async (req, res) => {
         phase: typeof body.phase === "string" ? body.phase : "",
         goldenScreen: Number.isFinite(+body.goldenScreen) ? +body.goldenScreen : 0,
         name: (teachUser?.username || "").replace(/_/g, " "), // קו-תחתון → רווח: "דני_כהן" נשמע "דני כהן"
+        grade: gradeToNum(teachUser?.grade), // הכיתה קובעת איזה מערך-שיעורים רץ (ב׳–ו׳)
         userId,
       });
       console.log(`[timing] teach total: ${Date.now() - tTeach}ms`);
@@ -950,7 +956,9 @@ const server = http.createServer(async (req, res) => {
       if (!userId) return json(res, 401, { ok: false });
       const user = users.getUserById(userId);
       const gradeNum = gradeToNum(user?.grade);
-      const topics = gradeNum ? topicsForApi(gradeNum) : [];
+      // ?area=learn → מערך-הכיתה המלא (אזור הלמידה); בלעדיו — נושאי-התרגול עם מאגר
+      const topicArea = new URL(url, "http://x").searchParams.get("area") || "";
+      const topics = gradeNum ? topicsForApi(gradeNum, topicArea) : [];
       // כמויות שאלות לכל רמה, לכל נושא-עלה — כדי שמד השאלות יהיה זמין מיד
       const topicLevels = {};
       if (gradeNum) {

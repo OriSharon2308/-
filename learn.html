@@ -653,7 +653,7 @@
           document.getElementById("learnName").textContent = me.user.username || "";
           document.getElementById("userChip").hidden = false;
 
-          const topRes = await fetch("/api/topics");
+          const topRes = await fetch("/api/topics?area=learn"); // מערך-הכיתה המלא לפי תכנית משרד החינוך
           const data = topRes.ok ? await topRes.json() : null;
           const loading = document.getElementById("loadingMsg");
           if (loading) loading.remove();

@@ -853,7 +853,7 @@
     try {
       const res = await fetch("/api/admin/golden/save", {
         method: "POST", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ topic: t.key, lesson: s.n, data: { title: g.title || "", phases: g.phases } }),
+        body: JSON.stringify({ topic: t.key, lesson: s.n, grade: cs.gradeNum, data: { title: g.title || "", phases: g.phases } }),
       });
       const out = await res.json().catch(() => null);
       if (out && out.ok) { s.goldenData = g; if (msg) { msg.textContent = "נשמר ✓ — זה מה שהילדים יקבלו"; msg.className = "goldSaveMsg is-ok"; } }
@@ -915,7 +915,7 @@
     body.querySelectorAll(".gStudioBtn").forEach((btn) => btn.addEventListener("click", () => {
       const n = Number(btn.dataset.studio);
       const stage = t.stages.find((s) => s.n === n);
-      if (window.VelaGoldenEditor) window.VelaGoldenEditor.open(t.key, n, stage ? stage.title : "");
+      if (window.VelaGoldenEditor) window.VelaGoldenEditor.open(t.key, n, stage ? stage.title : "", cs.gradeNum);
       else alert("הסטודיו לא נטען — רענן/י את הדף");
     }));
     // שמירת עריכות-הנוסח שנעשו ישירות במפה (דברי-מורה, שאלות, תשובות, רמזים)

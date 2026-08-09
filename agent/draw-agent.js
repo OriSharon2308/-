@@ -29,12 +29,12 @@ const OPENING_TEMPLATES = [
 
 // בונה ברכת-פתיחה מתבנית + היזכרות דטרמיניסטית מהפנקס. בלי AI — אפס המתנה, אפס טוקנים.
 // מספר-השיעור בברכה הוא *בנושא הזה* (שיעור ראשון בגאומטריה = "שיעור 1", גם אם היו 3 שיעורי-מספרים לפני).
-function buildOpeningGreeting({ name, topic, userId }) {
+function buildOpeningGreeting({ name, topic, userId, grade }) {
   let n = 1, recall = "", topicLabel = topic || "מתמטיקה";
   try {
     n = learnerProfile.topicLessonNumber(userId, topic); // פר-נושא, לא גלובלי
     // אם יש מערך-שיעור לנושא — הברכה אומרת בדיוק מה לומדים היום ("כפל: קבוצות שוות")
-    const plan = course.planFor(topic, n);
+    const plan = course.planFor(topic, n, grade);
     if (plan) topicLabel = `${topic}: ${plan.title}`;
   } catch (e) { /* מערך לא קריטי */ }
   try {
@@ -166,11 +166,11 @@ async function teacherDraw(p = {}) {
 
   // ── פתיחת שיעור: תבנית מוכנה — בלי AI בכלל (לכן לפני בדיקת ה-AI). מיידי וחינם. ──
   if (phase === "opening") {
-    const greeting = buildOpeningGreeting({ name: p.name, topic: p.topic, userId: p.userId });
+    const greeting = buildOpeningGreeting({ name: p.name, topic: p.topic, userId: p.userId, grade: p.grade });
     let lessonMeta = null; // "שיעור N מתוך M" לצ'יפ שבראש המסך
     try {
       const tn = learnerProfile.topicLessonNumber(p.userId, p.topic);
-      const plan = course.planFor(p.topic, tn);
+      const plan = course.planFor(p.topic, tn, p.grade);
       lessonMeta = { n: tn, title: plan ? plan.title : "", total: plan ? plan.total : null };
     } catch (e) { /* מטא לא קריטי */ }
     return { reply: genderize(greeting, gender), toolCalls: [], mode: "template", phase, lesson: lessonMeta };
@@ -181,7 +181,7 @@ async function teacherDraw(p = {}) {
   if (p.topic) {
     try {
       const tn = learnerProfile.topicLessonNumber(p.userId, p.topic);
-      plan = course.planFor(p.topic, tn);
+      plan = course.planFor(p.topic, tn, p.grade);
       methodKey = methods.keyFor(p.topic, tn);
     } catch (e) { /* מערך לא קריטי */ }
   }
@@ -197,7 +197,7 @@ async function teacherDraw(p = {}) {
   if ((isInstructEntry || isGuidedEntry || isIndependentEntry) && p.topic) {
     try {
       const tn = learnerProfile.topicLessonNumber(p.userId, p.topic);
-      const g = golden.phase(p.topic, tn, phase, phase === "instruct" ? +p.goldenScreen || 0 : 0);
+      const g = golden.phase(p.topic, tn, phase, phase === "instruct" ? +p.goldenScreen || 0 : 0, p.grade);
       if (g) {
         console.log(`[golden] "${p.topic}"#${tn}/${phase}${g.totalScreens > 1 ? ` מסך ${g.screen + 1}/${g.totalScreens}` : ""} — 0 tokens`);
         return { reply: genderize(g.reply, gender), toolCalls: g.toolCalls, mode: "golden", phase, goldenScreen: g.screen, goldenTotal: g.totalScreens };
