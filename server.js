@@ -202,6 +202,28 @@ function safePath(urlPath) {
   return normalized;
 }
 
+/* ---------- מה מותר להגיש כקובץ סטטי ----------
+   רשימת-היתר ולא רשימת-חסימה: כל נתיב שאינו נכס-לקוח מובהק נדחה. תיקיות
+   כמו data/ (חשבונות, sessions, זיכרון הילדים), lib/, tools/ ו-backup/
+   לעולם אינן נכס-לקוח, וגם אם ייווצרו בעתיד תיקיות חדשות הן נדחות כברירת מחדל. */
+const ASSET_DIRS = ["/fonts/", "/images/", "/golden/", "/teacher-character/"];
+const ASSET_EXT = new Set([
+  ".html", ".css", ".js", ".json",
+  ".png", ".svg", ".jpg", ".jpeg", ".webp", ".gif", ".ico",
+  ".woff", ".woff2", ".ttf", ".otf",
+  ".mp3", ".wav", ".ogg",
+]);
+const NEVER_SERVE = new Set(["/server.js"]); // קוד-השרת אינו נכס-לקוח
+
+function isClientAsset(rel) {
+  if (typeof rel !== "string" || !rel.startsWith("/") || rel.includes("..")) return false;
+  if (NEVER_SERVE.has(rel)) return false;
+  if (!ASSET_EXT.has(path.extname(rel).toLowerCase())) return false;
+  if (ASSET_DIRS.some((d) => rel.startsWith(d))) return true;
+  // מחוץ לתיקיות המורשות — רק קבצים ברמת השורש (אין "/" נוסף אחרי הראשון)
+  return rel.indexOf("/", 1) === -1;
+}
+
 function serveFile(res, relPath, method) {
   const filePath = path.join(ROOT, relPath);
   if (!filePath.startsWith(ROOT)) return send(res, 403, {}, "Forbidden");
@@ -1174,6 +1196,13 @@ const server = http.createServer(async (req, res) => {
     // כל השאר דורש התחברות
     if (!loggedIn) {
       return send(res, 302, { location: "/auth" }, "");
+    }
+    // ...ורק נכסי-לקוח. עד כאן הגיע serveFile(rel) חופשי, כלומר כל ילד שנרשם
+    // יכול היה למשוך /data/users.json (גיבובי-סיסמאות + שם, גיל ובית-ספר של
+    // כל ילד), /data/sessions.json (אסימוני-כניסה חיים → התחזות לכל חשבון)
+    // ו-/.env. נבדק בפועל מול השרת החי לפני התיקון.
+    if (!isClientAsset(rel)) {
+      return send(res, 404, {}, "Not found");
     }
     return serveFile(res, rel, method);
   } catch (e) {
