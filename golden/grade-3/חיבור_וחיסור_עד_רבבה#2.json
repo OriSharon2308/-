@@ -1,0 +1,119 @@
+{
+  "topic": "חיבור וחיסור עד רבבה",
+  "lesson": 2,
+  "title": "חיבור במאונך — יחידות מתחת ליחידות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם חיברנו מאות ואלפים עגולים. היום מחברים מספרים שלמים, אחד מתחת לשני. יש כלל אחד: כל ספרה בבית שלה. יחידות מתחת ליחידות, עשרות מתחת לעשרות. תראה/י — 2341 ו-1236 יושבים מדויק אחד מתחת לשני. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אלפים", "x": 340, "y": 110, "size": 24 } },
+          { "name": "write_text", "input": { "text": "מאות", "x": 440, "y": 110, "size": 24 } },
+          { "name": "write_text", "input": { "text": "עשרות", "x": 540, "y": 110, "size": 24 } },
+          { "name": "write_text", "input": { "text": "יחידות", "x": 650, "y": 110, "size": 24 } },
+          { "name": "write_text", "input": { "text": "2", "x": 340, "y": 190, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 440, "y": 190, "size": 40 } },
+          { "name": "write_text", "input": { "text": "4", "x": 540, "y": 190, "size": 40 } },
+          { "name": "write_text", "input": { "text": "1", "x": 650, "y": 190, "size": 40 } },
+          { "name": "write_text", "input": { "text": "+", "x": 250, "y": 260, "size": 40 } },
+          { "name": "write_text", "input": { "text": "1", "x": 340, "y": 260, "size": 40 } },
+          { "name": "write_text", "input": { "text": "2", "x": 440, "y": 260, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 540, "y": 260, "size": 40 } },
+          { "name": "write_text", "input": { "text": "6", "x": 650, "y": 260, "size": 40 } },
+          { "name": "draw_line", "input": { "x1": 230, "y1": 300, "x2": 700, "y2": 300, "width": 3 } },
+          { "name": "write_text", "input": { "text": "כל ספרה בבית שלה", "x": 480, "y": 380, "size": 30 } },
+          { "name": "write_text", "input": { "text": "יחידות מתחת ליחידות", "x": 480, "y": 450, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו מחברים בית-בית, ותמיד מתחילים מהיחידות. יחידות: 1 ועוד 6 זה 7. עשרות: 4 ועוד 3 זה 7. מאות: 3 ועוד 2 זה 5. אלפים: 2 ועוד 1 זה 3. יצא 3577. שים/שימי לב שאף בית לא בלבל את השני. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "תמיד מתחילים מהיחידות", "x": 480, "y": 85, "size": 30 } },
+          { "name": "write_text", "input": { "text": "2", "x": 340, "y": 170, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 440, "y": 170, "size": 40 } },
+          { "name": "write_text", "input": { "text": "4", "x": 540, "y": 170, "size": 40 } },
+          { "name": "write_text", "input": { "text": "1", "x": 650, "y": 170, "size": 40 } },
+          { "name": "write_text", "input": { "text": "+", "x": 250, "y": 235, "size": 40 } },
+          { "name": "write_text", "input": { "text": "1", "x": 340, "y": 235, "size": 40 } },
+          { "name": "write_text", "input": { "text": "2", "x": 440, "y": 235, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 540, "y": 235, "size": 40 } },
+          { "name": "write_text", "input": { "text": "6", "x": 650, "y": 235, "size": 40 } },
+          { "name": "draw_line", "input": { "x1": 230, "y1": 275, "x2": 700, "y2": 275, "width": 3 } },
+          { "name": "write_text", "input": { "text": "3", "x": 340, "y": 325, "size": 40, "color": "#22c55e" } },
+          { "name": "write_text", "input": { "text": "5", "x": 440, "y": 325, "size": 40, "color": "#22c55e" } },
+          { "name": "write_text", "input": { "text": "7", "x": 540, "y": 325, "size": 40, "color": "#22c55e" } },
+          { "name": "write_text", "input": { "text": "7", "x": 650, "y": 325, "size": 40, "color": "#22c55e" } },
+          { "name": "write_text", "input": { "text": "2341 + 1236 = 3577", "x": 480, "y": 440, "size": 34 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הדבר החדש. נניח שבבית היחידות יצא 8 ועוד 5. תספור/י את המשבצות על הלוח — יצאו 13. אבל בבית היחידות אסור להשאיר 13! בכל בית גרה ספרה אחת בלבד, מ-0 עד 9. אז מה עושים? ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "8 + 5 בבית היחידות", "x": 480, "y": 85, "size": 32 } },
+          { "name": "ten_frame", "input": { "cells": 20, "perRow": 10, "filled": 13, "x": 280, "y": 130, "w": 400, "h": 267 } },
+          { "name": "write_text", "input": { "text": "יצאו 13 — ובבית גרה ספרה אחת", "x": 480, "y": 430, "size": 26 } },
+          { "name": "write_text", "input": { "text": "אז מה עושים?", "x": 480, "y": 485, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "הפתרון: עשר משבצות מתאגדות למוט אחד. תראה/י — השורה המלאה של 10 הופכת למוט, והמוט עובר לבית העשרות. בבית היחידות נשארות 3. את המוט שעבר כותבים כ-1 קטן מעל העשרות. זו הנשיאה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "10 מתאגדות למוט אחד", "x": 480, "y": 80, "size": 32 } },
+          { "name": "ten_frame", "input": { "cells": 20, "perRow": 10, "filled": 10, "x": 290, "y": 125, "w": 400, "h": 267 } },
+          { "name": "write_text", "input": { "text": "המוט עובר לבית העשרות", "x": 480, "y": 425, "size": 28 } },
+          { "name": "write_text", "input": { "text": "ו-3 נשארות ביחידות", "x": 480, "y": 480, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נפתור ביחד: 2458 ועוד 1327. יחידות: 8 ועוד 7 זה 15 — כותבים 5 ונושאים 1. עשרות: 5 ועוד 2 ועוד ה-1 שנשאנו זה 8. מאות: 4 ועוד 3 זה 7. אלפים: 2 ועוד 1 זה 3. יצא 3785. עכשיו תור/ך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "1", "x": 540, "y": 115, "size": 26, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "2", "x": 340, "y": 180, "size": 40 } },
+          { "name": "write_text", "input": { "text": "4", "x": 440, "y": 180, "size": 40 } },
+          { "name": "write_text", "input": { "text": "5", "x": 540, "y": 180, "size": 40 } },
+          { "name": "write_text", "input": { "text": "8", "x": 650, "y": 180, "size": 40 } },
+          { "name": "write_text", "input": { "text": "+", "x": 250, "y": 245, "size": 40 } },
+          { "name": "write_text", "input": { "text": "1", "x": 340, "y": 245, "size": 40 } },
+          { "name": "write_text", "input": { "text": "3", "x": 440, "y": 245, "size": 40 } },
+          { "name": "write_text", "input": { "text": "2", "x": 540, "y": 245, "size": 40 } },
+          { "name": "write_text", "input": { "text": "7", "x": 650, "y": 245, "size": 40 } },
+          { "name": "draw_line", "input": { "x1": 230, "y1": 285, "x2": 700, "y2": 285, "width": 3 } },
+          { "name": "write_text", "input": { "text": "3", "x": 340, "y": 330, "size": 40, "color": "#22c55e" } },
+          { "name": "write_text", "input": { "text": "7", "x": 440, "y": 330, "size": 40, "color": "#22c55e" } },
+          { "name": "write_text", "input": { "text": "8", "x": 540, "y": 330, "size": 40, "color": "#22c55e" } },
+          { "name": "write_text", "input": { "text": "5", "x": 650, "y": 330, "size": 40, "color": "#22c55e" } },
+          { "name": "write_text", "input": { "text": "8 + 7 = 15 → כותבים 5, נושאים 1", "x": 480, "y": 420, "size": 26 } },
+          { "name": "write_text", "input": { "text": "2458 + 1327 = 3785", "x": 480, "y": 480, "size": 32 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד: 2336 ועוד 1435. מתחילים מהיחידות: 6 ועוד 5. על הלוח מסומנות 6 משבצות — הוסף/י עוד 5 בלחיצה ותראה/י מה יוצא. שורה מלאה של 10 נהיית מוט שעובר לעשרות, והשאר נשארות. אחר כך תמשיך/י בית-בית עד האלפים.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "2336 + 1435 =", "answer": "3771", "kind": "number", "x": 830, "y": 110, "hint": "יחידות: 6 ועוד 5 — יוצא יותר מ-9, אז נושאים 1 לעשרות ומשאירים את השאר. עשרות: 3 ועוד 3 ועוד ה-1 שנשאת. אחר כך מאות, ואז אלפים.", "praise": "מעולה! זכרת להוסיף את ה-1 שנשאת לעמודת העשרות — שם רוב הילדים שוכחים 👏" } },
+        { "name": "write_text", "input": { "text": "יחידות: 6 + 5", "x": 300, "y": 145, "size": 30 } },
+        { "name": "ten_frame", "input": { "cells": 20, "perRow": 10, "filled": 6, "x": 110, "y": 190, "w": 400, "h": 267 } },
+        { "name": "write_text", "input": { "text": "לחץ/י עוד 5 משבצות", "x": 750, "y": 300, "size": 26 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד. שלושה תרגילים, וכולם באותו סדר: יחידות, עשרות, מאות, אלפים. בראשון אין מה לשאת — רק יישור נכון, ויש לך אותו מסודר על הלוח. בשני ובשלישי יהיה מה לשאת, אז שים/שימי לב 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "1243 + 2135 =", "answer": "3378", "kind": "number", "x": 830, "y": 120, "hint": "אין כאן מה לשאת. פשוט חבר/י בית-בית: יחידות עם יחידות, עשרות עם עשרות, וכן הלאה עד האלפים.", "praise": "יופי! יישרת נכון וחיברת בית-בית — הבסיס מוצק 👏" } },
+        { "name": "write_text", "input": { "text": "1", "x": 140, "y": 180, "size": 34 } },
+        { "name": "write_text", "input": { "text": "2", "x": 200, "y": 180, "size": 34 } },
+        { "name": "write_text", "input": { "text": "4", "x": 260, "y": 180, "size": 34 } },
+        { "name": "write_text", "input": { "text": "3", "x": 320, "y": 180, "size": 34 } },
+        { "name": "write_text", "input": { "text": "+", "x": 80, "y": 240, "size": 34 } },
+        { "name": "write_text", "input": { "text": "2", "x": 140, "y": 240, "size": 34 } },
+        { "name": "write_text", "input": { "text": "1", "x": 200, "y": 240, "size": 34 } },
+        { "name": "write_text", "input": { "text": "3", "x": 260, "y": 240, "size": 34 } },
+        { "name": "write_text", "input": { "text": "5", "x": 320, "y": 240, "size": 34 } },
+        { "name": "draw_line", "input": { "x1": 60, "y1": 275, "x2": 360, "y2": 275, "width": 3 } },
+        { "name": "write_text", "input": { "text": "יישור — ואז בית-בית", "x": 210, "y": 325, "size": 24 } },
+        { "name": "draw_exercise", "input": { "text": "3247 + 1516 =", "answer": "4763", "kind": "number", "x": 830, "y": 250, "hint": "יחידות: 7 ועוד 6 — יוצא יותר מ-9. כתוב/כתבי את ספרת היחידות ותשא/י 1 לעשרות. אל תשכח/י להוסיף אותו שם.", "praise": "מצוין! נשאת את ה-1 והוספת אותו לעשרות — בדיוק כמו שצריך 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "2645 + 1178 =", "answer": "3823", "kind": "number", "x": 830, "y": 390, "hint": "כאן נושאים פעמיים — גם מהיחידות וגם מהעשרות. אחרי כל בית תשאל/י את עצמך: יצא לי יותר מ-9?", "praise": "וואו! שתי נשיאות בתרגיל אחד ולא פספסת אף אחת 🏆" } }
+      ]
+    }
+  }
+}

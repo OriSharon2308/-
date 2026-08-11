@@ -12,6 +12,21 @@ const golden = require("../lib/golden-lessons"); // שיעורי-זהב: מער�
 const { BOARD_TOOLS } = require("../lib/board-tools");
 const { catalogPromptSection } = require("../lib/teaching-tools"); // מאגר הכלים: נושא → הויזואל → הכלי
 
+// גם מה שנכתב על הלוח מדבר אל הילד — טקסט התרגיל, הרמז והמחמאה. בלי זה
+// הילד רואה "נסה/נסי" גולמי בכל רמז, בזמן שדברי-המורה כבר ממוגדרים.
+// html נכלל כי ווידג'ט מדבר אל הילד בדיוק כמו הלוח — כפתור "החלף/י את המוט"
+// בתוך render_widget הוצג עם הלוכסן, בזמן שכל שאר הטקסט כבר הוטה.
+const GENDERED_INPUT_FIELDS = ["text", "hint", "praise", "title", "label", "html", "note"];
+function genderizeToolCalls(toolCalls, gender) {
+  if (!Array.isArray(toolCalls)) return toolCalls;
+  return toolCalls.map((t) => {
+    if (!t || !t.input || typeof t.input !== "object") return t;
+    const input = Object.assign({}, t.input);
+    for (const f of GENDERED_INPUT_FIELDS) if (typeof input[f] === "string") input[f] = genderize(input[f], gender);
+    return Object.assign({}, t, { input });
+  });
+}
+
 // ברכות-פתיחה מוכנות — בלי קריאת AI בכלל: מיידי, חינם, ואישי (שם + נושא + מספר-שיעור + היזכרות מהפנקס).
 // {name}=שם, {topic}=נושא, {n}=מספר-שיעור. משפט-ההיזכרות מצורף בנפרד כשיש פנקס.
 const OPENING_TEMPLATES = [
@@ -200,7 +215,7 @@ async function teacherDraw(p = {}) {
       const g = golden.phase(p.topic, tn, phase, phase === "instruct" ? +p.goldenScreen || 0 : 0, p.grade);
       if (g) {
         console.log(`[golden] "${p.topic}"#${tn}/${phase}${g.totalScreens > 1 ? ` מסך ${g.screen + 1}/${g.totalScreens}` : ""} — 0 tokens`);
-        return { reply: genderize(g.reply, gender), toolCalls: g.toolCalls, mode: "golden", phase, goldenScreen: g.screen, goldenTotal: g.totalScreens };
+        return { reply: genderize(g.reply, gender), toolCalls: genderizeToolCalls(g.toolCalls, gender), mode: "golden", phase, goldenScreen: g.screen, goldenTotal: g.totalScreens };
       }
     } catch (e) { /* זהב לא קריטי */ }
   }
@@ -212,7 +227,7 @@ async function teacherDraw(p = {}) {
     if (m) {
       methods.markUsed(methodKey);
       console.log(`[method] replay for "${methodKey}" (uses=${(m.uses || 0) + 1}) — 0 tokens`);
-      return { reply: genderize(m.reply, gender), toolCalls: m.toolCalls, mode: "method", phase };
+      return { reply: genderize(m.reply, gender), toolCalls: genderizeToolCalls(m.toolCalls, gender), mode: "method", phase };
     }
   }
 
@@ -335,7 +350,8 @@ async function teacherDraw(p = {}) {
       try { methods.save(methodKey, { reply, toolCalls: drawCalls }); } catch (e) { /* שמירת-שיטה לא קריטית */ }
     }
     reply = genderize(reply, gender);
-    return { reply, toolCalls: drawCalls, mode: "ai" };
+    // השיטה נשמרה למעלה עם הלוכסנים הגולמיים (גלובלית לכל הילדים) — הממוגדר יוצא רק ללקוח.
+    return { reply, toolCalls: genderizeToolCalls(drawCalls, gender), mode: "ai" };
   } catch (e) {
     console.error("teach-draw error:", e.message);
     return { reply: "אופס, לא הצלחתי לסרטט כרגע. ננסה שוב?", toolCalls: [], mode: "error" };

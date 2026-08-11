@@ -1,0 +1,77 @@
+{
+  "topic": "המספרים עד רבבה",
+  "lesson": 3,
+  "title": "אותו מספר, פירוק אחר",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור שעבר ראינו שכל ספרה יושבת בבית שלה. עכשיו משהו מפתיע. הנה 715 בבלוקים: שבעה ריבועים — 700. מוט אחד — 10. וחמש קוביות — 5. זה הפירוק הרגיל. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "715 בבלוקים", "x": 480, "y": 90, "size": 34 } },
+          { "name": "draw_base_ten", "input": { "value": 715, "x": 500, "y": 250, "label": "" } },
+          { "name": "write_text", "input": { "text": "7 מאות · 1 עשרת · 5 יחידות", "x": 480, "y": 380, "size": 28 } },
+          { "name": "write_text", "input": { "text": "זה הפירוק הרגיל", "x": 480, "y": 450, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו הקסם. ניקח את המוט הבודד ונחליף אותו ב-10 קוביות קטנות. לחץ/י על הכפתור ותראה/י מה קורה. ושאלה חשובה: הכמות השתנתה? ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מחליפים מוט בעשר קוביות", "x": 480, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "פריטה", "x": 220, "y": 150, "w": 560, "h": 280, "html": "<style>body{margin:0;font-family:Assistant,system-ui,sans-serif;color:#0f3b36}.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}.row{display:flex;align-items:flex-end;gap:7px;min-height:118px}.rod{width:24px;height:112px;border:2px solid #0d9488;border-radius:5px;background:repeating-linear-gradient(#0d948833 0 1px,transparent 1px 11.2px)}.cube{width:24px;height:24px;border:2px solid #0d9488;border-radius:5px;background:#0d948833}.gap{width:22px}button{font:700 20px Assistant,sans-serif;background:#0d9488;color:#fff;border:0;border-radius:12px;padding:8px 20px;cursor:pointer}#msg{font:800 26px Assistant,sans-serif;color:#0d9488;height:32px}</style><div class='wrap'><div id='msg'></div><div class='row' id='r'></div><button id='b'>החלף/י את המוט</button></div><script>var r=document.getElementById('r'),m=document.getElementById('msg'),b=document.getElementById('b');function cube(){var c=document.createElement('div');c.className='cube';return c;}function build(split){r.innerHTML='';if(split){for(var i=0;i<10;i++)r.appendChild(cube());}else{var d=document.createElement('div');d.className='rod';r.appendChild(d);}var s=document.createElement('div');s.className='gap';r.appendChild(s);for(var j=0;j<5;j++)r.appendChild(cube());}build(false);b.onclick=function(){build(true);m.textContent='אותה כמות בדיוק!';b.disabled=true;parent.postMessage({type:'vela:correct'},'*');};</script>" } },
+          { "name": "write_text", "input": { "text": "אותה כמות — צורה אחרת", "x": 480, "y": 470, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "הכמות לא השתנתה בכלל! רק החלפנו צורה. אז את אותו מספר אפשר לומר בשתי דרכים: 715 זה 7 מאות, עשרת אחת וחמש יחידות — או 7 מאות ו-15 יחידות. אותו מספר, פירוק אחר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אותו מספר, פירוק אחר", "x": 480, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "715 = 7 מאות · 1 עשרת · 5 יחידות", "x": 480, "y": 200, "size": 28 } },
+          { "name": "write_text", "input": { "text": "715 = 7 מאות · 15 יחידות", "x": 480, "y": 290, "size": 28, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "החלפנו מוט אחד בעשר קוביות", "x": 480, "y": 390, "size": 26 } },
+          { "name": "write_text", "input": { "text": "לכמות לא קרה כלום", "x": 480, "y": 455, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו לכיוון השני, וזה הכי חשוב. בכל ריבוע-מאה יש עשרה מוטות. אז 4 מאות הן 40 עשרות! ואם נוסיף 6 יחידות נקבל 406. במבחנים אוהבים מאוד לשאול בדיוק ככה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה עשרות יש במאה?", "x": 480, "y": 85, "size": 32 } },
+          { "name": "draw_base_ten", "input": { "value": 100, "x": 200, "y": 220, "label": "" } },
+          { "name": "write_text", "input": { "text": "בכל ריבוע כזה", "x": 200, "y": 310, "size": 24 } },
+          { "name": "write_text", "input": { "text": "יש 10 מוטות", "x": 200, "y": 350, "size": 24 } },
+          { "name": "draw_arrow", "input": { "x1": 300, "y1": 250, "x2": 400, "y2": 250, "width": 3 } },
+          { "name": "write_text", "input": { "text": "4 מאות = 40 עשרות", "x": 650, "y": 220, "size": 32, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "40 עשרות + 6 יחידות = 406", "x": 650, "y": 310, "size": 28 } },
+          { "name": "write_text", "input": { "text": "אותו מספר, שתי דרכים", "x": 480, "y": 440, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ולסיום מילה חדשה: להחלפה הזאת קוראים פְּריטה. פרטנו מוט אחד לעשר קוביות. תזכור/תזכרי אותה — בעוד כמה שיעורים היא תציל אותנו בחיסור. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "המילה החדשה: פריטה", "x": 480, "y": 100, "size": 36 } },
+          { "name": "write_text", "input": { "text": "לפרוט = להחליף אחד גדול בעשרה קטנים", "x": 480, "y": 210, "size": 28 } },
+          { "name": "write_text", "input": { "text": "מוט אחד ← עשר קוביות", "x": 480, "y": 290, "size": 28 } },
+          { "name": "write_text", "input": { "text": "מאה אחת ← עשרה מוטות", "x": 480, "y": 360, "size": 28 } },
+          { "name": "write_text", "input": { "text": "בקרוב הפריטה תעזור לנו בחיסור", "x": 480, "y": 450, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "תורך 🙂 זו שאלה שאוהבים מאוד לשאול במבחנים. מישהו מתאר מספר בדרך אחרת: 40 עשרות ועוד 6 יחידות. שמתי לך ריבוע-מאה אחד לעזרה — תזכור/תזכרי כמה מוטות מתחבאים בתוכו. עכשיו תגלה/י איזה מספר זה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מי שווה ל-40 עשרות ועוד 6 יחידות?", "answer": "406", "kind": "number", "hint": "כמה עשרות נכנסות בתוך מאה אחת? עשר. אז תחשוב/י — 40 עשרות הן כמה מאות? ואחרי שמצאת, תוסיף/י את שש היחידות.", "praise": "מדויק! הפכת 40 עשרות למאות והוספת את היחידות — פירוק לא שגרתי 🏆" } },
+        { "name": "draw_base_ten", "input": { "value": 100, "x": 480, "y": 300, "label": "" } },
+        { "name": "write_text", "input": { "text": "בריבוע אחד כזה יש עשרה מוטות", "x": 480, "y": 400, "size": 26 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. לראשונה שמתי בלוקים לעזרה. בשתיים הבאות תחשוב/י על הגלגל: עשר יחידות הן עשרת, ועשרה מוטות הם מאה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה עשרות יש ב-300?", "answer": "30", "kind": "number", "x": 130, "y": 120, "hint": "כל ריבוע-מאה עשוי מעשרה מוטות. תספור/י כמה ריבועים יש על הלוח, ואז תחשוב/י כמה מוטות יש בכולם ביחד.", "praise": "יופי! כל מאה היא עשרה מוטות, אז שלוש מאות הן שלושים עשרות 👏" } },
+        { "name": "draw_base_ten", "input": { "value": 300, "x": 520, "y": 250, "label": "" } },
+        { "name": "write_text", "input": { "text": "עזרה לשאלה הראשונה", "x": 520, "y": 345, "size": 24 } },
+        { "name": "draw_exercise", "input": { "text": "5 מאות ועוד כמה יחידות זה 520?", "answer": "20", "kind": "number", "x": 130, "y": 410, "hint": "חמש מאות הן מספר עגול. עכשיו תחשוב/י כמה עוד חסר משם כדי להגיע ל-520 — תספור/י בעשרות.", "praise": "מצוין! 5 מאות ועוד עשרים יחידות — אותו מספר בפירוק אחר 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "מי שווה ל-8 מאות ו-12 יחידות?", "answer": "812", "kind": "number", "x": 130, "y": 475, "hint": "קודם המאות — כמה זה שמונה מאות? ואז תוסיף/י את היחידות. שים/י לב: יש כאן יותר מעשר יחידות, אז גם בבית העשרות ייכנס משהו.", "praise": "וואו! 12 יחידות הן עשרת ועוד שתיים — ולכן קיבלת 812 🏆" } }
+      ]
+    }
+  }
+}

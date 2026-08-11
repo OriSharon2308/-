@@ -1,0 +1,129 @@
+{
+  "topic": "המספרים עד רבבה",
+  "lesson": 2,
+  "title": "ארבע ספרות — לכל ספרה יש בית",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור שעבר נולד האלף. עכשיו יש למספרים בית חדש. תראה/י — ארבעה בתים בשורה: אלפים, מאות, עשרות ויחידות. כל ספרה יושבת בבית שלה. המספר הזה הוא 3,247. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "לכל ספרה יש בית", "x": 480, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "אלפים", "x": 300, "y": 170, "size": 26 } },
+          { "name": "write_text", "input": { "text": "מאות", "x": 420, "y": 170, "size": 26 } },
+          { "name": "write_text", "input": { "text": "עשרות", "x": 545, "y": 170, "size": 26 } },
+          { "name": "write_text", "input": { "text": "יחידות", "x": 670, "y": 170, "size": 26 } },
+          { "name": "draw_line", "input": { "x1": 250, "y1": 200, "x2": 720, "y2": 200, "width": 2 } },
+          { "name": "draw_line", "input": { "x1": 360, "y1": 145, "x2": 360, "y2": 300, "width": 2 } },
+          { "name": "draw_line", "input": { "x1": 483, "y1": 145, "x2": 483, "y2": 300, "width": 2 } },
+          { "name": "draw_line", "input": { "x1": 607, "y1": 145, "x2": 607, "y2": 300, "width": 2 } },
+          { "name": "write_text", "input": { "text": "3", "x": 300, "y": 260, "size": 56, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "2", "x": 420, "y": 260, "size": 56, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "4", "x": 545, "y": 260, "size": 56, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "7", "x": 670, "y": 260, "size": 56, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "3,247", "x": 480, "y": 380, "size": 44, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "כל ספרה בבית שלה", "x": 480, "y": 460, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הכי חשוב: אותה ספרה שווה משהו אחר בכל בית. ה-2 יושבת בבית המאות — אז היא לא 2, היא 200! וה-4 בבית העשרות היא 40. תמיד שואלים: איזה בית, וכמה זה שווה באמת. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה זה שווה באמת?", "x": 480, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "אלפים", "x": 300, "y": 160, "size": 24 } },
+          { "name": "write_text", "input": { "text": "מאות", "x": 420, "y": 160, "size": 24 } },
+          { "name": "write_text", "input": { "text": "עשרות", "x": 545, "y": 160, "size": 24 } },
+          { "name": "write_text", "input": { "text": "יחידות", "x": 670, "y": 160, "size": 24 } },
+          { "name": "write_text", "input": { "text": "3", "x": 300, "y": 230, "size": 48, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "2", "x": 420, "y": 230, "size": 48, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "4", "x": 545, "y": 230, "size": 48, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "7", "x": 670, "y": 230, "size": 48, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "3,000", "x": 300, "y": 320, "size": 30 } },
+          { "name": "write_text", "input": { "text": "200", "x": 420, "y": 320, "size": 30 } },
+          { "name": "write_text", "input": { "text": "40", "x": 545, "y": 320, "size": 30 } },
+          { "name": "write_text", "input": { "text": "7", "x": 670, "y": 320, "size": 30 } },
+          { "name": "write_text", "input": { "text": "3,247 = 3,000 + 200 + 40 + 7", "x": 480, "y": 430, "size": 30 } },
+          { "name": "write_text", "input": { "text": "המקום קובע את הערך", "x": 480, "y": 485, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו המלכודת הגדולה — האפס. תראה/י שלושה מספרים דומים מאוד. האפס הוא לא 'כלום'! הוא שומר על בית ריק. אם מוחקים אותו, כל הספרות זזות והמספר משתנה לגמרי. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "האפס שומר על הבית", "x": 480, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "2,001", "x": 240, "y": 190, "size": 40, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "2,010", "x": 480, "y": 190, "size": 40, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "2,100", "x": 720, "y": 190, "size": 40, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "אלפיים ואחת", "x": 240, "y": 260, "size": 24 } },
+          { "name": "write_text", "input": { "text": "אלפיים ועשר", "x": 480, "y": 260, "size": 24 } },
+          { "name": "write_text", "input": { "text": "אלפיים ומאה", "x": 720, "y": 260, "size": 24 } },
+          { "name": "write_text", "input": { "text": "אותן ספרות — מספר אחר", "x": 480, "y": 350, "size": 30 } },
+          { "name": "write_text", "input": { "text": "האפס לא כלום — הוא שומר מקום", "x": 480, "y": 430, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו נכתוב מספר מהמילים לספרות. 'שלושת אלפים ושלושים ואחד'. אלפים — 3. מאות — אין בכלל, אז אפס. עשרות — 3. יחידות — 1. יוצא 3,031. הבית הריק חייב אפס. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ממילים לספרות", "x": 480, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "שלושת אלפים ושלושים ואחד", "x": 480, "y": 150, "size": 30 } },
+          { "name": "write_text", "input": { "text": "אלפים", "x": 300, "y": 230, "size": 24 } },
+          { "name": "write_text", "input": { "text": "מאות", "x": 420, "y": 230, "size": 24 } },
+          { "name": "write_text", "input": { "text": "עשרות", "x": 545, "y": 230, "size": 24 } },
+          { "name": "write_text", "input": { "text": "יחידות", "x": 670, "y": 230, "size": 24 } },
+          { "name": "draw_line", "input": { "x1": 250, "y1": 262, "x2": 720, "y2": 262, "width": 2 } },
+          { "name": "write_text", "input": { "text": "3", "x": 300, "y": 310, "size": 48, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "0", "x": 420, "y": 310, "size": 48, "color": "#ef4444" } },
+          { "name": "write_text", "input": { "text": "3", "x": 545, "y": 310, "size": 48, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "1", "x": 670, "y": 310, "size": 48, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "אין מאות — נכנס אפס", "x": 480, "y": 390, "size": 28 } },
+          { "name": "write_text", "input": { "text": "3,031", "x": 480, "y": 455, "size": 44, "color": "#2563eb" } }
+        ]
+      },
+      {
+        "reply": "ולסיום משהו מהתאריך העברי. גם לאותיות יש מספר. ככה קוראים ט\"ו — עשר ועוד חמש, וכ\"ד — עשרים ועוד ארבע. רק להכיר, בלי לתרגל 🙂 ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "גם לאותיות יש מספר", "x": 480, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "א=1 · ה=5 · י=10 · כ=20 · ק=100", "x": 480, "y": 185, "size": 30 } },
+          { "name": "write_text", "input": { "text": "ט\"ו = 10 + 5 = 15", "x": 480, "y": 275, "size": 30, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "כ\"ד = 20 + 4 = 24", "x": 480, "y": 345, "size": 30, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "רק להכיר — נתרגל בפעם אחרת", "x": 480, "y": 440, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. אני אומר במילים, ואת/ה כותב/ת בספרות. שמתי לך ארבעה בתים ריקים. תתחיל/י מהבית הגדול משמאל: כמה אלפים? כמה מאות? עשרות? יחידות? ואם בבית אין כלום — כתוב/כתבי בו אפס!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "בספרות: ארבעת אלפים ועשרים", "answer": "4020", "kind": "number", "hint": "לך/י בית-בית מהגדול לקטן: אלפים, מאות, עשרות, יחידות. יש בית שלא אמרתי עליו כלום? שם נכנס אפס — אל תדלג/י עליו.", "praise": "מעולה! שמת אפס בכל בית שנשאר ריק, וכל ספרה נשארה בבית שלה 👏" } },
+        { "name": "write_text", "input": { "text": "אלפים", "x": 320, "y": 250, "size": 26 } },
+        { "name": "write_text", "input": { "text": "מאות", "x": 440, "y": 250, "size": 26 } },
+        { "name": "write_text", "input": { "text": "עשרות", "x": 560, "y": 250, "size": 26 } },
+        { "name": "write_text", "input": { "text": "יחידות", "x": 680, "y": 250, "size": 26 } },
+        { "name": "draw_line", "input": { "x1": 260, "y1": 282, "x2": 740, "y2": 282, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 260, "y1": 360, "x2": 740, "y2": 360, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 260, "y1": 282, "x2": 260, "y2": 360, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 380, "y1": 282, "x2": 380, "y2": 360, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 500, "y1": 282, "x2": 500, "y2": 360, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 620, "y1": 282, "x2": 620, "y2": 360, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 740, "y1": 282, "x2": 740, "y2": 360, "width": 2 } },
+        { "name": "write_text", "input": { "text": "מלא/י בית-בית — ואל תשכח/י את האפס", "x": 480, "y": 420, "size": 26 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד. לשאלה הראשונה שמתי את הבתים לעזרה. בשתיים הבאות תחשוב/י על הבית של כל ספרה. שים/י לב לאפס — הוא תמיד שם כדי לשמור 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה שווה הספרה 5 במספר 4528?", "answer": "500", "kind": "number", "x": 130, "y": 120, "hint": "אל תסתכל/י רק על הספרה עצמה. תבדוק/י באיזה בית היא יושבת — ספור/י מימין: יחידות, עשרות, מאות. זה מה שהיא שווה באמת.", "praise": "בדיוק! הספרה יושבת בבית המאות, ולכן היא שווה חמש מאות 🏆" } },
+        { "name": "write_text", "input": { "text": "עזרה: ארבעת הבתים", "x": 480, "y": 200, "size": 24 } },
+        { "name": "write_text", "input": { "text": "אלפים", "x": 320, "y": 240, "size": 24 } },
+        { "name": "write_text", "input": { "text": "מאות", "x": 440, "y": 240, "size": 24 } },
+        { "name": "write_text", "input": { "text": "עשרות", "x": 560, "y": 240, "size": 24 } },
+        { "name": "write_text", "input": { "text": "יחידות", "x": 680, "y": 240, "size": 24 } },
+        { "name": "draw_line", "input": { "x1": 260, "y1": 272, "x2": 740, "y2": 272, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 260, "y1": 350, "x2": 740, "y2": 350, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 260, "y1": 272, "x2": 260, "y2": 350, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 380, "y1": 272, "x2": 380, "y2": 350, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 500, "y1": 272, "x2": 500, "y2": 350, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 620, "y1": 272, "x2": 620, "y2": 350, "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 740, "y1": 272, "x2": 740, "y2": 350, "width": 2 } },
+        { "name": "draw_exercise", "input": { "text": "בספרות: אלפיים ושבע", "answer": "2007", "kind": "number", "x": 130, "y": 410, "hint": "כמה אלפים? כמה מאות? כמה עשרות? על שניים מהבתים לא אמרתי כלום — מה נכנס בהם? בלי זה המספר יתקצר.", "praise": "יופי! שני אפסים באמצע, והמספר נשאר בן ארבע ספרות 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "איזו ספרה יושבת בבית העשרות ב-6304?", "answer": "0", "kind": "number", "x": 130, "y": 475, "hint": "ספור/י מימין: הספרה הראשונה יחידות, השנייה עשרות. מי יושבת שם? זכור/זכרי — גם אפס הוא ספרה אמיתית.", "praise": "מצוין! בבית העשרות יושב אפס, והוא זה ששומר על הבית ריק 🏆" } }
+      ]
+    }
+  }
+}

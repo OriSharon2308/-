@@ -1,0 +1,152 @@
+{
+  "topic": "שטח מלבן ותיבות",
+  "lesson": 5,
+  "title": "פריסות תיבה — לפתוח קופסה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "עד עכשיו עבדנו על דף שטוח. היום יוצאים אל הקופסה. תיבה זו קופסה, כמו קופסת דגנים. לכל תיבה יש 6 פאות — פאה היא צד שטוח אחד. יש למעלה ולמטה, קדימה ואחורה, וימין ושמאל. וסוד חשוב: כל שתי פאות שעומדות זו מול זו הן בדיוק אותו מלבן. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "לתיבה 6 פאות", "x": 480, "y": 84, "size": 36 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 400 290' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='60,110 110,60 330,60 280,110' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round'/><polygon points='280,110 330,60 330,200 280,250' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round'/><polygon points='60,110 280,110 280,250 60,250' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round'/><text x='170' y='192' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>קדימה</text><text x='196' y='94' text-anchor='middle' font-size='20' font-weight='700' fill='#0f3b36'>למעלה</text><text x='305' y='192' text-anchor='middle' font-size='19' font-weight='700' fill='#0f3b36'>צד</text><text x='200' y='282' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>קופסה = תיבה</text></svg>", "title": "קופסת דגנים", "x": 280, "y": 130, "w": 400, "h": 290, "exact": true } },
+          { "name": "write_text", "input": { "text": "פאות שמול זו זו — זהות", "x": 480, "y": 470, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "ואם ניקח מספריים, נגזור בקצוות ונשטח את הקופסה על השולחן? נקבל צורה שטוחה שכל הפאות שלה פרושות זו לצד זו. לצורה הזאת קוראים פריסה. הפריסה היא בדיוק אותה קופסה — רק פתוחה. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "פותחים את הקופסה — פריסה", "x": 480, "y": 84, "size": 32 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 700 300' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><g fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round'><rect x='60' y='120' width='60' height='60'/><rect x='120' y='120' width='60' height='60'/><rect x='180' y='120' width='60' height='60'/><rect x='240' y='120' width='60' height='60'/><rect x='120' y='60' width='60' height='60' fill='#b6ecdf'/><rect x='120' y='180' width='60' height='60' fill='#38a08f'/></g><text x='180' y='276' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>פריסה — שטוחה</text><path d='M 470,150 L 360,150' stroke='#0f3b36' stroke-width='5' stroke-linecap='round'/><path d='M 360,150 L 380,138 M 360,150 L 380,162' stroke='#0f3b36' stroke-width='5' stroke-linecap='round' fill='none'/><text x='415' y='128' text-anchor='middle' font-size='21' font-weight='700' fill='#0f3b36'>פותחים</text><polygon points='530,110 570,70 680,70 640,110' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round'/><polygon points='640,110 680,70 680,180 640,220' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round'/><polygon points='530,110 640,110 640,220 530,220' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round'/><text x='605' y='276' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>קופסה סגורה</text></svg>", "title": "מקופסה לפריסה", "x": 150, "y": 130, "w": 700, "h": 300, "exact": true } },
+          { "name": "write_text", "input": { "text": "פריסה = הקופסה בשטוח", "x": 480, "y": 475, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נסתכל על הפריסה טוב. ארבעת הריבועים שבשורה הם חגורה שמתלפפת מסביב לקופסה: קדימה, ימין, אחורה, שמאל. הריבוע שלמעלה הוא המכסה, והריבוע שלמטה הוא התחתית. יחד 6 ריבועים — בדיוק 6 פאות. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "חגורה של 4 · מכסה · תחתית", "x": 480, "y": 88, "size": 30 } },
+          { "name": "draw_polygon", "input": { "points": [[260, 200], [330, 200], [330, 270], [260, 270]], "color": "#6ecfba", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[330, 200], [400, 200], [400, 270], [330, 270]], "color": "#6ecfba", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[400, 200], [470, 200], [470, 270], [400, 270]], "color": "#6ecfba", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[470, 200], [540, 200], [540, 270], [470, 270]], "color": "#6ecfba", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[330, 130], [400, 130], [400, 200], [330, 200]], "color": "#f2994a", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[330, 270], [400, 270], [400, 340], [330, 340]], "color": "#f2994a", "fill": true } },
+          { "name": "write_text", "input": { "text": "1", "x": 295, "y": 235, "size": 26 } },
+          { "name": "write_text", "input": { "text": "2", "x": 365, "y": 235, "size": 26 } },
+          { "name": "write_text", "input": { "text": "3", "x": 435, "y": 235, "size": 26 } },
+          { "name": "write_text", "input": { "text": "4", "x": 505, "y": 235, "size": 26 } },
+          { "name": "write_text", "input": { "text": "מכסה", "x": 365, "y": 165, "size": 22 } },
+          { "name": "write_text", "input": { "text": "תחתית", "x": 365, "y": 305, "size": 22 } },
+          { "name": "write_text", "input": { "text": "יחד 6 ריבועים = 6 פאות", "x": 480, "y": 395, "size": 30 } },
+          { "name": "write_text", "input": { "text": "כל ריבוע הוא פאה אחת", "x": 480, "y": 455, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו השאלה המעניינת: מי נפגש עם מי? בחגורה של 4, כשמקפלים, ריבוע 1 נעמד בדיוק מול ריבוע 3, וריבוע 2 מול ריבוע 4. גם המכסה נעמד מול התחתית. יוצאים שלושה זוגות של פאות שעומדות זו מול זו — ולכל זוג אותו גודל בדיוק. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מי עומד מול מי?", "x": 480, "y": 88, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[260, 200], [330, 200], [330, 270], [260, 270]], "color": "#2f80ed", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[330, 200], [400, 200], [400, 270], [330, 270]], "color": "#f2994a", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[400, 200], [470, 200], [470, 270], [400, 270]], "color": "#2f80ed", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[470, 200], [540, 200], [540, 270], [470, 270]], "color": "#f2994a", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[330, 130], [400, 130], [400, 200], [330, 200]], "color": "#9b51e0", "fill": true } },
+          { "name": "draw_polygon", "input": { "points": [[330, 270], [400, 270], [400, 340], [330, 340]], "color": "#9b51e0", "fill": true } },
+          { "name": "write_text", "input": { "text": "1", "x": 295, "y": 235, "size": 26 } },
+          { "name": "write_text", "input": { "text": "2", "x": 365, "y": 235, "size": 26 } },
+          { "name": "write_text", "input": { "text": "3", "x": 435, "y": 235, "size": 26 } },
+          { "name": "write_text", "input": { "text": "4", "x": 505, "y": 235, "size": 26 } },
+          { "name": "write_text", "input": { "text": "1 מול 3 · 2 מול 4", "x": 480, "y": 390, "size": 30 } },
+          { "name": "write_text", "input": { "text": "מכסה מול תחתית", "x": 480, "y": 445, "size": 28 } },
+          { "name": "write_text", "input": { "text": "3 זוגות — ולכל זוג אותו גודל", "x": 480, "y": 498, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ולא כל צורה של 6 ריבועים היא פריסה של קופסה. תסתכל/י על הצורה משמאל — מלבן של 6 ריבועים. אם נקפל אותו, שני ריבועים ייפלו אחד על השני ופאה אחת תישאר בלי כיסוי. הוא לא נסגר. מימין הפריסה שכן נסגרת יפה. עכשיו תור/ך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "איזו פריסה תיסגר לקופסה?", "x": 480, "y": 84, "size": 32 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 700 300' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><g fill='#bbf7d0' stroke='#15803d' stroke-width='3' stroke-linejoin='round'><rect x='380' y='120' width='55' height='55'/><rect x='435' y='120' width='55' height='55'/><rect x='490' y='120' width='55' height='55'/><rect x='545' y='120' width='55' height='55'/><rect x='435' y='65' width='55' height='55'/><rect x='435' y='175' width='55' height='55'/></g><text x='490' y='266' text-anchor='middle' font-size='26' font-weight='700' fill='#15803d'>נסגרת ✓</text><g fill='#fecaca' stroke='#b91c1c' stroke-width='3' stroke-linejoin='round'><rect x='80' y='120' width='55' height='55'/><rect x='135' y='120' width='55' height='55'/><rect x='190' y='120' width='55' height='55'/><rect x='80' y='175' width='55' height='55'/><rect x='135' y='175' width='55' height='55'/><rect x='190' y='175' width='55' height='55'/></g><text x='162' y='266' text-anchor='middle' font-size='26' font-weight='700' fill='#b91c1c'>לא נסגרת ✗</text></svg>", "title": "שתי צורות של 6 ריבועים", "x": 150, "y": 130, "w": 700, "h": 300, "exact": true } },
+          { "name": "write_text", "input": { "text": "6 ריבועים — לא תמיד פריסה", "x": 480, "y": 475, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח שתי צורות של 6 ריבועים — א׳ מימין ו-ב׳ משמאל. רק אחת מהן תיסגר לקופסה. תדמיין/י שאת/ה מקפל/ת אותן: מחפשים חגורה של 4 שמתלפפת מסביב, ועוד ריבוע למכסה וריבוע לתחתית. כתוב/כתבי א או ב בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "איזו פריסה תיסגר לקופסה? א או ב",
+            "answer": "א",
+            "kind": "text",
+            "x": 70,
+            "y": 100,
+            "hint": "אל תספור/י רק ריבועים — בשתיהן יש 6. חפש/י חגורה של ארבעה ריבועים בשורה אחת שתתלפף מסביב, ועוד ריבוע למכסה וריבוע לתחתית. בצורה שאין בה חגורה כזאת, שני ריבועים ייפלו אחד על השני.",
+            "praise": "מצוין! זיהית את החגורה של 4 עם מכסה ותחתית — זו הפריסה שנסגרת 👏"
+          }
+        },
+        { "name": "draw_polygon", "input": { "points": [[600, 220], [655, 220], [655, 275], [600, 275]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[655, 220], [710, 220], [710, 275], [655, 275]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[710, 220], [765, 220], [765, 275], [710, 275]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[765, 220], [820, 220], [820, 275], [765, 275]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[655, 165], [710, 165], [710, 220], [655, 220]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[655, 275], [710, 275], [710, 330], [655, 330]], "color": "#6ecfba", "fill": true } },
+        { "name": "write_text", "input": { "text": "א", "x": 710, "y": 368, "size": 30 } },
+        { "name": "draw_polygon", "input": { "points": [[180, 220], [345, 220], [345, 330], [180, 330]], "color": "#f2994a", "fill": true } },
+        { "name": "draw_line", "input": { "x1": 235, "y1": 220, "x2": 235, "y2": 330, "color": "#f2994a", "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 290, "y1": 220, "x2": 290, "y2": 330, "color": "#f2994a", "width": 2 } },
+        { "name": "draw_line", "input": { "x1": 180, "y1": 275, "x2": 345, "y2": 275, "color": "#f2994a", "width": 2 } },
+        { "name": "write_text", "input": { "text": "ב", "x": 262, "y": 368, "size": 30 } }
+      ]
+    },
+    "independent": {
+      "reply": "תור/ך לבד. בשתי השאלות הראשונות אפשר להסתכל על הפריסה שעל הלוח. השלישית היא מהראש, בלי ציור. תזכור/תזכרי: פאה מול פאה — תמיד באותו גודל. סיימנו נושא שלם על שטח ועל קופסאות, כל הכבוד 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה ריבועים בפריסה של קובייה?",
+            "answer": "6",
+            "kind": "number",
+            "x": 70,
+            "y": 100,
+            "hint": "כל פאה של הקובייה הופכת לריבוע אחד בפריסה. תסתכל/י על הפריסה שעל הלוח וספור/י: קודם את החגורה, ואחר כך את מה שמעליה ומתחתיה.",
+            "praise": "נכון! 6 פאות לקופסה, ולכן 6 ריבועים בפריסה 👏"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בפריסה שעל הלוח, מי עומד מול 1?",
+            "answer": "3",
+            "kind": "number",
+            "x": 70,
+            "y": 195,
+            "hint": "תסתכל/י על החגורה של ארבעת הריבועים. כשמקפלים אותה מסביב, ריבוע לא נעמד מול השכן הצמוד לו אלא מול זה שנמצא שני מקומות ממנו בחגורה.",
+            "praise": "מדויק! בחגורה, 1 נעמד מול 3 — ולכן שתי הפאות האלה זהות בגודל 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "לתיבה 6 פאות. כמה זוגות של פאות זהות?",
+            "answer": "3",
+            "kind": "number",
+            "x": 70,
+            "y": 290,
+            "hint": "כל פאה מוצאת בדיוק פאה אחת שעומדת מולה, ושתיהן זהות. אז כל הפאות מסתדרות בזוגות. כמה זוגות אפשר להרכיב מ-6 פאות?",
+            "praise": "יופי! 6 פאות מסתדרות בזוגות: מכסה ותחתית, קדימה ואחורה, ימין ושמאל 🏆"
+          }
+        },
+        { "name": "draw_polygon", "input": { "points": [[620, 380], [670, 380], [670, 430], [620, 430]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[670, 380], [720, 380], [720, 430], [670, 430]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[720, 380], [770, 380], [770, 430], [720, 430]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[770, 380], [820, 380], [820, 430], [770, 430]], "color": "#6ecfba", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[670, 330], [720, 330], [720, 380], [670, 380]], "color": "#f2994a", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[670, 430], [720, 430], [720, 480], [670, 480]], "color": "#f2994a", "fill": true } },
+        { "name": "write_text", "input": { "text": "1", "x": 645, "y": 405, "size": 24 } },
+        { "name": "write_text", "input": { "text": "2", "x": 695, "y": 405, "size": 24 } },
+        { "name": "write_text", "input": { "text": "3", "x": 745, "y": 405, "size": 24 } },
+        { "name": "write_text", "input": { "text": "4", "x": 795, "y": 405, "size": 24 } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "topic": "חקר נתונים",
+  "lesson": 3,
+  "title": "פיקטוגרם — סמל אחד שווה כמה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם הפכנו טבלה לעמודות. היום תמונה אחרת. תאר/י לך שצריך לצייר 40 ילדים — נשב על זה כל היום. אז עושים תרגיל חכם: מציירים 4 דמויות בלבד, וכל דמות עומדת במקום קבוצה שלמה של ילדים. לתמונה כזאת קוראים פיקטוגרם. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "במקום 40 ילדים — 4 ציורים",
+              "x": 480,
+              "y": 80,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 540 100' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='540' height='100' fill='#ffffff'/><text x='526' y='56' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>ילדים</text><g transform='translate(364,20) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(318,20) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(272,20) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(226,20) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g></svg>",
+              "title": "ארבע דמויות",
+              "x": 230,
+              "y": 168,
+              "w": 540,
+              "h": 100,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כל דמות עומדת במקום קבוצה",
+              "x": 480,
+              "y": 340,
+              "size": 28
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ציור אחד עושה עבודה גדולה",
+              "x": 480,
+              "y": 405,
+              "size": 28
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "לתמונה הזו קוראים פיקטוגרם",
+              "x": 480,
+              "y": 465,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "לכל פיקטוגרם יש פתק קטן בצד, וקוראים לו מפתח. הוא מגלה כמה ילדים מסתתרים בדמות אחת. כאן כתוב: כל דמות = 10 ילדים. זה הדבר הראשון שקוראים, לפני הכול. מי שמדלג על המפתח סופר ציורים במקום ילדים. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "המפתח — בלעדיו אי אפשר",
+              "x": 480,
+              "y": 80,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 540 156' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='540' height='156' fill='#ffffff'/><rect x='130' y='8' width='280' height='48' rx='10' fill='#fef9c3' stroke='#b45309' stroke-width='3'/><text x='270' y='39' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='23' font-weight='700' fill='#7c2d12'>כל דמות = 10 ילדים</text><text x='526' y='112' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>קבוצה</text><g transform='translate(364,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g></svg>",
+              "title": "המפתח",
+              "x": 230,
+              "y": 148,
+              "w": 540,
+              "h": 156,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קודם קוראים את המפתח",
+              "x": 480,
+              "y": 350,
+              "size": 30
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "רק אחר כך סופרים דמויות",
+              "x": 480,
+              "y": 412,
+              "size": 30
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בלי מפתח סופרים ציורים",
+              "x": 480,
+              "y": 472,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו נקרא שורה שלמה. בשורה 4 דמויות, וכל דמות היא 10 ילדים. אפשר לקפוץ בעשרות: 10, 20, 30, 40. ואפשר קצר — 4 כפול 10, וזה 40. תראה/י? פיקטוגרם הוא בעצם תרגיל כפל מצויר. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ארבע דמויות — כמה ילדים",
+              "x": 480,
+              "y": 78,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 540 176' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='540' height='176' fill='#ffffff'/><rect x='130' y='8' width='280' height='48' rx='10' fill='#fef9c3' stroke='#b45309' stroke-width='3'/><text x='270' y='39' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='23' font-weight='700' fill='#7c2d12'>כל דמות = 10 ילדים</text><text x='526' y='112' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>כדורגל</text><g transform='translate(364,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><text x='379' y='136' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='17' font-weight='700' fill='#0d9488'>10</text><g transform='translate(318,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><text x='333' y='136' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='17' font-weight='700' fill='#0d9488'>20</text><g transform='translate(272,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><text x='287' y='136' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='17' font-weight='700' fill='#0d9488'>30</text><g transform='translate(226,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><text x='241' y='136' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='17' font-weight='700' fill='#0d9488'>40</text></svg>",
+              "title": "קוראים שורה",
+              "x": 230,
+              "y": 128,
+              "w": 540,
+              "h": 176,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קופצים בעשרות עד הסוף",
+              "x": 480,
+              "y": 380,
+              "size": 28
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "4 × 10 = 40 ילדים",
+              "x": 480,
+              "y": 445,
+              "size": 34
+            }
+          }
+        ]
+      },
+      {
+        "reply": "לפעמים דמות מצוירת רק חצי. זה לא מסובך — זה פשוט חצי מהקבוצה. אם דמות שלמה היא 10 ילדים, חצי דמות היא 5 ילדים. כאן יש שלוש דמויות שלמות ועוד חצי: 10, 20, 30, ועוד 5 — ביחד 35 ילדים. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "וכשיש חצי דמות?",
+              "x": 480,
+              "y": 80,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 540 176' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='540' height='176' fill='#ffffff'/><rect x='130' y='8' width='280' height='48' rx='10' fill='#fef9c3' stroke='#b45309' stroke-width='3'/><text x='270' y='39' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='23' font-weight='700' fill='#7c2d12'>כל דמות = 10 ילדים</text><text x='526' y='112' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>טניס</text><g transform='translate(364,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><text x='379' y='136' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='17' font-weight='700' fill='#0d9488'>10</text><g transform='translate(318,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><text x='333' y='136' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='17' font-weight='700' fill='#0d9488'>20</text><g transform='translate(272,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><text x='287' y='136' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='17' font-weight='700' fill='#0d9488'>30</text><g transform='translate(226,76) scale(0.62)'><clipPath id='hc1'><rect x='0' y='0' width='24' height='66'/></clipPath><g clip-path='url(#hc1)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g></g><text x='234' y='136' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='17' font-weight='700' fill='#b45309'>5</text></svg>",
+              "title": "חצי דמות",
+              "x": 230,
+              "y": 130,
+              "w": 540,
+              "h": 176,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "שלוש שלמות — 10, 20, 30",
+              "x": 480,
+              "y": 385,
+              "size": 30
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "חצי דמות = חצי מ-10 = 5",
+              "x": 480,
+              "y": 448,
+              "size": 30
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ועכשיו הכיוון ההפוך, והוא המעניין. בקבוצה יש 30 ילדים — כמה דמויות נצייר? שואלים: כמה פעמים 10 נכנס ב-30? שלוש פעמים. אז מציירים 3 דמויות. בכיוון אחד מכפילים, בכיוון השני מחלקים — ותמיד מתחילים מהמפתח. עכשיו תור/ך 🙂",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הכיוון ההפוך — כמה לצייר",
+              "x": 480,
+              "y": 80,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 540 156' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='540' height='156' fill='#ffffff'/><rect x='130' y='8' width='280' height='48' rx='10' fill='#fef9c3' stroke='#b45309' stroke-width='3'/><text x='270' y='39' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='23' font-weight='700' fill='#7c2d12'>כל דמות = 10 ילדים</text><text x='526' y='112' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>הקבוצה</text><g transform='translate(364,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(318,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(272,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g></svg>",
+              "title": "מציירים קבוצה",
+              "x": 230,
+              "y": 140,
+              "w": 540,
+              "h": 156,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בקבוצה 30 ילדים",
+              "x": 480,
+              "y": 370,
+              "size": 30
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כמה פעמים 10 נכנס ב-30?",
+              "x": 480,
+              "y": 432,
+              "size": 28
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "שלוש — אז 3 דמויות",
+              "x": 480,
+              "y": 488,
+              "size": 28
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח פיקטוגרם של חוגים, ומעליו המפתח. אני שואל על ריקוד. תתחיל/י תמיד מאותו מקום — קודם המפתח, ורק אחר כך סופרים דמויות. את המספר כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה ילדים בריקוד?",
+            "answer": "60",
+            "kind": "number",
+            "x": 70,
+            "y": 105,
+            "hint": "קודם קרא/י את המפתח בצהוב — כמה ילדים מסתתרים בדמות אחת? עכשיו ספור/י כמה דמויות יש בשורה של ריקוד, ותקפוץ/תקפצי בעשרות — קפיצה לכל דמות.",
+            "praise": "מצוין! התחלת מהמפתח ורק אז ספרת דמויות — בדיוק הסדר הנכון 👏"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 540 238' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='540' height='238' fill='#ffffff'/><rect x='130' y='8' width='280' height='48' rx='10' fill='#fef9c3' stroke='#b45309' stroke-width='3'/><text x='270' y='39' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='23' font-weight='700' fill='#7c2d12'>כל דמות = 10 ילדים</text><text x='526' y='112' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>ריקוד</text><g transform='translate(364,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(318,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(272,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(226,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(180,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(134,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><line x1='10' y1='144' x2='530' y2='144' stroke='#99f6e4' stroke-width='2' stroke-linecap='round'/><text x='526' y='194' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>שחייה</text><g transform='translate(364,158) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(318,158) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(272,158) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g></svg>",
+            "title": "חוגים בבית הספר",
+            "x": 250,
+            "y": 168,
+            "w": 500,
+            "h": 220,
+            "exact": true
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד — שלוש שאלות. על הלוח פיקטוגרם חדש: טעם הגלידה האהוב. בשתיים הראשונות תקרא/י מהתמונה, ובשלישית תלך/י בכיוון ההפוך — בלי תמונה. בשיעור הבא נשווה שתי קבוצות בבת אחת 🙂",
+      "toolCalls": [
+        {
+          "name": "write_text",
+          "input": {
+            "text": "טעם הגלידה האהוב",
+            "x": 480,
+            "y": 68,
+            "size": 30
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 540 238' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='540' height='238' fill='#ffffff'/><rect x='130' y='8' width='280' height='48' rx='10' fill='#fef9c3' stroke='#b45309' stroke-width='3'/><text x='270' y='39' text-anchor='middle' font-family='Assistant, Arial, sans-serif' font-size='23' font-weight='700' fill='#7c2d12'>כל דמות = 10 ילדים</text><text x='526' y='112' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>שוקולד</text><g transform='translate(364,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(318,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(272,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(226,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(180,76) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><line x1='10' y1='144' x2='530' y2='144' stroke='#99f6e4' stroke-width='2' stroke-linecap='round'/><text x='526' y='194' text-anchor='end' font-family='Assistant, Arial, sans-serif' font-size='24' font-weight='700' fill='#0f3b36'>וניל</text><g transform='translate(364,158) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(318,158) scale(0.62)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g><g transform='translate(272,158) scale(0.62)'><clipPath id='hc2'><rect x='0' y='0' width='24' height='66'/></clipPath><g clip-path='url(#hc2)'><circle cx='24' cy='13' r='11' fill='#0d9488'/><path d='M24 26 c-10 0 -15 8 -15 17 v19 h30 v-19 c0 -9 -5 -17 -15 -17 z' fill='#0d9488'/></g></g></svg>",
+            "title": "סקר גלידה",
+            "x": 265,
+            "y": 90,
+            "w": 470,
+            "h": 207,
+            "exact": true
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה אוהבים שוקולד?",
+            "answer": "50",
+            "kind": "number",
+            "x": 70,
+            "y": 350,
+            "hint": "תתחיל/י מהמפתח: כמה ילדים בדמות אחת? עכשיו ספור/י את הדמויות בשורה של שוקולד, ותקפוץ/תקפצי בעשרות — קפיצה אחת לכל דמות.",
+            "praise": "יופי! ספרת דמויות וקפצת בעשרות — קראת פיקטוגרם לגמרי לבד 👏"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה אוהבים וניל?",
+            "answer": "25",
+            "kind": "number",
+            "x": 70,
+            "y": 415,
+            "hint": "בשורה הזו יש שתי דמויות שלמות ועוד חצי דמות. קודם תקפוץ/תקפצי בעשרות על השלמות. ואז תזכור/תזכרי: חצי דמות היא חצי מ-10.",
+            "praise": "מדויק! לא התבלבלת מהחצי — שתי דמויות שלמות ועוד חצי 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "80 ילדים, כל דמות 10 — כמה דמויות?",
+            "answer": "8",
+            "kind": "number",
+            "x": 70,
+            "y": 480,
+            "hint": "עכשיו הכיוון ההפוך — מציירים, לא קוראים. תשאל/י את עצמך כמה פעמים 10 נכנס בקבוצה הזאת. אפשר לקפוץ בעשרות ולספור את הקפיצות.",
+            "praise": "אלוף/ה! בכיוון הזה מחלקים, ועשית את זה לבד 🏆"
+          }
+        }
+      ]
+    }
+  }
+}

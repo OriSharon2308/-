@@ -1,0 +1,71 @@
+{
+  "topic": "המספרים עד רבבה",
+  "lesson": 1,
+  "title": "האלף — חבר חדש במשפחה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בכיתה ב׳ הכרת את הבלוקים. ריבוע גדול הוא 100. מוט הוא 10. וקובייה קטנה היא 1. ככה בנינו כל מספר עד 999. היום נפגוש מספר חדש — גדול מכולם. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מה שכבר יש לך ביד", "x": 480, "y": 90, "size": 34 } },
+          { "name": "draw_base_ten", "input": { "value": 342, "x": 480, "y": 250, "label": "" } },
+          { "name": "write_text", "input": { "text": "ריבוע = 100 · מוט = 10 · קובייה = 1", "x": 480, "y": 390, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "תראה/י — תשעה ריבועים של מאה. כל אחד שווה 100. ומה יקרה אם נוסיף עוד מאה אחת? לחץ/י על הכפתור ותגלה/י. אחר כך ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ומה אם נוסיף עוד מאה?", "x": 480, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "עשר מאות", "x": 190, "y": 130, "w": 620, "h": 310, "html": "<style>body{margin:0;font-family:Assistant,system-ui,sans-serif;color:#0f3b36}.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}.grid{display:grid;grid-template-columns:repeat(5,56px);gap:9px;padding:6px;border-radius:12px}.grid.merged{outline:5px solid #22c55e}.sq{width:56px;height:56px;border:2px solid #0d9488;border-radius:6px;background:repeating-linear-gradient(#0d948833 0 1px,transparent 1px 5.6px),repeating-linear-gradient(90deg,#0d948833 0 1px,transparent 1px 5.6px)}.sq.off{border-style:dashed;opacity:.3;background:none}.sq.on{animation:pop .45s ease-out}@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}button{font:700 20px Assistant,sans-serif;background:#0d9488;color:#fff;border:0;border-radius:12px;padding:8px 20px;cursor:pointer}#msg{font:800 30px Assistant,sans-serif;color:#0d9488;height:36px}</style><div class='wrap'><div id='msg'></div><div class='grid' id='g'></div><button id='b'>עוד מאה +</button></div><script>var g=document.getElementById('g'),m=document.getElementById('msg'),b=document.getElementById('b');for(var i=0;i<10;i++){var d=document.createElement('div');d.className='sq'+(i===9?' off':'');g.appendChild(d);}b.onclick=function(){var last=g.children[9];if(last.className.indexOf('off')>-1){last.className='sq on';m.textContent='עשר מאות!';b.textContent='ומה זה יחד?';}else{g.className='grid merged';m.textContent='1,000';b.disabled=true;parent.postMessage({type:'vela:correct'},'*');}};</script>" } }
+        ]
+      },
+      {
+        "reply": "עכשיו הסוד. 10 יחידות מתאגדות לעשרת אחת. 10 עשרות מתאגדות למאה אחת. וגם עכשיו — 10 מאות מתאגדות לאלף אחד. זה אותו גלגל, רק גדול יותר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אותו גלגל, רק גדול יותר", "x": 480, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "10 יחידות ← עשרת אחת", "x": 480, "y": 185, "size": 30 } },
+          { "name": "write_text", "input": { "text": "10 עשרות ← מאה אחת", "x": 480, "y": 265, "size": 30 } },
+          { "name": "write_text", "input": { "text": "10 מאות ← אלף אחד", "x": 480, "y": 345, "size": 32, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "בכל פעם עשרה הופכים לאחד גדול", "x": 480, "y": 440, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עד היום עצרנו ב-999. מוסיפים עוד אחד — ומקבלים אלף. ככה כותבים אותו: 1,000. תראה/י, זה המספר הראשון בעולם עם ארבע ספרות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "איך כותבים אלף", "x": 480, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "999 ועוד 1 = 1,000", "x": 480, "y": 175, "size": 32 } },
+          { "name": "write_text", "input": { "text": "1,000", "x": 480, "y": 280, "size": 64, "color": "#2563eb" } },
+          { "name": "write_text", "input": { "text": "המספר הראשון עם ארבע ספרות", "x": 480, "y": 390, "size": 28 } },
+          { "name": "write_text", "input": { "text": "קוראים לו: אלף", "x": 480, "y": 455, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נספור באלפים. אלף, אלפיים, שלושת אלפים... עד עשרת אלפים. למספר 10,000 יש שם מיוחד — רבבה. זה השם של כל הנושא שלנו 🙂 ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "סופרים באלפים", "x": 480, "y": 100, "size": 34 } },
+          { "name": "draw_number_line", "input": { "x": 100, "y": 300, "from": 0, "to": 10000, "step": 1000, "length": 780 } },
+          { "name": "write_text", "input": { "text": "אלף · אלפיים · שלושת אלפים ...", "x": 480, "y": 420, "size": 28 } },
+          { "name": "write_text", "input": { "text": "10,000 = רבבה", "x": 480, "y": 480, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "תורך 🙂 על הלוח ריבועי-מאה. תזכור/תזכרי: אלף אחד בנוי מעשרה ריבועים כאלה. תספור/י כמה ריבועים יש כאן, ואז תחשוב/י כמה עוד חסרים כדי שיהיו עשרה. את המספר כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה מאות עוד חסרות עד אלף?", "answer": "4", "kind": "number", "hint": "אלף אחד הוא עשרה ריבועים. תספור/י קודם כמה ריבועים יש על הלוח, ואז תשלים/י בראש — כמה עוד צריך להוסיף כדי שיהיו עשרה?", "praise": "יפה מאוד! ספרת את הריבועים והשלמת עד עשרה — ככה בונים אלף 👏" } },
+        { "name": "write_text", "input": { "text": "אלף אחד = עשרה ריבועים", "x": 480, "y": 200, "size": 26 } },
+        { "name": "draw_base_ten", "input": { "value": 600, "x": 480, "y": 330, "label": "" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. לראשונה שמתי ריבועים לעזרה. בשתיים הבאות תחשוב/י בראש — למדנו היום הכול 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה ריבועי-מאה עוד חסרים עד אלף?", "answer": "5", "kind": "number", "x": 130, "y": 130, "hint": "תספור/י את הריבועים שעל הלוח. אלף הוא עשרה ריבועים — כמה עוד צריך להוסיף כדי להגיע לעשרה?", "praise": "מצוין! השלמת את הריבועים עד עשרה — בדיוק ככה מרכיבים אלף 👏" } },
+        { "name": "draw_base_ten", "input": { "value": 500, "x": 520, "y": 270, "label": "" } },
+        { "name": "write_text", "input": { "text": "עזרה לשאלה הראשונה", "x": 520, "y": 350, "size": 24 } },
+        { "name": "draw_exercise", "input": { "text": "עשר מאות =", "answer": "1000", "kind": "number", "x": 130, "y": 400, "hint": "כל ריבוע כזה הוא מאה. תחשוב/י על הגלגל — עשר מאות מתאגדות ליחידה חדשה וגדולה. איך כותבים אותה?", "praise": "בול! עשר מאות הן אלף אחד — המספר הראשון עם ארבע ספרות 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "מה בא אחרי 5,000 בקפיצות של אלף?", "answer": "6000", "kind": "number", "x": 130, "y": 470, "hint": "כל קפיצה מוסיפה אלף אחד. תגיד/י בקול: שלושת אלפים, ארבעת אלפים, חמשת אלפים — ומי בא אחריהם?", "praise": "מעולה! ספרת באלפים ולא נפלת מהקפיצה הגדולה 🏆" } }
+      ]
+    }
+  }
+}
