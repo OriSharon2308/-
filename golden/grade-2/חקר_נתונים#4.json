@@ -1,0 +1,309 @@
+{
+  "topic": "חקר נתונים",
+  "lesson": 4,
+  "title": "פיקטוגרם — כשסמל אחד שווה כמה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום תמונה חדשה: פיקטוגרם. במקום משבצות — סמלים. כל שורה כאן היא כיתה, וכל תפוח מצויר הוא סמל. למעלה יש מקרא, וזה החלק הכי חשוב: תפוח אחד מצויר שווה 5 תפוחים אמיתיים. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "פיקטוגרם — תמונה עם מקרא",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 560 290' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='540' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><rect x='498' y='17' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='511' cy='21' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 511 21)'/><circle cx='500' cy='43' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='494' cy='37' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><text x='452' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>=</text><text x='418' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>5</text><text x='348' y='49' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>תפוחים</text><text x='490' y='115' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה א׳</text><rect x='398' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 84)'/><circle cx='400' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 84)'/><circle cx='346' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 84)'/><circle cx='292' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='236' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='249' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 249 84)'/><circle cx='238' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='232' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><line x1='20' y1='141' x2='540' y2='141' stroke='#cbd5e1' stroke-width='1.5'/><text x='490' y='185' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה ב׳</text><rect x='398' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 154)'/><circle cx='400' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 154)'/><circle cx='346' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 154)'/><circle cx='292' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='236' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='249' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 249 154)'/><circle cx='238' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='232' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='182' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='195' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 195 154)'/><circle cx='184' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='178' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='128' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='141' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 141 154)'/><circle cx='130' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='124' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><line x1='20' y1='211' x2='540' y2='211' stroke='#cbd5e1' stroke-width='1.5'/><text x='490' y='255' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה ג׳</text><rect x='398' y='220' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='224' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 224)'/><circle cx='400' cy='246' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='240' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='220' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='224' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 224)'/><circle cx='346' cy='246' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='240' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='220' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='224' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 224)'/><circle cx='292' cy='246' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='240' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/></svg>",
+              "title": "כמה תפוחים אכלו",
+              "x": 150,
+              "y": 120,
+              "w": 700,
+              "h": 363
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קוראים תמיד את המקרא קודם",
+              "x": 500,
+              "y": 500,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו שאלה. בשורה של כיתה א׳ יש 4 תפוחים מצוירים. כמה תפוחים אכלו באמת? לא 4! כל תפוח שווה 5, אז 4 פעמים 5, וזה 20. כאן הכפל שלמדנו נכנס לעבודה אמיתית 🙂 לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "4 סמלים — לא 4 תפוחים",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 560 150' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='540' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><rect x='498' y='17' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='511' cy='21' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 511 21)'/><circle cx='500' cy='43' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='494' cy='37' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><text x='452' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>=</text><text x='418' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>5</text><text x='348' y='49' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>תפוחים</text><text x='490' y='115' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה א׳</text><rect x='398' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 84)'/><circle cx='400' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 84)'/><circle cx='346' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 84)'/><circle cx='292' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='236' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='249' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 249 84)'/><circle cx='238' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='232' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/></svg>",
+              "title": "כיתה א׳",
+              "x": 180,
+              "y": 130,
+              "w": 620,
+              "h": 166
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "4 × 5 = 20",
+              "x": 500,
+              "y": 400,
+              "size": 44
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "סופרים סמלים, וכופלים במקרא",
+              "x": 500,
+              "y": 470,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ולמה המקרא כל כך חשוב? תסתכל/י — בדיוק אותם 4 תפוחים, אבל עכשיו כל תפוח שווה 10. אז 4 פעמים 10, וזה 40! אותה תמונה בדיוק, תשובה אחרת לגמרי. לכן קוראים קודם את המקרא. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אותה תמונה, מקרא אחר",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 560 150' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='540' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><rect x='498' y='17' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='511' cy='21' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 511 21)'/><circle cx='500' cy='43' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='494' cy='37' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><text x='452' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>=</text><text x='418' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>10</text><text x='348' y='49' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>תפוחים</text><text x='490' y='115' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה א׳</text><rect x='398' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 84)'/><circle cx='400' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 84)'/><circle cx='346' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 84)'/><circle cx='292' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='236' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='249' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 249 84)'/><circle cx='238' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='232' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/></svg>",
+              "title": "כיתה א׳",
+              "x": 180,
+              "y": 130,
+              "w": 620,
+              "h": 166
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "4 × 10 = 40",
+              "x": 500,
+              "y": 400,
+              "size": 44
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בלי מקרא — אי אפשר לדעת",
+              "x": 500,
+              "y": 470,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו משווים בין שורות. כיתה ב׳: 6 תפוחים מצוירים, 6 פעמים 5, וזה 30. כיתה א׳: 20. אז בכמה יותר? 30 פחות 20, וזה 10. שים/י לב — משווים אחרי המקרא, לא לפי מספר הסמלים לבד. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "משווים בין שורות",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 560 220' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='540' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><rect x='498' y='17' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='511' cy='21' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 511 21)'/><circle cx='500' cy='43' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='494' cy='37' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><text x='452' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>=</text><text x='418' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>5</text><text x='348' y='49' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>תפוחים</text><text x='490' y='115' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה א׳</text><rect x='398' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 84)'/><circle cx='400' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 84)'/><circle cx='346' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 84)'/><circle cx='292' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='236' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='249' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 249 84)'/><circle cx='238' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='232' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><line x1='20' y1='141' x2='540' y2='141' stroke='#cbd5e1' stroke-width='1.5'/><text x='490' y='185' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה ב׳</text><rect x='398' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 154)'/><circle cx='400' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 154)'/><circle cx='346' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 154)'/><circle cx='292' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='236' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='249' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 249 154)'/><circle cx='238' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='232' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='182' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='195' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 195 154)'/><circle cx='184' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='178' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='128' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='141' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 141 154)'/><circle cx='130' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='124' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/></svg>",
+              "title": "שתי כיתות",
+              "x": 160,
+              "y": 120,
+              "w": 660,
+              "h": 259
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "30 − 20 = 10",
+              "x": 500,
+              "y": 420,
+              "size": 40
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קודם המקרא, ורק אז משווים",
+              "x": 500,
+              "y": 485,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "וזה סוף הדרך שעברנו. אותם נתונים בדיוק: מימין בטבלה, ומשמאל בפיקטוגרם. בדיאגרמת עמודות היינו צריכים 30 משבצות — המון! בפיקטוגרם מספיקים 6 תפוחים. כל תמונה נוחה למשהו אחר 🙂 לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אותם נתונים, ייצוגים שונים",
+              "x": 500,
+              "y": 78,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 420 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='400' height='230' fill='#ffffff' stroke='#0f3b36' stroke-width='3'/><rect x='10' y='10' width='400' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><line x1='170' y1='10' x2='170' y2='240' stroke='#0f3b36' stroke-width='3'/><text x='290' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>מה</text><text x='90' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>כמה</text><line x1='10' y1='66' x2='410' y2='66' stroke='#0f3b36' stroke-width='3'/><text x='290' y='105' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כיתה א׳</text><text x='90' y='106' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>20</text><line x1='10' y1='124' x2='410' y2='124' stroke='#0f3b36' stroke-width='2'/><text x='290' y='163' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כיתה ב׳</text><text x='90' y='164' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>30</text><line x1='10' y1='182' x2='410' y2='182' stroke='#0f3b36' stroke-width='2'/><text x='290' y='221' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כיתה ג׳</text><text x='90' y='222' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>15</text></svg>",
+              "title": "טבלה",
+              "x": 650,
+              "y": 165,
+              "w": 280,
+              "h": 167
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 560 290' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='540' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><rect x='498' y='17' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='511' cy='21' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 511 21)'/><circle cx='500' cy='43' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='494' cy='37' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><text x='452' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>=</text><text x='418' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>5</text><text x='348' y='49' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>תפוחים</text><text x='490' y='115' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה א׳</text><rect x='398' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 84)'/><circle cx='400' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 84)'/><circle cx='346' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 84)'/><circle cx='292' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='236' y='80' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='249' cy='84' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 249 84)'/><circle cx='238' cy='106' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='232' cy='100' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><line x1='20' y1='141' x2='540' y2='141' stroke='#cbd5e1' stroke-width='1.5'/><text x='490' y='185' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה ב׳</text><rect x='398' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 154)'/><circle cx='400' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 154)'/><circle cx='346' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 154)'/><circle cx='292' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='236' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='249' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 249 154)'/><circle cx='238' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='232' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='182' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='195' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 195 154)'/><circle cx='184' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='178' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='128' y='150' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='141' cy='154' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 141 154)'/><circle cx='130' cy='176' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='124' cy='170' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><line x1='20' y1='211' x2='540' y2='211' stroke='#cbd5e1' stroke-width='1.5'/><text x='490' y='255' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה ג׳</text><rect x='398' y='220' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='411' cy='224' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 411 224)'/><circle cx='400' cy='246' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='394' cy='240' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='344' y='220' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='357' cy='224' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 357 224)'/><circle cx='346' cy='246' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='340' cy='240' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/><rect x='290' y='220' width='4' height='11' rx='2' fill='#7c4a17'/><ellipse cx='303' cy='224' rx='9' ry='5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 303 224)'/><circle cx='292' cy='246' r='17' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='286' cy='240' rx='4.5' ry='6' fill='#ffffff' opacity='.5'/></svg>",
+              "title": "פיקטוגרם",
+              "x": 70,
+              "y": 175,
+              "w": 520,
+              "h": 269
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בטבלה מדויק · בתמונה מהיר",
+              "x": 500,
+              "y": 510,
+              "size": 26
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. פיקטוגרם חדש: כמה כדורים אספה כל כיתה. קרא/י קודם את המקרא למעלה! עכשיו ספור/ספרי כמה כדורים מצוירים בשורה של כיתה א׳, וכפול/כפלי במה שכתוב במקרא. הציר למטה יעזור לקפוץ.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה כדורים אספה כיתה א׳?",
+            "answer": "30",
+            "kind": "number",
+            "hint": "בשורה של כיתה א׳ יש 3 כדורים מצוירים, וכל כדור שווה 10. אפשר לקפוץ על הציר: 10, ועוד 10, ועוד 10 — איפה עצרת?",
+            "praise": "מצוין! 3 כדורים מצוירים, כל אחד שווה 10 — קראת את המקרא נכון 🙂"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 560 220' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='540' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><circle cx='500' cy='43' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='500.0,36.0 506.7,40.8 504.1,48.7 495.9,48.7 493.3,40.8' fill='#0f3b36'/><path d='M 500 26 L 500 36' stroke='#0f3b36' stroke-width='2'/><path d='M 516 48 L 506.65 45.1' stroke='#0f3b36' stroke-width='2'/><path d='M 484 48 L 493.35 45.1' stroke='#0f3b36' stroke-width='2'/><text x='452' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>=</text><text x='418' y='50' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>10</text><text x='348' y='49' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>כדורים</text><text x='490' y='115' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה א׳</text><circle cx='400' cy='106' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='400.0,99.0 406.7,103.8 404.1,111.7 395.9,111.7 393.3,103.8' fill='#0f3b36'/><path d='M 400 89 L 400 99' stroke='#0f3b36' stroke-width='2'/><path d='M 416 111 L 406.65 108.1' stroke='#0f3b36' stroke-width='2'/><path d='M 384 111 L 393.35 108.1' stroke='#0f3b36' stroke-width='2'/><circle cx='346' cy='106' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='346.0,99.0 352.7,103.8 350.1,111.7 341.9,111.7 339.3,103.8' fill='#0f3b36'/><path d='M 346 89 L 346 99' stroke='#0f3b36' stroke-width='2'/><path d='M 362 111 L 352.65 108.1' stroke='#0f3b36' stroke-width='2'/><path d='M 330 111 L 339.35 108.1' stroke='#0f3b36' stroke-width='2'/><circle cx='292' cy='106' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='292.0,99.0 298.7,103.8 296.1,111.7 287.9,111.7 285.3,103.8' fill='#0f3b36'/><path d='M 292 89 L 292 99' stroke='#0f3b36' stroke-width='2'/><path d='M 308 111 L 298.65 108.1' stroke='#0f3b36' stroke-width='2'/><path d='M 276 111 L 285.35 108.1' stroke='#0f3b36' stroke-width='2'/><line x1='20' y1='141' x2='540' y2='141' stroke='#cbd5e1' stroke-width='1.5'/><text x='490' y='185' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כיתה ב׳</text><circle cx='400' cy='176' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='400.0,169.0 406.7,173.8 404.1,181.7 395.9,181.7 393.3,173.8' fill='#0f3b36'/><path d='M 400 159 L 400 169' stroke='#0f3b36' stroke-width='2'/><path d='M 416 181 L 406.65 178.1' stroke='#0f3b36' stroke-width='2'/><path d='M 384 181 L 393.35 178.1' stroke='#0f3b36' stroke-width='2'/><circle cx='346' cy='176' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='346.0,169.0 352.7,173.8 350.1,181.7 341.9,181.7 339.3,173.8' fill='#0f3b36'/><path d='M 346 159 L 346 169' stroke='#0f3b36' stroke-width='2'/><path d='M 362 181 L 352.65 178.1' stroke='#0f3b36' stroke-width='2'/><path d='M 330 181 L 339.35 178.1' stroke='#0f3b36' stroke-width='2'/><circle cx='292' cy='176' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='292.0,169.0 298.7,173.8 296.1,181.7 287.9,181.7 285.3,173.8' fill='#0f3b36'/><path d='M 292 159 L 292 169' stroke='#0f3b36' stroke-width='2'/><path d='M 308 181 L 298.65 178.1' stroke='#0f3b36' stroke-width='2'/><path d='M 276 181 L 285.35 178.1' stroke='#0f3b36' stroke-width='2'/><circle cx='238' cy='176' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='238.0,169.0 244.7,173.8 242.1,181.7 233.9,181.7 231.3,173.8' fill='#0f3b36'/><path d='M 238 159 L 238 169' stroke='#0f3b36' stroke-width='2'/><path d='M 254 181 L 244.65 178.1' stroke='#0f3b36' stroke-width='2'/><path d='M 222 181 L 231.35 178.1' stroke='#0f3b36' stroke-width='2'/><circle cx='184' cy='176' r='17' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><polygon points='184.0,169.0 190.7,173.8 188.1,181.7 179.9,181.7 177.3,173.8' fill='#0f3b36'/><path d='M 184 159 L 184 169' stroke='#0f3b36' stroke-width='2'/><path d='M 200 181 L 190.65 178.1' stroke='#0f3b36' stroke-width='2'/><path d='M 168 181 L 177.35 178.1' stroke='#0f3b36' stroke-width='2'/></svg>",
+            "title": "כדורים שאספנו",
+            "x": 70,
+            "y": 175,
+            "w": 540,
+            "h": 212
+          }
+        },
+        {
+          "name": "draw_number_line",
+          "input": {
+            "from": 0,
+            "to": 50,
+            "step": 10,
+            "x": 90,
+            "y": 430,
+            "length": 480
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "תורך לבד! פיקטוגרם של תפוחים שאכלו שלושה ילדים. המקרא למעלה — קרא/י אותו קודם, תמיד. ספור/ספרי סמלים, ואז כפול/כפלי. בשאלה האחרונה נשווה בין שניים. בהצלחה 🏆",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה תפוחים אכלה שרה?",
+            "answer": "25",
+            "kind": "number",
+            "hint": "ספור/ספרי כמה תפוחים מצוירים בשורה של שרה. עכשיו הסתכל/י במקרא — כמה שווה כל תפוח? אפשר לדלג בחמישות: 5, 10, 15...",
+            "praise": "נכון! ספרת סמלים וכפלת במקרא. ככה קוראים פיקטוגרם."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה תפוחים אכל דני?",
+            "answer": "30",
+            "kind": "number",
+            "hint": "בשורה של דני יש יותר תפוחים מצוירים. ספור/ספרי אותם, וכפול/כפלי במה שכתוב במקרא. אפשר לדלג בחמישות: 5, 10, 15, 20...",
+            "praise": "יופי! שורה ארוכה יותר — אבל אותה דרך בדיוק."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בכמה יותר אכל דני משרה?",
+            "answer": "5",
+            "kind": "number",
+            "hint": "כבר מצאת כמה אכל דני וכמה אכלה שרה. בכמה יותר אומר לחסר — המספר הקטן יוצא מהמספר הגדול.",
+            "praise": "וואו! ספרת, כפלת והשווית. סיימת את חקר הנתונים כמו אלוף/ה 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 420 270' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='8' y='8' width='404' height='52' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><rect x='378' y='13' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='391' cy='17' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 391 17)'/><circle cx='380' cy='40' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='375' cy='35' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><text x='338' y='49' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>=</text><text x='308' y='49' text-anchor='middle' font-size='28' font-weight='700' fill='#38a08f'>5</text><text x='248' y='48' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוחים</text><text x='390' y='108' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>שרה</text><rect x='338' y='73' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='351' cy='77' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 351 77)'/><circle cx='340' cy='100' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='335' cy='95' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='294' y='73' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='307' cy='77' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 307 77)'/><circle cx='296' cy='100' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='291' cy='95' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='250' y='73' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='263' cy='77' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 263 77)'/><circle cx='252' cy='100' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='247' cy='95' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='206' y='73' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='219' cy='77' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 219 77)'/><circle cx='208' cy='100' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='203' cy='95' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='162' y='73' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='175' cy='77' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 175 77)'/><circle cx='164' cy='100' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='159' cy='95' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><line x1='16' y1='132' x2='404' y2='132' stroke='#cbd5e1' stroke-width='1.5'/><text x='390' y='178' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>דני</text><rect x='338' y='143' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='351' cy='147' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 351 147)'/><circle cx='340' cy='170' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='335' cy='165' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='294' y='143' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='307' cy='147' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 307 147)'/><circle cx='296' cy='170' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='291' cy='165' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='250' y='143' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='263' cy='147' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 263 147)'/><circle cx='252' cy='170' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='247' cy='165' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='206' y='143' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='219' cy='147' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 219 147)'/><circle cx='208' cy='170' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='203' cy='165' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='162' y='143' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='175' cy='147' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 175 147)'/><circle cx='164' cy='170' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='159' cy='165' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='118' y='143' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='131' cy='147' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 131 147)'/><circle cx='120' cy='170' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='115' cy='165' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><line x1='16' y1='202' x2='404' y2='202' stroke='#cbd5e1' stroke-width='1.5'/><text x='390' y='248' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>מיה</text><rect x='338' y='213' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='351' cy='217' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 351 217)'/><circle cx='340' cy='240' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='335' cy='235' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/><rect x='294' y='213' width='4' height='10' rx='2' fill='#7c4a17'/><ellipse cx='307' cy='217' rx='8' ry='4.5' fill='#22c55e' stroke='#0f3b36' stroke-width='1.5' transform='rotate(-20 307 217)'/><circle cx='296' cy='240' r='15' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><ellipse cx='291' cy='235' rx='4' ry='5.5' fill='#ffffff' opacity='.5'/></svg>",
+            "title": "תפוחים שאכלנו",
+            "x": 45,
+            "y": 95,
+            "w": 330,
+            "h": 212
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "קודם המקרא, אחר כך סופרים",
+            "x": 250,
+            "y": 350,
+            "size": 26
+          }
+        }
+      ]
+    }
+  }
+}

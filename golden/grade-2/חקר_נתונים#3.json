@@ -1,0 +1,317 @@
+{
+  "topic": "חקר נתונים",
+  "lesson": 3,
+  "title": "לקרוא דיאגרמה ולהשוות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "הנה דיאגרמה מוכנה: כמה פירות אכלו בכיתה. קוראים אותה בשלושה צעדים. אחד: מסתכלים מה כל עמודה — כתוב מתחתיה. שתיים: מסתכלים על המספרים בציר. שלוש: רק אז קוראים כמה גבוהה כל עמודה. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "איך קוראים דיאגרמה",
+              "x": 500,
+              "y": 78,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='170' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='142' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='114' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='86' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='58' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוז</text><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='170' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='142' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "פירות שאכלנו",
+              "x": 290,
+              "y": 110,
+              "w": 454,
+              "h": 400
+            }
+          }
+        ]
+      },
+      {
+        "reply": "זהירות, טעות שכולם עושים! סופרים משבצות — לא קווים. בדיוק כמו בסרגל: לא סופרים את הקווים, סופרים את הרווחים ביניהם. עמודת בננה נעצרת על 9, אז יש בה 9 משבצות. ספור/ספרי לאט. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "סופרים משבצות, לא קווים",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='170' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='142' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='114' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='86' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='58' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוז</text><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='170' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='142' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "פירות שאכלנו",
+              "x": 120,
+              "y": 120,
+              "w": 409,
+              "h": 360
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בדיוק כמו בסרגל",
+              "x": 740,
+              "y": 250,
+              "size": 28
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קו זה לא משבצת",
+              "x": 740,
+              "y": 310,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו שאלה שמחזירה את החשבון שלנו. בננה 9, תפוז 5. בכמה יותר בננות? זו לא שאלת חיבור — זו השוואה, וזה חיסור: 9 פחות 5 שווה 4. אפשר גם לספור כמה משבצות חסרות לתפוז. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בכמה יותר?",
+              "x": 500,
+              "y": 78,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='170' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='142' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='114' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='86' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='58' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוז</text><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='170' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='142' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "פירות שאכלנו",
+              "x": 120,
+              "y": 120,
+              "w": 409,
+              "h": 360
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "9 − 5 = 4",
+              "x": 750,
+              "y": 250,
+              "size": 40
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "יותר ב... זה חיסור",
+              "x": 750,
+              "y": 320,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ושאלה אחרת לגמרי על אותה דיאגרמה: כמה בננות ותפוזים ביחד? כאן מחברים — 9 ועוד 5 שווה 14. שים/י לב להבדל: בכמה יותר זה חיסור, ביחד זה חיבור. אותה תמונה, שתי שאלות שונות. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כמה ביחד?",
+              "x": 500,
+              "y": 78,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='170' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='142' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='114' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='86' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='58' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוז</text><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='170' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='142' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "פירות שאכלנו",
+              "x": 120,
+              "y": 120,
+              "w": 409,
+              "h": 360
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "9 + 5 = 14",
+              "x": 750,
+              "y": 250,
+              "size": 40
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ביחד זה חיבור",
+              "x": 750,
+              "y": 320,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ושאלה ערמומית לסיום: אפשר לדעת מהדיאגרמה מי אכל את הפירות? לא! הדיאגרמה סופרת רק פירות, היא לא יודעת שמות. דיאגרמה עונה רק על מה שנמדד בה — ולא ממציאים תשובות. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "על מה הדיאגרמה לא עונה",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='170' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='142' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='114' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='86' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='58' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוז</text><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='170' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='142' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "פירות שאכלנו",
+              "x": 120,
+              "y": 120,
+              "w": 409,
+              "h": 360
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מי אכל אותם?",
+              "x": 750,
+              "y": 240,
+              "size": 32
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אי אפשר לדעת מכאן",
+              "x": 750,
+              "y": 310,
+              "size": 28
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. בדיאגרמה: כמה ילדים בחרו כלב, וכמה בחרו חתול. השאלה היא בכמה יותר — אז זו השוואה, וזה חיסור. השארתי לך ציר מספרים ליד הדיאגרמה, אפשר לספור עליו את ההפרש.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בכמה יותר בחרו כלב מחתול?",
+            "answer": "3",
+            "kind": "number",
+            "hint": "קרא/י קודם את הגובה של עמודת כלב, ואחר כך של חתול. עכשיו שאל/י: כמה משבצות צריך להוסיף לחתול כדי להשוות לכלב? אפשר גם לחסר את המספר הקטן מהגדול.",
+            "praise": "יופי! בכמה יותר זה תמיד חיסור — והצלחת 🙂"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 291 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='243' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='243' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='243' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='243' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='243' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='243' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='243' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='243' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='243' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='243' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='155' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='142' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='114' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>כלב</text><rect x='37' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>חתול</text><line x1='20' y1='310' x2='243' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='243' y1='22' x2='243' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='243' y1='282' x2='251' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='243' y1='254' x2='251' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='243' y1='226' x2='251' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='243' y1='198' x2='251' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='243' y1='170' x2='251' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='243' y1='142' x2='251' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='243' y1='114' x2='251' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='243' y1='86' x2='251' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='243' y1='58' x2='251' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='243' y1='30' x2='251' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='271' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+            "title": "מה בחרו הילדים",
+            "x": 60,
+            "y": 120,
+            "w": 267,
+            "h": 330
+          }
+        },
+        {
+          "name": "draw_number_line",
+          "input": {
+            "from": 0,
+            "to": 10,
+            "step": 1,
+            "x": 380,
+            "y": 300,
+            "length": 290
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "אפשר לספור את ההפרש",
+            "x": 525,
+            "y": 370,
+            "size": 26
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "תורך לבד. הדיאגרמה מראה מה בחרו הילדים בחוג. זכור/זכרי: בכמה יותר זה חיסור, ביחד זה חיבור. קרא/י כל שאלה עד הסוף לפני שעונים 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה ילדים בחרו שחייה?",
+            "answer": "4",
+            "kind": "number",
+            "hint": "מצא/י את העמודה שכתוב מתחתיה שחייה, ועלה/עלי איתה עד למעלה. עכשיו הסתכל/י על הציר — על איזה מספר היא נעצרת?",
+            "praise": "נכון! קראת גובה של עמודה בדיוק כמו שצריך."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בכמה יותר ריקוד מכדורגל?",
+            "answer": "2",
+            "kind": "number",
+            "hint": "קרא/י את הגובה של ריקוד ואת הגובה של כדורגל. בכמה יותר אומר לחסר — המספר הקטן יוצא מהמספר הגדול.",
+            "praise": "מצוין! זיהית שזו שאלת השוואה, ולא חיבור."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה כדורגל ושחייה ביחד?",
+            "answer": "10",
+            "kind": "number",
+            "hint": "ביחד אומר לחבר. קח/י את המספר של כדורגל, והוסף/הוסיפי לו את המספר של שחייה. אפשר לספור קדימה על הציר.",
+            "praise": "כל הכבוד! זיהית שזו שאלת חיבור וחיברת נכון."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "אפשר לדעת מי בחרה ריקוד?",
+            "answer": "לא",
+            "kind": "text",
+            "hint": "הדיאגרמה סופרת רק כמה ילדים בחרו כל חוג. שמות של ילדים לא נמדדו בה בכלל. כתוב/כתבי כן או לא.",
+            "praise": "בדיוק! דיאגרמה עונה רק על מה שנמדד בה — ולא ממציאים תשובות. אלוף/ת נתונים 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='170' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='142' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>כדורגל</text><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>שחייה</text><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='170' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='142' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='114' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='86' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>ריקוד</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+            "title": "החוגים של הכיתה",
+            "x": 50,
+            "y": 90,
+            "w": 320,
+            "h": 282
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "יותר ב... חיסור · ביחד חיבור",
+            "x": 560,
+            "y": 500,
+            "size": 26
+          }
+        }
+      ]
+    }
+  }
+}

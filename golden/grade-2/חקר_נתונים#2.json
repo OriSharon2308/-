@@ -1,0 +1,344 @@
+{
+  "topic": "חקר נתונים",
+  "lesson": 2,
+  "title": "דיאגרמת עמודות — מהטבלה לתמונה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "אתמול בנינו טבלה. הטבלה מדויקת — אבל צריך לקרוא כל שורה בנפרד. היום נהפוך אותה לתמונה! בתמונה רואים מיד מי הכי הרבה, בלי לקרוא בכלל. לתמונה הזאת קוראים דיאגרמת עמודות. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מהטבלה לתמונה",
+              "x": 500,
+              "y": 78,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 420 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='400' height='230' fill='#ffffff' stroke='#0f3b36' stroke-width='3'/><rect x='10' y='10' width='400' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><line x1='170' y1='10' x2='170' y2='240' stroke='#0f3b36' stroke-width='3'/><text x='290' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>מה</text><text x='90' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>כמה</text><line x1='10' y1='66' x2='410' y2='66' stroke='#0f3b36' stroke-width='3'/><text x='290' y='105' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>תפוח</text><text x='90' y='106' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>4</text><line x1='10' y1='124' x2='410' y2='124' stroke='#0f3b36' stroke-width='2'/><text x='290' y='163' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>בננה</text><text x='90' y='164' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>6</text><line x1='10' y1='182' x2='410' y2='182' stroke='#0f3b36' stroke-width='2'/><text x='290' y='221' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>אגס</text><text x='90' y='222' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>3</text></svg>",
+              "title": "הטבלה",
+              "x": 640,
+              "y": 165,
+              "w": 290,
+              "h": 173
+            }
+          },
+          {
+            "name": "draw_arrow",
+            "input": {
+              "x1": 610,
+              "y1": 265,
+              "x2": 520,
+              "y2": 265
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='142' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>אגס</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "דיאגרמת עמודות",
+              "x": 70,
+              "y": 130,
+              "w": 386,
+              "h": 340
+            }
+          }
+        ]
+      },
+      {
+        "reply": "הכלל הכי חשוב: כל משבצת שווה פריט אחד. בונים מלמטה למעלה, בלי חורים באמצע. בטבלה כתוב תפוח 4 — אז בעמודה של תפוח יש בדיוק 4 משבצות, זו על זו. ספור/ספרי אותן. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "משבצת אחת = פריט אחד",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 173 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='125' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='125' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='125' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='125' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='125' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='125' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='125' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='125' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='125' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='125' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='37' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><line x1='20' y1='310' x2='125' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='125' y1='22' x2='125' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='125' y1='282' x2='133' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='125' y1='254' x2='133' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='125' y1='226' x2='133' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='125' y1='198' x2='133' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='125' y1='170' x2='133' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='125' y1='142' x2='133' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='125' y1='114' x2='133' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='125' y1='86' x2='133' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='125' y1='58' x2='133' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='125' y1='30' x2='133' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='153' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='153' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "העמודה הראשונה",
+              "x": 400,
+              "y": 120,
+              "w": 168,
+              "h": 350
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בונים מלמטה למעלה",
+              "x": 730,
+              "y": 250,
+              "size": 28
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בלי חורים באמצע",
+              "x": 730,
+              "y": 310,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו העמודה השנייה. בטבלה כתוב בננה 6, אז מניחים 6 משבצות, אחת מעל השנייה, ומתחילים מלמטה. תראה/י — עמודת בננה גבוהה יותר מתפוח, ומיד רואים מי מנצח. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בונים את העמודה הבאה",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 291 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='243' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='243' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='243' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='243' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='243' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='243' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='243' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='243' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='243' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='243' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='155' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><rect x='37' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='142' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><line x1='20' y1='310' x2='243' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='243' y1='22' x2='243' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='243' y1='282' x2='251' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='243' y1='254' x2='251' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='243' y1='226' x2='251' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='243' y1='198' x2='251' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='243' y1='170' x2='251' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='243' y1='142' x2='251' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='243' y1='114' x2='251' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='243' y1='86' x2='251' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='243' y1='58' x2='251' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='243' y1='30' x2='251' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='271' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "שתי עמודות",
+              "x": 330,
+              "y": 120,
+              "w": 283,
+              "h": 350
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הגבוהה יותר = הכי הרבה",
+              "x": 760,
+              "y": 280,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "שני דברים חייבים להיות בכל דיאגרמה. אחד: שם מתחת לכל עמודה. שתיים: מספרים על הציר. משמאל אין להם — התמונה לא אומרת כלום. מימין יש — ומיד מבינים הכל. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "שם לכל עמודה, מספרים על הציר",
+              "x": 500,
+              "y": 78,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='142' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>אגס</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "יש שמות ומספרים",
+              "x": 530,
+              "y": 140,
+              "w": 341,
+              "h": 300
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 379 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='282' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='170' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='142' width='56' height='28' fill='#f59e0b' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='282' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#a78bfa' stroke='#0f3b36' stroke-width='2'/><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/></svg>",
+              "title": "בלי שמות ובלי ציר",
+              "x": 90,
+              "y": 140,
+              "w": 316,
+              "h": 300
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "לא אומר כלום",
+              "x": 250,
+              "y": 490,
+              "size": 28
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מובן מיד",
+              "x": 700,
+              "y": 490,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עוד דבר קטן וחשוב. זו דיאגרמה אחרת, רק כדי לראות משהו 🙂 כל העמודות צריכות להיות באותו רוחב ובאותו מרווח. משמאל עמודה אחת רחבה ואחת צרה — ככה לא נכון. מימין הכל שווה. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אותו רוחב, אותו מרווח",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 291 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='243' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='243' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='243' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='243' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='243' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='243' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='243' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='243' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='243' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='243' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='155' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='155' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>כיתה א׳</text><rect x='37' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='37' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>כיתה ב׳</text><line x1='20' y1='310' x2='243' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='243' y1='22' x2='243' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='243' y1='282' x2='251' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='243' y1='254' x2='251' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='243' y1='226' x2='251' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='243' y1='198' x2='251' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='243' y1='170' x2='251' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='243' y1='142' x2='251' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='243' y1='114' x2='251' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='243' y1='86' x2='251' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='243' y1='58' x2='251' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='243' y1='30' x2='251' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='271' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "ככה נכון",
+              "x": 620,
+              "y": 140,
+              "w": 243,
+              "h": 300
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 291 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='243' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='243' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='243' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='243' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='243' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='243' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='243' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='243' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='243' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='243' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='127' y='282' width='112' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='127' y='254' width='112' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='127' y='226' width='112' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='127' y='198' width='112' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>כיתה א׳</text><rect x='43' y='282' width='44' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='43' y='254' width='44' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='43' y='226' width='44' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='43' y='198' width='44' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>כיתה ב׳</text><line x1='20' y1='310' x2='243' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='243' y1='22' x2='243' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='243' y1='282' x2='251' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='243' y1='254' x2='251' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='243' y1='226' x2='251' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='243' y1='198' x2='251' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='243' y1='170' x2='251' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='243' y1='142' x2='251' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='243' y1='114' x2='251' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='243' y1='86' x2='251' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='243' y1='58' x2='251' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='243' y1='30' x2='251' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='271' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='271' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+              "title": "ככה לא נכון",
+              "x": 120,
+              "y": 140,
+              "w": 243,
+              "h": 300
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "רוחב שונה",
+              "x": 260,
+              "y": 480,
+              "size": 28
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אותו רוחב",
+              "x": 730,
+              "y": 480,
+              "size": 28
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. כבר בניתי בשבילך את עמודת תפוח — 4 משבצות. התור של אגס: צייר/י על הלוח את המשבצות שלו, מלמטה למעלה, בלי חורים. ואז כתוב/כתבי עד איזה מספר הגעת.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "עמודת אגס תגיע עד",
+            "answer": "3",
+            "kind": "number",
+            "hint": "חפש/י בטבלה את השורה של אגס, ותראה/י מה כתוב לידה בעמודה כמה. זה בדיוק מספר המשבצות שתצייר/י — והאחרונה נעצרת על המספר הזה בציר.",
+            "praise": "בדיוק! בנית עמודה בעצמך — הטבלה אומרת כמה, והעמודה מגיעה בדיוק לשם 🙂"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>תפוח</text><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>בננה</text><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>אגס</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+            "title": "הדיאגרמה שבבנייה",
+            "x": 60,
+            "y": 150,
+            "w": 341,
+            "h": 300
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 420 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='400' height='230' fill='#ffffff' stroke='#0f3b36' stroke-width='3'/><rect x='10' y='10' width='400' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><line x1='170' y1='10' x2='170' y2='240' stroke='#0f3b36' stroke-width='3'/><text x='290' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>מה</text><text x='90' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>כמה</text><line x1='10' y1='66' x2='410' y2='66' stroke='#0f3b36' stroke-width='3'/><text x='290' y='105' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>תפוח</text><text x='90' y='106' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>4</text><line x1='10' y1='124' x2='410' y2='124' stroke='#0f3b36' stroke-width='2'/><text x='290' y='163' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>בננה</text><text x='90' y='164' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>6</text><line x1='10' y1='182' x2='410' y2='182' stroke='#0f3b36' stroke-width='2'/><text x='290' y='221' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>אגס</text><text x='90' y='222' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>3</text></svg>",
+            "title": "הטבלה",
+            "x": 440,
+            "y": 180,
+            "w": 250,
+            "h": 149
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "תורך לבד! עמודת חתול כבר בנויה — ספור/ספרי אותה מהתמונה. אחר כך תגיד/י עד איזה מספר תגיע עמודת כלב, לפי הטבלה. ובסוף שאלה על הדיאגרמה הקטנה 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה משבצות בעמודת חתול?",
+            "answer": "5",
+            "kind": "number",
+            "hint": "אל תחפש/י בטבלה — התשובה בתמונה. שים/י אצבע על המשבצת התחתונה של עמודת חתול, וספור/ספרי למעלה אחת-אחת עד האחרונה.",
+            "praise": "יופי! ספרת משבצות על התמונה. כל משבצת היא חתול אחד 🙂"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "עמודת כלב תגיע עד",
+            "answer": "8",
+            "kind": "number",
+            "hint": "עכשיו כן לטבלה. מצא/י את השורה של כלב וקרא/י את המספר בעמודה כמה — גובה העמודה שווה בדיוק למספר הזה.",
+            "praise": "נכון! העמודה נעצרת בדיוק על המספר מהטבלה."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "מה חסר — שמות או מספרים?",
+            "answer": "שמות",
+            "kind": "text",
+            "hint": "הסתכל/י על הדיאגרמה הקטנה. יש לה מספרים על הציר? ומה כתוב מתחת לכל עמודה? כתוב/כתבי מילה אחת, בדיוק כמו בשאלה.",
+            "praise": "בדיוק! בלי שם מתחת לעמודה אי אפשר לדעת על מה היא מספרת 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 409 360' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='282' x2='361' y2='282' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='254' x2='361' y2='254' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='226' x2='361' y2='226' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='198' x2='361' y2='198' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='170' x2='361' y2='170' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='142' x2='361' y2='142' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='114' x2='361' y2='114' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='86' x2='361' y2='86' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='58' x2='361' y2='58' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='30' x2='361' y2='30' stroke='#cbd5e1' stroke-width='1'/><rect x='273' y='282' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='254' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='226' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='198' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='273' y='170' width='56' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><text x='301' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>חתול</text><text x='183' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>כלב</text><text x='65' y='340' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>דג</text><line x1='20' y1='310' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='22' x2='361' y2='310' stroke='#0f3b36' stroke-width='3.5'/><line x1='361' y1='282' x2='369' y2='282' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='289' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='361' y1='254' x2='369' y2='254' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='261' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='361' y1='226' x2='369' y2='226' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='233' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='361' y1='198' x2='369' y2='198' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='205' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='361' y1='170' x2='369' y2='170' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='177' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><line x1='361' y1='142' x2='369' y2='142' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='149' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>6</text><line x1='361' y1='114' x2='369' y2='114' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='121' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>7</text><line x1='361' y1='86' x2='369' y2='86' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='93' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>8</text><line x1='361' y1='58' x2='369' y2='58' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='65' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>9</text><line x1='361' y1='30' x2='369' y2='30' stroke='#0f3b36' stroke-width='2.5'/><text x='389' y='37' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>10</text><text x='389' y='317' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+            "title": "דיאגרמת חיות מחמד",
+            "x": 40,
+            "y": 64,
+            "w": 300,
+            "h": 264
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 420 185' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='8' width='400' height='169' fill='#ffffff' stroke='#0f3b36' stroke-width='3'/><rect x='10' y='8' width='400' height='44' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><line x1='170' y1='8' x2='170' y2='177' stroke='#0f3b36' stroke-width='3'/><text x='290' y='39' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>מה</text><text x='90' y='39' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כמה</text><line x1='10' y1='52' x2='410' y2='52' stroke='#0f3b36' stroke-width='3'/><text x='290' y='81' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>חתול</text><rect x='62' y='58' width='56' height='30' rx='8' fill='#ffffff' stroke='#8fb9b1' stroke-width='2.5' stroke-dasharray='6 5'/><line x1='10' y1='93' x2='410' y2='93' stroke='#0f3b36' stroke-width='2'/><text x='290' y='123' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>כלב</text><text x='90' y='124' text-anchor='middle' font-size='28' font-weight='700' fill='#38a08f'>8</text><line x1='10' y1='135' x2='410' y2='135' stroke='#0f3b36' stroke-width='2'/><text x='290' y='165' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>דג</text><text x='90' y='166' text-anchor='middle' font-size='28' font-weight='700' fill='#38a08f'>2</text></svg>",
+            "title": "הטבלה",
+            "x": 40,
+            "y": 380,
+            "w": 330,
+            "h": 145
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 280 230' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='20' y1='152' x2='228' y2='152' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='124' x2='228' y2='124' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='96' x2='228' y2='96' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='68' x2='228' y2='68' stroke='#cbd5e1' stroke-width='1'/><line x1='20' y1='40' x2='228' y2='40' stroke='#cbd5e1' stroke-width='1'/><rect x='176' y='152' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='176' y='124' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='176' y='96' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='116' y='152' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='116' y='124' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='116' y='96' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='116' y='68' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='116' y='40' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='56' y='152' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><rect x='56' y='124' width='40' height='28' fill='#6ecfba' stroke='#0f3b36' stroke-width='2'/><line x1='20' y1='180' x2='228' y2='180' stroke='#0f3b36' stroke-width='3.5'/><line x1='228' y1='32' x2='228' y2='180' stroke='#0f3b36' stroke-width='3.5'/><line x1='228' y1='152' x2='236' y2='152' stroke='#0f3b36' stroke-width='2.5'/><text x='256' y='159' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>1</text><line x1='228' y1='124' x2='236' y2='124' stroke='#0f3b36' stroke-width='2.5'/><text x='256' y='131' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>2</text><line x1='228' y1='96' x2='236' y2='96' stroke='#0f3b36' stroke-width='2.5'/><text x='256' y='103' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>3</text><line x1='228' y1='68' x2='236' y2='68' stroke='#0f3b36' stroke-width='2.5'/><text x='256' y='75' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>4</text><line x1='228' y1='40' x2='236' y2='40' stroke='#0f3b36' stroke-width='2.5'/><text x='256' y='47' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>5</text><text x='256' y='187' text-anchor='middle' font-size='18' font-weight='700' fill='#4b7d75'>0</text></svg>",
+            "title": "הדיאגרמה הקטנה",
+            "x": 410,
+            "y": 350,
+            "w": 230,
+            "h": 189
+          }
+        }
+      ]
+    }
+  }
+}

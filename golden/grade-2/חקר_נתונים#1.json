@@ -1,0 +1,327 @@
+{
+  "topic": "חקר נתונים",
+  "lesson": 1,
+  "title": "לאסוף, למיין ולסדר בטבלה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! היום נעשה משהו אמיתי 🙂 שאלנו כל ילד בכיתה: מה צבע העיניים שלך? כל תשובה קיבלה עין בצבע שלה. תסתכל/י על הלוח — הכל מעורבב. ככה קשה לדעת מי הכי הרבה. בוא/י נסדר את זה. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מה צבע העיניים של הילדים?",
+              "x": 500,
+              "y": 80,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 560 300' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><ellipse cx='89' cy='55' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='89' cy='55' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='89' cy='55' r='4.5' fill='#111827'/><circle cx='85' cy='50' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='204' cy='70' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='204' cy='70' r='11' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><circle cx='204' cy='70' r='4.5' fill='#111827'/><circle cx='200' cy='65' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='356' cy='57' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='356' cy='57' r='11' fill='#22c55e' stroke='#0f3b36' stroke-width='2'/><circle cx='356' cy='57' r='4.5' fill='#111827'/><circle cx='352' cy='52' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='477' cy='72' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='477' cy='72' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='477' cy='72' r='4.5' fill='#111827'/><circle cx='473' cy='67' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='74' cy='161' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='74' cy='161' r='11' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><circle cx='74' cy='161' r='4.5' fill='#111827'/><circle cx='70' cy='156' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='227' cy='146' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='227' cy='146' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='227' cy='146' r='4.5' fill='#111827'/><circle cx='223' cy='141' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='341' cy='164' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='341' cy='164' r='11' fill='#22c55e' stroke='#0f3b36' stroke-width='2'/><circle cx='341' cy='164' r='4.5' fill='#111827'/><circle cx='337' cy='159' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='492' cy='149' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='492' cy='149' r='11' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><circle cx='492' cy='149' r='4.5' fill='#111827'/><circle cx='488' cy='144' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='91' cy='240' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='91' cy='240' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='91' cy='240' r='4.5' fill='#111827'/><circle cx='87' cy='235' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='208' cy='255' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='208' cy='255' r='11' fill='#22c55e' stroke='#0f3b36' stroke-width='2'/><circle cx='208' cy='255' r='4.5' fill='#111827'/><circle cx='204' cy='250' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='358' cy='238' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='358' cy='238' r='11' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><circle cx='358' cy='238' r='4.5' fill='#111827'/><circle cx='354' cy='233' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='475' cy='253' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='475' cy='253' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='475' cy='253' r='4.5' fill='#111827'/><circle cx='471' cy='248' r='2.6' fill='#ffffff' opacity='.9'/></svg>",
+              "title": "התשובות של הכיתה",
+              "x": 190,
+              "y": 130,
+              "w": 620,
+              "h": 332
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מעורבב — קשה לספור",
+              "x": 500,
+              "y": 490,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו מיינו: כל צבע לשורה שלו. חום לשורה אחת, כחול לשנייה, ירוק לשלישית. שים/י לב — מיינו לפי דבר אחד בלבד: הצבע. לא צבע וגם גודל. כשמסדרים ככה, כבר קל לראות ולספור. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ממיינים — כל צבע לשורה שלו",
+              "x": 500,
+              "y": 80,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 560 290' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='500' y='70' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>חום</text><ellipse cx='420' cy='62' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='420' cy='62' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='420' cy='62' r='4.5' fill='#111827'/><circle cx='416' cy='57' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='346' cy='62' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='346' cy='62' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='346' cy='62' r='4.5' fill='#111827'/><circle cx='342' cy='57' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='272' cy='62' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='272' cy='62' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='272' cy='62' r='4.5' fill='#111827'/><circle cx='268' cy='57' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='198' cy='62' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='198' cy='62' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='198' cy='62' r='4.5' fill='#111827'/><circle cx='194' cy='57' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='124' cy='62' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='124' cy='62' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='124' cy='62' r='4.5' fill='#111827'/><circle cx='120' cy='57' r='2.6' fill='#ffffff' opacity='.9'/><text x='500' y='160' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>כחול</text><ellipse cx='420' cy='152' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='420' cy='152' r='11' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><circle cx='420' cy='152' r='4.5' fill='#111827'/><circle cx='416' cy='147' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='346' cy='152' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='346' cy='152' r='11' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><circle cx='346' cy='152' r='4.5' fill='#111827'/><circle cx='342' cy='147' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='272' cy='152' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='272' cy='152' r='11' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><circle cx='272' cy='152' r='4.5' fill='#111827'/><circle cx='268' cy='147' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='198' cy='152' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='198' cy='152' r='11' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><circle cx='198' cy='152' r='4.5' fill='#111827'/><circle cx='194' cy='147' r='2.6' fill='#ffffff' opacity='.9'/><text x='500' y='250' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>ירוק</text><ellipse cx='420' cy='242' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='420' cy='242' r='11' fill='#22c55e' stroke='#0f3b36' stroke-width='2'/><circle cx='420' cy='242' r='4.5' fill='#111827'/><circle cx='416' cy='237' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='346' cy='242' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='346' cy='242' r='11' fill='#22c55e' stroke='#0f3b36' stroke-width='2'/><circle cx='346' cy='242' r='4.5' fill='#111827'/><circle cx='342' cy='237' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='272' cy='242' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='272' cy='242' r='11' fill='#22c55e' stroke='#0f3b36' stroke-width='2'/><circle cx='272' cy='242' r='4.5' fill='#111827'/><circle cx='268' cy='237' r='2.6' fill='#ffffff' opacity='.9'/></svg>",
+              "title": "אחרי מיון",
+              "x": 190,
+              "y": 130,
+              "w": 620,
+              "h": 321
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ממיינים לפי דבר אחד בלבד",
+              "x": 500,
+              "y": 490,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו סוד של ספירה. כשסופרים בלי לסמן — מדלגים על אחד, או סופרים אותו פעמיים. הפתרון פשוט: מסמנים ✓ על כל אחד שכבר ספרנו. תראה/י — שלוש עיניים כבר מסומנות. ככה לא מתבלבלים. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "סופרים ומסמנים",
+              "x": 500,
+              "y": 85,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 560 150' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><ellipse cx='460' cy='74' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='460' cy='74' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='460' cy='74' r='4.5' fill='#111827'/><circle cx='456' cy='69' r='2.6' fill='#ffffff' opacity='.9'/><path d='M 451 36 L 457 43 L 470 27' fill='none' stroke='#16a34a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/><ellipse cx='384' cy='74' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='384' cy='74' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='384' cy='74' r='4.5' fill='#111827'/><circle cx='380' cy='69' r='2.6' fill='#ffffff' opacity='.9'/><path d='M 375 36 L 381 43 L 394 27' fill='none' stroke='#16a34a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/><ellipse cx='308' cy='74' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='308' cy='74' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='308' cy='74' r='4.5' fill='#111827'/><circle cx='304' cy='69' r='2.6' fill='#ffffff' opacity='.9'/><path d='M 299 36 L 305 43 L 318 27' fill='none' stroke='#16a34a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/><ellipse cx='232' cy='74' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='232' cy='74' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='232' cy='74' r='4.5' fill='#111827'/><circle cx='228' cy='69' r='2.6' fill='#ffffff' opacity='.9'/><ellipse cx='156' cy='74' rx='26' ry='16' fill='#ffffff' stroke='#0f3b36' stroke-width='2.5'/><circle cx='156' cy='74' r='11' fill='#8b5a2b' stroke='#0f3b36' stroke-width='2'/><circle cx='156' cy='74' r='4.5' fill='#111827'/><circle cx='152' cy='69' r='2.6' fill='#ffffff' opacity='.9'/><text x='280' y='130' text-anchor='middle' font-size='24' font-weight='700' fill='#4b7d75'>מסמנים כל אחד שכבר ספרנו</text></svg>",
+              "title": "ספירה מסודרת",
+              "x": 180,
+              "y": 160,
+              "w": 640,
+              "h": 171
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בלי סימון — מדלגים או סופרים פעמיים",
+              "x": 500,
+              "y": 460,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ועכשיו הטבלה. שתי עמודות בלבד: מה, וכמה. בעמודה מה כותבים מה זה — חום. בעמודה כמה כותבים כמה ילדים — 5. אל תתבלבל/י ביניהם! לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הטבלה: מה וכמה",
+              "x": 500,
+              "y": 80,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 420 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='400' height='230' fill='#ffffff' stroke='#0f3b36' stroke-width='3'/><rect x='10' y='10' width='400' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><line x1='170' y1='10' x2='170' y2='240' stroke='#0f3b36' stroke-width='3'/><text x='290' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>מה</text><text x='90' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>כמה</text><line x1='10' y1='66' x2='410' y2='66' stroke='#0f3b36' stroke-width='3'/><text x='290' y='105' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>חום</text><text x='90' y='106' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>5</text><line x1='10' y1='124' x2='410' y2='124' stroke='#0f3b36' stroke-width='2'/><text x='290' y='163' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כחול</text><text x='90' y='164' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>4</text><line x1='10' y1='182' x2='410' y2='182' stroke='#0f3b36' stroke-width='2'/><text x='290' y='221' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>ירוק</text><text x='90' y='222' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>3</text></svg>",
+              "title": "טבלת צבעי עיניים",
+              "x": 330,
+              "y": 130,
+              "w": 340,
+              "h": 202
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מה = השם · כמה = המספר",
+              "x": 500,
+              "y": 490,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "מהטבלה קל לענות. מי הכי הרבה? חום — 5. מי הכי מעט? ירוק — 3. וכמה ילדים ענו בסך הכול? מחברים את כל השורות: 5 ועוד 4 ועוד 3, וזה 12. עכשיו תורך! לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "שלוש שאלות מהטבלה",
+              "x": 500,
+              "y": 78,
+              "size": 34
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<svg viewBox='0 0 420 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='400' height='230' fill='#ffffff' stroke='#0f3b36' stroke-width='3'/><rect x='10' y='10' width='400' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><line x1='170' y1='10' x2='170' y2='240' stroke='#0f3b36' stroke-width='3'/><text x='290' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>מה</text><text x='90' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>כמה</text><line x1='10' y1='66' x2='410' y2='66' stroke='#0f3b36' stroke-width='3'/><text x='290' y='105' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>חום</text><text x='90' y='106' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>5</text><line x1='10' y1='124' x2='410' y2='124' stroke='#0f3b36' stroke-width='2'/><text x='290' y='163' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כחול</text><text x='90' y='164' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>4</text><line x1='10' y1='182' x2='410' y2='182' stroke='#0f3b36' stroke-width='2'/><text x='290' y='221' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>ירוק</text><text x='90' y='222' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>3</text></svg>",
+              "title": "טבלת צבעי עיניים",
+              "x": 100,
+              "y": 130,
+              "w": 300,
+              "h": 179
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מי הכי הרבה?",
+              "x": 690,
+              "y": 180,
+              "size": 30
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מי הכי מעט?",
+              "x": 690,
+              "y": 250,
+              "size": 30
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כמה בסך הכול?",
+              "x": 690,
+              "y": 320,
+              "size": 30
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בסך הכול = מחברים את כל השורות",
+              "x": 690,
+              "y": 400,
+              "size": 26
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד 🙂 על הלוח בלונים מעורבבים, ומתחת טבלה שהעמודה מה שלה כבר מלאה. נמלא ביחד את העמודה כמה. ספור/ספרי צבע אחד בכל פעם, וסמן/י בעיניים כל בלון שכבר ספרת.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה בלונים כחולים?",
+            "answer": "4",
+            "kind": "number",
+            "hint": "אל תספור/תספרי את כולם! חפש/י רק את הכחולים. עבור/עברי שורה-שורה, מלמעלה למטה, וסמן/י בעיניים כל בלון כחול שכבר ספרת.",
+            "praise": "יופי! ספרת רק את הכחולים. עכשיו יש לך את המספר הראשון לטבלה 🙂"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה בלונים אדומים?",
+            "answer": "6",
+            "kind": "number",
+            "hint": "עכשיו מתחילים מחדש, רק עם האדומים. שכח/י מהכחולים. שורה-שורה, מלמעלה למטה, ולסמן כל אחד שכבר ספרת.",
+            "praise": "מצוין! שורה שנייה בטבלה מוכנה."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה בלונים צהובים?",
+            "answer": "3",
+            "kind": "number",
+            "hint": "נשאר צבע אחד. ספור/ספרי רק את הצהובים, שורה-שורה, ואל תדלג/י על אף אחד.",
+            "praise": "כל הכבוד! מיינת, ספרת ומילאת טבלה שלמה בעצמך 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 460 310' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><ellipse cx='50' cy='48' rx='17' ry='21' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><polygon points='45,68 55,68 50,77' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><path d='M 50 77 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='44' cy='41' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='140' cy='58' rx='17' ry='21' fill='#3b82f6' stroke='#0f3b36' stroke-width='2.5'/><polygon points='135,78 145,78 140,87' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><path d='M 140 87 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='134' cy='51' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='230' cy='45' rx='17' ry='21' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><polygon points='225,65 235,65 230,74' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><path d='M 230 74 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='224' cy='38' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='320' cy='55' rx='17' ry='21' fill='#facc15' stroke='#0f3b36' stroke-width='2.5'/><polygon points='315,75 325,75 320,84' fill='#facc15' stroke='#0f3b36' stroke-width='2'/><path d='M 320 84 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='314' cy='48' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='410' cy='50' rx='17' ry='21' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><polygon points='405,70 415,70 410,79' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><path d='M 410 79 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='404' cy='43' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='50' cy='148' rx='17' ry='21' fill='#3b82f6' stroke='#0f3b36' stroke-width='2.5'/><polygon points='45,168 55,168 50,177' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><path d='M 50 177 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='44' cy='141' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='140' cy='140' rx='17' ry='21' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><polygon points='135,160 145,160 140,169' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><path d='M 140 169 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='134' cy='133' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='230' cy='152' rx='17' ry='21' fill='#facc15' stroke='#0f3b36' stroke-width='2.5'/><polygon points='225,172 235,172 230,181' fill='#facc15' stroke='#0f3b36' stroke-width='2'/><path d='M 230 181 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='224' cy='145' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='320' cy='145' rx='17' ry='21' fill='#3b82f6' stroke='#0f3b36' stroke-width='2.5'/><polygon points='315,165 325,165 320,174' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><path d='M 320 174 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='314' cy='138' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='50' cy='242' rx='17' ry='21' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><polygon points='45,262 55,262 50,271' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><path d='M 50 271 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='44' cy='235' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='140' cy='250' rx='17' ry='21' fill='#facc15' stroke='#0f3b36' stroke-width='2.5'/><polygon points='135,270 145,270 140,279' fill='#facc15' stroke='#0f3b36' stroke-width='2'/><path d='M 140 279 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='134' cy='243' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='230' cy='240' rx='17' ry='21' fill='#3b82f6' stroke='#0f3b36' stroke-width='2.5'/><polygon points='225,260 235,260 230,269' fill='#3b82f6' stroke='#0f3b36' stroke-width='2'/><path d='M 230 269 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='224' cy='233' rx='5' ry='7' fill='#ffffff' opacity='.55'/><ellipse cx='320' cy='246' rx='17' ry='21' fill='#ef4444' stroke='#0f3b36' stroke-width='2.5'/><polygon points='315,266 325,266 320,275' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><path d='M 320 275 q 9 12 -2 23' fill='none' stroke='#0f3b36' stroke-width='2'/><ellipse cx='314' cy='239' rx='5' ry='7' fill='#ffffff' opacity='.55'/></svg>",
+            "title": "בלונים מעורבבים",
+            "x": 40,
+            "y": 80,
+            "w": 330,
+            "h": 222
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 420 185' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='8' width='400' height='169' fill='#ffffff' stroke='#0f3b36' stroke-width='3'/><rect x='10' y='8' width='400' height='44' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><line x1='170' y1='8' x2='170' y2='177' stroke='#0f3b36' stroke-width='3'/><text x='290' y='39' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>מה</text><text x='90' y='39' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כמה</text><line x1='10' y1='52' x2='410' y2='52' stroke='#0f3b36' stroke-width='3'/><text x='290' y='81' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>כחול</text><rect x='62' y='58' width='56' height='30' rx='8' fill='#ffffff' stroke='#8fb9b1' stroke-width='2.5' stroke-dasharray='6 5'/><line x1='10' y1='93' x2='410' y2='93' stroke='#0f3b36' stroke-width='2'/><text x='290' y='123' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>אדום</text><rect x='62' y='100' width='56' height='30' rx='8' fill='#ffffff' stroke='#8fb9b1' stroke-width='2.5' stroke-dasharray='6 5'/><line x1='10' y1='135' x2='410' y2='135' stroke='#0f3b36' stroke-width='2'/><text x='290' y='165' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36'>צהוב</text><rect x='62' y='142' width='56' height='30' rx='8' fill='#ffffff' stroke='#8fb9b1' stroke-width='2.5' stroke-dasharray='6 5'/></svg>",
+            "title": "הטבלה שלי",
+            "x": 40,
+            "y": 330,
+            "w": 330,
+            "h": 145
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "סופרים צבע אחד בכל פעם",
+            "x": 200,
+            "y": 505,
+            "size": 26
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "תורך לבד! על הלוח טבלה: מה בחרו הילדים בשיעור ספורט. שאלה אחת בכל פעם, בלי למהר. בשאלה האחרונה מחברים את כל השורות. אני כאן אם תצטרך/תצטרכי 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה ילדים בחרו שחייה?",
+            "answer": "3",
+            "kind": "number",
+            "hint": "מצא/י בעמודה מה את השורה של שחייה. עכשיו הסתכל/י באותה שורה בעמודה כמה — המספר שכתוב שם הוא התשובה.",
+            "praise": "נכון! קראת שורה מהטבלה בדיוק כמו חוקר/ת אמיתי/ת."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "מה המספר הכי גדול בטבלה?",
+            "answer": "8",
+            "kind": "number",
+            "hint": "הסתכל/י רק על העמודה כמה. יש בה שלושה מספרים. השווה/השווי ביניהם ומצא/י מי הגדול מכולם.",
+            "praise": "בדיוק! המספר הכי גדול בעמודה כמה — הוא המשחק שבחרו הכי הרבה."
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה ילדים ענו בסך הכול?",
+            "answer": "16",
+            "kind": "number",
+            "hint": "בסך הכול זה כולם ביחד. מחברים את כל המספרים בעמודה כמה. אפשר קודם לחבר שניים, ואז להוסיף לתוצאה את השלישי.",
+            "praise": "מעולה! חיברת את כל השורות ומצאת כמה ילדים ענו. סיימת שיעור 🏆"
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "טבלה: שיעור ספורט",
+            "x": 220,
+            "y": 120,
+            "size": 30
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<svg viewBox='0 0 420 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='400' height='230' fill='#ffffff' stroke='#0f3b36' stroke-width='3'/><rect x='10' y='10' width='400' height='56' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3'/><line x1='170' y1='10' x2='170' y2='240' stroke='#0f3b36' stroke-width='3'/><text x='290' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>מה</text><text x='90' y='48' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36'>כמה</text><line x1='10' y1='66' x2='410' y2='66' stroke='#0f3b36' stroke-width='3'/><text x='290' y='105' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כדורגל</text><text x='90' y='106' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>8</text><line x1='10' y1='124' x2='410' y2='124' stroke='#0f3b36' stroke-width='2'/><text x='290' y='163' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>כדורסל</text><text x='90' y='164' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>5</text><line x1='10' y1='182' x2='410' y2='182' stroke='#0f3b36' stroke-width='2'/><text x='290' y='221' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>שחייה</text><text x='90' y='222' text-anchor='middle' font-size='30' font-weight='700' fill='#38a08f'>3</text></svg>",
+            "title": "מה בחרו הילדים",
+            "x": 70,
+            "y": 155,
+            "w": 300,
+            "h": 179
+          }
+        }
+      ]
+    }
+  }
+}

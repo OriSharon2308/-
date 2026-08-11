@@ -1,6 +1,6 @@
 {
   "topic": "גופים ונפח",
-  "lesson": 4,
+  "lesson": 5,
   "title": "מי מחזיק יותר? — משווים נפחים",
   "phases": {
     "instruct": [
@@ -39,7 +39,7 @@
         ]
       },
       {
-        "reply": "הנה הדרך: ממלאים את שתי הכוסות באותו דבר בדיוק וסופרים. בחרנו כוסית קטנה. לכוס הרחבה נכנסו 6 כוסיות. לכוס הגבוהה נכנסו רק 4. אז מי מחזיקה יותר? הרחבה — כי 6 גדול מ-4. הגובה לא קובע, הספירה קובעת. לחץ/י ✓.",
+        "reply": "הנה הדרך: ממלאים את שתי הכוסות באותו דבר בדיוק וסופרים. בחרנו כוסית קטנה. לכוס הרחבה נכנסו 6 כוסיות, ולגבוהה רק 4. לכמות שנכנסת לכלי קוראים נפח. הרחבה מחזיקה 6 כוסיות — הנפח שלה גדול יותר. הגובה לא קובע, הספירה קובעת. לחץ/י ✓.",
         "toolCalls": [
           {
             "name": "write_text",
@@ -64,16 +64,16 @@
           {
             "name": "write_text",
             "input": {
-              "text": "הרחבה מחזיקה יותר",
+              "text": "הרחבה מחזיקה יותר — נפח גדול יותר",
               "x": 480,
               "y": 500,
-              "size": 28
+              "size": 26
             }
           }
         ]
       },
       {
-        "reply": "אבל יש חוק אחד חשוב: חייבים אותה יחידה בדיוק לשתי הכוסות. תראה/י מה קורה כשלא: כוס אחת מדדנו בכפיות קטנות ויצאו 12, והשנייה בכוסיות גדולות ויצאו 4. אי אפשר להשוות! 12 כפיות זה לא יותר מ-4 כוסיות. לחץ/י ✓.",
+        "reply": "אבל יש חוק אחד חשוב: חייבים אותה יחידה בדיוק לשתי הכוסות. תראה/י מה קורה כשלא: כוס אחת מדדנו בכפיות קטנות ויצאו 12, והשנייה בכוסיות גדולות ויצאו 4. אי אפשר לדעת מי מחזיקה יותר! מדדנו בשתי יחידות שונות, אז אי אפשר להשוות את המספרים. זוכר/ת שבסרגל גילינו שצריך יחידה אחת לכולם? אותו דבר בדיוק גם כאן. לחץ/י ✓.",
         "toolCalls": [
           {
             "name": "write_text",
@@ -141,7 +141,7 @@
         ]
       },
       {
-        "reply": "עכשיו משווים שתי קופסאות. בימנית נכנסו 8 קוביות, בשמאלית 6. מי מחזיקה יותר? הימנית — כי נכנסו לה יותר קוביות. ככה עונים תמיד: סופרים בשתיהן באותה יחידה, ומשווים את שני המספרים. בלי חשבונות. עכשיו תורך!",
+        "reply": "עכשיו משווים שתי קופסאות. בימנית נכנסו 8 קוביות, בשמאלית 6. מי מחזיקה יותר? הימנית — הנפח שלה גדול יותר, כי נכנסו לה יותר קוביות. ככה משווים נפחים תמיד: סופרים בשתיהן באותה יחידה ומשווים את שני המספרים. בלי חשבונות. עכשיו תורך!",
         "toolCalls": [
           {
             "name": "write_text",
@@ -166,7 +166,7 @@
           {
             "name": "write_text",
             "input": {
-              "text": "יותר קוביות = מחזיקה יותר",
+              "text": "יותר קוביות = נפח גדול יותר",
               "x": 480,
               "y": 500,
               "size": 28
@@ -202,7 +202,7 @@
       ]
     },
     "independent": {
-      "reply": "תורך לבד! בראשונה יש קופסה על הלוח — ספור/ספרי שכבה-שכבה. בשנייה אין ציור: בקופסה 3 שכבות, ובכל שכבה 5 קוביות — כמה בסך הכול? ובשלישית: לכלי אחד נכנסו 8 קוביות ולשני 6 — כתוב/כתבי כמה קוביות בכלי שמחזיק יותר.",
+      "reply": "תורך לבד! בראשונה יש קופסה על הלוח — ספור/ספרי שכבה-שכבה. בשנייה אין ציור: בקופסה 3 שכבות, ובכל שכבה 5 קוביות — כמה בסך הכול? ובשלישית: לכלי א׳ נכנסו 8 קוביות ולכלי ב׳ 6 — בכמה קוביות א׳ מחזיק יותר?",
       "toolCalls": [
         {
           "name": "draw_exercise",
@@ -220,9 +220,9 @@
             "html": "<svg viewBox='0 0 330 260' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 61,36 L 61,224 L 301,224 L 301,36' fill='none' stroke='#0f3b36' stroke-width='4' stroke-linejoin='round' stroke-linecap='round' opacity='.85'/><polygon points='229,166 243,152 289,152 275,166' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='275,166 289,152 289,198 275,212' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,166 275,166 275,212 229,212' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,166 191,152 237,152 223,166' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='223,166 237,152 237,198 223,212' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,166 223,166 223,212 177,212' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,166 139,152 185,152 171,166' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='171,166 185,152 185,198 171,212' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,166 171,166 171,212 125,212' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,166 87,152 133,152 119,166' fill='#c2eee2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='119,166 133,152 133,198 119,212' fill='#3fa593' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,166 119,166 119,212 73,212' fill='#7fd6c4' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,114 243,100 289,100 275,114' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='275,114 289,100 289,146 275,160' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,114 275,114 275,160 229,160' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,114 191,100 237,100 223,114' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='223,114 237,100 237,146 223,160' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,114 223,114 223,160 177,160' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,114 139,100 185,100 171,114' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='171,114 185,100 185,146 171,160' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,114 171,114 171,160 125,160' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,114 87,100 133,100 119,114' fill='#ffe9c2' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='119,114 133,100 133,146 119,160' fill='#e0a03c' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,114 119,114 119,160 73,160' fill='#ffd280' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,62 243,48 289,48 275,62' fill='#e2dcff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='275,62 289,48 289,94 275,108' fill='#8574e0' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='229,62 275,62 275,108 229,108' fill='#bcb0ff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,62 191,48 237,48 223,62' fill='#e2dcff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='223,62 237,48 237,94 223,108' fill='#8574e0' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='177,62 223,62 223,108 177,108' fill='#bcb0ff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,62 139,48 185,48 171,62' fill='#e2dcff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='171,62 185,48 185,94 171,108' fill='#8574e0' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='125,62 171,62 171,108 125,108' fill='#bcb0ff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,62 87,48 133,48 119,62' fill='#e2dcff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='119,62 133,48 133,94 119,108' fill='#8574e0' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='73,62 119,62 119,108 73,108' fill='#bcb0ff' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>",
             "title": "הקופסה שעל הלוח",
             "x": 40,
-            "y": 105,
+            "y": 95,
             "w": 330,
-            "h": 260
+            "h": 170
           }
         },
         {
@@ -238,11 +238,11 @@
         {
           "name": "draw_exercise",
           "input": {
-            "text": "מי יותר — 8 או 6?",
-            "answer": "8",
+            "text": "לכלי א׳ 8 קוביות, לכלי ב׳ 6 — בכמה יותר?",
+            "answer": "2",
             "kind": "number",
-            "hint": "לשני הכלים מדדנו באותה יחידה בדיוק — קוביות. אז אפשר פשוט להשוות את שני המספרים. איזה מספר גדול יותר, 8 או 6? הכלי שלו מחזיק יותר.",
-            "praise": "נכון! 8 גדול מ-6, אז הכלי הזה מחזיק יותר. סיימת את הנושא 🏆"
+            "hint": "לשני הכלים מדדנו באותה יחידה בדיוק — קוביות, אז אפשר להשוות. לכלי א׳ נכנסו יותר. עכשיו תמצא/י את ההפרש: כמה קוביות צריך להוסיף ל-6 כדי להגיע ל-8?",
+            "praise": "נכון! הפרש של 2 קוביות. השווית נפחים כמו אלוף/ה 🏆"
           }
         }
       ]

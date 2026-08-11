@@ -5,20 +5,21 @@
   "phases": {
     "instruct": [
       {
-        "reply": "היום מקבלים כלי אחד קטן שיעזור לנו בכל הצורות: פינה של דף. שים/י אצבע על פינה של דף מהמחברת. מימין על הלוח יש דף, וסימנתי באדום את הפינה. משמאל הגדלתי את אותה פינה בדיוק. לפינה כזאת קוראים זווית ישרה. לכל דף יש ארבע כאלה! לחצ/י ✓.",
+        "reply": "היום מקבלים כלי קטן שיעזור לנו בכל הצורות: פינה של דף. שים/י אצבע על פינה של דף מהמחברת. מימין על הלוח דף, וסימנתי באדום פינה אחת. משמאל הגדלתי אותה. לפינה כזאת קוראים זווית ישרה. לחצ/י ✓.",
         "toolCalls": [
           { "name": "write_text", "input": { "text": "פינת הדף = זווית ישרה", "x": 480, "y": 78, "size": 36 } },
           { "name": "draw_polygon", "input": { "points": [[620, 150], [880, 150], [880, 420], [620, 420]], "color": "#828282", "fill": true } },
-          { "name": "draw_polygon", "input": { "points": [[880, 150], [880, 205], [825, 205], [825, 150]], "color": "#eb5757", "fill": true } },
+          { "name": "draw_line", "input": { "x1": 880, "y1": 150, "x2": 880, "y2": 205, "color": "#eb5757", "width": 8 } },
+          { "name": "draw_line", "input": { "x1": 880, "y1": 150, "x2": 825, "y2": 150, "color": "#eb5757", "width": 8 } },
           { "name": "write_text", "input": { "text": "דף מהמחברת", "x": 750, "y": 460, "size": 28 } },
-          { "name": "draw_line", "input": { "x1": 150, "y1": 180, "x2": 150, "y2": 380, "color": "#eb5757", "width": 10 } },
-          { "name": "draw_line", "input": { "x1": 150, "y1": 380, "x2": 380, "y2": 380, "color": "#eb5757", "width": 10 } },
+          { "name": "draw_line", "input": { "x1": 380, "y1": 180, "x2": 380, "y2": 380, "color": "#eb5757", "width": 10 } },
+          { "name": "draw_line", "input": { "x1": 380, "y1": 180, "x2": 150, "y2": 180, "color": "#eb5757", "width": 10 } },
           { "name": "write_text", "input": { "text": "זווית ישרה", "x": 270, "y": 430, "size": 32 } },
           { "name": "write_text", "input": { "text": "לכל דף יש 4 פינות כאלה", "x": 480, "y": 505, "size": 26 } }
         ]
       },
       {
-        "reply": "ואיך בודקים אם פינה של צורה היא זווית ישרה? פשוט מאוד: מצמידים אליה את פינת הדף. אם היא נכנסת בדיוק, בלי רווח ובלי לבלוט החוצה — הפינה ישרה. על הלוח מלבן, והצמדתי את פינת הדף לפינה הימנית העליונה. נכנס בדיוק! עכשיו בדוק/י בעיניים גם את שאר שלוש הפינות שלו. לחצ/י ✓.",
+        "reply": "ואיך בודקים אם פינה היא זווית ישרה? מצמידים אליה את פינת הדף. אם היא נכנסת בדיוק, בלי רווח ובלי לבלוט החוצה — הפינה ישרה. על הלוח מלבן, והצמדתי לפינה הימנית העליונה. נכנס בדיוק! לחצ/י ✓.",
         "toolCalls": [
           { "name": "write_text", "input": { "text": "מצמידים — ואם נכנס, היא ישרה", "x": 480, "y": 78, "size": 32 } },
           { "name": "draw_polygon", "input": { "points": [[300, 180], [700, 180], [700, 400], [300, 400]], "color": "#2f80ed", "fill": true } },
@@ -29,7 +30,7 @@
         ]
       },
       {
-        "reply": "לא כל פינה היא ישרה. מימין יש פינה צרה — פינת הדף לא נכנסת לתוכה, היא בולטת החוצה. אז הפינה הזאת קטנה מפינת הדף. משמאל יש פינה רחבה ופתוחה — פינת הדף נכנסת לה, אבל נשאר רווח בצד. אז היא גדולה מפינת הדף. רק מה שנכנס בדיוק, בלי רווח ובלי לבלוט, נקרא זווית ישרה. לחצ/י ✓.",
+        "reply": "לא כל פינה היא ישרה. מימין יש פינה צרה — פינת הדף לא נכנסת לתוכה, היא בולטת החוצה. משמאל יש פינה רחבה — פינת הדף נכנסת, אבל נשאר רווח בצד. רק מה שנכנס בדיוק נקרא זווית ישרה. לחצ/י ✓.",
         "toolCalls": [
           { "name": "write_text", "input": { "text": "לא כל פינה היא ישרה", "x": 480, "y": 78, "size": 36 } },
           { "name": "draw_line", "input": { "x1": 740, "y1": 380, "x2": 740, "y2": 220, "color": "#2f80ed", "width": 6 } },
@@ -42,7 +43,7 @@
         ]
       },
       {
-        "reply": "עכשיו בודקים לבד! על הלוח צורה עם ארבע פינות, ועל כל פינה יש עיגול צהוב. לחצ/י על עיגול — ופינת הדף האדומה תיכנס לשם. שים/י לב מה קורה: אולי היא נכנסת בדיוק, אולי נשאר רווח, ואולי היא בולטת החוצה. בדוק/י את כל ארבע הפינות, אחת-אחת. אחר כך לחצ/י ✓.",
+        "reply": "עכשיו בודקים לבד! על הלוח צורה עם ארבע פינות, ועל כל אחת עיגול צהוב. לחצ/י על עיגול — ופינת הדף האדומה תיכנס לשם. אולי נכנסת בדיוק, אולי נשאר רווח, ואולי בולטת. בדוק/י את כל הארבע. לחצ/י ✓.",
         "toolCalls": [
           { "name": "write_text", "input": { "text": "בודקים פינות עם פינת הדף", "x": 480, "y": 72, "size": 32 } },
           {
@@ -53,14 +54,14 @@
               "y": 120,
               "w": 450,
               "h": 300,
-              "html": "<svg id='s' viewBox='0 0 360 240' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' style='font-family:Fredoka,Assistant,sans-serif'><polygon points='80,60 210,60 290,190 80,190' fill='rgba(47,128,237,0.22)' stroke='#2f80ed' stroke-width='4' stroke-linejoin='round'></polygon><g id='hits'></g><polyline id='pc' points='' fill='none' stroke='#eb5757' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' opacity='0'></polyline><text id='msg' x='180' y='226' text-anchor='middle' font-size='17' fill='#0f3b36'>לוחצים על עיגול — ובודקים</text></svg><script>(function(){var NS='http://www.w3.org/2000/svg';var C=[{x:80,y:60,a:[125,60],b:[80,105],m:'נכנס בדיוק — זווית ישרה!'},{x:210,y:60,a:[165,60],b:[210,105],m:'נשאר רווח — הפינה גדולה'},{x:290,y:190,a:[245,190],b:[290,145],m:'בולט החוצה — הפינה קטנה'},{x:80,y:190,a:[125,190],b:[80,145],m:'נכנס בדיוק — זווית ישרה!'}];var pc=document.getElementById('pc'),msg=document.getElementById('msg'),hits=document.getElementById('hits');C.forEach(function(c){var k=document.createElementNS(NS,'circle');k.setAttribute('cx',c.x);k.setAttribute('cy',c.y);k.setAttribute('r',19);k.setAttribute('fill','#ffd166');k.setAttribute('opacity','0.55');k.setAttribute('stroke','#f2994a');k.setAttribute('stroke-width','2');k.style.cursor='pointer';k.addEventListener('pointerdown',function(){pc.setAttribute('points',c.a[0]+','+c.a[1]+' '+c.x+','+c.y+' '+c.b[0]+','+c.b[1]);pc.setAttribute('opacity','1');msg.textContent=c.m;});hits.appendChild(k);});})();<\/script>"
+              "html": "<svg id='s' viewBox='0 0 360 240' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' style='font-family:Fredoka,Assistant,sans-serif'><polygon points='80,60 210,60 290,190 80,190' fill='rgba(47,128,237,0.22)' stroke='#2f80ed' stroke-width='4' stroke-linejoin='round'></polygon><g id='hits'></g><polyline id='pc' points='' fill='none' stroke='#eb5757' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' opacity='0'></polyline><text id='msg' x='180' y='226' text-anchor='middle' font-size='15' fill='#0f3b36'>לוחצים על עיגול — ובודקים · בדקת 0 מתוך 4</text></svg><script>(function(){var NS='http://www.w3.org/2000/svg';var C=[{x:80,y:60,a:[125,60],b:[80,105],m:'נכנס בדיוק — זווית ישרה!'},{x:210,y:60,a:[165,60],b:[210,105],m:'נשאר רווח — הפינה גדולה'},{x:290,y:190,a:[245,190],b:[290,145],m:'בולט החוצה — הפינה קטנה'},{x:80,y:190,a:[125,190],b:[80,145],m:'נכנס בדיוק — זווית ישרה!'}];var pc=document.getElementById('pc'),msg=document.getElementById('msg'),hits=document.getElementById('hits');var seen={},n=0;C.forEach(function(c,i){var k=document.createElementNS(NS,'circle');k.setAttribute('cx',c.x);k.setAttribute('cy',c.y);k.setAttribute('r',19);k.setAttribute('fill','#ffd166');k.setAttribute('opacity','0.55');k.setAttribute('stroke','#f2994a');k.setAttribute('stroke-width','2');k.style.cursor='pointer';k.addEventListener('pointerdown',function(){pc.setAttribute('points',c.a[0]+','+c.a[1]+' '+c.x+','+c.y+' '+c.b[0]+','+c.b[1]);pc.setAttribute('opacity','1');if(!seen[i]){seen[i]=1;n++;k.setAttribute('fill','#27ae60');k.setAttribute('stroke','#27ae60');}msg.textContent=(n>=4?'בדקת את כל הארבע — 2 מהן ישרות! 🎉':c.m+' · בדקת '+n+' מתוך 4');});hits.appendChild(k);});})();<\/script>"
             }
           },
           { "name": "write_text", "input": { "text": "אחת-אחת, בלי למהר", "x": 480, "y": 470, "size": 26 } }
         ]
       },
       {
-        "reply": "ולסיום נסגור מעגל. לריבוע ולמלבן יש דבר משותף גדול: כל ארבע הפינות שלהם ישרות, כמו פינות של דף. סימנתי לך אותן באדום. אז מה בעצם ההבדל בין ריבוע למלבן? רק הצלעות! בריבוע כל הצלעות שוות, ובמלבן יש שתיים ארוכות ושתיים קצרות. זוויות ישרות יש גם בדלת, בחלון ובספר. לחצ/י ✓.",
+        "reply": "ולסיום נסגור מעגל. לריבוע ולמלבן יש דבר משותף גדול: כל ארבע הפינות שלהם ישרות, בדיוק כמו פינות של דף. סימנתי לך את כולן באדום. עבור/י עליהן אחת-אחת ובדוק/י. לחצ/י ✓.",
         "toolCalls": [
           { "name": "write_text", "input": { "text": "לריבוע ולמלבן — 4 זוויות ישרות", "x": 480, "y": 72, "size": 30 } },
           { "name": "draw_polygon", "input": { "points": [[700, 180], [860, 180], [860, 340], [700, 340]], "color": "#2f80ed", "fill": true } },
@@ -75,13 +76,26 @@
           { "name": "draw_polygon", "input": { "points": [[430, 330], [396, 330], [396, 296], [430, 296]], "color": "#eb5757", "fill": true } },
           { "name": "draw_polygon", "input": { "points": [[110, 330], [144, 330], [144, 296], [110, 296]], "color": "#eb5757", "fill": true } },
           { "name": "write_text", "input": { "text": "מלבן", "x": 270, "y": 375, "size": 28 } },
-          { "name": "write_text", "input": { "text": "ההבדל ביניהם — רק הצלעות", "x": 480, "y": 440, "size": 28 } },
-          { "name": "write_text", "input": { "text": "זוויות ישרות: דלת, חלון, ספר", "x": 480, "y": 495, "size": 26 } }
+          { "name": "write_text", "input": { "text": "לשניהם 4 פינות ישרות", "x": 480, "y": 465, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "אז מה משותף לריבוע ולמלבן? לשניהם 4 פינות ישרות — בדיוק כמו פינות של דף. ומה שונה? בריבוע גם כל 4 הצלעות שוות. במלבן שתיים ארוכות ושתיים קצרות. זוויות ישרות יש גם בדלת, בחלון ובספר 🙂 לחצ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מה משותף — ומה שונה?", "x": 480, "y": 76, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[700, 180], [860, 180], [860, 340], [700, 340]], "color": "#2f80ed", "fill": true } },
+          { "name": "write_text", "input": { "text": "ריבוע", "x": 780, "y": 378, "size": 28 } },
+          { "name": "write_text", "input": { "text": "גם כל 4 הצלעות שוות", "x": 780, "y": 416, "size": 24 } },
+          { "name": "draw_polygon", "input": { "points": [[110, 200], [430, 200], [430, 340], [110, 340]], "color": "#27ae60", "fill": true } },
+          { "name": "write_text", "input": { "text": "מלבן", "x": 270, "y": 378, "size": 28 } },
+          { "name": "write_text", "input": { "text": "2 ארוכות · 2 קצרות", "x": 270, "y": 416, "size": 24 } },
+          { "name": "write_text", "input": { "text": "לשניהם 4 פינות ישרות", "x": 480, "y": 462, "size": 28 } },
+          { "name": "write_text", "input": { "text": "זוויות ישרות: דלת · חלון · ספר", "x": 480, "y": 508, "size": 26 } }
         ]
       }
     ],
     "guided": {
-      "reply": "עכשיו ביחד. על הלוח משולש, ובצד ימין השארתי לך את פינת הדף האדומה לעזרה. בדוק/י פינה-פינה: מצמידים בעיניים את הפינה האדומה לכל פינה של המשולש. אם נכנס בדיוק — היא ישרה. אם נשאר רווח, או שהיא בולטת החוצה — לא. ספור/י כמה פינות ישרות מצאת, וכתוב/י בתיבה!",
+      "reply": "עכשיו ביחד. על הלוח משולש, ועל כל פינה עיגול צהוב. לחצ/י על עיגול — ופינת הדף האדומה תיכנס לשם. תסתכל/י טוב: נכנסה בדיוק? נשאר רווח? בולטת החוצה? בדוק/י את שלוש הפינות וכתוב/י כמה ישרות מצאת.",
       "toolCalls": [
         {
           "name": "draw_exercise",
@@ -89,27 +103,39 @@
             "text": "כמה זוויות ישרות למשולש?",
             "answer": "1",
             "kind": "number",
-            "hint": "בודקים כל אחת משלוש הפינות מול פינת הדף. פינה אחת צרה מאוד, אחת רחבה ופתוחה, ואחת נראית בדיוק כמו פינת הדף. סופרים רק את אלה שנכנסות בדיוק.",
+            "x": 70,
+            "y": 95,
+            "hint": "לוחצים על כל אחד משלושת העיגולים ומסתכלים על פינת הדף האדומה שנכנסת. בפינה ישרה היא נכנסת בדיוק — בלי רווח בצד ובלי לבלוט החוצה. סופרים רק את הפינות האלה.",
             "praise": "מצוין! רק פינה אחת נכנסת בדיוק — היא הזווית הישרה."
           }
         },
-        { "name": "draw_polygon", "input": { "points": [[150, 180], [150, 400], [420, 400]], "color": "#2f80ed", "fill": true } },
-        { "name": "draw_line", "input": { "x1": 700, "y1": 430, "x2": 700, "y2": 340, "color": "#eb5757", "width": 9 } },
-        { "name": "draw_line", "input": { "x1": 700, "y1": 430, "x2": 790, "y2": 430, "color": "#eb5757", "width": 9 } },
-        { "name": "write_text", "input": { "text": "פינת הדף", "x": 745, "y": 480, "size": 26 } }
+        {
+          "name": "render_widget",
+          "input": {
+            "title": "פינת הדף",
+            "x": 280,
+            "y": 150,
+            "w": 440,
+            "h": 300,
+            "html": "<svg id='s' viewBox='0 0 360 240' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' style='font-family:Fredoka,Assistant,sans-serif'><polygon points='70,40 70,180 290,180' fill='rgba(47,128,237,0.22)' stroke='#2f80ed' stroke-width='4' stroke-linejoin='round'></polygon><g id='hits'></g><polyline id='pc' points='' fill='none' stroke='#eb5757' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' opacity='0'></polyline><text id='msg' x='180' y='226' text-anchor='middle' font-size='15' fill='#0f3b36'>לוחצים על עיגול — ופינת הדף נכנסת לשם</text></svg><script>(function(){var NS='http://www.w3.org/2000/svg';var C=[{x:70,y:40,a:[70,85],b:[115,40]},{x:70,y:180,a:[115,180],b:[70,135]},{x:290,y:180,a:[245,180],b:[290,135]}];var pc=document.getElementById('pc'),msg=document.getElementById('msg'),hits=document.getElementById('hits');var seen={},n=0;C.forEach(function(c,i){var k=document.createElementNS(NS,'circle');k.setAttribute('cx',c.x);k.setAttribute('cy',c.y);k.setAttribute('r',18);k.setAttribute('fill','#ffd166');k.setAttribute('opacity','0.55');k.setAttribute('stroke','#f2994a');k.setAttribute('stroke-width','2');k.style.cursor='pointer';k.addEventListener('pointerdown',function(){pc.setAttribute('points',c.a[0]+','+c.a[1]+' '+c.x+','+c.y+' '+c.b[0]+','+c.b[1]);pc.setAttribute('opacity','1');if(!seen[i]){seen[i]=1;n++;k.setAttribute('fill','#f2994a');}msg.textContent='מסתכלים טוב — נכנס בדיוק? · בדקת '+n+' מתוך 3';});hits.appendChild(k);});})();<\/script>"
+          }
+        },
+        { "name": "write_text", "input": { "text": "נכנס בדיוק = זווית ישרה", "x": 480, "y": 490, "size": 26 } }
       ]
     },
     "independent": {
-      "reply": "עכשיו לבד. בתחתית הלוח שתי צורות — מלבן כחול וצורה כתומה. בכל פינה שואלים את אותה שאלה: פינת הדף נכנסת בדיוק? אם כן — זווית ישרה. שים/י לב לצורה הכתומה, לא כל הפינות שלה נראות אותו דבר. ובשאלה האחרונה כתוב/י רק מילה אחת: כן או לא. בשיעור הבא נכיר את משפחת המשולשים 🙂",
+      "reply": "עכשיו לבד. בתחתית הלוח שתי צורות — כחולה וכתומה. בכל פינה שואלים אותו דבר: פינת הדף נכנסת בדיוק? אם כן — זווית ישרה. ולפני השאלה האחרונה קומ/י ומצא/י בחדר שלוש זוויות ישרות: דלת? שולחן? ספר? 🙂",
       "toolCalls": [
         {
           "name": "draw_exercise",
           "input": {
-            "text": "כמה זוויות ישרות למלבן הכחול?",
-            "answer": "4",
+            "text": "כמה זוויות ישרות לצורה הכחולה?",
+            "answer": "0",
             "kind": "number",
-            "hint": "המלבן הוא בדיוק כמו דף. כדאי לבדוק פינה-פינה: כל אחת מהן נכנסת בדיוק לפינת הדף? סופרים כמה פינות כאלה יש בסך הכול.",
-            "praise": "נכון מאוד! לכל מלבן 4 זוויות ישרות — בדיוק כמו לדף."
+            "x": 70,
+            "y": 100,
+            "hint": "מצמידים בעיניים את פינת הדף לכל אחת מארבע הפינות של הצורה הכחולה. הצורה נשענת הצדה — כדאי לבדוק אם בכלל יש פינה אחת שנכנסת בדיוק, ולכתוב כמה מצאת.",
+            "praise": "נכון! הצורה נשענת הצדה — אף פינה לא נכנסת בדיוק לפינת הדף."
           }
         },
         {
@@ -118,6 +144,8 @@
             "text": "כמה זוויות ישרות לצורה הכתומה?",
             "answer": "2",
             "kind": "number",
+            "x": 70,
+            "y": 190,
             "hint": "לצורה הכתומה יש צלע אחת מלוכסנת, ולכן שתי פינות שלה לא ישרות: אחת רחבה מדי ואחת צרה מדי. סופרים רק את הפינות שנראות בדיוק כמו פינת הדף.",
             "praise": "יפה מאוד! 2 פינות נכנסות בדיוק, והשתיים ליד הלוכסן — לא."
           }
@@ -125,14 +153,16 @@
         {
           "name": "draw_exercise",
           "input": {
-            "text": "פינה קטנה מפינת הדף היא ישרה?",
-            "answer": "לא",
-            "kind": "text",
-            "hint": "זווית ישרה היא רק פינה שנכנסת בדיוק לפינת הדף. פינה קטנה יותר — פינת הדף בולטת ממנה החוצה. כותבים מילה אחת בלבד: כן או לא.",
-            "praise": "בול! רק מה שנכנס בדיוק הוא זווית ישרה. 🏆"
+            "text": "כמה זוויות ישרות יש לדף שלפניך?",
+            "answer": "4",
+            "kind": "number",
+            "x": 70,
+            "y": 280,
+            "hint": "קח/י דף אמיתי מהמחברת והסתכל/י עליו. עוברים עם האצבע מפינה לפינה מסביב וסופרים — כל פינה של דף היא בדיוק הזווית הישרה שלמדנו היום.",
+            "praise": "בול! לדף 4 פינות ישרות — בגלל זה הוא הכלי שלנו לבדיקה. 🏆"
           }
         },
-        { "name": "draw_polygon", "input": { "points": [[150, 390], [500, 390], [500, 515], [150, 515]], "color": "#2f80ed", "fill": true } },
+        { "name": "draw_polygon", "input": { "points": [[200, 390], [500, 390], [440, 515], [140, 515]], "color": "#2f80ed", "fill": true } },
         { "name": "draw_polygon", "input": { "points": [[560, 390], [860, 390], [900, 515], [560, 515]], "color": "#f2994a", "fill": true } }
       ]
     }

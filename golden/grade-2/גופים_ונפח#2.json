@@ -60,12 +60,12 @@
         ]
       },
       {
-        "reply": "בוא/י נספור פאות — אבל בשיטה, לא באקראי. פרשתי לך את הקובייה על הלוח, כמו קופסה שפותחים. קודם הפאה שלמעלה: 1. אחר כך שלמטה: 2. ועכשיו ארבע הפאות שמסביב: 3, 4, 5, 6. עצור/עצרי! לקובייה יש בדיוק 6 פאות. לחץ/י ✓.",
+        "reply": "בוא/י נספור פאות — אבל בשיטה, לא באקראי. קודם הפאה שלמעלה: 1. אחר כך זו שלמטה, שהקובייה עומדת עליה: 2. ועכשיו ארבע הפאות שמסביב: 3, 4, 5, 6. עצור/עצרי! לקובייה יש בדיוק 6 פאות. המספרים בעיגול מקווקו הם פאות שלא רואים. לחץ/י ✓.",
         "toolCalls": [
           {
             "name": "write_text",
             "input": {
-              "text": "פורשים את הקובייה",
+              "text": "סופרים פאות בשיטה",
               "x": 480,
               "y": 78,
               "size": 34
@@ -74,12 +74,12 @@
           {
             "name": "render_widget",
             "input": {
-              "html": "<svg viewBox='0 0 880 320' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='258' y='55' width='68' height='68' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='292' y='100' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>1</text><rect x='190' y='123' width='68' height='68' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='224' y='168' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>3</text><rect x='258' y='123' width='68' height='68' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='292' y='168' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>4</text><rect x='326' y='123' width='68' height='68' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='360' y='168' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>5</text><rect x='394' y='123' width='68' height='68' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='428' y='168' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>6</text><rect x='258' y='191' width='68' height='68' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><text x='292' y='236' text-anchor='middle' font-size='30' font-weight='700' fill='#0f3b36'>2</text><polygon points='660,120 698,82 808,82 770,120' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='770,120 808,82 808,192 770,230' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='660,120 770,120 770,230 660,230' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><line x1='628' y1='157' x2='516' y2='157' stroke='#0f3b36' stroke-width='4' stroke-linecap='round'/><polygon points='500,157 518,146 518,168' fill='#0f3b36'/><text x='735' y='268' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>קובייה</text><text x='326' y='296' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36'>כל הפאות שלה</text></svg>",
-              "title": "פרישה",
-              "x": 60,
+              "html": "<svg viewBox='0 0 560 340' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='150,130 205,75 365,75 310,130' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='310,130 365,75 365,235 310,290' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='150,130 310,130 310,290 150,290' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><line x1='150' y1='290' x2='205' y2='235' stroke='#0f3b36' stroke-width='2' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='205' y1='235' x2='365' y2='235' stroke='#0f3b36' stroke-width='2' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='205' y1='235' x2='205' y2='75' stroke='#0f3b36' stroke-width='2' stroke-linecap='round' stroke-dasharray='7 6'/><text x='257' y='113' text-anchor='middle' font-size='32' font-weight='700' fill='#0f3b36'>1</text><text x='230' y='221' text-anchor='middle' font-size='32' font-weight='700' fill='#0f3b36'>3</text><text x='337' y='193' text-anchor='middle' font-size='32' font-weight='700' fill='#0f3b36'>4</text><circle cx='257' cy='263' r='19' fill='none' stroke='#4b7d75' stroke-width='2.5' stroke-dasharray='5 5'/><text x='257' y='273' text-anchor='middle' font-size='28' font-weight='700' fill='#4b7d75'>2</text><circle cx='285' cy='155' r='19' fill='none' stroke='#4b7d75' stroke-width='2.5' stroke-dasharray='5 5'/><text x='285' y='165' text-anchor='middle' font-size='28' font-weight='700' fill='#4b7d75'>5</text><circle cx='177' cy='182' r='19' fill='none' stroke='#4b7d75' stroke-width='2.5' stroke-dasharray='5 5'/><text x='177' y='192' text-anchor='middle' font-size='28' font-weight='700' fill='#4b7d75'>6</text><text x='280' y='328' text-anchor='middle' font-size='23' font-weight='700' fill='#4b7d75'>מקווקו = פאה שלא רואים</text></svg>",
+              "title": "סופרים פאות",
+              "x": 220,
               "y": 140,
-              "w": 880,
-              "h": 320
+              "w": 560,
+              "h": 330
             }
           },
           {
@@ -266,7 +266,7 @@
             "text": "כמה פאות לקובייה?",
             "answer": "6",
             "kind": "number",
-            "hint": "בשיטה! פאה אחת למעלה — 1. פאה אחת למטה — 2. ועכשיו הפאות שמסביב, אחת-אחת: 3, 4, 5... ויש עוד אחת מאחור שלא רואים. כמה יצא בסך הכול?",
+            "hint": "תראה/י — יש פאה למעלה, ויש עוד אחת בדיוק מתחתיה שהקובייה עומדת עליה, גם אם לא רואים אותה. זה כבר 2. עכשיו הפאות שמסביב — שתיים רואים ושתיים מוסתרות מאחור.",
             "praise": "יופי! 6 פאות. ספרת בשיטה ולא פספסת אף אחת 🙂"
           }
         },
@@ -284,7 +284,7 @@
       ]
     },
     "independent": {
-      "reply": "תורך לבד! בראשונה — ספור/ספרי את הפינות החדות של הקובייה שעל הלוח, בשיטה. בשנייה אין ציור: לתיבה יש בדיוק אותם מספרים כמו לקובייה, אז תיזכר/י. ובשלישית — איזו צורה שטוחה היא פאה של קובייה? בהצלחה 🙂",
+      "reply": "תורך לבד! בראשונה — ספור/ספרי את הפינות החדות של הקובייה שעל הלוח, בשיטה. בשנייה תבחר/י פינה אחת בקובייה ותספור/תספרי כמה קווים יוצאים ממנה. ובשלישית — איזו צורה שטוחה היא פאה של קופסת דגנים? בהצלחה 🙂",
       "toolCalls": [
         {
           "name": "draw_exercise",
@@ -303,28 +303,28 @@
             "title": "קובייה",
             "x": 40,
             "y": 110,
-            "w": 330,
-            "h": 250
+            "w": 300,
+            "h": 227
           }
         },
         {
           "name": "draw_exercise",
           "input": {
-            "text": "לתיבה כמה מקצועות?",
-            "answer": "12",
+            "text": "כמה מקצועות בקדקוד אחד?",
+            "answer": "3",
             "kind": "number",
-            "hint": "אין ציור — אבל גילינו היום משהו: לתיבה יש בדיוק אותם מספרים כמו לקובייה. אז תיזכר/י כמה מקצועות ספרנו על הקובייה: 4 למעלה, 4 למטה, ו-4 עומדים.",
-            "praise": "נכון! 12 מקצועות. השתמשת בכלל שלמדנו בלי לראות ציור — חכם/ה!"
+            "hint": "שים/שימי אצבע על פינה חדה אחת של הקובייה שעל הלוח — רק אחת. עכשיו עקוב/עקבי באצבע אחרי כל קו שיוצא מהפינה הזאת, וספור/ספרי אותם אחד-אחד.",
+            "praise": "מצוין! 3 מקצועות נפגשים בכל קדקוד. בדקת על הציור בעצמך!"
           }
         },
         {
           "name": "draw_exercise",
           "input": {
-            "text": "פאה של קובייה?",
-            "answer": "ריבוע",
+            "text": "פאה של קופסת דגנים?",
+            "answer": "מלבן",
             "kind": "text",
-            "hint": "כל פאה של גוף היא צורה שטוחה שאת/ה מכיר/ה. תסתכל/י על צד אחד של קוביית משחק: כל הצלעות שלו שוות. איזו צורה שטוחה זו?",
-            "praise": "בדיוק! פאה של קובייה היא ריבוע. חיברת בין שטוח לגוף 🏆"
+            "hint": "קופסת דגנים היא תיבה — זוכר/ת מהשיעור הקודם? עכשיו תדמיין/י את הצד הקדמי שלה: שני קווים ארוכים ושניים קצרים, וכל הפינות ישרות. איזו צורה שטוחה זו?",
+            "praise": "בדיוק! פאה של קופסת דגנים היא מלבן. חיברת בין שטוח לגוף 🏆"
           }
         }
       ]

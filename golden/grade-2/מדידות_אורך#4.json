@@ -310,94 +310,35 @@
         ]
       },
       {
-        "reply": "בוא/י נחשב היקף של מלבן. הצלעות: 6 ס״מ למעלה, 4 ס״מ בצד, 6 ס״מ למטה, ו-4 ס״מ בצד השני. מחברים את כולן: 6 ועוד 4 זה 10, ועוד 6 ועוד 4 זה עוד 10. שתי עשרות — 20! ההיקף הוא 20 ס״מ. לחץ/י ✓.",
+        "reply": "בוא/י נחשב היקף של מלבן. קודם מנחשים: בחר/י עם + ו− כמה ס״מ יצא לדעתך. עכשיו לחץ/י על כל צלע — 6, ועוד 4, ועוד 6, ועוד 4. אף צלע לא נשכחת! בסוף נראה כמה היית קרוב/ה. לחץ/י ✓ כשסיימת.",
         "toolCalls": [
           {
             "name": "write_text",
             "input": {
-              "text": "היקף המלבן",
+              "text": "היקף המלבן — צלע אחרי צלע",
               "x": 480,
               "y": 80,
               "size": 34
             }
           },
           {
-            "name": "draw_polygon",
+            "name": "render_widget",
             "input": {
-              "points": [
-                [
-                  330,
-                  160
-                ],
-                [
-                  630,
-                  160
-                ],
-                [
-                  630,
-                  360
-                ],
-                [
-                  330,
-                  360
-                ]
-              ],
-              "color": "#5EEAD4",
-              "fill": true
+              "html": "<svg viewBox=\"0 0 900 360\" width=\"100%\" height=\"100%\" style=\"display:block\"><polygon points=\"120,60 480,60 480,300 120,300\" fill=\"#CCFBF1\"/><line id=\"e0\" x1=\"120\" y1=\"60\" x2=\"480\" y2=\"60\" stroke=\"#0D9488\" stroke-width=\"8\" stroke-linecap=\"round\"/><line id=\"e1\" x1=\"480\" y1=\"60\" x2=\"480\" y2=\"300\" stroke=\"#0D9488\" stroke-width=\"8\" stroke-linecap=\"round\"/><line id=\"e2\" x1=\"480\" y1=\"300\" x2=\"120\" y2=\"300\" stroke=\"#0D9488\" stroke-width=\"8\" stroke-linecap=\"round\"/><line id=\"e3\" x1=\"120\" y1=\"300\" x2=\"120\" y2=\"60\" stroke=\"#0D9488\" stroke-width=\"8\" stroke-linecap=\"round\"/><line id=\"h0\" x1=\"120\" y1=\"60\" x2=\"480\" y2=\"60\" stroke=\"#000000\" stroke-opacity=\"0\" stroke-width=\"30\" pointer-events=\"stroke\" style=\"cursor:pointer\"/><line id=\"h1\" x1=\"480\" y1=\"60\" x2=\"480\" y2=\"300\" stroke=\"#000000\" stroke-opacity=\"0\" stroke-width=\"30\" pointer-events=\"stroke\" style=\"cursor:pointer\"/><line id=\"h2\" x1=\"480\" y1=\"300\" x2=\"120\" y2=\"300\" stroke=\"#000000\" stroke-opacity=\"0\" stroke-width=\"30\" pointer-events=\"stroke\" style=\"cursor:pointer\"/><line id=\"h3\" x1=\"120\" y1=\"300\" x2=\"120\" y2=\"60\" stroke=\"#000000\" stroke-opacity=\"0\" stroke-width=\"30\" pointer-events=\"stroke\" style=\"cursor:pointer\"/><text x=\"300\" y=\"44\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#334155\">6 ס״מ</text><text x=\"536\" y=\"188\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#334155\">4 ס״מ</text><text x=\"300\" y=\"332\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#334155\">6 ס״מ</text><text x=\"72\" y=\"188\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#334155\">4 ס״מ</text><text x=\"730\" y=\"34\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\">כמה ס״מ ההיקף לדעתך?</text><g id=\"mi\" style=\"cursor:pointer\"><circle cx=\"640\" cy=\"80\" r=\"26\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text x=\"640\" y=\"92\" text-anchor=\"middle\" font-size=\"32\" font-weight=\"700\" fill=\"#334155\">−</text></g><rect x=\"690\" y=\"52\" width=\"80\" height=\"56\" rx=\"12\" fill=\"#FFFFFF\" stroke=\"#0F766E\" stroke-width=\"3\"/><text id=\"gv\" x=\"730\" y=\"96\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#0F766E\">?</text><g id=\"pl\" style=\"cursor:pointer\"><circle cx=\"820\" cy=\"80\" r=\"26\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text x=\"820\" y=\"92\" text-anchor=\"middle\" font-size=\"32\" font-weight=\"700\" fill=\"#334155\">+</text></g><text id=\"tip\" x=\"730\" y=\"150\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">לחצו על כל צלע</text><text id=\"ch\" x=\"730\" y=\"200\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"700\" fill=\"#0F766E\" direction=\"ltr\"></text><text id=\"cnt\" x=\"730\" y=\"240\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#64748B\">0 מתוך 4 צלעות</text><text id=\"res\" x=\"730\" y=\"282\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#0D9488\"></text><text id=\"cmp1\" x=\"730\" y=\"316\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#334155\"></text><text id=\"cmp2\" x=\"730\" y=\"346\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"#334155\"></text></svg><script>\n(function(){\n  var V=[6,4,6,4], hit=[0,0,0,0], parts=[], sum=0, g=null, done=false;\n  var gv=document.getElementById('gv'), ch=document.getElementById('ch'), cnt=document.getElementById('cnt');\n  var res=document.getElementById('res'), tip=document.getElementById('tip');\n  var c1=document.getElementById('cmp1'), c2=document.getElementById('cmp2');\n  function set(v){ g=Math.max(1,Math.min(40,v)); gv.textContent=g; }\n  function press(el,fn){ if(!el) return; el.addEventListener('pointerdown',function(e){e.preventDefault();e.stopPropagation();fn();}); }\n  press(document.getElementById('mi'),function(){ if(done) return; set(g===null?10:g-1); });\n  press(document.getElementById('pl'),function(){ if(done) return; set(g===null?10:g+1); });\n  function tap(i){\n    if(done) return;\n    if(g===null){ tip.textContent='קודם מנחשים — עם + ו−'; tip.setAttribute('fill','#DC2626'); return; }\n    if(hit[i]) return; hit[i]=1; sum+=V[i]; parts.push(V[i]);\n    tip.textContent='לחצו על כל צלע'; tip.setAttribute('fill','#64748B');\n    var e=document.getElementById('e'+i); if(e){ e.setAttribute('stroke','#F97316'); e.setAttribute('stroke-width','14'); }\n    ch.textContent=parts.join(' + ');\n    cnt.textContent=parts.length+' מתוך 4 צלעות';\n    if(parts.length===4){\n      done=true;\n      ch.textContent=parts.join(' + ')+' = '+sum;\n      res.textContent='ההיקף: '+sum+' ס״מ';\n      var dd=Math.abs(g-sum);\n      c1.textContent='ניחשת '+g+' · יצא '+sum;\n      c2.textContent=(dd===0?'בול! 🎯':(dd<=4?'ניחוש קרוב מאוד! 👏':'עכשיו יודעים בדיוק 🙂'));\n      try{ parent.postMessage({type:'vela:correct'},'*'); }catch(_){}\n    }\n  }\n  for(var i=0;i<4;i++)(function(i){\n    var h=document.getElementById('h'+i);\n    if(h) h.addEventListener('pointerdown',function(e){ e.preventDefault(); e.stopPropagation(); tap(i); });\n  })(i);\n})();\n</script>",
+              "title": "מנחשים ואז לוחצים על כל צלע",
+              "x": 90,
+              "y": 130,
+              "w": 780,
+              "h": 312
             }
           },
           {
             "name": "write_text",
             "input": {
-              "text": "6 ס״מ",
-              "x": 480,
-              "y": 132,
-              "size": 26
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "4 ס״מ",
-              "x": 692,
-              "y": 260,
-              "size": 26
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "6 ס״מ",
-              "x": 480,
-              "y": 392,
-              "size": 26
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "4 ס״מ",
-              "x": 270,
-              "y": 260,
-              "size": 26
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "6 + 4 + 6 + 4 = 20",
-              "x": 480,
-              "y": 448,
-              "size": 34
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "ההיקף: 20 ס״מ",
+              "text": "היקף = כל הצלעות ביחד",
               "x": 480,
               "y": 505,
-              "size": 34
+              "size": 26
             }
           }
         ]
@@ -512,10 +453,90 @@
             }
           }
         ]
+      },
+      {
+        "reply": "וגם למשולש יש היקף! למשולש שעל הלוח 3 צלעות: 6 ס״מ, 8 ס״מ ו-10 ס״מ. עושים בדיוק אותו דבר — מחברים את כולן: 6 ועוד 8 זה 14, ועוד 10 זה 24. ההיקף הוא 24 ס״מ. לא משנה כמה צלעות יש — תמיד מחברים את כולן. לחץ/י ✓.",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "גם למשולש יש היקף",
+              "x": 480,
+              "y": 80,
+              "size": 34
+            }
+          },
+          {
+            "name": "draw_polygon",
+            "input": {
+              "points": [
+                [
+                  300,
+                  440
+                ],
+                [
+                  540,
+                  440
+                ],
+                [
+                  300,
+                  120
+                ]
+              ],
+              "color": "#FCD34D",
+              "fill": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "6 ס״מ",
+              "x": 420,
+              "y": 478,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "8 ס״מ",
+              "x": 252,
+              "y": 280,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "10 ס״מ",
+              "x": 456,
+              "y": 253,
+              "size": 26
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מחברים: 6 + 8 + 10 = 24",
+              "x": 740,
+              "y": 260,
+              "size": 32
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ההיקף: 24 ס״מ",
+              "x": 740,
+              "y": 340,
+              "size": 32
+            }
+          }
+        ]
       }
     ],
     "guided": {
-      "reply": "עכשיו ביחד! על הלוח מלבן, והאורכים כתובים עליו. היקף זה כל הדרך מסביב — אז עוברים על הצלעות אחת-אחת ומחברים. תתחיל/י מלמעלה: 5. תרד/י בצד: ועוד 3. למטה: ועוד 5. ובצד השני: ועוד 3. מה יצא? כתוב/כתבי בתיבה!",
+      "reply": "עכשיו ביחד! על הלוח מלבן, והאורכים כתובים עליו. קודם נחש/י בלב כמה יצא ההיקף. ועכשיו נבדוק: עוברים על הצלעות אחת-אחת ומחברים. מלמעלה 5, בצד ועוד 3, למטה ועוד 5, ובצד השני ועוד 3. מה יצא? כתוב/כתבי בתיבה — ותראה/י כמה היית קרוב/ה!",
       "toolCalls": [
         {
           "name": "draw_exercise",
@@ -600,7 +621,7 @@
       ]
     },
     "independent": {
-      "reply": "עכשיו לבד, ובגדול! בשאלה הראשונה השארתי לך את הקו השבור על הלוח — רק תחבר/י את שלושת הקטעים. בשתיים הבאות אין ציור, אבל את/ה כבר יודע/ת: היקף זה כל הצלעות ביחד. זה השיעור האחרון בנושא — בוא/י נסיים יפה 🏆",
+      "reply": "עכשיו לבד, ובגדול! שלוש צורות על הלוח: משמאל הקו השבור של שאלה 1, באמצע הריבוע של שאלה 2, ומימין המשולש של שאלה 3. בכל אחת — עוברים על כל הקטעים ומחברים. זה השיעור האחרון בנושא, בוא/י נסיים יפה 🏆",
       "toolCalls": [
         {
           "name": "draw_exercise",
@@ -608,37 +629,52 @@
             "text": "אורך כל הדרך בס״מ?",
             "answer": "9",
             "kind": "number",
-            "hint": "תסתכל/י על הקו השבור למטה. יש בו 3 קטעים: 2, 3 ו-4. תעבור/עברי עליהם עם האצבע ותחבר/י אחד-אחד: 2 ועוד 3, ואז עוד 4.",
+            "x": 150,
+            "y": 95,
+            "hint": "תסתכל/י על הקו השבור משמאל. יש בו 3 קטעים: 2, 3 ו-4. תעבור/עברי עליהם עם האצבע ותחבר/י אחד-אחד: 2 ועוד 3, ואז עוד 4.",
             "praise": "יופי! קו שבור זה פשוט חיבור של כל הקטעים."
           }
         },
         {
           "name": "draw_exercise",
           "input": {
-            "text": "היקף ריבוע שכל צלע בו 4 ס״מ?",
+            "text": "היקף הריבוע בס״מ?",
             "answer": "16",
             "kind": "number",
-            "hint": "בריבוע כל 4 הצלעות שוות — כולן 4 ס״מ. חבר/י אותן אחת-אחת: 4 ועוד 4, ועוד 4, ועוד 4. אפשר גם לחשוב על 4 קבוצות של 4.",
-            "praise": "כל הכבוד! זכרת שבריבוע כל הצלעות שוות."
+            "x": 150,
+            "y": 170,
+            "hint": "הריבוע באמצע הלוח, וכתוב על כל צלע כמה היא. עבור/עברי עליהן אחת-אחת ותחבר/י: 4 ועוד 4, ועוד 4, ועוד 4.",
+            "praise": "כל הכבוד! בריבוע כל הצלעות שוות — וחיברת את כולן."
           }
         },
         {
           "name": "draw_exercise",
           "input": {
-            "text": "היקף משולש 3, 4, 5 ס״מ?",
+            "text": "היקף המשולש בס״מ?",
             "answer": "12",
             "kind": "number",
-            "hint": "למשולש יש 3 צלעות, וההיקף הוא כולן ביחד. חבר/י אחת-אחת: 3 ועוד 4, ואז הוסף/הוסיפי עוד 5.",
+            "x": 150,
+            "y": 245,
+            "hint": "המשולש מימין. יש לו 3 צלעות וכתוב על כל אחת כמה היא: 3, 4 ו-5. ההיקף הוא כולן ביחד — חבר/י אחת-אחת.",
             "praise": "וואו! חישבת היקף של משולש. סיימת את כל מדידות האורך — אלוף/ה! 🏆"
           }
         },
         {
+          "name": "write_text",
+          "input": {
+            "text": "משמאל שאלה 1 · באמצע 2 · מימין 3",
+            "x": 480,
+            "y": 300,
+            "size": 22
+          }
+        },
+        {
           "name": "draw_line",
           "input": {
-            "x1": 80,
-            "y1": 480,
-            "x2": 180,
-            "y2": 480,
+            "x1": 70,
+            "y1": 490,
+            "x2": 142,
+            "y2": 490,
             "color": "#0D9488",
             "width": 6
           }
@@ -646,10 +682,10 @@
         {
           "name": "draw_line",
           "input": {
-            "x1": 180,
-            "y1": 480,
-            "x2": 180,
-            "y2": 330,
+            "x1": 142,
+            "y1": 490,
+            "x2": 142,
+            "y2": 382,
             "color": "#0D9488",
             "width": 6
           }
@@ -657,10 +693,10 @@
         {
           "name": "draw_line",
           "input": {
-            "x1": 180,
-            "y1": 330,
-            "x2": 380,
-            "y2": 330,
+            "x1": 142,
+            "y1": 382,
+            "x2": 286,
+            "y2": 382,
             "color": "#0D9488",
             "width": 6
           }
@@ -668,32 +704,32 @@
         {
           "name": "draw_point",
           "input": {
-            "x": 80,
-            "y": 480,
+            "x": 70,
+            "y": 490,
             "label": ""
           }
         },
         {
           "name": "draw_point",
           "input": {
-            "x": 180,
-            "y": 480,
+            "x": 142,
+            "y": 490,
             "label": ""
           }
         },
         {
           "name": "draw_point",
           "input": {
-            "x": 180,
-            "y": 330,
+            "x": 142,
+            "y": 382,
             "label": ""
           }
         },
         {
           "name": "draw_point",
           "input": {
-            "x": 380,
-            "y": 330,
+            "x": 286,
+            "y": 382,
             "label": ""
           }
         },
@@ -701,27 +737,136 @@
           "name": "write_text",
           "input": {
             "text": "2 ס״מ",
-            "x": 130,
-            "y": 512,
-            "size": 24
+            "x": 106,
+            "y": 468,
+            "size": 22
           }
         },
         {
           "name": "write_text",
           "input": {
             "text": "3 ס״מ",
-            "x": 228,
-            "y": 405,
-            "size": 24
+            "x": 192,
+            "y": 436,
+            "size": 22
           }
         },
         {
           "name": "write_text",
           "input": {
             "text": "4 ס״מ",
-            "x": 280,
-            "y": 302,
-            "size": 24
+            "x": 214,
+            "y": 360,
+            "size": 22
+          }
+        },
+        {
+          "name": "draw_polygon",
+          "input": {
+            "points": [
+              [
+                400,
+                346
+              ],
+              [
+                544,
+                346
+              ],
+              [
+                544,
+                490
+              ],
+              [
+                400,
+                490
+              ]
+            ],
+            "color": "#5EEAD4",
+            "fill": true
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "4 ס״מ",
+            "x": 472,
+            "y": 328,
+            "size": 22
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "4 ס״מ",
+            "x": 590,
+            "y": 418,
+            "size": 22
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "4 ס״מ",
+            "x": 472,
+            "y": 512,
+            "size": 22
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "4 ס״מ",
+            "x": 352,
+            "y": 418,
+            "size": 22
+          }
+        },
+        {
+          "name": "draw_polygon",
+          "input": {
+            "points": [
+              [
+                690,
+                490
+              ],
+              [
+                798,
+                490
+              ],
+              [
+                690,
+                346
+              ]
+            ],
+            "color": "#FCD34D",
+            "fill": true
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "3 ס״מ",
+            "x": 744,
+            "y": 512,
+            "size": 22
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "4 ס״מ",
+            "x": 655,
+            "y": 418,
+            "size": 22
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "5 ס״מ",
+            "x": 772,
+            "y": 381,
+            "size": 22
           }
         }
       ]
