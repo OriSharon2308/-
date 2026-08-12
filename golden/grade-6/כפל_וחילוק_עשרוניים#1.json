@@ -1,0 +1,112 @@
+{
+  "topic": "כפל וחילוק עשרוניים",
+  "lesson": 1,
+  "title": "כפל וחילוק ב-10, 100 ו-1,000",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! היום עולים ויורדים במדרגות 🙂 תראה/י את הטבלה על הלוח. כל מדרגה שמאלה — פי 10 יותר: אחדות, עשרות, מאות. כל מדרגה ימינה — פי 10 פחות. וגם אחרי הנקודה המדרגות ממשיכות: עשיריות, מאיות, אלפיות. הנקודה רק מסמנת איפה נגמרים השלמים. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מדרגות של פי 10", "x": 480, "y": 90, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='280' y='24' text-anchor='middle' font-size='21' font-weight='700' fill='#ea580c'>כל מדרגה שמאלה — פי 10</text><line x1='500' y1='48' x2='60' y2='48' stroke='#ea580c' stroke-width='4'/><polygon points='44,48 62,40 62,56' fill='#ea580c'/><g stroke='#0d9488' stroke-width='3' fill='#ccfbf1'><rect x='30' y='72' width='80' height='62'/><rect x='110' y='72' width='80' height='62'/><rect x='190' y='72' width='80' height='62'/><rect x='288' y='72' width='80' height='62'/><rect x='368' y='72' width='80' height='62'/><rect x='448' y='72' width='80' height='62'/></g><circle cx='279' cy='124' r='7' fill='#0f3b36'/><g font-size='15' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='70' y='154'>מאות</text><text x='150' y='154'>עשרות</text><text x='230' y='154'>אחדות</text><text x='328' y='154'>עשיריות</text><text x='408' y='154'>מאיות</text><text x='488' y='154'>אלפיות</text></g><line x1='60' y1='182' x2='500' y2='182' stroke='#2563eb' stroke-width='4'/><polygon points='516,182 498,174 498,190' fill='#2563eb'/><text x='280' y='210' text-anchor='middle' font-size='21' font-weight='700' fill='#2563eb'>כל מדרגה ימינה — פי 10 פחות</text><text x='280' y='240' text-anchor='middle' font-size='17' fill='#0f3b36'>הנקודה מסמנת איפה נגמרים השלמים</text></svg>", "title": "מדרגות ערך-מקום", "x": 175, "y": 140, "w": 630, "h": 281, "exact": true } },
+          { "name": "write_text", "input": { "text": "מימין לנקודה — חלקים של שלם", "x": 480, "y": 465, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו שמתי את 3.5 בטבלה: ה-3 באחדות, ה-5 בעשיריות. כופלים ב-10 — כל ספרה עולה מדרגה אחת שמאלה. ה-3 עובר לעשרות, ה-5 עובר לאחדות. קיבלנו 35. שים/י לב לדבר החשוב: הנקודה לא זזה לשום מקום. הספרות הן שזזו. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כופלים ב-10 — עולים מדרגה", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 280' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><g font-size='14' font-weight='700' fill='#64748b' text-anchor='middle'><text x='70' y='30'>מאות</text><text x='150' y='30'>עשרות</text><text x='230' y='30'>אחדות</text><text x='328' y='30'>עשיריות</text><text x='408' y='30'>מאיות</text><text x='488' y='30'>אלפיות</text></g><g stroke='#94a3b8' stroke-width='2' fill='#f1f5f9'><rect x='30' y='40' width='80' height='56'/><rect x='110' y='40' width='80' height='56'/><rect x='190' y='40' width='80' height='56'/><rect x='288' y='40' width='80' height='56'/><rect x='368' y='40' width='80' height='56'/><rect x='448' y='40' width='80' height='56'/></g><circle cx='279' cy='86' r='6' fill='#0f3b36'/><g font-size='30' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='230' y='80'>3</text><text x='328' y='80'>5</text></g><g stroke='#ea580c' stroke-width='3'><line x1='230' y1='102' x2='158' y2='140'/><line x1='328' y1='102' x2='242' y2='140'/></g><polygon points='154,142 163,130 169,140' fill='#ea580c'/><polygon points='238,142 247,130 253,140' fill='#ea580c'/><g stroke='#0d9488' stroke-width='3' fill='#ccfbf1'><rect x='30' y='148' width='80' height='56'/><rect x='110' y='148' width='80' height='56'/><rect x='190' y='148' width='80' height='56'/><rect x='288' y='148' width='80' height='56'/><rect x='368' y='148' width='80' height='56'/><rect x='448' y='148' width='80' height='56'/></g><circle cx='279' cy='194' r='6' fill='#0f3b36'/><g font-size='30' font-weight='700' fill='#0d9488' text-anchor='middle'><text x='150' y='188'>3</text><text x='230' y='188'>5</text></g><text x='280' y='242' text-anchor='middle' font-size='27' font-weight='700' fill='#0f3b36' direction='ltr'>3.5 × 10 = 35</text><text x='280' y='270' text-anchor='middle' font-size='17' fill='#0f3b36'>כל ספרה עלתה מדרגה אחת</text></svg>", "title": "3.5 כפול 10", "x": 180, "y": 132, "w": 620, "h": 310, "exact": true } },
+          { "name": "write_text", "input": { "text": "הנקודה במקומה — הספרות זזו", "x": 480, "y": 478, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו הפוך. 3.5 חלקי 10 — כל ספרה יורדת מדרגה אחת ימינה. ה-3 יורד מאחדות לעשיריות, וה-5 יורד למאיות. באחדות לא נשאר כלום, אז כותבים שם 0 כדי שנראה איפה הנקודה: 0.35. חילקנו — ויצא מספר קטן יותר. הגיוני. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מחלקים ב-10 — יורדים מדרגה", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 280' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><g font-size='14' font-weight='700' fill='#64748b' text-anchor='middle'><text x='70' y='30'>מאות</text><text x='150' y='30'>עשרות</text><text x='230' y='30'>אחדות</text><text x='328' y='30'>עשיריות</text><text x='408' y='30'>מאיות</text><text x='488' y='30'>אלפיות</text></g><g stroke='#94a3b8' stroke-width='2' fill='#f1f5f9'><rect x='30' y='40' width='80' height='56'/><rect x='110' y='40' width='80' height='56'/><rect x='190' y='40' width='80' height='56'/><rect x='288' y='40' width='80' height='56'/><rect x='368' y='40' width='80' height='56'/><rect x='448' y='40' width='80' height='56'/></g><circle cx='279' cy='86' r='6' fill='#0f3b36'/><g font-size='30' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='230' y='80'>3</text><text x='328' y='80'>5</text></g><g stroke='#2563eb' stroke-width='3'><line x1='230' y1='102' x2='318' y2='140'/><line x1='328' y1='102' x2='398' y2='140'/></g><polygon points='322,142 307,142 311,131' fill='#2563eb'/><polygon points='402,142 387,142 391,131' fill='#2563eb'/><g stroke='#0d9488' stroke-width='3' fill='#ccfbf1'><rect x='30' y='148' width='80' height='56'/><rect x='110' y='148' width='80' height='56'/><rect x='190' y='148' width='80' height='56'/><rect x='288' y='148' width='80' height='56'/><rect x='368' y='148' width='80' height='56'/><rect x='448' y='148' width='80' height='56'/></g><circle cx='279' cy='194' r='6' fill='#0f3b36'/><text x='230' y='188' text-anchor='middle' font-size='30' font-weight='700' fill='#94a3b8'>0</text><g font-size='30' font-weight='700' fill='#0d9488' text-anchor='middle'><text x='328' y='188'>3</text><text x='408' y='188'>5</text></g><text x='280' y='242' text-anchor='middle' font-size='27' font-weight='700' fill='#0f3b36' direction='ltr'>3.5 : 10 = 0.35</text><text x='280' y='270' text-anchor='middle' font-size='17' fill='#0f3b36'>האפס שומר את מקום האחדות</text></svg>", "title": "3.5 חלקי 10", "x": 180, "y": 132, "w": 620, "h": 310, "exact": true } },
+          { "name": "write_text", "input": { "text": "חילקנו — יצא קטן יותר", "x": 480, "y": 478, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ב-100 יש שני אפסים, אז זה שתי מדרגות. 2.5 כפול 100: ה-2 עולה שתי מדרגות עד המאות, ה-5 עולה לעשרות, ובאחדות נשאר ריק — ממלאים 0. יוצא 250. הרבה ילדים כותבים כאן 2.500, וזה לא נכון: אפסים אחרי הנקודה לא מוסיפים כלום. 2.500 זה פשוט 2.5. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ב-100 — שתי מדרגות", "x": 480, "y": 84, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 300' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><g font-size='14' font-weight='700' fill='#64748b' text-anchor='middle'><text x='70' y='30'>מאות</text><text x='150' y='30'>עשרות</text><text x='230' y='30'>אחדות</text><text x='328' y='30'>עשיריות</text><text x='408' y='30'>מאיות</text><text x='488' y='30'>אלפיות</text></g><g stroke='#94a3b8' stroke-width='2' fill='#f1f5f9'><rect x='30' y='40' width='80' height='56'/><rect x='110' y='40' width='80' height='56'/><rect x='190' y='40' width='80' height='56'/><rect x='288' y='40' width='80' height='56'/><rect x='368' y='40' width='80' height='56'/><rect x='448' y='40' width='80' height='56'/></g><circle cx='279' cy='86' r='6' fill='#0f3b36'/><g font-size='30' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='230' y='80'>2</text><text x='328' y='80'>5</text></g><g stroke='#ea580c' stroke-width='3'><line x1='230' y1='102' x2='82' y2='140'/><line x1='328' y1='102' x2='166' y2='140'/></g><polygon points='78,142 90,133 93,144' fill='#ea580c'/><polygon points='162,142 174,133 177,144' fill='#ea580c'/><g stroke='#0d9488' stroke-width='3' fill='#ccfbf1'><rect x='30' y='148' width='80' height='56'/><rect x='110' y='148' width='80' height='56'/><rect x='190' y='148' width='80' height='56'/><rect x='288' y='148' width='80' height='56'/><rect x='368' y='148' width='80' height='56'/><rect x='448' y='148' width='80' height='56'/></g><circle cx='279' cy='194' r='6' fill='#0f3b36'/><g font-size='30' font-weight='700' fill='#0d9488' text-anchor='middle'><text x='70' y='188'>2</text><text x='150' y='188'>5</text></g><text x='230' y='188' text-anchor='middle' font-size='30' font-weight='700' fill='#94a3b8'>0</text><text x='170' y='252' text-anchor='middle' font-size='26' font-weight='700' fill='#dc2626' direction='ltr'>2.500</text><line x1='120' y1='243' x2='220' y2='243' stroke='#dc2626' stroke-width='3'/><text x='250' y='252' font-size='26' font-weight='700' fill='#dc2626'>✗</text><text x='390' y='252' text-anchor='middle' font-size='26' font-weight='700' fill='#15803d' direction='ltr'>250</text><text x='450' y='252' font-size='26' font-weight='700' fill='#15803d'>✓</text><text x='280' y='288' text-anchor='middle' font-size='18' fill='#0f3b36'>אפסים אחרי הנקודה לא מוסיפים כלום</text></svg>", "title": "2.5 כפול 100", "x": 190, "y": 124, "w": 600, "h": 321, "exact": true } },
+          { "name": "write_text", "input": { "text": "המקום הריק מקבל אפס", "x": 480, "y": 478, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "אז ככה זוכרים את זה: כל אפס בכופל = מדרגה אחת. ב-10 מדרגה, ב-100 שתיים, ב-1,000 שלוש. בכפל עולים שמאלה, בחילוק יורדים ימינה — אותו מספר מדרגות. ננסה יחד: 0.4 כפול 1,000. שלוש מדרגות שמאלה: ה-4 עובר מעשיריות למאות, ואחריו ממלאים אפסים — 400. עכשיו תור/ך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כל אפס = מדרגה אחת", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='300' y1='20' x2='300' y2='170' stroke='#cbd5e1' stroke-width='2' stroke-dasharray='6 6'/><g text-anchor='middle' font-weight='700' direction='ltr' font-size='26' fill='#0d9488'><text x='420' y='52'>× 10</text><text x='420' y='100'>× 100</text><text x='420' y='148'>× 1,000</text></g><g text-anchor='middle' font-size='21' fill='#0f3b36'><text x='180' y='52'>מדרגה אחת שמאלה</text><text x='180' y='100'>שתי מדרגות שמאלה</text><text x='180' y='148'>שלוש מדרגות שמאלה</text></g><text x='280' y='198' text-anchor='middle' font-size='20' font-weight='700' fill='#2563eb'>בחילוק — אותו מספר מדרגות, ימינה</text><text x='280' y='236' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36' direction='ltr'>0.4 × 1,000 = 400</text></svg>", "title": "טבלת המדרגות", "x": 190, "y": 140, "w": 600, "h": 268, "exact": true } },
+          { "name": "write_text", "input": { "text": "סופרים אפסים — וזזים", "x": 480, "y": 452, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. התרגיל על הלוח: 2.4 כפול 100. שמתי לך את המדרגות לעזרה. תשאל/י קודם כמה מדרגות — כמה אפסים יש ב-100? ואז תזיז/י את שתי הספרות יחד, כל אחת אותו מספר מדרגות שמאלה. אם נשאר מקום ריק לפני הנקודה, ממלאים אותו באפס. את התשובה כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "2.4 × 100 =",
+            "answer": "240",
+            "kind": "number",
+            "x": 800,
+            "y": 190,
+            "hint": "כמה אפסים יש ב-100? זה מספר המדרגות. תזיז/י את ה-2 ואת ה-4 יחד, כל אחת אותו מספר מדרגות שמאלה. אם אחרי הספרה האחרונה נשאר מקום ריק לפני הנקודה — ממלאים אותו באפס.",
+            "praise": "יופי! הזזת את הספרות ולא את הנקודה — בדיוק ככה עובד כפל ב-100 👏"
+          }
+        },
+        { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 230' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='280' y='24' text-anchor='middle' font-size='20' font-weight='700' fill='#ea580c'>כפל — זזים שמאלה</text><line x1='500' y1='46' x2='60' y2='46' stroke='#ea580c' stroke-width='4'/><polygon points='44,46 62,38 62,54' fill='#ea580c'/><g stroke='#0d9488' stroke-width='3' fill='#ccfbf1'><rect x='30' y='68' width='80' height='60'/><rect x='110' y='68' width='80' height='60'/><rect x='190' y='68' width='80' height='60'/><rect x='288' y='68' width='80' height='60'/><rect x='368' y='68' width='80' height='60'/><rect x='448' y='68' width='80' height='60'/></g><circle cx='279' cy='118' r='7' fill='#0f3b36'/><g font-size='15' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='70' y='148'>מאות</text><text x='150' y='148'>עשרות</text><text x='230' y='148'>אחדות</text><text x='328' y='148'>עשיריות</text><text x='408' y='148'>מאיות</text><text x='488' y='148'>אלפיות</text></g><text x='280' y='186' text-anchor='middle' font-size='19' fill='#0f3b36'>כל אפס בכופל = מדרגה אחת</text><text x='280' y='216' text-anchor='middle' font-size='19' font-weight='700' fill='#2563eb'>הנקודה נשארת במקום</text></svg>", "title": "המדרגות לעזרה", "x": 60, "y": 150, "w": 440, "h": 181, "exact": true } },
+        { "name": "write_text", "input": { "text": "כמה מדרגות?", "x": 280, "y": 108, "size": 30 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות — אחת בכל פעם. בראשונה המדרגות עדיין לידך. בשנייה שים/י לב: זה חילוק, אז יורדים ימינה. השלישית כבר בלי עזרה — רק תספור/י אפסים ותזיז/י. בשיעור הבא נכפול בעשרוני מספר אחר לגמרי 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "0.7 × 100 =",
+            "answer": "70",
+            "kind": "number",
+            "x": 800,
+            "y": 150,
+            "hint": "שתי מדרגות שמאלה. ה-7 יושב בעשיריות — לאן הוא מגיע אחרי שתי מדרגות? ואיזה מקום נשאר ריק אחריו, לפני הנקודה?",
+            "praise": "מצוין! שתי מדרגות שמאלה, והאפס השלים את המקום הריק 👏"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "46 : 10 =",
+            "answer": "4.6",
+            "kind": "number",
+            "x": 800,
+            "y": 260,
+            "hint": "חילוק ב-10 זה מדרגה אחת ימינה. ה-4 יורד מעשרות לאחדות. ולאן יורד ה-6? מה שיורד מתחת לאחדות עובר לצד השני של הנקודה.",
+            "praise": "יפה! ירדת מדרגה אחת בלבד, ולכן יצא מספר קטן יותר 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "3.2 × 1000 =",
+            "answer": "3200",
+            "kind": "number",
+            "x": 800,
+            "y": 370,
+            "hint": "כמה אפסים יש באלף? זה מספר המדרגות. תזיז/י את שתי הספרות יחד, ואז ספור/י כמה מקומות ריקים נשארו עד הנקודה — כל אחד מהם מקבל אפס.",
+            "praise": "בול! שלוש מדרגות שמאלה ואפסים למילוי — נעלת את השיעור 🏆"
+          }
+        },
+        { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 230' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><line x1='500' y1='34' x2='60' y2='34' stroke='#ea580c' stroke-width='4'/><polygon points='44,34 62,26 62,42' fill='#ea580c'/><g stroke='#0d9488' stroke-width='3' fill='#ccfbf1'><rect x='30' y='56' width='80' height='60'/><rect x='110' y='56' width='80' height='60'/><rect x='190' y='56' width='80' height='60'/><rect x='288' y='56' width='80' height='60'/><rect x='368' y='56' width='80' height='60'/><rect x='448' y='56' width='80' height='60'/></g><circle cx='279' cy='106' r='7' fill='#0f3b36'/><g font-size='15' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='70' y='136'>מאות</text><text x='150' y='136'>עשרות</text><text x='230' y='136'>אחדות</text><text x='328' y='136'>עשיריות</text><text x='408' y='136'>מאיות</text><text x='488' y='136'>אלפיות</text></g><line x1='60' y1='164' x2='500' y2='164' stroke='#2563eb' stroke-width='4'/><polygon points='516,164 498,156 498,172' fill='#2563eb'/><text x='280' y='196' text-anchor='middle' font-size='19' font-weight='700' fill='#ea580c'>כפל — שמאלה</text><text x='280' y='222' text-anchor='middle' font-size='19' font-weight='700' fill='#2563eb'>חילוק — ימינה</text></svg>", "title": "המדרגות לעזרה", "x": 60, "y": 140, "w": 420, "h": 173, "exact": true } },
+        { "name": "write_text", "input": { "text": "שלוש שאלות — אחת בכל פעם", "x": 270, "y": 96, "size": 28 } },
+        { "name": "remember_note", "input": { "note": "התחלנו כפל/חילוק ב-10,100,1000 דרך מדרגות ערך-מקום — לא 'הזזת נקודה'.", "open_loop": "לבדוק בשיעור הבא שהוא עדיין סופר אפסים ולא מנחש איפה הנקודה." } }
+      ]
+    }
+  }
+}

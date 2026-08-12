@@ -1,0 +1,81 @@
+{
+  "topic": "המספרים עד מיליון",
+  "lesson": 3,
+  "title": "ערך של ספרה, ובניית מספרים לפי תנאי",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם מילאנו בתים. היום נשאל שאלה קטנה שמפילה הרבה ילדים. תסתכל/י על 174,258 ועל הספרה הצבועה. הספרה היא 7 — זה מה שרואים. אבל הערך שלה הוא 70,000, כי היא יושבת בבית של עשרות-האלפים. ספרה זה מה שכתוב, ערך זה כמה זה שווה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הספרה, והערך שלה", "x": 500, "y": 95, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "174,258", "x": 130, "y": 150, "w": 740, "h": 200, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:17px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:17px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:30px;height:50px'>1</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#ffe082'>7</td><td style='border:2px solid #444;font-size:30px;height:50px'>4</td><td style='border:2px solid #444;font-size:30px;height:50px'>2</td><td style='border:2px solid #444;font-size:30px;height:50px'>5</td><td style='border:2px solid #444;font-size:30px;height:50px'>8</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "הספרה 7 — הערך שלה 70,000", "x": 500, "y": 405, "size": 32 } },
+          { "name": "write_text", "input": { "text": "כי היא יושבת בעשרות-האלפים", "x": 500, "y": 470, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "וזה עובד לכל ספרה. תסתכל/י על שלושת המספרים — בכולם יש 7, אבל בכל אחד היא במקום אחר, ולכן שווה משהו אחר. אז לפני שעונים על ערך, קודם מוצאים באיזה בית הספרה יושבת. הבית קובע, לא הספרה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אותה ספרה — ערך אחר", "x": 500, "y": 95, "size": 34 } },
+          { "name": "write_text", "input": { "text": "ב-174,258 הספרה 7 שווה 70,000", "x": 500, "y": 195, "size": 30 } },
+          { "name": "write_text", "input": { "text": "ב-147,258 הספרה 7 שווה 7,000", "x": 500, "y": 275, "size": 30 } },
+          { "name": "write_text", "input": { "text": "ב-142,758 הספרה 7 שווה 700", "x": 500, "y": 355, "size": 30 } },
+          { "name": "write_text", "input": { "text": "הבית קובע — לא הספרה", "x": 500, "y": 455, "size": 30, "color": "#d33" } }
+        ]
+      },
+      {
+        "reply": "עכשיו שני שכנים. המספר שבא מיד לפני נקרא קודם, והמספר שבא מיד אחרי נקרא עוקב. תסתכל/י על 400,000. העוקב קל — מוסיפים 1 ומקבלים 400,001. הקודם מעניין: אין אחדות להוריד, אז פורעים בית-בית — וכל האפסים הופכים ל-9. יוצא 399,999. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קודם ועוקב", "x": 500, "y": 95, "size": 36 } },
+          { "name": "write_text", "input": { "text": "399,999", "x": 250, "y": 250, "size": 34 } },
+          { "name": "write_text", "input": { "text": "400,000", "x": 500, "y": 250, "size": 40, "color": "#d33" } },
+          { "name": "write_text", "input": { "text": "400,001", "x": 750, "y": 250, "size": 34 } },
+          { "name": "draw_arrow", "input": { "x1": 430, "y1": 190, "x2": 340, "y2": 190, "color": "#4a7", "width": 3 } },
+          { "name": "draw_arrow", "input": { "x1": 570, "y1": 190, "x2": 660, "y2": 190, "color": "#4a7", "width": 3 } },
+          { "name": "write_text", "input": { "text": "קודם", "x": 385, "y": 150, "size": 24 } },
+          { "name": "write_text", "input": { "text": "עוקב", "x": 615, "y": 150, "size": 24 } },
+          { "name": "write_text", "input": { "text": "אין אחדות לפרוע? הולכים לבית הבא", "x": 500, "y": 370, "size": 28 } },
+          { "name": "write_text", "input": { "text": "וכל האפסים בדרך הופכים ל-9", "x": 500, "y": 440, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו משהו חדש: שאלה שיש לה יותר מתשובה אחת. על הלוח כתוב שהמספר החסר גדול מ-36,514 וקטן מ-36,524. איזה מספר מתאים? 36,515 מתאים. אבל גם 36,516, וגם 36,520, וגם 36,523. תשע תשובות נכונות! אז כשמוצא/ת אחת — כדאי לחפש עוד. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "יש יותר מתשובה אחת", "x": 500, "y": 95, "size": 36 } },
+          { "name": "write_text", "input": { "text": "36,514 < ? < 36,524", "x": 500, "y": 195, "size": 40 } },
+          { "name": "write_text", "input": { "text": "36,515 · 36,516 · 36,517 · 36,518", "x": 500, "y": 295, "size": 26 } },
+          { "name": "write_text", "input": { "text": "36,519 · 36,520 · 36,521 · 36,522 · 36,523", "x": 500, "y": 350, "size": 26 } },
+          { "name": "write_text", "input": { "text": "תשע תשובות — כולן בין השניים", "x": 500, "y": 445, "size": 30, "color": "#4a7" } }
+        ]
+      },
+      {
+        "reply": "ולסיום משחק. יש לך את הספרות 1 2 3 4 5 6, כל אחת פעם אחת בלבד. בנה/בני את המספר הזוגי הגדול ביותר. קודם תחשוב/תחשבי: איפה כדאי לשים את הספרה הגדולה? בבית השמאלי, כי הוא שווה הכי הרבה. וזוגי אומר שהספרה האחרונה חייבת להיות זוגית — אז נשים שם 2, הזוגית הקטנה. יוצא 654312. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "1 2 3 4 5 6 — הזוגי הגדול ביותר", "x": 500, "y": 95, "size": 32 } },
+          { "name": "write_text", "input": { "text": "זוגי → הספרה האחרונה חייבת להיות זוגית", "x": 500, "y": 180, "size": 26 } },
+          { "name": "write_text", "input": { "text": "הכי גדול → הספרה הגדולה בבית השמאלי", "x": 500, "y": 240, "size": 26 } },
+          { "name": "write_text", "input": { "text": "654312", "x": 500, "y": 340, "size": 46, "color": "#4a7" } },
+          { "name": "write_text", "input": { "text": "2 בסוף — הזוגית הקטנה ביותר", "x": 500, "y": 425, "size": 26 } },
+          { "name": "write_text", "input": { "text": "וכל השאר בסדר יורד", "x": 500, "y": 480, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח 82,431, ואני שואל מה הערך של הספרה 8. אל תמהר/י לענות 8! קודם מצא/י אותה בלוח ערכי-המקום שלמטה, ותראה/י באיזה בית היא יושבת. הבית הוא שאומר כמה היא שווה. את הערך כתוב/כתבי בתיבה, בלי פסיקים.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה הערך של הספרה 8 במספר 82431?", "answer": "80000", "kind": "number", "hint": "חפש/י את ה-8 בלוח וקרא/י את שם הבית שמעליה. אם היא בבית של עשרות-האלפים, אז 8 כאלה — כמה זה? תכתוב/תכתבי 8 ואחריה את האפסים שצריך.", "praise": "מצוין! לא ענית 8 — הסתכלת על הבית וקראת ממנו את הערך 👏" } },
+        { "name": "render_widget", "input": { "title": "82,431", "x": 150, "y": 300, "w": 700, "h": 180, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:16px;padding:3px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:16px;padding:3px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:26px;height:44px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:44px'>8</td><td style='border:2px solid #444;font-size:26px;height:44px'>2</td><td style='border:2px solid #444;font-size:26px;height:44px'>4</td><td style='border:2px solid #444;font-size:26px;height:44px'>3</td><td style='border:2px solid #444;font-size:26px;height:44px'>1</td></tr></table></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה הלוח עוד איתך. בשנייה יש הרבה תשובות נכונות ואני מבקש את הקטנה שבהן — ואחרי שתענה/י, תמצא/י בראש עוד אחת שמתאימה. השלישית היא המשחק, בלי שום עזרה.",
+      "toolCalls": [
+        { "name": "render_widget", "input": { "title": "435,108", "x": 150, "y": 70, "w": 700, "h": 150, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:15px;padding:3px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:15px;padding:3px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:11px;padding:2px'>מאות אלפים</td><td style='border:2px solid #444;font-size:11px;padding:2px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:11px;padding:2px'>אלפים</td><td style='border:2px solid #444;font-size:11px;padding:2px'>מאות</td><td style='border:2px solid #444;font-size:11px;padding:2px'>עשרות</td><td style='border:2px solid #444;font-size:11px;padding:2px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:24px;height:40px'>4</td><td style='border:2px solid #444;font-size:24px;height:40px'>3</td><td style='border:2px solid #444;font-size:24px;height:40px'>5</td><td style='border:2px solid #444;font-size:24px;height:40px'>1</td><td style='border:2px solid #444;font-size:24px;height:40px'>0</td><td style='border:2px solid #444;font-size:24px;height:40px'>8</td></tr></table></div>" } },
+        { "name": "draw_exercise", "input": { "text": "מה הערך של הספרה 3 במספר 435108?", "answer": "30000", "kind": "number", "x": 380, "y": 280, "hint": "מצא/י את ה-3 בלוח וקרא/י את שם הבית מעליה. אחר כך תכתוב/תכתבי 3 ואחריה כמה אפסים שהבית הזה דורש.", "praise": "יפה! זיהית את הבית ולא נבהלת מהמספר הארוך 👏" } },
+        { "name": "draw_exercise", "input": { "text": "מה המספר הקטן ביותר שגדול מ-36514?", "answer": "36515", "kind": "number", "x": 380, "y": 385, "hint": "המספר הקטן ביותר שגדול ממספר כלשהו הוא בדיוק העוקב שלו. אז מה עושים ל-36514 כדי לקבל אותו?", "praise": "כן! זה העוקב. ויש עוד תשובות שמתאימות לאי-שוויון — אתה כבר יודע/ת למצוא אותן 🎉" } },
+        { "name": "write_text", "input": { "text": "36514 < ? < 36524", "x": 830, "y": 385, "size": 24 } },
+        { "name": "draw_exercise", "input": { "text": "מהספרות 1 2 3 4 5 6 — הזוגי הגדול ביותר?", "answer": "654312", "kind": "number", "x": 380, "y": 480, "hint": "שתי שאלות בסדר הזה: איזו ספרה זוגית כדאי לשים בסוף כדי לא לבזבז ספרה גדולה, ואיך מסדרים את כל השאר כדי לקבל את הגדול ביותר?", "praise": "אלוף/ה! חשבת קודם על התנאי הזוגי ורק אחר כך על הגודל — זה הסדר הנכון 🏆" } }
+      ]
+    }
+  }
+}

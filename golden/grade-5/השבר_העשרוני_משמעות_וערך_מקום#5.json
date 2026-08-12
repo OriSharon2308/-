@@ -1,0 +1,95 @@
+{
+  "topic": "השבר העשרוני — משמעות וערך מקום",
+  "lesson": 5,
+  "title": "שני שמות לאותו מספר — פשוט ועשרוני",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום מחברים את שני העולמות. המפתח הוא ההרחבה שכבר למדת: כדי לכתוב שבר בכתיב עשרוני, מרחיבים אותו למכנה 10 או 100. תראה/י — למעלה מוט מחולק ל-5, וחלק אחד צבוע. למטה אותו מוט בדיוק, אבל מחולק ל-10, ושני חלקים צבועים. אותו שטח! 1/5 = 2/10, ולכן 0.2. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אותו מספר, שני שמות", "x": 500, "y": 80, "size": 34 } },
+          { "name": "draw_fraction_bar", "input": { "x": 470, "y": 180, "parts": 5, "shaded": 1, "label": "" } },
+          { "name": "draw_fraction_bar", "input": { "x": 470, "y": 280, "parts": 10, "shaded": 2, "label": "" } },
+          { "name": "write_text", "input": { "text": "1/5", "x": 790, "y": 180, "size": 34 } },
+          { "name": "write_text", "input": { "text": "2/10", "x": 790, "y": 280, "size": 34 } },
+          { "name": "write_text", "input": { "text": "מרחיבים למכנה 10 — ואז קל לכתוב עשרוני", "x": 500, "y": 390, "size": 26 } },
+          { "name": "write_text", "input": { "text": "1/5 = 2/10 = 0.2", "x": 500, "y": 460, "size": 34 } }
+        ]
+      },
+      {
+        "reply": "לפעמים אי-אפשר להרחיב ל-10, אבל אפשר ל-100. רבע, למשל. מימין הריבוע של מאה המשבצות, מחולק לארבעה חלקים שווים, ואחד מהם צבוע — ספרתי בשבילך, יש בו 25 משבצות. אז רבע הוא 25 מתוך 100, כלומר 0.25. משמאל אותו רבע על מוט — בדיוק אותו גודל. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "רבע = 25 מאיות", "x": 500, "y": 80, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "", "x": 590, "y": 115, "w": 250, "h": 250, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var g=document.getElementById('g');for(var i=0;i<100;i++){var r=Math.floor(i/10);var c=i%10;var on=(r<5&&c<5);var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(on?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "draw_fraction_bar", "input": { "x": 270, "y": 245, "parts": 4, "shaded": 1, "label": "" } },
+          { "name": "write_text", "input": { "text": "רבע אחד", "x": 270, "y": 180, "size": 26 } },
+          { "name": "write_text", "input": { "text": "25 משבצות = 0.25", "x": 715, "y": 400, "size": 26 } },
+          { "name": "write_text", "input": { "text": "אותו גודל בדיוק — רק שני שמות", "x": 500, "y": 465, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ומה עם שלושה רבעים? כל רבע הוא 25 משבצות, אז שלושה רבעים הם 75 משבצות — 75 מתוך 100, כלומר 0.75. יש גם דרך שנייה, לילדים שאוהבים חילוק: שלושה רבעים זה 3 חלקי 4, ואם מחלקים מקבלים 0.75. אותה תוצאה, שתי דרכים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שלושה רבעים", "x": 500, "y": 80, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "", "x": 590, "y": 115, "w": 250, "h": 250, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var g=document.getElementById('g');for(var i=0;i<100;i++){var r=Math.floor(i/10);var c=i%10;var on=!(r<5&&c<5);var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(on?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "draw_fraction_bar", "input": { "x": 270, "y": 245, "parts": 4, "shaded": 3, "label": "" } },
+          { "name": "write_text", "input": { "text": "שלושה רבעים", "x": 270, "y": 180, "size": 26 } },
+          { "name": "write_text", "input": { "text": "75 משבצות = 0.75", "x": 715, "y": 400, "size": 26 } },
+          { "name": "write_text", "input": { "text": "אפשר גם בחילוק: 3 חלקי 4 = 0.75", "x": 500, "y": 465, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הכיוון ההפוך — מעשרוני לשבר פשוט. קח/י את 0.6. קוראים אותו 'שש עשיריות', ובדיוק את זה כותבים: 6/10. ואם רוצים שבר יפה יותר, מצמצמים ב-2 ומקבלים 3/5. שלושתם אותו מספר בדיוק — תראה/י את המוט למטה, זה אותו שטח. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ומהכיוון השני", "x": 500, "y": 80, "size": 34 } },
+          { "name": "write_text", "input": { "text": "0.6", "x": 760, "y": 170, "size": 42 } },
+          { "name": "draw_arrow", "input": { "x1": 700, "y1": 172, "x2": 590, "y2": 172, "color": "#2d6cdf", "width": 4 } },
+          { "name": "write_text", "input": { "text": "6/10", "x": 500, "y": 170, "size": 38 } },
+          { "name": "draw_arrow", "input": { "x1": 425, "y1": 172, "x2": 330, "y2": 172, "color": "#2d6cdf", "width": 4 } },
+          { "name": "write_text", "input": { "text": "3/5", "x": 250, "y": 170, "size": 38 } },
+          { "name": "write_text", "input": { "text": "קוראים שש עשיריות · כותבים 6 מתוך 10 · מצמצמים ב-2", "x": 500, "y": 250, "size": 24 } },
+          { "name": "draw_fraction_bar", "input": { "x": 500, "y": 340, "parts": 10, "shaded": 6, "label": "" } },
+          { "name": "write_text", "input": { "text": "אותו שטח — רק שם אחר", "x": 500, "y": 440, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "אזהרה חשובה, כי כאן נופלים. רבע הוא לא 0.14, וחמישית היא לא 0.15. אסור פשוט להדביק את המונה ואת המכנה אחרי הנקודה! קודם מרחיבים למכנה 10 או 100, ורק אז כותבים. ומה עם שליש? אין לו הרחבה יפה ל-10 או ל-100 — הוא מספר שלא נגמר יפה. את זה נלמד בכיתה ו׳. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שים/שימי לב למלכודת", "x": 500, "y": 85, "size": 32 } },
+          { "name": "write_text", "input": { "text": "1/4 הוא לא 0.14", "x": 500, "y": 175, "size": 32 } },
+          { "name": "write_text", "input": { "text": "1/5 הוא לא 0.15", "x": 500, "y": 235, "size": 32 } },
+          { "name": "write_text", "input": { "text": "קודם מרחיבים למכנה 10 או 100 — ורק אז כותבים", "x": 500, "y": 315, "size": 26 } },
+          { "name": "write_text", "input": { "text": "ומה עם 1/3? אין לו הרחבה יפה למאה", "x": 500, "y": 390, "size": 28 } },
+          { "name": "write_text", "input": { "text": "הוא לא נגמר יפה — נלמד אותו בכיתה ו׳", "x": 500, "y": 455, "size": 25 } }
+        ]
+      },
+      {
+        "reply": "ולסיום, חמש כרטיסיות ששווה לזכור בעל-פה: חצי הוא 0.5, רבע הוא 0.25, שלושה רבעים הם 0.75, חמישית היא 0.2, ושבע עשיריות הן 0.7. תסתכל/י על המוט למטה — חצי מהמוט הוא בדיוק חמש עשיריות מתוך עשר. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כרטיסיות מהירות", "x": 500, "y": 80, "size": 34 } },
+          { "name": "write_text", "input": { "text": "1/2 = 5/10 = 0.5", "x": 500, "y": 165, "size": 32 } },
+          { "name": "write_text", "input": { "text": "7/10 = 0.7", "x": 500, "y": 230, "size": 32 } },
+          { "name": "write_text", "input": { "text": "1/4 = 0.25 · 3/4 = 0.75 · 1/5 = 0.2", "x": 500, "y": 300, "size": 28 } },
+          { "name": "draw_fraction_bar", "input": { "x": 500, "y": 390, "parts": 10, "shaded": 5, "label": "" } },
+          { "name": "write_text", "input": { "text": "חצי = חמש עשיריות", "x": 500, "y": 470, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח הריבוע של מאה המשבצות, והוא מחולק לארבעה חלקים שווים — אחד מהם צבוע, וזה בדיוק רבע. ספור/י כמה משבצות יש בחלק הצבוע. כל משבצת היא מאית, אז המספר שספרת הוא מספר המאיות. כתוב/כתבי את הרבע בכתיב עשרוני בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "רבע — כמה זה בכתיב עשרוני?", "answer": "0.25", "kind": "number", "hint": "ספור/י את המשבצות בריבוע הצבוע: חמש שורות, ובכל שורה חמש. כמה יצאו? זה מספר המאיות, ואותו כותבים אחרי הנקודה.", "praise": "מעולה! הרחבת רבע למכנה 100 וכתבת אותו בכתיב עשרוני 👏" } },
+        { "name": "render_widget", "input": { "title": "", "x": 380, "y": 235, "w": 240, "h": 240, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var g=document.getElementById('g');for(var i=0;i<100;i++){var r=Math.floor(i/10);var c=i%10;var on=(r<5&&c<5);var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(on?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } }
+      ]
+    },
+    "independent": {
+      "reply": "שלוש שאלות אחרונות לנושא. בראשונה יש מוט לעזרה, אחר כך לבד. אחרי זה את/ה כבר יודע/ת לקרוא, לכתוב, להשוות ולמקם שברים עשרוניים — ולעבור בין שני השמות של אותו מספר 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "שבע עשיריות — כמה זה בכתיב עשרוני?", "answer": "0.7", "kind": "number", "x": 250, "y": 160, "hint": "המוט מחולק ל-10. שבע עשיריות זה שבעה חלקים ממנו. אין כאן שלמים, אז כותבים 0, נקודה, ואחריה מספר העשיריות.", "praise": "יופי! מכנה 10 הופך לעשרוני כמעט לבד 👏" } },
+        { "name": "draw_fraction_bar", "input": { "x": 730, "y": 160, "parts": 10, "shaded": 7, "label": "" } },
+        { "name": "draw_exercise", "input": { "text": "0.6 כשבר עם מכנה 10 — מה המונה?", "answer": "6", "kind": "number", "x": 500, "y": 340, "hint": "קרא/י את המספר בקול: שש מה? המילה שאמרת היא המכנה, והמספר שלפניה הוא מה שאני מחפש למעלה בשבר.", "praise": "מדויק! קראת את העשרוני ותרגמת אותו לשבר פשוט 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "שלושה רבעים — כמה זה בכתיב עשרוני?", "answer": "0.75", "kind": "number", "x": 500, "y": 470, "hint": "רבע אחד הוא 25 מאיות. עכשיו חשוב/חשבי כמה מאיות יש בשלושה רבעים — פשוט 25 שלוש פעמים.", "praise": "כל הכבוד! סגרת את הנושא — אותו מספר, שני שמות 🏆" } }
+      ]
+    }
+  }
+}

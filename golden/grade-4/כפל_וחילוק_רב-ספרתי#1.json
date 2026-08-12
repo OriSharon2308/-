@@ -1,0 +1,90 @@
+{
+  "topic": "כפל וחילוק רב-ספרתי",
+  "lesson": 1,
+  "title": "כפל בעשרות ובמאות שלמות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! על הלוח מוט של 10 קוביות, ולידו עוד מוט של 10. לחץ/י על הכפתור ותראה/י מה יוצא כשמוט של עשר פוגש מוט של עשר — מלבן שלם. תספור/י: מאה קוביות בדיוק. תזכור/זכרי את זה, זה כל הסוד של היום. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "עשרת כפול עשרת", "x": 500, "y": 85, "size": 36 } },
+          { "name": "write_text", "input": { "text": "מוט = 10", "x": 160, "y": 250, "size": 28 } },
+          { "name": "write_text", "input": { "text": "המלבן = 100", "x": 160, "y": 330, "size": 28 } },
+          { "name": "write_text", "input": { "text": "עשרת × עשרת", "x": 840, "y": 250, "size": 28 } },
+          { "name": "write_text", "input": { "text": "= מאה", "x": 840, "y": 330, "size": 28 } },
+          { "name": "render_widget", "input": { "title": "מוט על מוט", "x": 310, "y": 125, "w": 380, "h": 370, "html": "<style>body{margin:0;font-family:Assistant,system-ui,sans-serif;color:#0f3b36}.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}.g{display:grid;grid-template-columns:repeat(10,22px);grid-auto-rows:22px;gap:3px}.c{border:2px solid #0d9488;border-radius:4px;background:#0d948833}.c.off{border-style:dashed;opacity:.16;background:none}.c.on{animation:p .3s ease-out}@keyframes p{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}button{font:700 19px Assistant,sans-serif;background:#0d9488;color:#fff;border:0;border-radius:12px;padding:8px 20px;cursor:pointer}#m{font:800 24px Assistant,sans-serif;color:#0d9488;height:30px;text-align:center}</style><div class='wrap'><div id='m'>מוט של 10 על מוט של 10</div><div class='g' id='g'></div><button id='b'>מלא/י את המלבן</button></div><script>var g=document.getElementById('g'),m=document.getElementById('m'),b=document.getElementById('b');for(var i=0;i<100;i++){var d=document.createElement('div');d.className='c'+((i<10||i%10===0)?'':' off');g.appendChild(d);}b.onclick=function(){var r=0;var t=setInterval(function(){for(var j=0;j<10;j++){var el=g.children[r*10+j];if(el&&el.className.indexOf('off')>-1)el.className='c on';}r++;if(r>=10){clearInterval(t);m.textContent='עשרת כפול עשרת = מאה';b.disabled=true;parent.postMessage({type:'vela:correct'},'*');}},90);};</script>" } }
+        ]
+      },
+      {
+        "reply": "את 4 × 7 = 28 את/ה כבר יודע/ת בעל-פה. עכשיו תראה/י מה קורה עם אפסים. 40 זה 4 עשרות, ו-70 זה 7 עשרות. אז יש כאן 28 פעמים עשרת-כפול-עשרת — כלומר 28 מאות. ו-28 מאות זה 2800. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כופלים עשרות בעשרות", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "4 × 7 = 28", "x": 500, "y": 175, "size": 36 } },
+          { "name": "draw_arrow", "input": { "x1": 500, "y1": 205, "x2": 500, "y2": 245, "color": "#3b82f6", "width": 3 } },
+          { "name": "write_text", "input": { "text": "4 עשרות × 7 עשרות = 28 מאות", "x": 500, "y": 280, "size": 30 } },
+          { "name": "draw_arrow", "input": { "x1": 500, "y1": 310, "x2": 500, "y2": 350, "color": "#3b82f6", "width": 3 } },
+          { "name": "write_text", "input": { "text": "40 × 70 = 2800", "x": 500, "y": 390, "size": 40 } },
+          { "name": "write_text", "input": { "text": "28 מאות זה 2800", "x": 500, "y": 460, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "לפעמים רק למספר אחד יש אפסים. אותו טריק בדיוק. 6 × 30: קודם הכפל הקטן 6 × 3 = 18, ואז מדביקים את האפס — 180. ו-8 × 200: 8 × 2 = 16, ושני אפסים — 1600. כמה אפסים למטה, ככה בתשובה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כשרק למספר אחד יש אפסים", "x": 500, "y": 90, "size": 32 } },
+          { "name": "write_text", "input": { "text": "6 × 30", "x": 300, "y": 170, "size": 34 } },
+          { "name": "write_text", "input": { "text": "6 × 3 = 18", "x": 300, "y": 240, "size": 30 } },
+          { "name": "write_text", "input": { "text": "אפס אחד ← 180", "x": 300, "y": 310, "size": 30 } },
+          { "name": "write_text", "input": { "text": "8 × 200", "x": 720, "y": 170, "size": 34 } },
+          { "name": "write_text", "input": { "text": "8 × 2 = 16", "x": 720, "y": 240, "size": 30 } },
+          { "name": "write_text", "input": { "text": "שני אפסים ← 1600", "x": 720, "y": 310, "size": 30 } },
+          { "name": "write_text", "input": { "text": "כמה אפסים למטה — ככה בתשובה", "x": 500, "y": 420, "size": 32 } }
+        ]
+      },
+      {
+        "reply": "כאן נופלים הרבה ילדים. 20 × 40. קודם הכפל הקטן: 2 × 4 = 8. עכשיו סופרים אפסים — אחד ב-20 ואחד ב-40, ביחד שניים. אז התשובה 800, ולא 80. תמיד תעצור/תעצרי רגע לספור את האפסים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "זהירות — לספור את כל האפסים", "x": 500, "y": 90, "size": 32 } },
+          { "name": "write_text", "input": { "text": "20 × 40", "x": 500, "y": 175, "size": 38 } },
+          { "name": "write_text", "input": { "text": "2 × 4 = 8", "x": 500, "y": 250, "size": 32 } },
+          { "name": "write_text", "input": { "text": "אפס מ-20, אפס מ-40 — שניים", "x": 500, "y": 320, "size": 28 } },
+          { "name": "write_text", "input": { "text": "20 × 40 = 800", "x": 350, "y": 400, "size": 34, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "לא 80!", "x": 740, "y": 400, "size": 34, "color": "#e5484d" } }
+        ]
+      },
+      {
+        "reply": "אז המתכון קצר, שני צעדים. צעד ראשון — הכפל הקטן, בלי האפסים. צעד שני — להוסיף את כל האפסים שספרת. תראה/י: 50 × 60. 5 × 6 = 30, ויש שני אפסים, אז 3000. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "המתכון — שני צעדים", "x": 500, "y": 90, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[230, 150], [770, 150], [770, 225], [230, 225]], "color": "#3b82f6", "width": 3 } },
+          { "name": "write_text", "input": { "text": "1. הכפל הקטן, בלי האפסים", "x": 500, "y": 190, "size": 28 } },
+          { "name": "draw_polygon", "input": { "points": [[230, 255], [770, 255], [770, 330], [230, 330]], "color": "#3b82f6", "width": 3 } },
+          { "name": "write_text", "input": { "text": "2. להוסיף את כל האפסים", "x": 500, "y": 295, "size": 28 } },
+          { "name": "write_text", "input": { "text": "50 × 60 = 3000", "x": 500, "y": 395, "size": 36 } },
+          { "name": "write_text", "input": { "text": "5 × 6 = 30, ועוד שני אפסים", "x": 500, "y": 460, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד: 20 × 35. שמתי לך את שני הצעדים על הלוח. צעד ראשון — תעשה/תעשי רק 2 × 35, בלי האפס בכלל. צעד שני — תחזיר/י את האפס של 20. את התשובה כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "20 × 35 =", "answer": "700", "kind": "number", "x": 880, "y": 115, "hint": "תוריד/י את האפס רגע בצד. כמה זה 2 × 35? עכשיו תחזיר/י את האפס של 20 — כמה אפסים צריך להוסיף בסוף?", "praise": "יופי! קודם הכפל הקטן ואז האפס — בדיוק לפי המתכון 🎯" } },
+        { "name": "draw_polygon", "input": { "points": [[200, 190], [680, 190], [680, 255], [200, 255]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "צעד 1: 2 × 35, בלי האפס", "x": 440, "y": 222, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[200, 290], [680, 290], [680, 355], [200, 355]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "צעד 2: להחזיר את האפס", "x": 440, "y": 322, "size": 26 } },
+        { "name": "write_text", "input": { "text": "20 = 2 עשרות", "x": 440, "y": 420, "size": 28 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. ליד הראשונה השארתי לך את המתכון. בשנייה אין אפסים בכלל — תחשוב/תחשבי על מטבעות של 25. באחרונה יש מאות. קודם הכפל הקטן, ואז האפסים. בהצלחה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "30 × 60 =", "answer": "1800", "kind": "number", "x": 880, "y": 115, "hint": "קודם רק 3 × 6, בלי להסתכל על האפסים. עכשיו תספור/י: אפס אחד ב-30 ואפס אחד ב-60 — כמה אפסים צריך להוסיף בסוף?", "praise": "מדויק! ספרת שני אפסים ולא אחד — בדיוק המלכודת שעברת 🎯" } },
+        { "name": "draw_polygon", "input": { "points": [[80, 190], [560, 190], [560, 330], [80, 330]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "1. הכפל הקטן", "x": 320, "y": 222, "size": 26 } },
+        { "name": "write_text", "input": { "text": "2. להוסיף את כל האפסים", "x": 320, "y": 285, "size": 26 } },
+        { "name": "draw_exercise", "input": { "text": "8 × 25 =", "answer": "200", "kind": "number", "x": 880, "y": 265, "hint": "כאן אין אפסים בכלל. תחשוב/תחשבי על 25 כמו מטבע: ארבעה מטבעות של 25 הם 100. ובתוך 8 יש שתי קבוצות של ארבע.", "praise": "יפה! פירקת את 8 לשתי קבוצות של 4 והגעת לתשובה בקלות 👏" } },
+        { "name": "draw_exercise", "input": { "text": "7 × 300 =", "answer": "2100", "kind": "number", "x": 880, "y": 420, "hint": "קודם רק 7 × 3, בלי האפסים. עכשיו תסתכל/י כמה אפסים יש ב-300, ותוסיף/י בסוף בדיוק כמה שספרת.", "praise": "מצוין! הכלל עובד גם עם מאות — הכפל הקטן ואז האפסים 🏆" } }
+      ]
+    }
+  }
+}

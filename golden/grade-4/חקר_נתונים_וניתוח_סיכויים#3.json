@@ -1,0 +1,273 @@
+{
+  "topic": "חקר נתונים וניתוח סיכויים",
+  "lesson": 3,
+  "title": "מה הנתונים אומרים — ומה אי-אפשר לדעת",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "נחזור לספרייה שלנו. על אותה דיאגרמה אפשר לשאול שאלות בשלוש רמות, מהקלה לקשה. רמה ראשונה — פשוט לקרוא. כמה מבקרים היו ביום רביעי? עולים לראש העמודה, הולכים ישר אל הציר, ורואים 50. זהו, קריאה אחת ונגמר. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "רמה 1 — לקרוא",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים בספרייה</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:240px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:15px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:39px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:63px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:87px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:135px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:159px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:183px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:207px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:231px;font-size:14px;color:#d62828;font-weight:700;'>50</div></div><div style='position:relative;height:240px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 22px,#d3dde7 22px 24px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:192px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:120px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:168px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:240px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='position:absolute;right:-3px;bottom:238px;width:280px;border-top:3px dashed #d62828'></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div></div></div></div></div>",
+              "title": "רמה 1 — לקרוא",
+              "x": 280,
+              "y": 140,
+              "w": 440,
+              "h": 320,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ביום רביעי — 50 מבקרים",
+              "x": 500,
+              "y": 496,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "רמה שנייה — להשוות. בכמה יותר מבקרים היו ברביעי מאשר בשני? עכשיו צריך שני מספרים: רביעי 50, שני 25. וההשוואה היא חיסור: 50 פחות 25 שווה 25. אז ברביעי היו 25 מבקרים יותר. שים/שימי לב לסדר: שתי קריאות, ורק אחר-כך פעולה אחת. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "רמה 2 — להשוות",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים בספרייה</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:240px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:15px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:39px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:63px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:87px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:135px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:159px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:183px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:207px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:231px;font-size:14px;'>50</div></div><div style='position:relative;height:240px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 22px,#d3dde7 22px 24px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:192px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:120px;background:repeating-linear-gradient(to top,#e8933a 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:168px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:240px;background:repeating-linear-gradient(to top,#49a97a 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div></div></div></div></div>",
+              "title": "רמה 2 — להשוות",
+              "x": 280,
+              "y": 140,
+              "w": 440,
+              "h": 320,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "50 - 25 = 25",
+              "x": 500,
+              "y": 496,
+              "size": 28
+            }
+          }
+        ]
+      },
+      {
+        "reply": "רמה שלישית, זאת שאוהבים במבחנים — לחשב על הנתונים. ביום רביעי הגיעו 50 מבקרים, וכל אחד שילם 5 שקלים בכניסה. כמה כסף התקבל? זו כבר לא קריאה, זה כפל: 50 כפול 5 שווה 250. התקבלו 250 שקלים. הדיאגרמה נתנה רק את ה-50 — את השאר עשינו לבד. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "רמה 3 — לחשב על הנתונים",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div style='display:flex;align-items:center;gap:14px'><div style='background:#4a86c8;color:#ffffff;border-radius:12px;padding:14px 18px;font-size:20px;font-weight:700'>50 מבקרים</div><div style='font-size:26px;font-weight:700'>×</div><div style='background:#e8933a;color:#ffffff;border-radius:12px;padding:14px 18px;font-size:20px;font-weight:700'>5 שקלים</div><div style='font-size:26px;font-weight:700'>=</div><div style='background:#49a97a;color:#ffffff;border-radius:12px;padding:14px 18px;font-size:20px;font-weight:700'>250 שקלים</div></div></div>",
+              "title": "חישוב על הנתונים",
+              "x": 230,
+              "y": 175,
+              "w": 540,
+              "h": 220,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הדיאגרמה נותנת מספר — ואנחנו ממשיכים",
+              "x": 500,
+              "y": 470,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ועכשיו החלק הכי חשוב. אני אומר שלוש טענות, ועל כל אחת מסמנים: נכון, לא נכון, או אי-אפשר לדעת. אחת: בשני היו הכי מעט מבקרים — נכון, העמודה שלו הכי נמוכה. שתיים: בשלישי היו 40 — לא נכון, היו 35. שלוש: ביום חמישי יגיעו יותר מ-50 — אי-אפשר לדעת. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "נכון · לא נכון · אי-אפשר לדעת",
+              "x": 500,
+              "y": 92,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div style='width:96%;max-width:560px'><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>בשני היו הכי מעט מבקרים</div><div style='background:#49a97a;color:#ffffff;font-size:16px;font-weight:700;border-radius:20px;padding:6px 14px;white-space:nowrap'>נכון</div></div><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>בשלישי היו 40 מבקרים</div><div style='background:#d9534f;color:#ffffff;font-size:16px;font-weight:700;border-radius:20px;padding:6px 14px;white-space:nowrap'>לא נכון</div></div><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>ביום חמישי יגיעו יותר מ-50</div><div style='background:#e8933a;color:#ffffff;font-size:16px;font-weight:700;border-radius:20px;padding:6px 14px;white-space:nowrap'>אי-אפשר לדעת</div></div></div></div>",
+              "title": "שלוש טענות",
+              "x": 220,
+              "y": 145,
+              "w": 560,
+              "h": 290,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "לכל טענה — בודקים בדיאגרמה",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "למה אי-אפשר לדעת? כי בדיאגרמה אין בכלל עמודה ליום חמישי. אולי יגיעו הרבה, אולי מעט — אנחנו פשוט לא יודעים, ומותר לגמרי לומר לא יודע. זה הכלל: מה שהדיאגרמה לא מספרת — לא ממציאים. תשאל/י תמיד את עצמך: המספר הזה באמת כתוב כאן? ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מה שהדיאגרמה לא מספרת — לא ממציאים",
+              "x": 500,
+              "y": 100,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>אין נתון ליום חמישי</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:240px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:15px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:39px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:63px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:87px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:135px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:159px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:183px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:207px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:231px;font-size:14px;'>50</div></div><div style='position:relative;height:240px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 22px,#d3dde7 22px 24px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:192px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:120px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:168px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:240px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:240px;border:3px dashed #9aa7b4;border-radius:6px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:30px;color:#9aa7b4'>?</div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div><div style='width:50px;text-align:center'>חמישי</div></div></div></div></div>",
+              "title": "אין נתון",
+              "x": 280,
+              "y": 145,
+              "w": 440,
+              "h": 315,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אין נתון = אי-אפשר לדעת",
+              "x": 500,
+              "y": 496,
+              "size": 26
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "ביחד, רמה שלישית. בדיאגרמה כתוב שביום שלישי הגיעו 35 מבקרים, ובאותו יום כל מבקר שילם 2 שקלים בכניסה. כמה כסף התקבל? קודם תוודא/י בדיאגרמה שזה באמת 35, ורק אז תכפול/י ב-2. אם קשה — אפשר לפרק: 30 כפול 2, ועוד 5 כפול 2, ולחבר. את הסכום כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "35 מבקרים, כל אחד שילם 2 שקלים. כמה כסף?",
+            "answer": "70",
+            "kind": "number",
+            "hint": "כל מבקר משלם 2 שקלים, ויש 35 מבקרים — אז זה 35 כפול 2. אפשר לפרק: 30 כפול 2, ועוד 5 כפול 2, ואז לחבר את שתי התוצאות.",
+            "praise": "מצוין! קראת מהדיאגרמה ואז חישבת — זו בדיוק הרמה השלישית 👏"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים בספרייה</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:240px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:15px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:39px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:63px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:87px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:135px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:159px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:183px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:207px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:231px;font-size:14px;'>50</div></div><div style='position:relative;height:240px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 22px,#d3dde7 22px 24px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:192px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:120px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:168px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:240px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div></div></div></div></div>",
+            "title": "מבקרים בספרייה",
+            "x": 300,
+            "y": 190,
+            "w": 400,
+            "h": 300,
+            "exact": true
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות על אותה ספרייה. הראשונה היא השוואה. השנייה שואלת על משהו שאולי בכלל לא נמצא בדיאגרמה — שם תכתוב/תכתבי כן או לא, מילה אחת. והאחרונה היא חישוב על הנתונים. בשיעור הבא מתחילים נושא חדש לגמרי: סיכויים 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בכמה יותר מבקרים היו בשלישי מאשר בשני?",
+            "answer": "10",
+            "kind": "number",
+            "x": 200,
+            "y": 140,
+            "hint": "קודם תקרא/י מהדיאגרמה כמה מבקרים היו בשלישי, ואז כמה היו בשני. עכשיו תחסר/י: הגדול פחות הקטן. זה ההפרש.",
+            "praise": "יפה! שתי קריאות ואז פעולה אחת — בדיוק הסדר הנכון 👏"
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "קודם קוראים, אחר-כך מחשבים",
+            "x": 210,
+            "y": 205,
+            "size": 22
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "אפשר לדעת כמה מבקרים יבואו ביום חמישי?",
+            "answer": "לא",
+            "kind": "text",
+            "x": 200,
+            "y": 300,
+            "hint": "תחפש/י בדיאגרמה עמודה של יום חמישי. יש שם אחת בכלל? אם אין נתון — אנחנו לא יודעים, ולא ממציאים. תכתוב/תכתבי כן או לא.",
+            "praise": "כל הכבוד! לומר לא יודע כשאין נתון — זו תשובה חכמה, לא חולשה 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "ביום ראשון 40 מבקרים, כל אחד 3 שקלים. כמה כסף?",
+            "answer": "120",
+            "kind": "number",
+            "x": 200,
+            "y": 455,
+            "hint": "כל מבקר שילם 3 שקלים, ויש 40 מבקרים. אז צריך 40 שלוש פעמים: 40 ועוד 40 ועוד 40. אפשר גם לכתוב את זה ככפל.",
+            "praise": "אלוף/ה! הדיאגרמה נתנה את המספר, ואת/ה עשית את החשבון לבד 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים בספרייה</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:240px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:15px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:39px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:63px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:87px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:135px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:159px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:183px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:207px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:231px;font-size:14px;'>50</div></div><div style='position:relative;height:240px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 22px,#d3dde7 22px 24px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:192px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:120px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:168px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:240px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div></div></div></div></div>",
+            "title": "מבקרים בספרייה",
+            "x": 500,
+            "y": 110,
+            "w": 440,
+            "h": 340,
+            "exact": true
+          }
+        }
+      ]
+    }
+  }
+}

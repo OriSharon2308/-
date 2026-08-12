@@ -1,0 +1,77 @@
+{
+  "topic": "מדידות — שטח, היקף ונפח",
+  "lesson": 2,
+  "title": "לעבוד אחורה — מהיקף לצלע",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "רענון קצר לפני שמתחילים. על הלוח מלבן. ההיקף הוא כל הדרך מסביבו — כאילו צעדנו על הגדר. תראה/י את המספרים: 9 למעלה וגם 9 למטה, 4 מימין וגם 4 משמאל. במלבן תמיד יש שני זוגות של צלעות שוות. מחברים הכול: 9 ועוד 4 ועוד 9 ועוד 4, ויוצא 26. ההיקף הוא 26 ס״מ. לחץ/י ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "היקף = כל הדרך מסביב", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "מלבן 9 על 4", "x": 270, "y": 130, "w": 460, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:46px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:288px;height:128px'><div style='position:absolute;left:0;top:0;width:100%;height:100%;border:5px solid #1d4ed8;background:#dbeafe;box-sizing:border-box;border-radius:4px'></div><div style='position:absolute;top:-38px;left:0;width:100%;text-align:center;font-size:26px;color:#1e3a8a'>9</div><div style='position:absolute;bottom:-38px;left:0;width:100%;text-align:center;font-size:26px;color:#1e3a8a'>9</div><div style='position:absolute;top:50%;left:-30px;margin-top:-16px;font-size:26px;color:#1e3a8a'>4</div><div style='position:absolute;top:50%;right:-30px;margin-top:-16px;font-size:26px;color:#1e3a8a'>4</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "9 + 4 + 9 + 4 = 26 ס״מ", "x": 500, "y": 432, "size": 30 } },
+          { "name": "write_text", "input": { "text": "במלבן שני זוגות צלעות שוות", "x": 500, "y": 482, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הופכים את השאלה. הפעם אומרים לנו את ההיקף — 26 ס״מ — ואת צלע אחת בלבד, 9. את הצלע השנייה צריך למצוא לבד. אל תנחש/י מספרים ותבדוק/תבדקי אם יצא, זה לוקח נצח. יש דרך אחת בטוחה, ואני מראה אותה עכשיו. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "היקף 26 — כמה הצלע השנייה?", "x": 500, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "צלע חסרה", "x": 270, "y": 130, "w": 460, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:46px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:288px;height:128px'><div style='position:absolute;left:0;top:0;width:100%;height:100%;border:5px solid #1d4ed8;background:#dbeafe;box-sizing:border-box;border-radius:4px'></div><div style='position:absolute;top:-38px;left:0;width:100%;text-align:center;font-size:26px;color:#1e3a8a'>9</div><div style='position:absolute;bottom:-38px;left:0;width:100%;text-align:center;font-size:26px;color:#1e3a8a'>9</div><div style='position:absolute;top:50%;left:-30px;margin-top:-18px;font-size:28px;color:#b45309'>?</div><div style='position:absolute;top:50%;right:-30px;margin-top:-18px;font-size:28px;color:#b45309'>?</div><div style='position:absolute;left:0;top:44px;width:100%;text-align:center;font-size:22px;color:#1e3a8a;direction:rtl'>היקף 26 ס״מ</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "אסור לנחש — יש דרך בטוחה", "x": 500, "y": 445, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "הסוד נמצא בזוגות. ההיקף בנוי משני זוגות זהים: אורך, רוחב, ושוב אורך, רוחב. אז אם ניקח בדיוק חצי מההיקף, נקבל צלע ארוכה אחת ועוד צלע קצרה אחת. חצי מ-26 זה 13. בכתום סימנתי לך על הציור בדיוק את החצי הזה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "חצי היקף = אורך + רוחב", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "חצי מההיקף", "x": 270, "y": 132, "w": 460, "h": 248, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:46px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:288px;height:128px'><div style='position:absolute;left:0;top:0;width:100%;height:100%;border:5px solid #93c5fd;background:#eff6ff;box-sizing:border-box;border-radius:4px'></div><div style='position:absolute;left:-5px;top:-5px;width:298px;height:7px;background:#f59e0b'></div><div style='position:absolute;right:-5px;top:-5px;width:7px;height:138px;background:#f59e0b'></div><div style='position:absolute;top:-38px;left:0;width:100%;text-align:center;font-size:26px;color:#b45309'>9</div><div style='position:absolute;top:50%;right:-30px;margin-top:-18px;font-size:28px;color:#b45309'>?</div><div style='position:absolute;left:0;top:48px;width:100%;text-align:center;font-size:22px;color:#b45309;direction:rtl'>החצי הכתום = 13</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "26 : 2 = 13", "x": 500, "y": 445, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "החצי הוא 13, והוא בנוי מהצלע שיודעים, 9, ועוד הצלע שמחפשים. אז מורידים: 13 פחות 9, נשאר 4. הצלע השנייה היא 4 ס״מ. בוא/י נבדוק שזה באמת עובד: 9 ועוד 4 ועוד 9 ועוד 4 — יוצא 26. בדיוק ההיקף שנתנו לנו בהתחלה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "13 פחות 9 — נשאר 4", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "שתי הצלעות", "x": 270, "y": 132, "w": 460, "h": 248, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:46px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:288px;height:128px'><div style='position:absolute;left:0;top:0;width:100%;height:100%;border:5px solid #1d4ed8;background:#dcfce7;box-sizing:border-box;border-radius:4px'></div><div style='position:absolute;top:-38px;left:0;width:100%;text-align:center;font-size:26px;color:#1e3a8a'>9</div><div style='position:absolute;bottom:-38px;left:0;width:100%;text-align:center;font-size:26px;color:#1e3a8a'>9</div><div style='position:absolute;top:50%;left:-30px;margin-top:-16px;font-size:26px;color:#15803d'>4</div><div style='position:absolute;top:50%;right:-30px;margin-top:-16px;font-size:26px;color:#15803d'>4</div><div style='position:absolute;left:0;top:44px;width:100%;text-align:center;font-size:21px;color:#15803d;direction:rtl'>9+4+9+4 = 26 ✓</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "הצלע השנייה: 4 ס״מ", "x": 500, "y": 448, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו שיש לנו את שתי הצלעות אפשר סוף-סוף לחשב שטח. השטח הוא כמה משבצות נכנסות בפנים: 9 בכל שורה, ויש 4 שורות. 9 כפול 4 שווה 36. שים/שימי לב ליחידה, זה חשוב: היקף נמדד בס״מ, אבל שטח נמדד בסמ״ר, כי סופרים משבצות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "עכשיו השטח: 9 × 4", "x": 500, "y": 85, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "36 משבצות", "x": 290, "y": 128, "w": 420, "h": 262, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:30px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px'><div style='width:270px;height:120px;border:4px solid #1d4ed8;background:#dbeafe;background-image:linear-gradient(#60a5fa 1px,transparent 1px),linear-gradient(90deg,#60a5fa 1px,transparent 1px);background-size:30px 30px'></div><div style='font-size:21px;color:#1e3a8a'>9 בשורה · 4 שורות</div></div>" } },
+          { "name": "write_text", "input": { "text": "36 סמ״ר", "x": 500, "y": 432, "size": 32 } },
+          { "name": "write_text", "input": { "text": "היקף בס״מ · שטח בסמ״ר", "x": 500, "y": 482, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "לפני כל חישוב יש הרגל קטן ששווה זהב: מסמנים על הציור מה כבר יודעים ומה מחפשים. כאן יודעים 9, ומחפשים את הצלע הכתומה. אחר כך שלושת הצעדים שעל הלוח, תמיד באותו סדר. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קודם מסמנים, אחר כך מחשבים", "x": 500, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "מה ידוע ומה מחפשים", "x": 70, "y": 145, "w": 420, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:44px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:250px;height:120px'><div style='position:absolute;left:0;top:0;width:100%;height:100%;border:5px solid #1d4ed8;background:#eff6ff;box-sizing:border-box;border-radius:4px'></div><div style='position:absolute;top:-36px;left:0;width:100%;text-align:center;font-size:20px;color:#15803d;direction:rtl'>ידוע: 9</div><div style='position:absolute;top:50%;right:-40px;margin-top:-14px;font-size:20px;color:#b45309;direction:rtl'>?</div><div style='position:absolute;bottom:-36px;left:0;width:100%;text-align:center;font-size:19px;color:#b45309;direction:rtl'>מחפשים את הכתום</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "1. חצי היקף", "x": 730, "y": 190, "size": 30 } },
+          { "name": "write_text", "input": { "text": "2. פחות הצלע הידועה", "x": 730, "y": 262, "size": 30 } },
+          { "name": "write_text", "input": { "text": "3. כפל צלע בצלע — שטח", "x": 730, "y": 334, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "ביחד עכשיו. המלבן שעל הלוח: ההיקף שלו 30 ס״מ, וצלע אחת היא 8. כמה הצלע השנייה? תתחיל/תתחילי מחצי ההיקף — 30 חלקי 2. מהמספר שיצא תוריד/תורידי את 8, ומה שנשאר זו התשובה. כתוב/כתבי אותה בתיבה.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "היקף מלבן 30 ס״מ, צלע אחת 8 — כמה השנייה?", "answer": "7", "kind": "number", "hint": "חצי היקף = אורך + רוחב. כמה יוצא 30 חלקי 2? עכשיו מהמספר הזה תוריד/תורידי את הצלע שכבר ידועה, 8. מה שנשאר זו הצלע שמחפשים.", "praise": "מעולה! ירדת קודם לחצי ההיקף ורק אז חיסרת — ככה פותרים אחורה 👏" } },
+        { "name": "render_widget", "input": { "title": "היקף 30", "x": 310, "y": 300, "w": 380, "h": 210, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:40px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:230px;height:105px'><div style='position:absolute;left:0;top:0;width:100%;height:100%;border:5px solid #1d4ed8;background:#dbeafe;box-sizing:border-box;border-radius:4px'></div><div style='position:absolute;top:-34px;left:0;width:100%;text-align:center;font-size:24px;color:#1e3a8a'>8</div><div style='position:absolute;top:50%;right:-28px;margin-top:-17px;font-size:26px;color:#b45309'>?</div><div style='position:absolute;left:0;top:36px;width:100%;text-align:center;font-size:20px;color:#1e3a8a;direction:rtl'>היקף 30 ס״מ</div></div></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בשתיים הראשונות המלבן מצויר לך לעזרה. בשאלה האחרונה אין ציור בכלל — קודם מצא/י את הצלע החסרה, ורק אז את השטח. ואל תשכח/י: היקף נמדד בס״מ, שטח בסמ״ר. בשיעור הבא נצרף שני מלבנים לצורה אחת 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "היקף מלבן 22 ס״מ, צלע אחת 7 — כמה השנייה?", "answer": "4", "kind": "number", "x": 300, "y": 130, "hint": "קודם חצי היקף: 22 חלקי 2. אחר כך מורידים מהמספר הזה את הצלע שיודעים, 7. מה שנשאר זו הצלע השנייה.", "praise": "יפה! חצי היקף ואז חיסור — הדרך הבטוחה 👏" } },
+        { "name": "render_widget", "input": { "title": "היקף 22", "x": 620, "y": 100, "w": 330, "h": 190, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:36px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:200px;height:92px'><div style='position:absolute;left:0;top:0;width:100%;height:100%;border:5px solid #1d4ed8;background:#dbeafe;box-sizing:border-box;border-radius:4px'></div><div style='position:absolute;top:-32px;left:0;width:100%;text-align:center;font-size:23px;color:#1e3a8a'>7</div><div style='position:absolute;top:50%;right:-26px;margin-top:-16px;font-size:25px;color:#b45309'>?</div><div style='position:absolute;left:0;top:30px;width:100%;text-align:center;font-size:19px;color:#1e3a8a;direction:rtl'>היקף 22 ס״מ</div></div></div>" } },
+        { "name": "draw_exercise", "input": { "text": "מלבן 7 על 4 — מה השטח שלו בסמ״ר?", "answer": "28", "kind": "number", "x": 300, "y": 310, "hint": "שטח זה כמה משבצות נכנסות בפנים. בכל שורה 7 משבצות, ויש 4 שורות. כופלים צלע בצלע.", "praise": "מדויק! 7 בשורה כפול 4 שורות — וזה השטח בסמ״ר 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "היקף מלבן 18 ס״מ, צלע אחת 5 — מה השטח?", "answer": "20", "kind": "number", "x": 300, "y": 470, "hint": "שתי פעולות כאן. קודם הצלע החסרה: חצי מ-18, ואז פחות 5. רק כשיש לך שתי צלעות אפשר לכפול אותן ולקבל שטח.", "praise": "אלוף/ה! עבדת אחורה מההיקף אל הצלע, ומשם אל השטח 🏆" } }
+      ]
+    }
+  }
+}

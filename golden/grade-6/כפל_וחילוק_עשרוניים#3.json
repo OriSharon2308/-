@@ -1,0 +1,117 @@
+{
+  "topic": "כפל וחילוק עשרוניים",
+  "lesson": 3,
+  "title": "עשרוני כפול עשרוני — סופרים ספרות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! על הלוח ריבוע אחד גדול, והוא שווה שלם אחד. חילקנו אותו ל-10 עמודות — כל עמודה היא 0.1. ואז חילקנו כל עמודה ל-10, ויצאו 100 משבצות קטנות — כל אחת 0.01. אותו ריבוע בדיוק, רק בשלוש רמות. תסתכל/י עליו רגע לפני שממשיכים. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ריבוע אחד — שלם אחד", "x": 480, "y": 84, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 300' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='30' y='30' width='240' height='240' fill='#f0fdfa'/><rect x='30' y='30' width='24' height='240' fill='#bfdbfe'/><rect x='54' y='30' width='24' height='24' fill='#fde68a'/><g stroke='#5eead4' stroke-width='1.5'><line x1='54' y1='30' x2='54' y2='270'/><line x1='78' y1='30' x2='78' y2='270'/><line x1='102' y1='30' x2='102' y2='270'/><line x1='126' y1='30' x2='126' y2='270'/><line x1='150' y1='30' x2='150' y2='270'/><line x1='174' y1='30' x2='174' y2='270'/><line x1='198' y1='30' x2='198' y2='270'/><line x1='222' y1='30' x2='222' y2='270'/><line x1='246' y1='30' x2='246' y2='270'/><line x1='30' y1='54' x2='270' y2='54'/><line x1='30' y1='78' x2='270' y2='78'/><line x1='30' y1='102' x2='270' y2='102'/><line x1='30' y1='126' x2='270' y2='126'/><line x1='30' y1='150' x2='270' y2='150'/><line x1='30' y1='174' x2='270' y2='174'/><line x1='30' y1='198' x2='270' y2='198'/><line x1='30' y1='222' x2='270' y2='222'/><line x1='30' y1='246' x2='270' y2='246'/></g><rect x='30' y='30' width='240' height='240' fill='none' stroke='#0d9488' stroke-width='4'/><text x='420' y='68' text-anchor='middle' font-size='21' font-weight='700' fill='#0d9488'>כל הריבוע = שלם אחד</text><rect x='300' y='96' width='20' height='58' fill='#bfdbfe' stroke='#2563eb' stroke-width='2'/><text x='445' y='132' text-anchor='middle' font-size='19' fill='#0f3b36'>עמודה אחת = 0.1</text><rect x='300' y='182' width='20' height='20' fill='#fde68a' stroke='#d97706' stroke-width='2'/><text x='448' y='198' text-anchor='middle' font-size='19' fill='#0f3b36'>משבצת אחת = 0.01</text><text x='420' y='256' text-anchor='middle' font-size='17' fill='#0f3b36'>עשר עשיריות = שלם אחד</text></svg>", "title": "הריבוע של השלם", "x": 200, "y": 130, "w": 560, "h": 300, "exact": true } },
+          { "name": "write_text", "input": { "text": "מאה משבצות קטנות בשלם", "x": 480, "y": 468, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו נשאל: כמה זה 0.4 כפול 0.3? צבעתי 4 עמודות בכחול — זה 0.4 מהריבוע. ואז 3 שורות בצהוב — זה 0.3. תסתכל/י איפה הצבעים נפגשים: הריבוע הירוק. תספור/י אותו — 12 משבצות קטנות מתוך 100. אז 0.4 כפול 0.3 זה 0.12. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "איפה הצבעים נפגשים", "x": 480, "y": 84, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 300' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='30' y='30' width='240' height='240' fill='#f0fdfa'/><rect x='30' y='30' width='96' height='240' fill='#bfdbfe' opacity='0.85'/><rect x='30' y='30' width='240' height='72' fill='#fde68a' opacity='0.75'/><rect x='30' y='30' width='96' height='72' fill='#22c55e' opacity='0.9'/><g stroke='#5eead4' stroke-width='1.5'><line x1='54' y1='30' x2='54' y2='270'/><line x1='78' y1='30' x2='78' y2='270'/><line x1='102' y1='30' x2='102' y2='270'/><line x1='126' y1='30' x2='126' y2='270'/><line x1='150' y1='30' x2='150' y2='270'/><line x1='174' y1='30' x2='174' y2='270'/><line x1='198' y1='30' x2='198' y2='270'/><line x1='222' y1='30' x2='222' y2='270'/><line x1='246' y1='30' x2='246' y2='270'/><line x1='30' y1='54' x2='270' y2='54'/><line x1='30' y1='78' x2='270' y2='78'/><line x1='30' y1='102' x2='270' y2='102'/><line x1='30' y1='126' x2='270' y2='126'/><line x1='30' y1='150' x2='270' y2='150'/><line x1='30' y1='174' x2='270' y2='174'/><line x1='30' y1='198' x2='270' y2='198'/><line x1='30' y1='222' x2='270' y2='222'/><line x1='30' y1='246' x2='270' y2='246'/></g><rect x='30' y='30' width='240' height='240' fill='none' stroke='#0d9488' stroke-width='4'/><text x='430' y='72' text-anchor='middle' font-size='20' font-weight='700' fill='#2563eb'>4 עמודות כחולות = 0.4</text><text x='430' y='118' text-anchor='middle' font-size='20' font-weight='700' fill='#b45309'>3 שורות צהובות = 0.3</text><text x='430' y='170' text-anchor='middle' font-size='20' font-weight='700' fill='#15803d'>הירוק — 12 משבצות</text><text x='430' y='222' text-anchor='middle' font-size='25' font-weight='700' fill='#0f3b36' direction='ltr'>0.4 × 0.3 = 0.12</text><text x='430' y='262' text-anchor='middle' font-size='17' fill='#0f3b36'>12 מתוך 100 משבצות</text></svg>", "title": "0.4 כפול 0.3", "x": 200, "y": 130, "w": 560, "h": 300, "exact": true } },
+          { "name": "write_text", "input": { "text": "החפיפה היא התשובה", "x": 480, "y": 468, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "וזה בדיוק מה שכבר עשינו בכפל שברים, רק בשפה אחרת. 0.4 זה 4 עשיריות, ו-0.3 זה 3 עשיריות. כשכופלים אותם מקבלים 12 מאיות — כלומר 0.12. ותשים/י לב למשהו מוזר: 0.12 קטן גם מ-0.4 וגם מ-0.3! זה בגלל ששניהם קטנים משלם, וכפל בפחות מ-1 מקטין. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אותו רעיון, שפה אחרת", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 540 210' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='270' y='40' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>ארבע עשיריות כפול שלוש עשיריות</text><text x='270' y='90' text-anchor='middle' font-size='30' font-weight='700' fill='#0d9488' direction='ltr'>0.4 × 0.3 = 0.12</text><text x='270' y='128' text-anchor='middle' font-size='20' font-weight='700' fill='#0f3b36'>שתים-עשרה מאיות</text><line x1='110' y1='148' x2='430' y2='148' stroke='#cbd5e1' stroke-width='2'/><text x='270' y='184' text-anchor='middle' font-size='21' font-weight='700' fill='#dc2626'>התוצאה קטנה משני המספרים</text></svg>", "title": "עשיריות ומאיות", "x": 240, "y": 150, "w": 540, "h": 210, "exact": true } },
+          { "name": "write_text", "input": { "text": "כופלים בפחות מ-1 — מקטינים", "x": 480, "y": 400, "size": 28 } },
+          { "name": "write_text", "input": { "text": "כבר ראינו את זה בשברים", "x": 480, "y": 458, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הכלל שנולד מהתמונה, ואפשר להשתמש בו תמיד. סופרים כמה ספרות יש אחרי הנקודה בשני המספרים ביחד: ב-0.4 יש אחת, ב-0.3 יש אחת — ביחד שתיים. עכשיו כופלים בלי נקודות: 4 כפול 3 זה 12. ובתשובה שמים בדיוק שתי ספרות אחרי הנקודה: 0.12. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "סופרים ספרות אחרי הנקודה", "x": 480, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 540 230' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='150' y='46' text-anchor='middle' font-size='34' font-weight='700' fill='#0f3b36' direction='ltr'>0.4</text><text x='150' y='74' text-anchor='middle' font-size='17' font-weight='700' fill='#ea580c'>ספרה אחת</text><text x='390' y='46' text-anchor='middle' font-size='34' font-weight='700' fill='#0f3b36' direction='ltr'>0.3</text><text x='390' y='74' text-anchor='middle' font-size='17' font-weight='700' fill='#ea580c'>ספרה אחת</text><text x='270' y='46' text-anchor='middle' font-size='30' font-weight='700' fill='#94a3b8'>×</text><line x1='90' y1='96' x2='450' y2='96' stroke='#cbd5e1' stroke-width='2'/><text x='270' y='130' text-anchor='middle' font-size='20' font-weight='700' fill='#ea580c'>ביחד שתי ספרות אחרי הנקודה</text><text x='270' y='176' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36' direction='ltr'>4 × 3 = 12</text><text x='270' y='216' text-anchor='middle' font-size='28' font-weight='700' fill='#15803d' direction='ltr'>0.4 × 0.3 = 0.12</text></svg>", "title": "כלל הספרות", "x": 240, "y": 140, "w": 540, "h": 230, "exact": true } },
+          { "name": "write_text", "input": { "text": "סופרים אחורה מהסוף", "x": 480, "y": 420, "size": 28 } },
+          { "name": "write_text", "input": { "text": "וממקמים את הנקודה", "x": 480, "y": 472, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ננסה יחד עוד אחד: 1.2 כפול 0.5. אומדן קודם — 0.5 זה חצי, וחצי מ-1.2 זה 0.6. עכשיו לפי הכלל: ספרה אחת ועוד ספרה אחת, ביחד שתיים. בלי נקודות: 12 כפול 5 זה 60. שמים שתי ספרות אחרי הנקודה — 0.60, וזה פשוט 0.6. בדיוק כמו האומדן 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אומדן וכלל — ביחד", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 540 220' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='270' y='36' text-anchor='middle' font-size='20' font-weight='700' fill='#ea580c'>אומדן — חצי מ-1.2</text><text x='270' y='84' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36' direction='ltr'>12 × 5 = 60</text><text x='270' y='112' text-anchor='middle' font-size='17' fill='#0f3b36'>כופלים בלי נקודות</text><line x1='110' y1='132' x2='430' y2='132' stroke='#cbd5e1' stroke-width='2'/><text x='270' y='168' text-anchor='middle' font-size='28' font-weight='700' fill='#15803d' direction='ltr'>1.2 × 0.5 = 0.60</text><text x='270' y='206' text-anchor='middle' font-size='21' font-weight='700' fill='#0d9488'>והאפס בסוף לא מוסיף — 0.6</text></svg>", "title": "1.2 כפול 0.5", "x": 240, "y": 150, "w": 540, "h": 220, "exact": true } },
+          { "name": "write_text", "input": { "text": "האומדן והכלל הסכימו", "x": 480, "y": 420, "size": 28 } },
+          { "name": "write_text", "input": { "text": "עכשיו תור/ך", "x": 480, "y": 472, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד: 0.6 כפול 0.4. שמתי לך את הרשת לצד השאלה — כל משבצת קטנה בה היא 0.01. תשאל/י קודם כמה ספרות יש אחרי הנקודה בשני המספרים ביחד. אחר כך תכפול/י בלי נקודות, ובסוף תספור/י אחורה מהסוף ותשים/י את הנקודה. את התשובה כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "0.6 × 0.4 =",
+            "answer": "0.24",
+            "kind": "number",
+            "x": 800,
+            "y": 180,
+            "hint": "כמה ספרות אחרי הנקודה ב-0.6? וכמה ב-0.4? תחבר/י אותן — זה מספר הספרות שיהיו בתשובה. עכשיו תכפול/י 6 כפול 4 בלי נקודות, ואז ספור/י אחורה מהסוף וסמן/י את הנקודה.",
+            "praise": "יופי! ספרת ספרות אחרי הנקודה — ולכן הנקודה נחתה בדיוק במקום 👏"
+          }
+        },
+        { "name": "write_text", "input": { "text": "סופרים ספרות", "x": 235, "y": 100, "size": 30 } },
+        { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 350 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='55' y='20' width='240' height='200' fill='#f0fdfa'/><g stroke='#5eead4' stroke-width='1.5'><line x1='79' y1='20' x2='79' y2='220'/><line x1='103' y1='20' x2='103' y2='220'/><line x1='127' y1='20' x2='127' y2='220'/><line x1='151' y1='20' x2='151' y2='220'/><line x1='175' y1='20' x2='175' y2='220'/><line x1='199' y1='20' x2='199' y2='220'/><line x1='223' y1='20' x2='223' y2='220'/><line x1='247' y1='20' x2='247' y2='220'/><line x1='271' y1='20' x2='271' y2='220'/><line x1='55' y1='40' x2='295' y2='40'/><line x1='55' y1='60' x2='295' y2='60'/><line x1='55' y1='80' x2='295' y2='80'/><line x1='55' y1='100' x2='295' y2='100'/><line x1='55' y1='120' x2='295' y2='120'/><line x1='55' y1='140' x2='295' y2='140'/><line x1='55' y1='160' x2='295' y2='160'/><line x1='55' y1='180' x2='295' y2='180'/><line x1='55' y1='200' x2='295' y2='200'/></g><rect x='55' y='20' width='240' height='200' fill='none' stroke='#0d9488' stroke-width='4'/><text x='175' y='244' text-anchor='middle' font-size='18' font-weight='700' fill='#0d9488'>כל משבצת קטנה = 0.01</text></svg>", "title": "רשת המאיות", "x": 60, "y": 130, "w": 350, "h": 250, "exact": true } },
+        { "name": "write_text", "input": { "text": "עמודה שלמה = 0.1", "x": 480, "y": 440, "size": 28 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות — אחת בכל פעם. בראשונה הרשת עדיין לידך. בשנייה עשה/עשי אומדן קודם, והתשובה תפתיע אותך. בשלישית שים/י לב: אולי תצטרך/י להוסיף אפס כדי שיהיו מספיק ספרות אחרי הנקודה 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "1.5 × 0.2 =",
+            "answer": "0.3",
+            "kind": "number",
+            "x": 800,
+            "y": 150,
+            "hint": "0.2 קטן משלם, אז התשובה חייבת לצאת קטנה מ-1.5. ספרה אחת אחרי הנקודה ועוד אחת — שתיים בתשובה. תכפול/י 15 כפול 2 בלי נקודות ואז מקם/י את הנקודה.",
+            "praise": "מצוין! כפלת בלי נקודות וספרת ספרות — והאפס המיותר בסוף נעלם 👏"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "2.5 × 0.4 =",
+            "answer": "1",
+            "kind": "number",
+            "x": 800,
+            "y": 260,
+            "hint": "אומדן: 0.4 זה קצת פחות מחצי, אז התשובה קטנה משתיים וחצי. עכשיו 25 כפול 4 בלי נקודות, ואז שתי ספרות אחרי הנקודה. תופתע/י כמה עגול זה יוצא.",
+            "praise": "יפה! יצא בדיוק מספר שלם — האפסים שבסוף לא מוסיפים כלום 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "0.3 × 0.3 =",
+            "answer": "0.09",
+            "kind": "number",
+            "x": 800,
+            "y": 370,
+            "hint": "בתשובה צריכות להיות שתי ספרות אחרי הנקודה. תכפול/י 3 כפול 3 בלי נקודות — כמה ספרות קיבלת? אם חסרה ספרה, מוסיפים אפס לפני המספר כדי להשלים.",
+            "praise": "בול! הוספת אפס כדי להשלים שתי ספרות — זו בדיוק המלכודת של הנושא 🏆"
+          }
+        },
+        { "name": "write_text", "input": { "text": "שלוש שאלות — אחת בכל פעם", "x": 250, "y": 105, "size": 28 } },
+        { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 330 236' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='45' y='18' width='240' height='190' fill='#f0fdfa'/><g stroke='#5eead4' stroke-width='1.5'><line x1='69' y1='18' x2='69' y2='208'/><line x1='93' y1='18' x2='93' y2='208'/><line x1='117' y1='18' x2='117' y2='208'/><line x1='141' y1='18' x2='141' y2='208'/><line x1='165' y1='18' x2='165' y2='208'/><line x1='189' y1='18' x2='189' y2='208'/><line x1='213' y1='18' x2='213' y2='208'/><line x1='237' y1='18' x2='237' y2='208'/><line x1='261' y1='18' x2='261' y2='208'/><line x1='45' y1='37' x2='285' y2='37'/><line x1='45' y1='56' x2='285' y2='56'/><line x1='45' y1='75' x2='285' y2='75'/><line x1='45' y1='94' x2='285' y2='94'/><line x1='45' y1='113' x2='285' y2='113'/><line x1='45' y1='132' x2='285' y2='132'/><line x1='45' y1='151' x2='285' y2='151'/><line x1='45' y1='170' x2='285' y2='170'/><line x1='45' y1='189' x2='285' y2='189'/></g><rect x='45' y='18' width='240' height='190' fill='none' stroke='#0d9488' stroke-width='4'/><text x='165' y='230' text-anchor='middle' font-size='17' font-weight='700' fill='#0d9488'>הריבוע כולו = שלם אחד</text></svg>", "title": "רשת המאיות", "x": 60, "y": 140, "w": 330, "h": 236, "exact": true } },
+        { "name": "write_text", "input": { "text": "הרשת לעזרה בשאלה הראשונה", "x": 240, "y": 425, "size": 26 } },
+        { "name": "remember_note", "input": { "note": "עשרוני × עשרוני: מודל הריבוע 10×10 ואז כלל ספירת הספרות אחרי הנקודה.", "open_loop": "לבדוק שהוא מוסיף אפס משלים כשהמכפלה קצרה מדי (0.3 × 0.3)." } }
+      ]
+    }
+  }
+}

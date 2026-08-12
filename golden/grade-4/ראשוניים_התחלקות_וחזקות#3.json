@@ -1,0 +1,76 @@
+{
+  "topic": "ראשוניים, התחלקות וחזקות",
+  "lesson": 3,
+  "title": "עץ הפירוק — כל מספר בנוי מראשוניים",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "כבר גילינו מי ראשוני ומי פריק. 60 הוא פריק — יש לו הרבה מחלקים. אז בוא/י נשבור אותו לשניים: 60 = 6 × 10. אבל רגע — גם 6 וגם 10 הם פריקים בעצמם! אז אפשר לשבור גם אותם. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שוברים את 60 לשניים", "x": 500, "y": 95, "size": 34 } },
+          { "name": "write_text", "input": { "text": "60", "x": 500, "y": 185, "size": 44 } },
+          { "name": "draw_line", "input": { "x1": 475, "y1": 215, "x2": 405, "y2": 282, "color": "#94a3b8", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 525, "y1": 215, "x2": 595, "y2": 282, "color": "#94a3b8", "width": 3 } },
+          { "name": "write_text", "input": { "text": "6", "x": 390, "y": 310, "size": 40 } },
+          { "name": "write_text", "input": { "text": "10", "x": 610, "y": 310, "size": 40 } },
+          { "name": "write_text", "input": { "text": "גם 6 וגם 10 פריקים — אפשר לשבור גם אותם", "x": 500, "y": 430, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ממשיכים לשבור. 6 זה 2 כפול 3, ו-10 זה 2 כפול 5. עכשיו תסתכל/י על הקצוות הירוקים: 2, 3, 2, 5 — כולם ראשוניים! ראשוני אי-אפשר לשבור יותר, אז שם עוצרים. לציור הזה קוראים עץ פירוק, והוא מראה מאילו ראשוניים בנוי 60. ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "עץ הפירוק של 60", "x": 240, "y": 130, "w": 520, "h": 350, "exact": true, "html": "<style>.vt{position:relative;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif}.vt em{position:absolute;height:3px;background:#94a3b8;transform-origin:0 50%;border-radius:2px}.vt b{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;border:3px solid #3b82f6;background:#eff6ff;color:#1e3a8a}.vt b.p{border-color:#16a34a;background:#dcfce7;color:#166534}.vt u{position:absolute;left:0;right:0;top:296px;text-align:center;font-size:28px;color:#1e3a8a;direction:ltr;text-decoration:none}</style><div class='vt'><em style='left:260px;top:57px;width:128px;transform:rotate(160deg)'></em><em style='left:260px;top:57px;width:128px;transform:rotate(20deg)'></em><em style='left:140px;top:157px;width:81px;transform:rotate(139deg)'></em><em style='left:140px;top:157px;width:81px;transform:rotate(41deg)'></em><em style='left:380px;top:157px;width:81px;transform:rotate(139deg)'></em><em style='left:380px;top:157px;width:81px;transform:rotate(41deg)'></em><b style='left:260px;top:30px'>60</b><b style='left:140px;top:130px'>6</b><b style='left:380px;top:130px'>10</b><b class='p' style='left:80px;top:240px'>2</b><b class='p' style='left:200px;top:240px'>3</b><b class='p' style='left:320px;top:240px'>2</b><b class='p' style='left:440px;top:240px'>5</b><u>60 = 2 × 2 × 3 × 5</u></div>" } }
+        ]
+      },
+      {
+        "reply": "עכשיו הקסם. נתחיל אחרת לגמרי: 60 = 4 × 15. את 4 שוברים ל-2 ו-2, ואת 15 שוברים ל-3 ו-5. תסתכל/י מה יצא בקצוות: 2, 2, 3, 5 — בדיוק אותם מספרים כמו קודם! לא משנה מאיפה מתחילים, בסוף יוצא אותו אוסף ראשוניים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "דרכים שונות — אותה תשובה", "x": 500, "y": 95, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "מתחילים מ-4 ומ-15", "x": 240, "y": 130, "w": 520, "h": 350, "exact": true, "html": "<style>.vt2{position:relative;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif}.vt2 em{position:absolute;height:3px;background:#94a3b8;transform-origin:0 50%;border-radius:2px}.vt2 b{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;border:3px solid #3b82f6;background:#eff6ff;color:#1e3a8a}.vt2 b.p{border-color:#16a34a;background:#dcfce7;color:#166534}.vt2 u{position:absolute;left:0;right:0;top:296px;text-align:center;font-size:28px;color:#1e3a8a;direction:ltr;text-decoration:none}</style><div class='vt2'><em style='left:260px;top:57px;width:128px;transform:rotate(160deg)'></em><em style='left:260px;top:57px;width:128px;transform:rotate(20deg)'></em><em style='left:140px;top:157px;width:81px;transform:rotate(139deg)'></em><em style='left:140px;top:157px;width:81px;transform:rotate(41deg)'></em><em style='left:380px;top:157px;width:81px;transform:rotate(139deg)'></em><em style='left:380px;top:157px;width:81px;transform:rotate(41deg)'></em><b style='left:260px;top:30px'>60</b><b style='left:140px;top:130px'>4</b><b style='left:380px;top:130px'>15</b><b class='p' style='left:80px;top:240px'>2</b><b class='p' style='left:200px;top:240px'>2</b><b class='p' style='left:320px;top:240px'>3</b><b class='p' style='left:440px;top:240px'>5</b><u>60 = 2 × 2 × 3 × 5</u></div>" } }
+        ]
+      },
+      {
+        "reply": "אז מתי עוצרים? כשענף הגיע למספר ראשוני. ראשוני מתחלק רק ב-1 ובעצמו, ולכן אין בו מה לשבור. 6 הוא לא ראשוני — 6 זה 2 כפול 3, אז ממשיכים. 7 כן ראשוני — עוצרים. ממשיכים עד שכל הקצוות ירוקים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מתי עוצרים?", "x": 500, "y": 95, "size": 34 } },
+          { "name": "write_text", "input": { "text": "עוצרים כשהענף הגיע למספר ראשוני", "x": 500, "y": 180, "size": 28 } },
+          { "name": "write_text", "input": { "text": "הראשוניים הקטנים: 2, 3, 5, 7, 11, 13", "x": 500, "y": 265, "size": 30, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "פריק כמו 6 או 12 — ממשיכים לשבור", "x": 500, "y": 355, "size": 26 } },
+          { "name": "write_text", "input": { "text": "ראשוני כמו 7 — עוצרים שם", "x": 500, "y": 425, "size": 26, "color": "#16a34a" } }
+        ]
+      },
+      {
+        "reply": "נעשה ביחד עוד אחד, 18. שוברים: 18 זה 2 כפול 9. ה-2 ראשוני — עוצרים שם. ה-9 לא ראשוני, כי 9 זה 3 כפול 3 — אז ממשיכים. עכשיו כל הקצוות ראשוניים, וקיבלנו 18 = 2 × 3 × 3. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "נעשה ביחד: 18", "x": 500, "y": 90, "size": 32 } },
+          { "name": "write_text", "input": { "text": "18", "x": 500, "y": 165, "size": 40 } },
+          { "name": "draw_line", "input": { "x1": 478, "y1": 192, "x2": 425, "y2": 240, "color": "#94a3b8", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 522, "y1": 192, "x2": 575, "y2": 240, "color": "#94a3b8", "width": 3 } },
+          { "name": "write_text", "input": { "text": "2", "x": 410, "y": 265, "size": 36, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "9", "x": 590, "y": 265, "size": 36 } },
+          { "name": "draw_line", "input": { "x1": 575, "y1": 292, "x2": 540, "y2": 340, "color": "#94a3b8", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 605, "y1": 292, "x2": 645, "y2": 340, "color": "#94a3b8", "width": 3 } },
+          { "name": "write_text", "input": { "text": "3", "x": 528, "y": 365, "size": 36, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "3", "x": 658, "y": 365, "size": 36, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "18 = 2 × 3 × 3", "x": 500, "y": 460, "size": 32 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד — נפרק את 36. התחלתי לך את העץ על הלוח: 36 זה 4 כפול 9, ואת ה-4 כבר שברתי ל-2 ול-2. נשאר ה-9, והוא לא ראשוני. שבור/שברי גם אותו, ואז תראה/י איזה מספר חסר בשורה של הראשוניים. כתוב/כתבי אותו בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "השלימו: 36 = 2 × 2 × 3 × ?", "answer": "3", "kind": "number", "hint": "תסתכל/י על הענף של 9 בעץ. 9 זה כמה כפול כמה? שני המספרים שיצאו לך שם חייבים להופיע למטה — אחד מהם כבר כתוב, השני חסר.", "praise": "מעולה! שברת את 9 לשני ראשוניים וקיבלת 36 = 2 × 2 × 3 × 3 👏" } },
+        { "name": "render_widget", "input": { "title": "עץ הפירוק של 36", "x": 470, "y": 230, "w": 420, "h": 250, "exact": true, "html": "<style>.vs{position:relative;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif}.vs em{position:absolute;height:3px;background:#94a3b8;transform-origin:0 50%;border-radius:2px}.vs b{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;border:3px solid #3b82f6;background:#eff6ff;color:#1e3a8a}.vs b.p{border-color:#16a34a;background:#dcfce7;color:#166534}.vs b.q{border-style:dashed;border-color:#f59e0b;background:#fffbeb;color:#b45309}</style><div class='vs'><em style='left:210px;top:49px;width:102px;transform:rotate(158deg)'></em><em style='left:210px;top:49px;width:102px;transform:rotate(22deg)'></em><em style='left:115px;top:133px;width:67px;transform:rotate(139deg)'></em><em style='left:115px;top:133px;width:67px;transform:rotate(41deg)'></em><em style='left:305px;top:133px;width:67px;transform:rotate(139deg)'></em><em style='left:305px;top:133px;width:67px;transform:rotate(41deg)'></em><b style='left:210px;top:26px'>36</b><b style='left:115px;top:110px'>4</b><b style='left:305px;top:110px'>9</b><b class='p' style='left:65px;top:200px'>2</b><b class='p' style='left:165px;top:200px'>2</b><b class='q' style='left:255px;top:200px'>?</b><b class='q' style='left:355px;top:200px'>?</b></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה השארתי לך התחלה של עץ, ובשתיים הבאות תסתדר/י כבר לבד. בשיעור הבא נגלה טריק מהיר שמגלה אם מספר מתחלק ב-3 — בלי לחלק בכלל 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "השלימו: 20 = 2 × 2 × ?", "answer": "5", "kind": "number", "x": 130, "y": 140, "hint": "בעץ שעל הלוח 20 נשבר ל-2 ול-10. ה-2 כבר ראשוני, אבל 10 עוד לא — שבור/שברי אותו לשני ראשוניים ותראה/י מי מהם חסר למטה.", "praise": "כל הכבוד! 10 זה 2 כפול 5, ולכן 20 = 2 × 2 × 5 🎉" } },
+        { "name": "render_widget", "input": { "title": "עץ הפירוק של 20", "x": 470, "y": 90, "w": 420, "h": 250, "exact": true, "html": "<style>.vw{position:relative;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif}.vw em{position:absolute;height:3px;background:#94a3b8;transform-origin:0 50%;border-radius:2px}.vw b{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;border:3px solid #3b82f6;background:#eff6ff;color:#1e3a8a}.vw b.p{border-color:#16a34a;background:#dcfce7;color:#166534}.vw b.q{border-style:dashed;border-color:#f59e0b;background:#fffbeb;color:#b45309}</style><div class='vw'><em style='left:210px;top:49px;width:102px;transform:rotate(158deg)'></em><em style='left:210px;top:49px;width:102px;transform:rotate(22deg)'></em><em style='left:305px;top:133px;width:67px;transform:rotate(139deg)'></em><em style='left:305px;top:133px;width:67px;transform:rotate(41deg)'></em><b style='left:210px;top:26px'>20</b><b class='p' style='left:115px;top:110px'>2</b><b style='left:305px;top:110px'>10</b><b class='q' style='left:255px;top:200px'>?</b><b class='q' style='left:355px;top:200px'>?</b></div>" } },
+        { "name": "draw_exercise", "input": { "text": "השלימו: 50 = 2 × 5 × ?", "answer": "5", "kind": "number", "x": 130, "y": 330, "hint": "בנה/בני את העץ בראש: 50 זה 2 כפול 25. עכשיו 25 — הוא ראשוני, או שאפשר לשבור אותו לשניים שווים?", "praise": "יפה! המשכת לשבור עד שכל הקצוות היו ראשוניים 👏" } },
+        { "name": "draw_exercise", "input": { "text": "האם המספר 4 יכול להופיע בפירוק לראשוניים? כן או לא", "answer": "לא", "kind": "text", "x": 130, "y": 460, "hint": "בקצה של עץ פירוק עומדים רק ראשוניים. תשאל/י את עצמך: 4 מתחלק רק ב-1 ובעצמו, או שיש לו עוד מחלק?", "praise": "מדויק! 4 הוא פריק, אז תמיד ממשיכים לשבור אותו ל-2 כפול 2 🏆" } }
+      ]
+    }
+  }
+}

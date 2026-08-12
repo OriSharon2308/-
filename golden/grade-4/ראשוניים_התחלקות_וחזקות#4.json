@@ -1,0 +1,84 @@
+{
+  "topic": "ראשוניים, התחלקות וחזקות",
+  "lesson": 4,
+  "title": "סימני התחלקות ב-3, ב-9 וב-6",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בכיתה ג׳ למדת שלושה סימנים: מתחלק ב-2 אם הספרה האחרונה זוגית, ב-5 אם היא 5 או 0, וב-10 אם היא 0. ומה עם 3? כאן הספרה האחרונה לא עוזרת בכלל: 12 מתחלק ב-3, ו-13 לא — ושניהם נגמרים בספרה קרובה. צריך משהו אחר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "סימנים שכבר מכירים", "x": 500, "y": 95, "size": 34 } },
+          { "name": "write_text", "input": { "text": "מתחלק ב-2? הספרה האחרונה זוגית", "x": 500, "y": 175, "size": 28, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "מתחלק ב-5? הספרה האחרונה 5 או 0", "x": 500, "y": 240, "size": 28, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "מתחלק ב-10? הספרה האחרונה 0", "x": 500, "y": 305, "size": 28, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "ומה עם 3? הספרה האחרונה לא עוזרת", "x": 500, "y": 395, "size": 30, "color": "#dc2626" } },
+          { "name": "write_text", "input": { "text": "12 מתחלק ב-3, אבל 13 לא", "x": 500, "y": 460, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "על הלוח כל הכפולות של 3 מסומנות. בוא/י נחקור: ניקח כמה מהן ונחבר את הספרות שלהן. ב-12 הסכום 3, ב-27 הסכום 9, וב-51 הסכום 6. תסתכל/י על שלושת הסכומים שיצאו: 3, 9, 6 — מה משותף להם? כולם מתחלקים ב-3! זו לא במקרה. ✓",
+        "toolCalls": [
+          { "name": "hundred_chart", "input": { "skip": 3, "x": 60, "y": 85, "w": 400, "h": 400, "exact": true } },
+          { "name": "write_text", "input": { "text": "כפולות של 3 — נחבר ספרות", "x": 720, "y": 110, "size": 30 } },
+          { "name": "write_text", "input": { "text": "סכום הספרות של 12 הוא 3", "x": 720, "y": 200, "size": 27 } },
+          { "name": "write_text", "input": { "text": "סכום הספרות של 27 הוא 9", "x": 720, "y": 265, "size": 27 } },
+          { "name": "write_text", "input": { "text": "סכום הספרות של 51 הוא 6", "x": 720, "y": 330, "size": 27 } },
+          { "name": "write_text", "input": { "text": "3, 9, 6 — כולם מתחלקים ב-3", "x": 720, "y": 415, "size": 28, "color": "#16a34a" } }
+        ]
+      },
+      {
+        "reply": "אז הנה הכלל: מחברים את כל הספרות של המספר. אם הסכום מתחלק ב-3 — גם המספר מתחלק ב-3. ננסה על 234: 2 ועוד 3 ועוד 4 זה 9, ו-9 מתחלק ב-3 — אז כן. ועל 251: הסכום הוא 8, ו-8 לא מתחלק ב-3 — אז לא. בלי לחלק בכלל! ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הכלל של 3: מחברים ספרות", "x": 500, "y": 100, "size": 34 } },
+          { "name": "write_text", "input": { "text": "234: סכום הספרות 9 — מתחלק ב-3", "x": 500, "y": 205, "size": 29, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "251: סכום הספרות 8 — לא מתחלק ב-3", "x": 500, "y": 290, "size": 29, "color": "#dc2626" } },
+          { "name": "write_text", "input": { "text": "לא חילקנו אף פעם — רק חיברנו ספרות", "x": 500, "y": 400, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ל-9 יש בדיוק אותו טריק, רק עם דרישה אחת גדולה יותר: הסכום עצמו חייב להתחלק ב-9. ננסה על 468: 4 ועוד 6 ועוד 8 זה 18, ו-18 מתחלק ב-9 — אז כן. ומה עם 24? הסכום 6. הוא מתחלק ב-3, אבל לא ב-9 — אז 24 מתחלק ב-3 בלבד. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הכלל של 9: אותו טריק", "x": 500, "y": 100, "size": 34 } },
+          { "name": "write_text", "input": { "text": "468: סכום הספרות 18 — מתחלק ב-9", "x": 500, "y": 200, "size": 29, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "24: סכום הספרות 6 — מתחלק ב-3 ולא ב-9", "x": 500, "y": 285, "size": 29, "color": "#dc2626" } },
+          { "name": "write_text", "input": { "text": "כל מספר שמתחלק ב-9 מתחלק גם ב-3", "x": 500, "y": 395, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ו-6? שים/שימי לב: 6 זה 2 כפול 3. לכן מספר מתחלק ב-6 רק אם הוא גם זוגי וגם מתחלק ב-3 — שני התנאים ביחד, לא אחד מהם. זהירות מהטעות: 14 זוגי, אבל סכום הספרות שלו 5 ולא מתחלק ב-3 — אז 14 לא מתחלק ב-6. וגם 27 לא, כי הוא אי-זוגי. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הכלל של 6: שני תנאים ביחד", "x": 500, "y": 95, "size": 34 } },
+          { "name": "write_text", "input": { "text": "6 זה 2 כפול 3 — צריך גם זוגי וגם מתחלק ב-3", "x": 500, "y": 180, "size": 28 } },
+          { "name": "write_text", "input": { "text": "14 זוגי, אבל סכום הספרות 5 — לא מתחלק ב-6", "x": 500, "y": 285, "size": 27, "color": "#dc2626" } },
+          { "name": "write_text", "input": { "text": "27 מתחלק ב-3, אבל אי-זוגי — לא מתחלק ב-6", "x": 500, "y": 350, "size": 27, "color": "#dc2626" } },
+          { "name": "write_text", "input": { "text": "רק זוגי לבד לא מספיק!", "x": 500, "y": 440, "size": 28, "color": "#b45309" } }
+        ]
+      },
+      {
+        "reply": "נעשה ביחד: האם 54 מתחלק ב-6? בודקים שני דברים. אחד — 54 זוגי? כן, הוא נגמר ב-4. שתיים — סכום הספרות: 5 ועוד 4 זה 9, ו-9 מתחלק ב-3, אז כן. שני התנאים התקיימו, ולכן 54 מתחלק ב-6. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "נעשה ביחד: 54", "x": 500, "y": 100, "size": 32 } },
+          { "name": "write_text", "input": { "text": "בדיקה 1: 54 זוגי — כן", "x": 500, "y": 200, "size": 29, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "בדיקה 2: סכום הספרות 9, מתחלק ב-3 — כן", "x": 500, "y": 275, "size": 29, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "שני התנאים התקיימו — 54 מתחלק ב-6", "x": 500, "y": 385, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. השאלה: האם 126 מתחלק ב-6? על הלוח שמתי לך את רשימת הבדיקות, וגם את הספרות של 126 מופרדות. עבור/עברי בדיקה-בדיקה: קודם זוגי או לא, ואחר כך חבר/י את הספרות ותראה/י אם הסכום מתחלק ב-3. אם שתיהן התקיימו — כתוב/כתבי כן. אחרת — לא.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "האם 126 מתחלק ב-6? כתוב/כתבי כן או לא", "answer": "כן", "kind": "text", "hint": "בדיקה ראשונה: באיזו ספרה נגמר 126, והיא זוגית? בדיקה שנייה: חבר/י 1 ועוד 2 ועוד 6, ותבדוק/תבדקי אם הסכום הזה מתחלק ב-3. צריך ששתיהן יתקיימו.", "praise": "מצוין! בדקת את שני התנאים ולא רק את הזוגיות — בדיוק ככה בודקים 6 👏" } },
+        { "name": "render_widget", "input": { "title": "רשימת הבדיקות", "x": 470, "y": 230, "w": 420, "h": 250, "exact": true, "html": "<style>.ck{position:relative;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif;direction:rtl;padding:12px;box-sizing:border-box}.ck .hd{text-align:center;font-size:38px;color:#1e3a8a;font-weight:700}.ck .rw{display:flex;align-items:center;gap:10px;font-size:22px;color:#334155;margin-top:16px}.ck .bx{width:24px;height:24px;border:3px solid #94a3b8;border-radius:6px}.ck .sm{margin-top:18px;text-align:center;font-size:26px;color:#b45309;direction:ltr}</style><div class='ck'><div class='hd'>126</div><div class='rw'><span class='bx'></span><span>זוגי?</span></div><div class='rw'><span class='bx'></span><span>סכום הספרות מתחלק ב-3?</span></div><div class='sm'>1 + 2 + 6</div></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה הפרדתי לך את הספרות של 693 כדי שיהיה קל לחבר, ואחר כך תמשיך/תמשיכי לבד. השאלה האחרונה קשה יותר — שם חסרה ספרה, ואתה צריך למצוא אותה. בשיעור הבא נגלה קיצור חדש לגמרי — לכפל שחוזר על עצמו 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מהו סכום הספרות של 693?", "answer": "18", "kind": "number", "x": 130, "y": 150, "hint": "על הלוח שלוש הספרות מופרדות. חבר/י אותן אחת-אחת: קודם את שתי הראשונות, ואז הוסף/הוסיפי את השלישית.", "praise": "יופי! חיברת נכון את שלוש הספרות — זה הצעד הראשון בכל בדיקה 👏" } },
+        { "name": "render_widget", "input": { "title": "הספרות של 693", "x": 500, "y": 105, "w": 400, "h": 130, "exact": true, "html": "<style>.dg{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif;direction:ltr}.dg span{width:64px;height:64px;border:3px solid #3b82f6;background:#eff6ff;color:#1e3a8a;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700}.dg i{font-size:28px;color:#64748b;font-style:normal}</style><div class='dg'><span>6</span><i>+</i><span>9</span><i>+</i><span>3</span></div>" } },
+        { "name": "draw_exercise", "input": { "text": "האם 693 מתחלק ב-9? כתוב/כתבי כן או לא", "answer": "כן", "kind": "text", "x": 130, "y": 330, "hint": "כבר מצאת את סכום הספרות בשאלה הקודמת. עכשיו רק תבדוק/תבדקי: הסכום הזה עצמו מתחלק ב-9?", "praise": "מדויק! השתמשת בסכום שכבר חישבת — ככה עובדים חכם 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "איזו ספרה חסרה כך שהמספר 4 _ 2 יתחלק ב-9?", "answer": "3", "kind": "number", "x": 130, "y": 460, "hint": "קודם חבר/י את שתי הספרות שאתה כבר רואה. עכשיו תשאל/י: לאיזה סכום צריך להגיע כדי שהוא יתחלק ב-9? ההפרש בין השניים הוא הספרה החסרה.", "praise": "מעולה! מצאת את הספרה היחידה שמתאימה — אין כאן תשובה שנייה 🏆" } }
+      ]
+    }
+  }
+}

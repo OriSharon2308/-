@@ -1,0 +1,68 @@
+{
+  "topic": "מדידות — שטח, היקף ונפח",
+  "lesson": 6,
+  "title": "יחידות, לוח שנה וחישובי זמן",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום מסדרים יחידות, ונתחיל באורך. מ״מ הוא הקטן מכולם, ס״מ גדול ממנו, אחריו מ׳, וק״מ הוא הענק. העוגן שחייבים לזכור מודגש בכתום: במטר אחד יש 100 ס״מ, לא 10. זו הטעות הכי נפוצה בכיתה. לכן 3 מטרים הם 300 ס״מ. לחץ/י ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "משפחת האורך", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "יחידות אורך", "x": 270, "y": 135, "w": 460, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:24px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px'><div style='padding:10px 26px;border:3px solid #93c5fd;border-radius:10px;background:#eff6ff;font-size:23px;color:#1e3a8a'>10 מ״מ = 1 ס״מ</div><div style='padding:12px 30px;border:4px solid #f59e0b;border-radius:10px;background:#fef3c7;font-size:26px;color:#92400e'>100 ס״מ = 1 מ׳</div><div style='padding:10px 26px;border:3px solid #93c5fd;border-radius:10px;background:#eff6ff;font-size:23px;color:#1e3a8a'>1000 מ׳ = 1 ק״מ</div></div>" } },
+          { "name": "write_text", "input": { "text": "במטר 100 ס״מ — לא 10", "x": 500, "y": 432, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו משפחת הנפח. הקובייה הקטנה שלנו, 1 על 1 על 1, היא 1 סמ״ק. והנה דבר יפה: אם ממלאים אותה מים, זה בדיוק 1 מ״ל. זה העוגן שלנו — 1 מ״ל שווה 1 סמ״ק. ובבקבוק של ליטר אחד יש 1000 מ״ל, כלומר גם 1000 סמ״ק. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "משפחת הנפח", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "יחידות נפח", "x": 270, "y": 135, "w": 460, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:24px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px'><div style='padding:12px 30px;border:4px solid #f59e0b;border-radius:10px;background:#fef3c7;font-size:26px;color:#92400e'>1 סמ״ק = 1 מ״ל</div><div style='padding:10px 26px;border:3px solid #93c5fd;border-radius:10px;background:#eff6ff;font-size:23px;color:#1e3a8a'>1000 מ״ל = 1 ליטר</div><div style='padding:10px 26px;border:3px solid #93c5fd;border-radius:10px;background:#eff6ff;font-size:23px;color:#1e3a8a'>1000 ליטר = 1 מ״ק</div></div>" } },
+          { "name": "write_text", "input": { "text": "קובייה קטנה של מים = טיפה של מ״ל", "x": 500, "y": 432, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "וזמן, שהוא היחיד שלא עובד בעשרות. בשעה יש 60 דקות, לא 100. לכן אי-אפשר לחשב זמן כמו שמחשבים כסף. רבע שעה הם 15 דקות, חצי שעה 30 דקות, ושלושה רבעי שעה 45 דקות. השעון על הלוח מראה 7:15 — תזיז/י את המחוגים ותראה/י איך זה עובד. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "בשעה 60 דקות — לא 100", "x": 500, "y": 88, "size": 32 } },
+          { "name": "clock_interactive", "input": { "hour": 7, "minute": 15, "x": 340, "y": 135, "w": 320, "h": 320, "exact": true } },
+          { "name": "write_text", "input": { "text": "רבע שעה = 15 · חצי שעה = 30", "x": 500, "y": 490, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "נחשב ביחד מסלול אמיתי. היא הגיעה לתחנה ב-7:15. חיכתה רבע שעה, שהם 15 דקות, והשעון הראה 7:30. אחר כך נסעה חצי שעה, עוד 30 דקות, ומ-7:30 מגיעים ל-8:00 בדיוק. בסך הכול עברו 45 דקות. תראה/י את שלושת השעונים לפי הסדר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "7:15 ← 7:30 ← 8:00", "x": 500, "y": 85, "size": 32 } },
+          { "name": "draw_clock", "input": { "x": 760, "y": 290, "hour": 7, "minute": 15, "r": 100, "title": "הגיעה" } },
+          { "name": "draw_clock", "input": { "x": 500, "y": 290, "hour": 7, "minute": 30, "r": 100, "title": "אחרי רבע שעה" } },
+          { "name": "draw_clock", "input": { "x": 240, "y": 290, "hour": 8, "minute": 0, "r": 100, "title": "אחרי חצי שעה" } },
+          { "name": "write_text", "input": { "text": "בסך הכול 45 דקות", "x": 500, "y": 460, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ולסיום לוח השנה. בין 4 בחודש ל-18 בחודש: מחסרים 18 פחות 4, ומקבלים 14 ימים. יש חודשים של 30 ימים ויש של 31, ופברואר קצר במיוחד — לכן תמיד בודקים בלוח ולא מנחשים. בלוח העברי כותבים את התאריכים באותיות, בדיוק כמו בגימטרייה שלמדנו. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מ-4 עד 18 — סופרים ימים", "x": 500, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "לוח חודש", "x": 280, "y": 120, "w": 440, "h": 290, "exact": true, "html": "<style>.velacalA{display:grid;grid-template-columns:repeat(7,44px);gap:4px;direction:rtl;font-family:sans-serif}.velacalA i{display:flex;align-items:center;justify-content:center;height:24px;font-size:15px;font-style:normal;color:#64748b}.velacalA b{display:flex;align-items:center;justify-content:center;height:34px;font-size:17px;font-weight:400;color:#1e3a8a;background:#eff6ff;border:1px solid #bfdbfe;border-radius:5px}.velacalA b.hl{background:#fde68a;border-color:#f59e0b;color:#92400e;font-weight:700}</style><div style='width:100%;height:100%;box-sizing:border-box;padding:18px;background:#fff;display:flex;align-items:center;justify-content:center'><div class='velacalA'><i>א</i><i>ב</i><i>ג</i><i>ד</i><i>ה</i><i>ו</i><i>ש</i><b>1</b><b>2</b><b>3</b><b class='hl'>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b>12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class='hl'>18</b><b>19</b><b>20</b><b>21</b><b>22</b><b>23</b><b>24</b><b>25</b><b>26</b><b>27</b><b>28</b><b>29</b><b>30</b><b>31</b></div></div>" } },
+          { "name": "write_text", "input": { "text": "18 − 4 = 14 ימים", "x": 500, "y": 445, "size": 30 } },
+          { "name": "write_text", "input": { "text": "יש חודשים של 30 ויש של 31", "x": 500, "y": 490, "size": 24 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "ביחד. על הלוח שעון שאפשר להזיז, והוא מראה 7:15. השאלה: כמה דקות עוברות מ-7:15 עד 8:00? תזיז/י את המחוג הגדול קדימה וספור/י בקפיצות של 5 דקות, או תחשוב/תחשבי כמה חסר ל-15 כדי להשלים 60. את מספר הדקות כתוב/כתבי בתיבה.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה דקות עוברות מ-7:15 עד 8:00?", "answer": "45", "kind": "number", "hint": "בשעה שלמה יש 60 דקות, וכבר עברו 15 מהן. כמה דקות עוד חסרות כדי להשלים את השעה? אפשר גם לספור על השעון בקפיצות של 5.", "praise": "מצוין! השלמת עד שעה שלמה — 45 דקות בדיוק 👏" } },
+        { "name": "clock_interactive", "input": { "hour": 7, "minute": 15, "x": 360, "y": 250, "w": 280, "h": 260, "exact": true } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות משלוש המשפחות: לוח שנה, אורך ונפח. בראשונה הלוח מצויר לך. אל תשכח/י את שני העוגנים — במטר יש 100 ס״מ, ובמ״ל יש בדיוק 1 סמ״ק. כתוב/כתבי מספרים בלבד, בלי מילים ובלי פסיקים.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מ-4 בחודש עד 18 בחודש — כמה ימים?", "answer": "14", "kind": "number", "x": 270, "y": 130, "hint": "מצא/י בלוח את 4 ואת 18. אפשר לספור משבצת-משבצת, ואפשר פשוט לחסר: התאריך הגדול פחות התאריך הקטן.", "praise": "יפה! חיסרת תאריכים במקום לספור אחד-אחד 🎉" } },
+        { "name": "render_widget", "input": { "title": "לוח חודש", "x": 610, "y": 95, "w": 340, "h": 250, "exact": true, "html": "<style>.velacalB{display:grid;grid-template-columns:repeat(7,34px);gap:4px;direction:rtl;font-family:sans-serif}.velacalB i{display:flex;align-items:center;justify-content:center;height:20px;font-size:13px;font-style:normal;color:#64748b}.velacalB b{display:flex;align-items:center;justify-content:center;height:28px;font-size:14px;font-weight:400;color:#1e3a8a;background:#eff6ff;border:1px solid #bfdbfe;border-radius:4px}.velacalB b.hl{background:#fde68a;border-color:#f59e0b;color:#92400e;font-weight:700}</style><div style='width:100%;height:100%;box-sizing:border-box;padding:14px;background:#fff;display:flex;align-items:center;justify-content:center'><div class='velacalB'><i>א</i><i>ב</i><i>ג</i><i>ד</i><i>ה</i><i>ו</i><i>ש</i><b>1</b><b>2</b><b>3</b><b class='hl'>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b>12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class='hl'>18</b><b>19</b><b>20</b><b>21</b><b>22</b><b>23</b><b>24</b><b>25</b><b>26</b><b>27</b><b>28</b><b>29</b><b>30</b><b>31</b></div></div>" } },
+        { "name": "draw_exercise", "input": { "text": "כמה סנטימטרים יש ב-3 מטרים?", "answer": "300", "kind": "number", "x": 270, "y": 310, "hint": "העוגן שלנו: במטר אחד יש 100 ס״מ. עכשיו יש 3 מטרים, אז כופלים. שים/שימי לב לא להתבלבל עם 10.", "praise": "מדויק! 100 ס״מ בכל מטר, שלושה מטרים — וזה בס״מ 👏" } },
+        { "name": "draw_exercise", "input": { "text": "בקבוק של 2 ליטר — כמה סמ״ק יש בו?", "answer": "2000", "kind": "number", "x": 270, "y": 470, "hint": "שני עוגנים ביחד. בליטר אחד יש 1000 מ״ל, וכל מ״ל הוא בדיוק 1 סמ״ק. עכשיו יש 2 ליטר, אז כופלים ב-2.", "praise": "אלוף/ה! חיברת שני עוגנים והמרת ליטר לסמ״ק 🏆" } }
+      ]
+    }
+  }
+}

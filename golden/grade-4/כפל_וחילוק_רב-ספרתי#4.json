@@ -1,0 +1,80 @@
+{
+  "topic": "כפל וחילוק רב-ספרתי",
+  "lesson": 4,
+  "title": "כפל תלת-ספרתי — ולהסתכל במקום לחשב",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום המספר גדול יותר — 412 × 23 — אבל כמעט שום דבר לא משתנה. עדיין שתי שורות: פעם כופלים ב-3 ופעם ב-20. השורה השנייה עדיין נגמרת באפס. לחץ/י שלב-שלב ותראה/י שזה בדיוק אותו מאונך מאתמול. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "עוד ספרה — אותם צעדים", "x": 500, "y": 85, "size": 32 } },
+          { "name": "write_text", "input": { "text": "שורה 1 = × 3", "x": 150, "y": 230, "size": 26 } },
+          { "name": "write_text", "input": { "text": "שורה 2 = × 20", "x": 150, "y": 300, "size": 26 } },
+          { "name": "write_text", "input": { "text": "אותם צעדים", "x": 850, "y": 300, "size": 26 } },
+          { "name": "render_widget", "input": { "title": "412 × 23", "x": 310, "y": 140, "w": 380, "h": 310, "html": "<style>body{margin:0;font-family:Assistant,system-ui,sans-serif;color:#0f3b36}.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}.calc{font:800 30px 'Courier New',monospace;line-height:1.25;text-align:right;direction:ltr;min-width:190px}.r{opacity:0;transition:.35s}.r.on{opacity:1}.r1{color:#0d9488}.r2{color:#3b82f6}.tot{color:#16a34a}.bar{border-top:3px solid #0f3b36;margin:3px 0}.note{font:700 17px Assistant,sans-serif;color:#5b6b68;height:24px;text-align:center}button{font:700 18px Assistant,sans-serif;background:#0d9488;color:#fff;border:0;border-radius:12px;padding:7px 18px;cursor:pointer}</style><div class='wrap'><div class='calc'><div>412</div><div>× 23</div><div class='bar'></div><div class='r r1' id='a'>1236</div><div class='r r2' id='b'>8240</div><div class='bar'></div><div class='r tot' id='c'>9476</div></div><div class='note' id='n'></div><button id='k'>הצג/י את השלב הבא</button></div><script>var s=0,n=document.getElementById('n'),k=document.getElementById('k');var steps=[['a','שורה 1: 412 × 3'],['b','שורה 2: 412 × 20 — לכן אפס'],['c','מחברים את שתי השורות']];k.onclick=function(){if(s>=steps.length)return;var el=document.getElementById(steps[s][0]);el.className=el.className+' on';n.textContent=steps[s][1];s++;if(s===steps.length){k.disabled=true;parent.postMessage({type:'vela:correct'},'*');}};</script>" } }
+        ]
+      },
+      {
+        "reply": "מה בעצם השתנה? כמעט כלום. גם קודם היו שתי שורות, וגם עכשיו. ההבדל היחיד: בכל שורה יש שלוש מכפלות קטנות במקום שתיים, כי ל-412 יש שלוש ספרות. וכלל האפס בשורה השנייה — בדיוק אותו כלל. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מה השתנה? כמעט כלום", "x": 500, "y": 85, "size": 32 } },
+          { "name": "draw_line", "input": { "x1": 500, "y1": 150, "x2": 500, "y2": 330, "color": "#94a3b8", "width": 2 } },
+          { "name": "write_text", "input": { "text": "34 × 56", "x": 280, "y": 180, "size": 34 } },
+          { "name": "write_text", "input": { "text": "2 שורות", "x": 280, "y": 240, "size": 28 } },
+          { "name": "write_text", "input": { "text": "2 מכפלות בשורה", "x": 280, "y": 300, "size": 26 } },
+          { "name": "write_text", "input": { "text": "412 × 23", "x": 720, "y": 180, "size": 34 } },
+          { "name": "write_text", "input": { "text": "2 שורות", "x": 720, "y": 240, "size": 28 } },
+          { "name": "write_text", "input": { "text": "3 מכפלות בשורה", "x": 720, "y": 300, "size": 26 } },
+          { "name": "write_text", "input": { "text": "יותר ספרות — לא יותר קשה", "x": 500, "y": 400, "size": 30 } },
+          { "name": "write_text", "input": { "text": "רק לא לשכוח את האפס", "x": 500, "y": 465, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו שאלה שלא צריך לחשב כדי לענות עליה. על הלוח 17 שורות, ובכל שורה 23 — זה 23 × 17. לחץ/י על הכפתור ותוסיף/י שורה אחת, ועכשיו יש 18 שורות. תסתכל/י טוב: מה בדיוק נוסף לנו? ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מ-17 שורות ל-18 שורות", "x": 500, "y": 85, "size": 32 } },
+          { "name": "write_text", "input": { "text": "17 שורות של 23", "x": 150, "y": 250, "size": 26 } },
+          { "name": "write_text", "input": { "text": "עוד שורה אחת", "x": 845, "y": 250, "size": 26 } },
+          { "name": "render_widget", "input": { "title": "עוד שורה", "x": 310, "y": 125, "w": 380, "h": 360, "html": "<style>body{margin:0;font-family:Assistant,system-ui,sans-serif;color:#0f3b36}.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.stack{display:flex;flex-direction:column;gap:3px;align-items:center}.bar{width:230px;height:11px;border:1px solid #0d9488;border-radius:3px;background:#0d948833}.bar.new{background:#22c55e;border-color:#16a34a;animation:s .45s ease-out}@keyframes s{from{transform:scaleX(.08)}to{transform:scaleX(1)}}#m{font:800 21px Assistant,sans-serif;color:#0d9488;height:26px;text-align:center}button{font:700 18px Assistant,sans-serif;background:#0d9488;color:#fff;border:0;border-radius:12px;padding:7px 18px;cursor:pointer}</style><div class='wrap'><div id='m'>17 שורות, ובכל שורה 23</div><div class='stack' id='s'></div><button id='b'>הוסף/י שורה אחת</button></div><script>var s=document.getElementById('s'),m=document.getElementById('m'),b=document.getElementById('b');for(var i=0;i<17;i++){var d=document.createElement('div');d.className='bar';s.appendChild(d);}b.onclick=function(){var e=document.createElement('div');e.className='bar new';s.appendChild(e);m.textContent='נוספה שורה שלמה — עוד 23';b.disabled=true;parent.postMessage({type:'vela:correct'},'*');};</script>" } }
+        ]
+      },
+      {
+        "reply": "אז מה נוסף? לא 1 — נוספה שורה שלמה של 23. נכון ש-18 גדול מ-17 רק ב-1, אבל כל שורה כזאת שווה 23. לכן 23 × 18 גדולה מ-23 × 17 בדיוק ב-23. את השאלה הזאת פותרים בעיניים, לא בחישוב ארוך. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "עוד קבוצה אחת = עוד 23", "x": 500, "y": 85, "size": 32 } },
+          { "name": "write_text", "input": { "text": "23 × 18 גדולה מ-23 × 17", "x": 500, "y": 180, "size": 30 } },
+          { "name": "write_text", "input": { "text": "ב-23, לא ב-1", "x": 500, "y": 260, "size": 40, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "18 גדול מ-17 רק ב-1", "x": 500, "y": 340, "size": 28 } },
+          { "name": "write_text", "input": { "text": "אבל כל שורה שווה 23", "x": 500, "y": 400, "size": 28 } },
+          { "name": "write_text", "input": { "text": "מסתכלים — לא מחשבים", "x": 500, "y": 465, "size": 30, "color": "#0d9488" } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד: 234 × 32. אותם שלושה צעדים, רק עם ספרה נוספת. צעד 1: 234 × 2. צעד 2: 234 × 30, ואל תשכח/י את האפס. צעד 3: לחבר את שתי השורות. את התשובה כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "234 × 32 =", "answer": "7488", "kind": "number", "x": 880, "y": 115, "hint": "קודם 234 × 2 — שלוש מכפלות קטנות בשורה אחת. אחר כך 234 × 30, עם אפס בסוף כי כפלנו בעשרות. ואז חיבור.", "praise": "מצוין! שלוש ספרות לא בלבלו אותך — אותם צעדים בדיוק 🎯" } },
+        { "name": "draw_polygon", "input": { "points": [[100, 190], [600, 190], [600, 250], [100, 250]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "1. × 2", "x": 350, "y": 220, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[100, 275], [600, 275], [600, 335], [100, 335]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "2. × 30 — עם אפס", "x": 350, "y": 305, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[100, 360], [600, 360], [600, 420], [100, 420]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "3. מחברים", "x": 350, "y": 390, "size": 26 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. שתיים ראשונות הן מאונך תלת-ספרתי, והשארתי לך את הצעדים על הלוח. השאלה האחרונה שונה — שם אסור לחשב בכלל, רק להסתכל ולחשוב. בהצלחה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "213 × 34 =", "answer": "7242", "kind": "number", "x": 880, "y": 115, "hint": "צעד 1: 213 × 4. צעד 2: 213 × 30 — עם אפס בסוף. צעד 3: לחבר. תעבוד/תעבדי ספרה-ספרה ולא תתבלבל/י.", "praise": "יופי! שמרת על הסדר של הצעדים גם במספר גדול 👏" } },
+        { "name": "draw_polygon", "input": { "points": [[80, 180], [520, 180], [520, 240], [80, 240]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "1. × יחידות", "x": 300, "y": 210, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[80, 265], [520, 265], [520, 325], [80, 325]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "2. × עשרות — עם אפס", "x": 300, "y": 295, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[80, 350], [520, 350], [520, 410], [80, 410]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "3. מחברים", "x": 300, "y": 380, "size": 26 } },
+        { "name": "draw_exercise", "input": { "text": "125 × 16 =", "answer": "2000", "kind": "number", "x": 880, "y": 270, "hint": "צעד 1: 125 × 6. צעד 2: 125 × 10 — וכפל ב-10 פשוט מוסיף אפס. צעד 3: לחבר. התשובה יוצאת מספר עגול ויפה.", "praise": "מעולה! יצא מספר עגול — סימן שעבדת מדויק בשתי השורות 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "בכמה גדולה 15 × 24 מ-14 × 24?", "answer": "24", "kind": "number", "x": 180, "y": 462, "hint": "אל תחשב/י כלום! תסתכל/י: מה נוסף כשעוברים מ-14 שורות ל-15 שורות? נוספה שורה אחת שלמה. וכמה יש בכל שורה?", "praise": "בול! ראית שנוספה קבוצה שלמה ולא רק אחד — זו בדיוק ההבנה 🏆" } }
+      ]
+    }
+  }
+}

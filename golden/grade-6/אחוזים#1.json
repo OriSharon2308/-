@@ -1,0 +1,68 @@
+{
+  "topic": "אחוזים",
+  "lesson": 1,
+  "title": "אחוז — מתוך מאה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! מתחילים נושא חדש — אחוזים. על הלוח לוח של 100 משבצות: 10 שורות, בכל שורה 10. כל הלוח הזה, כל 100 המשבצות ביחד, הוא השלם. לשלם הזה קוראים 100 אחוז, וכותבים 100%. תסתכל/י עליו רגע — נעבוד איתו כל השיעור. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כל הלוח = 100%", "x": 250, "y": 150, "size": 34 } },
+          { "name": "write_text", "input": { "text": "10 שורות של 10", "x": 250, "y": 240, "size": 26 } },
+          { "name": "write_text", "input": { "text": "ביחד 100 משבצות", "x": 250, "y": 300, "size": 26 } },
+          { "name": "hundred_chart", "input": { "skip": 10, "start": 10, "x": 530, "y": 95, "w": 390, "h": 390, "exact": true } }
+        ]
+      },
+      {
+        "reply": "עכשיו סמן/י על הלוח 30 משבצות. סימנת? מה שסימנת זה 30 מתוך 100 — וזה בדיוק 30%. אפשר לכתוב את זה גם כשבר, 30 חלקי 100, וגם כמספר עשרוני: 0.3. ואם מצמצמים את השבר ב-10 מקבלים 3 חלקי 10, שלוש עשיריות. אותו דבר בשלוש צורות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "30 מתוך 100 = 30%", "x": 250, "y": 150, "size": 32 } },
+          { "name": "write_text", "input": { "text": "וגם 0.3", "x": 250, "y": 250, "size": 30 } },
+          { "name": "write_text", "input": { "text": "וגם 3 עשיריות", "x": 250, "y": 320, "size": 28 } },
+          { "name": "hundred_chart", "input": { "skip": 10, "start": 10, "x": 530, "y": 95, "w": 390, "h": 390, "exact": true } }
+        ]
+      },
+      {
+        "reply": "בוא/י נראה עוד כמה. חצי מהלוח זה 50 משבצות — 50%. רבע מהלוח זה 25 משבצות — 25%. שורה אחת זה 10 משבצות — 10%. שים/שימי לב לדבר יפה: מספר האחוזים הוא בדיוק מספר המשבצות הצבועות. זה כל הסיפור של אחוז. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "חצי, רבע, עשירית", "x": 500, "y": 95, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "חלקים מתוך מאה", "x": 90, "y": 150, "w": 820, "h": 330, "exact": true, "html": "<div dir=\"rtl\" style=\"display:flex;gap:34px;align-items:center;justify-content:center;width:100%;height:100%;background:#fff;color:#22314f;font-family:system-ui,-apple-system,sans-serif\"><div style=\"text-align:center\"><div style=\"position:relative;width:150px;height:150px;border:3px solid #33415a;box-sizing:content-box\"><div style=\"position:absolute;left:0;top:0;width:100%;height:50%;background:#7fc4f5\"></div><div style=\"position:absolute;left:0;top:0;width:100%;height:100%;background-image:repeating-linear-gradient(to right,#8fa3b8 0 1px,transparent 1px 15px),repeating-linear-gradient(to bottom,#8fa3b8 0 1px,transparent 1px 15px)\"></div></div><div style=\"font-size:21px;margin-top:10px\">50 משבצות = 50%</div></div><div style=\"text-align:center\"><div style=\"position:relative;width:150px;height:150px;border:3px solid #33415a;box-sizing:content-box\"><div style=\"position:absolute;left:0;top:0;width:100%;height:20%;background:#7fc4f5\"></div><div style=\"position:absolute;left:0;top:20%;width:50%;height:10%;background:#7fc4f5\"></div><div style=\"position:absolute;left:0;top:0;width:100%;height:100%;background-image:repeating-linear-gradient(to right,#8fa3b8 0 1px,transparent 1px 15px),repeating-linear-gradient(to bottom,#8fa3b8 0 1px,transparent 1px 15px)\"></div></div><div style=\"font-size:21px;margin-top:10px\">25 משבצות = 25%</div></div><div style=\"text-align:center\"><div style=\"position:relative;width:150px;height:150px;border:3px solid #33415a;box-sizing:content-box\"><div style=\"position:absolute;left:0;top:0;width:100%;height:10%;background:#7fc4f5\"></div><div style=\"position:absolute;left:0;top:0;width:100%;height:100%;background-image:repeating-linear-gradient(to right,#8fa3b8 0 1px,transparent 1px 15px),repeating-linear-gradient(to bottom,#8fa3b8 0 1px,transparent 1px 15px)\"></div></div><div style=\"font-size:21px;margin-top:10px\">10 משבצות = 10%</div></div></div>" } }
+        ]
+      },
+      {
+        "reply": "ועכשיו הדבר הכי חשוב בכל הנושא, ונחזור אליו כל השנה: 100% זה לא המספר 100. 100% זה הכל — כל מה שיש. אם בכיתה 40 תלמידים, אז 100% מהתלמידים זה 40 תלמידים, ולא 100. אם בקופסה 8 כדורים, 100% מהכדורים זה 8. השלם משתנה, והאחוז תמיד מסמן את כולו. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "100% זה לא המספר 100", "x": 500, "y": 110, "size": 34 } },
+          { "name": "write_text", "input": { "text": "100% זה הכל, מה שיש", "x": 500, "y": 180, "size": 30 } },
+          { "name": "draw_bar_model", "input": { "x": 500, "y": 310, "parts": 4, "total": 40 } },
+          { "name": "write_text", "input": { "text": "100% מ-40 תלמידים = 40 תלמידים", "x": 500, "y": 445, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "אז זה הכלל של כל הנושא, ואני כותב אותו בגדול: אחוז זה מתוך 100. אם רואים 70%, זה 70 מתוך 100, ובעשרוני 0.7. ולכיוון השני: אם רואים 0.4, זה 40 מתוך 100, כלומר 40%. הדרך תמיד עוברת דרך המאה. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אחוז = מתוך 100", "x": 500, "y": 130, "size": 44 } },
+          { "name": "draw_line", "input": { "x1": 330, "y1": 180, "x2": 670, "y2": 180, "width": 3 } },
+          { "name": "write_text", "input": { "text": "70% זה 70 מתוך 100, ולכן 0.7", "x": 500, "y": 270, "size": 28 } },
+          { "name": "write_text", "input": { "text": "0.4 זה 40 מתוך 100, ולכן 40%", "x": 500, "y": 350, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. השאלה: כמה זה 25% כמספר עשרוני? לוח-המאה נשאר לידך לעזרה. תחשוב/תחשבי ככה: 25% זה 25 משבצות מתוך 100, כלומר 25 מאיות. איך כותבים 25 מאיות כמספר עשרוני? כתוב/כתבי בתיבה, עם נקודה עשרונית.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה זה 25% כמספר עשרוני?", "answer": "0.25", "kind": "number", "hint": "25% זה 25 מתוך 100, כלומר 25 מאיות. במספר עשרוני מתחילים ב-0, אחריו נקודה, ואז שתי ספרות: העשיריות והמאיות.", "praise": "יפה! עברת מאחוז למספר עשרוני דרך המאה — בדיוק הדרך הנכונה 👏" } },
+        { "name": "hundred_chart", "input": { "skip": 10, "start": 10, "x": 550, "y": 150, "w": 330, "h": 330, "exact": true } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בכולן אותו רעיון אחד: הכל עובר דרך המאה. בשאלה הראשונה יש מוט עזר מחולק ל-10 חלקים. בשיעור הבא נכיר ארבעה אחוזים שימושיים שמאפשרים לחשב אחוזים בראש, בלי מחשבון 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "שלוש עשיריות — כמה אחוזים?", "answer": "30", "kind": "number", "x": 170, "y": 130, "hint": "כל חלק במוט הוא עשירית אחת, וזה 10 משבצות מתוך 100. תספור/י כמה חלקים צבועים, ותחשוב/תחשבי כמה משבצות מתוך 100 זה ביחד.", "praise": "מצוין! הפכת עשיריות לאחוזים דרך המאה 👏" } },
+        { "name": "draw_fraction_bar", "input": { "x": 650, "y": 130, "parts": 10, "shaded": 3, "label": "" } },
+        { "name": "draw_exercise", "input": { "text": "0.6 — כמה אחוזים?", "answer": "60", "kind": "number", "x": 170, "y": 300, "hint": "כתוב/כתבי את המספר עם שתי ספרות אחרי הנקודה, כי אחוז זה מאיות. עכשיו תסתכל/י כמה מאיות יש לך — זה בדיוק מספר האחוזים.", "praise": "יופי! עשרוני ואחוז זה אותו דבר בשתי שפות 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "בכיתה 40 תלמידים. 100% מהם — כמה?", "answer": "40", "kind": "number", "x": 170, "y": 450, "hint": "אל תחשב/תחשבי כלום. 100% זה הכל, כל מה שיש. אז כמה תלמידים יש בכיתה הזאת בכלל?", "praise": "בול! 100% זה הכל, לא המספר 100 — זה הרעיון הכי חשוב בנושא 🏆" } }
+      ]
+    }
+  }
+}

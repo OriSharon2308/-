@@ -1,0 +1,109 @@
+{
+  "topic": "השבר העשרוני — משמעות וערך מקום",
+  "lesson": 3,
+  "title": "המלכודת הגדולה — 0.12 או 0.9?",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "שאלה, ולפני שתענה/תעני — תנחש/י בלב. מי גדול יותר: 0.12 או 0.9? הרבה מאוד ילדים בוחרים 0.12, כי 12 נראה גדול מ-9. זו הטעות הכי מפורסמת בשברים עשרוניים, וכמעט כולם נופלים בה פעם אחת. בוא/י נבדוק בעיניים מי צודק. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מי גדול?", "x": 500, "y": 95, "size": 40 } },
+          { "name": "write_text", "input": { "text": "0.12", "x": 680, "y": 250, "size": 58 } },
+          { "name": "write_text", "input": { "text": "0.9", "x": 320, "y": 250, "size": 58 } },
+          { "name": "write_text", "input": { "text": "הרבה ילדים אומרים 0.12 — כי 12 גדול מ-9", "x": 500, "y": 400, "size": 27 } },
+          { "name": "write_text", "input": { "text": "בוא/י נבדוק בעיניים", "x": 500, "y": 465, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "הנה שני ריבועים של מאה משבצות. מימין 0.12 — רק 12 משבצות צבועות. משמאל 0.9, שזה בעצם 0.90 — תשעים משבצות! ההבדל ענק. אז 0.9 גדול, ובגדול. המסקנה: מספר הספרות לא קובע כלום. מה שקובע זה הגודל של כל ספרה במקום שלה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הריבועים לא משקרים", "x": 500, "y": 80, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "", "x": 620, "y": 120, "w": 250, "h": 250, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=12;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "render_widget", "input": { "title": "", "x": 130, "y": 120, "w": 250, "h": 250, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=90;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "write_text", "input": { "text": "0.12 — שתים-עשרה מאיות", "x": 745, "y": 405, "size": 24 } },
+          { "name": "write_text", "input": { "text": "0.9 = 0.90 — תשעים מאיות", "x": 255, "y": 405, "size": 24 } },
+          { "name": "write_text", "input": { "text": "מספר הספרות לא קובע — הגודל קובע", "x": 500, "y": 470, "size": 27 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הכלל, ובלי ריבועים. משווים ספרה מול ספרה, לפי הסדר: קודם השלמים, אחר כך העשיריות, ורק בסוף המאיות. ברגע שמצאנו הבדל — עוצרים, כבר יודעים. כאן השלמים שווים, 0 מול 0. עוברים לעשיריות: 9 מול 1. תשע גדול מאחת, וזהו — 0.9 גדול. את המאיות אפילו לא צריך לבדוק. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "משווים ספרה-ספרה, לפי הסדר", "x": 500, "y": 80, "size": 32 } },
+          { "name": "write_text", "input": { "text": "יחידות", "x": 380, "y": 160, "size": 22 } },
+          { "name": "write_text", "input": { "text": "עשיריות", "x": 560, "y": 160, "size": 22 } },
+          { "name": "write_text", "input": { "text": "מאיות", "x": 700, "y": 160, "size": 22 } },
+          { "name": "write_text", "input": { "text": "0", "x": 380, "y": 235, "size": 38 } },
+          { "name": "write_text", "input": { "text": ".", "x": 465, "y": 245, "size": 40, "color": "#e74c3c" } },
+          { "name": "write_text", "input": { "text": "9", "x": 560, "y": 235, "size": 38 } },
+          { "name": "write_text", "input": { "text": "0", "x": 700, "y": 235, "size": 38 } },
+          { "name": "write_text", "input": { "text": "0", "x": 380, "y": 315, "size": 38 } },
+          { "name": "write_text", "input": { "text": ".", "x": 465, "y": 325, "size": 40, "color": "#e74c3c" } },
+          { "name": "write_text", "input": { "text": "1", "x": 560, "y": 315, "size": 38 } },
+          { "name": "write_text", "input": { "text": "2", "x": 700, "y": 315, "size": 38 } },
+          { "name": "draw_circle", "input": { "x": 560, "y": 235, "r": 32, "color": "#e74c3c" } },
+          { "name": "draw_circle", "input": { "x": 560, "y": 315, "r": 32, "color": "#e74c3c" } },
+          { "name": "write_text", "input": { "text": "השלמים שווים — עוברים לעשיריות: 9 מול 1", "x": 500, "y": 405, "size": 25 } },
+          { "name": "write_text", "input": { "text": "כאן זה נגמר — 0.9 גדול", "x": 500, "y": 465, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "יש טריק שמסדר את כל הבלגן: משלימים אפסים, כדי שלשני המספרים יהיה אותו מספר ספרות אחרי הנקודה. 0.9 הופך ל-0.90, ו-0.12 נשאר 0.12. עכשיו זה כמו להשוות מספרים שלמים: 90 מאיות מול 12 מאיות. למדנו כבר שאפס בסוף לא משנה את הגודל — הוא רק מיישר בשביל ההשוואה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "משלימים אפסים", "x": 500, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "0.9", "x": 680, "y": 190, "size": 42 } },
+          { "name": "draw_arrow", "input": { "x1": 620, "y1": 190, "x2": 480, "y2": 190, "color": "#2d6cdf", "width": 4 } },
+          { "name": "write_text", "input": { "text": "0.90", "x": 390, "y": 190, "size": 42 } },
+          { "name": "write_text", "input": { "text": "עכשיו לשניהם שתי ספרות אחרי הנקודה", "x": 500, "y": 280, "size": 27 } },
+          { "name": "write_text", "input": { "text": "90 מאיות מול 12 מאיות", "x": 500, "y": 345, "size": 30 } },
+          { "name": "write_text", "input": { "text": "אפס בסוף לא משנה את הגודל — הוא רק מיישר", "x": 500, "y": 420, "size": 25 } },
+          { "name": "write_text", "input": { "text": "0.90 גדול מ-0.12", "x": 500, "y": 480, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נסדר ארבעה מספרים מהקטן לגדול: 0.8 , 0.35 , 0.5 , 0.65. קודם משלימים אפסים לכולם — 0.80 , 0.35 , 0.50 , 0.65. עכשיו פשוט מסתכלים על 80, 35, 50, 65 ומסדרים אותם: 35, 50, 65, 80. מחזירים את הכתיב, וקיבלנו 0.35 , 0.5 , 0.65 , 0.8. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מסדרים מהקטן לגדול", "x": 500, "y": 80, "size": 34 } },
+          { "name": "write_text", "input": { "text": "0.8 · 0.35 · 0.5 · 0.65", "x": 500, "y": 160, "size": 32 } },
+          { "name": "write_text", "input": { "text": "משלימים אפסים:", "x": 500, "y": 225, "size": 25 } },
+          { "name": "write_text", "input": { "text": "0.80 · 0.35 · 0.50 · 0.65", "x": 500, "y": 285, "size": 32 } },
+          { "name": "write_text", "input": { "text": "עכשיו משווים 80 · 35 · 50 · 65", "x": 500, "y": 350, "size": 26 } },
+          { "name": "write_text", "input": { "text": "0.35 · 0.5 · 0.65 · 0.8", "x": 500, "y": 430, "size": 32 } },
+          { "name": "write_text", "input": { "text": "מהקטן לגדול", "x": 500, "y": 482, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "ועוד זוג שמבלבל: 0.5 ו-0.05. הם נראים כמעט אותו דבר, אבל תראה/י את הריבועים — מימין חצי מהלוח, ומשמאל חמש משבצות קטנות בלבד. פי 10 הבדל! האפס דוחף את החמש ממקום העשיריות למקום המאיות, ומקטין אותה פי 10. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "0.5 או 0.05?", "x": 500, "y": 80, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "", "x": 620, "y": 120, "w": 240, "h": 240, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=50;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "render_widget", "input": { "title": "", "x": 140, "y": 120, "w": 240, "h": 240, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=5;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "write_text", "input": { "text": "0.5 — חצי מהריבוע", "x": 740, "y": 395, "size": 25 } },
+          { "name": "write_text", "input": { "text": "0.05 — חמש משבצות", "x": 260, "y": 395, "size": 25 } },
+          { "name": "write_text", "input": { "text": "פי 10 הבדל! האפס דוחף את החמש למקום המאיות", "x": 500, "y": 465, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח שני מספרים ושני ריבועים לעזרה. תעשה/תעשי את מה שלמדנו: קודם השלם/י אפס למספר הקצר, כדי שלשניהם יהיו שתי ספרות אחרי הנקודה. אחר כך השווה/י כמה מאיות יש בכל אחד. את המספר הגדול כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "0.4 או 0.36 — מי גדול?", "answer": "0.4", "kind": "number", "hint": "למספר אחד יש כבר שתי ספרות אחרי הנקודה, ולשני רק אחת — השלם/י לו אפס. עכשיו ספור/י כמה מאיות יש בכל אחד, או פשוט הסתכל/י איזה ריבוע צבוע יותר.", "praise": "מצוין! השלמת אפס, יישרת את שניהם, ובחרת נכון 👏" } },
+        { "name": "render_widget", "input": { "title": "", "x": 560, "y": 250, "w": 190, "h": 190, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=40;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+        { "name": "render_widget", "input": { "title": "", "x": 250, "y": 250, "w": 190, "h": 190, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=36;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+        { "name": "write_text", "input": { "text": "0.4", "x": 655, "y": 475, "size": 26 } },
+        { "name": "write_text", "input": { "text": "0.36", "x": 345, "y": 475, "size": 26 } }
+      ]
+    },
+    "independent": {
+      "reply": "שלוש שאלות לבד. בראשונה הריבועים עוזרים, אחר כך רק הכלל שלנו: משלימים אפסים ומשווים ספרה-ספרה. בשיעור הבא נעלה על ישר המספרים ונגלה משהו מפתיע — כמה מספרים מסתתרים בין 0.7 ל-0.8 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "0.7 או 0.65 — מי גדול?", "answer": "0.7", "kind": "number", "x": 250, "y": 130, "hint": "השלם/י אפס למספר הקצר, כדי שלשניהם יהיו שתי ספרות אחרי הנקודה. עכשיו זו השוואה של שני מספרים שלמים של מאיות.", "praise": "יופי! שתי ספרות לא מנצחות ספרה אחת — הגודל מנצח 👏" } },
+        { "name": "render_widget", "input": { "title": "", "x": 620, "y": 70, "w": 150, "h": 150, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:2px solid #34495e;background:#fff'></div><script>var n=70;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+        { "name": "render_widget", "input": { "title": "", "x": 790, "y": 70, "w": 150, "h": 150, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:2px solid #34495e;background:#fff'></div><script>var n=65;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+        { "name": "write_text", "input": { "text": "0.7", "x": 695, "y": 245, "size": 24 } },
+        { "name": "write_text", "input": { "text": "0.65", "x": 865, "y": 245, "size": 24 } },
+        { "name": "draw_exercise", "input": { "text": "0.3 · 0.25 · 0.9 — מי הכי קטן?", "answer": "0.25", "kind": "number", "x": 500, "y": 350, "hint": "השלם/י אפסים כדי שלכולם יהיו שתי ספרות אחרי הנקודה. עכשיו קרא/י כמה מאיות יש בכל אחד, ובחר/י את הקטן ביותר.", "praise": "יפה! לא נפלת במלכודת של 'יותר ספרות' — השווית לפי הגודל 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "0.45 או 0.5 — מי גדול?", "answer": "0.5", "kind": "number", "x": 500, "y": 470, "hint": "אל תסתכל/י על כמות הספרות. הסתכל/י קודם על מקום העשיריות — הספרה שממש אחרי הנקודה. שם ההשוואה נגמרת.", "praise": "כל הכבוד! העשיריות קובעות ראשונות — וזיהית את זה לבד 🏆" } }
+      ]
+    }
+  }
+}

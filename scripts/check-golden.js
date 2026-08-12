@@ -392,6 +392,12 @@ const arg = process.argv[2] || "all";
 const asJson = process.argv.includes("--json");
 const grades = arg === "all" ? [1, 2, 3, 4, 5, 6] : [Number(arg)];
 
+// --topic=<תחילית-שם-קובץ> — מסנן לנושא אחד. כשכמה סוכנים כותבים נושאים
+// שונים במקביל, כל אחד מהם רואה עשרות ממצאי "חסר שיעור-זהב" של האחרים
+// וקורא אותם שוב ושוב. הסינון הזה חוסך את הרעש הזה.
+const topicArg = (process.argv.find((a) => a.startsWith("--topic=")) || "").slice(8);
+const matchesTopic = (f) => !topicArg || String(f.file || "").startsWith(topicArg);
+
 let total = { critical: 0, major: 0, minor: 0 };
 const report = [];
 
@@ -399,6 +405,7 @@ for (const g of grades) {
   const dir = g >= 2 ? path.join(ROOT, "golden", `grade-${g}`) : path.join(ROOT, "golden");
   if (!fs.existsSync(dir)) continue;
   const r = checkGrade(g);
+  if (topicArg) r.findings = r.findings.filter(matchesTopic);
   report.push(r);
   r.findings.forEach((f) => { total[f.sev] = (total[f.sev] || 0) + 1; });
 }

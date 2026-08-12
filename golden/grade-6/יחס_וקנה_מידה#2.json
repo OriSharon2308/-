@@ -1,0 +1,79 @@
+{
+  "topic": "יחס וקנה מידה",
+  "lesson": 2,
+  "title": "יחסים שקולים, טבלת יחס, ויחס כחלק מהשלם",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "זוכר/ת את המיץ מהשיעור הקודם? 2 כוסות מיץ ל-5 כוסות מים. בטבלה על הלוח הכנתי כמויות גדולות יותר — 4 ו-10, ואחר כך 6 ו-15. תסתכל/י על כל עמודה בנפרד: בכולן אותו טעם בדיוק. ליחסים כאלה קוראים יחסים שקולים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "טבלת יחס", "x": 500, "y": 95, "size": 36 } },
+          { "name": "render_widget", "input": { "title": "טבלת יחס", "x": 250, "y": 190, "w": 500, "h": 200, "exact": true, "html": "<div style=\"direction:rtl;font-family:Arial,Helvetica,sans-serif;height:100%;display:flex;align-items:center;justify-content:center;background:#ffffff\"><table style=\"border-collapse:collapse;font-size:30px;text-align:center\"><tr><td style=\"border:3px solid #444;padding:12px 24px;background:#ffe8a3;font-weight:bold\">מיץ</td><td style=\"border:3px solid #444;padding:12px 24px\">2</td><td style=\"border:3px solid #444;padding:12px 24px\">4</td><td style=\"border:3px solid #444;padding:12px 24px\">6</td></tr><tr><td style=\"border:3px solid #444;padding:12px 24px;background:#bfe3ff;font-weight:bold\">מים</td><td style=\"border:3px solid #444;padding:12px 24px\">5</td><td style=\"border:3px solid #444;padding:12px 24px\">10</td><td style=\"border:3px solid #444;padding:12px 24px\">15</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "כל עמודה — אותו מיץ", "x": 500, "y": 445, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "הכלל של הטבלה קצר: כופלים עמודה שלמה באותו מספר, או מחלקים עמודה שלמה באותו מספר. אסור לגעת רק בצד אחד! זה בדיוק הרחבה וצמצום של שבר, רק שכאן קוראים לזה יחס. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הכלל", "x": 500, "y": 85, "size": 36 } },
+          { "name": "write_text", "input": { "text": "2 : 5", "x": 500, "y": 190, "size": 44 } },
+          { "name": "write_text", "input": { "text": "כופלים את שני הצדדים באותו מספר", "x": 500, "y": 275, "size": 28 } },
+          { "name": "write_text", "input": { "text": "כפול 3   →   6 : 15", "x": 500, "y": 365, "size": 36 } },
+          { "name": "write_text", "input": { "text": "בדיוק כמו הרחבה של שבר", "x": 500, "y": 455, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו שאלה עם נתון חסר. כתוב 3:4 שווה ל-15 ולעוד משהו. איך מוצאים? מסתכלים על הצד שיודעים בשניהם: מ-3 הגענו ל-15, כלומר כפלנו ב-5. אז גם הצד השני חייב להיכפל ב-5. 4 כפול 5 הוא 20. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "נתון חסר", "x": 500, "y": 85, "size": 36 } },
+          { "name": "write_text", "input": { "text": "3 : 4   =   15 : ?", "x": 500, "y": 195, "size": 42 } },
+          { "name": "write_text", "input": { "text": "מ-3 ל-15 כפלנו ב-5", "x": 500, "y": 290, "size": 30 } },
+          { "name": "write_text", "input": { "text": "אז גם 4 כפול 5 — יוצא 20", "x": 500, "y": 370, "size": 30 } },
+          { "name": "write_text", "input": { "text": "3 : 4  =  15 : 20", "x": 500, "y": 460, "size": 34 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו החלק שהרבה ילדים מפספסים, אז עצור/עצרי כאן רגע. ביחס 2:5 יש בסך הכל 2 ועוד 5 — שבעה חלקים! תספור/י על הלוח: שבעה חלקים שווים. שניים מהם מיץ, וחמישה מהם מים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה חלקים בסך הכל?", "x": 500, "y": 90, "size": 34 } },
+          { "name": "draw_bar_model", "input": { "x": 500, "y": 275, "parts": [ { "value": 1, "label": "מיץ" }, { "value": 1, "label": "מיץ" }, { "value": 1, "label": "מים" }, { "value": 1, "label": "מים" }, { "value": 1, "label": "מים" }, { "value": 1, "label": "מים" }, { "value": 1, "label": "מים" } ] } },
+          { "name": "write_text", "input": { "text": "2 + 5 = 7 חלקים", "x": 500, "y": 450, "size": 34 } }
+        ]
+      },
+      {
+        "reply": "אז כמה מהתערובת הוא מיץ? המיץ הוא 2 חלקים מתוך 7 — ולא 2 מתוך 5! ה-5 הוא רק המים, הוא לא כל התערובת. הכלל לזכור: המכנה הוא תמיד הסכום של שני הצדדים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "טעות נפוצה", "x": 500, "y": 85, "size": 36 } },
+          { "name": "write_text", "input": { "text": "המיץ הוא 2 חלקים מתוך 7", "x": 500, "y": 200, "size": 34 } },
+          { "name": "write_text", "input": { "text": "ולא 2 מתוך 5", "x": 500, "y": 300, "size": 34, "color": "red" } },
+          { "name": "write_text", "input": { "text": "5 הם רק המים, לא הכול", "x": 500, "y": 390, "size": 28 } },
+          { "name": "write_text", "input": { "text": "המכנה הוא תמיד הסכום", "x": 500, "y": 470, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "דוגמה ביחד. יחס 3:5 בין כדורים כחולים לאדומים. קודם סוכמים: 3 ועוד 5 הם 8 חלקים. אז הכחולים הם 3 חלקים מתוך 8, והאדומים 5 חלקים מתוך 8. תמיד באותו סדר: קודם סוכמים, ואז סופרים מתוך הסכום. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "יחס 3 : 5", "x": 500, "y": 90, "size": 34 } },
+          { "name": "draw_bar_model", "input": { "x": 500, "y": 265, "parts": [ { "value": 1, "label": "כחול" }, { "value": 1, "label": "כחול" }, { "value": 1, "label": "כחול" }, { "value": 1, "label": "אדום" }, { "value": 1, "label": "אדום" }, { "value": 1, "label": "אדום" }, { "value": 1, "label": "אדום" }, { "value": 1, "label": "אדום" } ] } },
+          { "name": "write_text", "input": { "text": "3 + 5 = 8 חלקים בשלם", "x": 500, "y": 450, "size": 32 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. היחס בין מיץ למים הוא 2 ל-5, ואני שואל איזה חלק מהתערובת הם המים. שמתי לך על הלוח את שני החלקים. אל תמהר/י לכתוב 5 — קודם תשאל/י כמה חלקים יש בכל התערובת. את המספר הזה, המכנה, כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "ביחס מיץ למים 2 ל-5 — המים הם 5 מתוך כמה?", "answer": "7", "kind": "number", "hint": "אל תסתכל/י רק על המים. חבר/י את שני הצדדים של היחס — כמה חלקים יש בתערובת כולה? המספר הזה הוא המכנה, והוא מה שצריך לכתוב.", "praise": "בול! זכרת שהמכנה הוא הסכום של שני הצדדים, ולא הצד השני 👏" } },
+        { "name": "draw_bar_model", "input": { "x": 500, "y": 340, "parts": [ { "value": 2, "label": "מיץ" }, { "value": 5, "label": "מים" } ] } }
+      ]
+    },
+    "independent": {
+      "reply": "שלוש שאלות לבד. בשתיים הראשונות מרחיבים יחס — כופלים את שני הצדדים באותו מספר. בשלישית מחפשים את השלם, אז זכור/זכרי לסכום. בראשונה השארתי לך טבלה לעזרה. בשיעור הבא נלמד לחלק כמות נתונה לפי יחס 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "ביחס מיץ למים 2 ל-7. יש 6 כוסות מיץ. כמה מים?", "answer": "21", "kind": "number", "x": 500, "y": 115, "hint": "תסתכל/י על הצד של המיץ בטבלה: מ-2 הגענו ל-6 — במה כפלנו? עכשיו כפול/כפלי בדיוק באותו מספר גם את הצד של המים.", "praise": "מעולה! כפלת את שני הצדדים באותו מספר — יחס שקול נכון 👏" } },
+        { "name": "render_widget", "input": { "title": "השלם את הטבלה", "x": 320, "y": 210, "w": 360, "h": 160, "exact": true, "html": "<div style=\"direction:rtl;font-family:Arial,Helvetica,sans-serif;height:100%;display:flex;align-items:center;justify-content:center;background:#ffffff\"><table style=\"border-collapse:collapse;font-size:28px;text-align:center\"><tr><td style=\"border:3px solid #444;padding:10px 22px;background:#ffe8a3;font-weight:bold\">מיץ</td><td style=\"border:3px solid #444;padding:10px 22px\">2</td><td style=\"border:3px solid #444;padding:10px 22px\">6</td></tr><tr><td style=\"border:3px solid #444;padding:10px 22px;background:#bfe3ff;font-weight:bold\">מים</td><td style=\"border:3px solid #444;padding:10px 22px\">7</td><td style=\"border:3px solid #444;padding:10px 22px\">?</td></tr></table></div>" } },
+        { "name": "draw_exercise", "input": { "text": "היחס 4 ל-5 שווה ליחס 12 ל-כמה?", "answer": "15", "kind": "number", "x": 280, "y": 445, "hint": "הצד הראשון גדל מ-4 ל-12. שאל/י את עצמך פי כמה הוא גדל, ואז תגדיל/י בדיוק ככה גם את הצד השני.", "praise": "יופי! מצאת את גורם ההרחבה והפעלת אותו על שני הצדדים 👏" } },
+        { "name": "draw_exercise", "input": { "text": "ביחס 3 ל-7 — המיץ הוא 3 חלקים מתוך כמה?", "answer": "10", "kind": "number", "x": 720, "y": 445, "hint": "אל תמהר/י. השלם הוא כל התערובת ביחד. חבר/י את שני הצדדים של היחס — הסכום הזה הוא המכנה.", "praise": "מצוין! סכמת את שני הצדדים וקיבלת את השלם — בדיוק הרעיון של השיעור 🏆" } }
+      ]
+    }
+  }
+}

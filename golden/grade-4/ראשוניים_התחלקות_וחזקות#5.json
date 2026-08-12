@@ -1,0 +1,70 @@
+{
+  "topic": "ראשוניים, התחלקות וחזקות",
+  "lesson": 5,
+  "title": "חזקות — כפל חוזר מקבל קיצור",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "נזכיר משהו ישן: כפל הוא חיבור חוזר. במקום לחבר 3 ועוד 3 ועוד 3 ועוד 3, כותבים קצר — 4 כפול 3. הקיצור נולד כי נמאס לכתוב את אותו דבר שוב ושוב. עכשיו שאלה: ומה קורה כשכופלים את אותו מספר שוב ושוב? ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כפל הוא חיבור חוזר", "x": 500, "y": 95, "size": 34 } },
+          { "name": "draw_array", "input": { "rows": 4, "cols": 3, "x": 500, "y": 250, "label": "" } },
+          { "name": "write_text", "input": { "text": "ארבע קבוצות של 3 — במקום לחבר, כותבים 4 כפול 3", "x": 500, "y": 390, "size": 26 } },
+          { "name": "write_text", "input": { "text": "ומה אם כופלים את אותו מספר שוב ושוב?", "x": 500, "y": 455, "size": 28, "color": "#b45309" } }
+        ]
+      },
+      {
+        "reply": "גם לזה מגיע קיצור, וקוראים לו חזקה. במקום לכתוב 3 כפול 3 כפול 3 כפול 3, כותבים 3 בחזקת 4. וכמה זה יוצא? כופלים שלב אחרי שלב: 3 כפול 3 זה 9, 9 כפול 3 זה 27, ו-27 כפול 3 זה 81. אז 3 בחזקת 4 שווה 81. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קיצור חדש: חזקה", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "3×3×3×3 = 3 בחזקת 4 = 81", "x": 500, "y": 175, "size": 32 } },
+          { "name": "write_text", "input": { "text": "3 כפול 3 זה 9", "x": 500, "y": 265, "size": 28 } },
+          { "name": "write_text", "input": { "text": "9 כפול 3 זה 27", "x": 500, "y": 325, "size": 28 } },
+          { "name": "write_text", "input": { "text": "27 כפול 3 זה 81", "x": 500, "y": 385, "size": 28 } },
+          { "name": "write_text", "input": { "text": "כופלים שלב-שלב, ארבע פעמים 3", "x": 500, "y": 460, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "לחזקה יש שני חלקים, ולכל אחד שם. המספר הגדול למטה הוא הבסיס — זה המספר שחוזר על עצמו. המספר הקטן למעלה הוא המעריך — הוא אומר כמה פעמים הבסיס מופיע בכפל. בציור שעל הלוח: הבסיס הוא 3, והמעריך הוא 4. ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "בסיס ומעריך", "x": 220, "y": 140, "w": 560, "h": 280, "exact": true, "html": "<style>.pw{position:relative;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif}.pw .num{position:absolute;left:280px;top:120px;transform:translate(-50%,-50%);font-size:92px;font-weight:700;color:#1e3a8a;direction:ltr}.pw .num sup{font-size:50px;color:#b45309}.pw .l1{position:absolute;left:30px;top:200px;font-size:24px;color:#1e3a8a;direction:rtl}.pw .l2{position:absolute;left:330px;top:28px;font-size:24px;color:#b45309;direction:rtl}.pw .bt{position:absolute;left:0;right:0;top:238px;text-align:center;font-size:25px;color:#334155;direction:rtl}</style><div class='pw'><div class='num'>3<sup>4</sup></div><div class='l1'>בסיס — המספר שחוזר</div><div class='l2'>מעריך — כמה פעמים</div><div class='bt'>3 בחזקת 4 = 3 כפול 3 כפול 3 כפול 3</div></div>" } }
+        ]
+      },
+      {
+        "reply": "עכשיו הטעות שהכי קל ליפול בה: לחשוב ש-2 בחזקת 5 זה 2 כפול 5. ממש לא! בוא/י נחשב: 2 כפול 2 זה 4, כפול 2 זה 8, כפול 2 זה 16, וכפול 2 זה 32. אז 2 בחזקת 5 הוא 32. ומה עם 5 בחזקת 2? זה 5 כפול 5, כלומר 25. שים/שימי לב — בחזקות הסדר כן משנה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "זהירות — טעות נפוצה", "x": 500, "y": 95, "size": 34, "color": "#dc2626" } },
+          { "name": "write_text", "input": { "text": "2 בחזקת 5 זה לא 2 כפול 5", "x": 500, "y": 175, "size": 30, "color": "#dc2626" } },
+          { "name": "write_text", "input": { "text": "כופלים ב-2 כל פעם: 2, 4, 8, 16, 32", "x": 500, "y": 265, "size": 28 } },
+          { "name": "write_text", "input": { "text": "2 בחזקת 5 הוא 32", "x": 500, "y": 345, "size": 30, "color": "#16a34a" } },
+          { "name": "write_text", "input": { "text": "5 בחזקת 2 הוא 25 — לא אותו דבר!", "x": 500, "y": 425, "size": 30, "color": "#16a34a" } }
+        ]
+      },
+      {
+        "reply": "ולסיום נחזור למספרים הגדולים מתחילת השנה. 10 כפול 10 זה 100, כלומר 10 בחזקת 2. 10 כפול 10 כפול 10 זה 1000, כלומר 10 בחזקת 3. תסתכל/י על האפסים: ב-100 יש שני אפסים והמעריך 2, ב-1000 שלושה אפסים והמעריך 3. מספר האפסים הוא בדיוק המעריך! עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "חזקות של 10", "x": 500, "y": 95, "size": 34 } },
+          { "name": "write_text", "input": { "text": "10 בחזקת 2 הוא 100 — שני אפסים", "x": 500, "y": 200, "size": 30 } },
+          { "name": "write_text", "input": { "text": "10 בחזקת 3 הוא 1000 — שלושה אפסים", "x": 500, "y": 280, "size": 30 } },
+          { "name": "write_text", "input": { "text": "מספר האפסים הוא בדיוק המעריך", "x": 500, "y": 400, "size": 28, "color": "#16a34a" } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד: כמה יוצא 2 בחזקת 4? קודם תרגם/תרגמי את החזקה לכפל ארוך — הבסיס 2 מופיע ארבע פעמים, וזה כתוב לך על הלוח. עכשיו כפול שלב-שלב: מתחילים מהשניים הראשונים, ואת התוצאה כופלים שוב ב-2, ושוב. את המספר האחרון כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה יוצא 2 בחזקת 4?", "answer": "16", "kind": "number", "hint": "אל תכפול/תכפלי 2 ב-4! על הלוח כתוב הכפל הארוך. עשה/עשי צעד אחד כל פעם: 2 כפול 2, ואת מה שיצא כפול 2, ושוב כפול 2. סך הכול שלושה צעדים.", "praise": "מצוין! כפלת שלב-שלב במקום לקחת קיצור-דרך שגוי — ככה מחשבים חזקה 👏" } },
+        { "name": "render_widget", "input": { "title": "איך מחשבים", "x": 460, "y": 240, "w": 440, "h": 230, "exact": true, "html": "<style>.ld{position:relative;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif;direction:rtl;padding:14px;box-sizing:border-box}.ld .tp{text-align:center;font-size:34px;color:#1e3a8a;font-weight:700;direction:ltr}.ld .st{margin-top:16px;font-size:22px;color:#334155}.ld .st b{color:#b45309}</style><div class='ld'><div class='tp'>2 × 2 × 2 × 2</div><div class='st'><b>צעד 1:</b> כופלים את שני הראשונים</div><div class='st'><b>צעד 2:</b> את התוצאה כופלים ב-2</div><div class='st'><b>צעד 3:</b> ואת התוצאה החדשה שוב ב-2</div></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה השארתי לך את הכפל הארוך על הלוח, אחר כך נחזור לחזקות של 10, ובאחרונה תשווה/תשווי בין שתי חזקות. תזכור/תזכרי: הבסיס הוא מה שחוזר, והמעריך הוא כמה פעמים.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה יוצא 4 בחזקת 3?", "answer": "64", "kind": "number", "x": 130, "y": 150, "hint": "על הלוח כתוב הכפל הארוך — הבסיס 4 מופיע שלוש פעמים. כפול/כפלי את שני הראשונים, ואת מה שקיבלת כפול/כפלי שוב ב-4.", "praise": "יופי! שני צעדים של כפל, ובדיוק לפי הסדר 👏" } },
+        { "name": "render_widget", "input": { "title": "הכפל הארוך", "x": 490, "y": 105, "w": 420, "h": 170, "exact": true, "html": "<style>.lg{position:relative;width:100%;height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif;direction:rtl;padding:14px;box-sizing:border-box}.lg .tp{text-align:center;font-size:34px;color:#1e3a8a;font-weight:700;direction:ltr}.lg .st{margin-top:16px;font-size:22px;color:#334155}.lg .st b{color:#b45309}</style><div class='lg'><div class='tp'>4 × 4 × 4</div><div class='st'><b>צעד 1:</b> כופלים את שני הראשונים</div><div class='st'><b>צעד 2:</b> את התוצאה כופלים ב-4</div></div>" } },
+        { "name": "draw_exercise", "input": { "text": "כמה יוצא 10 בחזקת 4?", "answer": "10000", "kind": "number", "x": 130, "y": 330, "hint": "בחזקות של 10 לא צריך לכפול בכלל. כתוב/כתבי 1, ואחריו מספר אפסים שווה למעריך. כמה אפסים המעריך מבקש כאן?", "praise": "מעולה! זיהית שמספר האפסים הוא המעריך — קיצור-דרך אמיתי 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "האם 2 בחזקת 3 שווה ל-3 בחזקת 2? כתוב/כתבי כן או לא", "answer": "לא", "kind": "text", "x": 130, "y": 460, "hint": "אל תנחש/י — חשב/י כל אחד בנפרד. באחד הבסיס 2 מופיע שלוש פעמים, ובשני הבסיס 3 מופיע פעמיים. עכשיו תשווה/תשווי בין שתי התוצאות.", "praise": "מדויק! 2 בחזקת 3 הוא 8 ו-3 בחזקת 2 הוא 9 — הסדר באמת משנה 🏆" } }
+      ]
+    }
+  }
+}

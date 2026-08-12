@@ -1,0 +1,82 @@
+{
+  "topic": "כפל וחילוק רב-ספרתי",
+  "lesson": 5,
+  "title": "חילוק — מפירוק המחולק לחילוק ארוך",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום מחלקים. על הלוח 524 בבלוקים: 5 מאות, 2 עשרות ו-4 יחידות. נחלק אותם לארבעה חברים בשווה. תסתכל/י על המאות — 5 מאות לא מתחלקות יפה לארבעה. אחת מהן תישאר, וכבר נראה מה עושים איתה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "524 מחלקים לארבעה חברים", "x": 500, "y": 85, "size": 30 } },
+          { "name": "draw_base_ten", "input": { "value": 524, "x": 500, "y": 250, "label": "" } },
+          { "name": "write_text", "input": { "text": "5 מאות · 2 עשרות · 4 יחידות", "x": 500, "y": 395, "size": 26 } },
+          { "name": "write_text", "input": { "text": "מאה אחת לא תתחלק ל-4", "x": 500, "y": 455, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "בכיתה ג׳ כבר פירקת מחולק: 48 : 4 זה (40 + 8) : 4. עכשיו אותו דבר עם מספר גדול. 5 מאות ל-4 — כל אחד מקבל מאה, ונשארת מאה אחת. מפרקים אותה ל-10 עשרות, ועם 2 העשרות שהיו יוצאות 12 עשרות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "524 = 400 + 120 + 4", "x": 500, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "400 : 4 = 100", "x": 500, "y": 180, "size": 32 } },
+          { "name": "write_text", "input": { "text": "120 : 4 = 30", "x": 500, "y": 250, "size": 32 } },
+          { "name": "write_text", "input": { "text": "4 : 4 = 1", "x": 500, "y": 320, "size": 32 } },
+          { "name": "draw_line", "input": { "x1": 380, "y1": 357, "x2": 620, "y2": 357, "color": "#0d9488", "width": 3 } },
+          { "name": "write_text", "input": { "text": "100 + 30 + 1 = 131", "x": 500, "y": 400, "size": 36 } },
+          { "name": "write_text", "input": { "text": "524 : 4 = 131", "x": 500, "y": 465, "size": 32 } }
+        ]
+      },
+      {
+        "reply": "עכשיו נסדר את אותם צעדים בטור — לזה קוראים חילוק ארוך. לחץ/י שלב-שלב. תשים/י לב איך אומרים את זה: ׳5 מאות לחלק ל-4 — מאה אחת, ונשארת מאה׳. תמיד מתחילים מהמאות, אחר כך עשרות, ובסוף יחידות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אותם צעדים, רק בטור", "x": 500, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "חילוק ארוך", "x": 240, "y": 140, "w": 520, "h": 310, "html": "<style>body{margin:0;font-family:Assistant,system-ui,sans-serif;color:#0f3b36}.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}.hd{font:800 30px Assistant,sans-serif;color:#0f3b36}.st{font:700 18px Assistant,sans-serif;color:#0d9488;opacity:0;transition:.35s;background:#0d948814;border-radius:9px;padding:5px 12px;text-align:center}.st.on{opacity:1}.st.tot{font-size:24px;color:#16a34a;background:#22c55e1f}button{font:700 18px Assistant,sans-serif;background:#0d9488;color:#fff;border:0;border-radius:12px;padding:7px 18px;cursor:pointer}</style><div class='wrap'><div class='hd'>524 : 4</div><div class='st' id='s0'>5 מאות ל-4 ← מאה אחת, ונשארת מאה</div><div class='st' id='s1'>המאה שנשארה = 10 עשרות, ועוד 2 ← 12 עשרות</div><div class='st' id='s2'>12 עשרות ל-4 ← 3 עשרות</div><div class='st' id='s3'>4 יחידות ל-4 ← יחידה אחת</div><div class='st tot' id='s4'>המנה: 131</div><button id='b'>הצג/י את השלב הבא</button></div><script>var i=0,b=document.getElementById('b');b.onclick=function(){if(i>4)return;var el=document.getElementById('s'+i);el.className=el.className+' on';i++;if(i>4){b.disabled=true;parent.postMessage({type:'vela:correct'},'*');}};</script>" } },
+          { "name": "write_text", "input": { "text": "קודם מאות, אז עשרות, אז יחידות", "x": 500, "y": 480, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "תשווה/תשווי בעצמך: משמאל הפירוק שעשית, ומימין אותם שלבים בטור. אותם מספרים בדיוק, רק כתובים אחרת. אז אם את/ה יודע/ת לפרק מחולק — את/ה כבר יודע/ת חילוק ארוך. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "פירוק וחילוק ארוך — אותו דבר", "x": 500, "y": 85, "size": 30 } },
+          { "name": "draw_line", "input": { "x1": 500, "y1": 140, "x2": 500, "y2": 360, "color": "#94a3b8", "width": 2 } },
+          { "name": "write_text", "input": { "text": "פירוק", "x": 290, "y": 160, "size": 30 } },
+          { "name": "write_text", "input": { "text": "400 : 4 = 100", "x": 290, "y": 225, "size": 26 } },
+          { "name": "write_text", "input": { "text": "120 : 4 = 30", "x": 290, "y": 280, "size": 26 } },
+          { "name": "write_text", "input": { "text": "4 : 4 = 1", "x": 290, "y": 335, "size": 26 } },
+          { "name": "write_text", "input": { "text": "בטור", "x": 710, "y": 160, "size": 30 } },
+          { "name": "write_text", "input": { "text": "מאות ← 1", "x": 710, "y": 225, "size": 26 } },
+          { "name": "write_text", "input": { "text": "עשרות ← 3", "x": 710, "y": 280, "size": 26 } },
+          { "name": "write_text", "input": { "text": "יחידות ← 1", "x": 710, "y": 335, "size": 26 } },
+          { "name": "write_text", "input": { "text": "אותם מספרים, רק כתובים אחרת", "x": 500, "y": 420, "size": 30 } },
+          { "name": "write_text", "input": { "text": "524 : 4 = 131", "x": 500, "y": 480, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד: 828 : 6. שמתי לך את שלושת השלבים על הלוח. תתחיל/י מהמאות ותשאל/י כמה שלמות יוצאות ומה נשאר. מה שנשאר הופך לעשרות. ואז העשרות, ובסוף היחידות. את המנה כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "828 : 6 =", "answer": "138", "kind": "number", "x": 880, "y": 115, "hint": "תתחיל/י מהמאות: 8 מאות לחלק ל-6 — כמה שלמות יוצאות, וכמה מאות נשארות? מה שנשאר הופך לעשרות ומצטרף. אחר כך העשרות, ובסוף היחידות.", "praise": "מצוין! פירקת מאות, עשרות ויחידות — וזה בדיוק חילוק ארוך 🎯" } },
+        { "name": "draw_polygon", "input": { "points": [[100, 190], [600, 190], [600, 250], [100, 250]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "1. המאות", "x": 350, "y": 220, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[100, 275], [600, 275], [600, 335], [100, 335]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "2. העשרות + מה שנשאר", "x": 350, "y": 305, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[100, 360], [600, 360], [600, 420], [100, 420]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "3. היחידות", "x": 350, "y": 390, "size": 26 } },
+        { "name": "write_text", "input": { "text": "מה שנשאר אף פעם לא נעלם", "x": 350, "y": 470, "size": 26 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. ליד הראשונות השארתי לך את שלושת השלבים. תזכור/זכרי: מה שנשאר בכל שלב לא נעלם — הוא יורד לשלב הבא. באחרונה כבר בלי כרטיס. בהצלחה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "639 : 3 =", "answer": "213", "kind": "number", "x": 880, "y": 115, "hint": "תתחיל/י מהמאות: 6 מאות לחלק ל-3. אחר כך 3 העשרות, ובסוף 9 היחידות. כל שלב בנפרד, ורושמים ספרה לכל שלב.", "praise": "יופי! שלושה שלבים מסודרים — מאות, עשרות ויחידות 👏" } },
+        { "name": "draw_polygon", "input": { "points": [[80, 190], [520, 190], [520, 250], [80, 250]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "1. המאות", "x": 300, "y": 220, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[80, 275], [520, 275], [520, 335], [80, 335]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "2. העשרות + מה שנשאר", "x": 300, "y": 305, "size": 26 } },
+        { "name": "draw_polygon", "input": { "points": [[80, 360], [520, 360], [520, 420], [80, 420]], "color": "#3b82f6", "width": 3 } },
+        { "name": "write_text", "input": { "text": "3. היחידות", "x": 300, "y": 390, "size": 26 } },
+        { "name": "draw_exercise", "input": { "text": "952 : 4 =", "answer": "238", "kind": "number", "x": 880, "y": 270, "hint": "9 מאות לחלק ל-4 — לא מתחלק יפה. כמה שלמות יוצאות ומה נשאר? המאה שנשארה הופכת לעשרות ומצטרפת ל-5 העשרות.", "praise": "מעולה! המאה שנשארה הפכה לעשרות — לא ויתרת עליה 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "735 : 5 =", "answer": "147", "kind": "number", "x": 880, "y": 460, "hint": "בלי הכרטיס הפעם. מאות קודם, ואז העשרות יחד עם מה שנשאר, ובסוף היחידות. קח/י את הזמן ואל תדלג/י על שלב.", "praise": "כל הכבוד! חילוק ארוך שלם לבד — זה בדיוק היעד של כיתה ד׳ 🏆" } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "topic": "המספרים עד מיליון",
+  "lesson": 2,
+  "title": "מילים ↔ ספרות — מלכודת האפסים",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם בנינו את הבתים עד מיליון. היום כותבים בהם. תקרא/י את המספר שעל הלוח: שש מאות אלף שבעים וחמש. רוב הילדים כותבים בדיוק מה ששמעו — 600 ואז 75 — ומקבלים 60075. וזאת טעות. היום נלמד למה, ואיך לא ליפול בה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מלכודת!", "x": 500, "y": 95, "size": 38, "color": "#d33" } },
+          { "name": "write_text", "input": { "text": "שש מאות אלף שבעים וחמש", "x": 500, "y": 190, "size": 34 } },
+          { "name": "write_text", "input": { "text": "הרבה ילדים כותבים 60075", "x": 500, "y": 285, "size": 30 } },
+          { "name": "write_text", "input": { "text": "וזה לא נכון", "x": 500, "y": 360, "size": 32, "color": "#d33" } },
+          { "name": "write_text", "input": { "text": "לא כותבים כמו ששומעים — כותבים לפי הבתים", "x": 500, "y": 450, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "אז מה כן עושים? מציירים את הבתים ריקים, וממלאים אותם מהסוף — מימין לשמאל. מימין יושבות האחדות, אחריהן העשרות, אחריהן המאות, ואז נכנסים לקבוצת האלפים. הלוח הזה יעשה בשבילנו את כל העבודה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שישה בתים ריקים", "x": 500, "y": 100, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "לוח ריק", "x": 130, "y": 160, "w": 740, "h": 210, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:18px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:18px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "ממלאים מהסוף — מימין לשמאל", "x": 500, "y": 430, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "מתחילים מהסוף של המשפט: שבעים וחמש. 5 נכנס לאחדות, 7 נכנס לעשרות. עד כאן קל. עכשיו שים/י לב לבתים שנשארו ריקים — עוד לא נגענו בהם בכלל. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קודם: שבעים וחמש", "x": 500, "y": 100, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "ממלאים 75", "x": 130, "y": 160, "w": 740, "h": 210, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:18px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:18px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px'>&nbsp;</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#c8e6c9'>7</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#c8e6c9'>5</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "5 באחדות, 7 בעשרות", "x": 500, "y": 430, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו החלק השני: שש מאות אלף. המילה אלף אומרת לנו לאיזו קבוצה ללכת — קבוצת האלפים. שש מאות אלף פירושו 6 בבית של מאות-האלפים. ומה עם הבתים שנשארו ריקים באמצע? הם לא נעלמים! בית ריק מקבל 0. קיבלנו 600,075. ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "600,075", "x": 130, "y": 90, "w": 740, "h": 210, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:18px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:18px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:30px;height:50px;background:#c8e6c9'>6</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#ffcdd2'>0</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#ffcdd2'>0</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#ffcdd2'>0</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#c8e6c9'>7</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#c8e6c9'>5</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "תא ריק = 0. לא מדלגים עליו", "x": 500, "y": 355, "size": 36, "color": "#d33" } },
+          { "name": "write_text", "input": { "text": "שש מאות אלף שבעים וחמש = 600,075", "x": 500, "y": 445, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "ומה זה הפסיק שאני כותב? הוא לא ספרה ולא סימן חשבון — הוא רק עוזר לעין. סופרים שלוש ספרות מימין ושמים פסיק, וכך רואים מיד איפה נגמרת קבוצת היחידות ומתחילה קבוצת האלפים. תראה/י את 305,040 בלוח — קוראים אותו: שלוש מאות וחמישה אלף וארבעים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הפסיק — רק עוזר לעין", "x": 500, "y": 90, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "305,040", "x": 130, "y": 145, "w": 740, "h": 200, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:18px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:18px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:30px;height:50px'>3</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#ffcdd2'>0</td><td style='border:2px solid #444;font-size:30px;height:50px'>5</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#ffcdd2'>0</td><td style='border:2px solid #444;font-size:30px;height:50px'>4</td><td style='border:2px solid #444;font-size:30px;height:50px;background:#ffcdd2'>0</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "305,040 — שלוש מאות וחמישה אלף וארבעים", "x": 500, "y": 400, "size": 28 } },
+          { "name": "write_text", "input": { "text": "שלוש ספרות מימין, ואז פסיק", "x": 500, "y": 465, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נעשה אחד יחד. מאה אלף ושתיים. מתחילים מהסוף: 2 באחדות. עכשיו מאה אלף — 1 בבית של מאות-האלפים. וכל מה שבאמצע ריק, אז שם 0. יוצא 100,002. ארבעה אפסים באמצע, בדיוק כמו שהבתים ביקשו. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מאה אלף ושתיים", "x": 500, "y": 95, "size": 36 } },
+          { "name": "write_text", "input": { "text": "1. מהסוף: 2 באחדות", "x": 500, "y": 190, "size": 28 } },
+          { "name": "write_text", "input": { "text": "2. מאה אלף: 1 במאות-האלפים", "x": 500, "y": 255, "size": 28 } },
+          { "name": "write_text", "input": { "text": "3. כל בית ריק מקבל 0", "x": 500, "y": 320, "size": 28 } },
+          { "name": "write_text", "input": { "text": "100,002", "x": 500, "y": 415, "size": 42, "color": "#4a7" } },
+          { "name": "write_text", "input": { "text": "ולא 1002 ולא 10,002", "x": 500, "y": 475, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. המספר שאמרתי: מאתיים אלף ושלושים. שמתי לך את הלוח הריק לעזרה. תתחיל/י מהסוף — איפה יושב ה-30? אחר כך מאתיים אלף — לאיזה בית הוא הולך? ובסוף אל תשכח/י את הכלל הגדול של היום: כל בית שנשאר ריק מקבל 0. את המספר כתוב/כתבי בתיבה, בלי פסיקים!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "איך כותבים בספרות מאתיים אלף ושלושים?", "answer": "200030", "kind": "number", "hint": "תמלא/י מהסוף: 0 באחדות, 3 בעשרות. עכשיו מאתיים אלף — הספרה 2 הולכת לבית של מאות-האלפים. ומה עם הבתים שבאמצע? הם לא נעלמים.", "praise": "יופי! לא כתבת כמו ששמעת — מילאת בתים, ולכן האפסים באמצע יצאו במקום הנכון 👏" } },
+        { "name": "render_widget", "input": { "title": "לוח ריק", "x": 150, "y": 300, "w": 700, "h": 180, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:17px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:17px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:26px;height:44px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:44px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:44px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:44px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:44px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:44px'>&nbsp;</td></tr></table></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. הראשונה היא בדיוק המלכודת שפתחנו איתה — עכשיו יש לך כלי נגדה. בשנייה נלך בכיוון ההפוך: המספר כתוב, ואת/ה קורא/ת אותו. והשלישית כבר בלי לוח. כתוב/כתבי תמיד בלי פסיקים!",
+      "toolCalls": [
+        { "name": "render_widget", "input": { "title": "לוח ריק", "x": 150, "y": 70, "w": 700, "h": 150, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:16px;padding:3px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:16px;padding:3px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td></tr></table></div>" } },
+        { "name": "draw_exercise", "input": { "text": "איך כותבים בספרות שש מאות אלף שבעים וחמש?", "answer": "600075", "kind": "number", "x": 400, "y": 280, "hint": "מהסוף: 5 באחדות, 7 בעשרות. שש מאות אלף — 6 בבית של מאות-האלפים. עכשיו ספור/י כמה בתים נשארו ריקים באמצע, וכל אחד מהם מקבל 0.", "praise": "בול! זו בדיוק המלכודת שפתחנו איתה, ולא נפלת בה 👏" } },
+        { "name": "draw_exercise", "input": { "text": "במספר 305040 — מה הספרה בבית האלפים?", "answer": "5", "kind": "number", "x": 400, "y": 385, "hint": "תספור/י שלוש ספרות מימין — עד לשם זו קבוצת היחידות. הספרה הבאה אחריהן היא כבר בית האלפים.", "praise": "יפה! ידעת לספור בתים מימין ולעצור במקום הנכון 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "איך כותבים בספרות ארבעים אלף ושתיים?", "answer": "40002", "kind": "number", "x": 400, "y": 480, "hint": "ארבעים אלף — הספרה 4 יושבת בעשרות-האלפים, ולכן צריך חמישה בתים בסך הכול. ה-2 באחדות, וכל השאר באמצע מקבלים 0.", "praise": "מצוין! שמת את ה-2 באחדות ולא הדבקת אותו ל-4 — זה בדיוק ההבדל 🏆" } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "topic": "מדידות — שטח, היקף ונפח",
+  "lesson": 3,
+  "title": "צורות מורכבות, ואותו היקף — שטחים שונים",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "הצורה שעל הלוח היא לא מלבן — היא נראית קצת כמו האות ר׳. לנוסחה שלנו, אורך כפול רוחב, אין מה לעשות עם צורה כזאת. אבל תסתכל/י עליה טוב: אפשר לראות בתוכה שני מלבנים שמודבקים אחד לשני. זה כל הטריק של היום. לחץ/י ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "זה לא מלבן — אז מה עושים?", "x": 500, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "צורה מורכבת", "x": 290, "y": 125, "w": 420, "h": 290, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:42px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:264px;height:198px'><div style='position:absolute;left:0;top:0;width:264px;height:132px;border:4px solid #1d4ed8;background:#dbeafe;background-image:linear-gradient(#60a5fa 1px,transparent 1px),linear-gradient(90deg,#60a5fa 1px,transparent 1px);background-size:22px 22px;box-sizing:border-box'></div><div style='position:absolute;left:176px;top:132px;width:88px;height:66px;border:4px solid #1d4ed8;background:#dbeafe;background-image:linear-gradient(#60a5fa 1px,transparent 1px),linear-gradient(90deg,#60a5fa 1px,transparent 1px);background-size:22px 22px;box-sizing:border-box'></div><div style='position:absolute;left:0;top:-34px;width:264px;text-align:center;font-size:22px;color:#1e3a8a'>12</div><div style='position:absolute;left:-28px;top:50px;font-size:22px;color:#1e3a8a'>6</div><div style='position:absolute;left:272px;top:148px;font-size:22px;color:#1e3a8a'>3</div><div style='position:absolute;left:176px;top:204px;width:88px;text-align:center;font-size:22px;color:#1e3a8a'>4</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "מסתתרים כאן שני מלבנים", "x": 500, "y": 462, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "חתכתי בקו אחד, בדיוק במקום שבו הצורה משתנה. עכשיו יש לפנינו שני מלבנים נפרדים: הגדול למעלה, 12 על 6, והקטן למטה, 4 על 3. כל אחד מהם כבר מוכר לנו היטב, ולכל אחד אפשר לחשב שטח בנפרד. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קו אחד — ויש שני מלבנים", "x": 500, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "חותכים לשניים", "x": 290, "y": 125, "w": 420, "h": 290, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:42px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:264px;height:198px'><div style='position:absolute;left:0;top:0;width:264px;height:132px;border:4px solid #1d4ed8;background:#dbeafe;box-sizing:border-box'></div><div style='position:absolute;left:176px;top:132px;width:88px;height:66px;border:4px solid #15803d;background:#dcfce7;box-sizing:border-box'></div><div style='position:absolute;left:176px;top:130px;width:88px;border-top:4px dashed #dc2626'></div><div style='position:absolute;left:0;top:52px;width:264px;text-align:center;font-size:21px;color:#1e3a8a;direction:rtl'>מלבן א׳ · 12 על 6</div><div style='position:absolute;left:176px;top:152px;width:88px;text-align:center;font-size:16px;color:#166534;direction:rtl'>מלבן ב׳</div><div style='position:absolute;left:176px;top:204px;width:88px;text-align:center;font-size:18px;color:#166534;direction:rtl'>4 על 3</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "כל מלבן — חישוב לחוד", "x": 500, "y": 462, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "מחשבים כל אחד בנפרד, ואז מחברים. המלבן הגדול: 12 כפול 6 שווה 72. המלבן הקטן: 4 כפול 3 שווה 12. ביחד 72 ועוד 12, וזה 84. השטח של כל הצורה הוא 84 סמ״ר. שני מלבנים, שני חישובים, וחיבור אחד בסוף. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מחשבים, ואז מחברים", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "המלבן הגדול: 12 × 6 = 72", "x": 500, "y": 200, "size": 30 } },
+          { "name": "write_text", "input": { "text": "המלבן הקטן: 4 × 3 = 12", "x": 500, "y": 275, "size": 30 } },
+          { "name": "write_text", "input": { "text": "ביחד: 72 + 12 = 84 סמ״ר", "x": 500, "y": 370, "size": 34 } },
+          { "name": "write_text", "input": { "text": "צורה מוזרה הפכה לשני מלבנים פשוטים", "x": 500, "y": 460, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "עכשיו משהו אחר לגמרי, שהרבה ילדים בטוחים שהוא לא נכון. כל המלבנים שעל הלוח הם בעלי אותו היקף בדיוק — 20 ס״מ לכולם. חצי היקף הוא 10, ולכן בכל אחד מהם האורך והרוחב יחד הם 10: 1 ו-9, 2 ו-8, 3 ו-7, 4 ו-6, 5 ו-5. תראה/י כמה שונים הם נראים! ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כולם בהיקף 20 ס״מ", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "חמישה מלבנים", "x": 270, "y": 140, "w": 460, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:26px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='display:flex;direction:rtl;align-items:flex-end;gap:24px'><div style='width:46px;text-align:center'><div style='width:14px;height:126px;margin:0 auto;border:2px solid #1d4ed8;background:#dbeafe'></div><div style='margin-top:8px;font-size:16px;color:#1e3a8a'>1×9</div></div><div style='width:46px;text-align:center'><div style='width:28px;height:112px;margin:0 auto;border:2px solid #1d4ed8;background:#dbeafe'></div><div style='margin-top:8px;font-size:16px;color:#1e3a8a'>2×8</div></div><div style='width:46px;text-align:center'><div style='width:42px;height:98px;margin:0 auto;border:2px solid #1d4ed8;background:#dbeafe'></div><div style='margin-top:8px;font-size:16px;color:#1e3a8a'>3×7</div></div><div style='width:56px;text-align:center'><div style='width:56px;height:84px;margin:0 auto;border:2px solid #1d4ed8;background:#dbeafe'></div><div style='margin-top:8px;font-size:16px;color:#1e3a8a'>4×6</div></div><div style='width:70px;text-align:center'><div style='width:70px;height:70px;margin:0 auto;border:2px solid #b45309;background:#fef3c7'></div><div style='margin-top:8px;font-size:16px;color:#b45309'>5×5</div></div></div></div>" } },
+          { "name": "write_text", "input": { "text": "בכולם: אורך + רוחב = 10", "x": 500, "y": 442, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו השטחים שלהם, וזאת ההפתעה: 9, אחר כך 16, אחר כך 21, אחר כך 24, ובסוף 25. אותו היקף בדיוק — ושטחים ממש שונים! הגדול מכולם הוא הריבוע, 5 על 5, עם 25 סמ״ר. תזכור/תזכרי את המשפט שכתוב על הלוח. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "היקף גדול לא אומר שטח גדול", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "טבלת שטחים", "x": 240, "y": 170, "w": 520, "h": 200, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:18px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;align-items:center;justify-content:center'><div style='display:grid;grid-template-columns:repeat(6,74px);gap:3px'><div style='padding:10px 0;text-align:center;font-size:19px;color:#334155;background:#e2e8f0;border-radius:5px'>מלבן</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#1e3a8a;background:#dbeafe;border-radius:5px'>1×9</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#1e3a8a;background:#dbeafe;border-radius:5px'>2×8</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#1e3a8a;background:#dbeafe;border-radius:5px'>3×7</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#1e3a8a;background:#dbeafe;border-radius:5px'>4×6</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#b45309;background:#fef3c7;border-radius:5px'>5×5</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#334155;background:#e2e8f0;border-radius:5px'>שטח</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#1e3a8a;background:#eff6ff;border-radius:5px'>9</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#1e3a8a;background:#eff6ff;border-radius:5px'>16</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#1e3a8a;background:#eff6ff;border-radius:5px'>21</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#1e3a8a;background:#eff6ff;border-radius:5px'>24</div><div style='padding:10px 0;text-align:center;font-size:19px;color:#b45309;background:#fde68a;border-radius:5px'>25</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "הריבוע 5×5 מחזיק הכי הרבה", "x": 500, "y": 420, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "אז למה דווקא הריבוע מנצח? כי ככל ששתי הצלעות קרובות זו לזו, השטח גדל. מלבן צר וארוך כמו 1 על 9 כמעט לא מחזיק שטח, ומלבן מאוזן כמו 5 על 5 מחזיק הכי הרבה. עכשיו תור שלך — קודם צורה מורכבת, ואחר כך חקירה 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "למה הריבוע מנצח?", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "צר וארוך — כמעט בלי שטח", "x": 500, "y": 210, "size": 28 } },
+          { "name": "write_text", "input": { "text": "מאוזן — הכי הרבה שטח", "x": 500, "y": 290, "size": 28 } },
+          { "name": "write_text", "input": { "text": "ככל שהצלעות קרובות זו לזו, השטח גדל", "x": 500, "y": 400, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "ביחד. הצורה שעל הלוח מורכבת משני מלבנים. חתוך/חתכי אותה בעיניים בקו אחד: למעלה מלבן 10 על 4, ולמטה מלבן 3 על 2. חשב/י כל אחד בנפרד, ואז חבר/י את שתי התוצאות. את הסכום כתוב/כתבי בתיבה.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה השטח של כל הצורה, בסמ״ר?", "answer": "46", "kind": "number", "hint": "שני חישובים ואז חיבור אחד. המלבן העליון: 10 כפול 4. המלבן התחתון: 3 כפול 2. עכשיו חבר/י את שתי התוצאות.", "praise": "מצוין! פירקת צורה מוזרה לשני מלבנים מוכרים — זו בדיוק הדרך 👏" } },
+        { "name": "render_widget", "input": { "title": "הצורה", "x": 310, "y": 290, "w": 380, "h": 220, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:32px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:240px;height:144px'><div style='position:absolute;left:0;top:0;width:240px;height:96px;border:4px solid #1d4ed8;background:#dbeafe;box-sizing:border-box'></div><div style='position:absolute;left:168px;top:96px;width:72px;height:48px;border:4px solid #15803d;background:#dcfce7;box-sizing:border-box'></div><div style='position:absolute;left:0;top:-30px;width:240px;text-align:center;font-size:19px;color:#1e3a8a'>10</div><div style='position:absolute;left:-24px;top:32px;font-size:19px;color:#1e3a8a'>4</div><div style='position:absolute;left:248px;top:108px;font-size:19px;color:#166534'>2</div><div style='position:absolute;left:168px;top:148px;width:72px;text-align:center;font-size:19px;color:#166534'>3</div></div></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד. בשאלה הראשונה הצורה מצוירת לך. בשנייה חוזרים לשיעור הקודם — מהיקף לצלע, ומשם לשטח. ובאחרונה אין ציור בכלל: תבדוק/תבדקי אילו מלבנים אפשריים ותמצא/י את השטח הגדול ביותר. בשיעור הבא יוצאים מהמישור אל החלל 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה השטח של הצורה שעל הלוח, בסמ״ר?", "answer": "38", "kind": "number", "x": 290, "y": 130, "hint": "חתוך/חתכי בקו אחד. למעלה מלבן 6 על 5, ולמטה מלבן 4 על 2. חשב/י כל אחד לחוד, ואז חבר/י.", "praise": "יפה! חילקת, חישבת וחיברת — בדיוק כמו שעשינו ביחד 👏" } },
+        { "name": "render_widget", "input": { "title": "הצורה", "x": 640, "y": 95, "w": 300, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:38px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:144px;height:168px'><div style='position:absolute;left:0;top:0;width:144px;height:120px;border:4px solid #1d4ed8;background:#dbeafe;box-sizing:border-box'></div><div style='position:absolute;left:48px;top:120px;width:96px;height:48px;border:4px solid #15803d;background:#dcfce7;box-sizing:border-box'></div><div style='position:absolute;left:0;top:-30px;width:144px;text-align:center;font-size:19px;color:#1e3a8a'>6</div><div style='position:absolute;left:-24px;top:44px;font-size:19px;color:#1e3a8a'>5</div><div style='position:absolute;left:152px;top:132px;font-size:19px;color:#166534'>2</div><div style='position:absolute;left:48px;top:172px;width:96px;text-align:center;font-size:19px;color:#166534'>4</div></div></div>" } },
+        { "name": "draw_exercise", "input": { "text": "מלבן היקפו 20 ס״מ וצלע אחת 3 — מה השטח?", "answer": "21", "kind": "number", "x": 290, "y": 310, "hint": "חצי היקף הוא 10, וזה אורך ועוד רוחב. תוריד/תורידי את 3 ותקבל/י את הצלע השנייה. ורק אז כופלים צלע בצלע.", "praise": "כל הכבוד! מהיקף לצלע ומצלע לשטח — שני שיעורים ביחד 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "מלבן שהיקפו 12 — מה השטח הגדול ביותר?", "answer": "9", "kind": "number", "x": 290, "y": 470, "hint": "חצי היקף הוא 6. נסה/נסי את כל הזוגות שמסתכמים ב-6, וחשב/י שטח לכל זוג. זכור/זכרי מי ניצח קודם — הכי מאוזן.", "praise": "אלוף/ה! גילית לבד שהמלבן המאוזן נותן את השטח הגדול ביותר 🏆" } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "topic": "השבר העשרוני — משמעות וערך מקום",
+  "lesson": 2,
+  "title": "מאיות — ריבוע של מאה משבצות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם חתכנו שלם ל-10 חלקים. היום חותכים דק יותר. על הלוח ריבוע אחד גדול, וכל הריבוע הזה הוא שלם אחד. הוא מחולק ל-100 משבצות שוות. משבצת אחת כזאת נקראת מאית, וכותבים אותה 0.01. תסתכל/י על המשבצת הצבועה — היא קטנטנה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כל הריבוע הזה — שלם אחד", "x": 500, "y": 85, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "", "x": 360, "y": 125, "w": 280, "h": 280, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=1;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "write_text", "input": { "text": "100 משבצות שוות — כל אחת מאית", "x": 500, "y": 445, "size": 27 } },
+          { "name": "write_text", "input": { "text": "משבצת אחת = 0.01", "x": 500, "y": 490, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו צבועות 8 משבצות. זה 8 מתוך 100 — 8/100. בכתיב עשרוני: 0.08. שים/שימי לב לאפס שאחרי הנקודה. אחרי הנקודה יש שני מקומות: קודם העשיריות, ואחריהן המאיות. כאן אין אף שורה שלמה, אז במקום העשיריות יושב 0, והשמונה נכנסת למקום המאיות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "8 משבצות מתוך 100", "x": 500, "y": 85, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "", "x": 580, "y": 125, "w": 270, "h": 270, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=8;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "write_text", "input": { "text": "8/100", "x": 280, "y": 200, "size": 38 } },
+          { "name": "draw_arrow", "input": { "x1": 280, "y1": 240, "x2": 280, "y2": 300, "color": "#2d6cdf", "width": 4 } },
+          { "name": "write_text", "input": { "text": "0.08", "x": 280, "y": 350, "size": 48 } },
+          { "name": "write_text", "input": { "text": "0 שלמים · 0 עשיריות · 8 מאיות", "x": 500, "y": 455, "size": 26 } },
+          { "name": "write_text", "input": { "text": "האפס שומר על מקום העשיריות", "x": 500, "y": 495, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "וזה הרעיון הכי חשוב היום. שורה שלמה בריבוע היא 10 משבצות — כלומר עשירית אחת, וגם 10 מאיות. אותו שטח, שתי דרכים לספור. מימין שורה אחת: 0.1, וגם 0.10. משמאל שבע שורות: 0.7, וגם 0.70. אפס בסוף לא מוסיף שום שטח — הוא רק אומר 'ספרתי גם מאיות'. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "עשירית אחת = 10 מאיות", "x": 500, "y": 80, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "", "x": 620, "y": 125, "w": 250, "h": 250, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=10;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "render_widget", "input": { "title": "", "x": 130, "y": 125, "w": 250, "h": 250, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=70;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "write_text", "input": { "text": "שורה אחת · 0.1 = 0.10", "x": 745, "y": 405, "size": 24 } },
+          { "name": "write_text", "input": { "text": "שבע שורות · 0.7 = 0.70", "x": 255, "y": 405, "size": 24 } },
+          { "name": "write_text", "input": { "text": "אותו שטח בדיוק — אפס בסוף לא מוסיף כלום", "x": 500, "y": 470, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו נכתוב מספר במילים ובספרות. 'שתיים ושלוש מאיות' — קודם השלמים: 2. אחר כך הנקודה. עכשיו שני מקומות: עשיריות ואז מאיות. אין כאן עשיריות שלמות, אז שמים 0, ורק אחריו את ה-3. יוצא 2.03. בלי האפס היינו כותבים 2.3 — וזה כבר שלוש עשיריות, גדול פי 10! ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "האפס ששומר מקום", "x": 500, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "יחידות", "x": 380, "y": 180, "size": 23 } },
+          { "name": "write_text", "input": { "text": "עשיריות", "x": 560, "y": 180, "size": 23 } },
+          { "name": "write_text", "input": { "text": "מאיות", "x": 700, "y": 180, "size": 23 } },
+          { "name": "write_text", "input": { "text": "2", "x": 380, "y": 255, "size": 42 } },
+          { "name": "write_text", "input": { "text": ".", "x": 465, "y": 267, "size": 44, "color": "#e74c3c" } },
+          { "name": "write_text", "input": { "text": "0", "x": 560, "y": 255, "size": 42, "color": "#e74c3c" } },
+          { "name": "write_text", "input": { "text": "3", "x": 700, "y": 255, "size": 42 } },
+          { "name": "write_text", "input": { "text": "שתיים ושלוש מאיות = 2.03", "x": 500, "y": 350, "size": 30 } },
+          { "name": "write_text", "input": { "text": "בלי האפס זה 2.3 — שתיים ושלוש עשיריות!", "x": 500, "y": 415, "size": 26 } },
+          { "name": "write_text", "input": { "text": "האפס אומר: אין כאן עשיריות", "x": 500, "y": 470, "size": 25 } }
+        ]
+      },
+      {
+        "reply": "ודוגמה אחרונה לפני שאת/ה מנסה. צבועות 25 משבצות: שתי שורות שלמות ועוד 5 משבצות. שתי שורות הן 2 עשיריות, והחמש הן 5 מאיות. יוצא 0.25, וקוראים עשרים וחמש מאיות. דרך אגב, אפשר לחתוך גם דק יותר — לאלפיות. נכיר אותן בהמשך; אנחנו נשארים על עשיריות ומאיות. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "0.25 — עשרים וחמש מאיות", "x": 500, "y": 80, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "", "x": 365, "y": 120, "w": 270, "h": 270, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=25;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+          { "name": "write_text", "input": { "text": "2 שורות ועוד 5 משבצות = 0.25", "x": 500, "y": 435, "size": 28 } },
+          { "name": "write_text", "input": { "text": "יש גם אלפיות — קטנות עוד יותר. נכיר אותן בהמשך.", "x": 500, "y": 485, "size": 23 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח הריבוע של מאה המשבצות, וכמה משבצות צבועות. ספור/י אותן — כל אחת היא מאית. עכשיו שאל/י את עצמך: יש כאן אפילו שורה שלמה אחת? אם אין, במקום העשיריות יושב 0. כתוב/כתבי את המספר בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה הצבוע כאן בכתיב עשרוני?", "answer": "0.06", "kind": "number", "hint": "כל משבצת קטנה היא מאית אחת. ספור/י כמה צבועות. עכשיו בדוק/בדקי אם יש שורה שלמה, כלומר עשירית — ואם אין, מה שמים במקום העשיריות?", "praise": "מעולה! שמת אפס במקום העשיריות, והמאיות קיבלו בדיוק את המקום שלהן 👏" } },
+        { "name": "render_widget", "input": { "title": "", "x": 380, "y": 240, "w": 240, "h": 240, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=6;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } }
+      ]
+    },
+    "independent": {
+      "reply": "שלוש שאלות לבד. בראשונה יש ריבוע לעזרה, אחר כך בלי. בשיעור הבא נפתור את המלכודת הכי מפורסמת בשברים עשרוניים — ותראה/י שאת/ה כבר יודע/ת את התשובה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה החלק הצבוע בכתיב עשרוני?", "answer": "0.45", "kind": "number", "x": 250, "y": 170, "hint": "קודם ספור/י שורות שלמות — כל שורה היא עשירית. אחר כך ספור/י את המשבצות הבודדות שנשארו — הן המאיות. עכשיו הרכב/י את המספר.", "praise": "יופי! ספרת עשיריות ומאיות בנפרד וחיברת אותן לכתיב אחד 👏" } },
+        { "name": "render_widget", "input": { "title": "", "x": 650, "y": 90, "w": 210, "h": 210, "exact": true, "html": "<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}</style><div id='g' style='display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;box-sizing:border-box;border:3px solid #34495e;background:#fff'></div><script>var n=45;var g=document.getElementById('g');for(var i=0;i<100;i++){var d=document.createElement('div');d.style.cssText='border:1px solid #cfd8e3;background:'+(i<n?'#4aa3ff':'#fff');g.appendChild(d);}</script>" } },
+        { "name": "draw_exercise", "input": { "text": "כמה מאיות יש ב-0.7?", "answer": "70", "kind": "number", "x": 500, "y": 350, "hint": "עשירית אחת היא שורה שלמה בריבוע, ובשורה יש 10 משבצות — כלומר 10 מאיות. עכשיו חשוב/חשבי כמה שורות יש כאן.", "praise": "מדויק! ולכן 0.7 ו-0.70 הם בדיוק אותו דבר 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "איך כותבים שתיים וחמש מאיות בספרות?", "answer": "2.05", "kind": "number", "x": 500, "y": 470, "hint": "קודם כותבים את השלמים ואז נקודה. אחרי הנקודה יש שני מקומות: קודם עשיריות, ואז מאיות. יש כאן עשיריות שלמות? אם לא — מה שמים במקום שלהן?", "praise": "כל הכבוד! האפס שמר על המקום, והחמש נחתה בדיוק במאיות 🏆" } }
+      ]
+    }
+  }
+}

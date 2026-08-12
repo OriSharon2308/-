@@ -1,0 +1,89 @@
+{
+  "topic": "המספרים עד מיליון",
+  "lesson": 1,
+  "title": "מהרבבה למיליון — הגלגל ממשיך שמאלה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! היום לא לומדים משהו חדש — רק ממשיכים שמאלה 🙂 את/ה כבר יודע/ת את הכלל: כל צעד שמאלה הוא פי 10. תסתכל/י על הלוח — 1, אחר כך 10, אחר כך 100, ואחר כך 1000. בכל צעד נוסף אפס אחד. עוד צעד אחד ומגיעים ל-10,000 — הרבבה שהכרת בכיתה ג׳. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כל צעד שמאלה — פי 10", "x": 500, "y": 95, "size": 36 } },
+          { "name": "write_text", "input": { "text": "×10", "x": 830, "y": 200, "size": 22, "color": "#4a7" } },
+          { "name": "write_text", "input": { "text": "×10", "x": 717, "y": 200, "size": 22, "color": "#4a7" } },
+          { "name": "write_text", "input": { "text": "×10", "x": 580, "y": 200, "size": 22, "color": "#4a7" } },
+          { "name": "write_text", "input": { "text": "×10", "x": 405, "y": 200, "size": 22, "color": "#4a7" } },
+          { "name": "draw_arrow", "input": { "x1": 858, "y1": 240, "x2": 802, "y2": 240, "color": "#4a7", "width": 3 } },
+          { "name": "draw_arrow", "input": { "x1": 745, "y1": 240, "x2": 690, "y2": 240, "color": "#4a7", "width": 3 } },
+          { "name": "draw_arrow", "input": { "x1": 612, "y1": 240, "x2": 548, "y2": 240, "color": "#4a7", "width": 3 } },
+          { "name": "draw_arrow", "input": { "x1": 450, "y1": 240, "x2": 360, "y2": 240, "color": "#4a7", "width": 3 } },
+          { "name": "write_text", "input": { "text": "1", "x": 880, "y": 320, "size": 34 } },
+          { "name": "write_text", "input": { "text": "10", "x": 780, "y": 320, "size": 34 } },
+          { "name": "write_text", "input": { "text": "100", "x": 655, "y": 320, "size": 34 } },
+          { "name": "write_text", "input": { "text": "1000", "x": 505, "y": 320, "size": 34 } },
+          { "name": "write_text", "input": { "text": "10,000", "x": 290, "y": 320, "size": 34 } },
+          { "name": "write_text", "input": { "text": "10,000 — זו הרבבה שאת/ה כבר מכיר/ה", "x": 500, "y": 450, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "זה לוח ערכי-מקום, והוא מחולק לשלוש קבוצות. מימין קבוצת היחידות — אחדות, עשרות, מאות. באמצע קבוצת האלפים — אלפים, עשרות אלפים, מאות אלפים. ומשמאל מתחילה קבוצת המיליונים. בכל קבוצה אותם שלושה בתים בדיוק, רק גדולים פי אלף. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "לוח ערכי-מקום — שלוש קבוצות", "x": 500, "y": 100, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "לוח ערכי-מקום", "x": 90, "y": 160, "w": 820, "h": 210, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td style='border:2px solid #444;background:#e8eaf6;font-size:18px;padding:4px'>מיליונים</td><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:18px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:18px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:13px;padding:3px'>מיליון</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "קוראים תמיד מימין לשמאל", "x": 500, "y": 430, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נמלא. שמתי בלוח 10,000 — הספרה 1 בבית של עשרות-האלפים, ואחריה ארבעה אפסים. למה דווקא שם? כי 10 אלפים הם רבבה אחת, והרבבה יושבת בית אחד שמאלה מהאלפים. זה הכלל שאת/ה מכיר/ה: כל 10 של בית אחד הופכים ל-1 בבית הבא. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "10 אלפים = רבבה", "x": 500, "y": 100, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "10,000 בלוח", "x": 90, "y": 160, "w": 820, "h": 210, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td style='border:2px solid #444;background:#e8eaf6;font-size:18px;padding:4px'>מיליונים</td><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:18px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:18px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:13px;padding:3px'>מיליון</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px;background:#ffe082'>1</td><td style='border:2px solid #444;font-size:28px;height:46px'>0</td><td style='border:2px solid #444;font-size:28px;height:46px'>0</td><td style='border:2px solid #444;font-size:28px;height:46px'>0</td><td style='border:2px solid #444;font-size:28px;height:46px'>0</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "רבבה יושבת בבית של עשרות-האלפים", "x": 500, "y": 430, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ממשיכים באותה הדרך. 10 רבבות הן מאה אלף — 100,000 — והספרה 1 קפצה עוד בית שמאלה. 10 מאות-אלף הן מיליון — 1,000,000 — עוד בית שמאלה, וכבר נכנסנו לקבוצת המיליונים. תראה/י בלוח: ה-1 פשוט זזה בית-בית, וכל זוזה כזאת שווה פי 10. ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "רבבה, מאה אלף, מיליון", "x": 90, "y": 90, "w": 820, "h": 300, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td style='border:2px solid #444;background:#e8eaf6;font-size:18px;padding:4px'>מיליונים</td><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:18px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:18px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:13px;padding:3px'>מיליון</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:26px;height:42px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:42px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:42px;background:#ffe082'>1</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td></tr><tr><td style='border:2px solid #444;font-size:26px;height:42px'>&nbsp;</td><td style='border:2px solid #444;font-size:26px;height:42px;background:#ffe082'>1</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td></tr><tr><td style='border:2px solid #444;font-size:26px;height:42px;background:#ffe082'>1</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td><td style='border:2px solid #444;font-size:26px;height:42px'>0</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "כל צעד שמאלה — פי 10", "x": 500, "y": 450, "size": 38 } }
+        ]
+      },
+      {
+        "reply": "אז כמה זה בעצם מיליון? נסה/י לדמיין שאת/ה סופר/ת מספר אחד בכל שנייה, בלי לעצור אף פעם. עד 1000 תגיע/י אחרי כ-17 דקות. עד 10,000 אחרי כמעט 3 שעות. ועד מיליון? כ-11 ימים ולילות ברצף, בלי לישון ובלי הפסקה. מיליון זה באמת המון. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה גדול מיליון?", "x": 500, "y": 95, "size": 36 } },
+          { "name": "write_text", "input": { "text": "סופרים מספר אחד בכל שנייה...", "x": 500, "y": 165, "size": 26 } },
+          { "name": "write_text", "input": { "text": "עד 1000 — כ-17 דקות", "x": 500, "y": 245, "size": 30 } },
+          { "name": "write_text", "input": { "text": "עד 10,000 — כמעט 3 שעות", "x": 500, "y": 320, "size": 30 } },
+          { "name": "write_text", "input": { "text": "עד מיליון — כ-11 ימים ולילות!", "x": 500, "y": 400, "size": 32, "color": "#d33" } },
+          { "name": "write_text", "input": { "text": "וזה בלי לישון אף רגע", "x": 500, "y": 465, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נפתור אחד יחד, כדי לראות איך חושבים. השאלה: 10 אלפים — כמה זה? לוקחים 10 של בית האלפים, והם הופכים ל-1 בבית הבא שמאלה, בעשרות-האלפים. יוצא 10,000. שים/י לב מה עשינו — לא ספרנו כלום, רק קפצנו בית אחד שמאלה. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "10 אלפים = ?", "x": 500, "y": 100, "size": 36 } },
+          { "name": "write_text", "input": { "text": "10 של בית אחד → 1 בבית הבא שמאלה", "x": 500, "y": 220, "size": 30 } },
+          { "name": "draw_arrow", "input": { "x1": 600, "y1": 290, "x2": 420, "y2": 290, "color": "#4a7", "width": 4 } },
+          { "name": "write_text", "input": { "text": "10 אלפים = 10,000", "x": 500, "y": 380, "size": 36, "color": "#4a7" } },
+          { "name": "write_text", "input": { "text": "לא סופרים — קופצים בית", "x": 500, "y": 460, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. השאלה על הלוח: 10 רבבות — כמה זה? זכור/זכרי, רבבה אחת היא 10,000, והיא יושבת בבית של עשרות-האלפים. שמתי לך את לוח ערכי-המקום לעזרה. תחשוב/תחשבי: אם יש 10 רבבות, לאיזה בית הספרה 1 קופצת? את המספר שיצא כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "10 רבבות", "answer": "100000", "kind": "number", "hint": "רבבה אחת יושבת בבית של עשרות-האלפים. עשר של בית אחד הופכות ל-1 בבית שמאלה — לאיזה בית הגעת? עכשיו תספור/י כמה אפסים צריך אחרי ה-1.", "praise": "מעולה! קפצת בית אחד שמאלה במקום לספור — בדיוק ככה עובד המבנה העשרוני 👏" } },
+        { "name": "render_widget", "input": { "title": "לוח ערכי-מקום", "x": 90, "y": 300, "w": 820, "h": 180, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td style='border:2px solid #444;background:#e8eaf6;font-size:18px;padding:4px'>מיליונים</td><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:18px;padding:4px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:18px;padding:4px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:13px;padding:3px'>מיליון</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:13px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:13px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td><td style='border:2px solid #444;font-size:28px;height:46px'>&nbsp;</td></tr></table></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה הלוח עוד איתך, ובשתי האחרונות כבר בלי — רק תחשוב/תחשבי על הבתים ועל הקפיצה שמאלה. בשיעור הבא נלמד לכתוב מספרים גדולים במילים ובספרות, וניפול בדיוק במקום שכולם נופלים בו 🙂",
+      "toolCalls": [
+        { "name": "render_widget", "input": { "title": "לוח ערכי-מקום", "x": 100, "y": 70, "w": 800, "h": 150, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td style='border:2px solid #444;background:#e8eaf6;font-size:16px;padding:3px'>מיליונים</td><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:16px;padding:3px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:16px;padding:3px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:12px;padding:3px'>מיליון</td><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אלפים</td><td style='border:2px solid #444;font-size:12px;padding:3px'>מאות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>עשרות</td><td style='border:2px solid #444;font-size:12px;padding:3px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td><td style='border:2px solid #444;font-size:24px;height:40px'>&nbsp;</td></tr></table></div>" } },
+        { "name": "draw_exercise", "input": { "text": "כמה עשרות אלפים יש במאה אלף?", "answer": "10", "kind": "number", "x": 400, "y": 280, "hint": "מצא/י בלוח את הבית של עשרות-האלפים ואת הבית של מאות-האלפים. הם שכנים. כמה צריך בבית אחד כדי לקפוץ לבית שמאלה?", "praise": "כן! עשר רבבות הן מאה אלף — הבנת את הקפיצה 👏" } },
+        { "name": "draw_exercise", "input": { "text": "פי כמה מיליון גדול ממאה אלף?", "answer": "10", "kind": "number", "x": 400, "y": 385, "hint": "תבדוק/תבדקי כמה בתים יש בין מאה אלף למיליון. אם זה בית אחד בלבד — לפי הכלל של היום, פי כמה זה גדול?", "praise": "מדויק! בית אחד שמאלה שווה פי 10, תמיד 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "10 מאות-אלף", "answer": "1000000", "kind": "number", "x": 400, "y": 480, "hint": "מאה אלף אחת היא 1 ואחריה חמישה אפסים. עשר כאלה קופצות בית אחד שמאלה — כמה אפסים יהיו עכשיו אחרי ה-1?", "praise": "וואו! הגעת למיליון — 1 ואחריו שישה אפסים 🏆" } }
+      ]
+    }
+  }
+}

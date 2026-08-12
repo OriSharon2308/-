@@ -1,0 +1,67 @@
+{
+  "topic": "גופים ונפחים",
+  "lesson": 2,
+  "title": "גליל וחרוט — הגופים העגולים",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם הכרנו מנסרה ופירמידה. עכשיו הגופים העגולים. הגוף שעל הלוח הוא גליל. הוא בדיוק כמו מנסרה — שני בסיסים זהים, אחד למטה ואחד למעלה, וישר כל הדרך ביניהם. ההבדל היחיד: הבסיס הוא עיגול. פחית שתייה היא גליל. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "גליל — מנסרה עם בסיס עיגול", "x": 500, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "גליל", "x": 340, "y": 140, "w": 320, "h": 250, "html": "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center'><svg viewBox='0 0 300 230' width='100%' height='100%'><ellipse cx='150' cy='52' rx='82' ry='26' fill='rgba(13,148,136,0.14)' stroke='#0d9488' stroke-width='4'/><line x1='68' y1='52' x2='68' y2='172' stroke='#0d9488' stroke-width='4'/><line x1='232' y1='52' x2='232' y2='172' stroke='#0d9488' stroke-width='4'/><path d='M68,172 A82,26 0 0 0 232,172' fill='none' stroke='#0d9488' stroke-width='4'/><path d='M68,172 A82,26 0 0 1 232,172' fill='none' stroke='#0d9488' stroke-width='3' stroke-dasharray='7 7'/><text x='150' y='214' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36' font-family='Assistant,Arial,sans-serif'>גליל</text></svg></div>" } } },
+          { "name": "write_text", "input": { "text": "שני עיגולים זהים, וישר כל הדרך", "x": 500, "y": 440, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "והגוף השני — חרוט. הוא כמו פירמידה: בסיס אחד בלבד, והכול מתכנס לקודקוד אחד למעלה. רק שהבסיס שלו עגול. גביע גלידה הוא חרוט, וגם כובע ליצן. שים/י לב: לחרוט יש פאה שטוחה אחת — הבסיס. וקודקוד אחד. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "חרוט — פירמידה עם בסיס עיגול", "x": 500, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "חרוט", "x": 340, "y": 140, "w": 320, "h": 250, "html": "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center'><svg viewBox='0 0 300 230' width='100%' height='100%'><path d='M68,168 L150,34 L232,168' fill='rgba(13,148,136,0.14)' stroke='#0d9488' stroke-width='4' stroke-linejoin='round'/><ellipse cx='150' cy='168' rx='82' ry='26' fill='none' stroke='#0d9488' stroke-width='4'/><circle cx='150' cy='34' r='7' fill='#0d9488'/><text x='150' y='214' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36' font-family='Assistant,Arial,sans-serif'>חרוט</text></svg></div>" } } },
+          { "name": "write_text", "input": { "text": "בסיס אחד, וקודקוד אחד למעלה", "x": 500, "y": 440, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו נפתח את הגליל. פריסה זה הגוף אחרי שפתחו אותו ושטחו על השולחן. מהגליל יוצאים שלושה חלקים: שני עיגולים — אלה הבסיסים, ומלבן ארוך שהיה מסביב. למלבן הזה קוראים מעטפת. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "פריסת הגליל", "x": 500, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "פריסה", "x": 290, "y": 135, "w": 420, "h": 250, "html": "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center'><svg viewBox='0 0 420 250' width='100%' height='100%'><circle cx='210' cy='38' r='31' fill='rgba(13,148,136,0.16)' stroke='#0d9488' stroke-width='4'/><rect x='55' y='82' width='310' height='84' rx='6' fill='rgba(13,148,136,0.08)' stroke='#0d9488' stroke-width='4'/><circle cx='210' cy='210' r='31' fill='rgba(13,148,136,0.16)' stroke='#0d9488' stroke-width='4'/><text x='210' y='133' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36' font-family='Assistant,Arial,sans-serif' direction='rtl'>מעטפת</text></svg></div>" } } },
+          { "name": "write_text", "input": { "text": "שני עיגולים ומלבן אחד", "x": 500, "y": 435, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו ההפתעה. כמה ארוך המלבן הזה? תדמיין/י שאת/ה מדביק/ה מדבקה סביב פחית, עד שהיא נסגרת בדיוק. אורך המדבקה הוא בדיוק ההיקף של העיגול. ואת ההיקף אנחנו כבר יודעים מהנושא הקודם: 3.14 כפול הקוטר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אורך המלבן = היקף העיגול", "x": 500, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "מגלגלים", "x": 260, "y": 150, "w": 460, "h": 210, "html": "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center'><svg viewBox='0 0 460 210' width='100%' height='100%'><circle cx='58' cy='74' r='42' fill='rgba(13,148,136,0.14)' stroke='#0d9488' stroke-width='4'/><line x1='16' y1='74' x2='100' y2='74' stroke='#0d9488' stroke-width='3' stroke-dasharray='6 6'/><text x='58' y='142' text-anchor='middle' font-size='20' font-weight='700' fill='#0f3b36' font-family='Assistant,Arial,sans-serif' direction='rtl'>קוטר</text><path d='M108,58 Q136,18 162,46' fill='none' stroke='#0d9488' stroke-width='3'/><polygon points='162,50 150,40 166,36' fill='#0d9488'/><rect x='150' y='54' width='292' height='44' rx='6' fill='rgba(13,148,136,0.10)' stroke='#0d9488' stroke-width='4'/><text x='296' y='142' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36' font-family='Assistant,Arial,sans-serif' direction='rtl'>אורך = היקף העיגול</text></svg></div>" } } },
+          { "name": "write_text", "input": { "text": "היקף = 3.14 × קוטר", "x": 500, "y": 430, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נראה איך פותרים שאלה כזאת. יש פחית, והקוטר שלה 10 ס״מ. כמה ארוך המלבן בפריסה? כופלים את הקוטר ב-3.14, ויוצא 31.4 ס״מ. זה כל הסוד: קוטר כפול 3.14. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קוטר 10 — כמה ארוך המלבן?", "x": 500, "y": 88, "size": 30 } },
+          { "name": "write_text", "input": { "text": "3.14 × 10 = 31.4", "x": 500, "y": 210, "size": 36 } },
+          { "name": "render_widget", "input": { "title": "פריסה", "x": 300, "y": 265, "w": 380, "h": 220, "html": "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center'><svg viewBox='0 0 420 250' width='100%' height='100%'><circle cx='210' cy='38' r='31' fill='rgba(13,148,136,0.16)' stroke='#0d9488' stroke-width='4'/><rect x='55' y='82' width='310' height='84' rx='6' fill='rgba(13,148,136,0.08)' stroke='#0d9488' stroke-width='4'/><circle cx='210' cy='210' r='31' fill='rgba(13,148,136,0.16)' stroke='#0d9488' stroke-width='4'/><text x='210' y='133' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36' font-family='Assistant,Arial,sans-serif' direction='rtl'>31.4</text></svg></div>" } } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. יש פחית עם קוטר 20 ס״מ, ואנחנו רוצים לגזור מלבן שיקיף אותה בדיוק. כמה ארוך הוא צריך להיות? השארתי לך את הפריסה על הלוח, ואת הכלל בצד. קח/י את הקוטר, וכפול/י אותו ב-3.14. את התוצאה כתוב/כתבי בתיבה.",
+      "toolCalls": [
+        { "name": "write_text", "input": { "text": "היקף = 3.14 × קוטר", "x": 270, "y": 200, "size": 28 } },
+        { "name": "render_widget", "input": { "title": "פריסת הגליל", "x": 570, "y": 120, "w": 330, "h": 250, "html": "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center'><svg viewBox='0 0 420 250' width='100%' height='100%'><circle cx='210' cy='38' r='31' fill='rgba(13,148,136,0.16)' stroke='#0d9488' stroke-width='4'/><rect x='55' y='82' width='310' height='84' rx='6' fill='rgba(13,148,136,0.08)' stroke='#0d9488' stroke-width='4'/><circle cx='210' cy='210' r='31' fill='rgba(13,148,136,0.16)' stroke='#0d9488' stroke-width='4'/><text x='210' y='133' text-anchor='middle' font-size='24' font-weight='700' fill='#0f3b36' font-family='Assistant,Arial,sans-serif' direction='rtl'>?</text></svg></div>" } } },
+        { "name": "draw_exercise", "input": { "text": "קוטר 20 ס״מ — אורך המלבן", "answer": "62.8", "kind": "number", "x": 110, "y": 450, "hint": "המלבן חייב להקיף את כל העיגול, אז אורכו הוא בדיוק ההיקף. הכלל כתוב לך על הלוח: לוקחים את הקוטר וכופלים ב-3.14. אל תשכח/י את הנקודה העשרונית.", "praise": "מצוין! הבנת שאורך המלבן הוא ההיקף, וכפלת נכון ב-3.14 👏" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. הראשונה על החרוט, השנייה שוב על אורך המלבן, ובאחרונה רק לפי התיאור — בלי ציור. בשיעור הבא נעבוד על פריסות: איזו פריסה מתקפלת לאיזה גוף 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "לחרוט — כמה פאות שטוחות?", "answer": "1", "kind": "number", "x": 110, "y": 130, "hint": "פאה שטוחה זה צד ישר שאפשר להניח על השולחן. תסתכל/י על החרוט שעל הלוח: החלק המעוגל מסביב אינו שטוח. אז מה כן שטוח בו?", "praise": "יופי! רק הבסיס שטוח — כל השאר מעוגל 👏" } },
+        { "name": "render_widget", "input": { "title": "חרוט", "x": 680, "y": 75, "w": 250, "h": 200, "html": "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center'><svg viewBox='0 0 300 230' width='100%' height='100%'><path d='M68,168 L150,34 L232,168' fill='rgba(13,148,136,0.14)' stroke='#0d9488' stroke-width='4' stroke-linejoin='round'/><ellipse cx='150' cy='168' rx='82' ry='26' fill='none' stroke='#0d9488' stroke-width='4'/><circle cx='150' cy='34' r='7' fill='#0d9488'/></svg></div>" } } },
+        { "name": "draw_exercise", "input": { "text": "קוטר 5 ס״מ — אורך המלבן", "answer": "15.7", "kind": "number", "x": 110, "y": 310, "hint": "אותו כלל כמו קודם, רק עם מספר קטן יותר. הכלל נשאר לך על הלוח מימין. שים/י לב שהתשובה יוצאת עם נקודה עשרונית.", "praise": "מעולה! אותו כלל בדיוק, גם כשהמספרים משתנים 🎉" } },
+        { "name": "write_text", "input": { "text": "היקף = 3.14 × קוטר", "x": 770, "y": 320, "size": 24 } },
+        { "name": "draw_exercise", "input": { "text": "עיגול אחד וקודקוד — איזה גוף?", "answer": "חרוט", "kind": "text", "x": 110, "y": 465, "hint": "כאן אין ציור. תחשוב/תחשבי: אם היו שני עיגולים והגוף היה ישר כל הדרך — זה היה גליל. אבל כאן יש בסיס אחד בלבד, והכול מתכנס לנקודה.", "praise": "בדיוק! בסיס עגול אחד וקודקוד — זה חרוט 🏆" } }
+      ]
+    }
+  }
+}

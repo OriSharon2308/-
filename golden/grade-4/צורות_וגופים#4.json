@@ -1,0 +1,130 @@
+{
+  "topic": "צורות וגופים",
+  "lesson": 4,
+  "title": "התיבה — פאות, מקצועות וקדקודים",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום נכיר את התיבה — הגוף של הקופסה. אם יש בבית קופסת דגנים או קופסת נעליים, קח/י אותה עכשיו ליד, זה מאוד יעזור. על הלוח תיבה, וצבעתי בה שלושה דברים: הצד השטוח בכחול — זו פאה. הקו הכתום שבו נפגשות שתי פאות — זה מקצוע. הנקודה האדומה בפינה — זה קדקוד. תעביר/י אצבע על הקופסה שלך על כל אחד מהם. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "התיבה — שלוש מילים חדשות", "x": 500, "y": 95, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "תיבה", "x": 220, "y": 150, "w": 560, "h": 320, "exact": true, "html": "<div style='font-family:system-ui,sans-serif;margin:0'><svg viewBox='0 0 560 320' width='100%' height='100%' style='direction:rtl' xmlns='http://www.w3.org/2000/svg'><polygon points='70,110 330,110 430,45 170,45' fill='#f3f6fa' stroke='#33475b' stroke-width='4'/><polygon points='330,110 430,45 430,205 330,270' fill='#eef2f7' stroke='#33475b' stroke-width='4'/><polygon points='70,110 330,110 330,270 70,270' fill='#cfe6ff' stroke='#33475b' stroke-width='4'/><line x1='170' y1='45' x2='170' y2='205' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='170' y1='205' x2='430' y2='205' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='70' y1='270' x2='170' y2='205' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='70' y1='270' x2='330' y2='270' stroke='#f2994a' stroke-width='10' stroke-linecap='round'/><circle cx='430' cy='45' r='11' fill='#eb5757'/><text x='200' y='200' text-anchor='middle' font-size='26' fill='#1f6fb2'>פאה</text><text x='200' y='302' text-anchor='middle' font-size='24' fill='#f2994a'>מקצוע</text><text x='478' y='28' text-anchor='middle' font-size='24' fill='#eb5757'>קדקוד</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "פאה · מקצוע · קדקוד", "x": 500, "y": 500, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "נספור פאות. הפאה שמולך והפאה שמאחור — בדיוק אותו מלבן, זוג. גם המכסה שלמעלה והרצפה שלמטה — זוג. וגם הצד הימני והצד השמאלי — זוג. שלושה זוגות, ובכל זוג שתי פאות: שש פאות לתיבה, וכולן מלבנים. תבדוק/תבדקי בקופסה שלך שהפאות הנגדיות באמת זהות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שש פאות — בשלושה זוגות", "x": 500, "y": 95, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "זוגות של פאות", "x": 150, "y": 145, "w": 700, "h": 320, "exact": true, "html": "<div style='font-family:system-ui,sans-serif;margin:0'><svg viewBox='0 0 700 320' width='100%' height='100%' style='direction:rtl' xmlns='http://www.w3.org/2000/svg'><polygon points='60,130 250,130 325,80 135,80' fill='#cdebd6' stroke='#33475b' stroke-width='4'/><polygon points='250,130 325,80 325,220 250,270' fill='#ffe6b3' stroke='#33475b' stroke-width='4'/><polygon points='60,130 250,130 250,270 60,270' fill='#cfe6ff' stroke='#33475b' stroke-width='4'/><line x1='135' y1='80' x2='135' y2='220' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='135' y1='220' x2='325' y2='220' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='60' y1='270' x2='135' y2='220' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><rect x='430' y='55' width='70' height='50' fill='#cfe6ff' stroke='#33475b' stroke-width='3'/><rect x='515' y='55' width='70' height='50' fill='#cfe6ff' stroke='#33475b' stroke-width='3'/><text x='655' y='88' font-size='22' fill='#33475b'>זוג</text><rect x='430' y='145' width='70' height='26' fill='#cdebd6' stroke='#33475b' stroke-width='3'/><rect x='515' y='145' width='70' height='26' fill='#cdebd6' stroke='#33475b' stroke-width='3'/><text x='655' y='166' font-size='22' fill='#33475b'>זוג</text><rect x='430' y='210' width='30' height='50' fill='#ffe6b3' stroke='#33475b' stroke-width='3'/><rect x='475' y='210' width='30' height='50' fill='#ffe6b3' stroke='#33475b' stroke-width='3'/><text x='655' y='243' font-size='22' fill='#33475b'>זוג</text><text x='350' y='308' text-anchor='middle' font-size='24' fill='#33475b'>שלושה זוגות · שש פאות</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "הפאה שמולך והפאה שמאחור — זהות", "x": 500, "y": 500, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו מקצועות — הקווים שבהם נפגשות שתי פאות. אל תספור/תספרי בערבוביה, תעשה/תעשי סדר: ארבעה מקצועות מסביב למכסה למעלה, ארבעה מסביב לרצפה למטה, וארבעה שעומדים ומחברים ביניהם. הקווים הדקים מאחור הם מקצועות שלא רואים, אבל הם שם. ביחד שנים-עשר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מקצוע — קו מפגש של שתי פאות", "x": 500, "y": 90, "size": 30 } },
+          { "name": "draw_line", "input": { "x1": 320, "y1": 180, "x2": 600, "y2": 180, "color": "#27ae60", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 600, "y1": 180, "x2": 690, "y2": 120, "color": "#27ae60", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 690, "y1": 120, "x2": 410, "y2": 120, "color": "#27ae60", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 410, "y1": 120, "x2": 320, "y2": 180, "color": "#27ae60", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 320, "y1": 360, "x2": 600, "y2": 360, "color": "#2f80ed", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 600, "y1": 360, "x2": 690, "y2": 300, "color": "#2f80ed", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 690, "y1": 300, "x2": 410, "y2": 300, "color": "#9ec6f5", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 410, "y1": 300, "x2": 320, "y2": 360, "color": "#9ec6f5", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 320, "y1": 180, "x2": 320, "y2": 360, "color": "#f2994a", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 600, "y1": 180, "x2": 600, "y2": 360, "color": "#f2994a", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 690, "y1": 120, "x2": 690, "y2": 300, "color": "#f2994a", "width": 6 } },
+          { "name": "draw_line", "input": { "x1": 410, "y1": 120, "x2": 410, "y2": 300, "color": "#f7c894", "width": 3 } },
+          { "name": "write_text", "input": { "text": "4 למעלה", "x": 170, "y": 190, "size": 24, "color": "#27ae60" } },
+          { "name": "write_text", "input": { "text": "4 למטה", "x": 170, "y": 260, "size": 24, "color": "#2f80ed" } },
+          { "name": "write_text", "input": { "text": "4 עומדים", "x": 170, "y": 330, "size": 24, "color": "#f2994a" } },
+          { "name": "write_text", "input": { "text": "ביחד 12 מקצועות", "x": 500, "y": 445, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "וקדקודים — הפינות. כל נקודה אדומה היא קדקוד, המקום שבו נפגשים שלושה מקצועות. ארבעה קדקודים למעלה מסביב למכסה, וארבעה למטה מסביב לרצפה. ביחד שמונה. תמשש/י את הפינות בקופסה שלך — הן ננעצות ביד, ובגלל זה קל לזכור אותן. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קדקוד — הפינה של התיבה", "x": 500, "y": 90, "size": 30 } },
+          { "name": "draw_line", "input": { "x1": 320, "y1": 180, "x2": 600, "y2": 180, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 600, "y1": 180, "x2": 690, "y2": 120, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 690, "y1": 120, "x2": 410, "y2": 120, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 410, "y1": 120, "x2": 320, "y2": 180, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 320, "y1": 360, "x2": 600, "y2": 360, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 600, "y1": 360, "x2": 690, "y2": 300, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 690, "y1": 300, "x2": 410, "y2": 300, "color": "#cfd6de", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 410, "y1": 300, "x2": 320, "y2": 360, "color": "#cfd6de", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 320, "y1": 180, "x2": 320, "y2": 360, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 600, "y1": 180, "x2": 600, "y2": 360, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 690, "y1": 120, "x2": 690, "y2": 300, "color": "#9aa5b1", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 410, "y1": 120, "x2": 410, "y2": 300, "color": "#cfd6de", "width": 3 } },
+          { "name": "draw_point", "input": { "x": 320, "y": 180, "label": "", "color": "#eb5757" } },
+          { "name": "draw_point", "input": { "x": 600, "y": 180, "label": "", "color": "#eb5757" } },
+          { "name": "draw_point", "input": { "x": 690, "y": 120, "label": "", "color": "#eb5757" } },
+          { "name": "draw_point", "input": { "x": 410, "y": 120, "label": "", "color": "#eb5757" } },
+          { "name": "draw_point", "input": { "x": 320, "y": 360, "label": "", "color": "#eb5757" } },
+          { "name": "draw_point", "input": { "x": 600, "y": 360, "label": "", "color": "#eb5757" } },
+          { "name": "draw_point", "input": { "x": 690, "y": 300, "label": "", "color": "#eb5757" } },
+          { "name": "draw_point", "input": { "x": 410, "y": 300, "label": "", "color": "#eb5757" } },
+          { "name": "write_text", "input": { "text": "4 למעלה", "x": 170, "y": 200, "size": 24 } },
+          { "name": "write_text", "input": { "text": "4 למטה", "x": 170, "y": 280, "size": 24 } },
+          { "name": "write_text", "input": { "text": "ביחד 8 קדקודים", "x": 500, "y": 445, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "זוכר/ת שריבוע הוא מלבן מיוחד? כאן זה אותו סיפור בדיוק. לקובייה יש שש פאות, שנים-עשר מקצועות ושמונה קדקודים — היא עומדת בכל התנאים של תיבה. ההבדל היחיד: כל שש הפאות שלה ריבועים, ולא סתם מלבנים. אז קובייה היא תיבה מיוחדת. כל קובייה היא תיבה, אבל לא כל תיבה היא קובייה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קובייה — תיבה מיוחדת", "x": 500, "y": 95, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "תיבה וקובייה", "x": 170, "y": 150, "w": 660, "h": 300, "exact": true, "html": "<div style='font-family:system-ui,sans-serif;margin:0'><svg viewBox='0 0 660 300' width='100%' height='100%' style='direction:rtl' xmlns='http://www.w3.org/2000/svg'><polygon points='50,120 250,120 310,75 110,75' fill='#f3f6fa' stroke='#33475b' stroke-width='4'/><polygon points='250,120 310,75 310,195 250,240' fill='#eef2f7' stroke='#33475b' stroke-width='4'/><polygon points='50,120 250,120 250,240 50,240' fill='#cfe6ff' stroke='#33475b' stroke-width='4'/><line x1='110' y1='75' x2='110' y2='195' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='110' y1='195' x2='310' y2='195' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='50' y1='240' x2='110' y2='195' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><polygon points='400,110 540,110 595,65 455,65' fill='#f3f6fa' stroke='#33475b' stroke-width='4'/><polygon points='540,110 595,65 595,205 540,250' fill='#eef2f7' stroke='#33475b' stroke-width='4'/><polygon points='400,110 540,110 540,250 400,250' fill='#cdebd6' stroke='#33475b' stroke-width='4'/><line x1='455' y1='65' x2='455' y2='205' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='455' y1='205' x2='595' y2='205' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='400' y1='250' x2='455' y2='205' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><text x='180' y='285' text-anchor='middle' font-size='26' fill='#33475b'>תיבה</text><text x='497' y='285' text-anchor='middle' font-size='26' fill='#27ae60'>קובייה</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "בקובייה כל הפאות ריבועים", "x": 500, "y": 495, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ולסיום — אלכסונים בתיבה, ויש שני סוגים. על פאה אחת אפשר למתוח קטע בין שתי פינות שלה, בדיוק כמו האלכסון של מלבן שלמדנו — זה אלכסון פאה, והוא שוכב על הפאה. אבל אפשר גם לצלול דרך תוך התיבה, מקדקוד לקדקוד שהכי רחוק ממנו — זה האלכסון המרחבי, והוא הקטע הארוך ביותר בתיבה. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שני אלכסונים בתיבה", "x": 500, "y": 95, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "אלכסון פאה ואלכסון מרחבי", "x": 200, "y": 150, "w": 600, "h": 310, "exact": true, "html": "<div style='font-family:system-ui,sans-serif;margin:0'><svg viewBox='0 0 600 310' width='100%' height='100%' style='direction:rtl' xmlns='http://www.w3.org/2000/svg'><polygon points='60,120 300,120 390,60 150,60' fill='#f3f6fa' stroke='#33475b' stroke-width='4'/><polygon points='300,120 390,60 390,210 300,270' fill='#eef2f7' stroke='#33475b' stroke-width='4'/><polygon points='60,120 300,120 300,270 60,270' fill='#f7fbff' stroke='#33475b' stroke-width='4'/><line x1='150' y1='60' x2='150' y2='210' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='150' y1='210' x2='390' y2='210' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='60' y1='270' x2='150' y2='210' stroke='#b9c3cf' stroke-width='3' stroke-dasharray='8 7'/><line x1='60' y1='270' x2='300' y2='120' stroke='#27ae60' stroke-width='6'/><line x1='60' y1='270' x2='390' y2='60' stroke='#eb5757' stroke-width='6' stroke-dasharray='12 8'/><circle cx='60' cy='270' r='8' fill='#33475b'/><circle cx='390' cy='60' r='8' fill='#eb5757'/><circle cx='300' cy='120' r='8' fill='#27ae60'/><text x='560' y='150' font-size='24' fill='#27ae60'>אלכסון פאה</text><text x='575' y='200' font-size='24' fill='#eb5757'>אלכסון מרחבי</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "המרחבי הוא הקטע הארוך ביותר", "x": 500, "y": 500, "size": 24 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח תיבה, והשאלה: כמה מקצועות יש לה? זכור/זכרי — מקצוע הוא קו שבו נפגשות שתי פאות. אל תספור/תספרי אחד-אחד בכל הכיוונים, כי מתבלבלים; תעשה/תעשי סדר לפי שלוש הקבוצות שדיברנו עליהן. את המספר שיצא כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה מקצועות יש לתיבה?", "answer": "12", "kind": "number", "hint": "חלק/י לשלוש קבוצות: המקצועות מסביב למכסה למעלה, המקצועות מסביב לרצפה למטה, ואלה שעומדים באמצע. בכל קבוצה ארבעה. אל תשכח/י את הקווים הדקים מאחור — גם הם נספרים.", "praise": "יופי! ספרת בקבוצות ולא פספסת את המקצועות שמאחור 👏" } },
+        { "name": "draw_line", "input": { "x1": 330, "y1": 210, "x2": 600, "y2": 210, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 600, "y1": 210, "x2": 600, "y2": 380, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 600, "y1": 380, "x2": 330, "y2": 380, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 330, "y1": 380, "x2": 330, "y2": 210, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 415, "y1": 155, "x2": 685, "y2": 155, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 685, "y1": 155, "x2": 685, "y2": 325, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 685, "y1": 325, "x2": 415, "y2": 325, "color": "#b9c3cf", "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 415, "y1": 325, "x2": 415, "y2": 155, "color": "#b9c3cf", "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 330, "y1": 210, "x2": 415, "y2": 155, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 600, "y1": 210, "x2": 685, "y2": 155, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 600, "y1": 380, "x2": 685, "y2": 325, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 330, "y1": 380, "x2": 415, "y2": 325, "color": "#b9c3cf", "width": 3 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה תספור/תספרי על הציור, בשנייה רק תחליט/י כן או לא — בלי לספור כלום, ובאחרונה תיזכר/י בזוגות. בשיעור הבא נפתח את הקופסה ונשטח אותה על השולחן, ונראה מתי היא באמת נסגרת חזרה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה קדקודים יש לתיבה?", "answer": "8", "kind": "number", "x": 140, "y": 130, "hint": "אל תספור/תספרי פאות — רק פינות. ארבע פינות מסביב למכסה למעלה, וארבע מסביב לרצפה למטה. תסתכל/י גם על הפינה שמאחור, זו שהקווים הדקים מגיעים אליה.", "praise": "מדויק! שמונה קדקודים — וזכרת גם את הפינה הנסתרת 🎉" } },
+        { "name": "draw_line", "input": { "x1": 580, "y1": 150, "x2": 770, "y2": 150, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 770, "y1": 150, "x2": 770, "y2": 290, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 770, "y1": 290, "x2": 580, "y2": 290, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 580, "y1": 290, "x2": 580, "y2": 150, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 645, "y1": 105, "x2": 835, "y2": 105, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 835, "y1": 105, "x2": 835, "y2": 245, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 835, "y1": 245, "x2": 645, "y2": 245, "color": "#b9c3cf", "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 645, "y1": 245, "x2": 645, "y2": 105, "color": "#b9c3cf", "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 580, "y1": 150, "x2": 645, "y2": 105, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 770, "y1": 150, "x2": 835, "y2": 105, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 770, "y1": 290, "x2": 835, "y2": 245, "color": "#33475b", "width": 5 } },
+        { "name": "draw_line", "input": { "x1": 580, "y1": 290, "x2": 645, "y2": 245, "color": "#b9c3cf", "width": 3 } },
+        { "name": "draw_exercise", "input": { "text": "האם קובייה היא תיבה — כן או לא?", "answer": "כן", "kind": "text", "x": 140, "y": 290, "hint": "תבדוק/תבדקי אם הקובייה עומדת בכל התנאים של תיבה: שש פאות, מקצועות וקדקודים. וזכור/זכרי שריבוע הוא סוג של מלבן — אז גם פאה שהיא ריבוע היא פאה מלבנית.", "praise": "בדיוק! קובייה עומדת בכל התנאים, ולכן היא תיבה מיוחדת 👏" } },
+        { "name": "draw_exercise", "input": { "text": "כמה זוגות של פאות זהות יש בתיבה?", "answer": "3", "kind": "number", "x": 140, "y": 440, "hint": "חשוב/חשבי אילו פאות מתאימות זו לזו: מולך ומאחור, למעלה ולמטה, ימין ושמאל. כל התאמה כזאת היא זוג אחד. כמה התאמות מצאת?", "praise": "כל הכבוד! שלושה זוגות של פאות זהות — זה מה שבונה תיבה 🏆" } }
+      ]
+    }
+  }
+}

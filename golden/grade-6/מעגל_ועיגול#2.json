@@ -1,0 +1,119 @@
+{
+  "topic": "מעגל ועיגול",
+  "lesson": 2,
+  "title": "לגלות את פאי — במדידה בפועל",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום את/ה מגלה משהו בעצמך, לא מקבל/ת אותו ממני. קח/י חוט, כרוך/כרכי אותו סביב כוס, ואז מתח/י אותו ישר על השולחן. הקו שקיבלת הוא ההיקף. עכשיו נשווה אותו לקוטר של הכוס: כמה פעמים הקוטר נכנס בקו הזה? ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה קוטרים נכנסים בהיקף?", "x": 480, "y": 80, "size": 32 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 560 270' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><circle cx='120' cy='80' r='60' fill='none' stroke='#0d9488' stroke-width='6'/><line x1='60' y1='80' x2='180' y2='80' stroke='#ea580c' stroke-width='5'/><text x='120' y='108' text-anchor='middle' font-size='19' font-weight='700' fill='#ea580c'>קוטר</text><text x='350' y='75' text-anchor='middle' font-size='21' font-weight='700' fill='#0f3b36'>כורכים חוט ומותחים אותו ישר</text><line x1='60' y1='185' x2='437' y2='185' stroke='#0d9488' stroke-width='9'/><g stroke='#0f3b36' stroke-width='3'><line x1='60' y1='170' x2='60' y2='200'/><line x1='180' y1='170' x2='180' y2='200'/><line x1='300' y1='170' x2='300' y2='200'/><line x1='420' y1='170' x2='420' y2='200'/><line x1='437' y1='170' x2='437' y2='200'/></g><text x='120' y='222' text-anchor='middle' font-size='17' font-weight='700' fill='#ea580c'>קוטר</text><text x='240' y='222' text-anchor='middle' font-size='17' font-weight='700' fill='#ea580c'>קוטר</text><text x='360' y='222' text-anchor='middle' font-size='17' font-weight='700' fill='#ea580c'>קוטר</text><text x='490' y='190' text-anchor='middle' font-size='17' font-weight='700' fill='#7c3aed'>ועוד קצת</text><text x='250' y='255' text-anchor='middle' font-size='21' font-weight='700' fill='#0f3b36'>ההיקף = 3 קוטרים ועוד קצת</text></svg>", "title": "מותחים את ההיקף", "x": 200, "y": 130, "w": 560, "h": 270, "exact": true } },
+          { "name": "write_text", "input": { "text": "שלושה קוטרים — ועוד קצת", "x": 480, "y": 440, "size": 30 } },
+          { "name": "write_text", "input": { "text": "בכל עיגול? בוא/י נבדוק", "x": 480, "y": 492, "size": 27 } }
+        ]
+      },
+      {
+        "reply": "על הלוח טבלה של שלושה עצמים עגולים. לכל אחד מדדנו שני דברים: את ההיקף ואת הקוטר. נתחיל מהמטבע — היקף 6.3 וקוטר 2. נחלק: 6.3 חלקי 2 יוצא בערך 3.15. תזכור/תזכרי את המספר הזה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מודדים שלושה עצמים עגולים", "x": 480, "y": 80, "size": 32 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 580 290' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='20' y='15' width='540' height='255' fill='none' stroke='#0d9488' stroke-width='3'/><g stroke='#0d9488' stroke-width='2'><line x1='20' y1='68' x2='560' y2='68'/><line x1='20' y1='135' x2='560' y2='135'/><line x1='20' y1='202' x2='560' y2='202'/><line x1='150' y1='15' x2='150' y2='270'/><line x1='280' y1='15' x2='280' y2='270'/><line x1='410' y1='15' x2='410' y2='270'/></g><g font-size='20' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='485' y='48'>עצם</text><text x='345' y='48'>היקף</text><text x='215' y='48'>קוטר</text><text x='85' y='48'>היקף : קוטר</text></g><g font-size='23' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='485' y='110'>מטבע</text><text x='345' y='110'>6.3</text><text x='215' y='110'>2</text><text x='485' y='177'>כוס</text><text x='345' y='177'>25.1</text><text x='215' y='177'>8</text><text x='485' y='244'>צלחת</text><text x='345' y='244'>47.1</text><text x='215' y='244'>15</text></g><text x='85' y='110' text-anchor='middle' font-size='23' font-weight='700' fill='#ea580c'>3.15</text><text x='85' y='177' text-anchor='middle' font-size='26' font-weight='700' fill='#94a3b8'>?</text><text x='85' y='244' text-anchor='middle' font-size='26' font-weight='700' fill='#94a3b8'>?</text></svg>", "title": "טבלת מדידות", "x": 190, "y": 130, "w": 580, "h": 290, "exact": true } },
+          { "name": "write_text", "input": { "text": "6.3 : 2 ≈ 3.15", "x": 480, "y": 462, "size": 34 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הכוס: 25.1 חלקי 8 יוצא בערך 3.14. והצלחת, שהיא הרבה יותר גדולה: 47.1 חלקי 15 גם כן 3.14. תראה/י מה קרה כאן — עצם קטן ועצם גדול, ובכל זאת יצא כמעט אותו מספר. זה לא מקרה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קטן וגדול — אותה תוצאה", "x": 480, "y": 80, "size": 32 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 580 290' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><rect x='20' y='15' width='540' height='255' fill='none' stroke='#0d9488' stroke-width='3'/><g stroke='#0d9488' stroke-width='2'><line x1='20' y1='68' x2='560' y2='68'/><line x1='20' y1='135' x2='560' y2='135'/><line x1='20' y1='202' x2='560' y2='202'/><line x1='150' y1='15' x2='150' y2='270'/><line x1='280' y1='15' x2='280' y2='270'/><line x1='410' y1='15' x2='410' y2='270'/></g><g font-size='20' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='485' y='48'>עצם</text><text x='345' y='48'>היקף</text><text x='215' y='48'>קוטר</text><text x='85' y='48'>היקף : קוטר</text></g><g font-size='23' font-weight='700' fill='#0f3b36' text-anchor='middle'><text x='485' y='110'>מטבע</text><text x='345' y='110'>6.3</text><text x='215' y='110'>2</text><text x='485' y='177'>כוס</text><text x='345' y='177'>25.1</text><text x='215' y='177'>8</text><text x='485' y='244'>צלחת</text><text x='345' y='244'>47.1</text><text x='215' y='244'>15</text></g><g font-size='23' font-weight='700' fill='#ea580c' text-anchor='middle'><text x='85' y='110'>3.15</text><text x='85' y='177'>3.14</text><text x='85' y='244'>3.14</text></g></svg>", "title": "טבלת מדידות מלאה", "x": 190, "y": 130, "w": 580, "h": 290, "exact": true } },
+          { "name": "write_text", "input": { "text": "בערך 3.14 בכל שורה", "x": 480, "y": 462, "size": 34 } }
+        ]
+      },
+      {
+        "reply": "למספר הזה יש שם: פאי. כותבים אותו באות היוונית π. והדבר המיוחד בו — הוא לא משתנה אף פעם. בגלגל ענק של לונה פארק ובטבעת קטנטנה יוצא בדיוק אותו יחס. π הוא בערך 3.14, בכל עיגול בעולם. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "היקף : קוטר = π ≈ 3.14", "x": 480, "y": 110, "size": 38 } },
+          { "name": "write_text", "input": { "text": "תמיד. בכל עיגול בעולם.", "x": 480, "y": 180, "size": 30 } },
+          { "name": "draw_circle", "input": { "x": 250, "y": 330, "r": 45, "color": "#0d9488" } },
+          { "name": "draw_line", "input": { "x1": 205, "y1": 330, "x2": 295, "y2": 330, "color": "#ea580c", "width": 5 } },
+          { "name": "draw_circle", "input": { "x": 680, "y": 330, "r": 110, "color": "#0d9488" } },
+          { "name": "draw_line", "input": { "x1": 570, "y1": 330, "x2": 790, "y2": 330, "color": "#ea580c", "width": 5 } },
+          { "name": "write_text", "input": { "text": "אותו יחס", "x": 250, "y": 400, "size": 26 } },
+          { "name": "write_text", "input": { "text": "אותו יחס", "x": 680, "y": 465, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ולמה הגילוי הזה כל כך שימושי? כי אם היקף חלקי קוטר תמיד יוצא 3.14, אפשר גם ללכת אחורה ולכפול: היקף = 3.14 כפול הקוטר. כלומר מספיק למדוד את הקוטר, ואפשר לדעת את ההיקף בלי שום חוט. את זה נעשה בשיעור הבא. עכשיו תור/ך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אפשר לחזור גם אחורה", "x": 480, "y": 85, "size": 32 } },
+          { "name": "write_text", "input": { "text": "היקף : קוטר = 3.14", "x": 480, "y": 190, "size": 36 } },
+          { "name": "draw_arrow", "input": { "x1": 480, "y1": 240, "x2": 480, "y2": 300, "color": "#ea580c", "width": 5 } },
+          { "name": "write_text", "input": { "text": "היקף = 3.14 × קוטר", "x": 480, "y": 350, "size": 36 } },
+          { "name": "write_text", "input": { "text": "מודדים קוטר — ויודעים היקף", "x": 480, "y": 440, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. מדדתי צמיג של אופניים: ההיקף 157 ס״מ, והקוטר 50 ס״מ. תבדוק/תבדקי אם גם כאן יוצא אותו יחס — תחלק/י את ההיקף בקוטר, ותכתוב/תכתבי בתיבה מה יצא.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "היקף 157, קוטר 50 — כמה בחילוק?",
+            "answer": "3.14",
+            "kind": "number",
+            "scale": 1.15,
+            "x": 110,
+            "y": 115,
+            "hint": "זו בדיוק אותה פעולה שעשינו בטבלה: היקף חלקי קוטר. תחלק/י 157 ב-50. אם התוצאה מזכירה לך משהו מהשיעור — סימן שאת/ה בכיוון הנכון.",
+            "praise": "יפה! בדקת בעצמך, וגם בצמיג יצא בדיוק אותו יחס 👏"
+          }
+        },
+        { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 420 280' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><circle cx='210' cy='125' r='100' fill='none' stroke='#0f3b36' stroke-width='9'/><circle cx='210' cy='125' r='72' fill='none' stroke='#94a3b8' stroke-width='3'/><circle cx='210' cy='125' r='10' fill='#0f3b36'/><line x1='110' y1='125' x2='310' y2='125' stroke='#2563eb' stroke-width='6'/><text x='210' y='155' text-anchor='middle' font-size='20' font-weight='700' fill='#2563eb'>קוטר 50</text><text x='210' y='30' text-anchor='middle' font-size='20' font-weight='700' fill='#0d9488'>היקף 157</text><text x='210' y='262' text-anchor='middle' font-size='22' font-weight='700' fill='#0f3b36'>היקף : קוטר = ?</text></svg>", "title": "צמיג אופניים", "x": 290, "y": 205, "w": 420, "h": 280, "exact": true } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה עיגול קטן מאוד — נראה אם גם בו זה עובד, והציור למטה שייך לה. שתי האחרונות בלי חישוב בכלל, רק לחשוב על מה שגילינו היום 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "היקף 9.42, קוטר 3 — כמה בחילוק?",
+            "answer": "3.14",
+            "kind": "number",
+            "scale": 1.15,
+            "x": 110,
+            "y": 110,
+            "hint": "אותה פעולה כמו קודם — היקף חלקי קוטר. תחלק/י את 9.42 ב-3, ותראה/י מה מקבלים בעיגול הקטנטן הזה.",
+            "praise": "מעולה! גם בעיגול קטנטן יצא אותו יחס 👏"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בערך כמה קוטרים נכנסים בהיקף?",
+            "answer": "3",
+            "kind": "number",
+            "x": 95,
+            "y": 225,
+            "hint": "תיזכר/י בחוט שמתחנו בהתחלה. הוא היה ארוך פי כמה מהקוטר? תעגל/י למספר שלם, בלי החלק שאחרי הנקודה.",
+            "praise": "נכון! קצת יותר משלושה קוטרים — זה בדיוק פאי 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בעיגול ענק היחס גדול יותר? כן/לא",
+            "answer": "לא",
+            "kind": "text",
+            "x": 130,
+            "y": 330,
+            "hint": "תסתכל/י שוב על הטבלה: מטבע קטן למעלה, צלחת גדולה למטה. העמודה האחרונה השתנתה ביניהם, או נשארה אותו דבר?",
+            "praise": "בדיוק! היחס לא תלוי בגודל — הוא קבוע בכל עיגול 🏆"
+          }
+        },
+        { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 400 120' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><circle cx='120' cy='60' r='45' fill='none' stroke='#0d9488' stroke-width='5'/><line x1='75' y1='60' x2='165' y2='60' stroke='#2563eb' stroke-width='5'/><text x='120' y='88' text-anchor='middle' font-size='19' font-weight='700' fill='#2563eb'>קוטר 3</text><text x='120' y='24' text-anchor='middle' font-size='19' font-weight='700' fill='#0d9488'>היקף 9.42</text><text x='300' y='55' text-anchor='middle' font-size='21' font-weight='700' fill='#0f3b36'>לשאלה 1:</text><text x='300' y='86' text-anchor='middle' font-size='21' font-weight='700' fill='#0f3b36'>היקף : קוטר = ?</text></svg>", "title": "עזר לשאלה הראשונה", "x": 290, "y": 390, "w": 400, "h": 120, "exact": true } }
+      ]
+    }
+  }
+}

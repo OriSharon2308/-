@@ -1,0 +1,308 @@
+{
+  "topic": "חקר נתונים וניתוח סיכויים",
+  "lesson": 2,
+  "title": "לבנות דיאגרמה, וגם כפולה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור שעבר קראנו דיאגרמה. היום נעשה הפוך: מטבלה — לציור. הנה הטבלה של הספרייה. ביום ראשון הגיעו 40 מבקרים, בשני 25, בשלישי 35 וברביעי 50. בטבלה יש את כל המספרים, אבל קשה לראות בה מי הכי גדול. בציור רואים את זה מיד. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מטבלה — לדיאגרמה",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><table style='border-collapse:collapse'><tr><th style='border:2px solid #2b4055;padding:8px 22px;background:#e8eff6;font-size:18px'>יום</th><th style='border:2px solid #2b4055;padding:8px 22px;background:#e8eff6;font-size:18px'>מבקרים</th></tr><tr><td style='border:2px solid #2b4055;padding:8px 22px;font-size:18px;text-align:center'>ראשון</td><td style='border:2px solid #2b4055;padding:8px 22px;font-size:18px;text-align:center'>40</td></tr><tr><td style='border:2px solid #2b4055;padding:8px 22px;font-size:18px;text-align:center'>שני</td><td style='border:2px solid #2b4055;padding:8px 22px;font-size:18px;text-align:center'>25</td></tr><tr><td style='border:2px solid #2b4055;padding:8px 22px;font-size:18px;text-align:center'>שלישי</td><td style='border:2px solid #2b4055;padding:8px 22px;font-size:18px;text-align:center'>35</td></tr><tr><td style='border:2px solid #2b4055;padding:8px 22px;font-size:18px;text-align:center'>רביעי</td><td style='border:2px solid #2b4055;padding:8px 22px;font-size:18px;text-align:center'>50</td></tr></table></div>",
+              "title": "טבלת הספרייה",
+              "x": 290,
+              "y": 145,
+              "w": 420,
+              "h": 295,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בטבלה קוראים. בציור רואים.",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "לפני שמציירים משהו — מחליטים כמה שווה משבצת אחת. אם משבצת שווה 1, בשביל 50 צריך לצייר 50 משבצות. לא נגמור. אם משבצת שווה 5 — בשביל 50 צריך רק 10 משבצות, ובשביל 25 רק 5. אז החלטנו: משבצת אחת = 5 מבקרים. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קודם: כמה שווה משבצת אחת?",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:70px;color:#16324f'><div style='text-align:center'><div style='font-size:16px;margin-bottom:8px'>צריך 50 משבצות</div><div style='width:46px;height:150px;background:repeating-linear-gradient(to top,#4a86c8 0 2px,#ffffff 2px 3px);outline:1px solid #46617c;margin:0 auto'></div><div style='font-size:17px;font-weight:700;margin-top:10px'>משבצת = 1</div></div><div style='text-align:center'><div style='font-size:16px;margin-bottom:8px'>צריך 10 משבצות</div><div style='width:46px;height:150px;background:repeating-linear-gradient(to top,#49a97a 0 13px,#ffffff 13px 15px);outline:1px solid #46617c;margin:0 auto'></div><div style='font-size:17px;font-weight:700;margin-top:10px'>משבצת = 5</div></div></div>",
+              "title": "כמה משבצות ל-50",
+              "x": 300,
+              "y": 145,
+              "w": 400,
+              "h": 295,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בוחרים ערך שנוח לצייר",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו מציירים. משבצת = 5, אז עמודת ראשון היא 8 משבצות, שני 5 משבצות, שלישי 7 ורביעי 10. כל עמודה עולה בדיוק עד המספר שלה בטבלה, ואז עוצרים. תראה/י כמה מהר העין תופסת שרביעי הוא הכי גדול — בטבלה זה לקח לנו הרבה יותר זמן. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כל עמודה עד המספר שלה",
+              "x": 500,
+              "y": 92,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים בספרייה</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:240px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:15px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:39px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:63px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:87px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:135px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:159px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:183px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:207px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:231px;font-size:14px;'>50</div></div><div style='position:relative;height:240px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 22px,#d3dde7 22px 24px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:192px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:120px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:168px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:240px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div></div></div></div></div>",
+              "title": "הדיאגרמה שבנינו",
+              "x": 280,
+              "y": 140,
+              "w": 440,
+              "h": 320,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "40 · 25 · 35 · 50",
+              "x": 500,
+              "y": 496,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "אבל יש כלל שאסור לשכוח: כל העמודות באותו רוחב, והרווחים ביניהן שווים. תסתכל/י על שני הציורים. בשניהם בדיוק אותם מספרים! רק שבאדום עמודה אחת רחבה יותר, והרווחים לא שווים — ולכן העין חושבת שהיא גדולה יותר. ציור כזה משקר. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "רוחב אחיד, רווחים שווים",
+              "x": 500,
+              "y": 92,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:64px;color:#16324f'><div style='text-align:center'><div style='height:130px;display:flex;align-items:flex-end;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;padding:0 10px'><div style='width:26px;height:104px;background:#d9534f;outline:1px solid #46617c;margin-left:10px'></div><div style='width:74px;height:130px;background:#d9534f;outline:1px solid #46617c;margin-left:34px'></div><div style='width:44px;height:78px;background:#d9534f;outline:1px solid #46617c;'></div></div><div style='font-size:17px;font-weight:700;margin-top:12px;color:#d9534f'>ככה זה משקר</div></div><div style='text-align:center'><div style='height:130px;display:flex;align-items:flex-end;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;padding:0 10px'><div style='width:46px;height:104px;background:#49a97a;outline:1px solid #46617c;margin-left:20px'></div><div style='width:46px;height:130px;background:#49a97a;outline:1px solid #46617c;margin-left:20px'></div><div style='width:46px;height:78px;background:#49a97a;outline:1px solid #46617c;'></div></div><div style='font-size:17px;font-weight:700;margin-top:12px;color:#49a97a'>ככה זה נכון</div></div></div>",
+              "title": "מה משקר ומה נכון",
+              "x": 250,
+              "y": 145,
+              "w": 500,
+              "h": 290,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אותם מספרים — ורושם אחר לגמרי",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ועכשיו משהו חדש: דיאגרמה כפולה. רוצים להשוות שתי שנים באותם ימים. אז בכל יום מציירים שתי עמודות זו לצד זו — כחולה לשנה שעברה, כתומה לשנה הזאת. ומתחת יש מקרא: הוא זה שמסביר איזה צבע שייך למי. בלי מקרא אף אחד לא יבין את הציור. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "דיאגרמה כפולה — שתי שנים יחד",
+              "x": 500,
+              "y": 88,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים בספרייה — שתי שנים</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:220px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:11px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:31px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:51px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:71px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:91px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:131px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:151px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:171px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:191px;font-size:14px;'>50</div><div style='position:absolute;right:2px;bottom:211px;font-size:14px;'>55</div></div><div style='position:relative;height:220px;display:flex;align-items:flex-end;gap:26px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 18px,#d3dde7 18px 20px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:160px;background:repeating-linear-gradient(to top,#4a86c8 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div><div style='width:26px;height:180px;background:repeating-linear-gradient(to top,#e8933a 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:100px;background:repeating-linear-gradient(to top,#4a86c8 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div><div style='width:26px;height:120px;background:repeating-linear-gradient(to top,#e8933a 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:140px;background:repeating-linear-gradient(to top,#4a86c8 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div><div style='width:26px;height:200px;background:repeating-linear-gradient(to top,#e8933a 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:200px;background:repeating-linear-gradient(to top,#4a86c8 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div><div style='width:26px;height:220px;background:repeating-linear-gradient(to top,#e8933a 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:26px;padding:9px 14px 0;font-size:14px'><div style='width:56px;text-align:center'>ראשון</div><div style='width:56px;text-align:center'>שני</div><div style='width:56px;text-align:center'>שלישי</div><div style='width:56px;text-align:center'>רביעי</div></div></div><div style='display:flex;gap:20px;justify-content:center;margin-top:10px;font-size:14px'><div style='display:flex;align-items:center;gap:6px'><span style='width:16px;height:16px;background:#4a86c8;display:inline-block;outline:1px solid #46617c'></span>שנה שעברה</div><div style='display:flex;align-items:center;gap:6px'><span style='width:16px;height:16px;background:#e8933a;display:inline-block;outline:1px solid #46617c'></span>השנה</div></div></div></div>",
+              "title": "דיאגרמה כפולה",
+              "x": 270,
+              "y": 135,
+              "w": 460,
+              "h": 330,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "המקרא מסביר מה כל צבע",
+              "x": 500,
+              "y": 498,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ובשביל מה דיאגרמה כפולה טובה? לראות איפה ההפרש הכי גדול. עוברים יום-יום ומסתכלים על המרחק בין שתי העמודות. בראשון ההפרש קטן, בשני קטן, ברביעי גם — אבל בשלישי הפער בולט: 35 מול 50, הפרש של 15. שם השתנה הכי הרבה. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "איפה ההפרש הכי גדול?",
+              "x": 500,
+              "y": 88,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים בספרייה — שתי שנים</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:220px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:11px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:31px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:51px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:71px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:91px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:131px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:151px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:171px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:191px;font-size:14px;'>50</div><div style='position:absolute;right:2px;bottom:211px;font-size:14px;'>55</div></div><div style='position:relative;height:220px;display:flex;align-items:flex-end;gap:26px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 18px,#d3dde7 18px 20px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:160px;background:repeating-linear-gradient(to top,#4a86c8 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div><div style='width:26px;height:180px;background:repeating-linear-gradient(to top,#e8933a 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:100px;background:repeating-linear-gradient(to top,#4a86c8 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div><div style='width:26px;height:120px;background:repeating-linear-gradient(to top,#e8933a 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;outline:3px dashed #d62828;outline-offset:5px;'><div style='width:26px;height:140px;background:repeating-linear-gradient(to top,#4a86c8 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div><div style='width:26px;height:200px;background:repeating-linear-gradient(to top,#e8933a 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:200px;background:repeating-linear-gradient(to top,#4a86c8 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div><div style='width:26px;height:220px;background:repeating-linear-gradient(to top,#e8933a 0 18px,#eef3f8 18px 20px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:26px;padding:9px 14px 0;font-size:14px'><div style='width:56px;text-align:center'>ראשון</div><div style='width:56px;text-align:center'>שני</div><div style='width:56px;text-align:center'>שלישי</div><div style='width:56px;text-align:center'>רביעי</div></div></div><div style='display:flex;gap:20px;justify-content:center;margin-top:10px;font-size:14px'><div style='display:flex;align-items:center;gap:6px'><span style='width:16px;height:16px;background:#4a86c8;display:inline-block;outline:1px solid #46617c'></span>שנה שעברה</div><div style='display:flex;align-items:center;gap:6px'><span style='width:16px;height:16px;background:#e8933a;display:inline-block;outline:1px solid #46617c'></span>השנה</div></div></div></div>",
+              "title": "ההפרש הגדול ביותר",
+              "x": 270,
+              "y": 135,
+              "w": 460,
+              "h": 330,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "35 מול 50 — הפרש של 15",
+              "x": 500,
+              "y": 498,
+              "size": 26
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "תור שלך לבנות. בטבלה כתוב שביום שלישי הגיעו 35 מבקרים, והחלטנו שמשבצת אחת שווה 5. אז כמה משבצות צריכה העמודה של שלישי? שמתי לך על הלוח ציר ריק — תעלה/תעלי עליו בקפיצות של 5 עד שתגיע/י ל-35, ותספור/י כמה קפיצות עשית. את המספר כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "משבצת = 5. כמה משבצות בעמודה של 35?",
+            "answer": "7",
+            "kind": "number",
+            "hint": "כל משבצת שווה 5, אז תספור/י בקפיצות של 5: 5, 10, 15… ותעצור/עצרי כשהגעת ל-35. מספר הקפיצות הוא מספר המשבצות.",
+            "praise": "יופי! זה בדיוק מה שעושים לפני שמציירים — סופרים קפיצות 👏"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>ציר ריק — משבצת = 5</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:240px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:15px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:39px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:63px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:87px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:135px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:159px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:183px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:207px;font-size:14px;'>45</div><div style='position:absolute;right:2px;bottom:231px;font-size:14px;'>50</div></div><div style='position:relative;height:240px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 22px,#d3dde7 22px 24px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:0px;background:repeating-linear-gradient(to top,#4a86c8 0 22px,#eef3f8 22px 24px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'></div></div></div></div></div>",
+            "title": "ציר ריק",
+            "x": 340,
+            "y": 190,
+            "w": 340,
+            "h": 300,
+            "exact": true
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, על דיאגרמה כפולה חדשה: כמה עוגיות שוקולד וכמה עוגיות וניל נמכרו בכל יום. קודם תסתכל/י על המקרא — איזה צבע זה שוקולד ואיזה וניל. בשאלה האחרונה תכתוב/תכתבי שם של יום, מילה אחת. בשיעור הבא נשאל את הדיאגרמה שאלות קשות יותר 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "משבצת = 5. כמה משבצות צריך בשביל 45?",
+            "answer": "9",
+            "kind": "number",
+            "x": 200,
+            "y": 140,
+            "hint": "תספור/י בקפיצות של 5 עד שתגיע/י ל-45, ותספור/י כמה קפיצות עשית. אפשר גם להיעזר במספרים שעל הציר בדיאגרמה.",
+            "praise": "מצוין! ידעת כמה משבצות צריך עוד לפני שציירת 👏"
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "קודם מחליטים, אחר-כך מציירים",
+            "x": 210,
+            "y": 205,
+            "size": 22
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בשני: שוקולד 30, וניל 15. מה ההפרש?",
+            "answer": "15",
+            "kind": "number",
+            "x": 200,
+            "y": 300,
+            "hint": "תסתכל/י על שתי העמודות של יום שני. תקרא/י מהציר עד כמה מגיעה כל אחת, ואז תחסר/י את הקטן מהגדול.",
+            "praise": "יפה! הפרש זה בדיוק המרחק בין שתי העמודות 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "באיזה יום ההפרש בין הטעמים הכי גדול?",
+            "answer": "רביעי",
+            "kind": "text",
+            "x": 200,
+            "y": 455,
+            "hint": "אל תחשב/י כלום. רק תעבור/תעברי יום-יום ותסתכל/י איפה המרחק בין שתי העמודות הכי גדול. תכתוב/תכתבי את שם היום — מילה אחת.",
+            "praise": "אלוף/ה! זיהית את הזוג עם הפער הגדול — בשביל זה בדיוק בנו דיאגרמה כפולה 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>עוגיות שנמכרו — שוקולד ווניל</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:198px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:13px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:35px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:57px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:79px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:101px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:123px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:145px;font-size:14px;'>35</div><div style='position:absolute;right:2px;bottom:167px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:189px;font-size:14px;'>45</div></div><div style='position:relative;height:198px;display:flex;align-items:flex-end;gap:26px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 20px,#d3dde7 20px 22px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:88px;background:repeating-linear-gradient(to top,#4a86c8 0 20px,#eef3f8 20px 22px);outline:1px solid #46617c'></div><div style='width:26px;height:110px;background:repeating-linear-gradient(to top,#e8933a 0 20px,#eef3f8 20px 22px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:132px;background:repeating-linear-gradient(to top,#4a86c8 0 20px,#eef3f8 20px 22px);outline:1px solid #46617c'></div><div style='width:26px;height:66px;background:repeating-linear-gradient(to top,#e8933a 0 20px,#eef3f8 20px 22px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:110px;background:repeating-linear-gradient(to top,#4a86c8 0 20px,#eef3f8 20px 22px);outline:1px solid #46617c'></div><div style='width:26px;height:110px;background:repeating-linear-gradient(to top,#e8933a 0 20px,#eef3f8 20px 22px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:26px;height:66px;background:repeating-linear-gradient(to top,#4a86c8 0 20px,#eef3f8 20px 22px);outline:1px solid #46617c'></div><div style='width:26px;height:176px;background:repeating-linear-gradient(to top,#e8933a 0 20px,#eef3f8 20px 22px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:26px;padding:9px 14px 0;font-size:14px'><div style='width:56px;text-align:center'>ראשון</div><div style='width:56px;text-align:center'>שני</div><div style='width:56px;text-align:center'>שלישי</div><div style='width:56px;text-align:center'>רביעי</div></div></div><div style='display:flex;gap:20px;justify-content:center;margin-top:10px;font-size:14px'><div style='display:flex;align-items:center;gap:6px'><span style='width:16px;height:16px;background:#4a86c8;display:inline-block;outline:1px solid #46617c'></span>שוקולד</div><div style='display:flex;align-items:center;gap:6px'><span style='width:16px;height:16px;background:#e8933a;display:inline-block;outline:1px solid #46617c'></span>וניל</div></div></div></div>",
+            "title": "עוגיות — שוקולד ווניל",
+            "x": 490,
+            "y": 105,
+            "w": 450,
+            "h": 345,
+            "exact": true
+          }
+        }
+      ]
+    }
+  }
+}

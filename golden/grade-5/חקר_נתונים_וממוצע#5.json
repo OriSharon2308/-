@@ -1,0 +1,92 @@
+{
+  "topic": "חקר נתונים וממוצע",
+  "lesson": 5,
+  "title": "ממוצע הפוך — ותכונות הממוצע",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם ידענו את כל המספרים וחיפשנו את הממוצע. היום הפוך: יודעים את הממוצע, וחסר מספר אחד. זו שאלה שחוזרת כמעט בכל מבחן. ארבעה ילדים אספו בולים, והממוצע שלהם 5. רון אסף 7, גיל 3, נועה 6 — וכמה אספה דנה? ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "יודעים ממוצע — מחפשים מספר חסר", "x": 500, "y": 85, "size": 30 } },
+          { "name": "write_text", "input": { "text": "ממוצע 4 ילדים: 5", "x": 790, "y": 190, "size": 28, "color": "#0f766e" } },
+          { "name": "write_text", "input": { "text": "רון 7 · גיל 3 · נועה 6", "x": 790, "y": 270, "size": 26 } },
+          { "name": "write_text", "input": { "text": "דנה: ?", "x": 790, "y": 350, "size": 34, "color": "#b91c1c" } },
+          { "name": "render_widget", "input": { "title": "בולים שאספו", "x": 120, "y": 130, "w": 440, "h": 352, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 320' width='100%' height='100%'><text x='195' y='24' text-anchor='middle' font-size='16' fill='#1e3a5f'>רון · גיל · נועה · דנה</text><g fill='#3b82f6'><rect x='318' y='268' width='44' height='20'/><rect x='318' y='246' width='44' height='20'/><rect x='318' y='224' width='44' height='20'/><rect x='318' y='202' width='44' height='20'/><rect x='318' y='180' width='44' height='20'/><rect x='318' y='158' width='44' height='20'/><rect x='318' y='136' width='44' height='20'/></g><g fill='#f59e0b'><rect x='228' y='268' width='44' height='20'/><rect x='228' y='246' width='44' height='20'/><rect x='228' y='224' width='44' height='20'/></g><g fill='#10b981'><rect x='138' y='268' width='44' height='20'/><rect x='138' y='246' width='44' height='20'/><rect x='138' y='224' width='44' height='20'/><rect x='138' y='202' width='44' height='20'/><rect x='138' y='180' width='44' height='20'/><rect x='138' y='158' width='44' height='20'/></g><rect x='48' y='180' width='44' height='108' fill='#f1f5f9' stroke='#b91c1c' stroke-width='2' stroke-dasharray='5 4'/><text x='70' y='245' text-anchor='middle' font-size='30' fill='#b91c1c'>?</text><line x1='30' y1='290' x2='375' y2='290' stroke='#334155' stroke-width='2'/><g font-size='16' fill='#1e293b' text-anchor='middle'><text x='340' y='310'>7</text><text x='250' y='310'>3</text><text x='160' y='310'>6</text><text x='70' y='310'>?</text></g></svg></div>" } }
+        ]
+      },
+      {
+        "reply": "הצעד הראשון הוא הסוד. ממוצע 5 אומר: אילו חילקנו בשווה, לכל ילד היו 5 בולים. יש 4 ילדים, אז יחד יש להם 5 כפול 4 = 20 בולים. שים/שימי לב מה עשינו — הלכנו אחורה, מהממוצע אל הסכום. עכשיו אנחנו יודעים משהו חדש: הסכום הוא 20. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מהממוצע אחורה אל הסכום", "x": 500, "y": 85, "size": 32 } },
+          { "name": "write_text", "input": { "text": "ממוצע 5 · 4 ילדים", "x": 790, "y": 200, "size": 28 } },
+          { "name": "write_text", "input": { "text": "5 × 4 = 20", "x": 790, "y": 285, "size": 36, "color": "#0f766e" } },
+          { "name": "write_text", "input": { "text": "ביחד יש 20 בולים", "x": 790, "y": 365, "size": 26, "color": "#64748b" } },
+          { "name": "render_widget", "input": { "title": "אילו חילקנו בשווה", "x": 120, "y": 130, "w": 440, "h": 352, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 320' width='100%' height='100%'><text x='195' y='24' text-anchor='middle' font-size='16' fill='#1e3a5f'>לכל אחד 5 — ביחד 20</text><g fill='#0f766e'><rect x='318' y='268' width='44' height='20'/><rect x='318' y='246' width='44' height='20'/><rect x='318' y='224' width='44' height='20'/><rect x='318' y='202' width='44' height='20'/><rect x='318' y='180' width='44' height='20'/><rect x='228' y='268' width='44' height='20'/><rect x='228' y='246' width='44' height='20'/><rect x='228' y='224' width='44' height='20'/><rect x='228' y='202' width='44' height='20'/><rect x='228' y='180' width='44' height='20'/><rect x='138' y='268' width='44' height='20'/><rect x='138' y='246' width='44' height='20'/><rect x='138' y='224' width='44' height='20'/><rect x='138' y='202' width='44' height='20'/><rect x='138' y='180' width='44' height='20'/><rect x='48' y='268' width='44' height='20'/><rect x='48' y='246' width='44' height='20'/><rect x='48' y='224' width='44' height='20'/><rect x='48' y='202' width='44' height='20'/><rect x='48' y='180' width='44' height='20'/></g><line x1='30' y1='290' x2='375' y2='290' stroke='#334155' stroke-width='2'/><g font-size='16' fill='#0f766e' text-anchor='middle'><text x='340' y='310'>5</text><text x='250' y='310'>5</text><text x='160' y='310'>5</text><text x='70' y='310'>5</text></g></svg></div>" } }
+        ]
+      },
+      {
+        "reply": "עכשיו קל. הסכום של כולם 20. שלושה מהם כבר ידועים: 7 + 3 + 6 = 16. אז מה שנשאר לדנה הוא 20 פחות 16 = 4 בולים. בדיקה מהירה: 7 + 3 + 6 + 4 = 20, ו-20 חלקי 4 = 5 — בדיוק הממוצע שהובטח. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הסכום פחות מה שידוע", "x": 500, "y": 85, "size": 32 } },
+          { "name": "write_text", "input": { "text": "7 + 3 + 6 = 16", "x": 790, "y": 195, "size": 30 } },
+          { "name": "write_text", "input": { "text": "20 − 16 = 4", "x": 790, "y": 275, "size": 34, "color": "#7c3aed" } },
+          { "name": "write_text", "input": { "text": "לדנה יש 4 בולים", "x": 790, "y": 355, "size": 26, "color": "#7c3aed" } },
+          { "name": "render_widget", "input": { "title": "עכשיו הכול ידוע", "x": 120, "y": 130, "w": 440, "h": 352, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 320' width='100%' height='100%'><text x='195' y='24' text-anchor='middle' font-size='16' fill='#1e3a5f'>רון · גיל · נועה · דנה</text><g fill='#3b82f6'><rect x='318' y='268' width='44' height='20'/><rect x='318' y='246' width='44' height='20'/><rect x='318' y='224' width='44' height='20'/><rect x='318' y='202' width='44' height='20'/><rect x='318' y='180' width='44' height='20'/><rect x='318' y='158' width='44' height='20'/><rect x='318' y='136' width='44' height='20'/></g><g fill='#f59e0b'><rect x='228' y='268' width='44' height='20'/><rect x='228' y='246' width='44' height='20'/><rect x='228' y='224' width='44' height='20'/></g><g fill='#10b981'><rect x='138' y='268' width='44' height='20'/><rect x='138' y='246' width='44' height='20'/><rect x='138' y='224' width='44' height='20'/><rect x='138' y='202' width='44' height='20'/><rect x='138' y='180' width='44' height='20'/><rect x='138' y='158' width='44' height='20'/></g><g fill='#7c3aed'><rect x='48' y='268' width='44' height='20'/><rect x='48' y='246' width='44' height='20'/><rect x='48' y='224' width='44' height='20'/><rect x='48' y='202' width='44' height='20'/></g><line x1='30' y1='290' x2='375' y2='290' stroke='#334155' stroke-width='2'/><g font-size='16' fill='#1e293b' text-anchor='middle'><text x='340' y='310'>7</text><text x='250' y='310'>3</text><text x='160' y='310'>6</text><text x='70' y='310'>4</text></g></svg></div>" } }
+        ]
+      },
+      {
+        "reply": "ועכשיו שלוש תכונות שכדאי להכיר. תכונה ראשונה: הממוצע תמיד נמצא בין המספר הקטן ביותר לגדול ביותר. אצלנו הקטן 3, הגדול 7, והממוצע 5 — יושב באמצע ביניהם. אם יצא לך ממוצע מחוץ לטווח הזה, סימן שנפלה טעות בחישוב. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "תכונה 1: הממוצע תמיד בפנים", "x": 500, "y": 95, "size": 32 } },
+          { "name": "write_text", "input": { "text": "ממוצע 5", "x": 500, "y": 175, "size": 30, "color": "#b91c1c" } },
+          { "name": "write_text", "input": { "text": "הקטן 3", "x": 352, "y": 235, "size": 24 } },
+          { "name": "write_text", "input": { "text": "הגדול 7", "x": 648, "y": 235, "size": 24 } },
+          { "name": "draw_number_line", "input": { "x": 130, "y": 290, "from": 0, "to": 10, "step": 1, "length": 740 } },
+          { "name": "draw_point", "input": { "x": 352, "y": 290, "label": "", "color": "#1d4ed8" } },
+          { "name": "draw_point", "input": { "x": 648, "y": 290, "label": "", "color": "#1d4ed8" } },
+          { "name": "draw_point", "input": { "x": 500, "y": 290, "label": "", "color": "#b91c1c" } },
+          { "name": "write_text", "input": { "text": "לא קטן מהקטן · לא גדול מהגדול", "x": 500, "y": 400, "size": 28, "color": "#0f766e" } },
+          { "name": "write_text", "input": { "text": "המספרים: 7, 3, 6, 4", "x": 500, "y": 460, "size": 24, "color": "#64748b" } }
+        ]
+      },
+      {
+        "reply": "ועוד שתי תכונות. תכונה שנייה: הממוצע לא חייב להיות מספר שלם. קח/י את 3, 3, 5, 7, 7, 10 — הסכום 35, ויש 6 מספרים, ו-35 חלקי 6 לא יוצא שלם. זה בסדר גמור. תכונה שלישית: הממוצע לא חייב להיות אחד מהמספרים ברשימה — הממוצע של 4 ו-6 הוא 5, ו-5 בכלל לא שם. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "תכונות 2 ו-3", "x": 500, "y": 90, "size": 32 } },
+          { "name": "write_text", "input": { "text": "2. הממוצע לא חייב להיות שלם", "x": 500, "y": 175, "size": 28, "color": "#1d4ed8" } },
+          { "name": "write_text", "input": { "text": "3, 3, 5, 7, 7, 10 — הסכום 35, יש 6 מספרים", "x": 500, "y": 235, "size": 25 } },
+          { "name": "write_text", "input": { "text": "35 : 6 — לא יוצא שלם, וזה בסדר", "x": 500, "y": 290, "size": 25, "color": "#64748b" } },
+          { "name": "write_text", "input": { "text": "3. הממוצע לא חייב להיות אחד מהמספרים", "x": 500, "y": 385, "size": 28, "color": "#7c3aed" } },
+          { "name": "write_text", "input": { "text": "הממוצע של 4 ו-6 הוא 5 — ו-5 בכלל לא ברשימה", "x": 500, "y": 445, "size": 25 } }
+        ]
+      },
+      {
+        "reply": "ולסיום שאלת חשיבה, בלי לחשב בכלל. ממוצע הגבהים בכיתה הוא 145 ס״מ, ומצטרף תלמיד חדש בגובה 170. מה יקרה לממוצע? 170 גדול מהממוצע, אז הוא מוסיף לערימה יותר ממה ש'מגיע' לו — והוא מושך את כולם למעלה. הממוצע יעלה. תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שאלת חשיבה", "x": 500, "y": 95, "size": 32 } },
+          { "name": "write_text", "input": { "text": "ממוצע הכיתה: 145 ס״מ", "x": 500, "y": 185, "size": 30 } },
+          { "name": "write_text", "input": { "text": "הצטרף תלמיד בגובה 170 ס״מ", "x": 500, "y": 250, "size": 30 } },
+          { "name": "write_text", "input": { "text": "170 גדול מ-145 — הוא מושך למעלה", "x": 500, "y": 335, "size": 28, "color": "#64748b" } },
+          { "name": "draw_arrow", "input": { "x1": 620, "y1": 465, "x2": 620, "y2": 405, "color": "#0f766e", "width": 4 } },
+          { "name": "write_text", "input": { "text": "הממוצע יעלה", "x": 440, "y": 435, "size": 34, "color": "#0f766e" } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. הממוצע של שלושה מספרים הוא 8, ושניים מהם 6 ו-11. שמתי לך על הלוח את תמונת הממוצע — שלושה מגדלים שווים בגובה 8. הצעד הראשון: כמה קוביות יש בשלושתם ביחד? זה הסכום. הצעד השני: הורד/הורידי מהסכום את שני המספרים שכבר ידועים. מה שנשאר הוא המספר השלישי!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "ממוצע 3 מספרים הוא 8. שניים הם 6 ו-11 — השלישי?", "answer": "7", "kind": "number", "x": 270, "y": 415, "hint": "אל תחסר/י ישר מ-8. קודם לך/לכי מהממוצע אל הסכום: ממוצע כפול כמות. רק אז הורד/הורידי מהסכום את 6 ואת 11.", "praise": "מצוין! עבדת אחורה — מהממוצע אל הסכום ומשם אל המספר החסר 🏆" } },
+        { "name": "render_widget", "input": { "title": "תמונת הממוצע", "x": 520, "y": 105, "w": 420, "h": 336, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 320' width='100%' height='100%'><text x='195' y='24' text-anchor='middle' font-size='16' fill='#1e3a5f'>ממוצע 8 — כאילו כולם שווים</text><g fill='#0f766e'><rect x='278' y='268' width='44' height='20'/><rect x='278' y='246' width='44' height='20'/><rect x='278' y='224' width='44' height='20'/><rect x='278' y='202' width='44' height='20'/><rect x='278' y='180' width='44' height='20'/><rect x='278' y='158' width='44' height='20'/><rect x='278' y='136' width='44' height='20'/><rect x='278' y='114' width='44' height='20'/><rect x='178' y='268' width='44' height='20'/><rect x='178' y='246' width='44' height='20'/><rect x='178' y='224' width='44' height='20'/><rect x='178' y='202' width='44' height='20'/><rect x='178' y='180' width='44' height='20'/><rect x='178' y='158' width='44' height='20'/><rect x='178' y='136' width='44' height='20'/><rect x='178' y='114' width='44' height='20'/><rect x='78' y='268' width='44' height='20'/><rect x='78' y='246' width='44' height='20'/><rect x='78' y='224' width='44' height='20'/><rect x='78' y='202' width='44' height='20'/><rect x='78' y='180' width='44' height='20'/><rect x='78' y='158' width='44' height='20'/><rect x='78' y='136' width='44' height='20'/><rect x='78' y='114' width='44' height='20'/></g><line x1='50' y1='290' x2='350' y2='290' stroke='#334155' stroke-width='2'/><g font-size='16' fill='#0f766e' text-anchor='middle'><text x='300' y='310'>8</text><text x='200' y='310'>8</text><text x='100' y='310'>8</text></g></svg></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה תמונת הממוצע עוד על הלוח לעזרה. בשנייה צריך רק את הצעד הראשון — מהממוצע אל הסכום. והשלישית היא שאלת חשיבה בלי חישוב: כתוב/כתבי מילה אחת בלבד, יעלה או ירד. סיימנו את הנושא — כל הכבוד על העבודה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "ממוצע 4 מספרים הוא 10. שלושה הם 8, 12, 9 — הרביעי?", "answer": "11", "kind": "number", "x": 250, "y": 140, "hint": "קודם הסכום של כל הארבעה: ממוצע כפול 4. אחר כך חבר/י את שלושת הידועים, והורד/הורידי אותם מהסכום.", "praise": "יופי! שני צעדים בסדר הנכון — קודם הסכום, ואז החיסור 👏" } },
+        { "name": "render_widget", "input": { "title": "תמונת הממוצע", "x": 540, "y": 85, "w": 400, "h": 320, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 320' width='100%' height='100%'><text x='195' y='24' text-anchor='middle' font-size='16' fill='#1e3a5f'>ממוצע 10 — כאילו כולם שווים</text><g fill='#0f766e'><rect x='318' y='268' width='44' height='20'/><rect x='318' y='246' width='44' height='20'/><rect x='318' y='224' width='44' height='20'/><rect x='318' y='202' width='44' height='20'/><rect x='318' y='180' width='44' height='20'/><rect x='318' y='158' width='44' height='20'/><rect x='318' y='136' width='44' height='20'/><rect x='318' y='114' width='44' height='20'/><rect x='318' y='92' width='44' height='20'/><rect x='318' y='70' width='44' height='20'/><rect x='228' y='268' width='44' height='20'/><rect x='228' y='246' width='44' height='20'/><rect x='228' y='224' width='44' height='20'/><rect x='228' y='202' width='44' height='20'/><rect x='228' y='180' width='44' height='20'/><rect x='228' y='158' width='44' height='20'/><rect x='228' y='136' width='44' height='20'/><rect x='228' y='114' width='44' height='20'/><rect x='228' y='92' width='44' height='20'/><rect x='228' y='70' width='44' height='20'/><rect x='138' y='268' width='44' height='20'/><rect x='138' y='246' width='44' height='20'/><rect x='138' y='224' width='44' height='20'/><rect x='138' y='202' width='44' height='20'/><rect x='138' y='180' width='44' height='20'/><rect x='138' y='158' width='44' height='20'/><rect x='138' y='136' width='44' height='20'/><rect x='138' y='114' width='44' height='20'/><rect x='138' y='92' width='44' height='20'/><rect x='138' y='70' width='44' height='20'/><rect x='48' y='268' width='44' height='20'/><rect x='48' y='246' width='44' height='20'/><rect x='48' y='224' width='44' height='20'/><rect x='48' y='202' width='44' height='20'/><rect x='48' y='180' width='44' height='20'/><rect x='48' y='158' width='44' height='20'/><rect x='48' y='136' width='44' height='20'/><rect x='48' y='114' width='44' height='20'/><rect x='48' y='92' width='44' height='20'/><rect x='48' y='70' width='44' height='20'/></g><line x1='30' y1='290' x2='375' y2='290' stroke='#334155' stroke-width='2'/><g font-size='16' fill='#0f766e' text-anchor='middle'><text x='340' y='310'>10</text><text x='250' y='310'>10</text><text x='160' y='310'>10</text><text x='70' y='310'>10</text></g></svg></div>" } },
+        { "name": "draw_exercise", "input": { "text": "ממוצע 5 מבחנים הוא 80. מה הסכום של כולם?", "answer": "400", "kind": "number", "x": 250, "y": 300, "hint": "ממוצע 80 אומר שאילו חילקנו בשווה, כל מבחן היה 80. יש חמישה מבחנים — אז כמה יש בסך הכול?", "praise": "מדויק! הלכת מהממוצע אל הסכום בכיוון ההפוך 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "ממוצע 145, הצטרף ילד בגובה 170 — יעלה או ירד?", "answer": "יעלה", "kind": "text", "x": 250, "y": 440, "hint": "אל תחשב/י כלום. רק שאל/י את עצמך: 170 גדול מהממוצע או קטן ממנו? מספר גדול מהממוצע מושך את כולם לכיוון שלו.", "praise": "כל הכבוד! הבנת את הממוצע לעומק — בלי חישוב בכלל 🏆" } }
+      ]
+    }
+  }
+}

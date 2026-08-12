@@ -1,0 +1,106 @@
+{
+  "topic": "זוויות ומרובעים",
+  "lesson": 6,
+  "title": "מצולעים משוכללים וריצוף",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "מילה חדשה: משוכלל. מצולע משוכלל הוא מצולע שכל הצלעות שלו שוות וגם כל הזוויות שלו שוות — שני התנאים יחד, לא אחד מהם. על הלוח ארבעה משוכללים: משולש שווה-צלעות, ריבוע, מחומש ומשושה. תסתכל/י — כולם נראים מסודרים לגמרי. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מצולע משוכלל", "x": 500, "y": 105, "size": 36 } },
+          { "name": "write_text", "input": { "text": "כל הצלעות שוות · כל הזוויות שוות", "x": 500, "y": 180, "size": 28 } },
+          { "name": "draw_polygon", "input": { "points": [[195, 410], [325, 410], [260, 297]], "color": "#2f6fd0", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "משולש", "x": 260, "y": 455, "size": 23 } },
+          { "name": "draw_polygon", "input": { "points": [[400, 410], [520, 410], [520, 290], [400, 290]], "color": "#2f6fd0", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "ריבוע", "x": 460, "y": 455, "size": 23 } },
+          { "name": "draw_polygon", "input": { "points": [[680, 278], [611, 328], [638, 408], [722, 408], [748, 328]], "color": "#2e9e6b", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "מחומש", "x": 680, "y": 455, "size": 23 } },
+          { "name": "draw_polygon", "input": { "points": [[870, 282], [811, 316], [811, 384], [870, 418], [929, 384], [929, 316]], "color": "#2e9e6b", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "משושה", "x": 870, "y": 455, "size": 23 } }
+        ]
+      },
+      {
+        "reply": "וכאן נופלים. למעוין שעל הלוח כל הצלעות שוות — אבל הזוויות שלו לא שוות, אז הוא לא משוכלל. למלבן כל הזוויות שוות — אבל הצלעות לא, אז גם הוא לא. משוכלל דורש את שני התנאים יחד. הריבוע היחיד מהמשפחה שעומד בשניהם. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אלה לא משוכללים", "x": 500, "y": 95, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[250, 180], [340, 270], [250, 360], [160, 270]], "color": "#e2574c", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "מעוין", "x": 250, "y": 400, "size": 26 } },
+          { "name": "write_text", "input": { "text": "צלעות שוות, זוויות לא", "x": 250, "y": 440, "size": 23 } },
+          { "name": "draw_polygon", "input": { "points": [[600, 190], [880, 190], [880, 340], [600, 340]], "color": "#e2574c", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "מלבן", "x": 740, "y": 400, "size": 26 } },
+          { "name": "write_text", "input": { "text": "זוויות שוות, צלעות לא", "x": 740, "y": 440, "size": 23 } },
+          { "name": "write_text", "input": { "text": "משוכלל צריך את שני התנאים יחד", "x": 500, "y": 490, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו נמדוד את הפינות שלהם, ואת המספרים האלה כדאי לזכור. במשולש שווה-צלעות כל פינה 60 מעלות. בריבוע 90. במחומש משוכלל 108. במשושה משוכלל 120. שים/שימי לב שככל שיש יותר צלעות, הפינה נפתחת יותר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה מעלות בכל פינה?", "x": 500, "y": 130, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[195, 410], [325, 410], [260, 297]], "color": "#2f6fd0", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "משולש 60", "x": 260, "y": 460, "size": 25 } },
+          { "name": "draw_polygon", "input": { "points": [[400, 410], [520, 410], [520, 290], [400, 290]], "color": "#2f6fd0", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "ריבוע 90", "x": 460, "y": 460, "size": 25 } },
+          { "name": "draw_polygon", "input": { "points": [[680, 278], [611, 328], [638, 408], [722, 408], [748, 328]], "color": "#2e9e6b", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "מחומש 108", "x": 680, "y": 460, "size": 25 } },
+          { "name": "draw_polygon", "input": { "points": [[870, 282], [811, 316], [811, 384], [870, 418], [929, 384], [929, 316]], "color": "#2e9e6b", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "משושה 120", "x": 870, "y": 460, "size": 25 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו הניסוי. לרצף פירושו לכסות רצפה בצורות חופפות, בלי חורים ובלי חפיפות. בכל לוח ניסיתי להקיף נקודה אחת בצורות זהות. המשולשים הסתדרו, הריבועים הסתדרו, המשושים הסתדרו — ואצל המחומשים נשאר חור. תסתכל/י טוב על הלוח הרביעי. ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "ניסוי ריצוף", "x": 50, "y": 160, "w": 900, "h": 310, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,sans-serif;text-align:center'><div id='tw1'></div></div><script>(function(){var NS='http://www.w3.org/2000/svg';var h=document.getElementById('tw1');var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 760 250');svg.setAttribute('width','100%');h.appendChild(svg);function el(t,o,x){var e=document.createElementNS(NS,t);for(var k in o)e.setAttribute(k,o[k]);if(x!==undefined)e.textContent=x;svg.appendChild(e);return e;}function pts(n,s,al,cx,cy){var p=[cx+','+cy],x=cx,y=cy,d=al;for(var i=0;i<n-1;i++){x+=s*Math.cos(d*Math.PI/180);y-=s*Math.sin(d*Math.PI/180);p.push(Math.round(x*10)/10+','+Math.round(y*10)/10);d-=360/n;}return p.join(' ');}var S=[[3,6,60,'#8ec6ff','משולש'],[4,4,52,'#ffd28e','ריבוע'],[6,3,36,'#a8e6c1','משושה'],[5,3,48,'#ffb3ad','מחומש']];for(var k=0;k<4;k++){var n=S[k][0],c=S[k][1],s=S[k][2],cx=95+k*190,cy=105,th=180*(n-2)/n;for(var j=0;j<c;j++){el('polygon',{points:pts(n,s,-j*th,cx,cy),fill:S[k][3],stroke:'#33475c','stroke-width':2});}el('text',{x:cx,y:228,'text-anchor':'middle','font-size':18,fill:'#33475c'},S[k][4]);}})();</script>" } },
+          { "name": "write_text", "input": { "text": "רק שלושה סגרו את הנקודה בלי חור", "x": 500, "y": 500, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ולמה דווקא הם? כי סביב נקודה יש סיבוב מלא — 360 מעלות, בדיוק כמו שלמדנו. הפינות שנפגשות חייבות להתחבר ל-360 בלי שארית. 60 כפול 6 זה 360. 90 כפול 4 זה 360. 120 כפול 3 זה 360. אבל 108 כפול 3 זה רק 324, ועוד מחומש כבר לא נכנס. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "למה רק שלושה?", "x": 500, "y": 105, "size": 36 } },
+          { "name": "write_text", "input": { "text": "60 × 6 = 360", "x": 500, "y": 195, "size": 30 } },
+          { "name": "write_text", "input": { "text": "90 × 4 = 360", "x": 500, "y": 255, "size": 30 } },
+          { "name": "write_text", "input": { "text": "120 × 3 = 360", "x": 500, "y": 315, "size": 30 } },
+          { "name": "write_text", "input": { "text": "108 × 3 = 324 — נשאר חור", "x": 500, "y": 385, "size": 30 } },
+          { "name": "write_text", "input": { "text": "סביב נקודה חייבים בדיוק 360 מעלות", "x": 500, "y": 465, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ושתי מילים שלא מבלבלים ביניהן. חופפים — אפשר להניח אחד על השני והם מכסים זה את זה בדיוק, בלי שום הפרש. דומים — אותה צורה אבל בגודל אחר, אז הם לא חופפים. ולסיום למי שרוצה עוד: אפשר לרצף גם בשתי צורות יחד, וגם בכל מקבילית שהיא. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "חופפים — לא דומים", "x": 500, "y": 80, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[150, 220], [290, 220], [220, 120]], "color": "#2f6fd0", "fill": false, "width": 4 } },
+          { "name": "draw_polygon", "input": { "points": [[330, 220], [470, 220], [400, 120]], "color": "#2f6fd0", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "חופפים — מכסים בדיוק", "x": 310, "y": 262, "size": 24 } },
+          { "name": "draw_polygon", "input": { "points": [[600, 220], [740, 220], [670, 120]], "color": "#e08a1e", "fill": false, "width": 4 } },
+          { "name": "draw_polygon", "input": { "points": [[790, 220], [880, 220], [835, 155]], "color": "#e08a1e", "fill": false, "width": 4 } },
+          { "name": "write_text", "input": { "text": "דומים — גודל אחר", "x": 740, "y": 262, "size": 24 } },
+          { "name": "write_text", "input": { "text": "וגם כל מקבילית מרצפת", "x": 500, "y": 340, "size": 26 } },
+          { "name": "draw_polygon", "input": { "points": [[330, 470], [430, 470], [460, 410], [360, 410]], "color": "#2e9e6b", "fill": false, "width": 3 } },
+          { "name": "draw_polygon", "input": { "points": [[430, 470], [530, 470], [560, 410], [460, 410]], "color": "#2e9e6b", "fill": false, "width": 3 } },
+          { "name": "draw_polygon", "input": { "points": [[530, 470], [630, 470], [660, 410], [560, 410]], "color": "#2e9e6b", "fill": false, "width": 3 } },
+          { "name": "write_text", "input": { "text": "בלי חורים ובלי חפיפות", "x": 500, "y": 498, "size": 24 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד, וזה חישוב אמיתי. סביב נקודה אחת יש סיבוב מלא של 360 מעלות. כל פינה של משושה משוכלל היא 120 מעלות. אז כמה משושים אפשר להצמיד סביב אותה נקודה עד שהיא נסגרת בדיוק? תחשוב/תחשבי כמה פעמים 120 נכנס ב-360, ותכתוב/תכתבי את המספר.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה משושים משוכללים נפגשים סביב נקודה?", "answer": "3", "kind": "number", "x": 170, "y": 150, "hint": "כל משושה תורם פינה אחת של 120 מעלות למפגש, וצריך למלא בדיוק 360. אז שאל/י את עצמך: כמה פעמים 120 נכנס ב-360? זה תרגיל חילוק.", "praise": "מצוין! חישבת ריצוף עם מעלות במקום לנחש לפי הציור 👏" } },
+        { "name": "draw_polygon", "input": { "points": [[620, 240], [542, 285], [542, 375], [620, 420], [698, 375], [698, 285]], "color": "#2e9e6b", "fill": false, "width": 4 } },
+        { "name": "write_text", "input": { "text": "בכל פינה של משושה — 120 מעלות", "x": 620, "y": 462, "size": 24 } },
+        { "name": "write_text", "input": { "text": "סיבוב מלא — 360 מעלות", "x": 620, "y": 498, "size": 24 } }
+      ]
+    },
+    "independent": {
+      "reply": "שלוש שאלות לבד, וכולן אותה חשיבה: מה נכנס ב-360. בראשונה יש לך את המספרים על הלוח. בשנייה נבדוק את המחומש ונראה למה הוא נכשל. ובשלישית לבד לגמרי, עם המשולש שווה-הצלעות. זה סוף הנושא — עשית עבודה יפה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה ריבועים נפגשים סביב נקודה אחת?", "answer": "4", "kind": "number", "x": 150, "y": 140, "hint": "כל ריבוע תורם למפגש פינה אחת של 90 מעלות, וצריך למלא בדיוק 360 בלי חור. כמה פעמים 90 נכנס ב-360?", "praise": "נכון! ארבע פינות ישרות סוגרות סיבוב מלא — ככה מרצפים ברצפה 👏" } },
+        { "name": "draw_polygon", "input": { "points": [[430, 90], [550, 90], [550, 210], [430, 210]], "color": "#2f6fd0", "fill": false, "width": 4 } },
+        { "name": "write_text", "input": { "text": "בכל פינה של ריבוע — 90 מעלות", "x": 760, "y": 120, "size": 22 } },
+        { "name": "write_text", "input": { "text": "סיבוב מלא — 360 מעלות", "x": 760, "y": 175, "size": 22 } },
+        { "name": "draw_exercise", "input": { "text": "בפינת מחומש 108 מעלות. כמה יש ב-3 פינות?", "answer": "324", "kind": "number", "x": 150, "y": 300, "hint": "פשוט תכפיל/י את 108 בשלוש. ואחרי שתקבל/י מספר — תשווה/תשוויי אותו ל-360 ותראה/י כמה חסר. זה בדיוק החור שנשאר.", "praise": "מדויק! עכשיו רואים במספרים למה המחומש משאיר חור 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "בפינת משולש 60 מעלות. כמה נפגשים בנקודה?", "answer": "6", "kind": "number", "x": 150, "y": 455, "hint": "אותה שיטה כמו קודם, בלי שום ציור: כמה פעמים 60 נכנס בתוך 360? זה מספר המשולשים שסוגרים את הנקודה.", "praise": "מעולה! סיימת את הנושא עם חישוב ריצוף אמיתי — כל הכבוד 🏆" } }
+      ]
+    }
+  }
+}

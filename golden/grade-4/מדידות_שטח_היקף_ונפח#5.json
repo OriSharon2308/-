@@ -1,0 +1,66 @@
+{
+  "topic": "מדידות — שטח, היקף ונפח",
+  "lesson": 5,
+  "title": "נוסחת הנפח ושטח הפנים",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם ספרנו שכבות. עכשיו נהפוך את זה לנוסחה קצרה. התיבה שעל הלוח: 6 ס״מ אורך, 3 ס״מ רוחב, 4 ס״מ גובה. השכבה התחתונה היא אורך כפול רוחב, ומספר השכבות הוא בדיוק הגובה. אז נפח = אורך כפול רוחב כפול גובה. לחץ/י ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "נפח = אורך × רוחב × גובה", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "תיבה 6 על 3 על 4", "x": 290, "y": 140, "w": 420, "h": 260, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:44px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:186px;height:138px'><div style='position:absolute;left:42px;top:0;width:144px;height:96px;border:4px solid #1d4ed8;background:#eff6ff;box-sizing:border-box'></div><div style='position:absolute;left:0;top:42px;width:60px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:144px;top:42px;width:60px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:144px;top:138px;width:60px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:0;top:42px;width:144px;height:96px;border:4px solid #1d4ed8;background:#bfdbfe;box-sizing:border-box'></div><div style='position:absolute;left:0;top:144px;width:144px;text-align:center;font-size:21px;color:#1e3a8a'>6</div><div style='position:absolute;left:-24px;top:78px;font-size:21px;color:#1e3a8a'>4</div><div style='position:absolute;left:150px;top:8px;font-size:21px;color:#b45309'>3</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "הגובה הוא מספר השכבות", "x": 500, "y": 440, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "נחשב לאט, שלב אחרי שלב. השכבה התחתונה: 6 כפול 3 שווה 18 קוביות. מספר השכבות הוא הגובה, כלומר 4. עכשיו 18 כפול 4, וזה 72. הנפח של התיבה הוא 72 סמ״ק. שים/שימי לב ליחידה — סמ״ק, כי סופרים קוביות שנכנסות פנימה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "השכבה: 6 × 3 = 18", "x": 500, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "השכבה התחתונה", "x": 310, "y": 150, "w": 380, "h": 220, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:26px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px'><div style='width:156px;height:78px;border:4px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:26px 26px'></div><div style='font-size:20px;color:#1e3a8a'>18 קוביות בשכבה</div><div style='font-size:20px;color:#b45309'>ויש 4 שכבות</div></div>" } },
+          { "name": "write_text", "input": { "text": "18 × 4 = 72 סמ״ק", "x": 500, "y": 420, "size": 32 } }
+        ]
+      },
+      {
+        "reply": "עכשיו שאלה אחרת לגמרי, ורבים מבלבלים בין השתיים. רוצים לעטוף את הקופסה בנייר מתנה. פתאום לא מעניין אותנו מה נכנס פנימה, אלא כמה נייר צריך כדי לכסות אותה מבחוץ. לזה קוראים שטח פנים. זה שטח — ולכן היחידה היא סמ״ר, לא סמ״ק. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה נייר צריך כדי לעטוף?", "x": 500, "y": 88, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "עוטפים את הקופסה", "x": 290, "y": 140, "w": 420, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:40px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:186px;height:138px'><div style='position:absolute;left:42px;top:0;width:144px;height:96px;border:4px solid #b45309;background:#fef3c7;box-sizing:border-box'></div><div style='position:absolute;left:0;top:42px;width:60px;height:4px;background:#b45309;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:144px;top:42px;width:60px;height:4px;background:#b45309;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:144px;top:138px;width:60px;height:4px;background:#b45309;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:0;top:42px;width:144px;height:96px;border:4px solid #b45309;background:#fde68a;box-sizing:border-box'></div><div style='position:absolute;left:0;top:80px;width:144px;text-align:center;font-size:19px;color:#92400e;direction:rtl'>נייר מבחוץ</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "שטח פנים — נמדד בסמ״ר", "x": 500, "y": 435, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "פרשתי את הקופסה שטוח כדי שנראה את כל הפאות. יש שש פאות, והן מסתדרות בשלושה זוגות זהים: 6 על 3, 6 על 4, ו-3 על 4. מחשבים אחת מכל זוג: 18, 24 ו-12. מחברים אותן: 54. וכיוון שמכל אחת יש שתיים — כופלים ב-2. שטח הפנים הוא 108 סמ״ר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שש פאות, שלושה זוגות", "x": 500, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "פריסת התיבה", "x": 270, "y": 125, "w": 460, "h": 290, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:26px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:324px;height:180px'><div style='position:absolute;left:0;top:0;width:108px;height:54px;border:3px solid #1d4ed8;background:#bfdbfe;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:16px;color:#1e3a8a'>6×3</div><div style='position:absolute;left:0;top:54px;width:108px;height:72px;border:3px solid #15803d;background:#dcfce7;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:16px;color:#166534'>6×4</div><div style='position:absolute;left:108px;top:54px;width:54px;height:72px;border:3px solid #b45309;background:#fef3c7;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;color:#92400e'>3×4</div><div style='position:absolute;left:162px;top:54px;width:108px;height:72px;border:3px solid #15803d;background:#dcfce7;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:16px;color:#166534'>6×4</div><div style='position:absolute;left:270px;top:54px;width:54px;height:72px;border:3px solid #b45309;background:#fef3c7;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;color:#92400e'>3×4</div><div style='position:absolute;left:0;top:126px;width:108px;height:54px;border:3px solid #1d4ed8;background:#bfdbfe;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:16px;color:#1e3a8a'>6×3</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "(18 + 24 + 12) × 2 = 108 סמ״ר", "x": 500, "y": 452, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "אז איך לא מתבלבלים? היחידה היא הרמז הגדול. נפח נמדד בסמ״ק כי סופרים קוביות שנכנסות פנימה, ושטח פנים נמדד בסמ״ר כי סופרים משבצות שעוטפות מבחוץ. אם יצא לך סמ״ר בשאלת נפח — משהו התבלבל בדרך. תמיד תשאל/י קודם: פנימה או מבחוץ? עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "היחידה היא הרמז", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "נפח = מה נכנס פנימה, בסמ״ק", "x": 500, "y": 210, "size": 30 } },
+          { "name": "write_text", "input": { "text": "שטח פנים = כמה עוטף, בסמ״ר", "x": 500, "y": 290, "size": 30 } },
+          { "name": "write_text", "input": { "text": "סמ״ר בשאלת נפח? משהו התבלבל", "x": 500, "y": 400, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "ביחד. התיבה שעל הלוח: 6 ס״מ, 3 ס״מ ו-4 ס״מ. השאלה היא כמה נכנס פנימה — כלומר נפח. תכפול/תכפלי קודם את שני המספרים הראשונים כדי לקבל את השכבה, ואז תכפול/תכפלי בגובה. את התוצאה כתוב/כתבי בתיבה.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "תיבה 6 על 3 על 4 — מה הנפח בסמ״ק?", "answer": "72", "kind": "number", "hint": "אורך כפול רוחב כפול גובה. קודם 6 כפול 3 — זו השכבה. את המספר שיצא תכפול/תכפלי ב-4, שזה מספר השכבות.", "praise": "מעולה! נוסחת הנפח בפעולה — קודם שכבה, אחר כך גובה 👏" } },
+        { "name": "render_widget", "input": { "title": "התיבה", "x": 330, "y": 300, "w": 340, "h": 210, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:34px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:156px;height:116px'><div style='position:absolute;left:36px;top:0;width:120px;height:80px;border:4px solid #1d4ed8;background:#eff6ff;box-sizing:border-box'></div><div style='position:absolute;left:0;top:36px;width:51px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:120px;top:36px;width:51px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:120px;top:116px;width:51px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:0;top:36px;width:120px;height:80px;border:4px solid #1d4ed8;background:#bfdbfe;box-sizing:border-box'></div><div style='position:absolute;left:0;top:122px;width:120px;text-align:center;font-size:19px;color:#1e3a8a'>6</div><div style='position:absolute;left:-22px;top:66px;font-size:19px;color:#1e3a8a'>4</div><div style='position:absolute;left:126px;top:6px;font-size:19px;color:#b45309'>3</div></div></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד. שים/שימי לב לשאלה עצמה, לא רק למספרים: יש כאן פעם אחת נפח ופעם אחת שטח פנים, על אותה תיבה בדיוק. היחידה בסוף השאלה תעזור לך להחליט. בשאלה האחרונה אין ציור. בשיעור הבא נסדר את כל היחידות, ונוסיף זמן ולוח שנה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "תיבה 4 על 3 על 2 — מה הנפח בסמ״ק?", "answer": "24", "kind": "number", "x": 290, "y": 130, "hint": "שלושת המספרים נכפלים זה בזה. תתחיל/תתחילי מ-4 כפול 3, וזו השכבה. את התוצאה תכפול/תכפלי ב-2.", "praise": "יפה! 12 בשכבה, שתי שכבות — וזה מה שנכנס פנימה 👏" } },
+        { "name": "render_widget", "input": { "title": "התיבה", "x": 660, "y": 105, "w": 280, "h": 200, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:38px;background:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center'><div style='position:relative;width:138px;height:86px'><div style='position:absolute;left:34px;top:0;width:104px;height:52px;border:4px solid #1d4ed8;background:#eff6ff;box-sizing:border-box'></div><div style='position:absolute;left:0;top:34px;width:48px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:104px;top:34px;width:48px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:104px;top:86px;width:48px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:0;top:34px;width:104px;height:52px;border:4px solid #1d4ed8;background:#bfdbfe;box-sizing:border-box'></div><div style='position:absolute;left:0;top:92px;width:104px;text-align:center;font-size:18px;color:#1e3a8a'>4</div><div style='position:absolute;left:-20px;top:50px;font-size:18px;color:#1e3a8a'>2</div><div style='position:absolute;left:110px;top:4px;font-size:18px;color:#b45309'>3</div></div></div>" } },
+        { "name": "draw_exercise", "input": { "text": "אותה תיבה — מה שטח הפנים שלה בסמ״ר?", "answer": "52", "kind": "number", "x": 290, "y": 310, "hint": "שלושה זוגות פאות: 4 על 3, 4 על 2, ו-3 על 2. חשב/י אחת מכל זוג, חבר/י את השלוש, ואת הסכום תכפול/תכפלי ב-2.", "praise": "כל הכבוד! שש פאות בשלושה זוגות — וזה מה שעוטף מבחוץ 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "תיבה 5 על 2 על 3 — מה הנפח בסמ״ק?", "answer": "30", "kind": "number", "x": 290, "y": 470, "hint": "בלי ציור הפעם. קודם שאל/י את עצמך: פנימה או מבחוץ? היחידה סמ״ק אומרת נפח, ואז פשוט כופלים את שלושת המספרים.", "praise": "אלוף/ה! זיהית לבד שזו שאלת נפח וכפלת שלושה מספרים 🏆" } }
+      ]
+    }
+  }
+}

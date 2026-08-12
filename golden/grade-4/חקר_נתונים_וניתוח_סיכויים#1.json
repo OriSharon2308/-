@@ -1,0 +1,273 @@
+{
+  "topic": "חקר נתונים וניתוח סיכויים",
+  "lesson": 1,
+  "title": "לקרוא דיאגרמה — הסוד הוא בציר",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! נתחיל ממשהו שכבר עשית 🙂 על הלוח דיאגרמת עמודות: כל עמודה היא פרי, וכל משבצת שווה ילד אחד. תספור/י את המשבצות של בננה — 1, 2, 3, 4, 5. אז חמישה ילדים אוהבים בננה. ככה קראנו דיאגרמות עד היום: סופרים משבצות. היום נגלה מתי זה נשבר. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "דיאגרמת עמודות — מה שכבר ידעת",
+              "x": 500,
+              "y": 92,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>פרי אהוב על ילדי הכיתה</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:170px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:25px;font-size:14px;'>1</div><div style='position:absolute;right:2px;bottom:59px;font-size:14px;'>2</div><div style='position:absolute;right:2px;bottom:93px;font-size:14px;'>3</div><div style='position:absolute;right:2px;bottom:127px;font-size:14px;'>4</div><div style='position:absolute;right:2px;bottom:161px;font-size:14px;'>5</div></div><div style='position:relative;height:170px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 32px,#d3dde7 32px 34px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:102px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:170px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:68px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:136px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>תפוח</div><div style='width:50px;text-align:center'>בננה</div><div style='width:50px;text-align:center'>ענבים</div><div style='width:50px;text-align:center'>אגס</div></div></div></div></div>",
+              "title": "פרי אהוב",
+              "x": 250,
+              "y": 140,
+              "w": 500,
+              "h": 310,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כל משבצת = ילד אחד",
+              "x": 500,
+              "y": 496,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "עכשיו דיאגרמה חדשה: כמה מבקרים הגיעו למוזיאון בכל יום. תספור/י את המשבצות של יום שלישי — יוצא 5 משבצות. אז 5 מבקרים? רגע! תסתכל/י על המספרים בצד: 5, 10, 15, 20, 25, 30. כל משבצת כאן שווה 5 מבקרים, לא 1. אז ביום שלישי היו 25 מבקרים. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "5 משבצות — אבל לא 5 מבקרים",
+              "x": 500,
+              "y": 92,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים במוזיאון</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:204px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:25px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:59px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:93px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:127px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:161px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:195px;font-size:14px;'>30</div></div><div style='position:relative;height:204px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 32px,#d3dde7 32px 34px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:136px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:68px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:170px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:102px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:204px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div><div style='width:50px;text-align:center'>חמישי</div></div></div></div></div>",
+              "title": "מבקרים במוזיאון",
+              "x": 250,
+              "y": 140,
+              "w": 500,
+              "h": 310,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קודם בודקים את המספרים בצד",
+              "x": 500,
+              "y": 496,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "זה הכלל של היום: קודם הציר, אחר-כך העמודה. הציר הוא המספרים שבצד, והוא זה שמספר לנו כמה שווה משבצת אחת — לפעמים 1, לפעמים 5, לפעמים 10. תראה/י שלושה צירים שנראים אותו דבר בדיוק, ובכל אחד משבצת שווה משהו אחר. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "קודם הציר, אחר-כך העמודה",
+              "x": 500,
+              "y": 105,
+              "size": 36
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:54px;color:#16324f'><div style='text-align:center'><div style='display:grid;grid-template-columns:40px 34px;grid-template-rows:120px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px'>0</div><div style='position:absolute;right:2px;bottom:21px;font-size:14px'>1</div><div style='position:absolute;right:2px;bottom:51px;font-size:14px'>2</div><div style='position:absolute;right:2px;bottom:81px;font-size:14px'>3</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px'>4</div></div><div style='height:120px;border-right:3px solid #2b4055;border-bottom:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 28px,#d3dde7 28px 30px)'></div></div><div style='font-size:17px;font-weight:700;margin-top:12px'>משבצת = 1</div></div><div style='text-align:center'><div style='display:grid;grid-template-columns:40px 34px;grid-template-rows:120px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px'>0</div><div style='position:absolute;right:2px;bottom:21px;font-size:14px'>5</div><div style='position:absolute;right:2px;bottom:51px;font-size:14px'>10</div><div style='position:absolute;right:2px;bottom:81px;font-size:14px'>15</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px'>20</div></div><div style='height:120px;border-right:3px solid #2b4055;border-bottom:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 28px,#d3dde7 28px 30px)'></div></div><div style='font-size:17px;font-weight:700;margin-top:12px'>משבצת = 5</div></div><div style='text-align:center'><div style='display:grid;grid-template-columns:40px 34px;grid-template-rows:120px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px'>0</div><div style='position:absolute;right:2px;bottom:21px;font-size:14px'>10</div><div style='position:absolute;right:2px;bottom:51px;font-size:14px'>20</div><div style='position:absolute;right:2px;bottom:81px;font-size:14px'>30</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px'>40</div></div><div style='height:120px;border-right:3px solid #2b4055;border-bottom:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 28px,#d3dde7 28px 30px)'></div></div><div style='font-size:17px;font-weight:700;margin-top:12px'>משבצת = 10</div></div></div>",
+              "title": "אותו ציור, ערך אחר",
+              "x": 200,
+              "y": 170,
+              "w": 600,
+              "h": 260,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "המשבצת לא תמיד שווה 1",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "אז איך קוראים ערך? שלושה צעדים. אחד: בודקים את הציר — כאן כל משבצת 5. שתיים: מוצאים את ראש העמודה של יום רביעי. שלוש: הולכים מהראש ישר הצידה, עד הציר, ורואים איפה נעצרנו. עצרנו על 15. ביום רביעי היו 15 מבקרים. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "מראש העמודה — ישר אל הציר",
+              "x": 500,
+              "y": 92,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים במוזיאון</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:204px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:25px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:59px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:93px;font-size:14px;color:#d62828;font-weight:700;'>15</div><div style='position:absolute;right:2px;bottom:127px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:161px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:195px;font-size:14px;'>30</div></div><div style='position:relative;height:204px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 32px,#d3dde7 32px 34px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:136px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:68px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:170px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:102px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:204px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='position:absolute;right:-3px;bottom:100px;width:280px;border-top:3px dashed #d62828'></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div><div style='width:50px;text-align:center'>חמישי</div></div></div></div></div>",
+              "title": "לקרוא ערך",
+              "x": 250,
+              "y": 140,
+              "w": 500,
+              "h": 310,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "1 ציר · 2 ראש העמודה · 3 קוראים",
+              "x": 500,
+              "y": 496,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "ועוד שתי שאלות שתמיד שואלים. באיזה יום היו הכי הרבה מבקרים? מחפשים את העמודה הכי גבוהה — יום חמישי. ובאיזה יום הכי מעט? העמודה הכי נמוכה — יום שני. שים/שימי לב: לשאלות האלה לא צריך בכלל את הציר. אבל אם שואלים כמה מבקרים — כן צריך. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "הכי גבוהה, הכי נמוכה",
+              "x": 500,
+              "y": 92,
+              "size": 30
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>מבקרים במוזיאון</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:204px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:25px;font-size:14px;'>5</div><div style='position:absolute;right:2px;bottom:59px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:93px;font-size:14px;'>15</div><div style='position:absolute;right:2px;bottom:127px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:161px;font-size:14px;'>25</div><div style='position:absolute;right:2px;bottom:195px;font-size:14px;'>30</div></div><div style='position:relative;height:204px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 32px,#d3dde7 32px 34px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:136px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:68px;background:repeating-linear-gradient(to top,#e8933a 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:170px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:102px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:204px;background:repeating-linear-gradient(to top,#49a97a 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div><div style='width:50px;text-align:center'>חמישי</div></div></div></div></div>",
+              "title": "הכי הרבה והכי מעט",
+              "x": 250,
+              "y": 140,
+              "w": 500,
+              "h": 310,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "גבוה = הכי הרבה · נמוך = הכי מעט",
+              "x": 500,
+              "y": 496,
+              "size": 26
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. דיאגרמה חדשה: כמה ילדים באו לבריכה בכל יום. שים/שימי לב — הציר כאן שונה ממה שהיה קודם, אז קודם כול תבדוק/תבדקי אותו. אחר-כך תמצא/י את ראש העמודה של יום שלישי, ותלך/י ממנו ישר הצידה עד הציר. את המספר שיצא כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה ילדים באו לבריכה ביום שלישי?",
+            "answer": "50",
+            "kind": "number",
+            "hint": "אל תספור/תספרי משבצות! קודם תסתכל/י על המספרים בצד — כמה שווה משבצת אחת? עכשיו תעלה/תעלי בקפיצות של הערך הזה עד ראש העמודה של שלישי.",
+            "praise": "מעולה! בדקת קודם את הציר ורק אז את העמודה — בדיוק הכלל של היום 👏"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>ילדים בבריכה</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:170px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:25px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:59px;font-size:14px;'>20</div><div style='position:absolute;right:2px;bottom:93px;font-size:14px;'>30</div><div style='position:absolute;right:2px;bottom:127px;font-size:14px;'>40</div><div style='position:absolute;right:2px;bottom:161px;font-size:14px;'>50</div></div><div style='position:relative;height:170px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 32px,#d3dde7 32px 34px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:102px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:170px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:68px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:136px;background:repeating-linear-gradient(to top,#4a86c8 0 32px,#eef3f8 32px 34px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div><div style='width:50px;text-align:center'>חמישי</div></div></div></div></div>",
+            "title": "ילדים בבריכה",
+            "x": 300,
+            "y": 195,
+            "w": 420,
+            "h": 290,
+            "exact": true
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות על דיאגרמה חדשה — כמה עוגיות נמכרו בכל יום. שוב: קודם הציר, אחר-כך העמודה. בשאלה השנייה תכתוב/תכתבי שם של יום — מילה אחת בלבד. בשיעור הבא נעשה את זה הפוך: ניקח טבלה ונצייר ממנה דיאגרמה בעצמנו 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה עוגיות נמכרו ביום שני?",
+            "answer": "14",
+            "kind": "number",
+            "x": 200,
+            "y": 140,
+            "hint": "קודם תבדוק/תבדקי מה כתוב על הציר — כמה שווה משבצת אחת? אחר-כך תעלה/תעלי לראש העמודה של שני ותקרא/י ישר מהציר.",
+            "praise": "יפה! לא ספרת משבצות — קראת לפי הציר. זה בדיוק ההבדל 👏"
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "קודם הציר, אחר-כך העמודה",
+            "x": 210,
+            "y": 205,
+            "size": 22
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "באיזה יום נמכרו הכי מעט עוגיות?",
+            "answer": "שלישי",
+            "kind": "text",
+            "x": 200,
+            "y": 300,
+            "hint": "לשאלה הזאת לא צריך בכלל את הציר. רק תחפש/י איזו עמודה הכי נמוכה, ותכתוב/תכתבי את שם היום שכתוב מתחתיה — מילה אחת.",
+            "praise": "כל הכבוד! זיהית את העמודה הנמוכה ביותר בלי לחשב כלום 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "כמה עוגיות שווה משבצת אחת בדיאגרמה?",
+            "answer": "2",
+            "kind": "number",
+            "x": 200,
+            "y": 455,
+            "hint": "תסתכל/י רק על המספרים בציר. מהמספר הראשון למספר שמעליו — בכמה עלינו? זה בדיוק מה ששווה משבצת אחת.",
+            "praise": "מצוין! הבנת שהציר הוא זה שקובע כמה שווה כל משבצת 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:#16324f'><div><div style='font-size:19px;font-weight:700;text-align:center;margin-bottom:8px'>עוגיות שנמכרו</div><div style='display:grid;grid-template-columns:46px auto;grid-template-rows:210px 30px'><div style='position:relative'><div style='position:absolute;right:2px;bottom:-9px;font-size:14px;'>0</div><div style='position:absolute;right:2px;bottom:21px;font-size:14px;'>2</div><div style='position:absolute;right:2px;bottom:51px;font-size:14px;'>4</div><div style='position:absolute;right:2px;bottom:81px;font-size:14px;'>6</div><div style='position:absolute;right:2px;bottom:111px;font-size:14px;'>8</div><div style='position:absolute;right:2px;bottom:141px;font-size:14px;'>10</div><div style='position:absolute;right:2px;bottom:171px;font-size:14px;'>12</div><div style='position:absolute;right:2px;bottom:201px;font-size:14px;'>14</div></div><div style='position:relative;height:210px;display:flex;align-items:flex-end;gap:22px;padding:0 14px;border-bottom:3px solid #2b4055;border-right:3px solid #2b4055;background:repeating-linear-gradient(to top,transparent 0 28px,#d3dde7 28px 30px)'><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:120px;background:repeating-linear-gradient(to top,#4a86c8 0 28px,#eef3f8 28px 30px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:210px;background:repeating-linear-gradient(to top,#4a86c8 0 28px,#eef3f8 28px 30px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:90px;background:repeating-linear-gradient(to top,#4a86c8 0 28px,#eef3f8 28px 30px);outline:1px solid #46617c'></div></div><div style='display:flex;align-items:flex-end;gap:4px;'><div style='width:50px;height:180px;background:repeating-linear-gradient(to top,#4a86c8 0 28px,#eef3f8 28px 30px);outline:1px solid #46617c'></div></div></div><div></div><div style='display:flex;gap:22px;padding:9px 14px 0;font-size:14px'><div style='width:50px;text-align:center'>ראשון</div><div style='width:50px;text-align:center'>שני</div><div style='width:50px;text-align:center'>שלישי</div><div style='width:50px;text-align:center'>רביעי</div></div></div></div></div>",
+            "title": "עוגיות שנמכרו",
+            "x": 500,
+            "y": 105,
+            "w": 440,
+            "h": 340,
+            "exact": true
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "topic": "כפל וחילוק רב-ספרתי",
+  "lesson": 2,
+  "title": "מלבן הכפל — לראות את הפילוג",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בכיתה ג׳ כבר פירקת כדי לכפול. תראה/י את המלבן: גובה 6, רוחב 14. חתכתי אותו לשניים — חלק של 10 וחלק של 4. החלק הראשון 6 × 10 = 60, השני 6 × 4 = 24. ביחד 84. וזה בדיוק 6 × 14. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מלבן = כפל", "x": 480, "y": 90, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[200, 180], [600, 180], [600, 340], [200, 340]], "color": "#0d9488", "fill": true, "width": 3 } },
+          { "name": "draw_polygon", "input": { "points": [[600, 180], [760, 180], [760, 340], [600, 340]], "color": "#3b82f6", "fill": true, "width": 3 } },
+          { "name": "write_text", "input": { "text": "10", "x": 400, "y": 155, "size": 28 } },
+          { "name": "write_text", "input": { "text": "4", "x": 680, "y": 155, "size": 28 } },
+          { "name": "write_text", "input": { "text": "6", "x": 170, "y": 260, "size": 28 } },
+          { "name": "write_text", "input": { "text": "6 × 10 = 60", "x": 400, "y": 260, "size": 30 } },
+          { "name": "write_text", "input": { "text": "6 × 4 = 24", "x": 680, "y": 260, "size": 26 } },
+          { "name": "write_text", "input": { "text": "6 × 14 = 60 + 24 = 84", "x": 480, "y": 410, "size": 32 } }
+        ]
+      },
+      {
+        "reply": "עכשיו נחתוך את המלבן פעמיים. 27 זה 20 ועוד 7. 35 זה 30 ועוד 5. יוצאות ארבע משבצות. לחץ/י על כל משבצת ותראה/י כמה יוצא בה. שים/שימי לב: כל חלק של מספר אחד נפגש עם כל חלק של המספר השני. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כל חלק פוגש כל חלק", "x": 500, "y": 90, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "מלבן הכפל", "x": 270, "y": 140, "w": 460, "h": 290, "html": "<style>body{margin:0;font-family:Assistant,system-ui,sans-serif;color:#0f3b36}.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}table{border-collapse:separate;border-spacing:5px}td{text-align:center;font:800 20px Assistant,sans-serif}td.h{color:#0d9488;font-size:22px}td.c{border:3px solid #0d9488;border-radius:9px;width:150px;height:62px;cursor:pointer;background:#0d948811}td.c.done{background:#22c55e22;border-color:#16a34a;color:#16a34a;font-size:26px}#m{font:800 22px Assistant,sans-serif;color:#0d9488;height:28px;text-align:center}</style><div class='wrap'><div id='m'>לחץ/י על כל משבצת</div><table><tr><td class='h'></td><td class='h'>30</td><td class='h'>5</td></tr><tr><td class='h'>20</td><td class='c' data-p='600'>20 × 30</td><td class='c' data-p='100'>20 × 5</td></tr><tr><td class='h'>7</td><td class='c' data-p='210'>7 × 30</td><td class='c' data-p='35'>7 × 5</td></tr></table></div><script>var m=document.getElementById('m'),n=0,cs=document.querySelectorAll('td.c');for(var i=0;i<cs.length;i++){(function(el){el.onclick=function(){if(el.className.indexOf('done')>-1)return;el.textContent=el.getAttribute('data-p');el.className='c done';n++;if(n===4){m.textContent='ארבע מכפלות — עכשיו מחברים';parent.postMessage({type:'vela:correct'},'*');}};})(cs[i]);}</script>" } },
+          { "name": "write_text", "input": { "text": "27 × 35 — ארבע מכפלות", "x": 500, "y": 470, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו רק מחברים את ארבע המכפלות: 600 ועוד 100 ועוד 210 ועוד 35. יוצא 945. אז 27 × 35 = 945. המלבן עשה בשבילנו את העבודה הקשה — הוא פירק כפל גדול לארבעה כפלים קטנים שאת/ה כבר יודע/ת. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מחברים את הארבע", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "20 × 30 = 600", "x": 340, "y": 180, "size": 30 } },
+          { "name": "write_text", "input": { "text": "20 × 5 = 100", "x": 340, "y": 245, "size": 30 } },
+          { "name": "write_text", "input": { "text": "7 × 30 = 210", "x": 340, "y": 310, "size": 30 } },
+          { "name": "write_text", "input": { "text": "7 × 5 = 35", "x": 340, "y": 375, "size": 30 } },
+          { "name": "draw_line", "input": { "x1": 230, "y1": 412, "x2": 450, "y2": 412, "color": "#0d9488", "width": 3 } },
+          { "name": "write_text", "input": { "text": "600 + 100 + 210 + 35", "x": 740, "y": 230, "size": 28 } },
+          { "name": "draw_arrow", "input": { "x1": 740, "y1": 268, "x2": 740, "y2": 305, "color": "#3b82f6", "width": 3 } },
+          { "name": "write_text", "input": { "text": "27 × 35 = 945", "x": 740, "y": 350, "size": 38 } }
+        ]
+      },
+      {
+        "reply": "למה יצאו בדיוק ארבע מכפלות? כי ל-27 יש שני חלקים — 20 ו-7. וגם ל-35 יש שניים — 30 ו-5. כל חלק חייב להיפגש עם כל חלק. שתיים כפול שתיים זה ארבע פגישות. את המשפט הזה תזכור/זכרי, הוא ילווה אותנו הלאה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "למה בדיוק ארבע?", "x": 475, "y": 90, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[150, 170], [290, 170], [290, 225], [150, 225]], "color": "#0d9488", "width": 3 } },
+          { "name": "write_text", "input": { "text": "20", "x": 220, "y": 197, "size": 30 } },
+          { "name": "draw_polygon", "input": { "points": [[150, 300], [290, 300], [290, 355], [150, 355]], "color": "#0d9488", "width": 3 } },
+          { "name": "write_text", "input": { "text": "7", "x": 220, "y": 327, "size": 30 } },
+          { "name": "draw_polygon", "input": { "points": [[660, 170], [800, 170], [800, 225], [660, 225]], "color": "#3b82f6", "width": 3 } },
+          { "name": "write_text", "input": { "text": "30", "x": 730, "y": 197, "size": 30 } },
+          { "name": "draw_polygon", "input": { "points": [[660, 300], [800, 300], [800, 355], [660, 355]], "color": "#3b82f6", "width": 3 } },
+          { "name": "write_text", "input": { "text": "5", "x": 730, "y": 327, "size": 30 } },
+          { "name": "draw_arrow", "input": { "x1": 297, "y1": 188, "x2": 653, "y2": 183, "color": "#94a3b8", "width": 2 } },
+          { "name": "draw_arrow", "input": { "x1": 297, "y1": 206, "x2": 653, "y2": 300, "color": "#94a3b8", "width": 2 } },
+          { "name": "draw_arrow", "input": { "x1": 297, "y1": 318, "x2": 653, "y2": 216, "color": "#94a3b8", "width": 2 } },
+          { "name": "draw_arrow", "input": { "x1": 297, "y1": 336, "x2": 653, "y2": 332, "color": "#94a3b8", "width": 2 } },
+          { "name": "write_text", "input": { "text": "כל חלק חייב להיפגש עם כל חלק", "x": 475, "y": 440, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "עוד אחד ביחד: 14 × 23. 14 זה 10 ועוד 4. 23 זה 20 ועוד 3. ארבע משבצות: 10 × 20 = 200, 10 × 3 = 30, 4 × 20 = 80, 4 × 3 = 12. מחברים הכל ומקבלים 322. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "עוד אחד ביחד", "x": 490, "y": 85, "size": 34 } },
+          { "name": "draw_polygon", "input": { "points": [[280, 150], [700, 150], [700, 350], [280, 350]], "color": "#0d9488", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 540, "y1": 150, "x2": 540, "y2": 350, "color": "#0d9488", "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 280, "y1": 260, "x2": 700, "y2": 260, "color": "#0d9488", "width": 3 } },
+          { "name": "write_text", "input": { "text": "20", "x": 410, "y": 128, "size": 26 } },
+          { "name": "write_text", "input": { "text": "3", "x": 620, "y": 128, "size": 26 } },
+          { "name": "write_text", "input": { "text": "10", "x": 250, "y": 205, "size": 26 } },
+          { "name": "write_text", "input": { "text": "4", "x": 250, "y": 305, "size": 26 } },
+          { "name": "write_text", "input": { "text": "200", "x": 410, "y": 205, "size": 30 } },
+          { "name": "write_text", "input": { "text": "30", "x": 620, "y": 205, "size": 30 } },
+          { "name": "write_text", "input": { "text": "80", "x": 410, "y": 305, "size": 30 } },
+          { "name": "write_text", "input": { "text": "12", "x": 620, "y": 305, "size": 30 } },
+          { "name": "write_text", "input": { "text": "200 + 30 + 80 + 12 = 322", "x": 490, "y": 420, "size": 32 } },
+          { "name": "write_text", "input": { "text": "14 × 23 = 322", "x": 490, "y": 475, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד: 23 × 34. ציירתי לך את המלבן ריק, עם החלקים בצדדים. תמלא/י בראש כל משבצת: 20 × 30, ואז 20 × 4, ואז 3 × 30, ואז 3 × 4. את הסכום של ארבעתן כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "23 × 34 =", "answer": "782", "kind": "number", "x": 880, "y": 115, "hint": "תמלא/י כל משבצת בנפרד: 20 × 30, אחר כך 20 × 4, אחר כך 3 × 30, ובסוף 3 × 4. עכשיו תחבר/י את ארבע התוצאות שקיבלת.", "praise": "יופי! ארבע מכפלות ואז חיבור — עבדת בדיוק לפי המלבן 🎯" } },
+        { "name": "draw_polygon", "input": { "points": [[180, 200], [620, 200], [620, 400], [180, 400]], "color": "#0d9488", "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 460, "y1": 200, "x2": 460, "y2": 400, "color": "#0d9488", "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 180, "y1": 310, "x2": 620, "y2": 310, "color": "#0d9488", "width": 3 } },
+        { "name": "write_text", "input": { "text": "30", "x": 320, "y": 175, "size": 26 } },
+        { "name": "write_text", "input": { "text": "4", "x": 540, "y": 175, "size": 26 } },
+        { "name": "write_text", "input": { "text": "20", "x": 150, "y": 255, "size": 26 } },
+        { "name": "write_text", "input": { "text": "3", "x": 150, "y": 355, "size": 26 } },
+        { "name": "write_text", "input": { "text": "כל חלק פוגש כל חלק", "x": 400, "y": 450, "size": 28 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה השארתי לך מלבן ריק לעזרה — תמלא/י אותו בראש. אחר כך המספרים גדלים קצת. באחרונה כבר בלי מלבן: תפרק/י לארבע מכפלות ותחבר/י. בהצלחה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "13 × 15 =", "answer": "195", "kind": "number", "x": 880, "y": 115, "hint": "13 זה 10 ועוד 3. 15 זה 10 ועוד 5. תמלא/י את ארבע המשבצות במלבן שעל הלוח, ואז תחבר/י את כולן.", "praise": "מעולה! פירקת את שני המספרים ומצאת את כל ארבע המכפלות 👏" } },
+        { "name": "draw_polygon", "input": { "points": [[100, 190], [520, 190], [520, 380], [100, 380]], "color": "#0d9488", "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 340, "y1": 190, "x2": 340, "y2": 380, "color": "#0d9488", "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 100, "y1": 285, "x2": 520, "y2": 285, "color": "#0d9488", "width": 3 } },
+        { "name": "write_text", "input": { "text": "ארבע מכפלות — ואז מחברים", "x": 310, "y": 440, "size": 28 } },
+        { "name": "draw_exercise", "input": { "text": "16 × 24 =", "answer": "384", "kind": "number", "x": 880, "y": 270, "hint": "16 זה 10 ועוד 6, ו-24 זה 20 ועוד 4. ארבע פגישות: כל חלק של המספר הראשון עם כל חלק של השני. ואז חיבור.", "praise": "יפה מאוד! גם עם מספרים גדולים יותר המלבן עובד אותו דבר 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "45 × 12 =", "answer": "540", "kind": "number", "x": 880, "y": 425, "hint": "הפעם בלי מלבן על הלוח — תצייר/י אותו בראש. 45 זה 40 ועוד 5, ו-12 זה 10 ועוד 2. ארבע מכפלות, ואז חיבור.", "praise": "כל הכבוד! פירקת לבד בלי ציור — המלבן כבר בראש שלך 🏆" } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "topic": "חקר נתונים וניתוח סיכויים",
+  "lesson": 4,
+  "title": "ודאי, אפשרי, בלתי-אפשרי",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "מתחילים נושא חדש לגמרי, ובלי מספרים בכלל — רק מילים. אני אומר שלושה משפטים. אחד: מחר תזרח השמש. זה בטוח יקרה, תמיד. שתיים: מחר ירד גשם. אולי כן, אולי לא. שלוש: בהטלת קובייה יצא 7. זה לא יכול לקרות — לקובייה יש רק 1 עד 6. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "שלושה משפטים",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div style='width:96%;max-width:560px'><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>מחר תזרח השמש</div></div><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>מחר ירד גשם</div></div><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>בהטלת קובייה יצא 7</div></div></div></div>",
+              "title": "שלושה משפטים",
+              "x": 220,
+              "y": 150,
+              "w": 560,
+              "h": 280,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "כל אחד מהם — סוג אחר",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "לכל אחד מהם יש שם. מה שבטוח יקרה נקרא ודאי. מה שאולי יקרה ואולי לא נקרא אפשרי. ומה שלא יכול לקרות בשום אופן נקרא בלתי-אפשרי. שלוש המילים האלה הן כל הנושא. השמש — ודאי. הגשם — אפשרי. 7 בקובייה — בלתי-אפשרי. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ודאי · אפשרי · בלתי-אפשרי",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div style='width:96%;max-width:560px'><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>מחר תזרח השמש</div><div style='background:#49a97a;color:#ffffff;font-size:16px;font-weight:700;border-radius:20px;padding:6px 14px;white-space:nowrap'>ודאי</div></div><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>מחר ירד גשם</div><div style='background:#e8933a;color:#ffffff;font-size:16px;font-weight:700;border-radius:20px;padding:6px 14px;white-space:nowrap'>אפשרי</div></div><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>בהטלת קובייה יצא 7</div><div style='background:#d9534f;color:#ffffff;font-size:16px;font-weight:700;border-radius:20px;padding:6px 14px;white-space:nowrap'>בלתי-אפשרי</div></div></div></div>",
+              "title": "שלוש המילים",
+              "x": 220,
+              "y": 150,
+              "w": 560,
+              "h": 280,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "בטוח · אולי · בשום אופן לא",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "אפשר לסדר את זה על סרגל. בקצה אחד בלתי-אפשרי, בקצה השני ודאי, וכל מה שבאמצע הוא אפשרי. שים/שימי לב שבאמצע יש הרבה מקום: יש דברים שקורים כמעט תמיד, ויש כאלה שקורים לעיתים רחוקות — ושניהם אפשריים. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "סרגל הסיכויים",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div style='direction:ltr;width:540px'><div style='position:relative;height:82px'><div style='position:absolute;left:8%;bottom:0px;transform:translateX(-50%);background:#d9534f;color:#ffffff;font-size:14px;border-radius:16px;padding:5px 11px;white-space:nowrap'>יצא 7 בקובייה</div><div style='position:absolute;left:46%;bottom:34px;transform:translateX(-50%);background:#e8933a;color:#ffffff;font-size:14px;border-radius:16px;padding:5px 11px;white-space:nowrap'>מחר ירד גשם</div><div style='position:absolute;left:90%;bottom:0px;transform:translateX(-50%);background:#49a97a;color:#ffffff;font-size:14px;border-radius:16px;padding:5px 11px;white-space:nowrap'>מחר תזרח השמש</div></div><div style='height:24px;border-radius:12px;border:2px solid #2b4055;background:linear-gradient(to right,#f6c9c9,#f8e6a6,#bfe3c6)'></div><div style='display:flex;justify-content:space-between;margin-top:8px;font-size:16px;font-weight:700'><span>בלתי-אפשרי</span><span>אפשרי</span><span>ודאי</span></div></div></div>",
+              "title": "סרגל הסיכויים",
+              "x": 210,
+              "y": 150,
+              "w": 580,
+              "h": 280,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "באמצע — כל מה שאפשרי",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "שתי טעויות נפוצות, וזאת הראשונה: לבלבל בין אפשרי לוודאי. מחר ירד גשם — זה אפשרי, לא ודאי. גם אם השמיים מלאים עננים, עדיין ייתכן שלא ירד. ודאי זה רק כשאין שום דרך אחרת — כמו שאחרי יום שני תמיד, אבל תמיד, מגיע יום שלישי. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "אפשרי זה לא ודאי",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div style='width:96%;max-width:560px'><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>מחר ירד גשם — אולי כן, אולי לא</div><div style='background:#e8933a;color:#ffffff;font-size:16px;font-weight:700;border-radius:20px;padding:6px 14px;white-space:nowrap'>אפשרי</div></div><div style='display:flex;align-items:center;gap:14px;background:#f4f7fa;border:2px solid #2b4055;border-radius:12px;padding:12px 16px;margin-bottom:12px'><div style='flex:1;font-size:18px'>אחרי יום שני יגיע יום שלישי</div><div style='background:#49a97a;color:#ffffff;font-size:16px;font-weight:700;border-radius:20px;padding:6px 14px;white-space:nowrap'>ודאי</div></div></div></div>",
+              "title": "אפשרי מול ודאי",
+              "x": 220,
+              "y": 165,
+              "w": 560,
+              "h": 250,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "ודאי = אין שום דרך אחרת",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      },
+      {
+        "reply": "והטעות השנייה: לחשוב שמשהו נדיר הוא בלתי-אפשרי. לפגוש את החבר שלי במכולת זה נדיר — לרוב זה לא קורה. אבל זה אפשרי לגמרי! הוא גר בשכונה, והוא קונה חלב כמו כולם. בלתי-אפשרי זה רק מה שלא יכול לקרות אף פעם, כמו 7 בקובייה. ✓",
+        "toolCalls": [
+          {
+            "name": "write_text",
+            "input": {
+              "text": "נדיר זה עדיין אפשרי",
+              "x": 500,
+              "y": 92,
+              "size": 32
+            }
+          },
+          {
+            "name": "render_widget",
+            "input": {
+              "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div style='direction:ltr;width:540px'><div style='position:relative;height:82px'><div style='position:absolute;left:6%;bottom:0px;transform:translateX(-50%);background:#d9534f;color:#ffffff;font-size:14px;border-radius:16px;padding:5px 11px;white-space:nowrap'>יצא 7 בקובייה</div><div style='position:absolute;left:26%;bottom:34px;transform:translateX(-50%);background:#e8933a;color:#ffffff;font-size:14px;border-radius:16px;padding:5px 11px;white-space:nowrap'>אפגוש חבר במכולת</div><div style='position:absolute;left:90%;bottom:0px;transform:translateX(-50%);background:#49a97a;color:#ffffff;font-size:14px;border-radius:16px;padding:5px 11px;white-space:nowrap'>מחר תזרח השמש</div></div><div style='height:24px;border-radius:12px;border:2px solid #2b4055;background:linear-gradient(to right,#f6c9c9,#f8e6a6,#bfe3c6)'></div><div style='display:flex;justify-content:space-between;margin-top:8px;font-size:16px;font-weight:700'><span>בלתי-אפשרי</span><span>אפשרי</span><span>ודאי</span></div></div></div>",
+              "title": "נדיר אבל אפשרי",
+              "x": 210,
+              "y": 150,
+              "w": 580,
+              "h": 280,
+              "exact": true
+            }
+          },
+          {
+            "name": "write_text",
+            "input": {
+              "text": "נדיר = קרוב לקצה, אבל לא בקצה",
+              "x": 500,
+              "y": 490,
+              "size": 26
+            }
+          }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד, ומעכשיו נשתמש בקוד קצר: 1 זה בלתי-אפשרי, 2 זה אפשרי, 3 זה ודאי. הנה השאלה: בשקית שעל הלוח יש רק כדורים כחולים. אני מכניס יד בלי להסתכל ורוצה לשלוף כדור אדום. תסתכל/י בשקית — יש שם בכלל אדום? תכתוב/תכתבי 1, 2 או 3.",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בשקית רק כחולים. אשלוף אדום — 1, 2 או 3?",
+            "answer": "1",
+            "kind": "number",
+            "hint": "תשאל/י את עצמך: יש בכלל כדור אדום בשקית? אם אין שום דרך שזה יקרה — זה בלתי-אפשרי. אם זה בטוח יקרה תמיד — ודאי. ובאמצע — אפשרי.",
+            "praise": "יופי! זיהית שאין שום דרך שזה יקרה — זה בלתי-אפשרי 👏"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div style='text-align:center'><div style='width:250px;padding:24px 18px;background:#fdf7ea;border:4px solid #9c7b46;border-radius:14px 14px 60px 60px;display:flex;flex-wrap:wrap;gap:11px;justify-content:center'><span style='width:26px;height:26px;border-radius:50%;background:#4a86c8;outline:1px solid #46617c;display:block'></span><span style='width:26px;height:26px;border-radius:50%;background:#4a86c8;outline:1px solid #46617c;display:block'></span><span style='width:26px;height:26px;border-radius:50%;background:#4a86c8;outline:1px solid #46617c;display:block'></span><span style='width:26px;height:26px;border-radius:50%;background:#4a86c8;outline:1px solid #46617c;display:block'></span><span style='width:26px;height:26px;border-radius:50%;background:#4a86c8;outline:1px solid #46617c;display:block'></span><span style='width:26px;height:26px;border-radius:50%;background:#4a86c8;outline:1px solid #46617c;display:block'></span><span style='width:26px;height:26px;border-radius:50%;background:#4a86c8;outline:1px solid #46617c;display:block'></span><span style='width:26px;height:26px;border-radius:50%;background:#4a86c8;outline:1px solid #46617c;display:block'></span></div><div style='font-size:17px;font-weight:700;margin-top:14px'>בשקית רק כחולים</div></div></div>",
+            "title": "שקית הכדורים",
+            "x": 320,
+            "y": 165,
+            "w": 360,
+            "h": 290,
+            "exact": true
+          }
+        },
+        {
+          "name": "write_text",
+          "input": {
+            "text": "1 בלתי-אפשרי · 2 אפשרי · 3 ודאי",
+            "x": 500,
+            "y": 500,
+            "size": 24
+          }
+        }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות, ואותו קוד: 1 בלתי-אפשרי, 2 אפשרי, 3 ודאי. תיזהר/י מהמלכודת בשאלה השנייה — משהו שקורה רק לעיתים רחוקות הוא עדיין אפשרי. ואחרי שתסיים/י, תמציא/י לעצמך משפט אחד מכל סוג. בשיעור הבא נתחיל כבר לספור סיכויים 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "בשבוע הבא יהיה יום שישי — 1, 2 או 3?",
+            "answer": "3",
+            "kind": "number",
+            "x": 190,
+            "y": 140,
+            "hint": "תשאל/י את עצמך: יש שבוע אחד בעולם בלי יום שישי? עכשיו תחליט/י — זה קורה תמיד, או רק לפעמים? תחפש/י במקרא את המילה שמתאימה.",
+            "praise": "מדויק! זה קורה תמיד, בלי יוצא מן הכלל — ודאי 👏"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "אפגוש את החבר שלי במכולת — 1, 2 או 3?",
+            "answer": "2",
+            "kind": "number",
+            "x": 190,
+            "y": 300,
+            "hint": "זה לא קורה כל יום, נכון? אבל תשאל/י את עצמך שאלה אחרת: האם זה יכול לקרות בכלל? נדיר זה לא אותו דבר כמו לא יכול לקרות.",
+            "praise": "כל הכבוד! לא נפלת במלכודת — נדיר הוא עדיין אפשרי 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "מחר החתול שלי ידבר עברית — 1, 2 או 3?",
+            "answer": "1",
+            "kind": "number",
+            "x": 190,
+            "y": 455,
+            "hint": "תחשוב/תחשבי אם יש איזו דרך בעולם שזה יקרה, אפילו פעם אחת בחיים. אם אין שום דרך כזאת — תחפש/י במקרא את המילה שמתאימה, ותכתוב/תכתבי את המספר שלה.",
+            "praise": "מצוין! אין שום דרך שזה יקרה — בלתי-אפשרי 🏆"
+          }
+        },
+        {
+          "name": "render_widget",
+          "input": {
+            "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#ffffff;width:100%;height:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:0px;color:#16324f'><div><div style='display:flex;align-items:center;gap:12px;margin-bottom:14px'><div style='width:38px;height:38px;border-radius:50%;background:#d9534f;color:#ffffff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center'>1</div><div><div style='font-size:18px;font-weight:700'>בלתי-אפשרי</div><div style='font-size:15px'>לא יכול לקרות בשום אופן</div></div></div><div style='display:flex;align-items:center;gap:12px;margin-bottom:14px'><div style='width:38px;height:38px;border-radius:50%;background:#e8933a;color:#ffffff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center'>2</div><div><div style='font-size:18px;font-weight:700'>אפשרי</div><div style='font-size:15px'>אולי כן, אולי לא</div></div></div><div style='display:flex;align-items:center;gap:12px;margin-bottom:14px'><div style='width:38px;height:38px;border-radius:50%;background:#49a97a;color:#ffffff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center'>3</div><div><div style='font-size:18px;font-weight:700'>ודאי</div><div style='font-size:15px'>בטוח יקרה, תמיד</div></div></div></div></div>",
+            "title": "המקרא",
+            "x": 580,
+            "y": 130,
+            "w": 360,
+            "h": 280,
+            "exact": true
+          }
+        }
+      ]
+    }
+  }
+}

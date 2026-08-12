@@ -1,0 +1,124 @@
+{
+  "topic": "כפל וחילוק עשרוניים",
+  "lesson": 2,
+  "title": "עשרוני כפול שלם — קודם אומדן",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! על השולחן ארבעה בקבוקים, ובכל אחד 3.2 ליטר. כמה ליטר יש בסך הכל? רגע לפני שמחשבים — עושים אומדן. 3.2 זה קצת יותר מ-3, וארבע פעמים 3 זה 12. אז התשובה קצת יותר מ-12, ובטוח פחות מ-16. עוד לא חישבנו כלום, וכבר ידענו איפה התשובה גרה על הציר. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ארבעה בקבוקים של 3.2 ליטר", "x": 480, "y": 80, "size": 32 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 400 136' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><g fill='#a7f3d0' stroke='#0d9488' stroke-width='3'><rect x='55' y='12' width='16' height='14'/><rect x='38' y='26' width='50' height='62' rx='8'/><rect x='150' y='12' width='16' height='14'/><rect x='133' y='26' width='50' height='62' rx='8'/><rect x='245' y='12' width='16' height='14'/><rect x='228' y='26' width='50' height='62' rx='8'/><rect x='340' y='12' width='16' height='14'/><rect x='323' y='26' width='50' height='62' rx='8'/></g><g text-anchor='middle' font-size='19' font-weight='700' fill='#0f3b36' direction='ltr'><text x='63' y='110'>3.2</text><text x='158' y='110'>3.2</text><text x='253' y='110'>3.2</text><text x='348' y='110'>3.2</text></g><text x='200' y='131' text-anchor='middle' font-size='15' fill='#0f3b36'>בכל בקבוק אותה כמות</text></svg>", "title": "ארבעה בקבוקים", "x": 300, "y": 110, "w": 400, "h": 136, "exact": true } },
+          { "name": "write_text", "input": { "text": "בערך כאן", "x": 665, "y": 282, "size": 24 } },
+          { "name": "draw_arrow", "input": { "x1": 665, "y1": 300, "x2": 665, "y2": 336, "color": "#ea580c", "width": 4 } },
+          { "name": "draw_number_line", "input": { "x": 110, "y": 350, "from": 0, "to": 16, "step": 2, "length": 740 } },
+          { "name": "write_text", "input": { "text": "יותר מ-12, פחות מ-16", "x": 480, "y": 450, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עכשיו מחשבים, והטריק פשוט: לרגע שוכחים מהנקודה. 3.2 בלי הנקודה זה 32, וכבר יודע/ת לכפול שלמים. 32 כפול 4 זה 128. אבל רגע — 128 ליטר בארבעה בקבוקים? האומדן שלנו אמר בערך 12. אז המספר 128 נכון, רק שחסר לו עוד צעד אחד. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שוכחים לרגע מהנקודה", "x": 480, "y": 84, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 360 200' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='250' y='56' text-anchor='end' font-size='36' font-weight='700' fill='#0f3b36' direction='ltr'>32</text><text x='250' y='104' text-anchor='end' font-size='36' font-weight='700' fill='#0f3b36' direction='ltr'>× 4</text><line x1='110' y1='120' x2='260' y2='120' stroke='#0f3b36' stroke-width='3'/><text x='250' y='166' text-anchor='end' font-size='36' font-weight='700' fill='#0d9488' direction='ltr'>128</text><text x='180' y='194' text-anchor='middle' font-size='16' fill='#0f3b36'>כמו כפל של מספרים שלמים</text></svg>", "title": "כופלים בלי נקודה", "x": 330, "y": 140, "w": 340, "h": 189, "exact": true } },
+          { "name": "write_text", "input": { "text": "האומדן אמר בערך 12", "x": 480, "y": 372, "size": 26 } },
+          { "name": "write_text", "input": { "text": "128 גדול מדי — חסר צעד אחד", "x": 480, "y": 428, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "הצעד האחרון: מחזירים את הנקודה, והאומדן אומר לנו לאן. יש שלוש אפשרויות — 1.28, 12.8 או 128. האומדן אמר קצת יותר מ-12, אז רק 12.8 מתאים. 1.28 קטן מדי, 128 גדול מדי. אז 3.2 כפול 4 זה 12.8 ליטר. הכלל של כל השיעור: אומדן ראשון, חישוב שני. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "האומדן מחזיר את הנקודה", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 520 190' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='260' y='24' text-anchor='middle' font-size='19' font-weight='700' fill='#0f3b36'>איפה הנקודה?</text><rect x='20' y='40' width='150' height='70' rx='10' fill='#fee2e2' stroke='#dc2626' stroke-width='3'/><text x='95' y='88' text-anchor='middle' font-size='30' font-weight='700' fill='#dc2626' direction='ltr'>1.28</text><text x='95' y='134' text-anchor='middle' font-size='16' fill='#0f3b36'>קטן מדי</text><rect x='185' y='40' width='150' height='70' rx='10' fill='#dcfce7' stroke='#15803d' stroke-width='4'/><text x='260' y='88' text-anchor='middle' font-size='30' font-weight='700' fill='#15803d' direction='ltr'>12.8</text><text x='260' y='134' text-anchor='middle' font-size='16' fill='#0f3b36'>מתאים לאומדן</text><rect x='350' y='40' width='150' height='70' rx='10' fill='#fee2e2' stroke='#dc2626' stroke-width='3'/><text x='425' y='88' text-anchor='middle' font-size='30' font-weight='700' fill='#dc2626' direction='ltr'>128</text><text x='425' y='134' text-anchor='middle' font-size='16' fill='#0f3b36'>גדול מדי</text><text x='260' y='176' text-anchor='middle' font-size='24' font-weight='700' fill='#0d9488' direction='ltr'>3.2 × 4 = 12.8</text></svg>", "title": "איפה הנקודה", "x": 240, "y": 150, "w": 520, "h": 190, "exact": true } },
+          { "name": "write_text", "input": { "text": "אומדן ראשון, חישוב שני", "x": 480, "y": 400, "size": 30 } },
+          { "name": "write_text", "input": { "text": "ככה כמעט לא טועים בנקודה", "x": 480, "y": 458, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עוד אחד ביחד, באותם שלושה צעדים: 1.4 כפול 6. אומדן — 1.4 קרוב ל-1.5, ושש פעמים 1.5 זה 9, אז התשובה קצת פחות מ-9. חישוב בלי נקודה — 14 כפול 6 זה 84. ועכשיו הנקודה: 8.4 מתאים לאומדן. לא 84 ולא 0.84. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שלושה צעדים, כל פעם מחדש", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 520 180' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><text x='260' y='30' text-anchor='middle' font-size='20' font-weight='700' fill='#ea580c'>אומדן — קצת פחות מ-9</text><text x='260' y='80' text-anchor='middle' font-size='28' font-weight='700' fill='#0f3b36' direction='ltr'>14 × 6 = 84</text><text x='260' y='108' text-anchor='middle' font-size='17' fill='#0f3b36'>כופלים בלי הנקודה</text><line x1='120' y1='126' x2='400' y2='126' stroke='#cbd5e1' stroke-width='2'/><text x='260' y='166' text-anchor='middle' font-size='30' font-weight='700' fill='#15803d' direction='ltr'>1.4 × 6 = 8.4</text></svg>", "title": "1.4 כפול 6", "x": 240, "y": 150, "w": 520, "h": 180, "exact": true } },
+          { "name": "write_text", "input": { "text": "התוצאה קרובה לאומדן — סימן טוב", "x": 480, "y": 392, "size": 28 } },
+          { "name": "write_text", "input": { "text": "אם רחוק מהאומדן — יש טעות", "x": 480, "y": 450, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ולסיום הפתעה: 0.8 כפול 7. עצור/עצרי לאומדן — 0.8 זה פחות משלם אחד. אז שבע פעמים 0.8 יוצא פחות מ-7! בלי נקודה: 8 כפול 7 זה 56. ומהאומדן ברור שזה 5.6, לא 56. תזכור/תזכרי: כשכופלים במספר קטן מ-1, התוצאה יוצאת קטנה יותר. עכשיו תור/ך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כופלים בפחות מ-1 — יוצא פחות", "x": 480, "y": 88, "size": 32 } },
+          { "name": "write_text", "input": { "text": "0.8 קטן משלם אחד", "x": 480, "y": 180, "size": 28 } },
+          { "name": "write_text", "input": { "text": "פחות מ-7", "x": 697, "y": 252, "size": 24 } },
+          { "name": "draw_arrow", "input": { "x1": 697, "y1": 272, "x2": 697, "y2": 314, "color": "#dc2626", "width": 4 } },
+          { "name": "draw_number_line", "input": { "x": 190, "y": 350, "from": 0, "to": 8, "step": 1, "length": 580 } },
+          { "name": "draw_circle", "input": { "x": 596, "y": 350, "r": 9, "color": "#15803d" } },
+          { "name": "write_text", "input": { "text": "בלי נקודה 56 · עם נקודה 5.6", "x": 480, "y": 450, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד: 4.3 כפול 2. שים/י לב לסדר — קודם אומדן, אחר כך חישוב. 4.3 קצת יותר מ-4, ופעמיים 4 זה 8. אז כבר יודעים בערך איפה התשובה על הציר. עכשיו תכפול/י בלי הנקודה, ובסוף תחזיר/י אותה למקום שמתאים לאומדן. כתוב/כתבי את התשובה בתיבה!",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "4.3 × 2 =",
+            "answer": "8.6",
+            "kind": "number",
+            "x": 800,
+            "y": 170,
+            "hint": "קודם אומדן: 4.3 קצת יותר מ-4, ופעמיים 4 זה 8 — אז התשובה קצת יותר מ-8. עכשיו תכפול/י בלי הנקודה: 43 כפול 2. ובסוף שים/י את הנקודה במקום שמתאים לאומדן.",
+            "praise": "מעולה! האומדן שמר לך על הנקודה במקום הנכון 👏"
+          }
+        },
+        { "name": "write_text", "input": { "text": "קודם אומדן", "x": 250, "y": 108, "size": 30 } },
+        { "name": "draw_number_line", "input": { "x": 110, "y": 340, "from": 0, "to": 10, "step": 1, "length": 700 } },
+        { "name": "write_text", "input": { "text": "התשובה קצת ימינה מ-8", "x": 480, "y": 440, "size": 28 } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות — אחת בכל פעם. לפני כל אחת עשה/עשי אומדן בראש, ורק אחר כך תחשב/י. בשנייה שים/י לב שהמספר הראשון קטן מ-1. השלישית יוצאת מספר עגול יפה — סימן שהאומדן היה מדויק 🙂",
+      "toolCalls": [
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "5.6 × 3 =",
+            "answer": "16.8",
+            "kind": "number",
+            "x": 800,
+            "y": 150,
+            "hint": "אומדן: 5.6 קרוב ל-6, ושלוש פעמים 6 זה 18 — אז התשובה קצת פחות מ-18. עכשיו תכפול/י 56 כפול 3 בלי נקודה, ואז החזר/י את הנקודה כך שיתאים לאומדן.",
+            "praise": "יופי! עשית אומדן קודם, ולכן הנקודה נחתה בדיוק במקום 👏"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "0.6 × 9 =",
+            "answer": "5.4",
+            "kind": "number",
+            "x": 800,
+            "y": 260,
+            "hint": "0.6 קטן משלם אחד, אז התשובה חייבת לצאת קטנה מ-9. תכפול/י 6 כפול 9 בלי נקודה, ואז שים/י את הנקודה כך שהמספר יישאר קטן מ-9.",
+            "praise": "מצוין! זיהית שכפל בפחות מ-1 מקטין — והתשובה יצאה קטנה מ-9 🎉"
+          }
+        },
+        {
+          "name": "draw_exercise",
+          "input": {
+            "text": "2.5 × 4 =",
+            "answer": "10",
+            "kind": "number",
+            "x": 800,
+            "y": 370,
+            "hint": "אומדן: 2.5 זה שתיים וחצי, וארבע פעמים שתיים וחצי — כמה בערך? עכשיו בלי נקודה: 25 כפול 4. איפה הנקודה תשב כדי שיתאים לאומדן?",
+            "praise": "בול! יצא מספר עגול, וזה בסדר גמור — לפעמים הנקודה נעלמת 🏆"
+          }
+        },
+        { "name": "write_text", "input": { "text": "אומדן לפני כל תרגיל", "x": 260, "y": 110, "size": 30 } },
+        { "name": "draw_number_line", "input": { "x": 60, "y": 340, "from": 0, "to": 20, "step": 2, "length": 460 } },
+        { "name": "write_text", "input": { "text": "הציר לעזרה בשאלה הראשונה", "x": 280, "y": 430, "size": 26 } },
+        { "name": "remember_note", "input": { "note": "עשרוני × שלם דרך אומדן: כופלים בלי נקודה ואז ממקמים לפי האומדן.", "open_loop": "בשיעור הבא: עשרוני × עשרוני — לבדוק שהוא לא שוכח לספור ספרות." } }
+      ]
+    }
+  }
+}

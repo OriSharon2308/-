@@ -1,0 +1,65 @@
+{
+  "topic": "מדידות — שטח, היקף ונפח",
+  "lesson": 4,
+  "title": "מהמישור לחלל — נפח בקוביות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "עד היום כיסינו שטח במשבצות שטוחות. עכשיו עוברים לקופסאות, וממלאים אותן בקוביות. משבצת של 1 על 1 היא 1 סמ״ר — היא מכסה. קובייה קטנה של 1 על 1 על 1 היא 1 סמ״ק — היא ממלאת. השאלה החדשה שלנו: כמה קוביות נכנסות בקופסה? למספר הזה קוראים נפח. לחץ/י ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ממשבצת לקובייה", "x": 500, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "משבצת וקובייה", "x": 290, "y": 135, "w": 420, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:22px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;align-items:center;justify-content:center;gap:56px'><div style='text-align:center'><div style='width:78px;height:78px;border:4px solid #1d4ed8;background:#dbeafe;margin:0 auto;box-sizing:border-box'></div><div style='margin-top:16px;font-size:19px;color:#1e3a8a'>משבצת · 1 סמ״ר</div><div style='font-size:16px;color:#64748b'>מכסה שטח</div></div><div style='text-align:center'><div style='position:relative;width:112px;height:112px;margin:0 auto'><div style='position:absolute;left:34px;top:0;width:78px;height:78px;border:4px solid #1d4ed8;background:#eff6ff;box-sizing:border-box'></div><div style='position:absolute;left:0;top:34px;width:48px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:78px;top:34px;width:48px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:78px;top:112px;width:48px;height:4px;background:#1d4ed8;transform:rotate(-45deg);transform-origin:left center'></div><div style='position:absolute;left:0;top:34px;width:78px;height:78px;border:4px solid #1d4ed8;background:#bfdbfe;box-sizing:border-box'></div></div><div style='margin-top:16px;font-size:19px;color:#1e3a8a'>קובייה · 1 סמ״ק</div><div style='font-size:16px;color:#64748b'>ממלאת נפח</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "נפח = כמה קוביות נכנסות", "x": 500, "y": 430, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "נמלא ביחד קופסה בגודל 4 על 3 על 2. מתחילים מהרצפה. שמים שורה של 4 קוביות, ואז עוד שורה, ועוד אחת — שלוש שורות בסך הכול. זו שכבה אחת שלמה, ובה 4 כפול 3, כלומר 12 קוביות. עד כאן זה בדיוק כמו שטח שאנחנו כבר מכירים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "השכבה התחתונה: 4 על 3", "x": 500, "y": 90, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "שכבה אחת", "x": 310, "y": 150, "w": 380, "h": 220, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:26px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px'><div style='width:136px;height:102px;border:4px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:34px 34px'></div><div style='font-size:20px;color:#1e3a8a'>4 בשורה · 3 שורות</div></div>" } },
+          { "name": "write_text", "input": { "text": "4 × 3 = 12 קוביות בשכבה", "x": 500, "y": 420, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הדבר החדש באמת: מניחים שכבה שנייה שלמה על הראשונה. גם בה 12 קוביות, בדיוק אותו דבר. יש 12 בשכבה, ויש 2 שכבות — 12 כפול 2 זה 24. בקופסה 24 קוביות, כלומר הנפח שלה הוא 24 סמ״ק. תזכור/תזכרי את המשפט שעל הלוח. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה בשכבה, כפול כמה שכבות", "x": 500, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "שתי שכבות", "x": 310, "y": 140, "w": 380, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:30px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px'><div style='position:relative;width:162px;height:136px'><div style='position:absolute;left:0;top:34px;width:136px;height:102px;border:4px solid #64748b;background:#e2e8f0;background-image:linear-gradient(#94a3b8 2px,transparent 2px),linear-gradient(90deg,#94a3b8 2px,transparent 2px);background-size:34px 34px;box-sizing:border-box'></div><div style='position:absolute;left:26px;top:0;width:136px;height:102px;border:4px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:34px 34px;box-sizing:border-box'></div></div><div style='font-size:20px;color:#1e3a8a'>12 בשכבה · 2 שכבות</div></div>" } },
+          { "name": "write_text", "input": { "text": "12 × 2 = 24 סמ״ק", "x": 500, "y": 432, "size": 32 } }
+        ]
+      },
+      {
+        "reply": "וזאת הטעות שהכי קל ליפול בה. כשמסתכלים על הקופסה מלמעלה רואים רק 12 קוביות — את השכבה העליונה. אבל מתחתיה מסתתרות עוד 12 קוביות שלא רואים בכלל! מי שסופר רק את מה שרואים יגיד 12, וזה חצי מהאמת. תמיד לשאול: כמה שכבות יש כאן? ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "יש קוביות שלא רואים", "x": 500, "y": 85, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "הקוביות המוסתרות", "x": 280, "y": 140, "w": 440, "h": 250, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:26px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;align-items:center;justify-content:center;gap:34px'><div style='position:relative;width:170px;height:140px'><div style='position:absolute;left:0;top:38px;width:136px;height:102px;border:4px dashed #b45309;background:#fef3c7;box-sizing:border-box'></div><div style='position:absolute;left:30px;top:0;width:136px;height:102px;border:4px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:34px 34px;box-sizing:border-box'></div></div><div style='font-size:19px;line-height:2;color:#1e3a8a'><div>רואים: 12 קוביות</div><div style='color:#b45309'>מוסתרות: עוד 12</div><div>ביחד: 24</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "לספור רק את הגלוי — חצי מהאמת", "x": 500, "y": 435, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "משימת חקר לסיום. יש לנו 24 קוביות, ואפשר לבנות מהן קופסאות שונות לגמרי. שכבה של 2 על 3 עם 4 שכבות — 24. שכבה של 2 על 2 עם 6 שכבות — גם 24. שכבה של 1 על 3 עם 8 שכבות — שוב 24. אותן קוביות בדיוק, וקופסאות שנראות אחרת. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "24 קוביות — קופסאות שונות", "x": 500, "y": 90, "size": 32 } },
+          { "name": "render_widget", "input": { "title": "שלוש דרכים", "x": 220, "y": 160, "w": 560, "h": 230, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:20px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;align-items:flex-end;justify-content:center;gap:44px'><div style='text-align:center'><div style='width:44px;height:66px;margin:0 auto;border:3px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:22px 22px'></div><div style='margin-top:12px;font-size:17px;color:#1e3a8a'>שכבה 2 על 3</div><div style='font-size:17px;color:#b45309'>4 שכבות</div></div><div style='text-align:center'><div style='width:44px;height:44px;margin:0 auto;border:3px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:22px 22px'></div><div style='margin-top:12px;font-size:17px;color:#1e3a8a'>שכבה 2 על 2</div><div style='font-size:17px;color:#b45309'>6 שכבות</div></div><div style='text-align:center'><div style='width:22px;height:66px;margin:0 auto;border:3px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:22px 22px'></div><div style='margin-top:12px;font-size:17px;color:#1e3a8a'>שכבה 1 על 3</div><div style='font-size:17px;color:#b45309'>8 שכבות</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "בכולן 24 קוביות בדיוק", "x": 500, "y": 435, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "ביחד. על הלוח מצוירת שכבה אחת: 5 קוביות בשורה, 2 שורות. הקופסה גבוהה, ויש בה 3 שכבות כאלה בדיוק. קודם ספור/י כמה קוביות יש בשכבה אחת, ורק אז תכפול/תכפלי במספר השכבות. את התשובה כתוב/כתבי בתיבה.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "בשכבה 5 על 2, ויש 3 שכבות — כמה קוביות?", "answer": "30", "kind": "number", "hint": "שני צעדים. קודם השכבה: 5 כפול 2. אחר כך תכפול/תכפלי את המספר שיצא במספר השכבות, 3. אל תספור/תספרי קובייה-קובייה.", "praise": "יפה מאוד! שכבה כפול מספר שכבות — ככה מוצאים נפח 👏" } },
+        { "name": "render_widget", "input": { "title": "השכבה", "x": 320, "y": 300, "w": 360, "h": 200, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:24px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px'><div style='width:150px;height:60px;border:4px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:30px 30px'></div><div style='font-size:19px;color:#1e3a8a'>שכבה אחת · 5 על 2</div><div style='font-size:19px;color:#b45309'>ובקופסה 3 שכבות</div></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה השכבה מצוירת לך. בשנייה יש שלושה מספרים — תזכור/תזכרי ששניים מהם בונים את השכבה והשלישי סופר שכבות. והאחרונה הפוכה: נותנים לך את סך הקוביות ומחפשים את השכבה. בשיעור הבא נהפוך את זה לנוסחה קצרה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "בשכבה 4 על 4, ויש 2 שכבות — כמה קוביות?", "answer": "32", "kind": "number", "x": 290, "y": 130, "hint": "כמה קוביות בשכבה אחת? 4 כפול 4. עכשיו יש עוד שכבה בדיוק כזאת מעליה — אז כופלים ב-2.", "praise": "מצוין! 16 בשכבה, שתי שכבות — וקיבלת את הנפח 👏" } },
+        { "name": "render_widget", "input": { "title": "השכבה", "x": 650, "y": 100, "w": 290, "h": 210, "exact": true, "html": "<div style='width:100%;height:100%;box-sizing:border-box;padding:22px;background:#fff;font-family:sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px'><div style='width:112px;height:112px;border:4px solid #1d4ed8;background:#bfdbfe;background-image:linear-gradient(#1d4ed8 2px,transparent 2px),linear-gradient(90deg,#1d4ed8 2px,transparent 2px);background-size:28px 28px'></div><div style='font-size:18px;color:#1e3a8a'>שכבה 4 על 4</div></div>" } },
+        { "name": "draw_exercise", "input": { "text": "תיבה 3 על 3 על 3 — כמה קוביות בסך הכול?", "answer": "27", "kind": "number", "x": 290, "y": 310, "hint": "שני המספרים הראשונים נותנים את השכבה, והשלישי הוא מספר השכבות. 3 כפול 3, ואת התוצאה כפול 3.", "praise": "כל הכבוד! שכבה של 9 ושלוש שכבות — 27 סמ״ק 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "מ-12 קוביות בנו תיבה שגובהה 2 — כמה בשכבה?", "answer": "6", "kind": "number", "x": 290, "y": 470, "hint": "כאן עובדים אחורה. סך הקוביות הוא שכבה כפול מספר שכבות. אם התוצאה 12 ומספר השכבות 2 — איזה מספר חייב להיות בשכבה?", "praise": "מעולה! עבדת אחורה מהנפח אל השכבה — חשיבה של אלוף/ה 🏆" } }
+      ]
+    }
+  }
+}

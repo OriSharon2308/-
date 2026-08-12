@@ -1,0 +1,93 @@
+{
+  "topic": "זוויות ומרובעים",
+  "lesson": 2,
+  "title": "מד-הזווית — למדוד במעלות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם אמדנו בעין. עכשיו הכלי שמודד בדיוק — מד-זווית. הוא חצי עיגול, ויש עליו מספרים מ-0 עד 180. שים/שימי לב שיש שתי שורות מספרים: כחולה שמתחילה ב-0 מימין, ואדומה שמתחילה ב-0 משמאל. שתי השורות נקראות סולמות. ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "מד-זווית", "x": 230, "y": 115, "w": 540, "h": 320, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,sans-serif;text-align:center'><div id='pw1'></div><div style='font-size:14px;color:#555'>סולם כחול וסולם אדום</div></div><script>(function(){var NS='http://www.w3.org/2000/svg';var A=30+30;var h=document.getElementById('pw1');var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 540 300');svg.setAttribute('width','100%');h.appendChild(svg);function el(t,o,x){var e=document.createElementNS(NS,t);for(var k in o)e.setAttribute(k,o[k]);if(x!==undefined)e.textContent=x;svg.appendChild(e);return e;}var CX=270,CY=272,R=228;function P(a,r){return [CX+r*Math.cos(a*Math.PI/180),CY-r*Math.sin(a*Math.PI/180)];}var p0=P(180,R),p1=P(0,R);el('path',{d:'M '+p0[0]+' '+p0[1]+' A '+R+' '+R+' 0 0 1 '+p1[0]+' '+p1[1]+' Z',fill:'#eef4ff',stroke:'#2f6fd0','stroke-width':3});for(var a=0;a<=180;a+=10){var q=P(a,R),s=P(a,a%30===0?R-28:R-16);el('line',{x1:q[0],y1:q[1],x2:s[0],y2:s[1],stroke:'#2f6fd0','stroke-width':a%30===0?2.5:1});if(a%30===0){var t1=P(a,R-52),t2=P(a,R-96);el('text',{x:t1[0],y:t1[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#2f6fd0'},a);el('text',{x:t2[0],y:t2[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#e2574c'},180-a);}}var r1=P(0,R),r2=P(A,R);el('line',{x1:CX,y1:CY,x2:r1[0],y2:r1[1],stroke:'#111','stroke-width':4});el('line',{x1:CX,y1:CY,x2:r2[0],y2:r2[1],stroke:'#111','stroke-width':4});el('circle',{cx:CX,cy:CY,r:6,fill:'#111'});})();</script>" } },
+          { "name": "write_text", "input": { "text": "הנקודה השחורה באמצע היא מרכז המד", "x": 500, "y": 480, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "שלושה כללים, ובלעדיהם המדידה יוצאת שגויה. אחד: מרכז המד יושב בדיוק על קדקוד הזווית — הקדקוד היא הנקודה שממנה יוצאים שני הקווים. שניים: הקו של 0 מונח בדיוק על אחת הקרניים. שלוש: קוראים בסולם שמתחיל ב-0 על אותה קרן. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שלושה כללים למדידה", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "המרכז של המד על הקדקוד", "x": 500, "y": 175, "size": 27 } },
+          { "name": "write_text", "input": { "text": "הקו של 0 בדיוק על אחת הקרניים", "x": 500, "y": 245, "size": 27 } },
+          { "name": "write_text", "input": { "text": "קוראים בסולם שמתחיל ב-0 על אותה קרן", "x": 500, "y": 315, "size": 26 } },
+          { "name": "draw_line", "input": { "x1": 430, "y1": 470, "x2": 650, "y2": 470, "color": "#2f6fd0", "width": 5 } },
+          { "name": "draw_line", "input": { "x1": 430, "y1": 470, "x2": 577, "y2": 367, "color": "#2f6fd0", "width": 5 } },
+          { "name": "draw_circle", "input": { "x": 430, "y": 470, "r": 8, "color": "#e2574c" } },
+          { "name": "write_text", "input": { "text": "קדקוד", "x": 355, "y": 490, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "נמדוד ביחד. הקרן התחתונה יושבת על 0 של הסולם הכחול, אז אני קורא רק בכחול. הקרן השנייה מגיעה ל-60. אבל לפני שאני אומר את התשובה — בדיקה בעין: הפתח קטן מפינת דף, כלומר חדה, ולכן חייב לצאת פחות מ-90. 60 קטן מ-90. מתאים! ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "מדידה", "x": 230, "y": 115, "w": 540, "h": 320, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,sans-serif;text-align:center'><div id='pw2'></div><div style='font-size:14px;color:#555'>הקרן התחתונה על ה-0 הכחול</div></div><script>(function(){var NS='http://www.w3.org/2000/svg';var A=30+30;var h=document.getElementById('pw2');var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 540 300');svg.setAttribute('width','100%');h.appendChild(svg);function el(t,o,x){var e=document.createElementNS(NS,t);for(var k in o)e.setAttribute(k,o[k]);if(x!==undefined)e.textContent=x;svg.appendChild(e);return e;}var CX=270,CY=272,R=228;function P(a,r){return [CX+r*Math.cos(a*Math.PI/180),CY-r*Math.sin(a*Math.PI/180)];}var p0=P(180,R),p1=P(0,R);el('path',{d:'M '+p0[0]+' '+p0[1]+' A '+R+' '+R+' 0 0 1 '+p1[0]+' '+p1[1]+' Z',fill:'#eef4ff',stroke:'#2f6fd0','stroke-width':3});for(var a=0;a<=180;a+=10){var q=P(a,R),s=P(a,a%30===0?R-28:R-16);el('line',{x1:q[0],y1:q[1],x2:s[0],y2:s[1],stroke:'#2f6fd0','stroke-width':a%30===0?2.5:1});if(a%30===0){var t1=P(a,R-52),t2=P(a,R-96);el('text',{x:t1[0],y:t1[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#2f6fd0'},a);el('text',{x:t2[0],y:t2[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#e2574c'},180-a);}}var r1=P(0,R),r2=P(A,R);el('line',{x1:CX,y1:CY,x2:r1[0],y2:r1[1],stroke:'#111','stroke-width':4});el('line',{x1:CX,y1:CY,x2:r2[0],y2:r2[1],stroke:'#111','stroke-width':4});el('circle',{cx:CX,cy:CY,r:6,fill:'#111'});})();</script>" } },
+          { "name": "write_text", "input": { "text": "בעין: חדה — אז חייב לצאת פחות מ-90", "x": 500, "y": 480, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "וזאת המלכודת הקבועה. אותה זווית, אבל עכשיו הקרן מגיעה למקום שבו הסולם הכחול אומר 120 והאדום אומר 60. איזה נכון? הקרן התחתונה יושבת על 0 הכחול, אז קוראים כחול — 120. ואם שכחת: הפתח גדול מפינת דף, קהה, אז מעל 90. 60 לא ייתכן. ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "60 או 120", "x": 230, "y": 115, "w": 540, "h": 320, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,sans-serif;text-align:center'><div id='pw3'></div><div style='font-size:14px;color:#555'>הקרן פוגשת שני מספרים — רק אחד נכון</div></div><script>(function(){var NS='http://www.w3.org/2000/svg';var A=60+60;var h=document.getElementById('pw3');var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 540 300');svg.setAttribute('width','100%');h.appendChild(svg);function el(t,o,x){var e=document.createElementNS(NS,t);for(var k in o)e.setAttribute(k,o[k]);if(x!==undefined)e.textContent=x;svg.appendChild(e);return e;}var CX=270,CY=272,R=228;function P(a,r){return [CX+r*Math.cos(a*Math.PI/180),CY-r*Math.sin(a*Math.PI/180)];}var p0=P(180,R),p1=P(0,R);el('path',{d:'M '+p0[0]+' '+p0[1]+' A '+R+' '+R+' 0 0 1 '+p1[0]+' '+p1[1]+' Z',fill:'#eef4ff',stroke:'#2f6fd0','stroke-width':3});for(var a=0;a<=180;a+=10){var q=P(a,R),s=P(a,a%30===0?R-28:R-16);el('line',{x1:q[0],y1:q[1],x2:s[0],y2:s[1],stroke:'#2f6fd0','stroke-width':a%30===0?2.5:1});if(a%30===0){var t1=P(a,R-52),t2=P(a,R-96);el('text',{x:t1[0],y:t1[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#2f6fd0'},a);el('text',{x:t2[0],y:t2[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#e2574c'},180-a);}}var r1=P(0,R),r2=P(A,R);el('line',{x1:CX,y1:CY,x2:r1[0],y2:r1[1],stroke:'#111','stroke-width':4});el('line',{x1:CX,y1:CY,x2:r2[0],y2:r2[1],stroke:'#111','stroke-width':4});el('circle',{cx:CX,cy:CY,r:6,fill:'#111'});})();</script>" } },
+          { "name": "write_text", "input": { "text": "בעין: קהה — אז חייב לצאת מעל 90", "x": 500, "y": 480, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הכיוון ההפוך — לסרטט זווית בגודל שאני מבקש. נניח 130 מעלות. קודם מסרטטים קרן אחת. מניחים את מרכז המד על הקצה שלה, ואת ה-0 בדיוק עליה. מוצאים 130 באותו סולם ומסמנים שם נקודה. מחברים קדקוד-נקודה — וזאת הזווית. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מסרטטים זווית של 130 מעלות", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "קודם — קרן אחת", "x": 250, "y": 185, "size": 26 } },
+          { "name": "write_text", "input": { "text": "המרכז על הקצה שלה", "x": 250, "y": 240, "size": 26 } },
+          { "name": "write_text", "input": { "text": "ה-0 בדיוק על הקרן", "x": 250, "y": 295, "size": 26 } },
+          { "name": "write_text", "input": { "text": "מסמנים נקודה ב-130", "x": 250, "y": 350, "size": 26 } },
+          { "name": "write_text", "input": { "text": "ומחברים לקדקוד", "x": 250, "y": 405, "size": 26 } },
+          { "name": "draw_line", "input": { "x1": 620, "y1": 420, "x2": 900, "y2": 420, "color": "#2f6fd0", "width": 5 } },
+          { "name": "draw_line", "input": { "x1": 620, "y1": 420, "x2": 472, "y2": 244, "color": "#e2574c", "width": 5 } },
+          { "name": "draw_circle", "input": { "x": 620, "y": 420, "r": 7, "color": "#111111" } },
+          { "name": "write_text", "input": { "text": "130", "x": 690, "y": 350, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "וקשר נחמד לסיום: שושנת הרוחות. כל כיוון הוא בעצם זווית שנמדדת מהצפון. צפון 0, מזרח 90, דרום 180. בין צפון למזרח יש בדיוק חצי מזווית ישרה — 45 — ולכיוון הזה קוראים צפון-מזרח. גם טייס וגם קברניט אונייה עובדים ככה. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שושנת הרוחות — כל כיוון הוא זווית", "x": 500, "y": 80, "size": 32 } },
+          { "name": "draw_line", "input": { "x1": 500, "y1": 300, "x2": 500, "y2": 145, "color": "#2f6fd0", "width": 5 } },
+          { "name": "draw_line", "input": { "x1": 500, "y1": 300, "x2": 700, "y2": 300, "color": "#2f6fd0", "width": 5 } },
+          { "name": "draw_line", "input": { "x1": 500, "y1": 300, "x2": 500, "y2": 455, "color": "#2f6fd0", "width": 5 } },
+          { "name": "draw_line", "input": { "x1": 500, "y1": 300, "x2": 300, "y2": 300, "color": "#2f6fd0", "width": 5 } },
+          { "name": "draw_line", "input": { "x1": 500, "y1": 300, "x2": 610, "y2": 190, "color": "#e08a1e", "width": 5 } },
+          { "name": "write_text", "input": { "text": "צפון", "x": 500, "y": 118, "size": 26 } },
+          { "name": "write_text", "input": { "text": "מזרח", "x": 740, "y": 300, "size": 26 } },
+          { "name": "write_text", "input": { "text": "דרום", "x": 500, "y": 483, "size": 26 } },
+          { "name": "write_text", "input": { "text": "מערב", "x": 260, "y": 300, "size": 26 } },
+          { "name": "write_text", "input": { "text": "0", "x": 535, "y": 165, "size": 24 } },
+          { "name": "write_text", "input": { "text": "90", "x": 665, "y": 268, "size": 24 } },
+          { "name": "write_text", "input": { "text": "180", "x": 543, "y": 430, "size": 24 } },
+          { "name": "write_text", "input": { "text": "45", "x": 590, "y": 240, "size": 24 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח מד-זווית עם זווית. עשה/עשי בדיוק לפי הסדר: קודם בעין — הפתח גדול מפינת דף או קטן ממנה? זה כבר אומר לך מעל 90 או מתחת. אחר כך מצא/י על איזו קרן יושב ה-0, וקרא/י רק באותו סולם. את המספר כתוב/כתבי בתיבה.",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה מעלות בזווית שעל מד-הזווית?", "answer": "150", "kind": "number", "x": 170, "y": 175, "hint": "הקרן הימנית מונחת על ה-0 של הסולם הכחול, אז קוראים כחול בלבד. ולפני שכותבים — הזווית קהה, אז מספר מתחת ל-90 בטוח לא נכון.", "praise": "כל הכבוד! בדקת בעין קודם ובחרת את הסולם הנכון — ככה לא נופלים במלכודת 👏" } },
+        { "name": "render_widget", "input": { "title": "מדוד/י את הזווית", "x": 400, "y": 120, "w": 540, "h": 320, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,sans-serif;text-align:center'><div id='pw4'></div><div style='font-size:14px;color:#555'>איזה סולם מתחיל ב-0 על הקרן?</div></div><script>(function(){var NS='http://www.w3.org/2000/svg';var A=100+50;var h=document.getElementById('pw4');var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 540 300');svg.setAttribute('width','100%');h.appendChild(svg);function el(t,o,x){var e=document.createElementNS(NS,t);for(var k in o)e.setAttribute(k,o[k]);if(x!==undefined)e.textContent=x;svg.appendChild(e);return e;}var CX=270,CY=272,R=228;function P(a,r){return [CX+r*Math.cos(a*Math.PI/180),CY-r*Math.sin(a*Math.PI/180)];}var p0=P(180,R),p1=P(0,R);el('path',{d:'M '+p0[0]+' '+p0[1]+' A '+R+' '+R+' 0 0 1 '+p1[0]+' '+p1[1]+' Z',fill:'#eef4ff',stroke:'#2f6fd0','stroke-width':3});for(var a=0;a<=180;a+=10){var q=P(a,R),s=P(a,a%30===0?R-28:R-16);el('line',{x1:q[0],y1:q[1],x2:s[0],y2:s[1],stroke:'#2f6fd0','stroke-width':a%30===0?2.5:1});if(a%30===0){var t1=P(a,R-52),t2=P(a,R-96);el('text',{x:t1[0],y:t1[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#2f6fd0'},a);el('text',{x:t2[0],y:t2[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#e2574c'},180-a);}}var r1=P(0,R),r2=P(A,R);el('line',{x1:CX,y1:CY,x2:r1[0],y2:r1[1],stroke:'#111','stroke-width':4});el('line',{x1:CX,y1:CY,x2:r2[0],y2:r2[1],stroke:'#111','stroke-width':4});el('circle',{cx:CX,cy:CY,r:6,fill:'#111'});})();</script>" } }
+      ]
+    },
+    "independent": {
+      "reply": "שלוש שאלות לבד. בראשונה יש לך מד-זווית — קודם בעין, אחר כך קוראים. בשנייה בכלל לא מודדים, רק חושבים. ובשלישית מישהו קרא בסולם הלא נכון וצריך לתקן אותו. רמז לחיים: שני הסולמות תמיד משלימים יחד ל-180 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה מעלות בזווית שעל מד-הזווית?", "answer": "30", "kind": "number", "x": 150, "y": 145, "hint": "קודם בעין: הפתח צר מפינת דף, אז התשובה חייבת להיות מתחת ל-90. עכשיו בדוק/בדקי על איזו קרן יושב ה-0 וקרא/י באותו סולם בלבד.", "praise": "יופי! בדיקת האומדן שמרה עליך מלקרוא את המספר של הסולם השני 👏" } },
+        { "name": "render_widget", "input": { "title": "מד-זווית", "x": 430, "y": 75, "w": 470, "h": 285, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,sans-serif;text-align:center'><div id='pw5'></div><div style='font-size:13px;color:#555'>קרא/י בסולם שמתחיל ב-0 על הקרן</div></div><script>(function(){var NS='http://www.w3.org/2000/svg';var A=10+20;var h=document.getElementById('pw5');var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 540 300');svg.setAttribute('width','100%');h.appendChild(svg);function el(t,o,x){var e=document.createElementNS(NS,t);for(var k in o)e.setAttribute(k,o[k]);if(x!==undefined)e.textContent=x;svg.appendChild(e);return e;}var CX=270,CY=272,R=228;function P(a,r){return [CX+r*Math.cos(a*Math.PI/180),CY-r*Math.sin(a*Math.PI/180)];}var p0=P(180,R),p1=P(0,R);el('path',{d:'M '+p0[0]+' '+p0[1]+' A '+R+' '+R+' 0 0 1 '+p1[0]+' '+p1[1]+' Z',fill:'#eef4ff',stroke:'#2f6fd0','stroke-width':3});for(var a=0;a<=180;a+=10){var q=P(a,R),s=P(a,a%30===0?R-28:R-16);el('line',{x1:q[0],y1:q[1],x2:s[0],y2:s[1],stroke:'#2f6fd0','stroke-width':a%30===0?2.5:1});if(a%30===0){var t1=P(a,R-52),t2=P(a,R-96);el('text',{x:t1[0],y:t1[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#2f6fd0'},a);el('text',{x:t2[0],y:t2[1],'text-anchor':'middle','dominant-baseline':'middle','font-size':18,fill:'#e2574c'},180-a);}}var r1=P(0,R),r2=P(A,R);el('line',{x1:CX,y1:CY,x2:r1[0],y2:r1[1],stroke:'#111','stroke-width':4});el('line',{x1:CX,y1:CY,x2:r2[0],y2:r2[1],stroke:'#111','stroke-width':4});el('circle',{cx:CX,cy:CY,r:6,fill:'#111'});})();</script>" } },
+        { "name": "draw_exercise", "input": { "text": "זווית קהה. האם 70 מעלות אפשרי?", "answer": "לא", "kind": "text", "x": 150, "y": 300, "hint": "אל תמדוד/תמדדי כלום. קהה פירושה שהפתח גדול מפינת דף, ופינת דף היא 90. עכשיו תשווה/תשוויי את 70 ל-90. כתוב/כתבי כן או לא.", "praise": "מדויק! ידעת לפסול תשובה בלי בכלל למדוד — זו בדיקת האומדן 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "מדדת זווית קהה וקיבלת 55. מה הגודל הנכון?", "answer": "125", "kind": "number", "x": 150, "y": 455, "hint": "55 קטן מ-90, אז זו לא יכולה להיות זווית קהה — נקראה הסולם השני. שני הסולמות משלימים יחד ל-180, אז חסר/י את 55 מ-180.", "praise": "מעולה! תפסת טעות בקריאה ותיקנת אותה לבד — זה כבר שלב של מומחה 🏆" } }
+      ]
+    }
+  }
+}

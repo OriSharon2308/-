@@ -1,0 +1,88 @@
+{
+  "topic": "מבוא לאחוזים",
+  "lesson": 2,
+  "title": "שלושת החברים — 50%, 25%, 10%",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור שעבר ראינו: אחוז זה מתוך מאה. עכשיו נכיר שלושה אחוזים שכדאי לזכור בעל-פה. הראשון: צבעתי חמישים משבצות — בדיוק חצי מהריבוע. אז 50% זה פשוט חצי. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "50% זה חצי", "x": 500, "y": 88, "size": 36 } },
+          { "name": "render_widget", "input": { "title": "50 משבצות", "x": 620, "y": 140, "w": 230, "h": 230, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=50,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
+          { "name": "draw_fraction_bar", "input": { "parts": 2, "shaded": 1, "x": 260, "y": 210, "label": "" } },
+          { "name": "write_text", "input": { "text": "50/100 = 1/2 = 0.5", "x": 260, "y": 320, "size": 32 } },
+          { "name": "write_text", "input": { "text": "חצי מהשלם", "x": 260, "y": 390, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "החבר השני: 25%. צבעתי עשרים וחמש משבצות — זה רבע מהריבוע. תראה/י על המוט: ארבעה רבעים כאלה ממלאים את השלם. אז 25% זה רבע, וגם 25/100, וגם 0.25. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "25% זה רבע", "x": 500, "y": 88, "size": 36 } },
+          { "name": "render_widget", "input": { "title": "25 משבצות", "x": 620, "y": 140, "w": 230, "h": 230, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=25,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
+          { "name": "draw_fraction_bar", "input": { "parts": 4, "shaded": 1, "x": 260, "y": 210, "label": "" } },
+          { "name": "write_text", "input": { "text": "25/100 = 1/4 = 0.25", "x": 260, "y": 320, "size": 30 } },
+          { "name": "write_text", "input": { "text": "ארבעה רבעים = שלם", "x": 260, "y": 395, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "והחבר השלישי: 10%. זו שורה אחת בריבוע — עשר משבצות. בריבוע יש עשר שורות כאלה, אז כל שורה היא עשירית מהשלם. 10% זה עשירית, וגם 10/100, וגם 0.1. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "10% זה עשירית", "x": 500, "y": 88, "size": 36 } },
+          { "name": "render_widget", "input": { "title": "שורה אחת", "x": 620, "y": 140, "w": 230, "h": 230, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=10,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
+          { "name": "draw_fraction_bar", "input": { "parts": 10, "shaded": 1, "x": 260, "y": 210, "label": "" } },
+          { "name": "write_text", "input": { "text": "10/100 = 1/10 = 0.1", "x": 260, "y": 320, "size": 30 } },
+          { "name": "write_text", "input": { "text": "עשר שורות = שלם", "x": 260, "y": 395, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "בוא/י נסדר את שלושת החברים בטבלה. בכל שורה כתוב אותו דבר בדיוק, רק בשלוש שפות: אחוז, שבר, ועשרוני. כדאי מאוד לזכור אותם בעל-פה — הם חוזרים כל הזמן. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שלושת החברים", "x": 500, "y": 88, "size": 34 } },
+          { "name": "write_text", "input": { "text": "אחוז", "x": 760, "y": 155, "size": 30 } },
+          { "name": "write_text", "input": { "text": "שבר", "x": 520, "y": 155, "size": 30 } },
+          { "name": "write_text", "input": { "text": "עשרוני", "x": 280, "y": 155, "size": 30 } },
+          { "name": "draw_line", "input": { "x1": 140, "y1": 185, "x2": 880, "y2": 185, "width": 3 } },
+          { "name": "write_text", "input": { "text": "50%", "x": 760, "y": 235, "size": 32 } },
+          { "name": "write_text", "input": { "text": "1/2", "x": 520, "y": 235, "size": 32 } },
+          { "name": "write_text", "input": { "text": "0.5", "x": 280, "y": 235, "size": 32 } },
+          { "name": "write_text", "input": { "text": "25%", "x": 760, "y": 310, "size": 32 } },
+          { "name": "write_text", "input": { "text": "1/4", "x": 520, "y": 310, "size": 32 } },
+          { "name": "write_text", "input": { "text": "0.25", "x": 280, "y": 310, "size": 32 } },
+          { "name": "write_text", "input": { "text": "10%", "x": 760, "y": 385, "size": 32 } },
+          { "name": "write_text", "input": { "text": "1/10", "x": 520, "y": 385, "size": 32 } },
+          { "name": "write_text", "input": { "text": "0.1", "x": 280, "y": 385, "size": 32 } },
+          { "name": "write_text", "input": { "text": "אותו דבר, שלוש שפות", "x": 500, "y": 460, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו הדבר הכי חשוב. 50% זה לא המספר חמישים! זה חצי ממה שיש. חצי מ-80 זה 40, אבל חצי מ-8 זה 4 — אותם 50% בדיוק, ותוצאה אחרת לגמרי. אז תמיד שואלים: אחוז ממה? עכשיו תור/ך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "50% ממה?", "x": 500, "y": 88, "size": 36 } },
+          { "name": "draw_bar_model", "input": { "x": 250, "y": 200, "parts": [{ "value": 1, "label": "" }, { "value": 1, "label": "" }], "total": "80" } },
+          { "name": "draw_bar_model", "input": { "x": 750, "y": 200, "parts": [{ "value": 1, "label": "" }, { "value": 1, "label": "" }], "total": "8" } },
+          { "name": "write_text", "input": { "text": "חצי מ-80 זה 40", "x": 250, "y": 280, "size": 30 } },
+          { "name": "write_text", "input": { "text": "חצי מ-8 זה 4", "x": 750, "y": 280, "size": 30 } },
+          { "name": "write_text", "input": { "text": "אותם 50% — תוצאה אחרת", "x": 500, "y": 370, "size": 30 } },
+          { "name": "write_text", "input": { "text": "תמיד שואלים: אחוז ממה?", "x": 500, "y": 450, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח מוט שחולק לחלקים שווים, וחלק אחד צבוע. קודם ספור/י לכמה חלקים חילקנו אותו, ותחשוב/תחשבי איזה שבר זה. אחר כך תיזכר/י בטבלה של שלושת החברים, וכתוב/כתבי כמה אחוז צבוע.",
+      "toolCalls": [
+        { "name": "draw_fraction_bar", "input": { "parts": 4, "shaded": 1, "x": 700, "y": 200, "label": "" } },
+        { "name": "write_text", "input": { "text": "המוט חולק לחלקים שווים", "x": 700, "y": 330, "size": 26 } },
+        { "name": "draw_exercise", "input": { "text": "כמה אחוז מהמוט צבוע?", "answer": "25", "kind": "number", "x": 160, "y": 400, "hint": "ספור/י את כל החלקים במוט. יצאו ארבעה? אז החלק הצבוע הוא רבע מהשלם. עכשיו תיזכר/י: לאיזה מהחברים שלנו קוראים רבע?", "praise": "יופי! זיהית שרבע ו-25% הם בדיוק אותו דבר 👏" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה יש מוט לעזרה. בשנייה נלך בכיוון ההפוך — מאחוז לשבר. ובאחרונה נבדוק את הדבר החשוב: אחוז ממה. בשיעור הבא נלמד לחשב אחוז מכל מספר 🙂",
+      "toolCalls": [
+        { "name": "draw_fraction_bar", "input": { "parts": 10, "shaded": 1, "x": 760, "y": 150, "label": "" } },
+        { "name": "draw_exercise", "input": { "text": "כמה אחוז מהמוט צבוע?", "answer": "10", "kind": "number", "x": 160, "y": 150, "hint": "כמה חלקים שווים יש במוט? ספור/י אותם. אם יצאו עשרה, חלק אחד הוא עשירית מהשלם — ולעשירית יש שם באחוזים שהכרנו בטבלה.", "praise": "מצוין! עשירית ו-10% זה אותו דבר 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "איזה שבר שווה ל-50%?", "answer": "1/2", "kind": "text", "x": 160, "y": 310, "hint": "תיזכר/י בטבלה של שלושת החברים — לכל אחוז יש שם נוסף. עכשיו רק צריך לכתוב אותו כשבר: מונה, קו נטוי, מכנה.", "praise": "כל הכבוד! עברת מאחוז לשבר — שתי שפות לאותו דבר 👏" } },
+        { "name": "draw_exercise", "input": { "text": "50% מ-60 — כמה זה?", "answer": "30", "kind": "number", "x": 160, "y": 460, "hint": "קודם תרגם/י: 50% זה חצי. אז השאלה היא בעצם חצי מ-60. תחשוב/תחשבי איזה מספר ועוד אותו מספר נותנים 60.", "praise": "מעולה! תרגמת את האחוז לחצי ופתרת בקלות 🏆" } }
+      ]
+    }
+  }
+}

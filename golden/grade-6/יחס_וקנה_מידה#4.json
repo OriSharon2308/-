@@ -1,0 +1,75 @@
+{
+  "topic": "יחס וקנה מידה",
+  "lesson": 4,
+  "title": "פרופורציה — מעבר ליחידה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום שאלה מהחיים: 3 עטים עולים 12 שקלים. כמה עולים 5 עטים? על הלוח שלושה חלקים שווים — כל חלק הוא עט אחד, וכולם ביחד 12 שקלים. כל העטים באותו מחיר, אז אפשר לפתור את זה בקלות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "3 עטים עולים 12 שקלים", "x": 500, "y": 95, "size": 34 } },
+          { "name": "draw_bar_model", "input": { "x": 500, "y": 275, "total": "12", "parts": [ { "value": 1, "label": "עט" }, { "value": 1, "label": "עט" }, { "value": 1, "label": "עט" } ] } },
+          { "name": "write_text", "input": { "text": "כמה יעלו 5 עטים?", "x": 500, "y": 455, "size": 32 } }
+        ]
+      },
+      {
+        "reply": "הדרך נקראת מעבר ליחידה, והיא פשוטה: קודם מגלים כמה עולה עט אחד. 12 שקלים חלקי 3 עטים שווה 4. אז עט אחד עולה 4 שקלים. תמיד קודם יורדים לאחד — משם הכול קל. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קודם — כמה עולה אחד", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "12 : 3 = 4", "x": 500, "y": 245, "size": 50 } },
+          { "name": "write_text", "input": { "text": "עט אחד עולה 4 שקלים", "x": 500, "y": 390, "size": 32 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הצעד השני: כופלים בכמות שביקשו. רוצים 5 עטים, וכל אחד 4 שקלים, אז 5 כפול 4 שווה 20 שקלים. תראה/י על הלוח — חמישה חלקים, ובכל אחד 4. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ואז — כופלים בכמות", "x": 500, "y": 90, "size": 34 } },
+          { "name": "draw_bar_model", "input": { "x": 500, "y": 250, "total": "20", "parts": [ { "value": 1, "label": "4" }, { "value": 1, "label": "4" }, { "value": 1, "label": "4" }, { "value": 1, "label": "4" }, { "value": 1, "label": "4" } ] } },
+          { "name": "write_text", "input": { "text": "5 × 4 = 20 שקלים", "x": 500, "y": 440, "size": 36 } }
+        ]
+      },
+      {
+        "reply": "אפשר לסדר את זה גם בטבלת יחס, כמו שעשינו עם המיץ. בעמודה הראשונה עט אחד ו-4 שקלים. בשנייה 3 עטים ו-12 שקלים. בשלישית 5 עטים ו-20 שקלים. כל עמודה נשמרת באותו יחס. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אותו דבר בטבלת יחס", "x": 500, "y": 95, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "טבלת יחס — עטים ומחיר", "x": 250, "y": 195, "w": 500, "h": 200, "exact": true, "html": "<div style=\"direction:rtl;font-family:Arial,Helvetica,sans-serif;height:100%;display:flex;align-items:center;justify-content:center;background:#ffffff\"><table style=\"border-collapse:collapse;font-size:30px;text-align:center\"><tr><td style=\"border:3px solid #444;padding:12px 24px;background:#ffe8a3;font-weight:bold\">עטים</td><td style=\"border:3px solid #444;padding:12px 24px\">1</td><td style=\"border:3px solid #444;padding:12px 24px\">3</td><td style=\"border:3px solid #444;padding:12px 24px\">5</td></tr><tr><td style=\"border:3px solid #444;padding:12px 24px;background:#bfe3ff;font-weight:bold\">שקלים</td><td style=\"border:3px solid #444;padding:12px 24px\">4</td><td style=\"border:3px solid #444;padding:12px 24px\">12</td><td style=\"border:3px solid #444;padding:12px 24px\">20</td></tr></table></div>" } },
+          { "name": "write_text", "input": { "text": "העמודה של אחד היא המפתח", "x": 500, "y": 450, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "עוד שאלה, קצת קשה יותר: 4 פועלים סוללים 200 מטר ביום. כמה יסללו 6 פועלים באותו קצב? אותה דרך בדיוק. קודם אחד: 200 חלקי 4 שווה 50 מטר. ואז שישה: 6 כפול 50 שווה 300 מטר. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "4 פועלים — 200 מטר", "x": 500, "y": 95, "size": 34 } },
+          { "name": "write_text", "input": { "text": "פועל אחד:  200 : 4 = 50", "x": 500, "y": 230, "size": 34 } },
+          { "name": "write_text", "input": { "text": "שישה פועלים:  6 × 50 = 300", "x": 500, "y": 330, "size": 34 } },
+          { "name": "write_text", "input": { "text": "תמיד קודם יורדים לאחד", "x": 500, "y": 450, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ואזהרה חשובה לסיום. לא כל שאלה היא פרופורציה! אם פועל אחד בונה בית ב-10 ימים, שני פועלים לא בונים אותו ב-20 ימים — הם בונים ב-5, כי הם עוזרים זה לזה. אז לפני שפותרים, תשאל/י תמיד: כשזה גדל, השני גדל או קטן? עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "לא כל שאלה היא פרופורציה", "x": 500, "y": 95, "size": 34 } },
+          { "name": "write_text", "input": { "text": "פועל אחד בונה בית ב-10 ימים", "x": 500, "y": 220, "size": 30 } },
+          { "name": "write_text", "input": { "text": "שני פועלים — 5 ימים, לא 20", "x": 500, "y": 310, "size": 30 } },
+          { "name": "write_text", "input": { "text": "תמיד לשאול: גדל או קטן?", "x": 500, "y": 430, "size": 30 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. 4 מחברות עולות 20 שקלים, וצריך למצוא כמה עולות 7 מחברות. שמתי לך על הלוח את ארבע המחברות. שני צעדים: קודם כמה עולה מחברת אחת, ואז כפול/כפלי במספר החדש. את התוצאה כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "4 מחברות עולות 20 שקלים. כמה עולות 7?", "answer": "35", "kind": "number", "hint": "קודם רד/י לאחת: חלק/י את הכסף במספר המחברות, וזה המחיר של מחברת אחת. עכשיו כפול/כפלי את המחיר של אחת בכמות שביקשו.", "praise": "יופי! עברת קודם למחברת אחת, ומשם הכפל היה קל 👏" } },
+        { "name": "draw_bar_model", "input": { "x": 500, "y": 340, "total": "20", "parts": [ { "value": 1, "label": "" }, { "value": 1, "label": "" }, { "value": 1, "label": "" }, { "value": 1, "label": "" } ] } }
+      ]
+    },
+    "independent": {
+      "reply": "שלוש שאלות לבד, וכולן באותה דרך: קודם אחד, אחר כך כפל. בראשונה השארתי לך ציור לעזרה. בכל שאלה תעצור/תעצרי רגע ותשאל/י אם התשובה הגיונית — כשקונים יותר, משלמים יותר. בשיעור הבא נעבור למפות ולקנה מידה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "2 קילו תפוחים 14 שקלים. כמה עולים 6 קילו?", "answer": "42", "kind": "number", "x": 500, "y": 115, "hint": "מה המחיר של קילו אחד? חלק/י את הכסף בכמות. אחר כך כפול/כפלי את המחיר של קילו אחד בכמות החדשה.", "praise": "מצוין! מעבר ליחידה ואז כפל — בדיוק הדרך 👏" } },
+        { "name": "draw_bar_model", "input": { "x": 500, "y": 280, "total": "14", "parts": [ { "value": 1, "label": "קילו" }, { "value": 1, "label": "קילו" } ] } },
+        { "name": "draw_exercise", "input": { "text": "5 פועלים סוללים 150 מטר. כמה יסללו 8?", "answer": "240", "kind": "number", "x": 280, "y": 450, "hint": "כמה מטרים סולל פועל אחד? חלק/י. עכשיו כפול/כפלי במספר הפועלים החדש. שים/שימי לב שיותר פועלים סוללים יותר, אז התשובה צריכה לגדול.", "praise": "מעולה! גם כאן ירדת לאחד, ובדקת שהכיוון הגיוני 👏" } },
+        { "name": "draw_exercise", "input": { "text": "6 מחברות עולות 24 שקלים. כמה עולות 9?", "answer": "36", "kind": "number", "x": 720, "y": 450, "hint": "אותה דרך בדיוק: קודם המחיר של מחברת אחת, ואז כפל בכמות שביקשו. אל תנחש/י — עשה/עשי את שני הצעדים.", "praise": "כל הכבוד! פתרת לבד עם מעבר ליחידה 🏆" } }
+      ]
+    }
+  }
+}

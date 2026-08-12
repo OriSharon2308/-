@@ -1,0 +1,86 @@
+{
+  "topic": "שאלות מילוליות",
+  "lesson": 4,
+  "title": "קניות ממחירון — שאלה רב-שלבית",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! היום נכנסים לחנות. על הלוח מחירון — טבלה שכתוב בה כמה עולה כל דבר. לפני שקונים, קוראים אותה בשקט: עיפרון 3 שקלים, מחברת 5, מספריים 12, קלמר 20, ילקוט 45. כל שאלה היום תתחיל מהמחירון הזה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "המחירון של החנות", "x": 500, "y": 85, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "מחירון", "x": 335, "y": 130, "w": 330, "h": 285, "exact": true, "html": "<div style=\"font-family:Arial,sans-serif;direction:rtl;background:#fff;border:3px solid #2c6fbb;border-radius:16px;padding:8px 14px;box-sizing:border-box\"><div style=\"font-size:25px;font-weight:700;text-align:center;color:#2c6fbb;margin-bottom:6px\">מחירון</div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>עיפרון</span><b>3 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>מחברת</span><b>5 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>מספריים</span><b>12 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>קלמר</span><b>20 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0\"><span>ילקוט</span><b>45 ₪</b></div></div>" } },
+          { "name": "write_text", "input": { "text": "קודם קוראים, אחר כך מחשבים", "x": 500, "y": 460, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "מתחילים בקטן. רוצים 3 מחברות. במחירון כתוב שמחברת אחת עולה 5 שקלים, אז זה 5 ועוד 5 ועוד 5. אפשר לחבר, אבל יש דרך קצרה שאתה כבר מכיר — 3 כפול 5. שתי הדרכים נותנות 15. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "3 מחברות — כמה?", "x": 500, "y": 90, "size": 34 } },
+          { "name": "write_text", "input": { "text": "מחברת אחת עולה 5 ₪", "x": 500, "y": 185, "size": 30 } },
+          { "name": "write_text", "input": { "text": "5 + 5 + 5 = 15", "x": 500, "y": 270, "size": 34 } },
+          { "name": "write_text", "input": { "text": "או קצר: 3 × 5 = 15", "x": 500, "y": 350, "size": 34 } },
+          { "name": "write_text", "input": { "text": "אותו דבר, רק מהר יותר", "x": 500, "y": 450, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו קונים גם קלמר. שים/שימי לב לסדר: קודם מחשבים כמה עולה כל פריט לחוד, ורק אחר כך מחברים הכול. 3 המחברות — 15 שקלים. הקלמר — 20 שקלים. ביחד 15 ועוד 20, זה 35 שקלים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כמה הכל?", "x": 500, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "3 מחברות — 15 ₪", "x": 500, "y": 170, "size": 30 } },
+          { "name": "write_text", "input": { "text": "קלמר אחד — 20 ₪", "x": 500, "y": 235, "size": 30 } },
+          { "name": "draw_line", "input": { "x1": 300, "y1": 285, "x2": 700, "y2": 285, "color": "#888888", "width": 2 } },
+          { "name": "write_text", "input": { "text": "15 + 20 = 35", "x": 500, "y": 340, "size": 36 } },
+          { "name": "write_text", "input": { "text": "קודם כל פריט לחוד, ואז מחברים", "x": 500, "y": 445, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "נתנו לקופאית 100 שקלים, והמחיר 35. כמה מקבלים בחזרה? 100 פחות 35 זה 65. עכשיו תסתכל/י על הכסף עצמו: 65 שקלים זה שטר של 50, ועוד שטר של 10, ועוד מטבע של 5. עודף זה לא רק מספר — זה כסף אמיתי שחוזר ליד. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שילמנו 100, המחיר 35", "x": 500, "y": 85, "size": 32 } },
+          { "name": "write_text", "input": { "text": "100 − 35 = 65", "x": 500, "y": 150, "size": 36 } },
+          { "name": "money_coins", "input": { "target": 65, "x": 290, "y": 195, "w": 420, "h": 250, "exact": true } },
+          { "name": "write_text", "input": { "text": "65 ₪ עודף — 50 ועוד 10 ועוד 5", "x": 500, "y": 480, "size": 25 } }
+        ]
+      },
+      {
+        "reply": "עכשיו שאלה אחרת לגמרי, כזאת שאוהבים במבחנים. יש לך בדיוק 60 שקלים, ואתה בונה רשימת קניות שמסתדרת בול. אפשר ילקוט ועוד 3 מחברות — 45 ועוד 15. ואפשר לגמרי אחרת: 5 מספריים, 5 כפול 12. שתיהן נכונות! כאן אין תשובה אחת. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "רשימה בדיוק ב-60 ₪", "x": 500, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "ילקוט ועוד 3 מחברות", "x": 730, "y": 175, "size": 25 } },
+          { "name": "write_text", "input": { "text": "45 + 15 = 60", "x": 730, "y": 240, "size": 30 } },
+          { "name": "write_text", "input": { "text": "5 מספריים", "x": 250, "y": 175, "size": 25 } },
+          { "name": "write_text", "input": { "text": "5 × 12 = 60", "x": 250, "y": 240, "size": 30 } },
+          { "name": "draw_line", "input": { "x1": 500, "y1": 145, "x2": 500, "y2": 285, "color": "#bbbbbb", "width": 2 } },
+          { "name": "write_text", "input": { "text": "שתי רשימות שונות, אותו סכום", "x": 500, "y": 370, "size": 28 } },
+          { "name": "write_text", "input": { "text": "יש עוד הרבה — כל אחת נכונה", "x": 500, "y": 445, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ודבר אחרון, הכי חשוב: בסוף כל חישוב עוצרים ובודקים אם התשובה הגיונית. נניח שקנית 3 פריטים ויצא לך 400 שקלים. הכי יקר במחירון הוא הילקוט, 45. שלושה כאלה זה 135, וזה הכי הרבה שאפשר. אז 400 פשוט לא ייתכן — כדאי לחשב שוב. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "בדיקת סבירות", "x": 500, "y": 85, "size": 34 } },
+          { "name": "write_text", "input": { "text": "קנית 3 פריטים ויצא 400 ₪", "x": 500, "y": 175, "size": 29 } },
+          { "name": "write_text", "input": { "text": "הכי יקר במחירון — 45 ₪", "x": 500, "y": 250, "size": 29 } },
+          { "name": "write_text", "input": { "text": "3 פריטים — עד 135 ₪", "x": 500, "y": 325, "size": 32 } },
+          { "name": "write_text", "input": { "text": "400 ₪? כאן משהו לא נכון", "x": 500, "y": 440, "size": 28 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד, ושלוש מדרגות. קנית מספריים אחד ו-4 מחברות, ושילמת 50 שקלים. תסתכל/י במחירון: כמה עולות 4 המחברות? כמה זה עם המספריים? ורק בסוף — כמה עודף חוזר לך מ-50. את העודף כתוב/כתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מספריים ו-4 מחברות, שילמת 50 — כמה עודף?", "answer": "18", "kind": "number", "x": 270, "y": 300, "hint": "מדרגה ראשונה: 4 מחברות, כל אחת 5 ₪. מדרגה שנייה: תוסיף/י את המספריים. מדרגה שלישית: כמה חסר מהסכום הזה עד 50?", "praise": "מצוין! שלוש מדרגות בלי להתבלבל — ולא שכחת שהעודף זה חיסור מ-50 👏" } },
+        { "name": "render_widget", "input": { "title": "מחירון", "x": 580, "y": 135, "w": 330, "h": 285, "exact": true, "html": "<div style=\"font-family:Arial,sans-serif;direction:rtl;background:#fff;border:3px solid #2c6fbb;border-radius:16px;padding:8px 14px;box-sizing:border-box\"><div style=\"font-size:25px;font-weight:700;text-align:center;color:#2c6fbb;margin-bottom:6px\">מחירון</div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>עיפרון</span><b>3 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>מחברת</span><b>5 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>מספריים</span><b>12 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>קלמר</span><b>20 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0\"><span>ילקוט</span><b>45 ₪</b></div></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות, והמחירון נשאר לידך. הראשונה חיבור פשוט, השנייה כבר הפוכה — יודעים את הסכום ומחפשים כמה לקנות, והשלישית בכלל לא צריכה חישוב, רק מחשבה. ואחרי שתסיים/י — נסה/י למצוא עוד רשימה משלך שעולה בדיוק 60 ₪ 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "3 עפרונות וקלמר אחד — כמה שקלים?", "answer": "29", "kind": "number", "x": 270, "y": 140, "hint": "תחפש/י במחירון כמה עולה עיפרון אחד, וכפול 3. אחר כך תוסיף/י את מחיר הקלמר. שני מספרים, ואז מחברים.", "praise": "יופי! קודם חישבת כל פריט לחוד ורק אחר כך חיברת 👏" } },
+        { "name": "render_widget", "input": { "title": "מחירון", "x": 600, "y": 130, "w": 330, "h": 285, "exact": true, "html": "<div style=\"font-family:Arial,sans-serif;direction:rtl;background:#fff;border:3px solid #2c6fbb;border-radius:16px;padding:8px 14px;box-sizing:border-box\"><div style=\"font-size:25px;font-weight:700;text-align:center;color:#2c6fbb;margin-bottom:6px\">מחירון</div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>עיפרון</span><b>3 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>מחברת</span><b>5 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>מספריים</span><b>12 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #dde\"><span>קלמר</span><b>20 ₪</b></div><div style=\"font-size:23px;display:flex;justify-content:space-between;padding:4px 0\"><span>ילקוט</span><b>45 ₪</b></div></div>" } },
+        { "name": "draw_exercise", "input": { "text": "לקחת ילקוט. כמה מחברות עוד עד 60 ₪ בדיוק?", "answer": "3", "kind": "number", "x": 270, "y": 310, "hint": "קודם תבדוק/תבדקי כמה כסף נשאר אחרי הילקוט. עכשיו תשאל/י: כמה פעמים 5 נכנס בסכום שנשאר?", "praise": "מעולה! עבדת אחורה — מהסכום הסופי אל מספר הפריטים 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "3 פריטים ויצא 400 ₪ — הגיוני? כן או לא?", "answer": "לא", "kind": "text", "x": 270, "y": 455, "hint": "אל תחשב/י כלום. רק תשאל/י: מה המחיר הכי גבוה במחירון, ומה יוצא אם קונים ממנו שלושה. כתוב/כתבי כן או לא.", "praise": "בדיוק! בדקת סבירות במקום להאמין למספר — ככה עושים במבחן 🏆" } }
+      ]
+    }
+  }
+}
