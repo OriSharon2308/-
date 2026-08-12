@@ -1,0 +1,76 @@
+{
+  "topic": "גופים ונפחים",
+  "lesson": 6,
+  "title": "יחידות נפח ובעיות מילוי",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעורים הקודמים ספרנו קוביות. עכשיו נדבר על היחידות עצמן. הקובייה שעל הלוח היא 1 ס\"מ על 1 ס\"מ על 1 ס\"מ — קטנה בערך כמו קובייה של משחק. לנפח שלה קוראים סנטימטר מעוקב, וכותבים סמ\"ק. זו יחידת הנפח הקטנה שנעבוד איתה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "1 סמ\"ק — קובייה קטנה", "x": 480, "y": 90, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "סנטימטר מעוקב", "x": 330, "y": 135, "w": 340, "h": 240, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 260 180' width='300' height='210'><path d='M90,70 L150,70 L180,45 L120,45 Z' fill='#bfdbfe' stroke='#1d4ed8' stroke-width='3'/><path d='M150,70 L180,45 L180,105 L150,130 Z' fill='#93c5fd' stroke='#1d4ed8' stroke-width='3'/><rect x='90' y='70' width='60' height='60' fill='#dbeafe' stroke='#1d4ed8' stroke-width='3'/><text x='120' y='152' text-anchor='middle' font-size='16' fill='#1d4ed8'>1 ס\"מ</text><text x='72' y='104' text-anchor='middle' font-size='16' fill='#1d4ed8'>1 ס\"מ</text><text x='200' y='80' text-anchor='middle' font-size='16' fill='#1d4ed8'>1 ס\"מ</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "סנטימטר מעוקב = סמ\"ק", "x": 480, "y": 445, "size": 27 } }
+        ]
+      },
+      {
+        "reply": "עכשיו נסתכל על קופסה גדולה יותר: 10 על 10 על 10 ס\"מ. בוא/י נחשב את הנפח שלה לפי הכלל — שטח הבסיס 10 × 10 = 100, כפול הגובה 10, יוצא 1000 סמ\"ק. ולקופסה הזאת בדיוק יש שם משלה: זה ליטר אחד. אז 1 ליטר = 1000 סמ\"ק. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "קופסה 10 על 10 על 10", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "ליטר אחד", "x": 320, "y": 125, "w": 360, "h": 270, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 300 225' width='330' height='250'><path d='M70,70 L190,70 L235,35 L115,35 Z' fill='#a7f3d0' stroke='#047857' stroke-width='3'/><path d='M190,70 L235,35 L235,155 L190,190 Z' fill='#6ee7b7' stroke='#047857' stroke-width='3'/><rect x='70' y='70' width='120' height='120' fill='#d1fae5' stroke='#047857' stroke-width='3'/><text x='130' y='212' text-anchor='middle' font-size='17' fill='#047857'>10</text><text x='52' y='135' text-anchor='middle' font-size='17' fill='#047857'>10</text><text x='222' y='28' text-anchor='middle' font-size='17' fill='#047857'>10</text><text x='130' y='138' text-anchor='middle' font-size='20' fill='#047857'>1 ליטר</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "100 × 10 = 1000 סמ\"ק = ליטר אחד", "x": 480, "y": 450, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ויש יחידה עוד יותר גדולה, למים בבריכה או לאדמה במשאית: מטר מעוקב, שכותבים מ\"ק. זו קובייה של מטר על מטר על מטר. בתוך קובייה כזאת נכנסים 1000 ליטר. אז תזכור/תזכרי סולם קצר: כל קפיצה למעלה היא פי 1000. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "סולם היחידות", "x": 480, "y": 95, "size": 36 } },
+          { "name": "write_text", "input": { "text": "1 ליטר = 1000 סמ\"ק", "x": 480, "y": 225, "size": 36 } },
+          { "name": "write_text", "input": { "text": "1 מ\"ק = 1000 ליטר", "x": 480, "y": 320, "size": 36 } },
+          { "name": "write_text", "input": { "text": "מ\"ק = קובייה של מטר על מטר על מטר", "x": 480, "y": 435, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו שאלה אמיתית, כמו במבחן. יש בריכה בצורת תיבה: אורך 12 מטר, רוחב 5 מטר וגובה 4 מטר. סעיף א מתחיל בקל — כמה מ\"ק נכנסים בבריכה כשהיא מלאה לגמרי? שטח הבסיס 12 × 5 = 60, כפול הגובה 4, יוצא 240. הנפח כולו 240 מ\"ק. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "בריכה 12 × 5 × 4 מטר", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "הבריכה", "x": 290, "y": 125, "w": 420, "h": 270, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 320 225' width='390' height='250'><path d='M60,80 L240,80 L285,45 L105,45 Z' fill='#bfdbfe' stroke='#1d4ed8' stroke-width='3'/><path d='M240,80 L285,45 L285,155 L240,190 Z' fill='#93c5fd' stroke='#1d4ed8' stroke-width='3'/><rect x='60' y='80' width='180' height='110' fill='#eff6ff' stroke='#1d4ed8' stroke-width='3'/><text x='150' y='212' text-anchor='middle' font-size='17' fill='#1d4ed8'>12 מ׳</text><text x='40' y='140' text-anchor='middle' font-size='17' fill='#1d4ed8'>4 מ׳</text><text x='272' y='38' text-anchor='middle' font-size='17' fill='#1d4ed8'>5 מ׳</text><text x='150' y='140' text-anchor='middle' font-size='19' fill='#1d4ed8'>60 × 4 = 240</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "הנפח כולו — 240 מ\"ק", "x": 480, "y": 450, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "אבל לא ממלאים את הבריכה עד הסוף — ממלאים ¾ ממנה. אז כמה מים יש? צריך ¾ מ-240, וזה כפל שברים שכבר עשית: קודם מחלקים ל-4 חלקים שווים, 240 : 4 = 60, ואז לוקחים 3 חלקים, 60 × 3 = 180. בבריכה יש 180 מ\"ק מים. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ממלאים ¾ מהבריכה", "x": 480, "y": 85, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "הבריכה מלאה ¾", "x": 290, "y": 120, "w": 420, "h": 265, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 320 220' width='390' height='245'><path d='M60,80 L240,80 L285,45 L105,45 Z' fill='#bfdbfe' stroke='#1d4ed8' stroke-width='3'/><path d='M240,80 L285,45 L285,155 L240,190 Z' fill='#93c5fd' stroke='#1d4ed8' stroke-width='3'/><rect x='60' y='80' width='180' height='110' fill='#eff6ff' stroke='#1d4ed8' stroke-width='3'/><rect x='60' y='107' width='180' height='83' fill='#60a5fa' stroke='#1d4ed8' stroke-width='2'/><text x='150' y='155' text-anchor='middle' font-size='19' fill='#ffffff'>המים</text><text x='150' y='212' text-anchor='middle' font-size='18' fill='#1d4ed8'>240 : 4 = 60   ·   60 × 3 = 180</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "180 מ\"ק מים", "x": 480, "y": 440, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "סעיף ב: מה גובה המים בבריכה? המים הם תיבה בעצמם — אותו בסיס, 60, רק נמוכה יותר. אז 60 כפול הגובה נותן 180, ולכן הגובה הוא 180 : 60 = 3 מטר. ויש דרך יפה לבדוק: אם מילאנו ¾ מהנפח, מילאנו גם ¾ מהגובה — ו-¾ מ-4 זה 3. אותה תשובה בדיוק. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מה גובה המים?", "x": 480, "y": 88, "size": 34 } },
+          { "name": "write_text", "input": { "text": "180 : 60 = 3 מטר", "x": 480, "y": 205, "size": 36 } },
+          { "name": "write_text", "input": { "text": "ובדיקה: ¾ מהגובה 4 זה גם 3", "x": 480, "y": 310, "size": 30 } },
+          { "name": "write_text", "input": { "text": "תמיד מציגים את הדרך, לא רק את המספר", "x": 480, "y": 425, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. המכל שבציור הוא תיבה: 10 מטר אורך, 4 מטר רוחב ו-3 מטר גובה, וממלאים בו חצי מהנפח. שני צעדים כמו בבריכה — קודם הנפח כולו לפי שטח הבסיס כפול הגובה, ואחר כך לוקחים ממנו חצי. תכתוב/תכתבי בתיבה כמה מ\"ק מים יש!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "תיבה 10 × 4 × 3 מ׳, ממלאים ½ — כמה מים?", "answer": "60", "kind": "number", "x": 240, "y": 320, "hint": "צעד ראשון: שטח הבסיס הוא 10 × 4, ואותו כופלים בגובה 3 — זה הנפח כשהמכל מלא. צעד שני: חצי מהמספר הזה, כלומר חילוק ב-2.", "praise": "מעולה! חישבת קודם את הנפח המלא ורק אז לקחת ממנו חלק 👏" } },
+        { "name": "render_widget", "input": { "title": "המכל", "x": 540, "y": 115, "w": 400, "h": 260, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 300 215' width='380' height='245'><path d='M60,80 L230,80 L272,48 L102,48 Z' fill='#bfdbfe' stroke='#1d4ed8' stroke-width='3'/><path d='M230,80 L272,48 L272,150 L230,182 Z' fill='#93c5fd' stroke='#1d4ed8' stroke-width='3'/><rect x='60' y='80' width='170' height='102' fill='#eff6ff' stroke='#1d4ed8' stroke-width='3'/><rect x='60' y='131' width='170' height='51' fill='#60a5fa' stroke='#1d4ed8' stroke-width='2'/><text x='145' y='205' text-anchor='middle' font-size='17' fill='#1d4ed8'>10 מ׳</text><text x='40' y='135' text-anchor='middle' font-size='17' fill='#1d4ed8'>3 מ׳</text><text x='262' y='40' text-anchor='middle' font-size='17' fill='#1d4ed8'>4 מ׳</text><text x='145' y='163' text-anchor='middle' font-size='17' fill='#ffffff'>חצי מלא</text></svg></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. הראשונה על היחידות — קפיצה של פי 1000. השנייה בעיית מילוי כמו הבריכה. ובאחרונה שואלים על גובה המים, אז תיזכר/י בדרך היפה שראינו בסוף. בהצלחה 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "כמה סמ\"ק יש ב-3 ליטר?", "answer": "3000", "kind": "number", "x": 130, "y": 105, "hint": "בליטר אחד יש 1000 סמ\"ק, כמו הקופסה שעל הלוח. אם יש שלוש קופסאות כאלה — כמה זה ביחד?", "praise": "יופי! עלית שלב בסולם היחידות בכפל פשוט 👏" } },
+        { "name": "render_widget", "input": { "title": "ליטר אחד", "x": 630, "y": 64, "w": 300, "h": 180, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 260 175' width='250' height='170'><path d='M60,60 L160,60 L198,32 L98,32 Z' fill='#a7f3d0' stroke='#047857' stroke-width='3'/><path d='M160,60 L198,32 L198,132 L160,160 Z' fill='#6ee7b7' stroke='#047857' stroke-width='3'/><rect x='60' y='60' width='100' height='100' fill='#d1fae5' stroke='#047857' stroke-width='3'/><text x='110' y='104' text-anchor='middle' font-size='17' fill='#047857'>1 ליטר</text><text x='110' y='128' text-anchor='middle' font-size='16' fill='#047857'>1000 סמ\"ק</text></svg></div>" } },
+        { "name": "draw_exercise", "input": { "text": "תיבה 8 × 5 × 2 מ׳, ממלאים ¼ — כמה מים?", "answer": "20", "kind": "number", "x": 130, "y": 305, "hint": "קודם הנפח המלא: שטח הבסיס 8 × 5, כפול הגובה 2. אחר כך רבע מהמספר הזה — כלומר מחלקים אותו ל-4 חלקים שווים ולוקחים אחד.", "praise": "יפה! אותם שני צעדים בדיוק, גם כשהשבר התחלף 🎉" } },
+        { "name": "render_widget", "input": { "title": "המכל", "x": 640, "y": 270, "w": 290, "h": 170, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 270 165' width='260' height='155'><path d='M55,55 L195,55 L232,28 L92,28 Z' fill='#bfdbfe' stroke='#1d4ed8' stroke-width='3'/><path d='M195,55 L232,28 L232,110 L195,137 Z' fill='#93c5fd' stroke='#1d4ed8' stroke-width='3'/><rect x='55' y='55' width='140' height='82' fill='#eff6ff' stroke='#1d4ed8' stroke-width='3'/><rect x='55' y='116' width='140' height='21' fill='#60a5fa' stroke='#1d4ed8' stroke-width='2'/><text x='125' y='157' text-anchor='middle' font-size='15' fill='#1d4ed8'>8 מ׳</text><text x='38' y='100' text-anchor='middle' font-size='15' fill='#1d4ed8'>2 מ׳</text><text x='222' y='22' text-anchor='middle' font-size='15' fill='#1d4ed8'>5 מ׳</text></svg></div>" } },
+        { "name": "draw_exercise", "input": { "text": "תיבה 6 × 5 × 4, ממלאים ¾ — גובה המים?", "answer": "3", "kind": "number", "x": 130, "y": 470, "hint": "שתי דרכים, ושתיהן נכונות. או שמחשבים כמה מים יש ומחלקים בשטח הבסיס, או שזוכרים שאם מילאנו ¾ מהנפח מילאנו גם ¾ מהגובה.", "praise": "אלוף/ה! עבדת על הגובה ישירות דרך השבר — זו הדרך היפה 🏆" } }
+      ]
+    }
+  }
+}

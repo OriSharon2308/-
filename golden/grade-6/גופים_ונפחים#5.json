@@ -1,0 +1,71 @@
+{
+  "topic": "גופים ונפחים",
+  "lesson": 5,
+  "title": "נפח מנסרה וגליל — כלל אחד לכולם",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "בשיעור הקודם קיבלנו כלל: נפח = שטח הבסיס × גובה. עכשיו נבדוק אם הוא באמת שווה משהו. על הלוח מנסרה משולשת — הבסיס שלה הוא משולש, והיא ישרה כל הדרך למעלה. גם כאן אפשר לחשוב על שכבות: שכבת משולש, ועליה עוד שכבה, ועוד. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מנסרה משולשת", "x": 480, "y": 88, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "מנסרה משולשת", "x": 260, "y": 125, "w": 480, "h": 280, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 320 220' width='430' height='260'><polygon points='140,140 250,140 195,45' fill='#ccfbf1' stroke='#0f766e' stroke-width='3'/><line x1='60' y1='180' x2='140' y2='140' stroke='#0f766e' stroke-width='3'/><line x1='170' y1='180' x2='250' y2='140' stroke='#0f766e' stroke-width='3'/><line x1='115' y1='85' x2='195' y2='45' stroke='#0f766e' stroke-width='3'/><polygon points='60,180 170,180 115,85' fill='#99f6e4' stroke='#0f766e' stroke-width='3'/><text x='115' y='205' text-anchor='middle' font-size='17' fill='#0f766e'>הבסיס משולש</text><text x='245' y='195' text-anchor='middle' font-size='17' fill='#0f766e'>ישרה כל הדרך</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "אותו כלל — רק שהבסיס משולש", "x": 480, "y": 462, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "אז קודם צריך את שטח הבסיס, והבסיס כאן הוא משולש. את זה כבר למדת: שטח משולש הוא בסיס כפול גובה, ואז מחלקים ב-2. במשולש שעל הלוח הבסיס 6 והגובה 4. 6 × 4 = 24, ו-24 : 2 = 12. שטח הבסיס הוא 12. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "שטח הבסיס — משולש", "x": 480, "y": 88, "size": 34 } },
+          { "name": "draw_line", "input": { "x1": 300, "y1": 360, "x2": 620, "y2": 360, "color": "#0f766e", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 300, "y1": 360, "x2": 470, "y2": 190, "color": "#0f766e", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 620, "y1": 360, "x2": 470, "y2": 190, "color": "#0f766e", "width": 4 } },
+          { "name": "draw_line", "input": { "x1": 470, "y1": 190, "x2": 470, "y2": 360, "color": "#b91c1c", "width": 3 } },
+          { "name": "write_text", "input": { "text": "בסיס 6", "x": 460, "y": 400, "size": 26 } },
+          { "name": "write_text", "input": { "text": "גובה 4", "x": 545, "y": 275, "size": 26 } },
+          { "name": "write_text", "input": { "text": "6 × 4 = 24  ואז  24 : 2 = 12", "x": 480, "y": 460, "size": 30 } }
+        ]
+      },
+      {
+        "reply": "יש לנו שטח בסיס 12, ולמנסרה יש גובה 10. עכשיו פשוט מפעילים את הכלל: 12 × 10 = 120. נפח המנסרה הוא 120 סמ\"ק. שים/שימי לב שלא היה כאן שום דבר חדש — רק שטח בסיס, כפול גובה. בדיוק כמו בתיבה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "נפח המנסרה", "x": 480, "y": 85, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "נפח מנסרה", "x": 240, "y": 120, "w": 520, "h": 260, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 340 210' width='470' height='250'><polygon points='140,140 250,140 195,45' fill='#ccfbf1' stroke='#0f766e' stroke-width='3'/><line x1='60' y1='180' x2='140' y2='140' stroke='#0f766e' stroke-width='3'/><line x1='170' y1='180' x2='250' y2='140' stroke='#0f766e' stroke-width='3'/><line x1='115' y1='85' x2='195' y2='45' stroke='#0f766e' stroke-width='3'/><polygon points='60,180 170,180 115,85' fill='#99f6e4' stroke='#0f766e' stroke-width='3'/><text x='115' y='150' text-anchor='middle' font-size='16' fill='#0f766e'>שטח 12</text><text x='215' y='175' text-anchor='middle' font-size='16' fill='#0f766e'>גובה 10</text><text x='300' y='105' text-anchor='middle' font-size='20' fill='#0f766e'>12 × 10</text><text x='300' y='135' text-anchor='middle' font-size='20' fill='#0f766e'>= 120</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "120 סמ\"ק — אותו כלל בדיוק", "x": 480, "y": 440, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "ועכשיו הגליל. גם הוא ישר כל הדרך, אז הכלל יעבוד. הבסיס שלו עיגול, ואת שטח העיגול מצאנו בנושא הקודם: 3.14 כפול הרדיוס כפול הרדיוס. לפחית שעל הלוח רדיוס 3, אז שטח הבסיס הוא 3.14 × 3 × 3 = 28.26. הגובה 10, ולכן הנפח 28.26 × 10 = 282.6 סמ\"ק. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "נפח גליל", "x": 480, "y": 85, "size": 34 } },
+          { "name": "render_widget", "input": { "title": "נפח גליל", "x": 260, "y": 120, "w": 480, "h": 275, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 340 210' width='450' height='260'><path d='M55,55 L55,150 A55,17 0 0 0 165,150 L165,55 Z' fill='#dbeafe' stroke='#1d4ed8' stroke-width='3'/><ellipse cx='110' cy='55' rx='55' ry='17' fill='#eff6ff' stroke='#1d4ed8' stroke-width='3'/><line x1='110' y1='55' x2='165' y2='55' stroke='#b91c1c' stroke-width='3'/><text x='135' y='45' text-anchor='middle' font-size='15' fill='#b91c1c'>רדיוס 3</text><line x1='190' y1='55' x2='190' y2='152' stroke='#1d4ed8' stroke-width='3'/><text x='215' y='110' text-anchor='middle' font-size='15' fill='#1d4ed8'>גובה 10</text><text x='285' y='90' text-anchor='middle' font-size='18' fill='#1d4ed8'>3.14 × 9</text><text x='285' y='118' text-anchor='middle' font-size='18' fill='#1d4ed8'>= 28.26</text><text x='285' y='150' text-anchor='middle' font-size='18' fill='#1d4ed8'>× 10 = 282.6</text></svg></div>" } },
+          { "name": "write_text", "input": { "text": "שטח הבסיס של עיגול, כפול הגובה", "x": 480, "y": 448, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "וזה הרעיון הגדול של השיעור, ואני רוצה שתשמע/י אותו במפורש: מצאנו כלל אחד שעובד על תיבה, על מנסרה ועל גליל. למה? כי כולם ישרים כל הדרך מלמטה למעלה, אז אפשר לחשוב עליהם כערימת שכבות זהות. מוצאים את שטח הבסיס, כופלים בגובה, וזהו. עכשיו תור שלך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כלל אחד לשלושתם", "x": 480, "y": 95, "size": 36 } },
+          { "name": "write_text", "input": { "text": "נפח = שטח הבסיס × גובה", "x": 480, "y": 215, "size": 40 } },
+          { "name": "write_text", "input": { "text": "תיבה  ·  מנסרה  ·  גליל", "x": 480, "y": 320, "size": 32 } },
+          { "name": "write_text", "input": { "text": "כי כולם ישרים כל הדרך למעלה", "x": 480, "y": 430, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. בציור מנסרה משולשת: המשולש שבבסיס הוא בסיס 10 וגובה 4, וגובה המנסרה עצמה הוא 7. שני צעדים בדיוק כמו בדוגמה — קודם שטח המשולש, בסיס כפול גובה ואז חלקי 2, ואחר כך כופלים בגובה המנסרה. את התשובה תכתוב/תכתבי בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה נפח המנסרה שבציור?", "answer": "140", "kind": "number", "x": 240, "y": 320, "hint": "צעד ראשון — שטח המשולש: 10 כפול 4, ואל תשכח/י לחלק ב-2. צעד שני — את המספר שיצא תכפול/תכפלי בגובה המנסרה, 7.", "praise": "מעולה! שני צעדים נקיים — שטח בסיס ואז כפל בגובה 👏" } },
+        { "name": "render_widget", "input": { "title": "המנסרה", "x": 530, "y": 110, "w": 410, "h": 265, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 300 210' width='390' height='250'><polygon points='140,140 250,140 195,45' fill='#ccfbf1' stroke='#0f766e' stroke-width='3'/><line x1='60' y1='180' x2='140' y2='140' stroke='#0f766e' stroke-width='3'/><line x1='170' y1='180' x2='250' y2='140' stroke='#0f766e' stroke-width='3'/><line x1='115' y1='85' x2='195' y2='45' stroke='#0f766e' stroke-width='3'/><polygon points='60,180 170,180 115,85' fill='#99f6e4' stroke='#0f766e' stroke-width='3'/><text x='115' y='199' text-anchor='middle' font-size='16' fill='#0f766e'>בסיס המשולש 10</text><text x='150' y='140' text-anchor='middle' font-size='16' fill='#0f766e'>גובה 4</text><text x='240' y='180' text-anchor='middle' font-size='16' fill='#0f766e'>גובה המנסרה 7</text></svg></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות — ובכולן אותו כלל אחד. בראשונה יש ציור לעזרה, בשנייה שטח הבסיס כבר נתון לך, ובאחרונה הכול לבד. תזכור/תזכרי: לגליל קודם מחשבים שטח עיגול, 3.14 כפול הרדיוס כפול הרדיוס. בשיעור הבא נדבר על יחידות — ליטרים ומטרים מעוקבים 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "גליל: רדיוס 2, גובה 10 — מה הנפח?", "answer": "125.6", "kind": "number", "x": 130, "y": 105, "hint": "קודם שטח הבסיס, והבסיס הוא עיגול: 3.14 כפול הרדיוס כפול הרדיוס. את המספר שיצא תכפול/תכפלי בגובה.", "praise": "יופי! חישבת שטח עיגול ואז הפעלת עליו את הכלל של הנפח 👏" } },
+        { "name": "render_widget", "input": { "title": "גליל", "x": 610, "y": 60, "w": 320, "h": 200, "exact": true, "html": "<div style='height:100%;display:flex;align-items:center;justify-content:center;direction:rtl;font-family:system-ui,sans-serif'><svg viewBox='0 0 220 190' width='210' height='180'><path d='M55,45 L55,140 A50,16 0 0 0 155,140 L155,45 Z' fill='#dbeafe' stroke='#1d4ed8' stroke-width='3'/><ellipse cx='105' cy='45' rx='50' ry='16' fill='#eff6ff' stroke='#1d4ed8' stroke-width='3'/><line x1='105' y1='45' x2='155' y2='45' stroke='#b91c1c' stroke-width='3'/><text x='130' y='34' text-anchor='middle' font-size='14' fill='#b91c1c'>רדיוס 2</text><line x1='178' y1='45' x2='178' y2='142' stroke='#1d4ed8' stroke-width='3'/><text x='188' y='100' text-anchor='middle' font-size='14' fill='#1d4ed8'>גובה 10</text></svg></div>" } },
+        { "name": "draw_exercise", "input": { "text": "מנסרה: שטח הבסיס 15, הגובה 8 — הנפח?", "answer": "120", "kind": "number", "x": 130, "y": 305, "hint": "כאן חסכו לך את הצעד הראשון — שטח הבסיס כבר נתון, ולא משנה בכלל איזו צורה יש בבסיס. נשאר רק לכפול בגובה.", "praise": "יפה! הבנת ששטח הבסיס מספיק — לא צריך לדעת איזו צורה זו 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "גליל: רדיוס 5, גובה 4 — מה הנפח?", "answer": "314", "kind": "number", "x": 130, "y": 470, "hint": "אותם שני צעדים כמו בשאלה הראשונה, רק עם מספרים גדולים יותר: 3.14 כפול 5 כפול 5 ייתן שטח בסיס, ואותו כופלים ב-4.", "praise": "אלוף/ה! הפעלת כלל אחד על שלושה גופים שונים — זה בדיוק הרעיון 🏆" } }
+      ]
+    }
+  }
+}

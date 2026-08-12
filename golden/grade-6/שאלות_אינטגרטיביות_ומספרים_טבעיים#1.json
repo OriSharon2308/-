@@ -1,0 +1,94 @@
+{
+  "topic": "שאלות אינטגרטיביות ומספרים טבעיים",
+  "lesson": 1,
+  "title": "ארבעת הייצוגים — אותו מספר בארבע שפות",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היי! היום מתחילים את הנושא שמחבר את כל השנה 🙂 על הלוח ציר מ-0 עד 1, וסימנתי עליו נקודה בדיוק באמצע. איך קוראים לנקודה הזאת? אפשר לקרוא לה ½. אפשר לקרוא לה 0.5. ואפשר לקרוא לה 50%. שלוש שפות — אותה נקודה בדיוק. לחץ/י ✓.",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "אותה נקודה, שלוש שפות", "x": 500, "y": 100, "size": 34 } },
+          { "name": "write_text", "input": { "text": "50%", "x": 500, "y": 175, "size": 30 } },
+          { "name": "write_text", "input": { "text": "0.5", "x": 500, "y": 225, "size": 30 } },
+          { "name": "write_text", "input": { "text": "½", "x": 500, "y": 275, "size": 32 } },
+          { "name": "draw_arrow", "input": { "x1": 500, "y1": 300, "x2": 500, "y2": 340 } },
+          { "name": "draw_number_line", "input": { "from": 0, "to": 1, "step": 0.1, "x": 130, "y": 360, "length": 740 } },
+          { "name": "draw_point", "input": { "x": 500, "y": 360, "label": "" } },
+          { "name": "write_text", "input": { "text": "בדיוק באמצע הדרך מ-0 ל-1", "x": 500, "y": 470, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עכשיו עוד שתי נקודות על אותו ציר. הראשונה היא ¼ — רבע הדרך. בעשרוני היא 0.25, ובאחוזים 25%. השנייה היא ⅘ — כמעט בסוף. בעשרוני 0.8, ובאחוזים 80%. שים/שימי לב לקשר: 0.8 זה 8 עשיריות, ו-8 עשיריות זה 80 מתוך 100. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "עוד נקודות על אותו ציר", "x": 500, "y": 100, "size": 34 } },
+          { "name": "write_text", "input": { "text": "¼", "x": 315, "y": 180, "size": 32 } },
+          { "name": "write_text", "input": { "text": "0.25 = 25%", "x": 315, "y": 225, "size": 24 } },
+          { "name": "write_text", "input": { "text": "⅘", "x": 722, "y": 180, "size": 32 } },
+          { "name": "write_text", "input": { "text": "0.8 = 80%", "x": 722, "y": 225, "size": 24 } },
+          { "name": "draw_arrow", "input": { "x1": 315, "y1": 250, "x2": 315, "y2": 320 } },
+          { "name": "draw_arrow", "input": { "x1": 722, "y1": 250, "x2": 722, "y2": 320 } },
+          { "name": "draw_number_line", "input": { "from": 0, "to": 1, "step": 0.1, "x": 130, "y": 340, "length": 740 } },
+          { "name": "draw_point", "input": { "x": 315, "y": 340, "label": "" } },
+          { "name": "draw_point", "input": { "x": 722, "y": 340, "label": "" } },
+          { "name": "write_text", "input": { "text": "רבע הדרך, וארבע חמישיות הדרך", "x": 500, "y": 460, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "הטבלה הזאת שווה זהב. אלה המספרים שחוזרים כמעט בכל מבחן, ואם הם בראש — חוסכים המון זמן. תסתכל/י שורה-שורה: אותו מספר בשלוש שפות. ⅓ הוא מיוחד — בעשרוני הוא 0.333… ולא נגמר לעולם, ולכן איתו נוח יותר להישאר שבר. ✓",
+        "toolCalls": [
+          { "name": "render_widget", "input": { "title": "טבלת מעברים", "x": 190, "y": 110, "w": 620, "h": 370, "exact": true, "html": "<div style=\"direction:rtl;font-family:system-ui,sans-serif;background:#ffffff;border-radius:14px;padding:10px 14px;box-sizing:border-box;width:100%;height:100%\"><div style=\"text-align:center;font-size:22px;font-weight:700;color:#1b3a6b;margin-bottom:8px\">שווה לדעת כמעט בעל-פה</div><table style=\"width:100%;border-collapse:collapse;font-size:21px;color:#22314a\"><tr style=\"background:#eef3fb;font-weight:700\"><td style=\"padding:6px;text-align:center\">שבר</td><td style=\"padding:6px;text-align:center\">עשרוני</td><td style=\"padding:6px;text-align:center\">אחוז</td></tr><tr><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">½</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">0.5</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">50%</td></tr><tr><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">¼</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">0.25</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">25%</td></tr><tr><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">¾</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">0.75</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">75%</td></tr><tr><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">⅕</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">0.2</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">20%</td></tr><tr><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">⅒</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">0.1</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">10%</td></tr><tr><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">⅓</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">0.333…</td><td style=\"padding:5px;text-align:center;border-top:1px solid #dbe4f0\">בערך 33%</td></tr></table></div>" } }
+        ]
+      },
+      {
+        "reply": "ועכשיו גילוי יפה. בין 0.3 ל-0.4 — יש עוד מספרים? יש! 0.31 יושב ממש בהתחלה, 0.35 באמצע, 0.375 קצת אחריו. וגם 0.3999… אפשר להמשיך בלי סוף. בין כל שני מספרים תמיד יש עוד אחד באמצע. לזה קוראים צפיפות. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מה יש בין 0.3 ל-0.4?", "x": 500, "y": 110, "size": 34 } },
+          { "name": "draw_line", "input": { "x1": 150, "y1": 300, "x2": 850, "y2": 300, "width": 3 } },
+          { "name": "draw_point", "input": { "x": 150, "y": 300, "label": "" } },
+          { "name": "draw_point", "input": { "x": 850, "y": 300, "label": "" } },
+          { "name": "write_text", "input": { "text": "0.3", "x": 150, "y": 350, "size": 26 } },
+          { "name": "write_text", "input": { "text": "0.4", "x": 850, "y": 350, "size": 26 } },
+          { "name": "draw_point", "input": { "x": 220, "y": 300, "label": "" } },
+          { "name": "draw_point", "input": { "x": 500, "y": 300, "label": "" } },
+          { "name": "draw_point", "input": { "x": 675, "y": 300, "label": "" } },
+          { "name": "write_text", "input": { "text": "0.31", "x": 220, "y": 255, "size": 24 } },
+          { "name": "write_text", "input": { "text": "0.35", "x": 500, "y": 255, "size": 24 } },
+          { "name": "write_text", "input": { "text": "0.375", "x": 675, "y": 255, "size": 24 } },
+          { "name": "write_text", "input": { "text": "וגם 0.3999… בלי סוף", "x": 500, "y": 420, "size": 28 } },
+          { "name": "write_text", "input": { "text": "בין כל שני מספרים יש עוד אחד", "x": 500, "y": 470, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "עם מספרים שלמים הסיפור אחר לגמרי. תסתכל/י על הציר: בין 3 ל-4 אין אף מספר שלם. כלום. אבל שברים ועשרוניים בין 3 ל-4? אינסוף. זה ההבדל הגדול בין הטבעיים לשאר המספרים. עכשיו תורך 🙂",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ומה עם המספרים השלמים?", "x": 500, "y": 110, "size": 34 } },
+          { "name": "draw_number_line", "input": { "from": 0, "to": 10, "step": 1, "x": 130, "y": 280, "length": 740 } },
+          { "name": "write_text", "input": { "text": "בין 3 ל-4 אין אף מספר שלם", "x": 500, "y": 400, "size": 28 } },
+          { "name": "write_text", "input": { "text": "אבל שברים ביניהם? אינסוף", "x": 500, "y": 460, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד. על הלוח הציר, וסימנתי עליו איפה יושב ⅘. תסתכל/י על איזה מספר עשרוני נופלת הנקודה. ועכשיו הצעד האחרון — מעשרוני לאחוזים: כל עשירית שווה 10 אחוזים. את המספר לבד, בלי הסימן %, כתוב/כתבי בתיבה.",
+      "toolCalls": [
+        { "name": "write_text", "input": { "text": "⅘", "x": 722, "y": 210, "size": 34 } },
+        { "name": "draw_arrow", "input": { "x1": 722, "y1": 240, "x2": 722, "y2": 292 } },
+        { "name": "draw_number_line", "input": { "from": 0, "to": 1, "step": 0.1, "x": 130, "y": 310, "length": 740 } },
+        { "name": "draw_point", "input": { "x": 722, "y": 310, "label": "" } },
+        { "name": "draw_exercise", "input": { "text": "⅘ — כמה אחוזים?", "answer": "80", "kind": "number", "hint": "תסתכל/י איפה הנקודה יושבת על הציר — איזה מספר עשרוני זה. עכשיו תחשוב/תחשבי כמה עשיריות יש שם, וכל עשירית שווה עשרה אחוזים.", "praise": "יפה! ראית ש-⅘ יושב על 0.8, ושמונה עשיריות הן 80% 👏" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה יש ציר לעזרה — תמצא/י את הנקודה ותתרגם/י לאחוזים. בשנייה כבר בלי ציר, מהזיכרון. ובשלישית שאלה על צפיפות — לא צריך לחשב בכלל, רק לחשוב, וכותבים בה מילה אחת: כן או לא. בשיעור הבא נלמד לבחור באיזו שפה נוח לחשב 🙂",
+      "toolCalls": [
+        { "name": "write_text", "input": { "text": "¼", "x": 315, "y": 120, "size": 32 } },
+        { "name": "draw_arrow", "input": { "x1": 315, "y1": 148, "x2": 315, "y2": 198 } },
+        { "name": "draw_number_line", "input": { "from": 0, "to": 1, "step": 0.1, "x": 130, "y": 215, "length": 740 } },
+        { "name": "draw_point", "input": { "x": 315, "y": 215, "label": "" } },
+        { "name": "draw_exercise", "input": { "text": "¼ — כמה אחוזים?", "answer": "25", "kind": "number", "x": 500, "y": 310, "hint": "תסתכל/י על הציר — איפה יושב ¼. אם זה רבע הדרך מ-0 ל-1, תחשוב/תחשבי על מאה שקלים ועל רבע מהם. כמה יוצא?", "praise": "יפה! ¼ ו-0.25 ו-25% הם אותה נקודה בדיוק 👏" } },
+        { "name": "draw_exercise", "input": { "text": "⅒ — כמה אחוזים?", "answer": "10", "kind": "number", "x": 500, "y": 390, "hint": "בלי ציר הפעם. תחשוב/תחשבי כך: מאה אחוז זה השלם. אם חותכים אותו לעשרה חלקים שווים — כמה אחוזים יש בכל חלק?", "praise": "מצוין! עשירית היא 0.1 והיא 10% — ידעת את זה בעל-פה 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "יש עוד מספרים בין 0.6 ל-0.7? כן או לא?", "answer": "כן", "kind": "text", "x": 500, "y": 470, "hint": "אל תחשב/י כלום. תיזכר/י מה גילינו: בין כל שני מספרים אפשר תמיד למצוא עוד אחד באמצע. נסה/י לחשוב על מספר שמתחיל ב-0.6 וממשיך.", "praise": "בדיוק! 0.61, 0.65, 0.699 — ביניהם תמיד יש עוד מספר 🏆" } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "topic": "שאלות אינטגרטיביות ומספרים טבעיים",
+  "lesson": 4,
+  "title": "בעיה רב-סעיפית ונתון מיותר",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום סוג השאלה שהמבחן הכי אוהב: בעיה עם כמה סעיפים, שכל סעיף בה נשען על הקודם. על הלוח שני בניינים. בכל בניין יש קומת כניסה למטה, ומעליה קומות זהות — כולן באותו גובה בדיוק. הבניין עם 2 קומות גובהו 13 מ׳, והבניין עם 5 קומות גובהו 25 מ׳. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "בניין: קומת כניסה וקומות זהות", "x": 500, "y": 100, "size": 32 } },
+          { "name": "write_text", "input": { "text": "כל הקומות באותו גובה, הכניסה שונה", "x": 500, "y": 148, "size": 24 } },
+          { "name": "render_widget", "input": { "title": "שני הבניינים", "x": 230, "y": 185, "w": 540, "h": 270, "exact": true, "html": "<div style=\"direction:rtl;font-family:system-ui,sans-serif;display:flex;justify-content:center;gap:90px;align-items:flex-end;width:100%;height:100%;box-sizing:border-box;color:#22314a\"><div style=\"text-align:center\"><div style=\"font-size:18px;color:#1b3a6b;margin-bottom:8px\">2 קומות — 13 מ׳</div><div style=\"width:118px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:118px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:118px;height:34px;border:2px solid #1b3a6b;background:#f6d6a8;box-sizing:border-box;font-size:15px;line-height:30px\">כניסה</div></div><div style=\"text-align:center\"><div style=\"font-size:18px;color:#1b3a6b;margin-bottom:8px\">5 קומות — 25 מ׳</div><div style=\"width:118px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:118px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:118px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:118px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:118px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:118px;height:34px;border:2px solid #1b3a6b;background:#f6d6a8;box-sizing:border-box;font-size:15px;line-height:30px\">כניסה</div></div></div>" } },
+          { "name": "write_text", "input": { "text": "ארבעה סעיפים, אחד-אחד", "x": 500, "y": 485, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "סעיף א׳ שואל מה גובה קומה אחת. תסתכל/י על ההפרש: 25 פחות 13 זה 12 מ׳. מאיפה בא ההפרש? רק מהקומות הנוספות — 5 פחות 2, כלומר 3 קומות. הכניסה זהה בשני הבניינים ולא משנה כאן כלום. אז 12 חלקי 3, וכל קומה היא 4 מ׳. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "סעיף א׳: מה גובה קומה אחת?", "x": 500, "y": 110, "size": 32 } },
+          { "name": "write_text", "input": { "text": "בניין של 5 קומות — 25 מ׳", "x": 500, "y": 190, "size": 28 } },
+          { "name": "write_text", "input": { "text": "בניין של 2 קומות — 13 מ׳", "x": 500, "y": 250, "size": 28 } },
+          { "name": "write_text", "input": { "text": "ההפרש 12 מ׳ בא מ-3 קומות", "x": 500, "y": 330, "size": 28 } },
+          { "name": "write_text", "input": { "text": "‎12 : 3 = 4", "x": 500, "y": 400, "size": 34 } },
+          { "name": "write_text", "input": { "text": "כל קומה — 4 מ׳", "x": 500, "y": 465, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "סעיף ב׳ שואל מה גובה הכניסה — ועכשיו כבר יש בידינו את גובה הקומה מסעיף א׳. ככה סעיפים נשענים זה על זה. בבניין הקטן 2 קומות, והן 2 כפול 4, שזה 8 מ׳. כל הבניין 13 מ׳, אז לכניסה נשארים 13 פחות 8 — 5 מ׳. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "סעיף ב׳: מה גובה הכניסה?", "x": 500, "y": 110, "size": 32 } },
+          { "name": "write_text", "input": { "text": "בניין של 2 קומות גובהו 13 מ׳", "x": 500, "y": 190, "size": 28 } },
+          { "name": "write_text", "input": { "text": "שתי הקומות ביחד", "x": 500, "y": 255, "size": 26 } },
+          { "name": "write_text", "input": { "text": "‎2 × 4 = 8", "x": 500, "y": 315, "size": 32 } },
+          { "name": "write_text", "input": { "text": "‎13 - 8 = 5", "x": 500, "y": 385, "size": 32 } },
+          { "name": "write_text", "input": { "text": "הכניסה — 5 מ׳", "x": 500, "y": 455, "size": 28 } }
+        ]
+      },
+      {
+        "reply": "סעיף ג׳: מה יהיה גובהו של בניין עם 7 קומות? עכשיו יש לנו את שני המספרים שצריך — כניסה 5 מ׳, וכל קומה 4 מ׳. 7 כפול 4 זה 28, ועוד הכניסה: 5 ועוד 28 זה 33 מ׳. שלושה סעיפים, וכל אחד השתמש במה שמצאנו לפניו. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "סעיף ג׳: בניין עם 7 קומות?", "x": 500, "y": 110, "size": 32 } },
+          { "name": "write_text", "input": { "text": "כניסה 5 מ׳, וכל קומה 4 מ׳", "x": 500, "y": 190, "size": 28 } },
+          { "name": "write_text", "input": { "text": "‎7 × 4 = 28", "x": 500, "y": 265, "size": 32 } },
+          { "name": "write_text", "input": { "text": "‎5 + 28 = 33", "x": 500, "y": 345, "size": 34 } },
+          { "name": "write_text", "input": { "text": "הבניין יהיה בגובה 33 מ׳", "x": 500, "y": 420, "size": 28 } },
+          { "name": "write_text", "input": { "text": "כל סעיף נשען על הקודם", "x": 500, "y": 480, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "סעיף ד׳ שונה מכולם: ייתכן בניין כזה בגובה 38 מ׳? כאן לא מבקשים לחשב — מבקשים להסביר. קודם מורידים את הכניסה: 38 פחות 5 זה 33. כל השאר בנוי מקומות של 4 מ׳, אז 33 חייב להתחלק ב-4 — והוא לא מתחלק. לכן בניין כזה לא ייתכן. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "סעיף ד׳: ייתכן גובה 38 מ׳?", "x": 500, "y": 110, "size": 32 } },
+          { "name": "write_text", "input": { "text": "קודם מורידים את הכניסה", "x": 500, "y": 185, "size": 26 } },
+          { "name": "write_text", "input": { "text": "‎38 - 5 = 33", "x": 500, "y": 250, "size": 32 } },
+          { "name": "write_text", "input": { "text": "והשאר חייב להתחלק ב-4", "x": 500, "y": 320, "size": 28 } },
+          { "name": "write_text", "input": { "text": "33 לא מתחלק ב-4 — אז לא ייתכן", "x": 500, "y": 390, "size": 28 } },
+          { "name": "write_text", "input": { "text": "הסעיף ביקש הסבר, לא חישוב", "x": 500, "y": 460, "size": 26 } }
+        ]
+      },
+      {
+        "reply": "ועוד מלכודת מהמבחן — נתון מיותר. על הלוח מקבילית: צלע 9, צלע סמוכה 5, וגובה 4 אל הצלע 9. לשטח צריך צלע והגובה שאליה — 9 כפול 4, שזה 36 סמ״ר, והצלע 5 מיותרת. להיקף דווקא צריך את 9 ואת 5 — הסכום 14 כפול 2, שזה 28 ס״מ, והגובה מיותר. תמיד תשאל/י קודם איזה נתון שייך. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "נתון מיותר", "x": 500, "y": 90, "size": 32 } },
+          { "name": "draw_line", "input": { "x1": 330, "y1": 350, "x2": 650, "y2": 350, "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 430, "y1": 230, "x2": 750, "y2": 230, "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 330, "y1": 350, "x2": 430, "y2": 230, "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 650, "y1": 350, "x2": 750, "y2": 230, "width": 3 } },
+          { "name": "draw_line", "input": { "x1": 430, "y1": 230, "x2": 430, "y2": 350, "width": 2, "color": "#888888" } },
+          { "name": "write_text", "input": { "text": "9", "x": 490, "y": 385, "size": 26 } },
+          { "name": "write_text", "input": { "text": "5", "x": 320, "y": 275, "size": 26 } },
+          { "name": "write_text", "input": { "text": "גובה 4", "x": 490, "y": 290, "size": 24 } },
+          { "name": "write_text", "input": { "text": "לשטח: הצלע 9 והגובה 4 — 36 סמ״ר", "x": 500, "y": 430, "size": 26 } },
+          { "name": "write_text", "input": { "text": "להיקף: הצלעות 9 ו-5 — 28 ס״מ", "x": 500, "y": 478, "size": 26 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד, בניין אחר. על הלוח בניין עם 3 קומות שגובהו 21 מ׳, ובניין עם 7 קומות שגובהו 41 מ׳ — שוב כניסה זהה וקומות זהות. הסעיף הראשון הוא תמיד גובה של קומה אחת: תסתכל/י כמה מטרים נוספו, כמה קומות נוספו, ותחלק/י. את התשובה במטרים כתוב/כתבי בתיבה.",
+      "toolCalls": [
+        { "name": "render_widget", "input": { "title": "שני הבניינים", "x": 250, "y": 110, "w": 500, "h": 290, "exact": true, "html": "<div style=\"direction:rtl;font-family:system-ui,sans-serif;display:flex;justify-content:center;gap:90px;align-items:flex-end;width:100%;height:100%;box-sizing:border-box;color:#22314a\"><div style=\"text-align:center\"><div style=\"font-size:18px;color:#1b3a6b;margin-bottom:8px\">3 קומות — 21 מ׳</div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:32px;border:2px solid #1b3a6b;background:#f6d6a8;box-sizing:border-box;font-size:15px;line-height:28px\">כניסה</div></div><div style=\"text-align:center\"><div style=\"font-size:18px;color:#1b3a6b;margin-bottom:8px\">7 קומות — 41 מ׳</div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:22px;border:2px solid #1b3a6b;background:#dbe9ff;box-sizing:border-box\"></div><div style=\"width:112px;height:32px;border:2px solid #1b3a6b;background:#f6d6a8;box-sizing:border-box;font-size:15px;line-height:28px\">כניסה</div></div></div>" } },
+        { "name": "draw_exercise", "input": { "text": "3 קומות — 21 מ׳, 7 קומות — 41 מ׳. גובה קומה?", "answer": "5", "kind": "number", "x": 500, "y": 460, "hint": "תשווה/תשווי בין שני הבניינים: כמה מטרים נוספו, וכמה קומות נוספו? המטרים הנוספים מתחלקים רק בין הקומות החדשות — הכניסה זהה בשניהם.", "praise": "יפה! השתמשת בהפרש בין הבניינים במקום לנחש 👏" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה יש ציור של מקבילית — שים/שימי לב, יש בו נתון אחד שלא שייך לשטח. בשנייה חוזרים לבניין מקודם, ואת גובה הקומה כבר גילינו: 5 מ׳. השלישית מבקשת הנמקה ולא חישוב, וכותבים בה מילה אחת: כן או לא. בשיעור הבא נלמד להציג דרך פתרון 🙂",
+      "toolCalls": [
+        { "name": "draw_line", "input": { "x1": 620, "y1": 330, "x2": 860, "y2": 330, "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 700, "y1": 220, "x2": 940, "y2": 220, "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 620, "y1": 330, "x2": 700, "y2": 220, "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 860, "y1": 330, "x2": 940, "y2": 220, "width": 3 } },
+        { "name": "draw_line", "input": { "x1": 700, "y1": 220, "x2": 700, "y2": 330, "width": 2, "color": "#888888" } },
+        { "name": "write_text", "input": { "text": "8", "x": 740, "y": 362, "size": 26 } },
+        { "name": "write_text", "input": { "text": "6", "x": 598, "y": 272, "size": 26 } },
+        { "name": "write_text", "input": { "text": "גובה 5", "x": 760, "y": 278, "size": 22 } },
+        { "name": "draw_exercise", "input": { "text": "שטח המקבילית בסנטימטרים רבועים?", "answer": "40", "kind": "number", "x": 280, "y": 180, "hint": "בציור שלושה מספרים, אבל לשטח צריך רק שניים: צלע והגובה שאליה. תשאל/י איזה מספר בכלל לא שייך כאן, ותכפול/י את שני הנכונים.", "praise": "יפה! זיהית שהצלע 6 מיותרת לשטח 👏" } },
+        { "name": "draw_exercise", "input": { "text": "כל קומה 5 מ׳, 3 קומות — 21 מ׳. גובה הכניסה?", "answer": "6", "kind": "number", "x": 280, "y": 310, "hint": "תחשב/י קודם כמה תופסות שלוש הקומות ביחד, כשכל אחת 5 מ׳. מה שנשאר מ-21 הוא בדיוק הכניסה.", "praise": "מצוין! הורדת את הקומות מהגובה הכולל ומצאת את הכניסה 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "כניסה 6 מ׳ וקומות של 5 מ׳ — ייתכן גובה 40 מ׳?", "answer": "לא", "kind": "text", "x": 280, "y": 440, "hint": "קודם תוריד/י את הכניסה מהגובה. מה שנשאר צריך להתחלק בגובה של קומה בדיוק, בלי שארית. תבדוק/תבדקי אם זה מתחלק.", "praise": "בדיוק! מה שנשאר לא מתחלק בגובה קומה, אז בניין כזה לא קיים 🏆" } }
+      ]
+    }
+  }
+}

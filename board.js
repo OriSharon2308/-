@@ -470,7 +470,15 @@
     var ctx = this.ctx, color = o.color || COLORS.teacher;
     if (o.type === "circle") { ctx.strokeStyle = color; ctx.lineWidth = o.width || 4; ctx.beginPath(); ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2); ctx.stroke(); }
     else if (o.type === "line") { ctx.strokeStyle = color; ctx.lineWidth = o.width || 4; ctx.lineCap = "round"; ctx.beginPath(); ctx.moveTo(o.x1, o.y1); ctx.lineTo(o.x2, o.y2); ctx.stroke(); }
-    else if (o.type === "text") { ctx.fillStyle = color === COLORS.teacher ? COLORS.text : color; var sz = o.size || 32; ctx.font = "700 " + sz + "px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(String(o.text), o.x, o.y); }
+    else if (o.type === "text") {
+      // כיוון לפי תוכן: כיתוב שיש בו עברית נכתב RTL, אחרת LTR (ברירת המחדל של render).
+      // בלי זה מחרוזת כמו "10 עשרות = מאה אחת" מוצגת עם ה-10 בקצה השמאלי — כלומר בסוף, לקורא עברית.
+      var txt = String(o.text), prevDir = ctx.direction;
+      ctx.fillStyle = color === COLORS.teacher ? COLORS.text : color; var sz = o.size || 32; ctx.font = "700 " + sz + "px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.direction = /[\u0590-\u05FF]/.test(txt) ? "rtl" : "ltr";
+      ctx.fillText(txt, o.x, o.y);
+      ctx.direction = prevDir;
+    }
     else if (o.type === "polygon") {
       var pp = o.points || []; if (pp.length < 2) return;
       ctx.beginPath(); ctx.moveTo(pp[0].x, pp[0].y);
@@ -502,10 +510,14 @@
       ctx.beginPath(); ctx.moveTo(nx + L, ny); ctx.lineTo(nx + L - 11, ny - 7); ctx.moveTo(nx + L, ny); ctx.lineTo(nx + L - 11, ny + 7); ctx.stroke();
       ctx.fillStyle = COLORS.text; ctx.font = "600 18px Fredoka, Assistant, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
       var nsgn = nt >= nf ? 1 : -1; // כיוון: ציר יורד (to<from) → התוויות יורדות, עקבי עם מיפוי הקפיצות
+      // ציר עשרוני: 0 + 3×0.1 נותן 0.30000000000000004 בחשבון-נקודה-צפה, והילד
+      // היה רואה את זה על הלוח. מעגלים למספר הספרות שבצעד עצמו.
+      var nlDec = (String(nstep).split(".")[1] || "").length;
       for (var nk = 0; nk <= steps; nk++) {
         var tx = nx + (L * nk) / steps;
         ctx.strokeStyle = color; ctx.beginPath(); ctx.moveTo(tx, ny - 7); ctx.lineTo(tx, ny + 7); ctx.stroke();
-        ctx.fillText(String(nf + nk * nstep * nsgn), tx, ny + 11);
+        var nlv = nf + nk * nstep * nsgn;
+        ctx.fillText(String(nlDec ? +nlv.toFixed(nlDec) : nlv), tx, ny + 11);
       }
       // קפיצות: קשתות מעל הציר עם תווית (למשל "+3") — להמחשת חיבור/חיסור
       if (Array.isArray(o.jumps) && nt !== nf) {
@@ -664,7 +676,10 @@
       var slot = this._exSlot || 0, col = Math.floor(slot / perCol), row = slot % perCol;
       var y = top + row * rowH;
       // התיבה היא מקום התשובה: בתרגיל מספרי מנקים "?" מיותר ומוודאים סיום ב-"=".
-      if (kind === "number") { text = text.replace(/\s*\?\s*$/, "").trim(); if (!/[=:]\s*$/.test(text)) text += " ="; }
+      // משפט בעברית שנגמר בשאלה ("כמה יש?") נשאר שאלה — התיבה היא התשובה, לא אגף-ימין של תרגיל.
+      // רק ביטוי סימבולי ("35 + 24") מקבל "=" בסוף.
+      var hebrewQuestion = hasHebrew && /\?\s*$/.test(text);
+      if (kind === "number" && !hebrewQuestion) { text = text.replace(/\s*\?\s*$/, "").trim(); if (!/[=:]\s*$/.test(text)) text += " ="; }
       this.ctx.font = "700 " + tsize0 + "px Fredoka, Assistant, sans-serif";
       var tw = this.ctx.measureText(text).width;
       var colW = bw + gap0 + tw + 70;

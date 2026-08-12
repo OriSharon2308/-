@@ -1,0 +1,71 @@
+{
+  "topic": "חקר נתונים והסתברות",
+  "lesson": 3,
+  "title": "ממוצע — לחלק שווה בשווה",
+  "phases": {
+    "instruct": [
+      {
+        "reply": "היום ממוצע — למדת עליו בכיתה ה׳, ועכשיו נעמיק. על הלוח ארבעה מגדלי קוביות: לדנה 3, ליואב 5, למאיה 8 ולרון 4. לכל אחד גובה אחר. השאלה של הממוצע היא: אם היינו לוקחים קוביות מהגבוה ונותנים לנמוך, עד שכולם באותו גובה — מה יהיה הגובה הזה? ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "לכל אחד גובה אחר", "x": 500, "y": 95, "size": 30 } },
+          { "name": "render_widget", "input": { "title": "מגדלי קוביות", "x": 150, "y": 140, "w": 700, "h": 320, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#fff;box-sizing:border-box;padding:8px'><div style='text-align:center;font-size:17px;font-weight:bold;color:#222'>כמה קוביות לכל אחד</div><div style='display:flex;align-items:flex-end;justify-content:center;gap:52px;height:262px;margin-top:8px'><div style='display:flex;flex-direction:column;align-items:center'><div style='width:28px;height:84px;background:repeating-linear-gradient(to top,#1e88e5 0 26px,#fff 26px 29px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:15px;margin-top:6px'>דנה</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:28px;height:142px;background:repeating-linear-gradient(to top,#1e88e5 0 26px,#fff 26px 29px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:15px;margin-top:6px'>יואב</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:28px;height:229px;background:repeating-linear-gradient(to top,#1e88e5 0 26px,#fff 26px 29px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:15px;margin-top:6px'>מאיה</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:28px;height:113px;background:repeating-linear-gradient(to top,#1e88e5 0 26px,#fff 26px 29px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:15px;margin-top:6px'>רון</div></div></div></div>" } },
+          { "name": "write_text", "input": { "text": "3 · 5 · 8 · 4", "x": 500, "y": 495, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "חילקנו שווה בשווה — וכל מגדל הפך לגובה 5. איך יודעים את זה בלי להזיז קוביות? סופרים את הכול ביחד: 3 ועוד 5 ועוד 8 ועוד 4 שווה 20. ואז מחלקים למספר הילדים: 20 חלקי 4 שווה 5. זה הממוצע — הגובה שכולם היו מקבלים אילו חילקנו שווה בשווה. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "כולם באותו גובה — 5", "x": 500, "y": 95, "size": 30 } },
+          { "name": "render_widget", "input": { "title": "אחרי חלוקה שווה", "x": 150, "y": 140, "w": 700, "h": 320, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#fff;box-sizing:border-box;padding:8px'><div style='text-align:center;font-size:17px;font-weight:bold;color:#222'>חילקנו שווה בשווה</div><div style='display:flex;align-items:flex-end;justify-content:center;gap:52px;height:262px;margin-top:8px'><div style='display:flex;flex-direction:column;align-items:center'><div style='width:28px;height:142px;background:repeating-linear-gradient(to top,#43a047 0 26px,#fff 26px 29px);border:1px solid #1b5e20;box-sizing:border-box;border-radius:3px'></div><div style='font-size:15px;margin-top:6px'>דנה</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:28px;height:142px;background:repeating-linear-gradient(to top,#43a047 0 26px,#fff 26px 29px);border:1px solid #1b5e20;box-sizing:border-box;border-radius:3px'></div><div style='font-size:15px;margin-top:6px'>יואב</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:28px;height:142px;background:repeating-linear-gradient(to top,#43a047 0 26px,#fff 26px 29px);border:1px solid #1b5e20;box-sizing:border-box;border-radius:3px'></div><div style='font-size:15px;margin-top:6px'>מאיה</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:28px;height:142px;background:repeating-linear-gradient(to top,#43a047 0 26px,#fff 26px 29px);border:1px solid #1b5e20;box-sizing:border-box;border-radius:3px'></div><div style='font-size:15px;margin-top:6px'>רון</div></div></div></div>" } },
+          { "name": "write_text", "input": { "text": "3 + 5 + 8 + 4 = 20   ואז   20 : 4 = 5", "x": 500, "y": 495, "size": 24 } }
+        ]
+      },
+      {
+        "reply": "אז יש לנו כלל קצר: ממוצע = הסכום מחולק בכמות. דוגמה חדשה: ארבעה ילדים אספו מדבקות — 6, 9, 7 ו-10. קודם הסכום: 32. אחר כך מחלקים בכמות הילדים: 32 חלקי 4 שווה 8. שים/שימי לב — אף אחד לא אסף בדיוק 8, והממוצע עדיין 8. זה בסדר גמור. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "ממוצע = סכום : כמות", "x": 500, "y": 110, "size": 34 } },
+          { "name": "write_text", "input": { "text": "6 + 9 + 7 + 10 = 32", "x": 500, "y": 225, "size": 30 } },
+          { "name": "write_text", "input": { "text": "32 : 4 = 8", "x": 500, "y": 310, "size": 30 } },
+          { "name": "write_text", "input": { "text": "הממוצע הוא 8 מדבקות", "x": 500, "y": 395, "size": 26 } },
+          { "name": "write_text", "input": { "text": "אף אחד לא אסף בדיוק 8 — וזה בסדר", "x": 500, "y": 470, "size": 20 } }
+        ]
+      },
+      {
+        "reply": "עכשיו הכיוון ההפוך — זה מה שבודקים במבחן. נותנים לך את הממוצע, ומבקשים נתון חסר. הצעד הראשון תמיד אותו צעד: מחזירים את הסכום. אם הממוצע של 4 מבחנים הוא 80, אז כל הארבעה ביחד שווים 4 כפול 80, כלומר 320. הסכום חזר — ומכאן קל. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "הכיוון ההפוך", "x": 500, "y": 100, "size": 32 } },
+          { "name": "write_text", "input": { "text": "הממוצע של 4 מבחנים הוא 80", "x": 500, "y": 195, "size": 28 } },
+          { "name": "write_text", "input": { "text": "הסכום של כולם: 4 × 80 = 320", "x": 500, "y": 285, "size": 28 } },
+          { "name": "write_text", "input": { "text": "ממוצע → קודם מחזירים את הסכום.", "x": 500, "y": 385, "size": 26 } },
+          { "name": "write_text", "input": { "text": "כאילו כל אחד מהמבחנים היה 80", "x": 500, "y": 465, "size": 20 } }
+        ]
+      },
+      {
+        "reply": "נשלים את התרגיל. הממוצע 80 בארבעה מבחנים, ובשלושה קיבלתי 75, 85 ו-90. צעד ראשון: הסכום של כולם — 4 כפול 80 שווה 320. צעד שני: מה שכבר יש — 75 ועוד 85 ועוד 90 שווה 250. צעד שלישי: מה שחסר — 320 פחות 250 שווה 70. במבחן הרביעי קיבלתי 70. ✓",
+        "toolCalls": [
+          { "name": "write_text", "input": { "text": "מה קיבלתי במבחן הרביעי?", "x": 500, "y": 95, "size": 30 } },
+          { "name": "write_text", "input": { "text": "1. הסכום של כולם: 4 × 80 = 320", "x": 500, "y": 190, "size": 26 } },
+          { "name": "write_text", "input": { "text": "2. מה שכבר יש: 75 + 85 + 90 = 250", "x": 500, "y": 270, "size": 26 } },
+          { "name": "write_text", "input": { "text": "3. מה שחסר: 320 - 250 = 70", "x": 500, "y": 350, "size": 26 } },
+          { "name": "write_text", "input": { "text": "בדיקה: 320 : 4 = 80 — הממוצע חזר", "x": 500, "y": 440, "size": 22 } }
+        ]
+      }
+    ],
+    "guided": {
+      "reply": "עכשיו ביחד, בכיוון הרגיל. על הלוח ארבעה מגדלים: 9, 5, 4 ו-6 קוביות. אני רוצה את הגובה שכולם היו מקבלים אילו חילקנו שווה בשווה — כלומר הממוצע. שני צעדים: קודם סכום, אחר כך מחלקים במספר המגדלים. כתוב/כתבי את התוצאה בתיבה!",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה הממוצע של 9, 5, 4 ו-6?", "answer": "6", "kind": "number", "hint": "צעד ראשון: חבר/י את כל המגדלים לסכום אחד. צעד שני: ספור/י כמה מגדלים יש, וחלק/י את הסכום במספר הזה.", "praise": "יופי! סכום ואז חלוקה — בדיוק שני הצעדים של הממוצע 👏" } },
+        { "name": "render_widget", "input": { "title": "ארבעה מגדלים", "x": 520, "y": 120, "w": 420, "h": 330, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#fff;box-sizing:border-box;padding:8px'><div style='text-align:center;font-size:16px;font-weight:bold;color:#222'>ארבעה מגדלים</div><div style='display:flex;align-items:flex-end;justify-content:center;gap:34px;height:250px;margin-top:6px'><div style='display:flex;flex-direction:column;align-items:center'><div style='width:24px;height:222px;background:repeating-linear-gradient(to top,#1e88e5 0 22px,#fff 22px 25px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:14px;margin-top:5px'>9</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:24px;height:122px;background:repeating-linear-gradient(to top,#1e88e5 0 22px,#fff 22px 25px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:14px;margin-top:5px'>5</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:24px;height:97px;background:repeating-linear-gradient(to top,#1e88e5 0 22px,#fff 22px 25px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:14px;margin-top:5px'>4</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:24px;height:147px;background:repeating-linear-gradient(to top,#1e88e5 0 22px,#fff 22px 25px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:14px;margin-top:5px'>6</div></div></div></div>" } }
+      ]
+    },
+    "independent": {
+      "reply": "עכשיו לבד, שלוש שאלות. הראשונה עם המגדלים לעזרה. השנייה והשלישית הן הכיוון ההפוך — נתון הממוצע, וחסר מספר אחד. בשתיהן תתחיל/י מאותו צעד: מחזירים את הסכום. בשיעור הבא נעבור לסיכוי — מה בטוח שיקרה ומה בכלל לא 🙂",
+      "toolCalls": [
+        { "name": "draw_exercise", "input": { "text": "מה הממוצע של 2, 4, 6 ו-8?", "answer": "5", "kind": "number", "x": 140, "y": 120, "hint": "חבר/י את כל המספרים לסכום אחד, ואז חלק/י את הסכום במספר המגדלים שעל הלוח.", "praise": "מעולה! גם כאן הממוצע יצא גובה שאף מגדל לא עמד בו — וזה נכון לגמרי 👏" } },
+        { "name": "draw_exercise", "input": { "text": "הממוצע של 3 מספרים 10. שניים הם 8 ו-9. מה השלישי?", "answer": "13", "kind": "number", "x": 140, "y": 300, "hint": "קודם תחזיר/י את הסכום: כמות המספרים כפול הממוצע. אחר כך חבר/י את שני המספרים שכתובים, וחסר/י אותם מהסכום.", "praise": "כל הכבוד! החזרת את הסכום ומצאת את הנתון החסר 🎉" } },
+        { "name": "draw_exercise", "input": { "text": "ממוצע 4 מבחנים 90. השלושה: 85, 95, 100. מה הרביעי?", "answer": "80", "kind": "number", "x": 140, "y": 465, "hint": "אותם שני צעדים: קודם הסכום של כל המבחנים — כמות כפול ממוצע. אחר כך חסר/י ממנו את סכום שלושת הציונים שכתובים.", "praise": "מצוין! זו בדיוק שאלת הממוצע ההפוך של המבחן, ופתרת אותה לבד 🏆" } },
+        { "name": "render_widget", "input": { "title": "מגדלים לעזרה", "x": 560, "y": 110, "w": 380, "h": 300, "exact": true, "html": "<div style='direction:rtl;font-family:Arial,Helvetica,sans-serif;background:#fff;box-sizing:border-box;padding:8px'><div style='text-align:center;font-size:15px;font-weight:bold;color:#222'>מגדלים לשאלה הראשונה</div><div style='display:flex;align-items:flex-end;justify-content:center;gap:30px;height:225px;margin-top:6px'><div style='display:flex;flex-direction:column;align-items:center'><div style='width:24px;height:47px;background:repeating-linear-gradient(to top,#1e88e5 0 22px,#fff 22px 25px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:14px;margin-top:5px'>2</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:24px;height:97px;background:repeating-linear-gradient(to top,#1e88e5 0 22px,#fff 22px 25px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:14px;margin-top:5px'>4</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:24px;height:147px;background:repeating-linear-gradient(to top,#1e88e5 0 22px,#fff 22px 25px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:14px;margin-top:5px'>6</div></div><div style='display:flex;flex-direction:column;align-items:center'><div style='width:24px;height:197px;background:repeating-linear-gradient(to top,#1e88e5 0 22px,#fff 22px 25px);border:1px solid #0d47a1;box-sizing:border-box;border-radius:3px'></div><div style='font-size:14px;margin-top:5px'>8</div></div></div></div>" } }
+      ]
+    }
+  }
+}
