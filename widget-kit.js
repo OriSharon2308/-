@@ -865,8 +865,11 @@
     p = p || {};
     var labels = (Array.isArray(p.labels) ? p.labels : String(p.labels || "").split(",")).slice(0, 6).map(function (s) { return String(s).slice(0, 10).replace(/[<>&]/g, ""); });
     var a = (Array.isArray(p.series) ? p.series : String(p.series || "").split(",")).map(Number).slice(0, 6);
-    var b = (Array.isArray(p.series2) ? p.series2 : String(p.series2 || "").split(",")).map(Number).slice(0, 6);
-    var hasB = b.length && b.every(function (v) { return isFinite(v); });
+    // בלי סינון המחרוזת הריקה: "".split(",") נותן [""], ו-Number("") הוא 0 —
+    // כלומר סדרה שנייה מדומה של אפסים, מקרא מיותר, ועמודות בחצי רוחב.
+    var b = (Array.isArray(p.series2) ? p.series2 : String(p.series2 || "").split(","))
+      .filter(function (s) { return String(s).trim() !== ""; }).map(Number).slice(0, 6);
+    var hasB = b.length > 0 && b.every(function (v) { return isFinite(v); });
     var step = wkNum(p.step, 1, 1000, 5), INK = "#0f3b36";
     var mx = Math.max.apply(null, a.concat(hasB ? b : [0]).concat([step])), top = Math.ceil(mx / step) * step;
     var bx = 54, by = 46, bw = 320, bh = 150, grid = "", bars = "";
@@ -876,10 +879,21 @@
         + '<text x="' + (bx - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end" font-size="11" fill="' + INK + '">' + (i * step) + '</text>';
     }
     var slot = bw / Math.max(1, a.length), wid = hasB ? slot * 0.3 : slot * 0.5;
+    // unit:"squares" — כל פריט הוא משבצת נפרדת ולא עמודה מלאה. זו השיטה של
+    // כיתות ב׳–ג׳ ("משבצת אחת = פריט אחד"), ובלעדיה החלפת דיאגרמה ידנית בכלי
+    // הייתה מוחקת בדיוק את הרעיון שהשיעור מלמד.
+    var squares = String(p.unit || "") === "squares";
+    var COL = ["#0d9488", "#f59e0b", "#a78bfa", "#ef4444", "#3b82f6", "#84cc16"];
     for (var k = 0; k < a.length; k++) {
       var cx0 = bx + slot * (k + 0.5), h1 = bh * (a[k] || 0) / top;
-      bars += '<rect x="' + (cx0 - (hasB ? wid + 3 : wid / 2)).toFixed(1) + '" y="' + (by + bh - h1).toFixed(1) + '" width="' + wid.toFixed(1) + '" height="' + h1.toFixed(1) + '" fill="#0d9488"/>';
-      if (hasB) { var h2 = bh * (b[k] || 0) / top; bars += '<rect x="' + (cx0 + 3).toFixed(1) + '" y="' + (by + bh - h2).toFixed(1) + '" width="' + wid.toFixed(1) + '" height="' + h2.toFixed(1) + '" fill="#f59e0b"/>'; }
+      if (squares) {
+        var uh = bh / top * step, n1 = Math.round((a[k] || 0) / step);
+        for (var q = 0; q < n1; q++)
+          bars += '<rect x="' + (cx0 - wid / 2).toFixed(1) + '" y="' + (by + bh - (q + 1) * uh + 1).toFixed(1) + '" width="' + wid.toFixed(1) + '" height="' + (uh - 2).toFixed(1) + '" fill="' + COL[k % COL.length] + '" stroke="' + INK + '" stroke-width="1.5"/>';
+      } else {
+        bars += '<rect x="' + (cx0 - (hasB ? wid + 3 : wid / 2)).toFixed(1) + '" y="' + (by + bh - h1).toFixed(1) + '" width="' + wid.toFixed(1) + '" height="' + h1.toFixed(1) + '" fill="#0d9488"/>';
+        if (hasB) { var h2 = bh * (b[k] || 0) / top; bars += '<rect x="' + (cx0 + 3).toFixed(1) + '" y="' + (by + bh - h2).toFixed(1) + '" width="' + wid.toFixed(1) + '" height="' + h2.toFixed(1) + '" fill="#f59e0b"/>'; }
+      }
       bars += '<text x="' + cx0.toFixed(1) + '" y="' + (by + bh + 18) + '" text-anchor="middle" font-size="12" fill="' + INK + '">' + (labels[k] || "") + '</text>';
     }
     var lg = "";
