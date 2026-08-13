@@ -696,7 +696,36 @@
       // מיקום מדויק (שיעורי-זהב/עורך): x,y מפורשים עוקפים את הסידור האוטומטי — לא מקדמים slot
       var exactPos = i.x != null && i.y != null && isFinite(+i.x) && isFinite(+i.y);
       if (exactPos) { boxX = +i.x; y = +i.y; }
-      this.answerBoxes.push({ id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: i.scale ? clamp(+i.scale, 0.4, 3) : 1, text: text, status: "open", hint: i.hint != null ? String(i.hint).slice(0, 220) : "", praise: i.praise != null ? String(i.praise).slice(0, 140) : "" });
+      // סידור אוטומטי (המחבר לא נתן x,y): לא להניח תרגיל *מתחת* לווידג'ט. ווידג'ט
+      // הוא iframe מעל הקנבס — תרגיל שנופל תחתיו פשוט לא קיים בשביל הילד. מדלגים
+      // לשורה הבאה עד שהמקום פנוי. במיקום מפורש המחבר קובע, ולא נוגעים.
+      else if (this.widgets.length) {
+        var probe = { x: boxX, y: y, kind: kind, side: side, bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: 1, text: text };
+        for (var guard = 0; guard < 12; guard++) {
+          probe.x = boxX; probe.y = y;
+          var pb = this._exBBox(probe), hit = false;
+          for (var wi = 0; wi < this.widgets.length; wi++) {
+            var wd = this.widgets[wi];
+            if (pb.minX < wd.x + wd.w && pb.maxX > wd.x && pb.minY < wd.y + wd.h && pb.maxY > wd.y) { hit = true; break; }
+          }
+          if (!hit) break;
+          slot++; col = Math.floor(slot / perCol); row = slot % perCol; y = top + row * rowH;
+          if (side === "right") { boxX = this.W - margin - bw / 2 - col * colW; var gl = boxX - bw / 2 - gap0 - tw; if (gl < 20) boxX += 20 - gl; }
+          else { var tr = this.W - margin - col * colW; boxX = tr - tw - gap0 - bw / 2; if (boxX - bw / 2 < 20) boxX = 20 + bw / 2; }
+        }
+      }
+      var abox = { id: "ab" + (++this._abid), x: boxX, y: y, kind: kind, side: side, answer: i.answer == null ? "" : String(i.answer), bw: bw, bh: bh, tsize0: tsize0, gap0: gap0, scale: i.scale ? clamp(+i.scale, 0.4, 3) : 1, text: text, status: "open", hint: i.hint != null ? String(i.hint).slice(0, 220) : "", praise: i.praise != null ? String(i.praise).slice(0, 140) : "" };
+      this.answerBoxes.push(abox);
+      // מיקום מפורש (שיעור-זהב): המחבר קובע את מקום *תיבת-התשובה*, אבל המשפט
+      // נמתח ממנה הצדה — בעברית ימינה, בביטוי סימבולי שמאלה. משפט ארוך היה
+      // גולש מהלוח. מזיזים את התיבה כמה שצריך כדי שכל המשפט ייכנס; ה-y (השורה
+      // שהמחבר תכנן) נשמר תמיד. המדידה היא בדיוק זו של הרינדור — בלי סטייה.
+      if (exactPos) {
+        var M = 20, eb = this._exBBox(abox);
+        if (eb.maxX > this.W - M) abox.x -= eb.maxX - (this.W - M);
+        eb = this._exBBox(abox);
+        if (eb.minX < M) abox.x += M - eb.minX;
+      }
       if (!exactPos) this._exSlot = slot + 1;
       if (this._onAnswerBoxes) this._onAnswerBoxes(this.answerBoxes);
     },
@@ -767,11 +796,21 @@
     if (!html) return;
     i = i || {};
     var w = clamp(i.w || dw, 80, 2400), h;
-    if (ar) { h = clamp(Math.round(w / ar), 60, 1800); w = Math.round(h * ar); } // נעילת-יחס: גובה מהרוחב, ואז רוחב מהגובה (אחרי clamp)
+    if (ar) {
+      // נעילת-יחס: הגובה נגזר מהרוחב. אבל כשהמחבר נתן *גם* רוחב וגם גובה, הגזירה
+      // הזו התעלמה מהגובה — שעון 440×300 (יחס 1:1) קיבל גובה 440, השתרע 60px מתחת
+      // לתחתית הלוח וכיסה את הכיתוב שתחתיו. עכשיו הווידג'ט נכנס *בתוך* התיבה
+      // שהתבקשה, בלי לחרוג ממנה ובלי לעוות את היחס.
+      if (i.w != null && i.h != null) w = Math.min(w, clamp(+i.h || dh, 60, 1800) * ar);
+      h = clamp(Math.round(w / ar), 60, 1800);
+      w = Math.round(h * ar);
+    }
     else { h = clamp(i.h || dh, 60, 1800); ar = w / h; }                          // render_widget חופשי — היחס נקבע ממה שהמורה ביקש
     var x = clamp(i.x != null ? +i.x || 0 : Math.round((this.W - w) / 2), -200, this.W + 200);
     var y = clamp(i.y != null ? +i.y || 0 : 120, -200, this.H + 200);
-    if (!i.exact) { var spot = this._freeSpot(x, y, w, h); x = spot.x; y = spot.y; } // מיקום מעוצב-ידנית (exact) לא זז; אחרת — לעולם לא על פריט קיים
+    // מיקום מעוצב-ידנית לא זז: exact מפורש, או מסך-זהב שלם (runTools עם tidy:false).
+    // אחרת — לעולם לא על פריט קיים.
+    if (!i.exact && !this._exactPlacement) { var spot = this._freeSpot(x, y, w, h); x = spot.x; y = spot.y; }
     this.widgets.push({ id: "wg" + (++this._wid), x: x, y: y, w: w, h: h, ar: ar, html: html, title: title != null ? String(title).slice(0, 60) : "" });
     if (this._onWidgets) this._onWidgets(this.widgets);
   };
@@ -915,7 +954,14 @@
     } catch (e) { console.error("VelaBoard tool error:", name, e); return { ok: false, error: String(e && e.message) }; }
   };
   VelaBoard.prototype.runTools = function (calls, opts) {
-    if (Array.isArray(calls)) for (var i = 0; i < calls.length; i++) if (calls[i] && calls[i].name) this.tool(calls[i].name, calls[i].input || {});
+    // tidy:false = שיעור-זהב, מסך שעוצב ידנית. עד כה זה ביטל רק את resolveOverlaps,
+    // אבל _pushWidget המשיך להזיז ווידג'טים ל"מקום פנוי" — כך שהשעון שהוצב ב-y=140
+    // נדחף מתחת לכיתוב וגלש מהלוח. במסך מעוצב המיקום קובע, גם לווידג'ט.
+    var prevExact = this._exactPlacement;
+    this._exactPlacement = !!(opts && opts.tidy === false);
+    try {
+      if (Array.isArray(calls)) for (var i = 0; i < calls.length; i++) if (calls[i] && calls[i].name) this.tool(calls[i].name, calls[i].input || {});
+    } finally { this._exactPlacement = prevExact; }
     // חוק אי-החפיפה נאכף בקוד על *כל* מה שהמורה צייר — חוץ משיעורי-זהב (tidy:false), שם המיקום עוצב ידנית 1:1
     if (!opts || opts.tidy !== false) this.resolveOverlaps();
   };
@@ -1058,10 +1104,19 @@
   // מידות מחושבות של תרגיל (תיבה + טקסט) לפי scale. תומך גם בתיבות ישנות (w/h).
   VelaBoard.prototype._exDims = function (a) {
     var s = a.scale || 1;
-    var w = (a.bw != null ? a.bw : a.w || 60) * s, h = (a.bh != null ? a.bh : a.h || 52) * s;
-    var tsize = (a.tsize0 || 0) * s, gap = (a.gap0 != null ? a.gap0 : 16) * s, tw = 0;
-    if (a.text) { this.ctx.save(); this.ctx.font = "700 " + tsize + "px Fredoka, Assistant, sans-serif"; tw = this.ctx.measureText(a.text).width; this.ctx.restore(); }
-    return { w: w, h: h, tsize: tsize, gap: gap, tw: tw };
+    // שאלה מילולית ארוכה יכולה לצאת רחבה מהלוח כולו — ואז שום מיקום לא יציל
+    // אותה. במקרה כזה מקטינים את התרגיל (טקסט + תיבה יחד) עד שהוא נכנס, במקום
+    // לתת לו לגלוש. פס אחד של הקטנה מספיק כי הרוחב לינארי ב-s.
+    for (var pass = 0; pass < 2; pass++) {
+      var w = (a.bw != null ? a.bw : a.w || 60) * s, h = (a.bh != null ? a.bh : a.h || 52) * s;
+      var tsize = (a.tsize0 || 0) * s, gap = (a.gap0 != null ? a.gap0 : 16) * s, tw = 0;
+      if (a.text) { this.ctx.save(); this.ctx.font = "700 " + tsize + "px Fredoka, Assistant, sans-serif"; tw = this.ctx.measureText(a.text).width; this.ctx.restore(); }
+      if (pass === 0 && a.text) {
+        var total = w + gap + tw + 40; // 40 = שוליים משני צדי הלוח
+        if (total > this.W) { s *= Math.max(0.55, this.W / total); continue; }
+      }
+      return { w: w, h: h, tsize: tsize, gap: gap, tw: tw };
+    }
   };
   // תיבה תוחמת של כל קבוצת התרגיל (טקסט + תיבה) — לבחירה/הצמדה-לתצוגה/ידיות.
   VelaBoard.prototype._exBBox = function (a) {

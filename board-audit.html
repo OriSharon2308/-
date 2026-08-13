@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>ביקורת-לוח · שיעורי-זהב</title>
+<!--
+  ────────────────────────────────────────────────────────────────────────
+   ביקורת-לוח — מה הילד *באמת* רואה
+  ────────────────────────────────────────────────────────────────────────
+   scripts/check-golden.js מעריך רוחב-טקסט מנוסחה. הכלי הזה מריץ את
+   VelaBoard האמיתי על כל מסך ומודד את הגאומטריה בפועל (ctx.measureText,
+   תיבות-ווידג'ט אמיתיות, תיבות-תשובה אחרי arrangeBoard) — ולכן הוא תופס
+   חפיפה וגלישה שהוולידטור לא יכול לראות.
+
+   הרצה: שרת סטטי על עותק הפרויקט, ואז /board-audit.html
+   התוצאה נחשפת ב-window.AUDIT_RESULT אחרי ש-window.AUDIT_DONE === true.
+-->
+<style>
+  body { margin: 0; font: 15px/1.5 Assistant, system-ui, sans-serif; background: #101418; color: #e8eef5; }
+  #bar { position: sticky; top: 0; background: #0b0e11; padding: 10px 16px; border-bottom: 1px solid #263140; }
+  #grid { display: flex; flex-wrap: wrap; gap: 14px; padding: 16px; }
+  figure { margin: 0; background: #fff; border-radius: 10px; overflow: hidden; width: 500px; }
+  figure.bad { outline: 3px solid #ff5d5d; }
+  figcaption { font-size: 12px; padding: 6px 8px; background: #1a2230; color: #cfe0f2; }
+  figcaption b { color: #ff9f9f; }
+  /* חייב להיות ממוקד ל-figure בלבד: fit:"fill" גוזר את מרחב-הלוח מגודל-התצוגה,
+     ולכן כלל canvas גורף היה מקטין גם את קנבס-הבמה ל-500×280 — והמנוע היה
+     מסדר תרגילים לפי לוח קטן, מה שמייצר "חפיפות" שאינן קיימות במציאות. */
+  figure canvas { display: block; width: 500px; height: 280px; }
+  #stage { position: fixed; left: -3000px; top: 0; }
+  #stage canvas { display: block; width: 1000px; height: 560px; }
+</style>
+</head>
+<body>
+<div id="bar">טוען…</div>
+<div id="grid"></div>
+<div id="stage"><canvas id="c" width="1000" height="560"></canvas></div>
+
+<!-- שובר-מטמון: בלעדיו הדפדפן ממשיך להריץ גרסה ישנה של המנוע, והביקורת בודקת קוד שכבר תוקן -->
+<script>document.write('<scr' + 'ipt src="/board.js?v=' + Date.now() + '"><\/scr' + 'ipt>');</script>
+<script>document.write('<scr' + 'ipt src="/widget-kit.js?v=' + Date.now() + '"><\/scr' + 'ipt>');</script>
+<script>
+(function () {
+  var W = 1000, H = 560;
+  var bar = document.getElementById("bar"), grid = document.getElementById("grid");
+  var board = new VelaBoard(document.getElementById("c"), { fit: "fill", background: "grid", grid: 42, mode: "idle" });
+
+  // כמה מותר לשני פריטים לגעת זה בזה לפני שזו חפיפה שמפריעה לקריאה
+  var OVERLAP_RATIO = 0.30;
+
+  function inter(a, b) {
+    var x = Math.max(0, Math.min(a.maxX, b.maxX) - Math.max(a.minX, b.minX));
+    var y = Math.max(0, Math.min(a.maxY, b.maxY) - Math.max(a.minY, b.minY));
+    return x * y;
+  }
+  function area(b) { return Math.max(0, b.maxX - b.minX) * Math.max(0, b.maxY - b.minY); }
+
+  /** כל התיבות שעל הלוח אחרי הרצת הכלים — ציורים, ווידג'טים ותיבות-תשובה. */
+  function boxes() {
+    var out = [], seen = {};
+    // מקבצים לפי gid: שעון (פנים + מחוגים), ציר (קו + קפיצות) ומצולע הם *יחידה
+    // ויזואלית אחת* במנוע. מדידת כל רכיב בנפרד מייצרת "חפיפה" מדומה בין חלקי
+    // אותו ציור — וזה היה מקור הרעש בסריקה הראשונה.
+    (board.objects || []).forEach(function (o, i) {
+      var key = o.gid || ("i" + i);
+      if (seen[key]) return;
+      seen[key] = 1;
+      var b = o.gid ? board._groupBBox(o.gid) : board._objBBox(o);
+      if (b && isFinite(b.minX)) out.push({ kind: o.type || "obj", label: o.type === "text" ? '"' + String(o.text || "").slice(0, 24) + '"' : (o.type || "obj"), box: b });
+    });
+    (board.widgets || []).forEach(function (w) {
+      out.push({ kind: "widget", label: "ווידג'ט " + (w.title || ""), box: { minX: w.x, minY: w.y, maxX: w.x + w.w, maxY: w.y + w.h } });
+    });
+    var sc = board.getScene ? board.getScene() : null;
+    ((sc && sc.exercises) || []).forEach(function (e) {
+      out.push({ kind: "exercise", label: 'תרגיל "' + String(e.text || "").slice(0, 24) + '"', box: { minX: e.bbox[0], minY: e.bbox[1], maxX: e.bbox[0] + e.bbox[2], maxY: e.bbox[1] + e.bbox[3] } });
+    });
+    return out;
+  }
+
+  function auditScreen(where, calls) {
+    board.clear_board ? board.clear_board() : board.runTools([{ name: "clear_board", input: {} }], { tidy: false });
+    board.runTools(calls, { tidy: false });
+    var bs = boxes(), issues = [];
+
+    bs.forEach(function (it) {
+      var b = it.box;
+      if (b.minX < 0 || b.minY < 0 || b.maxX > W || b.maxY > H) {
+        var over = [];
+        if (b.minX < 0) over.push("ימין " + Math.round(-b.minX) + "px");
+        if (b.maxX > W) over.push("שמאל " + Math.round(b.maxX - W) + "px");
+        if (b.minY < 0) over.push("מעל " + Math.round(-b.minY) + "px");
+        if (b.maxY > H) over.push("מתחת " + Math.round(b.maxY - H) + "px");
+        issues.push({ sev: "critical", what: "גולש מהלוח (" + over.join(", ") + ")", item: it.label });
+      }
+    });
+
+    for (var i = 0; i < bs.length; i++) {
+      for (var j = i + 1; j < bs.length; j++) {
+        // ווידג'ט מכיל את התוכן שלו; שני ציורים שנועדו להיות צמודים (מוט ליד מוט)
+        // נחשבים בעייתיים רק כשהחפיפה גדולה באמת ביחס לקטן מביניהם.
+        var ov = inter(bs[i].box, bs[j].box);
+        if (!ov) continue;
+        var small = Math.min(area(bs[i].box), area(bs[j].box));
+        if (small > 0 && ov / small > OVERLAP_RATIO) {
+          issues.push({ sev: "major", what: "חפיפה " + Math.round((ov / small) * 100) + "%", item: bs[i].label + "  ✕  " + bs[j].label });
+        }
+      }
+    }
+    return { where: where, issues: issues, png: issues.length ? board.canvas.toDataURL("image/png") : null };
+  }
+
+  function screensOf(lesson) {
+    var out = [];
+    ["instruct", "guided", "independent"].forEach(function (p) {
+      var v = lesson.phases && lesson.phases[p];
+      if (!v) return;
+      (Array.isArray(v) ? v : [v]).forEach(function (s, k) {
+        if (s && Array.isArray(s.toolCalls)) out.push({ phase: p, i: k, calls: s.toolCalls });
+      });
+    });
+    return out;
+  }
+
+  window.AUDIT_DONE = false;
+  window.AUDIT_RESULT = null;
+
+  fetch("/audit-list.json").then(function (r) { return r.json(); }).then(async function (files) {
+    var all = [], n = 0, screens = 0;
+    for (var f = 0; f < files.length; f++) {
+      var path = files[f];
+      var lesson;
+      // שם-הקובץ מכיל "#" (נושא#מספר-שיעור) — בלי הקידוד הדפדפן מפרש אותו
+      // כעוגן, שולח בקשה לנתיב חתוך, וכל 262 הקבצים נכשלים בשקט.
+      var url = encodeURI(path).replace(/#/g, "%23");
+      try { lesson = await (await fetch(url)).json(); } catch (e) { continue; }
+      var scr = screensOf(lesson);
+      for (var s = 0; s < scr.length; s++) {
+        var where = path.replace("/golden/", "") + " [" + scr[s].phase + (scr[s].phase === "instruct" ? " " + (scr[s].i + 1) : "") + "]";
+        var r;
+        try { r = auditScreen(where, scr[s].calls); }
+        catch (e) { r = { where: where, issues: [{ sev: "critical", what: "שגיאת-ריצה: " + e.message, item: "" }], png: null }; }
+        screens++;
+        if (r.issues.length) {
+          all.push({ where: r.where, issues: r.issues });
+          n++;
+          var fig = document.createElement("figure");
+          fig.className = "bad";
+          var img = new Image(); img.src = r.png; img.width = 500; img.height = 280;
+          var cap = document.createElement("figcaption");
+          cap.innerHTML = "<b>" + r.where + "</b><br>" + r.issues.map(function (x) { return x.what + " — " + x.item; }).join("<br>");
+          fig.appendChild(img); fig.appendChild(cap); grid.appendChild(fig);
+        }
+      }
+      bar.textContent = "נסרקו " + (f + 1) + "/" + files.length + " שיעורים · " + screens + " מסכים · " + n + " מסכים עם ממצא";
+    }
+    window.AUDIT_RESULT = all;
+    window.AUDIT_DONE = true;
+    bar.textContent = "✓ הסתיים — " + screens + " מסכים · " + n + " עם ממצא";
+  });
+})();
+</script>
+</body>
+</html>
