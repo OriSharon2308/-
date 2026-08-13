@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>הכלים החדשים · ג׳–ו׳</title>
+<style>
+  body { margin:0; background:#0f1419; color:#e8eef5; font:14px Assistant,system-ui,sans-serif; }
+  h1 { font-size:17px; padding:12px 16px; margin:0; border-bottom:1px solid #263140; }
+  #g { display:flex; flex-wrap:wrap; gap:14px; padding:14px; }
+  .card { background:#fff; border-radius:12px; overflow:hidden; }
+  .card b { display:block; background:#1a2230; color:#cfe0f2; font-size:12px; padding:5px 8px; }
+  iframe { border:0; display:block; background:#fff; }
+</style>
+</head>
+<body>
+<h1>תשעת הכלים החדשים — כיתות ג׳–ו׳</h1>
+<div id="g"></div>
+<script>document.write('<scr'+'ipt src="/widget-kit.js?v='+Date.now()+'"><\/scr'+'ipt>');</script>
+<script>
+(function () {
+  var CASES = [
+    ["protractor",         {angle:60,target:120},                  380, 230],
+    ["decimal_grid",       {rows:10,filled:37},                    340, 360],
+    ["decimal_grid",       {rows:1,filled:7},                      340, 360],
+    ["percent_bar",        {total:60,percent:25},                  380, 180],
+    ["circle_parts",       {radius:5,show:"circumference"},        340, 260],
+    ["place_value_table",  {value:305040,upto:6},                  420, 200],
+    ["bar_chart",          {labels:"שחייה,ריקוד,שחמט,כדורסל",series:"25,15,10,30",series2:"20,25,5,15",name1:"ג1",name2:"ג2",step:5}, 400, 250],
+    ["area_grid",          {w:5,h:3},                              340, 300],
+    ["fraction_wall",      {rows:"1,2,3,4,6,8"},                   340, 300],
+    ["solid_net",          {solid:"cube"},                         400, 240],
+    ["solid_net",          {solid:"cylinder"},                     400, 240],
+    ["solid_net",          {solid:"prism"},                        400, 240]
+  ];
+  var SHELL = function (html) {
+    return '<!doctype html><meta charset="utf-8"><style>html,body{margin:0;height:100%;font-family:Assistant,system-ui,sans-serif}</style>' + html;
+  };
+  var g = document.getElementById("g");
+  CASES.forEach(function (c) {
+    var name = c[0], p = c[1], w = c[2], h = c[3];
+    var scale = Math.min(1, 300 / h);
+    var card = document.createElement("div"); card.className = "card";
+    var lab = document.createElement("b"); lab.textContent = name + "  " + JSON.stringify(p).slice(0, 46);
+    var f = document.createElement("iframe");
+    f.width = Math.round(w * scale); f.height = Math.round(h * scale);
+    card.appendChild(lab); card.appendChild(f); g.appendChild(card);
+    var html;
+    try { html = window.VelaWidgets[name](p); }
+    catch (e) { lab.textContent += "  ✗ " + e.message; return; }
+    f.srcdoc = SHELL(html);
+  });
+})();
+</script>
+</body>
+</html>

@@ -714,6 +714,282 @@
       + 's.addEventListener("pointerdown",function(e){drag=true;e.preventDefault();setX(e.clientX);try{s.setPointerCapture(e.pointerId);}catch(_){}});'
       + 's.addEventListener("pointermove",function(e){if(!drag)return;e.preventDefault();setX(e.clientX);});'
       + 's.addEventListener("pointerup",function(){drag=false;});s.addEventListener("pointercancel",function(){drag=false;});rn();})();<\/script>';
+  },
+
+  /* ══════════════════════════════════════════════════════════════════════
+     כלים לכיתות ג׳–ו׳
+     ──────────────────────────────────────────────────────────────────────
+     הערכה המקורית נבנתה לא׳–ב׳ (לוח-עשר, לוח-מאה, בלוקי בסיס-10, מטבעות,
+     שעון). לחומר של ג׳–ו׳ לא היה כלי מוכן, ולכן נכתבו מאות ווידג'טים
+     מותאמים בכתב-יד — אותו מושג מיושם אחרת בכל שיעור, וכולם סטטיים.
+     הכלים כאן מחליפים אותם: מוכנים, אחידים, ו*אינטראקטיביים*.
+     ══════════════════════════════════════════════════════════════════════ */
+
+  /** מד-זווית — הילד גורר את הקרן וקורא מעלות. שני סולמות, כמו במד-זווית אמיתי. */
+  "protractor": function (p) {
+    p = p || {};
+    var ang = wkNum(p.angle, 0, 180, 60), target = wkNum(p.target, -1, 180, -1);
+    var cx = 190, cy = 185, R = 150, INK = "#0f3b36", ticks = "", nums = "";
+    for (var d = 0; d <= 180; d += 5) {
+      var a = (180 - d) * Math.PI / 180, len = d % 10 === 0 ? (d % 30 === 0 ? 20 : 14) : 8;
+      ticks += '<line x1="' + (cx + R * Math.cos(a)).toFixed(1) + '" y1="' + (cy - R * Math.sin(a)).toFixed(1)
+        + '" x2="' + (cx + (R - len) * Math.cos(a)).toFixed(1) + '" y2="' + (cy - (R - len) * Math.sin(a)).toFixed(1)
+        + '" stroke="' + INK + '" stroke-width="' + (d % 30 === 0 ? 2 : 1) + '"/>';
+      if (d % 30 === 0) {
+        var rn1 = R - 34, rn2 = R - 58;
+        nums += '<text x="' + (cx + rn1 * Math.cos(a)).toFixed(1) + '" y="' + (cy - rn1 * Math.sin(a) + 5).toFixed(1) + '" text-anchor="middle" font-size="13" font-weight="700" fill="#0d9488">' + d + '</text>';
+        // בקצוות (0 ו-180) שני הסולמות נופלים זה על זה וקוראים "0 180" — מדלגים על הפנימי
+        if (d > 0 && d < 180) nums += '<text x="' + (cx + rn2 * Math.cos(a)).toFixed(1) + '" y="' + (cy - rn2 * Math.sin(a) + 5).toFixed(1) + '" text-anchor="middle" font-size="12" fill="#c2410c">' + (180 - d) + '</text>';
+      }
+    }
+    return '<svg viewBox="0 0 380 230" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<path d="M' + (cx - R) + ',' + cy + ' A' + R + ',' + R + ' 0 0 1 ' + (cx + R) + ',' + cy + ' Z" fill="#f0fdfa" stroke="' + INK + '" stroke-width="2"/>'
+      + ticks + nums
+      + '<line x1="' + (cx - R) + '" y1="' + cy + '" x2="' + (cx + R) + '" y2="' + cy + '" stroke="' + INK + '" stroke-width="3"/>'
+      + '<line id="ry" x1="' + cx + '" y1="' + cy + '" x2="' + (cx + R) + '" y2="' + cy + '" stroke="#e11d48" stroke-width="4" stroke-linecap="round"/>'
+      + '<circle cx="' + cx + '" cy="' + cy + '" r="6" fill="' + INK + '"/>'
+      + '<text id="rd" x="' + cx + '" y="222" text-anchor="middle" font-size="24" font-weight="800" fill="' + INK + '"></text></svg>'
+      + '<script>(function(){var CX=' + cx + ',CY=' + cy + ',R=' + R + ',T=' + target + ',a=' + ang + ';'
+      + 'var s=document.querySelector("svg"),ry=document.getElementById("ry"),rd=document.getElementById("rd"),drag=false;'
+      + 'function rn(){var r=a*Math.PI/180;ry.setAttribute("x2",(CX+R*Math.cos(Math.PI-r)).toFixed(1));ry.setAttribute("y2",(CY-R*Math.sin(Math.PI-r)).toFixed(1));'
+      + 'rd.textContent=a+"\\u00B0";if(T>=0&&a===T){rd.setAttribute("fill","#22c55e");parent.postMessage({type:"vela:correct"},"*");}else{rd.setAttribute("fill","#0f3b36");}}'
+      + 'function set(cx2,cy2){var b=s.getBoundingClientRect(),k=380/b.width;var x=(cx2-b.left)*k-CX,y=CY-((cy2-b.top)*k);'
+      + 'var d=Math.round(Math.atan2(Math.max(0,y),-x)*180/Math.PI/5)*5;a=Math.max(0,Math.min(180,d));rn();}'
+      + 's.addEventListener("pointerdown",function(e){drag=true;e.preventDefault();set(e.clientX,e.clientY);try{s.setPointerCapture(e.pointerId);}catch(_){}});'
+      + 's.addEventListener("pointermove",function(e){if(drag){e.preventDefault();set(e.clientX,e.clientY);}});'
+      + 's.addEventListener("pointerup",function(){drag=false;});rn();})();<\/script>';
+  },
+
+  /** רשת עשרונית — 10 עשיריות או 100 מאיות. לחיצה צובעת, והקריאה מראה שבר, עשרוני ואחוז יחד. */
+  "decimal_grid": function (p) {
+    p = p || {};
+    var rows = wkNum(p.rows, 1, 10, 10) === 1 ? 1 : 10;
+    var cells = rows === 1 ? 10 : 100;
+    var filled = wkNum(p.filled, 0, cells, 0), target = wkNum(p.target, -1, cells, -1);
+    // גובה-viewBox קבוע: המנוע נועל יחס-ווידג'ט, ו-viewBox משתנה היה מעוות את הכרטיס
+    var INK = "#0f3b36", cs = rows === 1 ? 30 : 26, gx = (340 - cs * 10) / 2, gy = rows === 1 ? 150 : 44, sq = "";
+    for (var i = 0; i < cells; i++) {
+      var r = Math.floor(i / 10), c = i % 10;
+      sq += '<rect class="c" data-i="' + i + '" x="' + (gx + c * cs) + '" y="' + (gy + r * cs) + '" width="' + (cs - 2) + '" height="' + (cs - 2) + '" fill="#fff" stroke="' + INK + '" stroke-width="1.5"/>';
+    }
+    return '<svg viewBox="0 0 340 360" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<text x="170" y="26" text-anchor="middle" font-size="16" font-weight="700" fill="' + INK + '">' + (rows === 1 ? "עשיריות" : "מאיות") + '</text>'
+      + sq + '<text id="rd" x="170" y="' + (gy + rows * cs + 36) + '" text-anchor="middle" font-size="21" font-weight="800" fill="' + INK + '"></text></svg>'
+      + '<script>(function(){var N=' + cells + ',D=' + (rows === 1 ? 10 : 100) + ',T=' + target + ',st=[],s=document.querySelector("svg"),rd=document.getElementById("rd");'
+      + 'var cs=[].slice.call(s.querySelectorAll(".c"));for(var i=0;i<N;i++)st[i]=i<' + filled + ';'
+      + 'function rn(){var n=0;for(var i=0;i<N;i++){cs[i].setAttribute("fill",st[i]?"#0d9488":"#fff");if(st[i])n++;}'
+      + 'var dec=(n/D).toFixed(D===10?1:2);rd.textContent=n+"/"+D+"  =  "+dec;'
+      + 'if(T>=0&&n===T){rd.setAttribute("fill","#22c55e");parent.postMessage({type:"vela:correct"},"*");}else{rd.setAttribute("fill","#0f3b36");}}'
+      + 's.addEventListener("pointerdown",function(e){var i=e.target.getAttribute&&e.target.getAttribute("data-i");if(i==null)return;i=+i;st[i]=!st[i];rn();});rn();})();<\/script>';
+  },
+
+  /** פס-אחוזים — גוררים, ורואים בו-זמנית אחוז, שבר וכמה זה מתוך הכמות. */
+  "percent_bar": function (p) {
+    p = p || {};
+    var total = wkNum(p.total, 1, 100000, 100), pc = wkNum(p.percent, 0, 100, 50), target = wkNum(p.target, -1, 100, -1);
+    var INK = "#0f3b36", bx = 30, bw = 320, by = 60, bh = 54, marks = "";
+    for (var i = 0; i <= 10; i++) {
+      var x = bx + bw * i / 10;
+      marks += '<line x1="' + x + '" y1="' + by + '" x2="' + x + '" y2="' + (by + bh + (i % 5 === 0 ? 10 : 5)) + '" stroke="' + INK + '" stroke-width="' + (i % 5 === 0 ? 2 : 1) + '"/>';
+      if (i % 5 === 0) marks += '<text x="' + x + '" y="' + (by + bh + 28) + '" text-anchor="middle" font-size="13" fill="' + INK + '">' + (i * 10) + '%</text>';
+    }
+    return '<svg viewBox="0 0 380 180" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<rect x="' + bx + '" y="' + by + '" width="' + bw + '" height="' + bh + '" fill="#fff" stroke="' + INK + '" stroke-width="2"/>'
+      + '<rect id="fl" x="' + bx + '" y="' + by + '" width="0" height="' + bh + '" fill="#0d9488" opacity="0.85"/>'
+      + marks
+      + '<line id="hd" x1="' + bx + '" y1="' + (by - 8) + '" x2="' + bx + '" y2="' + (by + bh + 8) + '" stroke="#e11d48" stroke-width="4" stroke-linecap="round"/>'
+      // חשבון וטקסט עברי בתוך אותו <text> מתהפכים ב-RTL ("25% 15 = 60-מ").
+      // לכן הנוסחה לבדה, עם direction:ltr, והמילים העבריות בכיתוב נפרד.
+      + '<text id="rd" x="190" y="34" text-anchor="middle" font-size="22" font-weight="800" fill="' + INK + '" style="direction:ltr;unicode-bidi:isolate"></text>'
+      + '<text id="cp" x="190" y="160" text-anchor="middle" font-size="15" fill="#64748b">מתוך ' + total + '</text></svg>'
+      + '<script>(function(){var BX=' + bx + ',BW=' + bw + ',TOT=' + total + ',T=' + target + ',pc=' + pc + ';'
+      + 'var s=document.querySelector("svg"),fl=document.getElementById("fl"),hd=document.getElementById("hd"),rd=document.getElementById("rd"),drag=false;'
+      + 'function rn(){var w=BW*pc/100;fl.setAttribute("width",w.toFixed(1));hd.setAttribute("x1",(BX+w).toFixed(1));hd.setAttribute("x2",(BX+w).toFixed(1));'
+      + 'var v=TOT*pc/100;rd.textContent=pc+"%  =  "+(Math.round(v*100)/100);'
+      + 'if(T>=0&&pc===T){rd.setAttribute("fill","#22c55e");parent.postMessage({type:"vela:correct"},"*");}else{rd.setAttribute("fill","#0f3b36");}}'
+      + 'function set(cx){var b=s.getBoundingClientRect(),k=380/b.width;var x=(cx-b.left)*k-BX;pc=Math.max(0,Math.min(100,Math.round(x/BW*100/5)*5));rn();}'
+      + 's.addEventListener("pointerdown",function(e){drag=true;e.preventDefault();set(e.clientX);try{s.setPointerCapture(e.pointerId);}catch(_){}});'
+      + 's.addEventListener("pointermove",function(e){if(drag){e.preventDefault();set(e.clientX);}});'
+      + 's.addEventListener("pointerup",function(){drag=false;});rn();})();<\/script>';
+  },
+
+  /** מעגל — רדיוס, קוטר והיקף. לחיצה מחליפה בין רדיוס לקוטר ומגלה את החישוב. */
+  "circle_parts": function (p) {
+    p = p || {};
+    var r = wkNum(p.radius, 1, 99, 5), show = String(p.show || "radius");
+    // R קטן מספיק כדי שהכיתוב מתחת (y=224) לא ייפול על שפת המעגל
+    var INK = "#0f3b36", cx = 170, cy = 118, R = 78;
+    return '<svg viewBox="0 0 340 260" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="#f0fdfa" stroke="' + INK + '" stroke-width="3"/>'
+      + '<circle cx="' + cx + '" cy="' + cy + '" r="5" fill="' + INK + '"/>'
+      + '<line id="sg" x1="' + cx + '" y1="' + cy + '" x2="' + (cx + R) + '" y2="' + cy + '" stroke="#e11d48" stroke-width="4" stroke-linecap="round"/>'
+      + '<text id="lb" x="' + cx + '" y="' + (cy - 14) + '" text-anchor="middle" font-size="17" font-weight="700" fill="#e11d48"></text>'
+      // הנוסחה לבדה ב-LTR; המילה העברית יושבת ב-cp, אחרת "היקף = 3.14 × 10" מתהפך
+      + '<text id="rd" x="170" y="242" text-anchor="middle" font-size="19" font-weight="800" fill="' + INK + '" style="direction:ltr;unicode-bidi:isolate"></text>'
+      + '<text id="cp" x="170" y="224" text-anchor="middle" font-size="15" fill="#64748b"></text>'
+      + '<text x="170" y="26" text-anchor="middle" font-size="13" fill="#64748b">לחיצה מחליפה: רדיוס ← קוטר ← היקף</text></svg>'
+      + '<script>(function(){var CX=' + cx + ',CY=' + cy + ',R=' + R + ',rad=' + r + ';var modes=["radius","diameter","circumference"],m=Math.max(0,modes.indexOf("' + show + '"));'
+      + 'var sg=document.getElementById("sg"),lb=document.getElementById("lb"),rd=document.getElementById("rd"),cp=document.getElementById("cp");'
+      + 'function rn(){if(m===0){sg.setAttribute("x1",CX);sg.setAttribute("x2",CX+R);lb.textContent="\\u05E8\\u05D3\\u05D9\\u05D5\\u05E1";cp.textContent="\\u05DE\\u05D4\\u05DE\\u05E8\\u05DB\\u05D6 \\u05D0\\u05DC \\u05D4\\u05E7\\u05E6\\u05D4";rd.textContent="r = "+rad;}'
+      + 'else if(m===1){sg.setAttribute("x1",CX-R);sg.setAttribute("x2",CX+R);lb.textContent="\\u05E7\\u05D5\\u05D8\\u05E8";cp.textContent="\\u05E4\\u05E2\\u05DE\\u05D9\\u05D9\\u05DD \\u05D4\\u05E8\\u05D3\\u05D9\\u05D5\\u05E1";rd.textContent="2 \\u00D7 "+rad+" = "+(rad*2);}'
+      + 'else{sg.setAttribute("x1",CX-R);sg.setAttribute("x2",CX+R);lb.textContent="\\u05E7\\u05D5\\u05D8\\u05E8";cp.textContent="\\u05D4\\u05D9\\u05E7\\u05E3 \\u05D4\\u05DE\\u05E2\\u05D2\\u05DC";rd.textContent="3.14 \\u00D7 "+(rad*2)+" = "+(Math.round(3.14*rad*2*100)/100);}}'
+      + 'document.querySelector("svg").addEventListener("pointerdown",function(){m=(m+1)%3;rn();});rn();})();<\/script>';
+  },
+
+  /** טבלת ערך-מקום — עד מיליון. לחיצה על ספרה מגלה כמה היא באמת שווה. */
+  "place_value_table": function (p) {
+    p = p || {};
+    var val = String(wkNum(p.value, 0, 9999999, 3456));
+    var names = ["יחידות", "עשרות", "מאות", "אלפים", "עשרות אלפים", "מאות אלפים", "מיליונים"];
+    var n = Math.max(val.length, wkNum(p.upto, 1, 7, val.length));
+    while (val.length < n) val = "0" + val;
+    var INK = "#0f3b36", cw = Math.min(58, 400 / n), gx = (420 - cw * n) / 2, hd = "", dg = "";
+    for (var i = 0; i < n; i++) {
+      var place = n - 1 - i, x = gx + i * cw;
+      hd += '<rect x="' + x + '" y="44" width="' + (cw - 2) + '" height="34" fill="#e6fffb" stroke="' + INK + '" stroke-width="1.5"/>'
+        + '<text x="' + (x + cw / 2) + '" y="66" text-anchor="middle" font-size="' + (cw < 46 ? 9 : 11) + '" fill="' + INK + '">' + names[place] + '</text>';
+      dg += '<rect class="d" data-p="' + place + '" data-v="' + val[i] + '" x="' + x + '" y="78" width="' + (cw - 2) + '" height="52" fill="#fff" stroke="' + INK + '" stroke-width="1.5"/>'
+        + '<text class="d" data-p="' + place + '" data-v="' + val[i] + '" x="' + (x + cw / 2) + '" y="116" text-anchor="middle" font-size="28" font-weight="800" fill="' + INK + '">' + val[i] + '</text>';
+    }
+    return '<svg viewBox="0 0 420 200" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<text x="210" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="' + INK + '">לחץ/י על ספרה כדי לראות כמה היא שווה</text>'
+      + hd + dg
+      + '<text id="rd" x="210" y="168" text-anchor="middle" font-size="22" font-weight="800" fill="#0d9488"></text></svg>'
+      + '<script>(function(){var rd=document.getElementById("rd");'
+      + 'document.querySelector("svg").addEventListener("pointerdown",function(e){var t=e.target;if(!t.getAttribute)return;var pl=t.getAttribute("data-p"),v=t.getAttribute("data-v");if(pl==null)return;'
+      + 'rd.textContent=v+" \\u00D7 "+Math.pow(10,+pl)+" = "+(+v*Math.pow(10,+pl));});})();<\/script>';
+  },
+
+  /** דיאגרמת עמודות — יחידה או כפולה עם מקרא. הסולם מפורש, כי שם ילדים נופלים. */
+  "bar_chart": function (p) {
+    p = p || {};
+    var labels = (Array.isArray(p.labels) ? p.labels : String(p.labels || "").split(",")).slice(0, 6).map(function (s) { return String(s).slice(0, 10).replace(/[<>&]/g, ""); });
+    var a = (Array.isArray(p.series) ? p.series : String(p.series || "").split(",")).map(Number).slice(0, 6);
+    var b = (Array.isArray(p.series2) ? p.series2 : String(p.series2 || "").split(",")).map(Number).slice(0, 6);
+    var hasB = b.length && b.every(function (v) { return isFinite(v); });
+    var step = wkNum(p.step, 1, 1000, 5), INK = "#0f3b36";
+    var mx = Math.max.apply(null, a.concat(hasB ? b : [0]).concat([step])), top = Math.ceil(mx / step) * step;
+    var bx = 54, by = 46, bw = 320, bh = 150, grid = "", bars = "";
+    for (var i = 0; i <= top / step; i++) {
+      var y = by + bh - bh * (i * step) / top;
+      grid += '<line x1="' + bx + '" y1="' + y.toFixed(1) + '" x2="' + (bx + bw) + '" y2="' + y.toFixed(1) + '" stroke="#cbd5e1" stroke-width="1"/>'
+        + '<text x="' + (bx - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end" font-size="11" fill="' + INK + '">' + (i * step) + '</text>';
+    }
+    var slot = bw / Math.max(1, a.length), wid = hasB ? slot * 0.3 : slot * 0.5;
+    for (var k = 0; k < a.length; k++) {
+      var cx0 = bx + slot * (k + 0.5), h1 = bh * (a[k] || 0) / top;
+      bars += '<rect x="' + (cx0 - (hasB ? wid + 3 : wid / 2)).toFixed(1) + '" y="' + (by + bh - h1).toFixed(1) + '" width="' + wid.toFixed(1) + '" height="' + h1.toFixed(1) + '" fill="#0d9488"/>';
+      if (hasB) { var h2 = bh * (b[k] || 0) / top; bars += '<rect x="' + (cx0 + 3).toFixed(1) + '" y="' + (by + bh - h2).toFixed(1) + '" width="' + wid.toFixed(1) + '" height="' + h2.toFixed(1) + '" fill="#f59e0b"/>'; }
+      bars += '<text x="' + cx0.toFixed(1) + '" y="' + (by + bh + 18) + '" text-anchor="middle" font-size="12" fill="' + INK + '">' + (labels[k] || "") + '</text>';
+    }
+    var lg = "";
+    if (hasB) lg = '<rect x="150" y="228" width="14" height="14" fill="#0d9488"/><text x="170" y="240" font-size="12" fill="' + INK + '">' + (String(p.name1 || "א").slice(0, 10)) + '</text>'
+      + '<rect x="230" y="228" width="14" height="14" fill="#f59e0b"/><text x="250" y="240" font-size="12" fill="' + INK + '">' + (String(p.name2 || "ב").slice(0, 10)) + '</text>';
+    return '<svg viewBox="0 0 400 250" width="100%" height="100%" style="display:block">'
+      + '<text x="200" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="' + INK + '">כל משבצת = ' + step + '</text>'
+      + grid + bars
+      + '<line x1="' + bx + '" y1="' + (by + bh) + '" x2="' + (bx + bw) + '" y2="' + (by + bh) + '" stroke="' + INK + '" stroke-width="2.5"/>'
+      + '<line x1="' + bx + '" y1="' + by + '" x2="' + bx + '" y2="' + (by + bh) + '" stroke="' + INK + '" stroke-width="2.5"/>' + lg + '</svg>';
+  },
+
+  /** שטח והיקף על משבצות — הילד לוחץ ורואה ששטח נספר בפנים והיקף מסביב. */
+  "area_grid": function (p) {
+    p = p || {};
+    var w = wkNum(p.w, 1, 12, 5), h = wkNum(p.h, 1, 8, 3), INK = "#0f3b36";
+    var cs = Math.min(36, 300 / w, 170 / h), gx = (340 - cs * w) / 2, gy = 48, sq = "";
+    for (var r = 0; r < h; r++) for (var c = 0; c < w; c++)
+      sq += '<rect class="c" data-i="' + (r * w + c) + '" x="' + (gx + c * cs).toFixed(1) + '" y="' + (gy + r * cs).toFixed(1) + '" width="' + (cs - 1).toFixed(1) + '" height="' + (cs - 1).toFixed(1) + '" fill="#fff" stroke="' + INK + '" stroke-width="1.2"/>';
+    return '<svg viewBox="0 0 340 300" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<text x="170" y="28" text-anchor="middle" font-size="14" fill="#64748b">לחץ/י על משבצות — השטח נספר בפנים</text>' + sq
+      + '<rect x="' + gx + '" y="' + gy + '" width="' + (cs * w - 1).toFixed(1) + '" height="' + (cs * h - 1).toFixed(1) + '" fill="none" stroke="#e11d48" stroke-width="3"/>'
+      + '<text id="rd" x="170" y="' + (gy + h * cs + 34) + '" text-anchor="middle" font-size="18" font-weight="800" fill="' + INK + '">שטח: 0 · היקף: ' + (2 * (w + h)) + '</text></svg>'
+      + '<script>(function(){var W=' + w + ',H=' + h + ',P=' + (2 * (w + h)) + ',A=' + (w * h) + ',st={},n=0;var s=document.querySelector("svg"),rd=document.getElementById("rd");'
+      + 's.addEventListener("pointerdown",function(e){var i=e.target.getAttribute&&e.target.getAttribute("data-i");if(i==null)return;'
+      + 'if(st[i]){st[i]=0;n--;e.target.setAttribute("fill","#fff");}else{st[i]=1;n++;e.target.setAttribute("fill","#5eead4");}'
+      + 'rd.textContent="\\u05E9\\u05D8\\u05D7: "+n+" \\u00B7 \\u05D4\\u05D9\\u05E7\\u05E3: "+P;'
+      + 'if(n===A){rd.setAttribute("fill","#22c55e");parent.postMessage({type:"vela:correct"},"*");}else{rd.setAttribute("fill","#0f3b36");}});})();<\/script>';
+  },
+
+  /** קיר-שברים — שורות שלם, חצאים… שתים-עשרה. הילד רואה שוויון-ערך בעיניים. */
+  "fraction_wall": function (p) {
+    p = p || {};
+    var list = (Array.isArray(p.rows) ? p.rows : String(p.rows || "1,2,3,4,6,8").split(",")).map(Number)
+      .filter(function (v) { return v >= 1 && v <= 12; }).slice(0, 7);
+    if (!list.length) list = [1, 2, 3, 4, 6, 8];
+    var INK = "#0f3b36", bx = 24, bw = 292, rh = Math.min(34, 210 / list.length), rows = "";
+    for (var r = 0; r < list.length; r++) {
+      var n = list[r], cw = bw / n, y = 42 + r * (rh + 4);
+      for (var i = 0; i < n; i++) {
+        rows += '<rect class="c" data-r="' + r + '" data-n="' + n + '" x="' + (bx + i * cw).toFixed(1) + '" y="' + y + '" width="' + (cw - 2).toFixed(1) + '" height="' + rh + '" fill="#fff" stroke="' + INK + '" stroke-width="1.5"/>';
+        if (cw > 28) rows += '<text x="' + (bx + i * cw + cw / 2).toFixed(1) + '" y="' + (y + rh / 2 + 5) + '" text-anchor="middle" font-size="12" fill="' + INK + '" pointer-events="none">' + (n === 1 ? "1" : "1/" + n) + '</text>';
+      }
+    }
+    return '<svg viewBox="0 0 340 300" width="100%" height="100%" style="display:block;touch-action:none">'
+      + '<text x="170" y="26" text-anchor="middle" font-size="14" fill="#64748b">לחץ/י על חלקים — כמה יוצא ביחד?</text>' + rows
+      + '<text id="rd" x="170" y="' + (42 + list.length * (rh + 4) + 26) + '" text-anchor="middle" font-size="18" font-weight="800" fill="' + INK + '"></text></svg>'
+      + '<script>(function(){var s=document.querySelector("svg"),rd=document.getElementById("rd"),sel={};'
+      + 's.addEventListener("pointerdown",function(e){var t=e.target,r=t.getAttribute&&t.getAttribute("data-r");if(r==null)return;'
+      + 'var k=t.getAttribute("x")+"|"+r;if(sel[k]){delete sel[k];t.setAttribute("fill","#fff");}else{sel[k]=+t.getAttribute("data-n");t.setAttribute("fill","#0d9488");}'
+      + 'var sum=0,cnt=0;for(var q in sel){sum+=1/sel[q];cnt++;}'
+      + 'rd.textContent=cnt?("\\u05D1\\u05D9\\u05D7\\u05D3 = "+(Math.round(sum*1000)/1000)):"";});})();<\/script>';
+  },
+
+  /** גוף ופריסתו — הילד רואה את התלת-ממד ואת הפריסה זה לצד זה. */
+  "solid_net": function (p) {
+    p = p || {};
+    var solid = String(p.solid || "cube").toLowerCase();
+    if (["cube", "box", "cylinder", "prism", "pyramid"].indexOf(solid) < 0) solid = "cube";
+    var INK = "#0f3b36", F = "#99f6e4", body = "", net = "", nm = "";
+    if (solid === "cube" || solid === "box") {
+      var W2 = solid === "cube" ? 70 : 92, H2 = 70, D2 = 30;
+      body = '<path d="M30,' + (60 + D2) + ' h' + W2 + ' v' + H2 + ' h-' + W2 + ' Z" fill="' + F + '" stroke="' + INK + '" stroke-width="2"/>'
+        + '<path d="M30,' + (60 + D2) + ' l' + D2 + ',-' + D2 + ' h' + W2 + ' l-' + D2 + ',' + D2 + '" fill="#ccfbf1" stroke="' + INK + '" stroke-width="2"/>'
+        + '<path d="M' + (30 + W2) + ',' + (60 + D2) + ' l' + D2 + ',-' + D2 + ' v' + H2 + ' l-' + D2 + ',' + D2 + '" fill="#5eead4" stroke="' + INK + '" stroke-width="2"/>';
+      var u = 32, nx = 210, ny = 52;
+      var cellsN = [[1, 0], [0, 1], [1, 1], [2, 1], [3, 1], [1, 2]];
+      for (var i = 0; i < cellsN.length; i++)
+        net += '<rect x="' + (nx + cellsN[i][0] * u) + '" y="' + (ny + cellsN[i][1] * u) + '" width="' + u + '" height="' + u + '" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>';
+      nm = solid === "cube" ? "קובייה — 6 פאות" : "תיבה — 6 פאות";
+    } else if (solid === "cylinder") {
+      body = '<ellipse cx="80" cy="72" rx="46" ry="16" fill="#ccfbf1" stroke="' + INK + '" stroke-width="2"/>'
+        + '<path d="M34,72 v70 a46,16 0 0 0 92,0 v-70" fill="' + F + '" stroke="' + INK + '" stroke-width="2"/>';
+      net = '<ellipse cx="238" cy="58" rx="26" ry="14" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<rect x="196" y="80" width="150" height="66" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<ellipse cx="238" cy="170" rx="26" ry="14" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>';
+      nm = "גליל — 2 עיגולים ומלבן";
+    } else if (solid === "prism") {
+      body = '<path d="M40,150 L80,66 L120,150 Z" fill="' + F + '" stroke="' + INK + '" stroke-width="2"/>'
+        + '<path d="M40,150 l26,-24 L106,42 L80,66 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="2"/>'
+        + '<path d="M120,150 l26,-24 L106,42" fill="#5eead4" stroke="' + INK + '" stroke-width="2"/>';
+      net = '<path d="M212,60 L248,110 L176,110 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<rect x="176" y="110" width="72" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<rect x="248" y="110" width="72" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<rect x="104" y="110" width="72" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<path d="M212,212 L248,162 L176,162 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>';
+      nm = "מנסרה משולשת — 2 משולשים ו-3 מלבנים";
+    } else {
+      body = '<path d="M40,152 L120,152 L80,60 Z" fill="' + F + '" stroke="' + INK + '" stroke-width="2"/>'
+        + '<path d="M40,152 l28,-22 L108,130 L120,152" fill="#ccfbf1" stroke="' + INK + '" stroke-width="2"/>'
+        + '<path d="M80,60 L108,130 L120,152" fill="#5eead4" stroke="' + INK + '" stroke-width="2"/>';
+      net = '<rect x="212" y="98" width="60" height="60" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<path d="M212,98 L272,98 L242,44 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<path d="M212,158 L272,158 L242,212 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<path d="M212,98 L212,158 L158,128 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<path d="M272,98 L272,158 L326,128 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>';
+      nm = "פירמידה — בסיס ומשולשים";
+    }
+    return '<svg viewBox="0 0 400 240" width="100%" height="100%" style="display:block">'
+      + '<text x="200" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="' + INK + '">' + nm + '</text>'
+      + body + net
+      + '<text x="80" y="230" text-anchor="middle" font-size="13" fill="#64748b">הגוף</text>'
+      + '<text x="260" y="230" text-anchor="middle" font-size="13" fill="#64748b">הפריסה</text></svg>';
   }
   };
+
+  /** קליטת מספר בטוחה — משותפת לכלים החדשים (הישנים מגדירים ci/clampInt אצלם). */
+  function wkNum(v, lo, hi, d) {
+    v = parseInt(v, 10);
+    if (isNaN(v)) v = d;
+    return v < lo ? lo : v > hi ? hi : v;
+  }
 })(typeof window !== "undefined" ? window : this);
