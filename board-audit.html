@@ -47,6 +47,7 @@
 
   // כמה מותר לשני פריטים לגעת זה בזה לפני שזו חפיפה שמפריעה לקריאה
   var OVERLAP_RATIO = 0.30;
+  var GEOM = { polygon: 1, line: 1, circle: 1, arrow: 1, point: 1 }; // צורות שנועדו להיחתך זו בזו
 
   function inter(a, b) {
     var x = Math.max(0, Math.min(a.maxX, b.maxX) - Math.max(a.minX, b.minX));
@@ -101,6 +102,14 @@
         // נחשבים בעייתיים רק כשהחפיפה גדולה באמת ביחס לקטן מביניהם.
         var ov = inter(bs[i].box, bs[j].box);
         if (!ov) continue;
+        // כיתוב שיושב *בתוך* צורה הוא תווית מכוונת — הספרה "5" בתוך עיגול היא
+        // מטבע, לא התנגשות. מדלגים כשאחד מוכל בשני ואחד מהם טקסט.
+        var inA = ov >= area(bs[i].box) * 0.98, inB = ov >= area(bs[j].box) * 0.98;
+        var isLabel = (inA && bs[i].kind === "text") || (inB && bs[j].kind === "text");
+        if (isLabel) continue;
+        // גאומטריה מורכבת בכוונה: קו שחוצה ריבוע ("חתכנו וקיבלנו 2 משולשים"),
+        // גובה במשולש, מלבן בתוך מלבן. צורה-על-צורה היא שרטוט, לא התנגשות.
+        if (GEOM[bs[i].kind] && GEOM[bs[j].kind]) continue;
         var small = Math.min(area(bs[i].box), area(bs[j].box));
         if (small > 0 && ov / small > OVERLAP_RATIO) {
           issues.push({ sev: "major", what: "חפיפה " + Math.round((ov / small) * 100) + "%", item: bs[i].label + "  ✕  " + bs[j].label });
