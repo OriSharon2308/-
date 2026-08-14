@@ -821,6 +821,9 @@
   "circle_parts": function (p) {
     p = p || {};
     var r = wkNum(p.radius, 1, 99, 5), show = String(p.show || "radius");
+    // lock — בלי מחזור-לחיצה. חובה כשהמעגל הוא *עזר לשאלה*: בלעדיו הילד לוחץ,
+    // הכלי מגיע למצב ההיקף ומציג "3.14 × 20 = 62.8" — כלומר את התשובה עצמה.
+    var lock = p.lock === true || String(p.lock) === "true";
     // R קטן מספיק כדי שהכיתוב מתחת (y=224) לא ייפול על שפת המעגל
     var INK = "#0f3b36", cx = 170, cy = 118, R = 78;
     return '<svg viewBox="0 0 340 260" width="100%" height="100%" style="display:block;touch-action:none">'
@@ -831,13 +834,15 @@
       // הנוסחה לבדה ב-LTR; המילה העברית יושבת ב-cp, אחרת "היקף = 3.14 × 10" מתהפך
       + '<text id="rd" x="170" y="242" text-anchor="middle" font-size="19" font-weight="800" fill="' + INK + '" style="direction:ltr;unicode-bidi:isolate"></text>'
       + '<text id="cp" x="170" y="224" text-anchor="middle" font-size="15" fill="#64748b"></text>'
-      + '<text x="170" y="26" text-anchor="middle" font-size="13" fill="#64748b">לחיצה מחליפה: רדיוס ← קוטר ← היקף</text></svg>'
+      + (lock ? "" : '<text x="170" y="26" text-anchor="middle" font-size="13" fill="#64748b">לחיצה מחליפה: רדיוס ← קוטר ← היקף</text>') + '</svg>'
       + '<script>(function(){var CX=' + cx + ',CY=' + cy + ',R=' + R + ',rad=' + r + ';var modes=["radius","diameter","circumference"],m=Math.max(0,modes.indexOf("' + show + '"));'
       + 'var sg=document.getElementById("sg"),lb=document.getElementById("lb"),rd=document.getElementById("rd"),cp=document.getElementById("cp");'
       + 'function rn(){if(m===0){sg.setAttribute("x1",CX);sg.setAttribute("x2",CX+R);lb.textContent="\\u05E8\\u05D3\\u05D9\\u05D5\\u05E1";cp.textContent="\\u05DE\\u05D4\\u05DE\\u05E8\\u05DB\\u05D6 \\u05D0\\u05DC \\u05D4\\u05E7\\u05E6\\u05D4";rd.textContent="r = "+rad;}'
-      + 'else if(m===1){sg.setAttribute("x1",CX-R);sg.setAttribute("x2",CX+R);lb.textContent="\\u05E7\\u05D5\\u05D8\\u05E8";cp.textContent="\\u05E4\\u05E2\\u05DE\\u05D9\\u05D9\\u05DD \\u05D4\\u05E8\\u05D3\\u05D9\\u05D5\\u05E1";rd.textContent="2 \\u00D7 "+rad+" = "+(rad*2);}'
+      // "d = 20" ולא "2 × 10 = 20": כשהקוטר הוא הנתון, נוסחה שמזכירה רדיוס
+      // שלא נמסר בשאלה רק מבלבלת. ההסבר יושב בכיתוב שמתחת.
+      + 'else if(m===1){sg.setAttribute("x1",CX-R);sg.setAttribute("x2",CX+R);lb.textContent="\\u05E7\\u05D5\\u05D8\\u05E8";cp.textContent="\\u05E4\\u05E2\\u05DE\\u05D9\\u05D9\\u05DD \\u05D4\\u05E8\\u05D3\\u05D9\\u05D5\\u05E1";rd.textContent="d = "+(rad*2);}'
       + 'else{sg.setAttribute("x1",CX-R);sg.setAttribute("x2",CX+R);lb.textContent="\\u05E7\\u05D5\\u05D8\\u05E8";cp.textContent="\\u05D4\\u05D9\\u05E7\\u05E3 \\u05D4\\u05DE\\u05E2\\u05D2\\u05DC";rd.textContent="3.14 \\u00D7 "+(rad*2)+" = "+(Math.round(3.14*rad*2*100)/100);}}'
-      + 'document.querySelector("svg").addEventListener("pointerdown",function(){m=(m+1)%3;rn();});rn();})();<\/script>';
+      + (lock ? "" : 'document.querySelector("svg").addEventListener("pointerdown",function(){m=(m+1)%3;rn();});') + 'rn();})();<\/script>';
   },
 
   /** טבלת ערך-מקום — עד מיליון. לחיצה על ספרה מגלה כמה היא באמת שווה. */
