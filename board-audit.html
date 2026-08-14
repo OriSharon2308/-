@@ -46,6 +46,7 @@
   var board = new VelaBoard(document.getElementById("c"), { fit: "fill", background: "grid", grid: 42, mode: "idle" });
 
   // כמה מותר לשני פריטים לגעת זה בזה לפני שזו חפיפה שמפריעה לקריאה
+  var BUST = Date.now();
   var OVERLAP_RATIO = 0.30;
   var GEOM = { polygon: 1, line: 1, circle: 1, arrow: 1, point: 1 }; // צורות שנועדו להיחתך זו בזו
 
@@ -134,14 +135,16 @@
   window.AUDIT_DONE = false;
   window.AUDIT_RESULT = null;
 
-  fetch("/audit-list.json").then(function (r) { return r.json(); }).then(async function (files) {
+  fetch("/audit-list.json?v=" + BUST).then(function (r) { return r.json(); }).then(async function (files) {
     var all = [], n = 0, screens = 0;
     for (var f = 0; f < files.length; f++) {
       var path = files[f];
       var lesson;
       // שם-הקובץ מכיל "#" (נושא#מספר-שיעור) — בלי הקידוד הדפדפן מפרש אותו
       // כעוגן, שולח בקשה לנתיב חתוך, וכל 262 הקבצים נכשלים בשקט.
-      var url = encodeURI(path).replace(/#/g, "%23");
+      // שובר-מטמון גם על קובצי-השיעור: בלעדיו סבב-בדיקה אחרי תיקון קורא את
+      // הגרסה הישנה ומדווח על ממצא שכבר תוקן.
+      var url = encodeURI(path).replace(/#/g, "%23") + "?v=" + BUST;
       try { lesson = await (await fetch(url)).json(); } catch (e) { continue; }
       var scr = screensOf(lesson);
       for (var s = 0; s < scr.length; s++) {

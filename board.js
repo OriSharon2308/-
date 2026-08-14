@@ -1122,7 +1122,7 @@
       var tsize = (a.tsize0 || 0) * s, gap = (a.gap0 != null ? a.gap0 : 16) * s, tw = 0;
       if (a.text) { this.ctx.save(); this.ctx.font = "700 " + tsize + "px Fredoka, Assistant, sans-serif"; tw = this.ctx.measureText(a.text).width; this.ctx.restore(); }
       if (pass === 0 && a.text) {
-        var total = w + gap + tw + 40; // 40 = שוליים משני צדי הלוח
+        var total = w + gap + tw + 52; // שוליים משני צדי הלוח, עם מרווח בטחון
         if (total > this.W) { s *= Math.max(0.55, this.W / total); continue; }
       }
       return { w: w, h: h, tsize: tsize, gap: gap, tw: tw };

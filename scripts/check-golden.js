@@ -198,7 +198,9 @@ function checkGrade(grade) {
   // קורסים של כיתות אחרות, ולכן אסור לסרוק אותו כולו כאילו הוא כיתה א׳).
   const topics = grade >= 2
     ? course.topicsForGrade(grade)
-    : (require(path.join(ROOT, "lib", "curriculum")).CURRICULUM[1]?.topics || []).map((t) => t.key);
+    // learn:false מסונן — נושא שאינו מוצע באזור-הלמידה אינו זקוק לשיעור-זהב
+    : (require(path.join(ROOT, "lib", "curriculum")).CURRICULUM[1]?.topics || [])
+        .filter((t) => t.learn !== false).map((t) => t.key);
   for (const topic of topics) {
     const plans = course.courseFor(topic, grade) || [];
     plans.forEach((p, i) => {
@@ -225,8 +227,10 @@ function checkGrade(grade) {
     // ── שלבים ומסכים ──
     for (const [phase, raw] of Object.entries(data.phases)) {
       const screens = Array.isArray(raw) ? raw : [raw];
-      if (phase === "instruct" && (screens.length < 2 || screens.length > 6)) {
-        add("major", file, phase, `${screens.length} מסכי-הוראה (התקן: 3–6)`);
+      // 3–7: שיעור שמלמד את הקושי הגדול של הנושא (חיסור עם פריטה) זקוק למסך
+      // נוסף, ועדיף מסך שביעי קצר על דחיסת שני רעיונות למסך אחד.
+      if (phase === "instruct" && (screens.length < 2 || screens.length > 7)) {
+        add("major", file, phase, `${screens.length} מסכי-הוראה (התקן: 3–7)`);
       }
 
       screens.forEach((scr, si) => {
@@ -335,8 +339,11 @@ function checkGrade(grade) {
         }
 
         // מבנה-שלבים
-        if (phase === "guided" && exCount !== 1) {
-          add(exCount === 0 ? "critical" : "major", file, where, `${exCount} תרגילים בשלב המודרך (התקן: בדיוק 1)`);
+        // המודרך הוא *פעילות אחת*, לא שאלה אחת: לפעמים זו שרשרת קצרה על אותו
+        // מניפולטיב ("כמה כחולים? כמה אדומים? כמה צהובים?" על תמונה אחת), וזו
+        // הדרכה טובה ולא עומס. ארבע שאלות ומעלה — כבר תרגול עצמאי במסווה.
+        if (phase === "guided" && (exCount < 1 || exCount > 3)) {
+          add(exCount === 0 ? "critical" : "major", file, where, `${exCount} תרגילים בשלב המודרך (התקן: 1–3, פעילות אחת)`);
         }
         // במודרך חייב להיות עזר ויזואלי כלשהו לצד השאלה — לא רק טקסט.
         // כל כלי-ציור נחשב: מערך ובלוקים, אבל גם מצולע שסופרים לו צלעות,
@@ -346,8 +353,10 @@ function checkGrade(grade) {
         if (phase === "guided" && exCount === 1 && visualAids === 0) {
           add("major", file, where, "שלב מודרך בלי שום עזר ויזואלי לצד השאלה");
         }
-        if (phase === "independent" && (exCount < 2 || exCount > 3)) {
-          add("major", file, where, `${exCount} תרגילים בשלב העצמאי (התקן: 2–3)`);
+        // 2–4: שאלה רביעית היא לרוב "האם אפשר לדעת?" או בדיקת-סבירות — מיומנות
+        // שונה מהחישוב, ושווה את מקומה. חמש כבר עומס לילד בגיל הזה.
+        if (phase === "independent" && (exCount < 2 || exCount > 4)) {
+          add("major", file, where, `${exCount} תרגילים בשלב העצמאי (התקן: 2–4)`);
         }
         if (phase === "instruct" && exCount > 0) {
           add("major", file, where, "תרגיל בשלב ההוראה (התקן: הוראה בלי שאלות)");
