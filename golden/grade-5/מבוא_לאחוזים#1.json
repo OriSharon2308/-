@@ -1,78 +1,386 @@
 {
-  "topic": "מבוא לאחוזים",
-  "lesson": 1,
-  "title": "אחוז = מאית — סימן חדש למשהו מוכר",
-  "phases": {
-    "instruct": [
-      {
-        "reply": "היי! על הלוח ריבוע של מאה משבצות. כל הריבוע הזה הוא השלם — הכול. לחץ/י על משבצת אחת וצבע/צבעי אותה. המשבצת הזאת היא חלק אחד מתוך מאה. את זה כבר פגשת: מאית. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "מאה משבצות — זה השלם", "x": 500, "y": 90, "size": 34 } },
-          { "name": "hundred_chart", "input": { "skip": 0, "start": 1, "x": 350, "y": 130, "w": 300, "h": 300, "exact": true, "title": "ריבוע המאה" } },
-          { "name": "write_text", "input": { "text": "משבצת אחת = מאית אחת", "x": 500, "y": 470, "size": 26 } }
-        ]
-      },
-      {
-        "reply": "למאית הזאת יש עכשיו שם חדש: אחוז אחד. כותבים אותו כך — 1%. שים/שימי לב: אותו דבר בדיוק, רק בשלוש דרכים לכתוב. 1/100, גם 0.01, וגם 1%. המילה אחוז באה מ'למאה' — כלומר מתוך מאה. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "שם חדש לדבר מוכר", "x": 500, "y": 88, "size": 34 } },
-          { "name": "render_widget", "input": { "title": "מאית אחת", "x": 620, "y": 140, "w": 240, "h": 240, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=1,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
-          { "name": "write_text", "input": { "text": "1/100", "x": 260, "y": 190, "size": 40 } },
-          { "name": "write_text", "input": { "text": "0.01", "x": 260, "y": 260, "size": 40 } },
-          { "name": "write_text", "input": { "text": "1%", "x": 260, "y": 335, "size": 48 } },
-          { "name": "write_text", "input": { "text": "אותו דבר — שלושה כתיבים", "x": 300, "y": 430, "size": 26 } }
-        ]
-      },
-      {
-        "reply": "עכשיו צבעתי הרבה משבצות. תראה/י — שלוש שורות מלאות, ובכל שורה עשר. אז צבועות שלושים משבצות מתוך מאה, וכותבים 30%. וזה בדיוק אותו דבר כמו 30/100, וגם כמו 0.30. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "30 מתוך מאה", "x": 500, "y": 88, "size": 34 } },
-          { "name": "render_widget", "input": { "title": "30 משבצות", "x": 620, "y": 130, "w": 250, "h": 250, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=30,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
-          { "name": "write_text", "input": { "text": "30/100", "x": 250, "y": 200, "size": 40 } },
-          { "name": "write_text", "input": { "text": "0.30", "x": 250, "y": 270, "size": 40 } },
-          { "name": "write_text", "input": { "text": "30%", "x": 250, "y": 345, "size": 48 } },
-          { "name": "write_text", "input": { "text": "כל שורה מלאה היא 10 אחוז", "x": 300, "y": 445, "size": 26 } }
-        ]
-      },
-      {
-        "reply": "ומה אם צובעים את כל הריבוע? כל מאה המשבצות. זה השלם כולו — 100%. תזכור/תזכרי את הדבר החשוב: אחוז תמיד מדבר על מאה חלקים. לא על שמונה ולא על עשרים — תמיד מאה. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "הכול צבוע = 100%", "x": 500, "y": 88, "size": 34 } },
-          { "name": "render_widget", "input": { "title": "כל הריבוע", "x": 620, "y": 130, "w": 250, "h": 250, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=100,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
-          { "name": "write_text", "input": { "text": "100 מתוך 100", "x": 250, "y": 210, "size": 34 } },
-          { "name": "write_text", "input": { "text": "100% = השלם כולו", "x": 250, "y": 300, "size": 32 } },
-          { "name": "write_text", "input": { "text": "אחוז תמיד מתוך מאה", "x": 300, "y": 440, "size": 28 } }
-        ]
-      },
-      {
-        "reply": "אחוזים נמצאים בכל מקום. בחנות כתוב מבצע 50% — זה חצי. בטלפון כתוב סוללה 20%. ובבית הספר ציון 90 זה 90 מתוך 100, כלומר 90%. פגשת אותם הרבה, רק בלי לדעת. עכשיו תור/ך 🙂",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "אחוזים בחיים", "x": 500, "y": 88, "size": 34 } },
-          { "name": "write_text", "input": { "text": "מבצע 50%", "x": 220, "y": 180, "size": 34 } },
-          { "name": "write_text", "input": { "text": "סוללה 20%", "x": 220, "y": 260, "size": 34 } },
-          { "name": "write_text", "input": { "text": "ציון 90 = 90%", "x": 220, "y": 340, "size": 34 } },
-          { "name": "render_widget", "input": { "title": "מבצע 50%", "x": 620, "y": 150, "w": 220, "h": 220, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=50,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
-          { "name": "write_text", "input": { "text": "חצי מהמשבצות — 50%", "x": 730, "y": 420, "size": 24 } }
-        ]
+ "topic": "מבוא לאחוזים",
+ "lesson": 1,
+ "title": "אחוז = מאית — סימן חדש למשהו מוכר",
+ "phases": {
+  "instruct": [
+   {
+    "reply": "היי! על הלוח ריבוע של מאה משבצות. כל הריבוע הזה הוא השלם — הכול. לחץ/י על משבצת אחת וצבע/צבעי אותה. המשבצת הזאת היא חלק אחד מתוך מאה. את זה כבר פגשת: מאית. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מאה משבצות — זה השלם",
+       "x": 500,
+       "y": 90,
+       "size": 34
       }
-    ],
-    "guided": {
-      "reply": "עכשיו ביחד. על הלוח ריבוע של מאה משבצות, וחלק ממנו צבוע. אל תספור/תספרי משבצת-משבצת — זה ארוך. תסתכל/י כמה שורות שלמות צבועות. כתוב/כתבי בתיבה כמה אחוז צבוע, רק המספר בלי הסימן.",
-      "toolCalls": [
-        { "name": "render_widget", "input": { "title": "כמה צבוע?", "x": 640, "y": 110, "w": 270, "h": 270, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=40,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
-        { "name": "draw_exercise", "input": { "text": "כמה אחוז מהריבוע צבוע?", "answer": "40", "kind": "number", "x": 160, "y": 250, "hint": "אל תספור/תספרי משבצת-משבצת. תסתכל/י כמה שורות שלמות צבועות. בכל שורה עשר משבצות, אז כל שורה מלאה היא עשרה אחוזים.", "praise": "יופי! ספרת שורות שלמות במקום משבצת-משבצת — ככה עובדים עם ריבוע המאה 👏" } }
-      ]
+     },
+     {
+      "name": "hundred_chart",
+      "input": {
+       "skip": 0,
+       "start": 1,
+       "x": 350,
+       "y": 130,
+       "w": 300,
+       "h": 300,
+       "exact": true,
+       "title": "ריבוע המאה"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "משבצת אחת = מאית אחת",
+       "x": 500,
+       "y": 470,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "למאית הזאת יש עכשיו שם חדש: אחוז אחד. כותבים אותו כך — 1%. שים/שימי לב: אותו דבר בדיוק, רק בשלוש דרכים לכתוב. 1/100, גם 0.01, וגם 1%. המילה אחוז באה מ'למאה' — כלומר מתוך מאה. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "שם חדש לדבר מוכר",
+       "x": 500,
+       "y": 88,
+       "size": 34
+      }
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "title": "מאית אחת",
+       "x": 620,
+       "y": 140,
+       "w": 240,
+       "h": 240,
+       "exact": true,
+       "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=1,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();</script>"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "1/100",
+       "x": 260,
+       "y": 190,
+       "size": 40
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "0.01",
+       "x": 260,
+       "y": 260,
+       "size": 40
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "1%",
+       "x": 260,
+       "y": 335,
+       "size": 48
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אותו דבר — שלושה כתיבים",
+       "x": 300,
+       "y": 430,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "עכשיו צבעתי הרבה משבצות. תראה/י — שלוש שורות מלאות, ובכל שורה עשר. אז צבועות שלושים משבצות מתוך מאה, וכותבים 30%. וזה בדיוק אותו דבר כמו 30/100, וגם כמו 0.30. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "30 מתוך מאה",
+       "x": 500,
+       "y": 88,
+       "size": 34
+      }
+     },
+     {
+      "name": "decimal_grid",
+      "input": {
+       "rows": 10,
+       "filled": 30,
+       "lock": true,
+       "title": "30 משבצות",
+       "x": 620,
+       "y": 130,
+       "w": 250,
+       "h": 250,
+       "exact": true
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "30/100",
+       "x": 250,
+       "y": 200,
+       "size": 40
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "0.30",
+       "x": 250,
+       "y": 270,
+       "size": 40
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "30%",
+       "x": 250,
+       "y": 345,
+       "size": 48
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "כל שורה מלאה היא 10 אחוז",
+       "x": 300,
+       "y": 445,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "ומה אם צובעים את כל הריבוע? כל מאה המשבצות. זה השלם כולו — 100%. תזכור/תזכרי את הדבר החשוב: אחוז תמיד מדבר על מאה חלקים. לא על שמונה ולא על עשרים — תמיד מאה. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "הכול צבוע = 100%",
+       "x": 500,
+       "y": 88,
+       "size": 34
+      }
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "title": "כל הריבוע",
+       "x": 620,
+       "y": 130,
+       "w": 250,
+       "h": 250,
+       "exact": true,
+       "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=100,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();</script>"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "100 מתוך 100",
+       "x": 250,
+       "y": 210,
+       "size": 34
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "100% = השלם כולו",
+       "x": 250,
+       "y": 300,
+       "size": 32
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אחוז תמיד מתוך מאה",
+       "x": 300,
+       "y": 440,
+       "size": 28
+      }
+     }
+    ]
+   },
+   {
+    "reply": "אחוזים נמצאים בכל מקום. בחנות כתוב מבצע 50% — זה חצי. בטלפון כתוב סוללה 20%. ובבית הספר ציון 90 זה 90 מתוך 100, כלומר 90%. פגשת אותם הרבה, רק בלי לדעת. עכשיו תור/ך 🙂",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אחוזים בחיים",
+       "x": 500,
+       "y": 88,
+       "size": 34
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מבצע 50%",
+       "x": 220,
+       "y": 180,
+       "size": 34
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "סוללה 20%",
+       "x": 220,
+       "y": 260,
+       "size": 34
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "ציון 90 = 90%",
+       "x": 220,
+       "y": 340,
+       "size": 34
+      }
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "title": "מבצע 50%",
+       "x": 620,
+       "y": 150,
+       "w": 220,
+       "h": 220,
+       "exact": true,
+       "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=50,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();</script>"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "חצי מהמשבצות — 50%",
+       "x": 730,
+       "y": 420,
+       "size": 24
+      }
+     }
+    ]
+   }
+  ],
+  "guided": {
+   "reply": "עכשיו ביחד. על הלוח ריבוע של מאה משבצות, וחלק ממנו צבוע. אל תספור/תספרי משבצת-משבצת — זה ארוך. תסתכל/י כמה שורות שלמות צבועות. כתוב/כתבי בתיבה כמה אחוז צבוע, רק המספר בלי הסימן.",
+   "toolCalls": [
+    {
+     "name": "render_widget",
+     "input": {
+      "title": "כמה צבוע?",
+      "x": 640,
+      "y": 110,
+      "w": 270,
+      "h": 270,
+      "exact": true,
+      "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=40,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();</script>"
+     }
     },
-    "independent": {
-      "reply": "עכשיו לבד, שלוש שאלות. בראשונה יש ריבוע צבוע לעזרה. בשנייה יש סיפור בלי ציור, ובאחרונה אין כלום — רק ראש. בשיעור הבא נכיר שלושה אחוזים מיוחדים שכדאי לזכור בעל-פה 🙂",
-      "toolCalls": [
-        { "name": "render_widget", "input": { "title": "כמה צבוע?", "x": 660, "y": 70, "w": 210, "h": 210, "exact": true, "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=70,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();<\/script>" } },
-        { "name": "draw_exercise", "input": { "text": "כמה אחוז מהריבוע צבוע?", "answer": "70", "kind": "number", "x": 150, "y": 150, "hint": "ספור/י שורות מלאות, לא משבצות. כל שורה מלאה היא עשרה אחוזים — אז תספור/י בקפיצות של עשרה.", "praise": "מצוין! ספרת בקפיצות של עשרה ולא משבצת-משבצת 👏" } },
-        { "name": "write_text", "input": { "text": "בכיתה 100 תלמידים", "x": 770, "y": 330, "size": 26 } },
-        { "name": "write_text", "input": { "text": "8 מהם חולים היום", "x": 770, "y": 385, "size": 26 } },
-        { "name": "draw_exercise", "input": { "text": "כמה אחוז מהכיתה חולים?", "answer": "8", "kind": "number", "x": 150, "y": 340, "hint": "אחוז זה 'מתוך מאה'. תבדוק/תבדקי קודם כמה תלמידים יש בכיתה — האם זה בדיוק מאה? אם כן, מספר החולים כבר עונה לך על השאלה.", "praise": "כל הכבוד! הבנת ש'מתוך מאה' ו'אחוז' הם אותו דבר 🎉" } },
-        { "name": "draw_exercise", "input": { "text": "6 שורות מלאות — כמה אחוז?", "answer": "60", "kind": "number", "x": 150, "y": 470, "hint": "בריבוע המאה כל שורה מלאה היא עשר משבצות, ועשר משבצות הן עשרה אחוזים. אז תספור/י שש פעמים עשרה.", "praise": "מעולה! חישבת בראש, בלי ריבוע מול העיניים 🏆" } }
-      ]
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה אחוז מהריבוע צבוע?",
+      "answer": "40",
+      "kind": "number",
+      "x": 160,
+      "y": 250,
+      "hint": "אל תספור/תספרי משבצת-משבצת. תסתכל/י כמה שורות שלמות צבועות. בכל שורה עשר משבצות, אז כל שורה מלאה היא עשרה אחוזים.",
+      "praise": "יופי! ספרת שורות שלמות במקום משבצת-משבצת — ככה עובדים עם ריבוע המאה 👏"
+     }
     }
+   ]
+  },
+  "independent": {
+   "reply": "עכשיו לבד, שלוש שאלות. בראשונה יש ריבוע צבוע לעזרה. בשנייה יש סיפור בלי ציור, ובאחרונה אין כלום — רק ראש. בשיעור הבא נכיר שלושה אחוזים מיוחדים שכדאי לזכור בעל-פה 🙂",
+   "toolCalls": [
+    {
+     "name": "render_widget",
+     "input": {
+      "title": "כמה צבוע?",
+      "x": 660,
+      "y": 70,
+      "w": 210,
+      "h": 210,
+      "exact": true,
+      "html": "<svg id=g viewBox='0 0 212 212' width='100%' height='100%' style='display:block'></svg><script>(function(){var N=70,s=document.getElementById('g'),NS='http://www.w3.org/2000/svg',i,r;for(i=0;i<100;i++){r=document.createElementNS(NS,'rect');r.setAttribute('x',6+(i%10)*20);r.setAttribute('y',6+Math.floor(i/10)*20);r.setAttribute('width',18);r.setAttribute('height',18);r.setAttribute('rx',3);r.setAttribute('fill',i<N?'#0d9488':'#ffffff');r.setAttribute('stroke','#cfe6e3');s.appendChild(r);}})();</script>"
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה אחוז מהריבוע צבוע?",
+      "answer": "70",
+      "kind": "number",
+      "x": 150,
+      "y": 150,
+      "hint": "ספור/י שורות מלאות, לא משבצות. כל שורה מלאה היא עשרה אחוזים — אז תספור/י בקפיצות של עשרה.",
+      "praise": "מצוין! ספרת בקפיצות של עשרה ולא משבצת-משבצת 👏"
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "בכיתה 100 תלמידים",
+      "x": 770,
+      "y": 330,
+      "size": 26
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "8 מהם חולים היום",
+      "x": 770,
+      "y": 385,
+      "size": 26
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה אחוז מהכיתה חולים?",
+      "answer": "8",
+      "kind": "number",
+      "x": 150,
+      "y": 340,
+      "hint": "אחוז זה 'מתוך מאה'. תבדוק/תבדקי קודם כמה תלמידים יש בכיתה — האם זה בדיוק מאה? אם כן, מספר החולים כבר עונה לך על השאלה.",
+      "praise": "כל הכבוד! הבנת ש'מתוך מאה' ו'אחוז' הם אותו דבר 🎉"
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "6 שורות מלאות — כמה אחוז?",
+      "answer": "60",
+      "kind": "number",
+      "x": 150,
+      "y": 470,
+      "hint": "בריבוע המאה כל שורה מלאה היא עשר משבצות, ועשר משבצות הן עשרה אחוזים. אז תספור/י שש פעמים עשרה.",
+      "praise": "מעולה! חישבת בראש, בלי ריבוע מול העיניים 🏆"
+     }
+    }
+   ]
   }
+ }
 }

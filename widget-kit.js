@@ -770,6 +770,9 @@
     var rows = wkNum(p.rows, 1, 10, 10) === 1 ? 1 : 10;
     var cells = rows === 1 ? 10 : 100;
     var filled = wkNum(p.filled, 0, cells, 0), target = wkNum(p.target, -1, cells, -1);
+    // lock — הרשת קבועה. במסך-הוראה שבו המורה אומר "צבעתי שלושים משבצות",
+    // לחיצה של הילד הייתה משנה ל-31 והדברים היו סותרים את מה שעל הלוח.
+    var lock = p.lock === true || String(p.lock) === "true";
     // גובה-viewBox קבוע: המנוע נועל יחס-ווידג'ט, ו-viewBox משתנה היה מעוות את הכרטיס
     var INK = "#0f3b36", cs = rows === 1 ? 30 : 26, gx = (340 - cs * 10) / 2, gy = rows === 1 ? 150 : 44, sq = "";
     for (var i = 0; i < cells; i++) {
@@ -784,7 +787,7 @@
       + 'function rn(){var n=0;for(var i=0;i<N;i++){cs[i].setAttribute("fill",st[i]?"#0d9488":"#fff");if(st[i])n++;}'
       + 'var dec=(n/D).toFixed(D===10?1:2);rd.textContent=n+"/"+D+"  =  "+dec;'
       + 'if(T>=0&&n===T){rd.setAttribute("fill","#22c55e");parent.postMessage({type:"vela:correct"},"*");}else{rd.setAttribute("fill","#0f3b36");}}'
-      + 's.addEventListener("pointerdown",function(e){var i=e.target.getAttribute&&e.target.getAttribute("data-i");if(i==null)return;i=+i;st[i]=!st[i];rn();});rn();})();<\/script>';
+      + (lock ? "" : 's.addEventListener("pointerdown",function(e){var i=e.target.getAttribute&&e.target.getAttribute("data-i");if(i==null)return;i=+i;st[i]=!st[i];rn();});') + 'rn();})();<\/script>';
   },
 
   /** פס-אחוזים — גוררים, ורואים בו-זמנית אחוז, שבר וכמה זה מתוך הכמות. */
@@ -881,6 +884,9 @@
     var hasB = b.length > 0 && b.every(function (v) { return isFinite(v); });
     var step = wkNum(p.step, 1, 1000, 5), INK = "#0f3b36";
     var mx = Math.max.apply(null, a.concat(hasB ? b : [0]).concat([step])), top = Math.ceil(mx / step) * step;
+    // אוויר מעל הגבוהה: בלעדיו העמודה המקסימלית נוגעת בקו העליון ונראית חתוכה.
+    // מספר המשבצות לא משתנה — רק הציר מתארך, כך שהשוואת-צורה בין סולמות נשמרת.
+    if (top === mx) top += step;
     var bx = 54, by = 46, bw = 320, bh = 150, grid = "", bars = "";
     for (var i = 0; i <= top / step; i++) {
       var y = by + bh - bh * (i * step) / top;

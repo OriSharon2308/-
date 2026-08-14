@@ -1,83 +1,423 @@
 {
-  "topic": "חקר נתונים וממוצע",
-  "lesson": 1,
-  "title": "לקרוא דיאגרמה — ולא ליפול בסולם",
-  "phases": {
-    "instruct": [
-      {
-        "reply": "היי! היום נלמד לקרוא דיאגרמה 🙂 מימין יש טבלה קטנה — בכל חוג כמה תלמידים. משמאל אותם נתונים בדיוק, אבל בציור: דיאגרמת עמודות. תסתכל/י על חוג הציור — בטבלה כתוב 6, והעמודה בגובה 6 משבצות. הטבלה והדיאגרמה מספרות אותו סיפור. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "טבלה ודיאגרמה — אותו סיפור", "x": 500, "y": 85, "size": 32 } },
-          { "name": "write_text", "input": { "text": "חוג · תלמידים", "x": 790, "y": 165, "size": 26, "color": "#64748b" } },
-          { "name": "write_text", "input": { "text": "כדורסל · 4", "x": 790, "y": 225, "size": 28 } },
-          { "name": "write_text", "input": { "text": "ציור · 6", "x": 790, "y": 285, "size": 28 } },
-          { "name": "write_text", "input": { "text": "שחמט · 3", "x": 790, "y": 345, "size": 28 } },
-          { "name": "render_widget", "input": { "title": "דיאגרמת עמודות", "x": 120, "y": 130, "w": 470, "h": 350, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 300' width='100%' height='100%'><text x='190' y='20' text-anchor='middle' font-size='16' fill='#1e3a5f'>תלמידים בחוגים</text><g stroke='#cbd5e1' stroke-width='1'><line x1='45' y1='215' x2='340' y2='215'/><line x1='45' y1='180' x2='340' y2='180'/><line x1='45' y1='145' x2='340' y2='145'/><line x1='45' y1='110' x2='340' y2='110'/><line x1='45' y1='75' x2='340' y2='75'/><line x1='45' y1='40' x2='340' y2='40'/></g><rect x='242' y='110' width='56' height='140' fill='#3b82f6'/><rect x='162' y='40' width='56' height='210' fill='#f59e0b'/><rect x='82' y='145' width='56' height='105' fill='#10b981'/><line x1='40' y1='250' x2='345' y2='250' stroke='#334155' stroke-width='2'/><line x1='340' y1='32' x2='340' y2='252' stroke='#334155' stroke-width='2'/><g font-size='13' fill='#334155'><text x='348' y='255'>0</text><text x='348' y='220'>1</text><text x='348' y='185'>2</text><text x='348' y='150'>3</text><text x='348' y='115'>4</text><text x='348' y='80'>5</text><text x='348' y='45'>6</text></g><g font-size='14' fill='#1e293b' text-anchor='middle'><text x='270' y='270'>כדורסל</text><text x='190' y='270'>ציור</text><text x='110' y='270'>שחמט</text></g></svg></div>" } }
-        ]
-      },
-      {
-        "reply": "עכשיו זהירות! הציור נראה בדיוק אותו דבר, אבל תסתכל/י על המספרים בצד הציר: 0, 5, 10, 15... כאן כל משבצת שווה 5, לא 1! אז עמודת הכדורסל היא 4 משבצות — אבל 4 כפול 5 זה 20 תלמידים, לא 4. זו הטעות הכי נפוצה במבחן. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "אותו ציור — מספרים אחרים!", "x": 500, "y": 85, "size": 32 } },
-          { "name": "write_text", "input": { "text": "השאלה הראשונה תמיד:", "x": 790, "y": 210, "size": 26, "color": "#64748b" } },
-          { "name": "write_text", "input": { "text": "כמה שווה משבצת אחת?", "x": 790, "y": 265, "size": 30, "color": "#b91c1c" } },
-          { "name": "render_widget", "input": { "title": "כל משבצת שווה 5", "x": 120, "y": 130, "w": 470, "h": 350, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 300' width='100%' height='100%'><text x='190' y='20' text-anchor='middle' font-size='16' fill='#1e3a5f'>תלמידים בחוגים</text><g stroke='#cbd5e1' stroke-width='1'><line x1='45' y1='215' x2='340' y2='215'/><line x1='45' y1='180' x2='340' y2='180'/><line x1='45' y1='145' x2='340' y2='145'/><line x1='45' y1='110' x2='340' y2='110'/><line x1='45' y1='75' x2='340' y2='75'/><line x1='45' y1='40' x2='340' y2='40'/></g><rect x='242' y='110' width='56' height='140' fill='#3b82f6'/><rect x='162' y='40' width='56' height='210' fill='#f59e0b'/><rect x='82' y='145' width='56' height='105' fill='#10b981'/><line x1='40' y1='250' x2='345' y2='250' stroke='#334155' stroke-width='2'/><line x1='340' y1='32' x2='340' y2='252' stroke='#334155' stroke-width='2'/><g font-size='13' fill='#334155'><text x='348' y='255'>0</text><text x='348' y='220'>5</text><text x='348' y='185'>10</text><text x='348' y='150'>15</text><text x='348' y='115'>20</text><text x='348' y='80'>25</text><text x='348' y='45'>30</text></g><g font-size='14' fill='#1e293b' text-anchor='middle'><text x='270' y='270'>כדורסל</text><text x='190' y='270'>ציור</text><text x='110' y='270'>שחמט</text></g></svg></div>" } }
-        ]
-      },
-      {
-        "reply": "איך יודעים כמה שווה משבצת? מסתכלים על שני מספרים שכנים על הציר: אחרי 0 בא 5 — ההפרש 5. אז כל משבצת שווה 5. עכשיו קוראים: ציור — 6 משבצות, 6 כפול 5 = 30 תלמידים. הכלל פשוט: סופרים משבצות, וכופלים בערך של משבצת. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "סופרים משבצות · כופלים בערך", "x": 500, "y": 85, "size": 32 } },
-          { "name": "write_text", "input": { "text": "ציור: 6 משבצות", "x": 790, "y": 200, "size": 28 } },
-          { "name": "write_text", "input": { "text": "6 × 5 = 30 תלמידים", "x": 790, "y": 260, "size": 30, "color": "#0f766e" } },
-          { "name": "render_widget", "input": { "title": "כל משבצת שווה 5", "x": 120, "y": 130, "w": 470, "h": 350, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 300' width='100%' height='100%'><text x='190' y='20' text-anchor='middle' font-size='16' fill='#1e3a5f'>תלמידים בחוגים</text><g stroke='#cbd5e1' stroke-width='1'><line x1='45' y1='215' x2='340' y2='215'/><line x1='45' y1='180' x2='340' y2='180'/><line x1='45' y1='145' x2='340' y2='145'/><line x1='45' y1='110' x2='340' y2='110'/><line x1='45' y1='75' x2='340' y2='75'/><line x1='45' y1='40' x2='340' y2='40'/></g><rect x='242' y='110' width='56' height='140' fill='#3b82f6'/><rect x='162' y='40' width='56' height='210' fill='#f59e0b'/><rect x='82' y='145' width='56' height='105' fill='#10b981'/><line x1='40' y1='250' x2='345' y2='250' stroke='#334155' stroke-width='2'/><line x1='340' y1='32' x2='340' y2='252' stroke='#334155' stroke-width='2'/><g font-size='13' fill='#334155'><text x='348' y='255'>0</text><text x='348' y='220'>5</text><text x='348' y='185'>10</text><text x='348' y='150'>15</text><text x='348' y='115'>20</text><text x='348' y='80'>25</text><text x='348' y='45'>30</text></g><g font-size='14' fill='#1e293b' text-anchor='middle'><text x='270' y='270'>כדורסל</text><text x='190' y='270'>ציור</text><text x='110' y='270'>שחמט</text></g></svg></div>" } }
-        ]
-      },
-      {
-        "reply": "עכשיו משווים. מי הכי גבוה? ציור — העמודה הכי ארוכה, 30 תלמידים. ובכמה ציור גדול משחמט? קודם קוראים כל אחד: ציור 30, שחמט 15. אחר כך מחסרים: 30 פחות 15 = 15 תלמידים יותר. אף פעם לא מנחשים בעיניים — קוראים ומחשבים. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "בכמה עמודה גדולה מחברתה?", "x": 500, "y": 85, "size": 32 } },
-          { "name": "write_text", "input": { "text": "ציור 30 · שחמט 15", "x": 790, "y": 210, "size": 28 } },
-          { "name": "write_text", "input": { "text": "30 − 15 = 15", "x": 790, "y": 270, "size": 32, "color": "#0f766e" } },
-          { "name": "render_widget", "input": { "title": "כל משבצת שווה 5", "x": 120, "y": 130, "w": 470, "h": 350, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 300' width='100%' height='100%'><text x='190' y='20' text-anchor='middle' font-size='16' fill='#1e3a5f'>תלמידים בחוגים</text><g stroke='#cbd5e1' stroke-width='1'><line x1='45' y1='215' x2='340' y2='215'/><line x1='45' y1='180' x2='340' y2='180'/><line x1='45' y1='145' x2='340' y2='145'/><line x1='45' y1='110' x2='340' y2='110'/><line x1='45' y1='75' x2='340' y2='75'/><line x1='45' y1='40' x2='340' y2='40'/></g><rect x='242' y='110' width='56' height='140' fill='#3b82f6'/><rect x='162' y='40' width='56' height='210' fill='#f59e0b'/><rect x='82' y='145' width='56' height='105' fill='#10b981'/><line x1='40' y1='250' x2='345' y2='250' stroke='#334155' stroke-width='2'/><line x1='340' y1='32' x2='340' y2='252' stroke='#334155' stroke-width='2'/><g font-size='13' fill='#334155'><text x='348' y='255'>0</text><text x='348' y='220'>5</text><text x='348' y='185'>10</text><text x='348' y='150'>15</text><text x='348' y='115'>20</text><text x='348' y='80'>25</text><text x='348' y='45'>30</text></g><g font-size='14' fill='#1e293b' text-anchor='middle'><text x='270' y='270'>כדורסל</text><text x='190' y='270'>ציור</text><text x='110' y='270'>שחמט</text></g></svg></div>" } }
-        ]
-      },
-      {
-        "reply": "ועוד שאלה שתמיד שואלים: כמה תלמידים בכל החוגים ביחד? קוראים כל עמודה בנפרד — כדורסל 20, ציור 30, שחמט 15 — ורק אז מחברים: 20 + 30 + 15 = 65. שים/שימי לב: לא חיברנו משבצות! קודם הופכים כל עמודה למספר, ואז מחברים. ✓",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "כמה בסך הכול?", "x": 500, "y": 85, "size": 32 } },
-          { "name": "write_text", "input": { "text": "20 + 30 + 15", "x": 790, "y": 215, "size": 30 } },
-          { "name": "write_text", "input": { "text": "= 65 תלמידים", "x": 790, "y": 275, "size": 32, "color": "#0f766e" } },
-          { "name": "render_widget", "input": { "title": "כל משבצת שווה 5", "x": 120, "y": 130, "w": 470, "h": 350, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 300' width='100%' height='100%'><text x='190' y='20' text-anchor='middle' font-size='16' fill='#1e3a5f'>תלמידים בחוגים</text><g stroke='#cbd5e1' stroke-width='1'><line x1='45' y1='215' x2='340' y2='215'/><line x1='45' y1='180' x2='340' y2='180'/><line x1='45' y1='145' x2='340' y2='145'/><line x1='45' y1='110' x2='340' y2='110'/><line x1='45' y1='75' x2='340' y2='75'/><line x1='45' y1='40' x2='340' y2='40'/></g><rect x='242' y='110' width='56' height='140' fill='#3b82f6'/><rect x='162' y='40' width='56' height='210' fill='#f59e0b'/><rect x='82' y='145' width='56' height='105' fill='#10b981'/><line x1='40' y1='250' x2='345' y2='250' stroke='#334155' stroke-width='2'/><line x1='340' y1='32' x2='340' y2='252' stroke='#334155' stroke-width='2'/><g font-size='13' fill='#334155'><text x='348' y='255'>0</text><text x='348' y='220'>5</text><text x='348' y='185'>10</text><text x='348' y='150'>15</text><text x='348' y='115'>20</text><text x='348' y='80'>25</text><text x='348' y='45'>30</text></g><g font-size='14' fill='#1e293b' text-anchor='middle'><text x='270' y='270'>כדורסל</text><text x='190' y='270'>ציור</text><text x='110' y='270'>שחמט</text></g></svg></div>" } }
-        ]
-      },
-      {
-        "reply": "ועכשיו הכיוון ההפוך — מהטבלה בונים את הציור. בטבלה החדשה: ריקוד 8, גיטרה 10. על הציר הזה כל משבצת שווה 2. כמה משבצות גובה עמודת הריקוד? 8 חלקי 2 = 4 משבצות. וגיטרה: 10 חלקי 2 = 5. כשקוראים — כופלים; כשבונים — מחלקים. עכשיו תור שלך 🙂",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "בונים עמודה: מחלקים בערך המשבצת", "x": 500, "y": 85, "size": 30 } },
-          { "name": "write_text", "input": { "text": "ריקוד · 8", "x": 800, "y": 200, "size": 28 } },
-          { "name": "write_text", "input": { "text": "8 : 2 = 4 משבצות", "x": 800, "y": 250, "size": 26, "color": "#0f766e" } },
-          { "name": "write_text", "input": { "text": "גיטרה · 10", "x": 800, "y": 320, "size": 28 } },
-          { "name": "write_text", "input": { "text": "10 : 2 = 5 משבצות", "x": 800, "y": 370, "size": 26, "color": "#0f766e" } },
-          { "name": "render_widget", "input": { "title": "כל משבצת שווה 2", "x": 120, "y": 130, "w": 470, "h": 350, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 300' width='100%' height='100%'><text x='190' y='20' text-anchor='middle' font-size='16' fill='#1e3a5f'>הדיאגרמה שבנינו</text><g stroke='#cbd5e1' stroke-width='1'><line x1='45' y1='215' x2='340' y2='215'/><line x1='45' y1='180' x2='340' y2='180'/><line x1='45' y1='145' x2='340' y2='145'/><line x1='45' y1='110' x2='340' y2='110'/><line x1='45' y1='75' x2='340' y2='75'/></g><rect x='220' y='110' width='60' height='140' fill='#8b5cf6'/><rect x='110' y='75' width='60' height='175' fill='#ec4899'/><line x1='40' y1='250' x2='345' y2='250' stroke='#334155' stroke-width='2'/><line x1='340' y1='68' x2='340' y2='252' stroke='#334155' stroke-width='2'/><g font-size='13' fill='#334155'><text x='348' y='255'>0</text><text x='348' y='220'>2</text><text x='348' y='185'>4</text><text x='348' y='150'>6</text><text x='348' y='115'>8</text><text x='348' y='80'>10</text></g><g font-size='14' fill='#1e293b' text-anchor='middle'><text x='250' y='270'>ריקוד</text><text x='140' y='270'>גיטרה</text></g></svg></div>" } }
-        ]
+ "topic": "חקר נתונים וממוצע",
+ "lesson": 1,
+ "title": "לקרוא דיאגרמה — ולא ליפול בסולם",
+ "phases": {
+  "instruct": [
+   {
+    "reply": "היי! היום נלמד לקרוא דיאגרמה 🙂 מימין יש טבלה קטנה — בכל חוג כמה תלמידים. משמאל אותם נתונים בדיוק, אבל בציור: דיאגרמת עמודות. תסתכל/י על חוג הציור — בטבלה כתוב 6, והעמודה בגובה 6 משבצות. הטבלה והדיאגרמה מספרות אותו סיפור. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "טבלה ודיאגרמה — אותו סיפור",
+       "x": 500,
+       "y": 85,
+       "size": 32
       }
-    ],
-    "guided": {
-      "reply": "עכשיו ביחד. על הלוח דיאגרמה חדשה — חיות בפינת החי. שים/שימי לב: אין מספרים על העמודות, צריך לקרוא מהציר. קודם כול השאלה הקבועה: כמה שווה משבצת אחת? תסתכל/י על שני מספרים שכנים על הציר. אחר כך ספור/י כמה משבצות בעמודת הכלבים, וכפול/כפלי. כתוב/כתבי את מספר הכלבים בתיבה!",
-      "toolCalls": [
-        { "name": "draw_exercise", "input": { "text": "כמה כלבים יש בפינת החי?", "answer": "30", "kind": "number", "x": 280, "y": 400, "hint": "אל תענה/תעני את מספר המשבצות! קודם בדוק/בדקי על הציר מה ההפרש בין 0 למספר שאחריו — זה הערך של משבצת אחת. אחר כך: מספר המשבצות כפול הערך הזה.", "praise": "מעולה! לא נפלת בסולם — ספרת משבצות והכפלת בערך שלהן 🏆" } },
-        { "name": "render_widget", "input": { "title": "פינת החי", "x": 540, "y": 100, "w": 400, "h": 300, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 300' width='100%' height='100%'><text x='190' y='20' text-anchor='middle' font-size='16' fill='#1e3a5f'>חיות בפינת החי</text><g stroke='#cbd5e1' stroke-width='1'><line x1='45' y1='215' x2='340' y2='215'/><line x1='45' y1='180' x2='340' y2='180'/><line x1='45' y1='145' x2='340' y2='145'/><line x1='45' y1='110' x2='340' y2='110'/><line x1='45' y1='75' x2='340' y2='75'/><line x1='45' y1='40' x2='340' y2='40'/></g><rect x='242' y='145' width='56' height='105' fill='#3b82f6'/><rect x='162' y='75' width='56' height='175' fill='#f59e0b'/><rect x='82' y='180' width='56' height='70' fill='#10b981'/><line x1='40' y1='250' x2='345' y2='250' stroke='#334155' stroke-width='2'/><line x1='340' y1='32' x2='340' y2='252' stroke='#334155' stroke-width='2'/><g font-size='13' fill='#334155'><text x='348' y='255'>0</text><text x='348' y='220'>10</text><text x='348' y='185'>20</text><text x='348' y='150'>30</text><text x='348' y='115'>40</text><text x='348' y='80'>50</text><text x='348' y='45'>60</text></g><g font-size='14' fill='#1e293b' text-anchor='middle'><text x='270' y='270'>כלבים</text><text x='190' y='270'>חתולים</text><text x='110' y='270'>ארנבים</text></g></svg></div>" } }
-      ]
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "חוג · תלמידים",
+       "x": 790,
+       "y": 165,
+       "size": 26,
+       "color": "#64748b"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "כדורסל · 4",
+       "x": 790,
+       "y": 225,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "ציור · 6",
+       "x": 790,
+       "y": 285,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "שחמט · 3",
+       "x": 790,
+       "y": 345,
+       "size": 28
+      }
+     },
+     {
+      "name": "bar_chart",
+      "input": {
+       "labels": "כדורסל,ציור,שחמט",
+       "series": "4,6,3",
+       "step": 1,
+       "unit": "squares",
+       "title": "דיאגרמת עמודות",
+       "x": 120,
+       "y": 130,
+       "w": 470,
+       "h": 350,
+       "exact": true
+      }
+     }
+    ]
+   },
+   {
+    "reply": "עכשיו זהירות! הציור נראה בדיוק אותו דבר, אבל תסתכל/י על המספרים בצד הציר: 0, 5, 10, 15... כאן כל משבצת שווה 5, לא 1! אז עמודת הכדורסל היא 4 משבצות — אבל 4 כפול 5 זה 20 תלמידים, לא 4. זו הטעות הכי נפוצה במבחן. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אותו ציור — מספרים אחרים!",
+       "x": 500,
+       "y": 85,
+       "size": 32
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "השאלה הראשונה תמיד:",
+       "x": 790,
+       "y": 210,
+       "size": 26,
+       "color": "#64748b"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "כמה שווה משבצת אחת?",
+       "x": 790,
+       "y": 265,
+       "size": 30,
+       "color": "#b91c1c"
+      }
+     },
+     {
+      "name": "bar_chart",
+      "input": {
+       "labels": "כדורסל,ציור,שחמט",
+       "series": "20,30,15",
+       "step": 5,
+       "unit": "squares",
+       "title": "כל משבצת שווה 5",
+       "x": 120,
+       "y": 130,
+       "w": 470,
+       "h": 350,
+       "exact": true
+      }
+     }
+    ]
+   },
+   {
+    "reply": "איך יודעים כמה שווה משבצת? מסתכלים על שני מספרים שכנים על הציר: אחרי 0 בא 5 — ההפרש 5. אז כל משבצת שווה 5. עכשיו קוראים: ציור — 6 משבצות, 6 כפול 5 = 30 תלמידים. הכלל פשוט: סופרים משבצות, וכופלים בערך של משבצת. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "סופרים משבצות · כופלים בערך",
+       "x": 500,
+       "y": 85,
+       "size": 32
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "ציור: 6 משבצות",
+       "x": 790,
+       "y": 200,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "6 × 5 = 30 תלמידים",
+       "x": 790,
+       "y": 260,
+       "size": 30,
+       "color": "#0f766e"
+      }
+     },
+     {
+      "name": "bar_chart",
+      "input": {
+       "labels": "כדורסל,ציור,שחמט",
+       "series": "20,30,15",
+       "step": 5,
+       "unit": "squares",
+       "title": "כל משבצת שווה 5",
+       "x": 120,
+       "y": 130,
+       "w": 470,
+       "h": 350,
+       "exact": true
+      }
+     }
+    ]
+   },
+   {
+    "reply": "עכשיו משווים. מי הכי גבוה? ציור — העמודה הכי ארוכה, 30 תלמידים. ובכמה ציור גדול משחמט? קודם קוראים כל אחד: ציור 30, שחמט 15. אחר כך מחסרים: 30 פחות 15 = 15 תלמידים יותר. אף פעם לא מנחשים בעיניים — קוראים ומחשבים. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "בכמה עמודה גדולה מחברתה?",
+       "x": 500,
+       "y": 85,
+       "size": 32
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "ציור 30 · שחמט 15",
+       "x": 790,
+       "y": 210,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "30 − 15 = 15",
+       "x": 790,
+       "y": 270,
+       "size": 32,
+       "color": "#0f766e"
+      }
+     },
+     {
+      "name": "bar_chart",
+      "input": {
+       "labels": "כדורסל,ציור,שחמט",
+       "series": "20,30,15",
+       "step": 5,
+       "unit": "squares",
+       "title": "כל משבצת שווה 5",
+       "x": 120,
+       "y": 130,
+       "w": 470,
+       "h": 350,
+       "exact": true
+      }
+     }
+    ]
+   },
+   {
+    "reply": "ועוד שאלה שתמיד שואלים: כמה תלמידים בכל החוגים ביחד? קוראים כל עמודה בנפרד — כדורסל 20, ציור 30, שחמט 15 — ורק אז מחברים: 20 + 30 + 15 = 65. שים/שימי לב: לא חיברנו משבצות! קודם הופכים כל עמודה למספר, ואז מחברים. ✓",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "כמה בסך הכול?",
+       "x": 500,
+       "y": 85,
+       "size": 32
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "20 + 30 + 15",
+       "x": 790,
+       "y": 215,
+       "size": 30
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "= 65 תלמידים",
+       "x": 790,
+       "y": 275,
+       "size": 32,
+       "color": "#0f766e"
+      }
+     },
+     {
+      "name": "bar_chart",
+      "input": {
+       "labels": "כדורסל,ציור,שחמט",
+       "series": "20,30,15",
+       "step": 5,
+       "unit": "squares",
+       "title": "כל משבצת שווה 5",
+       "x": 120,
+       "y": 130,
+       "w": 470,
+       "h": 350,
+       "exact": true
+      }
+     }
+    ]
+   },
+   {
+    "reply": "ועכשיו הכיוון ההפוך — מהטבלה בונים את הציור. בטבלה החדשה: ריקוד 8, גיטרה 10. על הציר הזה כל משבצת שווה 2. כמה משבצות גובה עמודת הריקוד? 8 חלקי 2 = 4 משבצות. וגיטרה: 10 חלקי 2 = 5. כשקוראים — כופלים; כשבונים — מחלקים. עכשיו תור שלך 🙂",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "בונים עמודה: מחלקים בערך המשבצת",
+       "x": 500,
+       "y": 85,
+       "size": 30
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "ריקוד · 8",
+       "x": 800,
+       "y": 200,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "8 : 2 = 4 משבצות",
+       "x": 800,
+       "y": 250,
+       "size": 26,
+       "color": "#0f766e"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "גיטרה · 10",
+       "x": 800,
+       "y": 320,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "10 : 2 = 5 משבצות",
+       "x": 800,
+       "y": 370,
+       "size": 26,
+       "color": "#0f766e"
+      }
+     },
+     {
+      "name": "bar_chart",
+      "input": {
+       "labels": "ריקוד,גיטרה",
+       "series": "8,10",
+       "step": 2,
+       "unit": "squares",
+       "title": "כל משבצת שווה 2",
+       "x": 120,
+       "y": 130,
+       "w": 470,
+       "h": 350,
+       "exact": true
+      }
+     }
+    ]
+   }
+  ],
+  "guided": {
+   "reply": "עכשיו ביחד. על הלוח דיאגרמה חדשה — חיות בפינת החי. שים/שימי לב: אין מספרים על העמודות, צריך לקרוא מהציר. קודם כול השאלה הקבועה: כמה שווה משבצת אחת? תסתכל/י על שני מספרים שכנים על הציר. אחר כך ספור/י כמה משבצות בעמודת הכלבים, וכפול/כפלי. כתוב/כתבי את מספר הכלבים בתיבה!",
+   "toolCalls": [
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה כלבים יש בפינת החי?",
+      "answer": "30",
+      "kind": "number",
+      "x": 280,
+      "y": 400,
+      "hint": "אל תענה/תעני את מספר המשבצות! קודם בדוק/בדקי על הציר מה ההפרש בין 0 למספר שאחריו — זה הערך של משבצת אחת. אחר כך: מספר המשבצות כפול הערך הזה.",
+      "praise": "מעולה! לא נפלת בסולם — ספרת משבצות והכפלת בערך שלהן 🏆"
+     }
     },
-    "independent": {
-      "reply": "עכשיו לבד, שלוש שאלות. בראשונה קרא/י מהדיאגרמה שעל הלוח — ואל תשכח/י את השאלה הקבועה. השנייה בלי ציור: רק לפי המספרים על הציר. והשלישית היא הכיוון ההפוך — בונים עמודה מתוך מספר. בשיעור הבא נלמד להשוות שתי קבוצות באותה דיאגרמה 🙂",
-      "toolCalls": [
-        { "name": "draw_exercise", "input": { "text": "כמה בננות נמכרו?", "answer": "60", "kind": "number", "x": 250, "y": 130, "hint": "הסתכל/י על הציר: אחרי 0 בא 20, אז כל משבצת שווה 20. עכשיו ספור/י את המשבצות בעמודת הבננות והכפל/י בערך של משבצת.", "praise": "כל הכבוד! קראת נכון עם הסולם, בלי ליפול במלכודת 👏" } },
-        { "name": "render_widget", "input": { "title": "פירות שנמכרו", "x": 540, "y": 90, "w": 400, "h": 300, "exact": true, "html": "<div style='background:#fff;width:100%;height:100%;font-family:Arial,sans-serif'><svg viewBox='0 0 400 300' width='100%' height='100%'><text x='190' y='20' text-anchor='middle' font-size='16' fill='#1e3a5f'>פירות שנמכרו היום</text><g stroke='#cbd5e1' stroke-width='1'><line x1='45' y1='215' x2='340' y2='215'/><line x1='45' y1='180' x2='340' y2='180'/><line x1='45' y1='145' x2='340' y2='145'/><line x1='45' y1='110' x2='340' y2='110'/><line x1='45' y1='75' x2='340' y2='75'/></g><rect x='242' y='180' width='56' height='70' fill='#ef4444'/><rect x='162' y='145' width='56' height='105' fill='#f59e0b'/><rect x='82' y='215' width='56' height='35' fill='#10b981'/><line x1='40' y1='250' x2='345' y2='250' stroke='#334155' stroke-width='2'/><line x1='340' y1='68' x2='340' y2='252' stroke='#334155' stroke-width='2'/><g font-size='13' fill='#334155'><text x='348' y='255'>0</text><text x='348' y='220'>20</text><text x='348' y='185'>40</text><text x='348' y='150'>60</text><text x='348' y='115'>80</text><text x='348' y='80'>100</text></g><g font-size='14' fill='#1e293b' text-anchor='middle'><text x='270' y='270'>תפוחים</text><text x='190' y='270'>בננות</text><text x='110' y='270'>אגסים</text></g></svg></div>" } },
-        { "name": "draw_exercise", "input": { "text": "על הציר כתוב 0, 4, 8, 12. כמה שווה משבצת?", "answer": "4", "kind": "number", "x": 250, "y": 300, "hint": "בין כל שני מספרים שכנים על הציר יש משבצת אחת. חשב/י כמה מוסיפים כשעוברים ממספר אחד לזה שאחריו.", "praise": "יפה! מצאת את ערך המשבצת מהציר בלבד — זה הצעד הראשון בכל דיאגרמה 👏" } },
-        { "name": "draw_exercise", "input": { "text": "כל משבצת שווה 3. יש 12 תלמידים — כמה משבצות?", "answer": "4", "kind": "number", "x": 250, "y": 440, "hint": "כאן בונים ולא קוראים. כשקוראים כופלים בערך המשבצת, אז כשבונים עושים את הפעולה ההפוכה — מחלקים.", "praise": "מצוין! בנית עמודה מהטבלה — ידעת לחלק במקום לכפול 🎉" } }
-      ]
+    {
+     "name": "bar_chart",
+     "input": {
+      "labels": "ארנבים,חתולים,כלבים",
+      "series": "20,50,30",
+      "step": 10,
+      "unit": "squares",
+      "title": "פינת החי",
+      "x": 540,
+      "y": 100,
+      "w": 400,
+      "h": 300,
+      "exact": true
+     }
     }
+   ]
+  },
+  "independent": {
+   "reply": "עכשיו לבד, שלוש שאלות. בראשונה קרא/י מהדיאגרמה שעל הלוח — ואל תשכח/י את השאלה הקבועה. השנייה בלי ציור: רק לפי המספרים על הציר. והשלישית היא הכיוון ההפוך — בונים עמודה מתוך מספר. בשיעור הבא נלמד להשוות שתי קבוצות באותה דיאגרמה 🙂",
+   "toolCalls": [
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה בננות נמכרו?",
+      "answer": "60",
+      "kind": "number",
+      "x": 250,
+      "y": 130,
+      "hint": "הסתכל/י על הציר: אחרי 0 בא 20, אז כל משבצת שווה 20. עכשיו ספור/י את המשבצות בעמודת הבננות והכפל/י בערך של משבצת.",
+      "praise": "כל הכבוד! קראת נכון עם הסולם, בלי ליפול במלכודת 👏"
+     }
+    },
+    {
+     "name": "bar_chart",
+     "input": {
+      "labels": "אגסים,בננות,תפוחים",
+      "series": "20,60,40",
+      "step": 20,
+      "unit": "squares",
+      "title": "פירות שנמכרו",
+      "x": 540,
+      "y": 90,
+      "w": 400,
+      "h": 300,
+      "exact": true
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "על הציר כתוב 0, 4, 8, 12. כמה שווה משבצת?",
+      "answer": "4",
+      "kind": "number",
+      "x": 250,
+      "y": 300,
+      "hint": "בין כל שני מספרים שכנים על הציר יש משבצת אחת. חשב/י כמה מוסיפים כשעוברים ממספר אחד לזה שאחריו.",
+      "praise": "יפה! מצאת את ערך המשבצת מהציר בלבד — זה הצעד הראשון בכל דיאגרמה 👏"
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כל משבצת שווה 3. יש 12 תלמידים — כמה משבצות?",
+      "answer": "4",
+      "kind": "number",
+      "x": 250,
+      "y": 440,
+      "hint": "כאן בונים ולא קוראים. כשקוראים כופלים בערך המשבצת, אז כשבונים עושים את הפעולה ההפוכה — מחלקים.",
+      "praise": "מצוין! בנית עמודה מהטבלה — ידעת לחלק במקום לכפול 🎉"
+     }
+    }
+   ]
   }
+ }
 }
