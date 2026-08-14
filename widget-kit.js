@@ -729,6 +729,10 @@
   "protractor": function (p) {
     p = p || {};
     var ang = wkNum(p.angle, 0, 180, 60), target = wkNum(p.target, -1, 180, -1);
+    // lock — הקרן קבועה. חובה כששואלים "כמה מעלות?", אחרת הילד גורר והתשובה משתנה.
+    // value:false — מסתיר את הקריאה המספרית, אחרת הכלי מסגיר את התשובה.
+    var lock = p.lock === true || String(p.lock) === "true";
+    var showVal = !(p.value === false || String(p.value) === "false");
     var cx = 190, cy = 185, R = 150, INK = "#0f3b36", ticks = "", nums = "";
     for (var d = 0; d <= 180; d += 5) {
       var a = (180 - d) * Math.PI / 180, len = d % 10 === 0 ? (d % 30 === 0 ? 20 : 14) : 8;
@@ -749,15 +753,15 @@
       + '<line id="ry" x1="' + cx + '" y1="' + cy + '" x2="' + (cx + R) + '" y2="' + cy + '" stroke="#e11d48" stroke-width="4" stroke-linecap="round"/>'
       + '<circle cx="' + cx + '" cy="' + cy + '" r="6" fill="' + INK + '"/>'
       + '<text id="rd" x="' + cx + '" y="222" text-anchor="middle" font-size="24" font-weight="800" fill="' + INK + '"></text></svg>'
-      + '<script>(function(){var CX=' + cx + ',CY=' + cy + ',R=' + R + ',T=' + target + ',a=' + ang + ';'
+      + '<script>(function(){var CX=' + cx + ',CY=' + cy + ',R=' + R + ',T=' + target + ',a=' + ang + ',LOCK=' + (lock ? 1 : 0) + ',SHOW=' + (showVal ? 1 : 0) + ';'
       + 'var s=document.querySelector("svg"),ry=document.getElementById("ry"),rd=document.getElementById("rd"),drag=false;'
       + 'function rn(){var r=a*Math.PI/180;ry.setAttribute("x2",(CX+R*Math.cos(Math.PI-r)).toFixed(1));ry.setAttribute("y2",(CY-R*Math.sin(Math.PI-r)).toFixed(1));'
-      + 'rd.textContent=a+"\\u00B0";if(T>=0&&a===T){rd.setAttribute("fill","#22c55e");parent.postMessage({type:"vela:correct"},"*");}else{rd.setAttribute("fill","#0f3b36");}}'
+      + 'rd.textContent=SHOW?(a+"\\u00B0"):"";if(T>=0&&a===T){rd.setAttribute("fill","#22c55e");parent.postMessage({type:"vela:correct"},"*");}else{rd.setAttribute("fill","#0f3b36");}}'
       + 'function set(cx2,cy2){var b=s.getBoundingClientRect(),k=380/b.width;var x=(cx2-b.left)*k-CX,y=CY-((cy2-b.top)*k);'
       + 'var d=Math.round(Math.atan2(Math.max(0,y),-x)*180/Math.PI/5)*5;a=Math.max(0,Math.min(180,d));rn();}'
-      + 's.addEventListener("pointerdown",function(e){drag=true;e.preventDefault();set(e.clientX,e.clientY);try{s.setPointerCapture(e.pointerId);}catch(_){}});'
+      + 'if(!LOCK){s.addEventListener("pointerdown",function(e){drag=true;e.preventDefault();set(e.clientX,e.clientY);try{s.setPointerCapture(e.pointerId);}catch(_){}});'
       + 's.addEventListener("pointermove",function(e){if(drag){e.preventDefault();set(e.clientX,e.clientY);}});'
-      + 's.addEventListener("pointerup",function(){drag=false;});rn();})();<\/script>';
+      + 's.addEventListener("pointerup",function(){drag=false;});}rn();})();<\/script>';
   },
 
   /** רשת עשרונית — 10 עשיריות או 100 מאיות. לחיצה צובעת, והקריאה מראה שבר, עשרוני ואחוז יחד. */
