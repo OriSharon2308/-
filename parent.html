@@ -11,10 +11,21 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/parent.css?v=17" />
+    <link rel="stylesheet" href="/parent.css?v=20" />
   </head>
   <body>
     <div id="bootView" class="boot"><span class="spin" aria-label="טוען"></span></div>
+
+    <!-- מעבר כניסה: "אזור ההורים" על רקע טורקיז עמוק, vela מאחור -->
+    <div id="enterFx" class="enter" hidden aria-hidden="true">
+      <div class="enter__glow"></div>
+      <span class="enter__p enter__p--1"></span>
+      <span class="enter__p enter__p--2"></span>
+      <span class="enter__p enter__p--3"></span>
+      <span class="enter__p enter__p--4"></span>
+      <div class="enter__brand">vela</div>
+      <div class="enter__title">אזור ההורים</div>
+    </div>
 
     <!-- כניסה — עם פרטי החשבון של הילד -->
     <div id="loginView" class="login" hidden>
@@ -54,6 +65,7 @@
       </footer>
     </div>
 
-    <script src="/parent.js?v=18"></script>
+    <script src="/screen-fit.js" data-design="1160" data-max="1.5"></script>
+    <script src="/parent.js?v=20"></script>
   </body>
 </html>
