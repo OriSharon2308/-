@@ -522,8 +522,41 @@ function buildArithViz(text) {
  *  רק כשהילד מתקשה והמורה מחליט לחשוף אותה (revealArithViz דרך [[SHOW_VISUAL]]). */
 function showProblemVisual(u, p) {
   if (!p) return showProblemDiagram(u, null);
+  if (p.diagramData && p.diagramData.type === "kit") return showKitWidget(u, p.diagramData);
   if (p.diagramSvg) return showProblemDiagram(u, p.diagramSvg, p.diagramAlt);
   return showProblemDiagram(u, null);
+}
+
+/**
+ * ווידג'ט מערכת-הכלים כאיור-שאלה. עד כה כל סוג-איור דרש קוד רינדור משלו
+ * (שעון, מטבעות, ציור-צורה), ולכן נושא חדש בתרגול חייב עבודת-לקוח. המסלול
+ * הזה גנרי: diagramData {type:"kit", widget:"fraction_wall", params:{…}} —
+ * וכל כלי שקיים ב-widget-kit.js עובד מיד, בלי שורת קוד נוספת.
+ * ה-HTML של הכלי כולל <script>, ולכן הוא חייב iframe מבודד (innerHTML לא מריץ סקריפט).
+ */
+function showKitWidget(u, dd) {
+  const el = u.problemDiagram;
+  if (!el) return;
+  const kit = window.VelaWidgets;
+  const name = dd && dd.widget;
+  if (!kit || typeof kit[name] !== "function") return showProblemDiagram(u, null);
+  let html;
+  try { html = kit[name](dd.params || {}); }
+  catch (e) { return showProblemDiagram(u, null); }
+
+  el.hidden = false;
+  el.setAttribute("aria-hidden", "false");
+  if (dd.alt) el.setAttribute("aria-label", dd.alt);
+  el.innerHTML = "";
+  const f = document.createElement("iframe");
+  f.className = "problemDiagram__kit";
+  f.setAttribute("sandbox", "allow-scripts");
+  f.setAttribute("title", dd.alt || "איור לשאלה");
+  f.style.cssText = "width:100%;max-width:" + (dd.w || 380) + "px;height:" + (dd.h || 260) + "px;border:0;display:block;margin:0 auto;background:transparent";
+  f.srcdoc = '<!doctype html><meta charset="utf-8">'
+    + '<style>html,body{margin:0;height:100%;font-family:Assistant,system-ui,sans-serif;background:transparent}</style>'
+    + html;
+  el.appendChild(f);
 }
 
 /* ---------- שעון אינטראקטיבי: הילד גורר את המחוגים ---------- */
