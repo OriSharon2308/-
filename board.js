@@ -845,6 +845,7 @@
   VelaBoard.prototype._tools.area_grid = kitTool("area_grid", 340, 300, "שטח והיקף");
   VelaBoard.prototype._tools.fraction_wall = kitTool("fraction_wall", 340, 300, "קיר שברים");
   VelaBoard.prototype._tools.solid_net = kitTool("solid_net", 400, 240, "גוף ופריסה");
+  VelaBoard.prototype._tools.ruler = kitTool("ruler", 380, 190, "סרגל");
 
   // ───────── סידור-עצמי: המורה רואה את פריסת הלוח (getLayout) ויכול להזיז/לשנות-גודל/למחוק פריט לפי id ─────────
   // הזזת אובייקט = הסטת כל שדות הקואורדינטות שלו (נקודות/x,y/x1..y2/cx,cy).

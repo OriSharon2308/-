@@ -963,6 +963,30 @@
       + 'rd.textContent=cnt?("\\u05D1\\u05D9\\u05D7\\u05D3 = "+(Math.round(sum*1000)/1000)):"";});})();<\/script>';
   },
 
+  /** סרגל — חפץ מונח מול שנתות ס״מ. מדידה בלי סרגל היא לא מדידה. */
+  "ruler": function (p) {
+    p = p || {};
+    var len = wkNum(p.length, 1, 20, 8);
+    var from = wkNum(p.from, 0, 12, 0);          // מאיזו שנתה מתחיל החפץ
+    var maxCm = wkNum(p.max, 5, 20, 20);
+    if (from + len > maxCm) from = Math.max(0, maxCm - len);
+    var INK = "#0f3b36", x0 = 30, x1 = 350, unit = (x1 - x0) / maxCm;
+    var ticks = "";
+    for (var i = 0; i <= maxCm; i++) {
+      var x = x0 + i * unit, big = i % 5 === 0;
+      ticks += '<line x1="' + x.toFixed(1) + '" y1="118" x2="' + x.toFixed(1) + '" y2="' + (big ? 92 : 104) + '" stroke="' + INK + '" stroke-width="' + (big ? 2 : 1) + '"/>';
+      if (big) ticks += '<text x="' + x.toFixed(1) + '" y="85" text-anchor="middle" font-size="11" fill="' + INK + '">' + i + '</text>';
+    }
+    var ox = x0 + from * unit, ow = len * unit;
+    var label = p.label ? String(p.label).slice(0, 24).replace(/[<>&]/g, "") : "";
+    return '<svg viewBox="0 0 380 190" width="100%" height="100%" style="display:block">'
+      + (label ? '<text x="190" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="' + INK + '">' + label + '</text>' : '')
+      + '<rect x="' + ox.toFixed(1) + '" y="42" width="' + ow.toFixed(1) + '" height="26" rx="5" fill="#5eead4" stroke="' + INK + '" stroke-width="2"/>'
+      + '<rect x="' + x0 + '" y="118" width="' + (x1 - x0) + '" height="46" fill="#fef3c7" stroke="' + INK + '" stroke-width="2"/>'
+      + ticks
+      + '<text x="190" y="182" text-anchor="middle" font-size="12" fill="#64748b">סנטימטרים</text></svg>';
+  },
+
   /** גוף ופריסתו — הילד רואה את התלת-ממד ואת הפריסה זה לצד זה. */
   "solid_net": function (p) {
     p = p || {};
