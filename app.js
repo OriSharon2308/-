@@ -1964,6 +1964,12 @@ async function main() {
       return;
     }
 
+    // מקש-הנקודה מוצג רק כששאלה יכולה להיענות בעשרוני — אחרת הוא רק מבלבל
+    // ילד בכיתה ב׳. הסימן: התשובה עצמה מכילה נקודה, או answerKind === "decimal".
+    const wantsDot = !!(p && (p.answerKind === "decimal" || /\./.test(String(p.answer ?? ""))));
+    const dotKey = u.numPad && u.numPad.querySelector('.numKey--dot');
+    if (dotKey) dotKey.hidden = !wantsDot;
+
     if (u.answerRowNumeric) u.answerRowNumeric.hidden = isClockSet || isTime;
     if (u.answerRowTime) u.answerRowTime.hidden = !isTime;
     if (u.answerRowInteractive) u.answerRowInteractive.hidden = !isClockSet;
@@ -2959,7 +2965,10 @@ async function main() {
     const k = key.getAttribute("data-k");
     if (k === "back") u.answerInput.value = u.answerInput.value.slice(0, -1);
     else if (k === "clear") u.answerInput.value = "";
-    else u.answerInput.value += k;
+    // נקודה אחת בלבד, ולא כתו ראשון — "2..5" או ".5" אינם מספר תקין
+    else if (k === ".") {
+      if (!u.answerInput.value.includes(".") && u.answerInput.value !== "") u.answerInput.value += ".";
+    } else u.answerInput.value += k;
   });
   // סגירה בלחיצה מחוץ למסגרת אזור התשובה
   document.addEventListener("click", (e) => {
