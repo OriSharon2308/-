@@ -38,7 +38,7 @@
         "reply": "ועכשיו הכיוון ההפוך. נותנים לך רק חתיכה אחת ואומרים: זה שליש. מה השלם? שליש אומר שחילקנו לשלושה חלקים שווים, אז צריך שלוש חתיכות כאלה בדיוק — ואז השלם חוזר. ✓",
         "toolCalls": [
           { "name": "write_text", "input": { "text": "הכיוון ההפוך — לבנות את השלם", "x": 480, "y": 84, "size": 32 } },
-          { "name": "draw_fraction_bar", "input": { "parts": 1, "shaded": 1, "x": 240, "y": 220, "w": 170, "label": "" } },
+          { "name": "draw_fraction_bar", "input": { "parts": 1, "shaded": 1, "x": 240, "y": 220, "w": 110, "label": "" } },
           { "name": "write_text", "input": { "text": "זה שליש", "x": 240, "y": 300, "size": 28 } },
           { "name": "draw_arrow", "input": { "x1": 380, "y1": 220, "x2": 480, "y2": 220, "width": 4 } },
           { "name": "draw_fraction_bar", "input": { "parts": 3, "shaded": 1, "x": 700, "y": 220, "w": 330, "label": "" } },

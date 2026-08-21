@@ -45,11 +45,11 @@
             "text": "כמה יחידות מלאות בלוח?",
             "answer": "7",
             "kind": "number",
-            "hint": "ספור/ספרי רק את המשבצות המלאות, אחת-אחת בקול: אחת, שתיים, שלוש... גע/י בכל משבצת ואל תדלג/י על אף אחת!",
+            "hint": "ספור/ספרי רק את המשבצות המלאות, אחת-אחת בקול: אחת, שתיים, שלוש... עבור/עברי עם העיניים משמאל לימין ואל תדלג/י על אף אחת!",
             "praise": "מעולה! ספרת בדיוק נכון. את/ה סופר/ת יחידות כמו גדול/ה!"
           }
         },
-        { "name": "ten_frame", "input": { "cells": 10, "perRow": 5, "filled": 7, "x": 560, "y": 210, "w": 380, "h": 250 } }
+        { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 360 240' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' style='display:block' xmlns='http://www.w3.org/2000/svg'><rect x='40' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='96' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='152' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='208' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='264' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='40' y='114' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='96' y='114' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='152' y='114' width='56' height='56' rx='4' fill='#fff' stroke='#0d9488' stroke-width='2'/><rect x='208' y='114' width='56' height='56' rx='4' fill='#fff' stroke='#0d9488' stroke-width='2'/><rect x='264' y='114' width='56' height='56' rx='4' fill='#fff' stroke='#0d9488' stroke-width='2'/></svg>", "title": "לוח-עשר", "x": 560, "y": 210, "w": 380, "h": 250 } }
       ]
     },
     "independent": {
@@ -61,7 +61,7 @@
             "text": "כמה יחידות מלאות בלוח?",
             "answer": "8",
             "kind": "number",
-            "hint": "לאט-לאט: גע/י בכל משבצת מלאה בלוח שבצד וספור/ספרי בקול. כל משבצת מלאה היא יחידה אחת.",
+            "hint": "לאט-לאט: הצבע/הצביעי באוויר על כל משבצת מלאה בלוח שבצד וספור/ספרי בקול. כל משבצת מלאה היא יחידה אחת.",
             "praise": "יפה מאוד! עוד ספירה מושלמת!"
           }
         },
@@ -85,7 +85,7 @@
             "praise": "וואו, שאלה קשה — ופתרת אותה! אלוף/ה אמיתי/ת!"
           }
         },
-        { "name": "ten_frame", "input": { "cells": 10, "perRow": 5, "filled": 8, "x": 560, "y": 210, "w": 380, "h": 250 } }
+        { "name": "render_widget", "input": { "html": "<svg viewBox='0 0 360 240' width='100%' height='100%' preserveAspectRatio='xMidYMid meet' style='display:block' xmlns='http://www.w3.org/2000/svg'><rect x='40' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='96' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='152' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='208' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='264' y='58' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='40' y='114' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='96' y='114' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='152' y='114' width='56' height='56' rx='4' fill='#0d9488' stroke='#0d9488' stroke-width='2'/><rect x='208' y='114' width='56' height='56' rx='4' fill='#fff' stroke='#0d9488' stroke-width='2'/><rect x='264' y='114' width='56' height='56' rx='4' fill='#fff' stroke='#0d9488' stroke-width='2'/></svg>", "title": "לוח-עשר", "x": 560, "y": 210, "w": 380, "h": 250 } }
       ]
     }
   }

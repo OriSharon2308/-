@@ -24,7 +24,7 @@
         ]
       },
       {
-        "reply": "עכשיו שני שכנים. המספר שבא מיד לפני נקרא קודם, והמספר שבא מיד אחרי נקרא עוקב. תסתכל/י על 400,000. העוקב קל — מוסיפים 1 ומקבלים 400,001. הקודם מעניין: אין אחדות להוריד, אז פורעים בית-בית — וכל האפסים הופכים ל-9. יוצא 399,999. ✓",
+        "reply": "עכשיו שני שכנים. המספר שבא מיד לפני נקרא קודם, והמספר שבא מיד אחרי נקרא עוקב. תסתכל/י על 400,000. העוקב קל — מוסיפים 1 ומקבלים 400,001. הקודם מעניין: אין אחדות להוריד, אז פורטים בית-בית — וכל האפסים הופכים ל-9. יוצא 399,999. ✓",
         "toolCalls": [
           { "name": "write_text", "input": { "text": "קודם ועוקב", "x": 500, "y": 95, "size": 36 } },
           { "name": "write_text", "input": { "text": "399,999", "x": 250, "y": 250, "size": 34 } },
@@ -34,7 +34,7 @@
           { "name": "draw_arrow", "input": { "x1": 570, "y1": 190, "x2": 660, "y2": 190, "color": "#4a7", "width": 3 } },
           { "name": "write_text", "input": { "text": "קודם", "x": 385, "y": 150, "size": 24 } },
           { "name": "write_text", "input": { "text": "עוקב", "x": 615, "y": 150, "size": 24 } },
-          { "name": "write_text", "input": { "text": "אין אחדות לפרוע? הולכים לבית הבא", "x": 500, "y": 370, "size": 28 } },
+          { "name": "write_text", "input": { "text": "אין אחדות לפרוט? הולכים לבית הבא", "x": 500, "y": 370, "size": 28 } },
           { "name": "write_text", "input": { "text": "וכל האפסים בדרך הופכים ל-9", "x": 500, "y": 440, "size": 28 } }
         ]
       },
@@ -68,12 +68,12 @@
       ]
     },
     "independent": {
-      "reply": "עכשיו לבד, שלוש שאלות. בראשונה הלוח עוד איתך. בשנייה יש הרבה תשובות נכונות ואני מבקש את הקטנה שבהן — ואחרי שתענה/י, תמצא/י בראש עוד אחת שמתאימה. השלישית היא המשחק, בלי שום עזרה.",
+      "reply": "עכשיו לבד, שלוש שאלות. בראשונה הלוח עוד איתך. בשנייה חסרה ספרה, וכמה ספרות מתאימות במקומה — אני מבקש את הגדולה שבהן. השלישית היא המשחק, בלי שום עזרה. וכתוב/כתבי תמיד בלי פסיקים — הפסיק קיים רק על הלוח.",
       "toolCalls": [
         { "name": "render_widget", "input": { "title": "435,108", "x": 150, "y": 70, "w": 700, "h": 150, "exact": true, "html": "<div style='font-family:sans-serif;padding:4px;box-sizing:border-box'><table style='border-collapse:collapse;width:100%;table-layout:fixed;text-align:center;direction:ltr'><tr><td colspan='3' style='border:2px solid #444;background:#fff3e0;font-size:15px;padding:3px'>אלפים</td><td colspan='3' style='border:2px solid #444;background:#e8f5e9;font-size:15px;padding:3px'>יחידות</td></tr><tr><td style='border:2px solid #444;font-size:11px;padding:2px'>מאות אלפים</td><td style='border:2px solid #444;font-size:11px;padding:2px'>עשרות אלפים</td><td style='border:2px solid #444;font-size:11px;padding:2px'>אלפים</td><td style='border:2px solid #444;font-size:11px;padding:2px'>מאות</td><td style='border:2px solid #444;font-size:11px;padding:2px'>עשרות</td><td style='border:2px solid #444;font-size:11px;padding:2px'>אחדות</td></tr><tr><td style='border:2px solid #444;font-size:24px;height:40px'>4</td><td style='border:2px solid #444;font-size:24px;height:40px'>3</td><td style='border:2px solid #444;font-size:24px;height:40px'>5</td><td style='border:2px solid #444;font-size:24px;height:40px'>1</td><td style='border:2px solid #444;font-size:24px;height:40px'>0</td><td style='border:2px solid #444;font-size:24px;height:40px'>8</td></tr></table></div>" } },
         { "name": "draw_exercise", "input": { "text": "מה הערך של הספרה 3 במספר 435108?", "answer": "30000", "kind": "number", "x": 380, "y": 280, "hint": "מצא/י את ה-3 בלוח וקרא/י את שם הבית מעליה. אחר כך תכתוב/תכתבי 3 ואחריה כמה אפסים שהבית הזה דורש.", "praise": "יפה! זיהית את הבית ולא נבהלת מהמספר הארוך 👏" } },
-        { "name": "draw_exercise", "input": { "text": "מה המספר הקטן ביותר שגדול מ-36514?", "answer": "36515", "kind": "number", "x": 380, "y": 385, "hint": "המספר הקטן ביותר שגדול ממספר כלשהו הוא בדיוק העוקב שלו. אז מה עושים ל-36514 כדי לקבל אותו?", "praise": "כן! זה העוקב. ויש עוד תשובות שמתאימות לאי-שוויון — אתה כבר יודע/ת למצוא אותן 🎉" } },
-        { "name": "write_text", "input": { "text": "36514 < ? < 36524", "x": 830, "y": 385, "size": 24 } },
+        { "name": "draw_exercise", "input": { "text": "איזו הספרה הגדולה ביותר שמתאימה במקום הריק?", "answer": "4", "kind": "number", "x": 380, "y": 385, "hint": "תציב/י ספרות במקום הריק ותבדוק/תבדקי מי מהן עדיין קטנה מ-45318. כמה ספרות מתאימות? עכשיו קח/י את הגדולה שבהן.", "praise": "יפה! גילית שכמה ספרות מתאימות, ובחרת את הגדולה שבהן 🎉" } },
+        { "name": "write_text", "input": { "text": "4_,318 < 45,318", "x": 830, "y": 385, "size": 26 } },
         { "name": "draw_exercise", "input": { "text": "מהספרות 1 2 3 4 5 6 — הזוגי הגדול ביותר?", "answer": "654312", "kind": "number", "x": 380, "y": 480, "hint": "שתי שאלות בסדר הזה: איזו ספרה זוגית כדאי לשים בסוף כדי לא לבזבז ספרה גדולה, ואיך מסדרים את כל השאר כדי לקבל את הגדול ביותר?", "praise": "אלוף/ה! חשבת קודם על התנאי הזוגי ורק אחר כך על הגודל — זה הסדר הנכון 🏆" } }
       ]
     }
