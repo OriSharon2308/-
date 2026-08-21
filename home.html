@@ -163,11 +163,26 @@
         transform-origin: 50% 12%;
         animation: vhTail 4.6s ease-in-out infinite;
       }
+      .heroArt .vhBody .vhHand {
+        left: 22.57%; top: 37.0%; width: 10.85%; height: 12.52%; z-index: 1;
+        transform-origin: 77% 87%;
+        animation: vhWave 7s ease-in-out infinite;
+      }
+      .heroArt .vhBody .vhEyes {
+        left: 39.23%; top: 27.11%; width: 25.28%; height: 12.68%; z-index: 3;
+        animation: vhBlink 4.6s linear infinite;
+      }
       .heroArt .vhEl { position: absolute; animation: vhFloat var(--d, 6s) ease-in-out var(--dl, 0s) infinite; will-change: transform; }
       .heroArt .vhEl img { position: static; width: 100%; height: 100%; }
       @keyframes vhHover  { 0%,100% { transform: translateY(0) rotate(0.001deg); } 50% { transform: translateY(-1.6%) rotate(-0.5deg); } }
       @keyframes vhShadow { 0%,100% { transform: scaleX(1); opacity: 1; } 50% { transform: scaleX(0.86); opacity: 0.62; } }
       @keyframes vhTail   { 0%,100% { transform: rotate(2.2deg) translateX(1.2%); } 50% { transform: rotate(-2.6deg) translateX(-1.4%); } }
+      @keyframes vhWave {
+        0%, 8% { transform: rotate(0deg); } 11% { transform: rotate(-13deg); }
+        15% { transform: rotate(9deg); } 19% { transform: rotate(-12deg); }
+        23% { transform: rotate(8deg); } 27%, 100% { transform: rotate(0deg); }
+      }
+      @keyframes vhBlink { 0%, 90.5%, 94.5%, 100% { opacity: 1; } 91.5%, 93.5% { opacity: 0; } }
       @keyframes vhFloat  { 0%,100% { transform: translate(0, 0); } 50% { transform: translate(var(--dx, 0px), var(--dy, -10px)); } }
 
       /* סטטיסטיקות — אריחים צבעוניים רכים */
@@ -214,7 +229,7 @@
         .heroArt .velaHero { width: min(280px, 70%); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .heroArt .vhBody, .heroArt .vhTail, .heroArt .vhShadow, .heroArt .vhEl { animation: none; }
+        .heroArt .vhBody, .heroArt .vhTail, .heroArt .vhShadow, .heroArt .vhEl, .heroArt .vhHand, .heroArt .vhEyes { animation: none; }
         .home .home__greeting .ch { opacity: 1; }
         .home .home__greeting .ch--on { animation: none; }
       }
@@ -276,7 +291,9 @@
               <div class="vhEl" style="left:12%; top:67.6%; width:20.7%; height:13.5%; --d:7.8s; --dl:1s; --dx:5px; --dy:-12px;"><img src="/teacher-character/loop-src/assets/el-08.png" alt="" /></div>
               <div class="vhBody">
                 <img class="vhTail" src="/teacher-character/loop-src/assets/tail.png" alt="" />
-                <img class="vhBodyImg" src="/teacher-character/loop-src/assets/body.png" alt="" />
+                <img class="vhHand" src="/teacher-character/live/hand.png" alt="" />
+                <img class="vhBodyImg" src="/teacher-character/live/body-nowave.png" alt="" />
+                <img class="vhEyes" src="/teacher-character/live/eyes-open.png" alt="" />
               </div>
             </div>
           </div>
@@ -481,6 +498,30 @@
           cy += (ty - cy) * 0.15;
           bg.style.setProperty("--px", cx.toFixed(2) + "px");
           bg.style.setProperty("--py", cy.toFixed(2) + "px");
+          requestAnimationFrame(tick);
+        })();
+      })();
+    </script>
+    <script>
+      /* המורה עוקב עם המבט והגוף אחרי הסמן — עדין, עם lerp, מכבד reduced-motion */
+      (function () {
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var hero = document.querySelector(".velaHero");
+        var eyes = document.querySelector(".vhEyes");
+        if (!hero || !eyes) return;
+        var tx = 0, ty = 0, cx = 0, cy = 0;
+        addEventListener("pointermove", function (e) {
+          var r = hero.getBoundingClientRect();
+          var reach = Math.max(innerWidth, innerHeight) * 0.5;
+          tx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / reach));
+          ty = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / reach));
+        }, { passive: true });
+        (function tick() {
+          cx += (tx - cx) * 0.07;
+          cy += (ty - cy) * 0.07;
+          hero.style.transform = "rotate(" + (cx * 3.5).toFixed(2) + "deg) translate(" +
+            (cx * 1.4).toFixed(2) + "%, " + (cy * 1.0).toFixed(2) + "%)";
+          eyes.style.translate = (cx * 5).toFixed(1) + "px " + (cy * 4).toFixed(1) + "px";
           requestAnimationFrame(tick);
         })();
       })();

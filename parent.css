@@ -407,3 +407,31 @@ body {
   }
   .rv { opacity: 1; transform: none; }
 }
+
+/* ---------------- קצב הלמידה (רצף + מפת-חום) ---------------- */
+.rhythm__stats { display: flex; gap: 12px; margin: 14px 0 18px; flex-wrap: wrap; }
+.rhythm__stat {
+  flex: 1 1 120px; background: var(--bg-tint); border: 1px solid var(--line);
+  border-radius: 16px; padding: 14px 16px; text-align: center;
+}
+.rhythm__stat--fire { background: var(--warn-soft); border-color: #f4dcae; }
+.rhythm__big {
+  font-family: var(--num); font-weight: 700; font-size: 30px; line-height: 1;
+  color: var(--accent-deep); display: flex; align-items: baseline; justify-content: center; gap: 4px;
+}
+.rhythm__stat--fire .rhythm__big { color: var(--warn); }
+.rhythm__big small { font-size: 14px; font-weight: 600; color: var(--muted); }
+.rhythm__k { margin-top: 6px; font-size: 13px; color: var(--ink-soft); }
+.heatmap { display: grid; grid-template-columns: repeat(15, 1fr); gap: 5px; }
+.heat { aspect-ratio: 1; border-radius: 5px; background: var(--line-soft); transition: transform 0.15s var(--ease); }
+.heat:hover { transform: scale(1.18); }
+.heat--0 { background: var(--line-soft); }
+.heat--1 { background: rgba(18, 165, 160, 0.25); }
+.heat--2 { background: rgba(18, 165, 160, 0.45); }
+.heat--3 { background: rgba(18, 165, 160, 0.7); }
+.heat--4 { background: var(--accent); }
+.heatmap__legend {
+  display: flex; align-items: center; justify-content: flex-end; gap: 5px;
+  margin-top: 10px; font-size: 12px; color: var(--muted);
+}
+.heatmap__legend .heat { width: 13px; height: 13px; aspect-ratio: auto; }

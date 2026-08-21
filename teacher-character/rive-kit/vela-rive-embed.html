@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>vela · המורה ב-Rive — הטמעה מוכנה</title>
+  <!-- ה-runtime הרשמי של Rive (קטן, ~90KB gzip) -->
+  <script src="https://unpkg.com/@rive-app/canvas@2.21.6"></script>
+  <style>
+    body { margin:0; min-height:100vh; display:grid; place-items:center;
+           background:#f7fafc; font-family:"Rubik",system-ui,sans-serif; color:#16323c; }
+    .wrap { text-align:center; }
+    canvas { width:340px; height:340px; }
+    p { color:#4a6a75; font-size:14px; }
+    .missing { max-width:420px; line-height:1.7; background:#fff; border-radius:18px;
+               padding:26px 30px; box-shadow:0 4px 14px rgba(22,50,60,.06); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <canvas id="rv" width="680" height="680"></canvas>
+    <p id="note">המורה ב-Rive — מזיזים עכבר, לוחצים עליו לנפנוף</p>
+  </div>
+  <script>
+    /**
+     * הטמעת teacher.riv — מחכה לקובץ מהעורך של Rive (ראו README).
+     * מצפה ל-State Machine בשם "Teacher" עם:
+     *   lookX, lookY (Number ‎-1..1) · wave (Trigger)
+     */
+    const r = new rive.Rive({
+      src: "/teacher-character/rive-kit/teacher.riv",
+      canvas: document.getElementById("rv"),
+      autoplay: true,
+      stateMachines: "Teacher",
+      onLoad() {
+        r.resizeDrawingSurfaceToCanvas();
+        const inputs = r.stateMachineInputs("Teacher") || [];
+        const lookX = inputs.find(i => i.name === "lookX");
+        const lookY = inputs.find(i => i.name === "lookY");
+        const wave  = inputs.find(i => i.name === "wave");
+
+        // הסמן מזין את המבט
+        addEventListener("pointermove", (e) => {
+          const c = document.getElementById("rv").getBoundingClientRect();
+          const nx = (e.clientX - (c.left + c.width / 2)) / (innerWidth / 2);
+          const ny = (e.clientY - (c.top + c.height / 2)) / (innerHeight / 2);
+          if (lookX) lookX.value = Math.max(-1, Math.min(1, nx));
+          if (lookY) lookY.value = Math.max(-1, Math.min(1, ny));
+        }, { passive: true });
+
+        // לחיצה על המורה → נפנוף. באתר האמיתי: לקרוא לזה גם על "תשובה נכונה".
+        document.getElementById("rv").addEventListener("click", () => wave && wave.fire());
+        window.velaTeacherWave = () => wave && wave.fire();
+      },
+      onLoadError() {
+        document.querySelector(".wrap").innerHTML = `
+          <div class="missing">
+            <b>עוד אין teacher.riv 🙂</b><br>
+            זה הקוד שמחכה לקובץ מהעורך של Rive.<br>
+            עוקבים אחרי השלבים ב-README.md שבתיקייה הזו, מייצאים
+            <code>teacher.riv</code> לכאן — והדף הזה מתעורר לחיים.
+          </div>`;
+      },
+    });
+  </script>
+</body>
+</html>

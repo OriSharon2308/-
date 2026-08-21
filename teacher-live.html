@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>המורה החי — דמו</title>
+  <style>
+    body {
+      margin: 0; min-height: 100vh; font-family: "Rubik", system-ui, sans-serif;
+      background: radial-gradient(1000px 500px at 70% -100px, #eef6f9, transparent 70%), #f7fafc;
+      display: grid; place-items: center; color: #16323c;
+    }
+    .wrap { text-align: center; padding: 40px 20px; }
+    h1 { font-weight: 600; font-size: 26px; }
+    p  { color: #4a6a75; font-size: 14.5px; margin-top: 8px; }
+    .row { display: flex; align-items: flex-end; justify-content: center; gap: 60px; margin-top: 36px; flex-wrap: wrap; }
+    .demo { text-align: center; }
+    .demo small { display: block; margin-top: 10px; color: #7d99a3; font-size: 12.5px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>המורה חי בתוך הדף 🧞</h1>
+    <p>תזיז את העכבר — הוא עוקב עם המבט והגוף. תעבור עליו — הוא ינופף בהתלהבות. ותשים לב שהוא ממצמץ.</p>
+    <div class="row">
+      <div class="demo"><div id="t1"></div><small>320px — דף בית</small></div>
+      <div class="demo"><div id="t2"></div><small>200px — פינת מסך</small></div>
+      <div class="demo"><div id="t3"></div><small>120px — ליד כותרת</small></div>
+    </div>
+  </div>
+  <script src="/teacher-live.js"></script>
+  <script>
+    VelaTeacher.mount("#t1", { size: 320 });
+    VelaTeacher.mount("#t2", { size: 200 });
+    VelaTeacher.mount("#t3", { size: 120 });
+  </script>
+</body>
+</html>
