@@ -40,7 +40,24 @@ function questionText(p) {
     const i = t.indexOf(" — ");
     if (i !== -1) t = t.slice(0, i).trim();
   }
+  // בעיה רב-סעיפית: הסיפור נשאר למעלה, ומתחתיו רק הסעיף הנוכחי. הילד
+  // עונה סעיף-סעיף, וכך אנחנו יודעים *איפה בשרשרת* הוא נשבר.
+  const part = currentPart(p);
+  if (part) t = t + "\n\n" + genderizeText(part.text);
   return t;
+}
+
+/** הסעיף שהילד נמצא בו כרגע, או null בשאלה רגילה. */
+function currentPart(p) {
+  if (!p || !Array.isArray(p.parts) || !p.parts.length) return null;
+  const i = Math.min(p._partIdx || 0, p.parts.length - 1);
+  return p.parts[i];
+}
+
+/** התשובה שצריך להשוות אליה — של הסעיף הנוכחי, או של השאלה כולה. */
+function activeAnswer(p) {
+  const part = currentPart(p);
+  return part ? part.answer : (p && p.answer);
 }
 
 /** מזהה תלמיד יציב — הבסיס לזיכרון המתמשך של הסוכנים */
@@ -1643,6 +1660,9 @@ async function main() {
         answerKind: p.answerKind || null,
         interactive: p.interactive || null,
         shapeTarget: p.shapeTarget || null,
+        // בעיה רב-סעיפית — הילד עונה סעיף-סעיף, ו-_partIdx עוקב איפה הוא
+        parts: Array.isArray(p.parts) ? p.parts : null,
+        _partIdx: 0,
         createdAt: Date.now(),
       },
       push
@@ -2046,9 +2066,15 @@ async function main() {
       animateQuestionEnter(); // הכרטיס החדש קופץ פנימה מלמטה
     });
   }
-  function showAnswerFeedback(isCorrect) {
+  function showAnswerFeedback(isCorrect, opts = {}) {
     u.feedbackBox.classList.remove("feedback--hidden");
     u.feedbackBox.hidden = false;
+    // keepProblem: סעיף נכון בתוך בעיה רב-סעיפית — מאשרים וממשיכים לסעיף
+    // הבא באותה בעיה, בלי קונפטי ובלי לקפוץ לשאלה חדשה
+    if (isCorrect && opts.keepProblem) {
+      setFeedback(u.feedbackBox, "✅ נכון! ממשיכים לסעיף הבא…", "feedback--ok");
+      return;
+    }
     if (isCorrect) {
       registerCorrect();
       const topic = getCurrentTopic();
@@ -2613,7 +2639,23 @@ async function main() {
       });
   }
 
-  function applyAnswerStats(topic, wasCorrect) {
+  function applyAnswerStats(topic, wasCorrect, skillTag) {
+    // תגית-המיומנות של הסעיף נשלחת לפרופיל — שם היא נצברת ומזינה את
+    // האבחון ("נופל דווקא ב: היקף מלבן")
+    if (skillTag && skillTag.skill) {
+      try {
+        fetch("/api/learn-signal", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            topic: topic.bankTopic || topic.key || topic.name,
+            correct: !!wasCorrect,
+            skill: skillTag.skill,
+            skillHe: skillTag.skillHe || "",
+          }),
+        }).catch(() => {});
+      } catch (e) { /* אות-למידה אינו קריטי */ }
+    }
     // הרמה מנוהלת ע"י מד השאלות והבורר — לא משתנה אוטומטית לפי רצף
     const keepLevel = topic.level;
     const nextTopic = estimateDifficultyNext(topic, wasCorrect);
@@ -2636,6 +2678,9 @@ async function main() {
         gradeNum: api.newProblem.gradeNum || null,
         diagramSvg: api.diagramSvg || api.newProblem.diagramSvg || null,
         diagramAlt: api.diagramAlt || null,
+        diagramData: api.newProblem.diagramData || null,
+        parts: Array.isArray(api.newProblem.parts) ? api.newProblem.parts : null,
+        _partIdx: 0,
         createdAt: Date.now(),
       };
       setProblemOnTopic(topic, np, true);
@@ -2761,11 +2806,23 @@ async function main() {
 
     // שאלות פשוטות (תשובה ידועה) — בדיקה מקומית מיידית, בלי לבדוק עם המורה.
     // טעות ראשונה: רק "❌ לא נכון, נסה/י שוב". רק בטעות השנייה ברציפות המורה נכנס להבין למה.
-    if (p && p.answer != null) {
-      const correct = answersMatch(raw, p.answer);
-      applyAnswerStats(topic, correct);
+    const expected = activeAnswer(p);
+    if (p && expected != null) {
+      const correct = answersMatch(raw, expected);
+      const part = currentPart(p);
+      // כל סעיף נרשם בנפרד עם תגית-המיומנות שלו — זה מה שהופך את הבעיה
+      // הרב-סעיפית גם למכשיר-אבחון
+      applyAnswerStats(topic, correct, part ? { skill: part.skill, skillHe: part.skillHe } : null);
       if (correct) {
         p._wrongAttempts = 0;
+        // עוד סעיפים? ממשיכים בתוך אותה בעיה במקום לטעון שאלה חדשה
+        if (part && (p._partIdx || 0) < p.parts.length - 1) {
+          p._partIdx = (p._partIdx || 0) + 1;
+          showAnswerFeedback(true, { keepProblem: true });
+          u.problemText.textContent = questionText(p);
+          if (u.answerInput) u.answerInput.value = "";
+          return;
+        }
         showAnswerFeedback(true); // ✅ + קונפטי + מעבר — מקומי, בלי AI
         return;
       }

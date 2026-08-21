@@ -125,6 +125,7 @@ const PUBLIC_FILES = new Set([
   "/parent.html",
   "/parent.css",
   "/parent.js",
+  "/screen-fit.js", // התאמת הדף לגודל המסך — נטען מדפי-שלד ציבוריים
 ]);
 
 function send(res, status, headers, body) {
@@ -819,7 +820,13 @@ const server = http.createServer(async (req, res) => {
       const ALLOWED_REPR = new Set(["ציר מספרים", "מוט שבר", "שבר אינטראקטיבי", "מערך נקודות", "מערך כפל", "בלוקי בסיס-10", "מודל מוט", "לוח עשר", "לוח מאה", "לוח הכפל", "אובייקטים לספירה", "מטבעות", "שעון", "כלי מותאם"]);
       const repr = typeof body.repr === "string" && ALLOWED_REPR.has(body.repr) ? body.repr : undefined;
       const correct = body.correct === true ? true : body.correct === false ? false : null;
-      const t = learnerProfile.record(userId, { topic, correct, repr });
+      // תגית תת-מיומנות: slug קצר ותווית עברית. נכנסות לפרופיל ומזינות את
+      // האבחון ("נופל דווקא ב: היקף מלבן"). מנוקות כמו הנושא — הן מוזרקות
+      // בסופו של דבר לפרומפט של המורה.
+      const clean = (v, n) => String(v || "").replace(/[\n\r\[\]{}<>]/g, " ").replace(/\s+/g, " ").trim().slice(0, n);
+      const skill = clean(body.skill, 40) || undefined;
+      const skillHe = skill ? clean(body.skillHe, 60) || undefined : undefined;
+      const t = learnerProfile.record(userId, { topic, correct, repr, skill, skillHe });
       // גם ציר-הזמן — כדי שהכרטיסים והגרפים למעלה (תרגילים/דיוק/מוטיבציה/פעילות) יכללו גם פעילות-למידה,
       // בדיוק כמו התרגול. בלי זה תלמיד ש"רק למד" נראה ריק בראש-הדף.
       if (typeof correct === "boolean") {
