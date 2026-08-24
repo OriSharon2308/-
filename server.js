@@ -69,6 +69,43 @@ function ttsProviderIsGoogle() {
   return String(process.env.TTS_PROVIDER || "azure").replace(/["']/g, "").trim().toLowerCase() === "google";
 }
 
+/**
+ * גוזם היסטוריית-שיחה לפני שליחה למודל.
+ *
+ * נמדד: המורה הוא ~20% מעלות המערכת, וכמעט כולה יושבת כאן — ~1,500 טוקנים
+ * של היסטוריה בכל קריאה. הפרומפט הקבוע שלו הוא ~164 טוקנים בלבד, כך
+ * שהיסטוריה היא כל הסיפור.
+ *
+ * עד עכשיו /api/chat ו-/api/teach העבירו את body.history כמו שהוא: בלי
+ * תקרה על מספר ההודעות ובלי תקרה על אורך הודעה. תשובות המורה נשמרות
+ * בהיסטוריה גם הן, ולכן היא תפחה מעצמה בכל סבב.
+ *
+ * הגזימה בשרת ולא בלקוח בכוונה — זו נקודת-החנק היחידה, ולקוח אפשר לעקוף.
+ */
+const HIST_MSGS = 10;      // הודעות אחרונות
+const HIST_CHARS = 700;    // תקרה להודעה בודדת
+const HIST_TOTAL = 5000;   // תקרה לסך ההיסטוריה
+
+function clampHistory(raw) {
+  if (!Array.isArray(raw)) return [];
+  const kept = [];
+  let total = 0;
+  // מהחדש לישן — ההקשר הקרוב חשוב יותר מהרחוק
+  for (let i = raw.length - 1; i >= 0 && kept.length < HIST_MSGS; i--) {
+    const m = raw[i];
+    if (!m || typeof m !== "object") continue;
+    const role = m.role === "assistant" ? "assistant" : m.role === "user" ? "user" : null;
+    if (!role) continue;
+    let content = String(m.content ?? "").trim();
+    if (!content) continue;
+    if (content.length > HIST_CHARS) content = content.slice(0, HIST_CHARS) + "…";
+    if (total + content.length > HIST_TOTAL) break;
+    total += content.length;
+    kept.push({ role, content });
+  }
+  return kept.reverse();
+}
+
 /* ספק התמלול. ברירת המחדל היא גוגל בכל מקום שיש בו פרויקט GCP — Azure Speech
    נשאר רק כגיבוי (המפתח שלו פג ביולי 2026 והשאיר את השיחה הקולית ללא תשובה).
    אפשר לכפות ידנית ב-STT_PROVIDER=azure. */
@@ -709,6 +746,7 @@ const server = http.createServer(async (req, res) => {
       const body = await readJsonBody(req, res);
       if (!body) return;
       body.userId = userId; // לא סומכים על ה-userId מהלקוח
+      body.history = clampHistory(body.history); // תקרה על ההיסטוריה — ראו clampHistory
       const chatUser = users.getUserById(userId);
       body.gender = chatUser?.gender || "male"; // המורה יפנה לפי מין התלמיד
       // שם התלמיד → המורה יכיר אותו ויפנה אליו בשמו מדי פעם
@@ -785,7 +823,7 @@ const server = http.createServer(async (req, res) => {
       const tTeach = Date.now();
       const result = await teacherDraw({
         messageText: String(body.messageText || ""),
-        history: Array.isArray(body.history) ? body.history : [],
+        history: clampHistory(body.history),
         gender: teachUser?.gender || "male",
         topic: body.topic && body.topic.title ? String(body.topic.title) : typeof body.topic === "string" ? body.topic : "",
         geometry: body.geometry || null,
