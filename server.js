@@ -118,6 +118,9 @@ const PUBLIC_FILES = new Set([
   "/board.js",
   "/widget-kit.js",
   "/plan.html",
+  "/journey-mock.html",
+  "/climb-mock.html",
+  "/space-mock.html", // מוקאפ זמני של מסע-הכיתה — להסרה אחרי ההחלטה
   "/plan.css",
   "/plan.js",
   "/topic-images.html",
@@ -629,10 +632,15 @@ const server = http.createServer(async (req, res) => {
       // חוות הדעת הכוללת של המורה — נטענת בנפרד כי היא עלולה להיווצר עכשיו
       if (url.startsWith("/api/parent/verdict")) {
         const vu = new URL(url, "http://localhost");
+        // תפקיד אחד בכל בקשה. ברירת המחדל היא המורה; הפסיכולוג והמתמטיקאי
+        // נוצרים רק כשההורה לוחץ עליהם — קודם נוצרו שלושתם תמיד.
+        const role = vu.searchParams.get("role");
+        const roles = assess.ROLES.includes(role) ? [role] : ["teacher"];
         return json(res, 200, {
           ok: true,
           assessments: await assess.getAssessments(childId, child, {
             force: vu.searchParams.get("refresh") === "1",
+            roles,
           }),
         });
       }
@@ -659,6 +667,9 @@ const server = http.createServer(async (req, res) => {
           recent,
           assessments: await assess.getTopicAssessments(childId, child, topicStat, minutes, {
             force: au.searchParams.get("refresh") === "1",
+            roles: assess.ROLES.includes(au.searchParams.get("role"))
+              ? [au.searchParams.get("role")]
+              : ["teacher"], // רק מה שההורה באמת פתח
           }),
         });
       }

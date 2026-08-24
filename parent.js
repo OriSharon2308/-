@@ -686,8 +686,36 @@
     requestAnimationFrame(() => box.classList.add("is-in"));
     paintRole(box, overallRoles, "teacher");
     box.querySelectorAll(".roles__b").forEach((b) => {
-      b.addEventListener("click", () => paintRole(box, overallRoles, b.dataset.role));
+      b.addEventListener("click", () => switchOverallRole(box, b.dataset.role));
     });
+  }
+
+  /**
+   * מעבר בין מומחים בחוות-הדעת הכוללת.
+   * השרת מייצר עכשיו רק את המורה מראש; הפסיכולוג והמתמטיקאי נוצרים בקריאה
+   * הראשונה שבה באמת לוחצים עליהם. הלחיצה מסמנת מיד את הלשונית ומראה
+   * "כותב…" — היצירה במודל לוקחת כמה שניות.
+   */
+  async function switchOverallRole(box, roleKey) {
+    if (overallRoles[roleKey]) return paintRole(box, overallRoles, roleKey);
+
+    markActiveRole(box, roleKey);
+    const role = ROLES.find((r) => r.key === roleKey) || ROLES[0];
+    box.querySelector(".verdict__face").src = FACE + role.face;
+    box.querySelector(".verdict__slot").innerHTML =
+      `<p class="verdict__none">${esc(role.label)} כותב/ת עכשיו…</p>`;
+
+    let text = "";
+    try {
+      const { ok, data } = await api(`/api/parent/verdict?role=${encodeURIComponent(roleKey)}`);
+      text = (ok && data.assessments && data.assessments[roleKey] && data.assessments[roleKey].text) || "";
+    } catch {
+      return;
+    }
+    overallRoles[roleKey] = text;
+    // רק אם ההורה לא עבר בינתיים ללשונית אחרת
+    const still = box.querySelector(".roles__b.is-on");
+    if (still && still.dataset.role === roleKey) paintRole(box, overallRoles, roleKey);
   }
 
   /* ---------------- אינטראקציה ---------------- */
@@ -718,12 +746,41 @@
         topic.dataset.role = b.dataset.role;
         const key = `${topic.dataset.area}::${topic.dataset.topic}`;
         if (!topicRoles.has(key)) {
-          markActiveRole(topic.querySelector(".verdict"), b.dataset.role); // רק הדגשת הלשונית
+          markActiveRole(topic.querySelector(".verdict"), b.dataset.role); // עוד נטען — רק הדגשה
           return;
         }
-        paintRole(topic.querySelector(".verdict"), topicRoles.get(key), b.dataset.role);
+        switchTopicRole(topic, key, b.dataset.role);
       });
     });
+  }
+
+  /** מעבר בין מומחים בתוך נושא — מייצר את התפקיד רק בלחיצה הראשונה עליו. */
+  async function switchTopicRole(topic, key, roleKey) {
+    const verdict = topic.querySelector(".verdict");
+    const texts = topicRoles.get(key) || {};
+    if (texts[roleKey]) return paintRole(verdict, texts, roleKey);
+
+    markActiveRole(verdict, roleKey);
+    const role = ROLES.find((r) => r.key === roleKey) || ROLES[0];
+    verdict.querySelector(".verdict__face").src = FACE + role.face;
+    verdict.querySelector(".verdict__slot").innerHTML =
+      `<p class="verdict__none">${esc(role.label)} כותב/ת עכשיו…</p>`;
+
+    const name = topic.dataset.topic;
+    let text = "";
+    try {
+      const { ok, data } = await api(
+        `/api/parent/topic?name=${encodeURIComponent(name)}&role=${encodeURIComponent(roleKey)}`
+      );
+      const a = (ok && data.assessments) || {};
+      text = (a[roleKey] && a[roleKey].text) || "";
+    } catch {
+      return;
+    }
+    texts[roleKey] = text;
+    topicRoles.set(key, texts);
+    const still = verdict.querySelector(".roles__b.is-on");
+    if (still && still.dataset.role === roleKey) paintRole(verdict, texts, roleKey);
   }
 
   async function openTopic(row) {
