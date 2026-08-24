@@ -2852,7 +2852,51 @@ async function main() {
     });
   }
 
+  /* ---------------------------------------------------------------
+     עזרה מקומית — בלי קריאת-מודל.
+
+     לכל 1028 השאלות בבנק כבר כתובים hints[] ו-explanation. עד היום הם
+     נשלחו למודל כהקשר בלבד, והילד קיבל תשובה שנוצרה מחדש בכל פעם —
+     קריאה שעולה כסף על מידע שכבר שמור אצלנו.
+
+     עכשיו העזרה מדורגת: רמז ראשון → רמז שני → הפתרון המלא, הכל מהבנק.
+     המורה נכנס רק כשנגמר החומר השמור, וזה הרגע שבו באמת צריך אותו —
+     הילד ראה את כל מה שהוכן מראש ועדיין תקוע.
+     --------------------------------------------------------------- */
+
+  /** מגיש את פריט-העזרה הבא מהבנק. מחזיר false כשאין עוד מה להגיש. */
+  function serveStoredHelp(problem, { wantSolution = false } = {}) {
+    if (!problem) return false;
+    const hints = Array.isArray(problem.hints) ? problem.hints.filter(Boolean) : [];
+    const solution = String(problem.explanation || "").trim();
+
+    if (wantSolution) {
+      if (!solution) return false;
+      problem._helpIdx = hints.length + 1; // אחרי הפתרון אין יותר מה להגיש
+      appendMsg(u.chatLog, { from: "bot", text: solution, animate: true, reveal: true });
+      return true;
+    }
+
+    const i = problem._helpIdx || 0;
+    if (i < hints.length) {
+      problem._helpIdx = i + 1;
+      appendMsg(u.chatLog, { from: "bot", text: hints[i], animate: true, reveal: true });
+      return true;
+    }
+    if (i === hints.length && solution) {
+      problem._helpIdx = i + 1;
+      appendMsg(u.chatLog, { from: "bot", text: solution, animate: true, reveal: true });
+      return true;
+    }
+    return false;
+  }
+
   async function requestHint() {
+    const p = getCurrentProblem(getCurrentTopic());
+    if (serveStoredHelp(p)) {
+      revealArithViz(u, p); // אותה חשיפת-ויזואל שהמורה היה מפעיל
+      return;
+    }
     await requestAi({
       messageText: "תן לי רמז לתרגיל",
       messageKind: "HintRequest",
@@ -2860,6 +2904,11 @@ async function main() {
   }
 
   async function requestExplain() {
+    const p = getCurrentProblem(getCurrentTopic());
+    if (serveStoredHelp(p, { wantSolution: true })) {
+      revealArithViz(u, p);
+      return;
+    }
     await requestAi({
       messageText: "תסביר לי את התרגיל שלב אחר שלב",
       messageKind: "ExplainRequest",
