@@ -1627,12 +1627,67 @@ async function main() {
     if (!Array.isArray(topic.problems)) topic.problems = [];
   }
 
+  /* ── אפקט "המורה מכין שאלה" ─────────────────────────────────────────
+     מוצג רק כששאלה באמת *נוצרת* עכשיו (המורה בונה אותה לפי מה שהילד
+     מתקשה בו). שאלה מהמאגר או מהמחולל מגיעה מיידית ולא מקבלת אפקט —
+     אנימציה על משהו מיידי רק מאטה. */
+  const COMPOSE_NOTES = [
+    "המורה מסתכל/ת על מה שהיה לך קשה…",
+    "בונה שאלה בדיוק בשבילך…",
+    "בוחר/ת מספרים שיתאימו לך…",
+    "עוד רגע — כמעט מוכן 🙂",
+  ];
+  let composeTimer = null;
+
+  function showComposing(on) {
+    const el = u.problemText;
+    if (!el) return;
+    window.clearInterval(composeTimer);
+    composeTimer = null;
+    if (!on) {
+      el.classList.remove("is-composing");
+      return;
+    }
+    showProblemDiagram(u, null);
+    el.classList.add("is-composing");
+    el.classList.remove("is-arrived");
+    let i = 0;
+    const render = () => {
+      el.innerHTML =
+        '<span class="composeDots"><span></span><span></span><span></span></span>' +
+        '<span class="composeNote">' + COMPOSE_NOTES[i % COMPOSE_NOTES.length] + "</span>";
+    };
+    render();
+    composeTimer = window.setInterval(() => { i += 1; render(); }, 2600);
+  }
+
+  /** מציג את השאלה שנחתה, עם כניסה רכה שמסמנת "זה הגיע". */
+  function showArrivedQuestion(p) {
+    showComposing(false);
+    u.problemText.textContent = questionText(p);
+    u.problemText.classList.remove("is-arrived");
+    void u.problemText.offsetWidth; // הפעלה-מחדש של האנימציה
+    u.problemText.classList.add("is-arrived");
+  }
+
   /** טוען שאלה חדשה מהמאגר לנושא הנוכחי (לפי הכיתה+נושא+רמה). */
   async function loadBankProblem(topic, push = true, resetSeen = false) {
+    // "טוען…" נשאר לשאלה מיידית; אם השרת מדווח שהמורה מייצר שאלה, המסך
+    // מתחלף לאפקט-ההרכבה ברגע שהתשובה חוזרת עם mode מתאים.
     u.problemText.textContent = "טוען…";
     showProblemDiagram(u, null);
+    // סף-זמן: שאלה מהמאגר או מהמחולל חוזרת במילישניות, ואפקט עליה רק
+    // מהבהב. רק כשההמתנה חורגת — כלומר המורה באמת מרכיב שאלה — עולה
+    // אפקט-ההרכבה. כך הילד אף פעם לא מסתכל על מסך שנראה תקוע.
+    const composeAfter = window.setTimeout(() => showComposing(true), 600);
     const sessionIds = (topic.problems || []).map((q) => q.id).filter(Boolean);
-    const res = await fetchBankProblem(topic.kind, topic.level, sessionIds, !!topic.levelLocked, resetSeen);
+    let res;
+    try {
+      res = await fetchBankProblem(topic.kind, topic.level, sessionIds, !!topic.levelLocked, resetSeen);
+    } finally {
+      window.clearTimeout(composeAfter);
+      showComposing(false);
+    }
     const p = res && res.problem;
     if (res && Array.isArray(res.availableLevels) && res.availableLevels.length) {
       topic.availableLevels = res.availableLevels; // לבורר הרמות
@@ -1642,9 +1697,13 @@ async function main() {
     }
     if (!p) {
       // (כמעט אף פעם — המתמטיקאי מכין תמיד שאלה הבאה). בלי חלונית, רק הודעה קצרה.
+      showComposing(false);
       u.problemText.textContent = "רגע, מכינים עוד שאלה…";
       return;
     }
+    // שאלה שהמורה יצר עכשיו (לא מהמאגר ולא מהמחולל) — מציגים את הכניסה
+    // הרכה, כדי שהילד ירגיש שהיא הגיעה ולא הייתה שם מלכתחילה
+    const composed = !!(res && (res.mode === "targeted" || res.mode === "ai"));
     setProblemOnTopic(
       topic,
       {
@@ -1667,6 +1726,7 @@ async function main() {
       },
       push
     );
+    if (composed) showArrivedQuestion(getCurrentProblem(topic) || p);
   }
 
   /** פותח נושא לפי מפתח (יוצר אם צריך, ומביא שאלה מהמאגר). label = שם לתצוגה. */

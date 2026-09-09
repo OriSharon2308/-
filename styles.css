@@ -2184,3 +2184,66 @@ body.agent-debug-open {
     font-size: 26px;
   }
 }
+
+/* ────────────────────────────────────────────────────────────────────────
+   "המורה מכין שאלה" — אפקט-טעינה לשאלה שנוצרת עכשיו
+   ────────────────────────────────────────────────────────────────────────
+   שאלה מהמאגר או מהמחולל מגיעה מיד, ולכן לא צריכה כלום. שאלה שהמורה
+   *מייצר* לוקחת כמה שניות, ובלי סימן חיים הילד חושב שנתקע. כאן הוא רואה
+   שמשהו קורה — ובמיוחד שזה נעשה *בשבילו*.
+   ------------------------------------------------------------------- */
+.problem__text.is-composing {
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  min-height: 96px;
+  justify-content: center;
+}
+
+/* שלוש נקודות שרצות — "כותב עכשיו" */
+.composeDots {
+  display: inline-flex;
+  gap: 7px;
+}
+.composeDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand, #0d9488);
+  animation: composeBounce 1.1s ease-in-out infinite;
+}
+.composeDots span:nth-child(2) { animation-delay: 0.16s; }
+.composeDots span:nth-child(3) { animation-delay: 0.32s; }
+@keyframes composeBounce {
+  0%, 70%, 100% { transform: translateY(0); opacity: 0.45; }
+  35%           { transform: translateY(-9px); opacity: 1; }
+}
+
+/* שורת-הסבר שמתחלפת — הילד קורא למה זה שווה את ההמתנה */
+.composeNote {
+  font-size: clamp(13px, 2vw, 15px);
+  color: var(--muted);
+  opacity: 0;
+  animation: composeFade 2.6s ease-in-out infinite;
+}
+@keyframes composeFade {
+  0%, 100% { opacity: 0; transform: translateY(4px); }
+  18%, 78% { opacity: 1; transform: translateY(0); }
+}
+
+/* השאלה שנחתה — כניסה רכה, שהמעבר יורגש */
+.problem__text.is-arrived {
+  animation: problemArrive 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes problemArrive {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .composeDots span, .composeNote, .problem__text.is-arrived { animation: none; }
+  .composeNote { opacity: 1; }
+}
