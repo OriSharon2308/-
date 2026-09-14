@@ -6,7 +6,7 @@
     <title>vela · גלקסיית הנושאים</title>
     <link rel="icon" href="/favicon-teacher.png" />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/galaxy.css?v=6" />
+    <link rel="stylesheet" href="/galaxy.css?v=7" />
   </head>
   <body>
     <div id="boot" class="boot"><span class="spin"></span></div>
@@ -34,6 +34,8 @@
 
       <!-- החללית -->
       <div class="ship" id="ship" aria-hidden="true">
+        <!-- זוהר-המנוע: אלמנט נפרד, לא filter על חללית שזזה -->
+        <span class="ship__glow"></span>
         <svg viewBox="0 0 64 96" class="ship__svg">
           <defs>
             <linearGradient id="hull" x1="0" y1="0" x2="1" y2="1">
@@ -43,7 +45,7 @@
               <stop offset="0" stop-color="#ffd97a" /><stop offset="1" stop-color="#f0722b" />
             </linearGradient>
           </defs>
-          <ellipse class="ship__fire" cx="32" cy="80" rx="9" ry="18" fill="url(#fire)" />
+          <g class="ship__flame"><ellipse class="ship__fire" cx="32" cy="80" rx="9" ry="18" fill="url(#fire)" /></g>
           <path d="M20 66 L9 79 L20 74 Z" fill="#0d9488" />
           <path d="M44 66 L55 79 L44 74 Z" fill="#0d9488" />
           <path d="M32 4 C44 20 46 44 44 68 L20 68 C18 44 20 20 32 4 Z" fill="url(#hull)" />
@@ -72,6 +74,6 @@
     <div class="warp-cover" id="warpCover" hidden aria-hidden="true"></div>
 
     <script src="/galaxy-data.js?v=4"></script>
-    <script src="/galaxy.js?v=7"></script>
+    <script src="/galaxy.js?v=8"></script>
   </body>
 </html>

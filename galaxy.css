@@ -119,6 +119,12 @@ body {
   box-shadow: inset -0.8vmin -1vmin 2.4vmin rgba(0,0,0,.42), 0 0 3vmin rgba(255,255,255,.10);
 }
 .planet__orb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* זוהר "קבלת החללית" — כבוי, מודלק רק בשיגור (opacity בלבד). בתוך הכדור, כך
+   שהוא צף יחד איתו. */
+.planet__glow {
+  position: absolute; inset: -38%; border-radius: 50%; z-index: -1; pointer-events: none; opacity: 0;
+  background: radial-gradient(closest-side, var(--hue), transparent);
+}
 .planet__art {
   position: absolute; width: 58%; height: 58%; object-fit: contain;
   filter: drop-shadow(0 .4vmin .8vmin rgba(0,0,0,.35)); pointer-events: none;
@@ -160,17 +166,30 @@ body {
 .planet:focus-visible { outline: 3px solid var(--teal); outline-offset: 6px; border-radius: 12px; }
 
 /* ---------- החללית ---------- */
+/* #ship הוא המיכל שהטיסה מזיזה (galaxy.js). בלי filter: זוהר על אלמנט שזז
+   יקר — את ההילה מצייר גרדיאנט סטטי, ואת זוהר-המנוע אלמנט נפרד. */
 .ship {
   position: absolute; top: 50%; right: 50%; width: 7vmin;
   transform: translate(50%, -50%) translate(var(--sx, 0px), var(--sy, 14vmin)) rotate(var(--sr, 0deg));
   transition: transform 1s var(--ease);
   pointer-events: none; z-index: 6;
-  filter: drop-shadow(0 0 2vmin rgba(63, 214, 196, .55));
 }
-.ship__svg { width: 100%; display: block; }
+.ship::before {
+  content: ""; position: absolute; left: 50%; top: 45%; width: 150%; height: 120%;
+  transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(63, 214, 196, .34), rgba(63, 214, 196, 0));
+}
+.ship__svg { position: relative; width: 100%; display: block; overflow: visible; }
+/* זוהר-המנוע, מאחורי הזנב. במנוחה כבוי; השיגור מדליק אותו (opacity/scale בלבד) */
+.ship__glow {
+  position: absolute; left: 50%; top: 84%; width: 88%; aspect-ratio: 1; border-radius: 50%;
+  pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.7);
+  background: radial-gradient(closest-side, rgba(255, 240, 190, .85), rgba(255, 170, 80, .45) 45%, rgba(240, 114, 43, 0));
+}
+/* הלהבה גדלה מהזנב אחורה; ההבהוב הקיים ממשיך בתוכה */
+.ship__flame { transform-box: view-box; transform-origin: 32px 64px; }
 .ship__fire { animation: fire .26s ease-in-out infinite alternate; transform-origin: 32px 66px; }
 @keyframes fire { to { transform: scaleY(1.35) scaleX(.85); } }
-.ship--warp { transition: transform .85s cubic-bezier(.6, 0, .3, 1); }
 
 /* ---------- HUD ----------
    env(safe-area-inset-*) שומר על הכפתורים מחוץ לחריץ ולפס-הבית באייפון

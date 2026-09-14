@@ -88,7 +88,7 @@
        style="--hue:${esc(p.hue)}" aria-label="${esc(p.key)} — ${esc(sub)}">
       <span class="planet__orb ${p.image ? "" : "planet__orb--ph"}"
             style="--dur:${(6 + Math.random() * 3).toFixed(1)}s;--delay:${(Math.random() * 3).toFixed(1)}s">
-        ${ring}${badge}${tip}${orb}
+        <span class="planet__glow"></span>${ring}${badge}${tip}${orb}
       </span>
       <span class="planet__name">${esc(p.key)}</span>
       <span class="planet__sub">${esc(sub)}</span>
@@ -207,13 +207,189 @@
     const deg = (Math.atan2(ty - parked.y, tx - parked.x) * 180) / Math.PI + 90;
     setShip(parked.x, parked.y, deg);
   }
-  /** הטיסה הזמנית אל הכוכב (מעבר CSS קיים). שלב 2B יחליף אותה. */
-  function flyShip(el) {
-    const tx = parseFloat(el.style.getPropertyValue("--tx")) || 0;
-    const ty = parseFloat(el.style.getPropertyValue("--ty")) || 0;
-    const deg = (Math.atan2(ty - parked.y, tx - parked.x) * 180) / Math.PI + 90;
-    ship.classList.add("ship--warp");
-    setShip(tx, ty, deg);
+  /* ---------- טיסת החללית ----------
+     כל התנועה נבנית מראש כ-keyframes של transform ו-opacity על מיכל החללית
+     (#ship), לפי "צילום" של נקודת-המוצא והיעד ברגע הלחיצה: אין חישוב באמצע
+     הטיסה, ושינוי-גודל לא מעקם את המסלול. אמנות חללית עתידית צריכה רק את
+     .ship__flame ואת .ship__glow — הלוגיקה לא נוגעת ב-SVG עצמו.           */
+  const T_TURN = 200;    // פנייה אל הכוכב
+  const T_LEAN = 150;    // הירתעות קטנה לאחור...
+  const T_LAUNCH = 250;  // ...ואז הזינוק
+  const T_FADE = 830;    // החללית נכנסת לכוכב: נעלמת ומתכווצת
+  const T_ARRIVE = 950;
+  const SAMPLE_MS = 20;  // צפיפות ה-keyframes; הדפדפן מחבר ביניהם בקו ישר
+  const CURVE = 0.055;   // גובה הקשת — 5.5% מאורך הדרך (עד 40px, ובמסך קטן עד 20px)
+  const SUN_MARGIN = 12; // מרווח-נשימה סביב השמש, מעבר לחצי רוחב החללית
+  const CURVE_MAX_BLOCKED = 130, CURVE_MAX_BLOCKED_SMALL = 62; // קשת חריגה — רק כשהשמש חוסמת
+  const BANK = 5;        // הטיה נוספת לתוך הפנייה, במעלות
+
+  // מצבי-המנוע: להבה (רוחב × אורך — מתארכת יותר משהיא מתרחבת) וזוהר.
+  // ENGINE_AT קובע מתי כל מצב מגיע.
+  const ENGINE = {
+    idle:     { flameX: 1,    flameY: 1,    glow: 0, glowScale: 0.7 },
+    aim:      { flameX: 1,    flameY: 1.08, glow: 0, glowScale: 0.7 },
+    ignition: { flameX: 1.12, flameY: 1.5,  glow: 1, glowScale: 1 },
+    boost:    { flameX: 1.18, flameY: 1.7,  glow: 1, glowScale: 1.12 },
+    arrival:  { flameX: 1,    flameY: 1.1,  glow: 0, glowScale: 0.85 },
+  };
+  const ENGINE_AT = [[0, "idle"], [120, "aim"], [270, "ignition"], [450, "boost"], [760, "boost"], [920, "arrival"], [950, "arrival"]];
+
+  /** כמו cubic-bezier של CSS — כדי לחשב את התאוצה בתוך ה-keyframes. */
+  function cubicBezier(x1, y1, x2, y2) {
+    const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+    const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+    const X = (t) => ((ax * t + bx) * t + cx) * t;
+    const Y = (t) => ((ay * t + by) * t + cy) * t;
+    const dX = (t) => (3 * ax * t + 2 * bx) * t + cx;
+    return (x) => {
+      if (x <= 0) return 0;
+      if (x >= 1) return 1;
+      let t = x;
+      for (let i = 0; i < 8; i++) {
+        const d = dX(t);
+        if (Math.abs(d) < 1e-6) break;
+        t = Math.min(1, Math.max(0, t - (X(t) - x) / d));
+      }
+      return Y(t);
+    };
+  }
+  const turnEase = cubicBezier(0.2, 0.8, 0.3, 1);
+  // איטי בהתחלה ו-BOOST בחצי השני. רכה מעט מ-(.55,.05,.75,.35), כדי שהחללית
+  // תעבור ~70% מהדרך לפני שהיא מתחילה להיעלם — ולא תימוג באמצע החלל.
+  const boostEase = cubicBezier(0.45, 0, 0.7, 0.45);
+
+  const bez = (a, c, b, p) => (1 - p) * (1 - p) * a + 2 * (1 - p) * p * c + p * p * b;
+  const bezD = (a, c, b, p) => 2 * (1 - p) * (c - a) + 2 * p * (b - c);
+  /** כיוון החללית בנקודה p של המסלול. 0° = אף למעלה. */
+  const headingAt = (f, p) =>
+    (Math.atan2(bezD(f.S.y, f.C.y, f.T.y, p), bezD(f.S.x, f.C.x, f.T.x, p)) * 180) / Math.PI + 90;
+  /** אותה זווית, בגרסה הקרובה ביותר ל-ref — הפנייה תמיד הקצרה (לא 300° סביב). */
+  const nearAngle = (a, ref) => ref + ((((a - ref) % 360) + 540) % 360) - 180;
+
+  /** הזווית שרואים עכשיו — גם באמצע סיבוב ה-hover. */
+  function currentRotation() {
+    const tr = getComputedStyle(ship).transform;
+    if (!tr || tr === "none" || !window.DOMMatrixReadOnly) return 0;
+    const m = new DOMMatrixReadOnly(tr);
+    return (Math.atan2(m.b, m.a) * 180) / Math.PI;
+  }
+
+  /** "צילום" של הטיסה: מוצא, נקודת-זינוק, יעד, ונקודת-שליטה לקשת עדינה. */
+  function planFlight(el) {
+    const vp = viewport();
+    const small = Math.min(vp.w, vp.h) < 600;
+    const P = { x: parked.x, y: parked.y };
+    const T = { x: parseFloat(el.style.getPropertyValue("--tx")) || 0, y: parseFloat(el.style.getPropertyValue("--ty")) || 0 };
+    const dist = Math.hypot(T.x - P.x, T.y - P.y) || 1;
+    const u = { x: (T.x - P.x) / dist, y: (T.y - P.y) / dist }; // כיוון הזינוק
+    const n = { x: -u.y, y: u.x };                              // ניצב לו
+    // הקשת פונה לצד שבו כבר נמצא אמצע הדרך — הרחק מהשמש שבמרכז (0,0).
+    // דטרמיניסטי: אותו כוכב, אותה קשת, בכל שיגור.
+    const mid = ((P.x + T.x) / 2) * n.x + ((P.y + T.y) / 2) * n.y;
+    const side0 = Math.abs(mid) > 1 ? Math.sign(mid) : T.x >= 0 ? 1 : -1;
+    const hBase = Math.min(dist * CURVE, small ? 20 : 40);
+    const lean = small ? 2 : 3;
+    const S = { x: P.x - u.x * lean, y: P.y - u.y * lean };
+    // בקשת ריבועית הסטייה המרבית היא חצי מהזזת נקודת-השליטה — ולכן 2h
+    const ctrl = (side, h) => ({ x: (S.x + T.x) / 2 + n.x * side * 2 * h, y: (S.y + T.y) / 2 + n.y * side * 2 * h });
+
+    // אזור-ביטחון סביב השמש: רדיוס השמש + חצי חללית + מרווח. אם המוצא או היעד
+    // עצמם בתוכו (מסך קטן, כוכב שמאחורי השמש), דורשים רק לא להתקרב יותר מהם.
+    const sun = $("#sun");
+    const zone = Math.min((sun ? sun.offsetWidth / 2 : 0) + ship.offsetWidth / 2 + SUN_MARGIN,
+      Math.hypot(S.x, S.y) - 1, Math.hypot(T.x, T.y) - 1);
+    const clearance = (C) => {
+      let m = Infinity;
+      for (let i = 0; i <= 48; i++) {
+        const p = i / 48;
+        m = Math.min(m, Math.hypot(bez(S.x, C.x, T.x, p), bez(S.y, C.y, T.y, p)) - zone);
+      }
+      return m;
+    };
+    // הקשת הרגילה אם היא לא חותכת את השמש. אחרת מגדילים אותה בהדרגה, בשני
+    // הצדדים, עד הקשת הקטנה ביותר שעוקפת; אם אין כזו עד התקרה — זו שהכי רחוקה.
+    // כלל גאומטרי בלבד: אין כאן שום שם של נושא.
+    const hMax = Math.max(hBase, small ? CURVE_MAX_BLOCKED_SMALL : CURVE_MAX_BLOCKED);
+    let pick = null, widest = null;
+    search: for (let h = hBase; h <= hMax + 1e-6; h += 2) {
+      for (const side of [side0, -side0]) {
+        const cl = clearance(ctrl(side, h));
+        if (cl >= 0) { pick = { h, side }; break search; }
+        if (!widest || cl > widest.cl) widest = { h, side, cl };
+      }
+    }
+    const { h, side } = pick || widest;
+    return { P, S, C: ctrl(side, h), T, h, hBase, side, zone, clear: !!pick, dist };
+  }
+
+  /** קנה-מידה בזמן הטיסה: גדל מעט, ואז קטן כשהחללית "מתרחקת" אל הכוכב. */
+  function flightScale(q) {
+    const qFade = (T_FADE - T_LAUNCH) / (T_ARRIVE - T_LAUNCH);
+    if (q < 0.35) return 1 + 0.03 * Math.sin(((q / 0.35) * Math.PI) / 2);
+    if (q < qFade) {
+      const k = (q - 0.35) / (qFade - 0.35);
+      return 1.03 - 0.11 * k * k * (3 - 2 * k);
+    }
+    return 0.92 - 0.17 * ((q - qFade) / (1 - qFade));
+  }
+
+  /** פנייה → הירתעות → זינוק בקשת → כניסה לכוכב, ומנוע שמתעורר בהתאם. */
+  function flightAnimations(el, r0) {
+    const f = planFlight(el);
+    const a0 = nearAngle(headingAt(f, 0), r0);
+    const bankDir = Math.sign(nearAngle(headingAt(f, 1), a0) - a0) || 1;
+    const frames = [];
+    let heading = a0;
+    for (let i = 0; ; i++) {
+      const t = Math.min(i * SAMPLE_MS, T_ARRIVE);
+      let x = f.P.x, y = f.P.y, rot = a0, s = 1, o = 1;
+      if (t < T_TURN) rot = r0 + (a0 - r0) * turnEase(t / T_TURN);
+      if (t > T_LEAN && t < T_LAUNCH) {
+        const k = (t - T_LEAN) / (T_LAUNCH - T_LEAN);
+        const e = 1 - (1 - k) * (1 - k);
+        x = f.P.x + (f.S.x - f.P.x) * e;
+        y = f.P.y + (f.S.y - f.P.y) * e;
+      }
+      if (t >= T_LAUNCH) {
+        const q = (t - T_LAUNCH) / (T_ARRIVE - T_LAUNCH);
+        const p = boostEase(q);
+        x = bez(f.S.x, f.C.x, f.T.x, p);
+        y = bez(f.S.y, f.C.y, f.T.y, p);
+        heading = nearAngle(headingAt(f, p), heading);
+        rot = heading + bankDir * BANK * Math.sin(Math.PI * q); // חוזרת לאפס ליד הכוכב
+        s = flightScale(q);
+        if (t > T_FADE) o = 1 - (t - T_FADE) / (T_ARRIVE - T_FADE);
+      }
+      frames.push({
+        offset: t / T_ARRIVE,
+        transform: `translate(50%, -50%) translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${rot.toFixed(2)}deg) scale(${s.toFixed(3)})`,
+        opacity: +o.toFixed(3),
+      });
+      if (t >= T_ARRIVE) break;
+    }
+    const anims = [ship.animate(frames, { duration: T_ARRIVE, fill: "forwards" })];
+    const at = ([t, state]) => ({ offset: t / T_ARRIVE, easing: "ease-out", ...ENGINE[state] });
+    const flame = ship.querySelector(".ship__flame");
+    const glow = ship.querySelector(".ship__glow");
+    if (flame) {
+      anims.push(flame.animate(ENGINE_AT.map(at).map((k) => ({ offset: k.offset, easing: k.easing, transform: `scale(${k.flameX}, ${k.flameY})` })),
+        { duration: T_ARRIVE, fill: "forwards" }));
+    }
+    if (glow) {
+      anims.push(glow.animate(ENGINE_AT.map(at).map((k) => ({ offset: k.offset, easing: k.easing, opacity: k.glow,
+        transform: `translate(-50%, -50%) scale(${k.glowScale})` })), { duration: T_ARRIVE, fill: "forwards" }));
+    }
+    return anims;
+  }
+
+  /** הכוכב "מקבל" את החללית: ברבע-השנייה האחרון גדל מעט וזוהר. */
+  function receiveAnimations(el) {
+    const from = T_ARRIVE - 250;
+    const out = [el.animate([{ transform: planetTransform(el, 1.07) }, { transform: planetTransform(el, 1.125) }],
+      { delay: from, duration: 250, easing: "cubic-bezier(.2,.8,.3,1)", fill: "forwards" })];
+    const g = el.querySelector(".planet__glow");
+    if (g) out.push(g.animate([{ opacity: 0 }, { opacity: 0.85 }], { delay: from, duration: 250, easing: "ease-out", fill: "forwards" }));
+    return out;
   }
 
   /* ---------- שיגור: מכונת-מצבים קטנה ----------
@@ -221,8 +397,8 @@
      במסך — מדלגת על מה שנשאר ונכנסת מיד לשיעור של הכוכב הראשון.
      navigationStarted מבטיח שהניווט קורה פעם אחת בלבד.                */
   const TRANSITION_KEY = "velaGalaxyTransition"; // נקרא ב-learn-board.html
-  const COVER_AT = 650;     // הכיסוי מתחיל להתמלא
-  const COVER_MS = 400;     // ...ואטום לגמרי ב-1050
+  const COVER_AT = 700;     // הכיסוי מתחיל להתמלא — אחרי שרואים את ה-BOOST
+  const COVER_MS = 380;     // ...ואטום לגמרי ב-1080 (החללית כבר נעלמה ב-950)
   const SKIP_MS = 110;      // דילוג: נסגר כמעט מיד, בלי הבזק לבן
   const REDUCED_MS = 140;   // תנועה מופחתת: רק מעבר-צבע קצר
   const WATCHDOG_MS = 2500; // רשת-ביטחון אם אנימציה לא מסתיימת (למשל לשונית ברקע)
@@ -238,14 +414,19 @@
   let skipped = false;
   let navUrl = "", navAt = 0;
   let pressAnim = null, coverAnim = null, watchdog = 0, stuckTimer = 0;
+  let launchAnims = [];  // החללית, המנוע והכוכב שמקבל אותה
+  let launchVp = null;   // גודל המסך ברגע השיגור
 
   /** "כן — בחרת את העולם הזה": פולס קצר על הכוכב עצמו. ה-translate נכתב
       במספרים ולא ב-var() כדי שהמיקום יישמר בדיוק; את --d ואת ה-float של
       הכדור לא נוגעים. מתחילים מ-1.12 אם העכבר כבר הגדיל אותו ב-hover. */
-  function pressFrames(el) {
+  function planetTransform(el, s) {
     const tx = el.style.getPropertyValue("--tx") || "0px";
     const ty = el.style.getPropertyValue("--ty") || "0px";
-    const at = (s) => `translate(calc(50% + ${tx}), calc(-50% + ${ty})) scale(${s})`;
+    return `translate(calc(50% + ${tx}), calc(-50% + ${ty})) scale(${s})`;
+  }
+  function pressFrames(el) {
+    const at = (s) => planetTransform(el, s);
     const from = el.matches(":hover") && matchMedia("(hover: hover) and (pointer: fine)").matches ? 1.12 : 1;
     return [
       { transform: at(from), easing: "cubic-bezier(.2,.9,.3,1.25)" },
@@ -259,6 +440,7 @@
     launchTarget = el;
     navigationStarted = false;
     skipped = false;
+    launchVp = viewport();
     parallaxPaused = true;
     sky.classList.add("is-launching"); // מעמעם את השאר, חוסם לחיצות על כוכבים (CSS)
     hud.inert = true; // גם כפתור-החזרה: לחיצה עליו היא "דילוג", לא ניווט שני ל-/learn
@@ -271,9 +453,11 @@
 
     if (REDUCED) return fillCover(0, REDUCED_MS, "ease-out");
     if (el.animate) {
+      const r0 = currentRotation(); // לפני שמבטלים את מעבר-ה-hover — מתחילים מהזווית שרואים
+      ship.style.transition = "none"; // מעבר CSS שרץ היה גובר על אנימציית-הטיסה
       pressAnim = el.animate(pressFrames(el), { duration: 150, fill: "forwards" });
+      launchAnims = flightAnimations(el, r0).concat(receiveAnimations(el));
     }
-    flyShip(el);
     fillCover(COVER_AT, COVER_MS, "cubic-bezier(.65,0,.35,1)");
   }
 
@@ -299,6 +483,7 @@
     }
     if (skipped) return;
     skipped = true;
+    launchAnims.forEach((a) => a.pause()); // החללית קופאת במקומה — בלי לקפוץ חזרה
     fillCover(0, SKIP_MS, "ease-out");
   }
 
@@ -334,9 +519,13 @@
     cover.style.opacity = "";
     sky.classList.remove("is-launching");
     document.querySelectorAll(".planet.is-picked").forEach((p) => p.classList.remove("is-picked"));
-    // החללית חוזרת לחנייה מיד — בלי לטוס אחורה מול הילד
-    ship.classList.remove("ship--warp");
+    // החללית חוזרת לחנייה מיד — בלי לטוס אחורה מול הילד. הפריסה מתעדכנת
+    // למקרה שהמסך השתנה בזמן השיגור (אז לא פרסנו מחדש).
     ship.style.transition = "none";
+    launchAnims.forEach((a) => a.cancel());
+    launchAnims = [];
+    launchVp = null;
+    layout();
     parkShip();
     void ship.offsetWidth;
     ship.style.transition = "";
@@ -411,8 +600,18 @@
 
     layoutWhenReady();
     initParallax();
-    // בזמן שיגור החללית בדרך — פריסה מחדש לא מחזירה אותה לחנייה
-    const relayout = () => { layout(); if (!launching) parkShip(); };
+    // בזמן שיגור לא פורסים מחדש — המסלול נשען על "צילום" מרגע הלחיצה. שינוי
+    // ממשי (סיבוב מכשיר) באמצע השיגור = דילוג לשיעור, במקום מסלול שבור.
+    const relayout = () => {
+      if (launching) {
+        const vp = viewport();
+        const moved = launchVp && (Math.abs(vp.w - launchVp.w) > launchVp.w * 0.08 || Math.abs(vp.h - launchVp.h) > launchVp.h * 0.08);
+        if (moved) skipLaunch();
+        return;
+      }
+      layout();
+      parkShip();
+    };
     addEventListener("resize", relayout);
     // גם שינוי-גודל של האלמנט עצמו (פאנל שנפתח, סיבוב מכשיר) מפעיל פריסה מחדש
     if (window.ResizeObserver) new ResizeObserver(relayout).observe(document.body);
