@@ -2,12 +2,12 @@
 /**
  * vela · גלקסיית הנושאים.
  *
- * הכוכבים נבנים מ-window.GALAXY (galaxy-data.js) ולא מקודדים כאן — כך
- * כיתה ב׳ תתווסף בקובץ-הנתונים בלבד.
+ * אילו כוכבים יש — קובע השרת: /api/topics?area=learn מחזיר את נושאי
+ * אזור-הלמידה של הכיתה. איך כל כוכב נראה ואיפה הוא עומד — galaxy-data.js.
  *
- * ההתקדמות אמיתית: /api/topics?area=learn מחזיר את נושאי-הכיתה, כמה
- * שאלות יש בכל רמה, וכמה נפתרו. הכוכב לא נעול לעולם — הצבע והסימון
- * מספרים את הסיפור, אבל כל נושא פתוח לבחירה תמיד.
+ * ההתקדמות אמיתית: אותה תשובה מחזירה כמה שאלות יש בכל רמה וכמה נפתרו.
+ * הכוכב לא נעול לעולם — הצבע והסימון מספרים את הסיפור, אבל כל נושא
+ * פתוח לבחירה תמיד.
  */
 (function () {
   "use strict";
@@ -45,6 +45,26 @@
     return "new";
   }
 
+  /** התקדמות של נושא. היא נשמרת רק על נושאי-עלה, ולכן נושא-אב (עם sub)
+      הוא סכום תתי-הנושאים שלו. נספרות רק רמות שיש בהן שאלות במאגר, וכל
+      רמה מוגבלת למספר השאלות שבה — רשומה ברמה אחרת לא מנפחת את האחוז. */
+  function progressOf(topic, solved, levels) {
+    const keys = Array.isArray(topic.sub) && topic.sub.length ? topic.sub.map((s) => s.key) : [topic.key];
+    let got = 0, tot = 0;
+    for (const k of keys) {
+      const s = solved[k] || {};
+      const l = levels[k] || {};
+      for (const lv of Object.keys(l)) {
+        const n = Math.max(0, Number(l[lv]) || 0);
+        tot += n;
+        got += Math.min(Math.max(0, Number(s[lv]) || 0), n);
+      }
+    }
+    // floor: 100% רק כשבאמת הכל נפתר, לא בעיגול של 99.6
+    const pct = tot > 0 ? Math.min(100, Math.max(0, Math.floor((got / tot) * 100))) : 0;
+    return { pct, attempts: got };
+  }
+
   /* ---------- בניית כוכב ---------- */
   function planetHtml(p, st) {
     const C = 2 * Math.PI * 47;
@@ -75,22 +95,14 @@
     </button>`;
   }
 
-  /* ---------- פריסה: קוטבי סביב השמש, מותאם לכל מסך ---------- */
-  /** מידות הצפייה, עם נפילה-לאחור. חלק מהדפדפנים/מסגרות מחזירים 0 לפני
-      הצביעה הראשונה, ואז כל החישוב מתאפס והכוכבים נערמים במרכז. */
-  function viewport() {
-    const d = document.documentElement;
-    const w = innerWidth || d.clientWidth || document.body.clientWidth || 0;
-    const h = innerHeight || d.clientHeight || document.body.clientHeight || 0;
-    return { w, h, ok: w > 120 && h > 120 };
-  }
-
   /* ---------- פריסה: מערכת-שמש במבט אלכסוני ----------
      המסלול הוא עיגול שנמעך אנכית ב-tilt, ולכן נראה כאליפסה. הכוכב
      בתחתית האליפסה קרוב לצופה — גדול ובהיר; בראשה רחוק — קטן ועמום.
      הכל נכנס למסך אחד; אין גלילה ואין גרירה.                        */
   let CFG = null;
 
+  /** מידות הצפייה, עם נפילה-לאחור. חלק מהדפדפנים/מסגרות מחזירים 0 לפני
+      הצביעה הראשונה, ואז כל החישוב מתאפס והכוכבים נערמים במרכז. */
   function viewport() {
     const d = document.documentElement;
     const w = innerWidth || d.clientWidth || document.body.clientWidth || 0;
@@ -200,30 +212,49 @@
     setTimeout(done, 900);
   }
 
+  /** אין מה להציג (אין הגדרת-מראה לכיתה, או שהשרת לא ענה) — הודעה ברורה
+      במקום ספינר שמסתובב לנצח. */
+  function unavailable() {
+    $("#boot").innerHTML =
+      `<p class="boot__msg">הגלקסיה של הכיתה שלך עוד בבנייה ✨<br /><a href="/learn">חזרה לנושאים</a></p>`;
+  }
+
   /* ---------- עלייה ---------- */
   async function boot() {
     seedStars($("#starsFar"), 110, 1.6);
     seedStars($("#starsMid"), 60, 2.4);
 
-    let data = {};
-    try { data = await api("/api/topics?area=learn"); } catch { return; }
-    const gradeNum = data.gradeNum || 1;
-    const cfg = (window.GALAXY || {})[gradeNum] || (window.GALAXY || {})[1];
-    if (!cfg) return;
+    let data;
+    try { data = await api("/api/topics?area=learn"); } catch (e) {
+      if (e.message !== "auth") unavailable(); // ב-401 כבר עוברים ל-/auth
+      return;
+    }
+    const gradeNum = data.gradeNum;
+    const cfg = (window.GALAXY || {})[gradeNum];
 
-    // מיפוי שם-נושא → אחוז שנפתר, מהנתונים האמיתיים
+    // אילו כוכבים יש = השרת. איך הם נראים = galaxy-data.js.
+    const topics = Array.isArray(data.topics) ? data.topics : [];
+    const visuals = (cfg && cfg.visuals) || {};
+    const planets = [];
+    const noVisual = [];
+    for (const t of topics) {
+      const v = visuals[t.key];
+      if (v) planets.push({ ...v, key: t.key, topic: t });
+      else noVisual.push(t.key);
+    }
+    if (noVisual.length) {
+      console.warn(`[galaxy] לנושאים האלה של כיתה ${gradeNum} אין הגדרת-מראה ב-galaxy-data.js, ולכן הם לא מוצגים:`, noVisual);
+    }
+    const extra = Object.keys(visuals).filter((k) => !topics.some((t) => t.key === k));
+    if (extra.length) {
+      console.warn("[galaxy] הגדרת-מראה לנושא שאינו באזור הלמידה — לא נוצר כוכב:", extra);
+    }
+    if (!cfg || !planets.length) return unavailable();
+
     const solved = data.solved || {};
     const levels = data.topicLevels || {};
-    const pctFor = (key) => {
-      const s = solved[key] || {};
-      const l = levels[key] || {};
-      let got = 0, tot = 0;
-      for (const lv of Object.keys(l)) { tot += l[lv] || 0; got += Math.min(s[lv] || 0, l[lv] || 0); }
-      return { pct: tot ? Math.round((got / tot) * 100) : 0, attempts: got };
-    };
-
-    const states = cfg.planets.map((p) => {
-      const { pct, attempts } = pctFor(p.key);
+    const states = planets.map((p) => {
+      const { pct, attempts } = progressOf(p.topic, solved, levels);
       return { pct, attempts, state: statusOf(pct, attempts), recommended: false };
     });
     // מומלץ = הראשון שהתחילו ולא סיימו; אחרת הראשון שטרם התחיל
@@ -232,11 +263,13 @@
     if (rec >= 0) states[rec].recommended = true;
 
     CFG = cfg;
-    $("#planets").innerHTML = cfg.planets.map((p, i) => planetHtml(p, states[i])).join("");
+    $("#planets").innerHTML = planets.map((p, i) => planetHtml(p, states[i])).join("");
+    // איור מציין-מקום שעוד לא קיים (למשל thinking.png) — נשאר כדור צבעוני נקי, בלי אייקון שבור
+    document.querySelectorAll(".planet__art").forEach((img) => img.addEventListener("error", () => img.remove()));
     $("#sunLabel").textContent = cfg.label;
     const doneN = states.filter((s) => s.state === "done").length;
-    $("#hudSub").textContent = `${cfg.label} · ${cfg.planets.length} נושאים`;
-    $("#hudStat").innerHTML = `⭐ <span>${doneN} / ${cfg.planets.length}</span>`;
+    $("#hudSub").textContent = `${cfg.label} · ${planets.length} נושאים`;
+    $("#hudStat").innerHTML = `⭐ <span>${doneN} / ${planets.length}</span>`;
 
     layoutWhenReady();
     initParallax();
@@ -249,9 +282,8 @@
       el.addEventListener("focus", () => faceTo(el));
       el.addEventListener("click", () => {
         $("#hint").classList.add("hint--gone");
-        // המצלמה נעה אל הכוכב כך שהטיסה מתרחשת במרכז המסך
         flyTo(el, () => {
-          location.href = `/learn?topic=${encodeURIComponent(el.dataset.key)}`;
+          location.href = `/learn-board?topic=${encodeURIComponent(el.dataset.key)}`;
         });
       });
     });
