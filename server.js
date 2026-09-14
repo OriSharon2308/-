@@ -1159,6 +1159,12 @@ const server = http.createServer(async (req, res) => {
     }
 
     // אזור ההורים — שלד הדף ציבורי (הנתונים מוגנים ב-API לפי session הורה נפרד)
+    // גלקסיית הנושאים — מסך נסיוני, עומד בפני עצמו. לא מחליף את הקרוסלה.
+    if (rel === "/galaxy" || rel === "/galaxy/") {
+      if (!sessions.currentUserId(req)) return send(res, 302, { location: "/auth" }, "");
+      return serveFile(res, "/galaxy.html", method);
+    }
+
     if (rel === "/parent" || rel === "/parent/" || rel === "/parent.html") {
       return serveFile(res, "/parent.html", method);
     }

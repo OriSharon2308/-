@@ -1,0 +1,224 @@
+/* =====================================================================
+   vela · גלקסיית הנושאים — 2.5D ב-CSS בלבד.
+   בלי מנוע תלת-ממד ובלי ספריות: transform + opacity בלבד, כך שהכל רץ
+   על ה-GPU ונשאר חלק גם במובייל. העומק נבנה משכבות שזזות בקצב שונה.
+   ===================================================================== */
+:root {
+  --ink: #f2f9f8;
+  --muted: #9fbfd6;
+  --teal: #3fd6c4;
+  --gold: #f0a92b;
+  --sun: #ffd97a;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body {
+  font-family: "Fredoka", "Rubik", system-ui, sans-serif;
+  color: var(--ink);
+  /* חלל בהיר וצבעוני — לא שחור ואפל */
+  background:
+    radial-gradient(900px 700px at 78% 12%, rgba(124, 107, 214, 0.34) 0%, transparent 60%),
+    radial-gradient(820px 640px at 14% 78%, rgba(13, 148, 136, 0.30) 0%, transparent 62%),
+    radial-gradient(760px 600px at 62% 96%, rgba(214, 107, 168, 0.20) 0%, transparent 64%),
+    linear-gradient(165deg, #142a5c 0%, #113a63 44%, #0e4a63 100%);
+}
+[hidden] { display: none !important; }
+
+.boot { height: 100%; display: grid; place-items: center; }
+.spin {
+  width: 30px; height: 30px; border: 2px solid rgba(255,255,255,.2);
+  border-top-color: var(--teal); border-radius: 50%; animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.sky { position: fixed; inset: 0; overflow: hidden; }
+
+/* תמונת-רקע אופציונלית. ברגע שיש קובץ ב-/images/space-bg.jpg הוא נכנס
+   מעל הגרדיאנטים; עד אז הרקע הוא ה-CSS בלבד. */
+.sky::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background-image: var(--bg, none);
+  background-size: cover; background-position: center;
+  opacity: var(--bg-opacity, 1); pointer-events: none;
+}
+
+/* טבעות-המסלול — עיגולים שנמעכו אנכית, ולכן נראים כאליפסות במבט אלכסוני */
+.rings { position: absolute; inset: 0; display: grid; place-items: center;
+  will-change: transform; pointer-events: none; }
+.ring-o {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .13);
+  box-shadow: 0 0 3vmin rgba(120, 190, 255, .06) inset;
+}
+
+/* ---------- שכבות רקע ---------- */
+.layer { position: absolute; inset: -12%; will-change: transform; pointer-events: none; }
+.layer i {
+  position: absolute; background: #fff; border-radius: 50%;
+  animation: tw 3.6s ease-in-out infinite;
+}
+@keyframes tw { 50% { opacity: .18; } }
+.neb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5; }
+.neb--1 { width: 62vmin; height: 62vmin; top: 14%; right: 16%; background: #7c6bd6; }
+.neb--2 { width: 54vmin; height: 54vmin; bottom: 12%; left: 14%; background: #0d9488; }
+.neb--3 { width: 44vmin; height: 44vmin; top: 56%; right: 48%; background: #d66ba8; opacity: .3; }
+.neb--4 { width: 50vmin; height: 50vmin; top: 8%;  left: 20%;  background: #3f7fd6; opacity: .26; }
+
+/* ---------- השמש = הכיתה ---------- */
+.sun {
+  position: absolute; top: 50%; right: 50%;
+  transform: translate(50%, -50%);
+  width: 27vmin; height: 27vmin; display: grid; place-items: center;
+  will-change: transform;
+}
+.sun__core {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #fff 0%, var(--sun) 40%, #f0932b 100%);
+  box-shadow: 0 0 0 1.4vmin rgba(255, 217, 122, .22), 0 0 12vmin rgba(240, 169, 43, .55);
+}
+.sun__flare {
+  position: absolute; inset: -18%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,217,122,.34) 0%, transparent 62%);
+  animation: breathe 5.5s ease-in-out infinite;
+}
+@keyframes breathe { 50% { transform: scale(1.12); opacity: .72; } }
+.sun__label {
+  position: relative; z-index: 2; font-size: 3.4vmin; font-weight: 700;
+  color: #5a3505; letter-spacing: -.01em; text-shadow: 0 1px 0 rgba(255,255,255,.45);
+}
+
+/* ---------- כוכב לכת ---------- */
+.planets { position: absolute; inset: 0; will-change: transform; }
+.planet {
+  position: absolute; top: 50%; right: 50%;
+  display: grid; justify-items: center; gap: .9vmin;
+  background: none; border: 0; padding: 0; cursor: pointer;
+  color: inherit; font: inherit;
+  /* --tx/--ty נקבעים ב-JS; --s הוא קנה-המידה לפי עומק */
+  transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty)));
+  transition: transform .3s var(--ease), opacity .3s ease;
+  transition: transform .34s var(--ease);
+  will-change: transform;
+}
+.planet__orb {
+  position: relative; width: var(--d); height: var(--d); border-radius: 50%;
+  display: grid; place-items: center;
+  animation: float var(--dur, 7s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  transition: filter .3s ease, box-shadow .3s ease;
+}
+@keyframes float {
+  50% { transform: translateY(-1.4vmin) rotate(2.2deg); }
+}
+/* מציין-מקום: כדור CSS. יוחלף ב-<img> ברגע שיגיעו האיורים */
+.planet__orb--ph {
+  background: radial-gradient(circle at 34% 28%, var(--hue) 0%, var(--hue) 44%, rgba(10,20,40,.92) 100%);
+  box-shadow: inset -0.8vmin -1vmin 2.4vmin rgba(0,0,0,.42), 0 0 3vmin rgba(255,255,255,.10);
+}
+.planet__orb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.planet__art {
+  position: absolute; width: 58%; height: 58%; object-fit: contain;
+  filter: drop-shadow(0 .4vmin .8vmin rgba(0,0,0,.35)); pointer-events: none;
+}
+.planet__name {
+  font-size: 1.85vmin; font-weight: 600; white-space: nowrap;
+  text-shadow: 0 .2vmin 1vmin rgba(4, 16, 34, .85);
+  transition: transform .28s var(--ease), color .2s ease;
+}
+.planet__sub { font-family: "Rubik", sans-serif; font-size: 1.45vmin; color: var(--muted); }
+
+/* מצבים */
+.planet--done .planet__orb { box-shadow: 0 0 0 .5vmin rgba(240,169,43,.55), 0 0 4vmin rgba(240,169,43,.4); }
+.planet--now  .planet__orb { box-shadow: 0 0 0 .5vmin rgba(63,214,196,.55), 0 0 4.6vmin rgba(63,214,196,.45); }
+.planet--new  .planet__orb { filter: saturate(.62) brightness(.82); }
+.badge {
+  position: absolute; top: -.6vmin; right: -.6vmin; width: 3.4vmin; height: 3.4vmin;
+  border-radius: 50%; display: grid; place-items: center; font-size: 1.7vmin; z-index: 3;
+  background: linear-gradient(155deg, #ffd97a, var(--gold));
+  box-shadow: 0 .3vmin 1vmin rgba(240,169,43,.6);
+}
+.ring { position: absolute; inset: -.7vmin; transform: rotate(-90deg); z-index: 2; }
+.ring circle { fill: none; stroke-width: 3.2; stroke-linecap: round; }
+.tip {
+  position: absolute; top: -3.4vmin; right: 50%; transform: translateX(50%);
+  background: var(--teal); color: #06322e; font-size: 1.4vmin; font-weight: 700;
+  padding: .4vmin 1.2vmin; border-radius: 999px; white-space: nowrap; z-index: 4;
+  font-family: "Rubik", sans-serif;
+}
+
+/* hover — גדל, זוהר, השם בולט */
+.planet:hover { transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty))) scale(1.12); }
+.planet:hover { opacity: 1 !important; z-index: 60 !important; }
+.planet:hover .planet__orb { filter: none; box-shadow: 0 0 0 .6vmin rgba(255,255,255,.22), 0 0 6vmin rgba(255,255,255,.3); }
+.planet:hover .planet__name { transform: translateY(.3vmin); color: #fff; }
+.planet:focus-visible { outline: 3px solid var(--teal); outline-offset: 6px; border-radius: 12px; }
+
+/* ---------- החללית ---------- */
+.ship {
+  position: absolute; top: 50%; right: 50%; width: 7vmin;
+  transform: translate(50%, -50%) translate(var(--sx, 0px), var(--sy, 14vmin)) rotate(var(--sr, 0deg));
+  transition: transform 1s var(--ease);
+  pointer-events: none; z-index: 6;
+  filter: drop-shadow(0 0 2vmin rgba(63, 214, 196, .55));
+}
+.ship__svg { width: 100%; display: block; }
+.ship__fire { animation: fire .26s ease-in-out infinite alternate; transform-origin: 32px 66px; }
+@keyframes fire { to { transform: scaleY(1.35) scaleX(.85); } }
+.ship--warp { transition: transform .85s cubic-bezier(.6, 0, .3, 1); }
+
+/* ---------- HUD ---------- */
+.hud {
+  position: absolute; inset-inline: 0; top: 0; z-index: 8;
+  display: flex; align-items: center; gap: 2vmin; padding: 2vmin 3vmin;
+}
+.hud__back {
+  width: 5vmin; height: 5vmin; min-width: 40px; min-height: 40px;
+  border-radius: 50%; display: grid; place-items: center; text-decoration: none;
+  background: rgba(255,255,255,.12); color: #fff; font-size: 2.4vmin;
+  border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(8px);
+}
+.hud__back:hover { background: rgba(255,255,255,.22); }
+.hud__mid { flex: 1; }
+.hud__t { font-size: 2.6vmin; font-weight: 700; }
+.hud__s { font-family: "Rubik", sans-serif; font-size: 1.6vmin; color: var(--muted); }
+.hud__stat {
+  display: flex; gap: 1vmin; align-items: center; font-size: 1.9vmin; font-weight: 600;
+  background: rgba(255,255,255,.11); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 999px; padding: 1vmin 2vmin; backdrop-filter: blur(8px);
+}
+.hint {
+  position: absolute; inset-inline: 0; bottom: 2.6vmin; text-align: center; margin: 0;
+  font-family: "Rubik", sans-serif; font-size: 1.7vmin; color: var(--muted);
+  transition: opacity .4s ease;
+}
+.hint--gone { opacity: 0; }
+
+/* ---------- מובייל: עדיין גלקסיה, לא רשימה ---------- */
+@media (max-width: 700px) {
+  .planet__name { font-size: 3.1vmin; }
+  .planet__sub  { font-size: 2.5vmin; }
+  .sun__label   { font-size: 5.4vmin; }
+  .hud__t { font-size: 4.4vmin; } .hud__s { font-size: 3vmin; }
+  .hud__stat { font-size: 3.4vmin; } .recenter {
+  position: absolute; inset-inline-start: 3vmin; bottom: 3vmin; z-index: 8;
+  display: flex; align-items: center; gap: .9vmin;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18);
+  color: #fff; font: inherit; font-size: 1.8vmin; font-weight: 600;
+  border-radius: 999px; padding: 1.1vmin 2.2vmin; cursor: pointer;
+  backdrop-filter: blur(8px); opacity: 0; pointer-events: none;
+  transition: opacity .3s ease, background .2s ease;
+}
+.recenter.is-on { opacity: 1; pointer-events: auto; }
+.recenter:hover { background: rgba(255,255,255,.22); }
+
+.hint { font-size: 3vmin; }
+  .badge { width: 6vmin; height: 6vmin; font-size: 3vmin; }
+  .tip { font-size: 2.6vmin; top: -5.4vmin; }
+  .ship { width: 12vmin; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planet__orb, .sun__flare, .ship__fire, .layer i { animation: none !important; }
+  .planet, .ship { transition: none !important; }
+}

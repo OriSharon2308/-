@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>vela · גלקסיית הנושאים</title>
+    <link rel="icon" href="/favicon-teacher.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/galaxy.css?v=3" />
+  </head>
+  <body>
+    <div id="boot" class="boot"><span class="spin"></span></div>
+
+    <main id="sky" class="sky" hidden>
+      <!-- שכבות רקע — כל אחת זזה בקצב אחר (parallax) -->
+      <div class="layer layer--far"  data-depth="0.012" id="starsFar"></div>
+      <div class="layer layer--mid"  data-depth="0.026" id="starsMid"></div>
+      <div class="layer layer--neb"  data-depth="0.045" aria-hidden="true">
+        <span class="neb neb--1"></span><span class="neb neb--2"></span><span class="neb neb--3"></span><span class="neb neb--4"></span>
+      </div>
+
+      <!-- טבעות-המסלול (נבנות ב-JS לפי גודל המסך) -->
+      <div class="rings" id="rings" data-depth="0.05" aria-hidden="true"></div>
+
+      <!-- השמש = הכיתה -->
+      <div class="sun" id="sun" data-depth="0.02">
+        <span class="sun__flare"></span>
+        <span class="sun__core"></span>
+        <span class="sun__label" id="sunLabel">כיתה א׳</span>
+      </div>
+
+      <!-- כוכבי הלכת נבנים מ-config ב-galaxy.js -->
+      <div class="planets" id="planets" data-depth="0.06"></div>
+
+      <!-- החללית -->
+      <div class="ship" id="ship" aria-hidden="true">
+        <svg viewBox="0 0 64 96" class="ship__svg">
+          <defs>
+            <linearGradient id="hull" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" /><stop offset="1" stop-color="#c9e3df" />
+            </linearGradient>
+            <linearGradient id="fire" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffd97a" /><stop offset="1" stop-color="#f0722b" />
+            </linearGradient>
+          </defs>
+          <ellipse class="ship__fire" cx="32" cy="80" rx="9" ry="18" fill="url(#fire)" />
+          <path d="M20 66 L9 79 L20 74 Z" fill="#0d9488" />
+          <path d="M44 66 L55 79 L44 74 Z" fill="#0d9488" />
+          <path d="M32 4 C44 20 46 44 44 68 L20 68 C18 44 20 20 32 4 Z" fill="url(#hull)" />
+          <circle cx="32" cy="34" r="10" fill="#0b3d46" opacity=".92" />
+          <circle cx="32" cy="34" r="7.5" fill="#63dcec" />
+          <circle cx="29" cy="31" r="2.6" fill="#fff" opacity=".8" />
+          <path d="M20 68 L44 68 L42 74 L22 74 Z" fill="#0d9488" />
+        </svg>
+      </div>
+
+
+      <!-- כותרת עליונה -->
+      <header class="hud">
+        <a class="hud__back" href="/learn" aria-label="חזרה">→</a>
+        <div class="hud__mid">
+          <div class="hud__t" id="hudTitle">הגלקסיה שלי</div>
+          <div class="hud__s" id="hudSub"></div>
+        </div>
+        <div class="hud__stat" id="hudStat"></div>
+      </header>
+
+      <p class="hint" id="hint">בחר/י כוכב — כל כוכב הוא נושא</p>
+    </main>
+
+    <script src="/galaxy-data.js?v=3"></script>
+    <script src="/galaxy.js?v=4"></script>
+  </body>
+</html>
