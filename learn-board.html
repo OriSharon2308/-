@@ -3,6 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- הגעה מהגלקסיה: אם באנו מלחיצה על כוכב, הדף נפתח מתחת לאותו צבע ומתגלה
+         בהדרגה — בלי הבזק. ביקור רגיל (בלי סימון טרי מהגלקסיה) לא מושפע בכלל. -->
+    <style>
+      html.vela-arrive::after {
+        content: ""; position: fixed; inset: 0; z-index: 2147483647; pointer-events: none;
+        background: var(--vela-arrive-hue); opacity: 1;
+        transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      html.vela-arrive.vela-arrive--out::after { opacity: 0; }
+      /* גם רקע-הקנבס: באייפון עם חריץ לרוחב, הפסים בצדדים לוקחים את צבע ה-html
+         (הדף הזה בלי viewport-fit=cover) — בלעדיו הם היו לבנים בזמן הכיסוי */
+      html.vela-arrive {
+        background-color: var(--vela-arrive-hue);
+        transition: background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      html.vela-arrive.vela-arrive--out { background-color: #fff; }
+      @media (prefers-reduced-motion: reduce) {
+        html.vela-arrive, html.vela-arrive::after { transition-duration: 120ms; }
+      }
+    </style>
+    <script>
+      (function () {
+        var KEY = "velaGalaxyTransition", MAX_AGE = 5000, t = null;
+        // נקרא ונמחק מיד — גם אם הוא פגום: רענון הדף לא יציג את הכיסוי שוב
+        try {
+          var raw = sessionStorage.getItem(KEY);
+          sessionStorage.removeItem(KEY);
+          t = JSON.parse(raw || "null");
+        } catch (e) { return; }
+        if (!t) return;
+        var topic = new URLSearchParams(location.search).get("topic") || "";
+        var age = Date.now() - Number(t.timestamp);
+        // רק סימון טרי, של הנושא הזה, ובצבע תקין — אחרת הדף נפתח בדיוק כמו תמיד
+        if (!(age >= 0 && age <= MAX_AGE) || t.topic !== topic || !/^#[0-9a-f]{3,8}$/i.test(String(t.hue))) return;
+        var root = document.documentElement, done = false;
+        root.style.setProperty("--vela-arrive-hue", t.hue);
+        root.classList.add("vela-arrive");
+        function reveal() {
+          if (done) return;
+          done = true;
+          root.classList.add("vela-arrive--out");
+          // אחרי הדעיכה לא נשאר כלום
+          setTimeout(function () {
+            root.classList.remove("vela-arrive", "vela-arrive--out");
+            root.style.removeProperty("--vela-arrive-hue");
+          }, 400);
+        }
+        // מוכן להצגה = הסקריפטים של הדף רצו (הלוח מצויר) והגופנים נטענו, ועוד שני
+        // פריימים. לא מחכים לגופנים יותר מ-1.2 שניות, ולא מחזיקים כיסוי יותר מ-4 שניות.
+        function whenReady() {
+          var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+          Promise.race([fonts, new Promise(function (r) { setTimeout(r, 1200); })]).then(function () {
+            requestAnimationFrame(function () { requestAnimationFrame(reveal); });
+          });
+        }
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", whenReady);
+        else whenReady();
+        setTimeout(reveal, 4000);
+      })();
+    </script>
     <title>אזור הלמידה</title>
     <link rel="icon" href="/favicon-teacher.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

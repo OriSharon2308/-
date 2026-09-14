@@ -156,11 +156,15 @@
 
   /* ---------- parallax עדין ----------
      המערכת נשארת במקום; רק השכבות נעות מעט עם העכבר כדי לתת עומק. */
+  // בזמן שיגור השכבות קופאות בדיוק איפה שהן — בלי לקפוץ חזרה ל-0
+  let parallaxPaused = false;
+
   function initParallax() {
     if (REDUCED) return;
     const layers = [...document.querySelectorAll("[data-depth]")];
     let raf = 0, mx = 0, my = 0;
     sky.addEventListener("pointermove", (e) => {
+      if (parallaxPaused) return;
       const vp = viewport();
       if (!vp.ok) return;
       mx = (e.clientX / vp.w - 0.5) * 2;
@@ -168,6 +172,7 @@
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = 0;
+        if (parallaxPaused) return; // פריים שהוזמן רגע לפני השיגור — לא נכתב
         for (const l of layers) {
           const d = +l.dataset.depth * 90;
           const base = l.classList.contains("sun") ? "translate(50%,-50%) " : "";
@@ -195,22 +200,154 @@
   }
   /** מפנה את החללית אל כוכב מרוחף — בלי לעוף אליו. */
   function faceTo(el) {
-    if (REDUCED) return;
+    if (REDUCED || launching) return;
     const tx = parseFloat(el.style.getPropertyValue("--tx")) || 0;
     const ty = parseFloat(el.style.getPropertyValue("--ty")) || 0;
     // 0° של החללית = אף כלפי מעלה; ולכן +90
     const deg = (Math.atan2(ty - parked.y, tx - parked.x) * 180) / Math.PI + 90;
     setShip(parked.x, parked.y, deg);
   }
-  function flyTo(el, done) {
+  /** הטיסה הזמנית אל הכוכב (מעבר CSS קיים). שלב 2B יחליף אותה. */
+  function flyShip(el) {
     const tx = parseFloat(el.style.getPropertyValue("--tx")) || 0;
     const ty = parseFloat(el.style.getPropertyValue("--ty")) || 0;
-    if (REDUCED) return done();
     const deg = (Math.atan2(ty - parked.y, tx - parked.x) * 180) / Math.PI + 90;
     ship.classList.add("ship--warp");
     setShip(tx, ty, deg);
-    setTimeout(done, 900);
   }
+
+  /* ---------- שיגור: מכונת-מצבים קטנה ----------
+     לחיצה ראשונה נועלת את היעד ומתחילה רצף אחד. לחיצה נוספת — בכל מקום
+     במסך — מדלגת על מה שנשאר ונכנסת מיד לשיעור של הכוכב הראשון.
+     navigationStarted מבטיח שהניווט קורה פעם אחת בלבד.                */
+  const TRANSITION_KEY = "velaGalaxyTransition"; // נקרא ב-learn-board.html
+  const COVER_AT = 650;     // הכיסוי מתחיל להתמלא
+  const COVER_MS = 400;     // ...ואטום לגמרי ב-1050
+  const SKIP_MS = 110;      // דילוג: נסגר כמעט מיד, בלי הבזק לבן
+  const REDUCED_MS = 140;   // תנועה מופחתת: רק מעבר-צבע קצר
+  const WATCHDOG_MS = 2500; // רשת-ביטחון אם אנימציה לא מסתיימת (למשל לשונית ברקע)
+  const RETRY_MS = 1500;    // עדיין כאן אחרי הניווט (Stop / שרת רדום)? הקשה מנסה שוב
+  const STUCK_MS = 10000;   // ...ואם עדיין כאן — הגלקסיה חוזרת, לא נשארים מול מסך צבעוני
+
+  const cover = $("#warpCover");
+  const hud = $(".hud");
+  const byKey = new Map(); // שם-נושא → הגדרת-המראה (hue, art)
+  let launching = false;
+  let launchTarget = null;
+  let navigationStarted = false;
+  let skipped = false;
+  let navUrl = "", navAt = 0;
+  let pressAnim = null, coverAnim = null, watchdog = 0, stuckTimer = 0;
+
+  /** "כן — בחרת את העולם הזה": פולס קצר על הכוכב עצמו. ה-translate נכתב
+      במספרים ולא ב-var() כדי שהמיקום יישמר בדיוק; את --d ואת ה-float של
+      הכדור לא נוגעים. מתחילים מ-1.12 אם העכבר כבר הגדיל אותו ב-hover. */
+  function pressFrames(el) {
+    const tx = el.style.getPropertyValue("--tx") || "0px";
+    const ty = el.style.getPropertyValue("--ty") || "0px";
+    const at = (s) => `translate(calc(50% + ${tx}), calc(-50% + ${ty})) scale(${s})`;
+    const from = el.matches(":hover") && matchMedia("(hover: hover) and (pointer: fine)").matches ? 1.12 : 1;
+    return [
+      { transform: at(from), easing: "cubic-bezier(.2,.9,.3,1.25)" },
+      { transform: at(1.13), offset: 70 / 150, easing: "ease-out" },
+      { transform: at(1.07) },
+    ];
+  }
+
+  function startLaunch(el) {
+    launching = true;
+    launchTarget = el;
+    navigationStarted = false;
+    skipped = false;
+    parallaxPaused = true;
+    sky.classList.add("is-launching"); // מעמעם את השאר, חוסם לחיצות על כוכבים (CSS)
+    hud.inert = true; // גם כפתור-החזרה: לחיצה עליו היא "דילוג", לא ניווט שני ל-/learn
+    el.classList.add("is-picked");
+    cover.style.background = (byKey.get(el.dataset.key) || {}).hue || "#0e4a63";
+    cover.hidden = false;
+    // נרשם אחרי ה-pointerdown של הלחיצה הראשונה, ולכן תופס רק את השנייה
+    document.addEventListener("pointerdown", skipLaunch, true);
+    watchdog = setTimeout(navigate, WATCHDOG_MS);
+
+    if (REDUCED) return fillCover(0, REDUCED_MS, "ease-out");
+    if (el.animate) {
+      pressAnim = el.animate(pressFrames(el), { duration: 150, fill: "forwards" });
+    }
+    flyShip(el);
+    fillCover(COVER_AT, COVER_MS, "cubic-bezier(.65,0,.35,1)");
+  }
+
+  /** ממלא את הכיסוי עד אטימות מלאה ומנווט כשהוא אטום. קריאה נוספת (דילוג)
+      ממשיכה מהאטימות הנוכחית ומחליפה את האנימציה — לא שרשרת שנייה. */
+  function fillCover(delay, duration, easing) {
+    if (!cover.animate) { cover.style.opacity = "1"; return navigate(); }
+    const from = coverAnim ? Number(getComputedStyle(cover).opacity) || 0 : 0;
+    if (coverAnim) coverAnim.cancel();
+    const a = cover.animate({ opacity: [from, 1] }, { delay, duration, easing, fill: "forwards" });
+    coverAnim = a;
+    a.finished.then(() => { if (coverAnim === a) navigate(); }, () => { /* בוטלה: דילוג או חזרה */ });
+  }
+
+  /** לחיצה שנייה בזמן השיגור: קדימה מיד לשיעור של הכוכב הראשון. */
+  function skipLaunch() {
+    if (!launching) return;
+    if (navigationStarted) {
+      // הניווט כבר יצא ועדיין אנחנו כאן (הילד עצר את הטעינה, או שהשרת מתעורר):
+      // הקשה מנסה שוב — לאותו כוכב, ולא יותר מפעם ב-1.5 שניות
+      if (performance.now() - navAt > RETRY_MS) { navAt = performance.now(); location.href = navUrl; }
+      return;
+    }
+    if (skipped) return;
+    skipped = true;
+    fillCover(0, SKIP_MS, "ease-out");
+  }
+
+  function navigate() {
+    if (navigationStarted || !launchTarget) return;
+    navigationStarted = true;
+    clearTimeout(watchdog);
+    cover.style.opacity = "1"; // גם אם הגענו לכאן מרשת-הביטחון — לא יוצאים מדף שקוף-למחצה
+    const key = launchTarget.dataset.key;
+    const v = byKey.get(key) || {};
+    try {
+      sessionStorage.setItem(TRANSITION_KEY, JSON.stringify({ hue: v.hue, art: v.art, topic: key, timestamp: Date.now() }));
+    } catch (e) { /* פרטיות/מכסה — השיעור ייפתח בלי כיסוי-הגעה */ }
+    navUrl = `/learn-board?topic=${encodeURIComponent(key)}`;
+    navAt = performance.now();
+    // אם הדף עדיין חי אחרי 10 שניות, הניווט נעצר או תקוע — מחזירים את הגלקסיה
+    stuckTimer = setTimeout(resetLaunch, STUCK_MS);
+    location.href = navUrl;
+  }
+
+  /** מחזיר את הגלקסיה למצב שמיש לגמרי. נקרא כש-Safari משחזר את הדף מה-bfcache
+      אחרי "חזרה" (אחרת הילד היה רואה מסך צבעוני קפוא), וגם כשניווט נתקע. */
+  function resetLaunch() {
+    clearTimeout(watchdog);
+    clearTimeout(stuckTimer);
+    document.removeEventListener("pointerdown", skipLaunch, true);
+    hud.inert = false;
+    navUrl = "";
+    if (coverAnim) coverAnim.cancel();
+    if (pressAnim) pressAnim.cancel();
+    coverAnim = pressAnim = null;
+    cover.hidden = true;
+    cover.style.opacity = "";
+    sky.classList.remove("is-launching");
+    document.querySelectorAll(".planet.is-picked").forEach((p) => p.classList.remove("is-picked"));
+    // החללית חוזרת לחנייה מיד — בלי לטוס אחורה מול הילד
+    ship.classList.remove("ship--warp");
+    ship.style.transition = "none";
+    parkShip();
+    void ship.offsetWidth;
+    ship.style.transition = "";
+    launching = false;
+    launchTarget = null;
+    navigationStarted = false;
+    skipped = false;
+    parallaxPaused = false;
+    try { sessionStorage.removeItem(TRANSITION_KEY); } catch (e) { /* לא קריטי */ }
+  }
+  addEventListener("pageshow", (e) => { if (e.persisted) resetLaunch(); });
 
   /** אין מה להציג (אין הגדרת-מראה לכיתה, או שהשרת לא ענה) — הודעה ברורה
       במקום ספינר שמסתובב לנצח. */
@@ -263,6 +400,7 @@
     if (rec >= 0) states[rec].recommended = true;
 
     CFG = cfg;
+    planets.forEach((p) => byKey.set(p.key, p));
     $("#planets").innerHTML = planets.map((p, i) => planetHtml(p, states[i])).join("");
     // איור מציין-מקום שעוד לא קיים (למשל thinking.png) — נשאר כדור צבעוני נקי, בלי אייקון שבור
     document.querySelectorAll(".planet__art").forEach((img) => img.addEventListener("error", () => img.remove()));
@@ -273,21 +411,21 @@
 
     layoutWhenReady();
     initParallax();
-    addEventListener("resize", () => { layout(); parkShip(); });
+    // בזמן שיגור החללית בדרך — פריסה מחדש לא מחזירה אותה לחנייה
+    const relayout = () => { layout(); if (!launching) parkShip(); };
+    addEventListener("resize", relayout);
     // גם שינוי-גודל של האלמנט עצמו (פאנל שנפתח, סיבוב מכשיר) מפעיל פריסה מחדש
-    if (window.ResizeObserver) new ResizeObserver(() => { layout(); parkShip(); }).observe(document.body);
+    if (window.ResizeObserver) new ResizeObserver(relayout).observe(document.body);
 
     document.querySelectorAll(".planet").forEach((el) => {
       el.addEventListener("pointerenter", () => faceTo(el));
       el.addEventListener("focus", () => faceTo(el));
       el.addEventListener("click", () => {
-        $("#hint").classList.add("hint--gone");
-        flyTo(el, () => {
-          location.href = `/learn-board?topic=${encodeURIComponent(el.dataset.key)}`;
-        });
+        if (launching) return skipLaunch(); // לחיצה שנייה (גם במקלדת) = דילוג; היעד לא משתנה
+        startLaunch(el);
       });
     });
-    sky.addEventListener("pointerleave", () => setShip(parked.x, parked.y, 0));
+    sky.addEventListener("pointerleave", () => { if (!launching) setShip(parked.x, parked.y, 0); });
 
     $("#boot").hidden = true;
     sky.hidden = false;

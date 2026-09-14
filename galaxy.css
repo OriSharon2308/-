@@ -34,7 +34,8 @@ body {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.sky { position: fixed; inset: 0; overflow: hidden; }
+/* touch-action: בלי זום של הקשה-כפולה ב-iOS — ההקשה השנייה היא "דילוג" */
+.sky { position: fixed; inset: 0; overflow: hidden; touch-action: manipulation; }
 
 /* תמונת-רקע אופציונלית. ברגע שיש קובץ ב-/images/space-bg.jpg הוא נכנס
    מעל הגרדיאנטים; עד אז הרקע הוא ה-CSS בלבד. */
@@ -205,7 +206,24 @@ body {
   font-family: "Rubik", sans-serif; font-size: 1.7vmin; color: var(--muted);
   transition: opacity .4s ease;
 }
-.hint--gone { opacity: 0; }
+
+/* ---------- שיגור ----------
+   תשומת-הלב עוברת לכוכב שנבחר: השאר מתעמעם (opacity בלבד) והכוכב שנבחר
+   נשאר מלא. הלחיצות על כוכבים נחסמות — לחיצה שנייה נתפסת ב-JS כדילוג. */
+.rings, .hud { transition: opacity .26s ease; }
+.sky.is-launching .planet { pointer-events: none; }
+.sky.is-launching .planet:not(.is-picked) {
+  opacity: .28 !important;
+  transition: transform .34s var(--ease), opacity .26s ease;
+}
+.planet.is-picked { opacity: 1 !important; z-index: 60 !important; }
+.planet.is-picked .planet__orb { filter: none; }
+.sky.is-launching .rings { opacity: .2; }
+.sky.is-launching .hud { opacity: .4; pointer-events: none; } /* הקשה עליו = דילוג, לא יציאה */
+.sky.is-launching .hint { opacity: 0; transition-duration: .26s; }
+
+/* כיסוי-הצבע בצבע הכוכב. זמני — יוחלף בזום של הכוכב. כשהוא אטום, מנווטים. */
+.warp-cover { position: fixed; inset: 0; z-index: 20; opacity: 0; pointer-events: none; }
 
 /* ---------- מובייל: עדיין גלקסיה, לא רשימה ---------- */
 @media (max-width: 700px) {
