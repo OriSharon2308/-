@@ -26,16 +26,27 @@
     return r.json();
   }
 
-  /* ---------- רקע: כוכבים ---------- */
-  function seedStars(el, n, maxR) {
-    let html = "";
-    for (let i = 0; i < n; i++) {
-      const s = (Math.random() * maxR + 0.6).toFixed(1);
-      html += `<i style="left:${(Math.random() * 100).toFixed(1)}%;top:${(Math.random() * 100).toFixed(1)}%;
-        width:${s}px;height:${s}px;opacity:${(Math.random() * 0.55 + 0.3).toFixed(2)};
-        animation-delay:${(Math.random() * 3.6).toFixed(1)}s"></i>`;
-    }
-    el.innerHTML = html;
+  /* ---------- רקע: שמיים קבועים ----------
+     זרע קבוע → אותו פיזור בכל כניסה: שמיים "מעוצבים" ולא רעש אקראי. רוב
+     הכוכבים סטטיים ורק מעטים מנצנצים — פחות אלמנטים מונפשים, פחות עבודה. */
+  function seeded(seed) {
+    return () => {
+      seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function paintSky() {
+    const r = seeded(20260917);
+    const star = (size, opacity, twinkle) =>
+      `<i class="star${twinkle ? " star--tw" : ""}" style="left:${(r() * 100).toFixed(1)}%;top:${(r() * 100).toFixed(1)}%;` +
+      `width:${size}px;height:${size}px;opacity:${opacity}${twinkle ? `;animation-delay:${(-r() * 4).toFixed(1)}s` : ""}"></i>`;
+    let far = "", mid = "";
+    for (let i = 0; i < 90; i++) far += star((0.8 + r() * 0.9).toFixed(1), (0.25 + r() * 0.4).toFixed(2), false);
+    for (let i = 0; i < 34; i++) mid += star((1.6 + r() * 1.2).toFixed(1), (0.5 + r() * 0.35).toFixed(2), i % 3 === 0);
+    $("#starsFar").innerHTML = far;
+    $("#starsMid").innerHTML = mid;
   }
 
   /* ---------- חישוב מצב הנושא מנתונים אמיתיים ---------- */
@@ -65,35 +76,69 @@
     return { pct, attempts: got };
   }
 
-  /* ---------- בניית כוכב ---------- */
-  function planetHtml(p, st) {
-    const C = 2 * Math.PI * 47;
-    const ring =
-      st.pct > 0 && st.pct < 100
-        ? `<svg class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" stroke="rgba(255,255,255,.18)"/>
-           <circle cx="50" cy="50" r="47" stroke="#3fd6c4" stroke-dasharray="${C.toFixed(0)}"
-           stroke-dashoffset="${(C * (1 - st.pct / 100)).toFixed(0)}"/></svg>`
-        : "";
-    const badge = st.state === "done" ? `<span class="badge">⭐</span>` : "";
-    const tip = st.recommended ? `<span class="tip">מומלץ עכשיו</span>` : "";
-    // מציין-מקום עד שיגיעו איורי הכוכבים; image !== null → משתמשים בקובץ הסופי.
-    // אייקון-נושא רק אם הוא באמת קיים (GALAXY_ICONS) — בלי בקשות שנגמרות ב-404.
-    const hasIcon = (window.GALAXY_ICONS || []).includes(p.art);
-    const orb = p.image
-      ? `<img src="${esc(p.image)}" alt="" />`
-      : hasIcon ? `<img class="planet__art" src="/images/topics/${esc(p.art)}.png" alt="" />` : "";
-    const sub =
-      st.state === "done" ? "הושלם" : st.pct > 0 ? `${st.pct}%` : "טרם התחלנו";
+  /* ---------- כוכב: גוף, סימני-משחק ושלט ---------- */
+  const mixHex = (hex, to, a) => {
+    const n = parseInt(String(hex).slice(1), 16), m = parseInt(to.slice(1), 16);
+    const ch = (s) => Math.round(((n >> s) & 255) * (1 - a) + ((m >> s) & 255) * a);
+    return `rgb(${ch(16)}, ${ch(8)}, ${ch(0)})`;
+  };
+  // לכל כוכב משטח קבוע משלו (לפי שם-הקוד), כדי שלא ייראו כולם אותו עיגול
+  const TEXTURES = ["tex1", "tex2", "tex3"];
+  const textureOf = (slug) => TEXTURES[[...String(slug)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % TEXTURES.length];
 
+  /** גוף הכוכב — אותו HTML לכוכב שבמסלול ולעותק שמתקרב. כל המידות יחסיות
+      ל---d, ולכן הוא נראה זהה בכל גודל. image → האיור הסופי; אחרת כדור מצויר
+      (הצללה, משטח, אור-שפה) עם אייקון-הנושא — רק אם הקובץ קיים (בלי 404). */
+  function planetBodyHtml(p, state, extra = "") {
+    const hasIcon = !p.image && (window.GALAXY_ICONS || []).includes(p.art);
+    const ring = p.accent === "ring";
+    const style = `--hue:${esc(p.hue)};--hue-hi:${mixHex(p.hue, "#ffffff", 0.45)};--hue-lo:${mixHex(p.hue, "#101a44", 0.42)}`;
+    // האייקון מעל ההצללה והעמעום — הגוף מתעמעם, האייקון נשאר קריא
+    return `<span class="pbody pbody--${state} pbody--${textureOf(p.art)}${extra}" style="${style}">` +
+      `<span class="pbody__halo"></span><span class="pbody__glow"></span>` +
+      (ring ? `<span class="pbody__ring pbody__ring--back"></span>` : "") +
+      (p.image ? `<img class="pbody__art" src="${esc(p.image)}" alt="" />` : `<span class="pbody__base"></span>`) +
+      `<span class="pbody__shade"></span>` +
+      (p.image ? "" : `<span class="pbody__rim"></span>`) +
+      (hasIcon ? `<img class="pbody__icon" src="/images/topics/${esc(p.art)}.png" alt="" />` : "") +
+      (ring ? `<span class="pbody__ring pbody__ring--front"></span>` : "") +
+      `</span>`;
+  }
+
+  /** סימני-משחק (ממשק, לא חלק מהכוכב): טבעת-התקדמות, כוכב-השלמה, "מומלץ
+      עכשיו". כל אחד מוחלף באמנות סופית אם הוגדרה ב-GALAXY_ART.marks. */
+  function planetMarksHtml(st) {
+    const art = (window.GALAXY_ART && window.GALAXY_ART.marks) || {};
+    let html = "";
+    if (st.pct > 0 && st.pct < 100) {
+      html += `<svg class="pmark pmark--ring" viewBox="0 0 100 100" aria-hidden="true">` +
+        `<circle class="pmark__track" cx="50" cy="50" r="46"/>` +
+        `<circle class="pmark__glow" cx="50" cy="50" r="46" pathLength="100" stroke-dasharray="${st.pct} 100"/>` +
+        `<circle class="pmark__arc" cx="50" cy="50" r="46" pathLength="100" stroke-dasharray="${st.pct} 100"/></svg>`;
+    }
+    if (st.state === "done") {
+      html += art.star
+        ? `<img class="pmark pmark--star" src="${esc(art.star)}" alt="" />`
+        : `<svg class="pmark pmark--star" viewBox="0 0 24 24" aria-hidden="true"><use href="#g-star"/></svg>`;
+    }
+    if (st.recommended) {
+      const icon = art.recommended
+        ? `<img src="${esc(art.recommended)}" alt="" />`
+        : `<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-spark"/></svg>`;
+      html += `<span class="pmark pmark--rec">${icon}<span>מומלץ עכשיו</span></span>`;
+    }
+    return html;
+  }
+
+  function planetHtml(p, st) {
+    const sub = st.state === "done" ? "הושלם" : st.pct > 0 ? `${st.pct}%` : "טרם התחלנו";
     return `<button class="planet planet--${st.state}" type="button"
-       data-key="${esc(p.key)}" data-angle="${p.angle}" data-ring="${p.ring}"
-       style="--hue:${esc(p.hue)}" aria-label="${esc(p.key)} — ${esc(sub)}">
-      <span class="planet__orb ${p.image ? "" : "planet__orb--ph"}"
-            style="--dur:${(6 + Math.random() * 3).toFixed(1)}s;--delay:${(Math.random() * 3).toFixed(1)}s">
-        <span class="planet__glow"></span>${ring}${badge}${tip}${orb}
+       data-key="${esc(p.key)}" data-state="${st.state}" data-angle="${p.angle}" data-ring="${p.ring}"
+       aria-label="${esc(p.key)} — ${esc(sub)}${st.recommended ? " — מומלץ עכשיו" : ""}">
+      <span class="planet__orb" style="--dur:${(6 + Math.random() * 3).toFixed(1)}s;--delay:${(Math.random() * 3).toFixed(1)}s">
+        ${planetBodyHtml(p, st.state)}${planetMarksHtml(st)}
       </span>
-      <span class="planet__name">${esc(p.key)}</span>
-      <span class="planet__sub">${esc(sub)}</span>
+      <span class="planet__label"><span class="planet__name">${esc(p.key)}</span><span class="planet__sub">${esc(sub)}</span></span>
     </button>`;
   }
 
@@ -131,6 +176,7 @@
         .join("");
     }
 
+    const items = [];
     document.querySelectorAll(".planet").forEach((el) => {
       const a = (+el.dataset.angle * Math.PI) / 180;
       const r = +el.dataset.ring;
@@ -145,14 +191,109 @@
       el.style.setProperty("--s", "1");
       el.style.zIndex = String(10 + Math.round(depth * 40)); // קרוב מסתיר רחוק
       el.style.opacity = (0.68 + depth * 0.32).toFixed(2);   // אווירת-מרחק
+      el.style.setProperty("--d", `${d.toFixed(0)}px`); // גם לשלט (הגשר של ה-hover)
       el.querySelector(".planet__orb").style.setProperty("--d", `${d.toFixed(0)}px`);
+      items.push({ el, x, y, d, depth });
     });
+    placeLabels(items, vp);
     return true;
   }
 
+  /** שלטים ותגית "מומלץ עכשיו": כל אחד בוחר מקום — מתחת, מעל, בצד, או
+      מתחת/מעל בהזזה הצידה — שבו הוא מכסה הכי מעט. לכסות כוכב אחר (שגם
+      לוחצים עליו) או שלט אחר כמעט אסור; החללית, ה-HUD ושם הכיתה מסתירים או
+      נסתרים, ולכן יקרים; שולי השמש זולים (השלטים מצוירים מעליה). הכוכבים
+      הקרובים בוחרים ראשונים. רק השלטים זזים, לא הכוכבים. */
+  function placeLabels(items, vp) {
+    if (sky.hidden) return; // שלט מוסתר נמדד כ-0; נקרא שוב אחרי שהשמיים מוצגים
+    const gap = Math.max(6, Math.min(vp.w, vp.h) * 0.009);
+    const cx = vp.w / 2, cy = vp.h / 2, EDGE = 4;
+    const box = (x, y, w, h) => ({ l: x - w / 2, r: x + w / 2, t: y - h / 2, b: y + h / 2 });
+    const grow = (a, m) => ({ l: a.l - m, r: a.r + m, t: a.t - m, b: a.b + m });
+    const fromRect = (r) => ({ l: r.left, r: r.right, t: r.top, b: r.bottom });
+    const overlap = (a, b) => Math.max(0, Math.min(a.r, b.r) - Math.max(a.l, b.l)) * Math.max(0, Math.min(a.b, b.b) - Math.max(a.t, b.t));
+
+    // קודם כל המדידות, ואז כל הכתיבות — בלי חישוב-פריסה חוזר לכל כוכב
+    const core = $(".sun__core") || $("#sun"), sunR = core ? core.offsetWidth / 2 : 0;
+    const obstacles = [
+      { area: box(cx, cy + Math.min(vp.w, vp.h) * 0.19, ship.offsetWidth, ship.offsetHeight * 1.35), weight: 6 }, // החללית מצוירת מעל השלטים
+      { area: fromRect($(".hud").getBoundingClientRect()), weight: 20 },      // ה-HUD מעל השלטים — שלט מתחתיו לא נקרא
+      { area: fromRect($("#sunLabel").getBoundingClientRect()), weight: 40 }, // שם הכיתה לא מתכסה, כמו כוכב
+      { area: fromRect($("#hint span").getBoundingClientRect()), weight: 3 },
+      ...items.map((it) => ({ area: box(cx + it.x, cy + it.y, it.d + gap * 2, it.d + gap * 2), weight: 40, owner: it })),
+    ];
+    const plates = items.map((it) => {
+      const label = it.el.querySelector(".planet__label"), rec = it.el.querySelector(".pmark--rec");
+      return { it, label, lw: label.offsetWidth, lh: label.offsetHeight, rec, rw: rec ? rec.offsetWidth : 0, rh: rec ? rec.offsetHeight : 0 };
+    });
+
+    // כמה מהמלבן בתוך עיגול השמש (דגימה של 10×5 נקודות)
+    const inSun = (a) => {
+      let n = 0;
+      for (let i = 0; i < 10; i++) for (let j = 0; j < 5; j++) {
+        const x = a.l + ((a.r - a.l) * (i + 0.5)) / 10 - cx, y = a.t + ((a.b - a.t) * (j + 0.5)) / 5 - cy;
+        if (x * x + y * y < sunR * sunR) n++;
+      }
+      return (n / 50) * (a.r - a.l) * (a.b - a.t);
+    };
+    const spotsFor = (it, w, h) => {
+      const px = cx + it.x, py = cy + it.y, off = it.d / 2 + gap;
+      const below = py + off + h / 2, above = py - off - h / 2;
+      const s = w / 2 - it.d / 4; // בהזזה השלט עדיין נוגע בעמודה של הכוכב
+      const spots = [
+        { side: "bottom", shift: 0, area: box(px, below, w, h) },
+        { side: "top", shift: 0, area: box(px, above, w, h) },
+        { side: "right", shift: 0, area: box(px + off + w / 2, py, w, h) },
+        { side: "left", shift: 0, area: box(px - off - w / 2, py, w, h) },
+      ];
+      if (s > 2) [s, -s].forEach((sh) => spots.push(
+        { side: "bottom", shift: sh, area: box(px + sh, below, w, h) },
+        { side: "top", shift: sh, area: box(px + sh, above, w, h) }));
+      return spots;
+    };
+    // בחירה חמדנית (הקרובים קודם), ואז כמה סבבי שיפור: כל שלט בוחר שוב כשכל
+    // השאר כבר במקומם — כך שלט שנבחר מוקדם מפנה מקום לתגית שבאה אחריו
+    const slots = [];
+    plates.sort((a, b) => b.it.depth - a.it.depth).forEach((p) => {
+      slots.push({ p, el: p.label, spots: spotsFor(p.it, p.lw, p.lh), h: p.lh });
+      if (p.rec) slots.push({ p, el: p.rec, spots: spotsFor(p.it, p.rw, p.rh), h: p.rh, rec: true });
+    });
+    const pick = slots.map(() => null);
+    const cost = (k, sp, i) => {
+      const a = sp.area, it = slots[k].p.it, h = slots[k].h;
+      let score = i * h * 2 + inSun(a) * 2; // העדפה עדינה כשאין הבדל: מתחת > מעל > צד > מוזז
+      obstacles.forEach((o) => { if (o.owner !== it) score += overlap(a, o.area) * o.weight; });
+      pick.forEach((q, j) => { if (q && j !== k) score += overlap(a, grow(q.area, gap / 2)) * 20; });
+      const out = Math.max(0, EDGE - a.l) + Math.max(0, a.r - (vp.w - EDGE)) + Math.max(0, EDGE - a.t) + Math.max(0, a.b - (vp.h - EDGE));
+      return score + out * h * 40;
+    };
+    for (let round = 0, changed = true; changed && round < 4; round++) {
+      changed = false;
+      slots.forEach((slot, k) => {
+        let best = null, bestScore = Infinity;
+        slot.spots.forEach((sp, i) => { const c = cost(k, sp, i); if (c < bestScore) { bestScore = c; best = sp; } });
+        if (best !== pick[k]) { pick[k] = best; changed = true; }
+      });
+    }
+
+    $("#planets").style.setProperty("--label-gap", `${gap.toFixed(1)}px`);
+    slots.forEach((slot, k) => {
+      slot.p.it.el.dataset[slot.rec ? "rec" : "label"] = pick[k].side;
+      slot.el.style.setProperty("--plate-shift", `${pick[k].shift.toFixed(1)}px`);
+    });
+  }
+
+  /** קודם כל המיקומים נכתבים כשהשמיים עוד מוסתרים — כך הסגנון הראשון שהדפדפן
+      מחשב כבר סופי, ושום דבר (החללית, הכוכבים) לא "מחליק" למקומו בטעינה.
+      אחר כך השמיים מוצגים ופורסים שוב (אותם ערכים) רק כדי למדוד ולהניח שלטים. */
   function layoutWhenReady(tries = 0) {
-    if (layout()) { parkShip(); return; }
-    if (tries > 120) return;
+    if (layout()) {
+      parkShip();
+      sky.hidden = false;
+      layout();
+      return;
+    }
+    if (tries > 120) { sky.hidden = false; return; }
     requestAnimationFrame(() => layoutWhenReady(tries + 1));
   }
 
@@ -425,13 +566,13 @@
     const from = T_ARRIVE - 250;
     const out = [el.animate([{ transform: planetTransform(el, 1.07) }, { transform: planetTransform(el, 1.125) }],
       { delay: from, duration: 250, easing: "cubic-bezier(.2,.8,.3,1)", fill: "forwards" })];
-    const g = el.querySelector(".planet__glow");
+    const g = el.querySelector(".pbody__halo");
     if (g) out.push(g.animate([{ opacity: 0 }, { opacity: 0.85 }], { delay: from, duration: 250, easing: "ease-out", fill: "forwards" }));
-    // השם הוא ממשק, לא חלק מהכוכב — לא גדל איתו, נעלם כשהעולם מתחיל להתקרב
-    el.querySelectorAll(".planet__name, .planet__sub").forEach((n) =>
+    // השלט הוא ממשק, לא חלק מהכוכב — לא גדל איתו, נעלם כשהעולם מתחיל להתקרב
+    el.querySelectorAll(".planet__label").forEach((n) =>
       out.push(n.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 700, duration: 150, fill: "forwards" })));
-    // טבעת-ההתקדמות, הכוכבית ו"מומלץ" — נעלמות רגע לפני שהעותק מחליף את הכוכב
-    el.querySelectorAll(".ring, .badge, .tip").forEach((n) =>
+    // סימני-המשחק (טבעת, כוכב, "מומלץ") — נעלמים רגע לפני שהעותק מחליף את הכוכב
+    el.querySelectorAll(".pmark").forEach((n) =>
       out.push(n.animate([{ opacity: 1 }, { opacity: 0 }], { delay: T_HERO - 120, duration: 120, fill: "forwards" })));
     return out;
   }
@@ -502,32 +643,16 @@
     const d0 = orb.offsetWidth * Math.hypot(pm.a, pm.b);
     const om = cs.transform && cs.transform !== "none" ? new DOMMatrixReadOnly(cs.transform) : null;
     const rot0 = om ? (Math.atan2(om.b, om.a) * 180) / Math.PI : 0;
-    // העותק גדול פי k מהכדור (בגודל-הפריסה) — צללים מוגדלים באותו יחס ונראים זהים;
-    // הפולס של הכוכב כבר נמצא בקנה-המידה של העותק עצמו
-    const k = D / orb.offsetWidth;
-    const grow = (v) => String(v || "none").replace(/(-?\d*\.?\d+)px/g, (_, n) => `${(+n * k).toFixed(2)}px`);
-    const hue = (byKey.get(el.dataset.key) || {}).hue || "#0e4a63";
+    const planet = byKey.get(el.dataset.key) || {};
+    const hue = planet.hue || "#0e4a63";
 
+    // אותו רכיב-גוף בדיוק כמו בכוכב שבמסלול, בקוטר D (כל המידות שלו יחסיות
+    // ל---d) — ולכן ברגע ההחלפה הם זהים, עם איור סופי או עם מציין-המקום
     hero.style.cssText = `left:${(cf.x - D / 2).toFixed(1)}px;top:${(cf.y - D / 2).toFixed(1)}px;` +
-      `width:${D.toFixed(1)}px;height:${D.toFixed(1)}px;--hue:${hue}`;
-    // הזוהר בתוך גוף הכדור: מעל הרקע והצללים ומתחת לאיור — כמו בכוכב המקורי
-    hero.innerHTML = `<span class="warp-hero__orb"><span class="warp-hero__glow"></span></span>`;
-    const body = hero.firstElementChild;
-    const heroGlow = body.firstElementChild;
-    body.style.backgroundImage = cs.backgroundImage;
-    body.style.backgroundColor = cs.backgroundColor;
-    body.style.boxShadow = grow(cs.boxShadow);
-    orb.querySelectorAll("img").forEach((img) => {
-      if (!img.complete || !img.naturalWidth) return; // תמונה שלא נטענה לא עוברת לעותק
-      const c = document.createElement("img");
-      c.src = img.currentSrc || img.src;
-      c.alt = "";
-      c.style.width = `${((img.offsetWidth / orb.offsetWidth) * 100).toFixed(2)}%`;
-      c.style.height = `${((img.offsetHeight / orb.offsetWidth) * 100).toFixed(2)}%`;
-      c.style.filter = grow(getComputedStyle(img).filter);
-      body.appendChild(c);
-    });
-    const liveGlow = el.querySelector(".planet__glow");
+      `width:${D.toFixed(1)}px;height:${D.toFixed(1)}px;--d:${D.toFixed(1)}px`;
+    hero.innerHTML = planetBodyHtml(planet, el.dataset.state || "new", " pbody--picked");
+    const heroGlow = hero.querySelector(".pbody__halo");
+    const liveGlow = el.querySelector(".pbody__halo");
     const g0 = liveGlow ? Number(getComputedStyle(liveGlow).opacity) || 0 : 0;
     hero.hidden = false;
     orb.style.opacity = "0";
@@ -619,7 +744,7 @@
 
   /** "כן — בחרת את העולם הזה": פולס קצר על הכוכב עצמו. ה-translate נכתב
       במספרים ולא ב-var() כדי שהמיקום יישמר בדיוק; את --d ואת ה-float של
-      הכדור לא נוגעים. מתחילים מ-1.12 אם העכבר כבר הגדיל אותו ב-hover. */
+      הכדור לא נוגעים. מתחילים מהגודל שיש לו ברגע הלחיצה (hover מגדיל אותו). */
   function planetTransform(el, s) {
     const tx = el.style.getPropertyValue("--tx") || "0px";
     const ty = el.style.getPropertyValue("--ty") || "0px";
@@ -627,7 +752,8 @@
   }
   function pressFrames(el) {
     const at = (s) => planetTransform(el, s);
-    const from = el.matches(":hover") && matchMedia("(hover: hover) and (pointer: fine)").matches ? 1.12 : 1;
+    const t = getComputedStyle(el).transform, m = t && t !== "none" ? new DOMMatrixReadOnly(t) : null;
+    const from = m ? Math.hypot(m.a, m.b) : 1;
     return [
       { transform: at(from), easing: "cubic-bezier(.2,.9,.3,1.25)" },
       { transform: at(1.13), offset: 70 / 150, easing: "ease-out" },
@@ -753,6 +879,21 @@
   }
   addEventListener("pageshow", (e) => { if (e.persisted) resetLaunch(); });
 
+  /** אמנות סופית (galaxy-data.js → GALAXY_ART): כל קובץ שהוגדר מחליף את
+      מציין-המקום שלו. בלי קבצים — הכל נשאר מצויר ב-CSS/SVG. */
+  function applyArt() {
+    const A = window.GALAXY_ART || {};
+    const img = (src, cls) => `<img class="${cls}" src="${esc(src)}" alt="" />`;
+    if (A.ship && A.ship.body) $(".ship__body").innerHTML = img(A.ship.body, "ship__body-art");
+    if (A.ship && A.ship.flame) $(".ship__flame").innerHTML = img(A.ship.flame, "ship__fire");
+    if (A.sun) {
+      const core = $(".sun__core");
+      core.style.background = `url("${encodeURI(A.sun)}") center / contain no-repeat`;
+      core.style.boxShadow = "none";
+    }
+    if (A.background) sky.style.setProperty("--bg", `url("${encodeURI(A.background)}")`);
+  }
+
   /** אין מה להציג (אין הגדרת-מראה לכיתה, או שהשרת לא ענה) — הודעה ברורה
       במקום ספינר שמסתובב לנצח. */
   function unavailable() {
@@ -762,8 +903,8 @@
 
   /* ---------- עלייה ---------- */
   async function boot() {
-    seedStars($("#starsFar"), 110, 1.6);
-    seedStars($("#starsMid"), 60, 2.4);
+    paintSky();
+    applyArt();
 
     let data;
     try { data = await api("/api/topics?area=learn"); } catch (e) {
@@ -806,14 +947,21 @@
     CFG = cfg;
     planets.forEach((p) => byKey.set(p.key, p));
     $("#planets").innerHTML = planets.map((p, i) => planetHtml(p, states[i])).join("");
-    // איור מציין-מקום שעוד לא קיים (למשל thinking.png) — נשאר כדור צבעוני נקי, בלי אייקון שבור
-    document.querySelectorAll(".planet__art").forEach((img) => img.addEventListener("error", () => img.remove()));
+    // רשת-ביטחון: תמונה שלא נטענה נעלמת — נשאר הכדור המצויר, בלי אייקון שבור
+    document.querySelectorAll(".pbody__icon, .pbody__art").forEach((img) => img.addEventListener("error", () => img.remove()));
     $("#sunLabel").textContent = cfg.label;
     const doneN = states.filter((s) => s.state === "done").length;
     $("#hudSub").textContent = `${cfg.label} · ${planets.length} נושאים`;
-    $("#hudStat").innerHTML = `⭐ <span>${doneN} / ${planets.length}</span>`;
+    const starArt = window.GALAXY_ART && window.GALAXY_ART.marks && window.GALAXY_ART.marks.star;
+    const stat = $("#hudStat");
+    // <bdi dir="ltr"> — בלי זה ה-RTL הופך את "0 / 7" ל-"7 / 0"
+    stat.innerHTML = (starArt ? `<img src="${esc(starArt)}" alt="" />` : `<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-star"/></svg>`) +
+      `<bdi dir="ltr">${doneN} / ${planets.length}</bdi>`;
+    stat.setAttribute("role", "img");
+    stat.setAttribute("aria-label", `הושלמו ${doneN} מתוך ${planets.length} נושאים`);
 
-    layoutWhenReady();
+    $("#boot").hidden = true;
+    layoutWhenReady(); // מציג את השמיים אחרי שהמיקומים כבר כתובים
     initParallax();
     // בזמן שיגור לא פורסים מחדש — המסלול נשען על "צילום" מרגע הלחיצה. שינוי
     // ממשי (סיבוב מכשיר) באמצע השיגור = דילוג לשיעור, במקום מסלול שבור.
@@ -840,9 +988,8 @@
       });
     });
     sky.addEventListener("pointerleave", () => { if (!launching) setShip(parked.x, parked.y, 0); });
-
-    $("#boot").hidden = true;
-    sky.hidden = false;
+    // הגופנים (Fredoka/Rubik) משנים את רוחב השלטים — ממקמים שוב כשהם מוכנים
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!launching) layout(); });
   }
 
   boot();

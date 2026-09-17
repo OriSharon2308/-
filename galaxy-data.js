@@ -14,9 +14,12 @@
    מפתח  — שם הנושא בדיוק כפי שהשרת מחזיר אותו.
    ring  — רדיוס המסלול כשבר מחצי-רוחב המערכת. שלוש טבעות: 0.42 / 0.64 / 0.97.
    angle — מעלות על המסלול. 0 = ימין, 90 = החלק הקרוב (למטה).
-   art   — מציין-מקום מ-/images/topics/<art>.png עד שיגיעו איורי הכוכבים.
-   image — כשיגיע ה-PNG הסופי: "/images/planets/<שם>.png". null = מציין-מקום.
-   hue   — צבע-הזיהוי במצב מציין-מקום.
+   art    — שם-קוד של הנושא: האייקון מ-/images/topics/<art>.png (אם קיים ב-
+            GALAXY_ICONS) ושם הקובץ של איור-הכוכב העתידי.
+   image  — כשיגיע האיור הסופי: "/images/galaxy/planet-<art>.webp". null = מציין-מקום
+            מצויר (כדור מוצלל + משטח + אור-שפה + האייקון).
+   hue    — צבע-הזיהוי של הכוכב (גוף, זוהר, צבע-הכניסה לשיעור).
+   accent — קישוט אופציונלי לגוף המצויר: "ring" = טבעת כמו של שבתאי.
 
    הזוויות והטבעות נבחרו בחיפוש נומרי על 90,000 פריסות מול שישה גדלי-מסך
    (375x700 עד 1440x900): אין חפיפה בין כוכבים, אף כוכב לא נוגע בשמש,
@@ -32,12 +35,25 @@ window.GALAXY = {
       "חיבור עד 20":        { art: "addition",    image: null, ring: 0.416, angle: 201, hue: "#57b8e0" },
       "חיסור עד 20":        { art: "subtraction", image: null, ring: 0.643, angle:  78, hue: "#8b7fd6" },
       // המקום שהיה של "חיבור וחיסור עד 100" — נושא תרגול בלבד, לא באזור הלמידה
-      "שאלות חשיבה":        { art: "thinking",    image: null, ring: 0.643, angle: 267, hue: "#e08fb4" },
+      "שאלות חשיבה":        { art: "thinking",    image: null, ring: 0.643, angle: 267, hue: "#e08fb4", accent: "ring" },
       "צורות גאומטריות":    { art: "shapes",      image: null, ring: 0.967, angle: 227, hue: "#7ecb8f" },
       "כסף ומטבעות":        { art: "money",       image: null, ring: 0.967, angle: 127, hue: "#efb45c" },
-      "שעון":               { art: "clock",       image: null, ring: 0.967, angle:  39, hue: "#63c9d6" },
+      "שעון":               { art: "clock",       image: null, ring: 0.967, angle:  39, hue: "#63c9d6", accent: "ring" },
     },
   },
+};
+
+/* אמנות סופית. כשקובץ מגיע — כותבים כאן את הנתיב, והוא מחליף את מציין-המקום
+   המצויר. null = נשאר המצויר (CSS/SVG). שום לוגיקה לא תלויה בשדות האלה.
+   ship.body  — גוף החללית, אף כלפי מעלה, עם שקיפות (WebP/PNG/SVG)
+   ship.flame — הלהבה בלבד, "תלויה" מהחלק העליון שלה (גדלה מטה בזינוק)
+   marks.star / marks.recommended — כוכב-השלמה / אייקון "מומלץ עכשיו"
+   sun        — איור השמש (עיגול שקוף-רקע); background — רקע החלל כולו */
+window.GALAXY_ART = {
+  ship: { body: null, flame: null },
+  marks: { star: null, recommended: null },
+  sun: null,
+  background: null,
 };
 
 /* אייקוני-הנושא שקיימים באמת ב-/images/topics (מציין-המקום שבתוך הכדור).

@@ -1,44 +1,57 @@
 /* =====================================================================
    vela · גלקסיית הנושאים — 2.5D ב-CSS בלבד.
-   בלי מנוע תלת-ממד ובלי ספריות: transform + opacity בלבד, כך שהכל רץ
-   על ה-GPU ונשאר חלק גם במובייל. העומק נבנה משכבות שזזות בקצב שונה.
+   בלי מנוע תלת-ממד ובלי ספריות: transform + opacity בכל מה שזז, כך שהכל
+   רץ על ה-GPU ונשאר חלק גם במובייל. העומק נבנה משכבות שזזות בקצב שונה.
+
+   שפה חזותית אחת (המשתנים ב-:root):
+   · צורות — גלולה (999px) לכל שלט/כפתור; עיגול לכל גוף שמימי.
+   · זוהר — גרדיאנט רדיאלי שנעלם לשקיפות. אף פעם לא blur, ולא על מה שזז.
+   · צל — אחד (--shadow-soft), וקו-אור עליון אחד (--hi) לכל משטח.
+   · קווים — 1px בשקיפות .10–.16 למשטחים; טבעות בעובי ~5% מהקוטר.
+   · עוצמות — מנוחה < hover (+10%, הילה חלשה) < נבחר (מלא).
    ===================================================================== */
 :root {
-  --ink: #f2f9f8;
-  --muted: #9fbfd6;
+  --ink: #f4f8ff;
+  --muted: #a9c1dc;
   --teal: #3fd6c4;
-  --gold: #f0a92b;
-  --sun: #ffd97a;
+  --gold: #ffc247;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --r-pill: 999px;
+  --surface: rgba(255, 255, 255, 0.1);
+  --surface-hover: rgba(255, 255, 255, 0.18);
+  --stroke: rgba(255, 255, 255, 0.15);
+  --plate: rgba(10, 22, 54, 0.56);
+  --plate-hover: rgba(18, 36, 80, 0.76);
+  --hi: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  --shadow-soft: 0 0.45em 1.3em rgba(3, 10, 32, 0.28);
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; overflow: hidden; }
 body {
   font-family: "Fredoka", "Rubik", system-ui, sans-serif;
   color: var(--ink);
-  /* חלל בהיר וצבעוני — לא שחור ואפל */
+  /* חלל קסום ובהיר — כחול-סגלגל שמתבהר לטורקיז, עם הצללה רכה בשוליים */
   background:
-    radial-gradient(900px 700px at 78% 12%, rgba(124, 107, 214, 0.34) 0%, transparent 60%),
-    radial-gradient(820px 640px at 14% 78%, rgba(13, 148, 136, 0.30) 0%, transparent 62%),
-    radial-gradient(760px 600px at 62% 96%, rgba(214, 107, 168, 0.20) 0%, transparent 64%),
-    linear-gradient(165deg, #142a5c 0%, #113a63 44%, #0e4a63 100%);
+    radial-gradient(120% 95% at 50% 46%, transparent 56%, rgba(6, 12, 40, 0.4) 100%),
+    linear-gradient(170deg, #1c2b6c 0%, #183b79 38%, #144c78 70%, #105b70 100%);
 }
 [hidden] { display: none !important; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 
 .boot { height: 100%; display: grid; place-items: center; }
 .boot__msg { margin: 0; padding: 0 6vmin; text-align: center; font-size: 20px; line-height: 1.7; }
 .boot__msg a { color: var(--teal); font-family: "Rubik", sans-serif; font-size: 17px; }
 .spin {
-  width: 30px; height: 30px; border: 2px solid rgba(255,255,255,.2);
-  border-top-color: var(--teal); border-radius: 50%; animation: spin .7s linear infinite;
+  width: 30px; height: 30px; border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--teal); border-radius: 50%; animation: spin 0.7s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* touch-action: בלי זום של הקשה-כפולה ב-iOS — ההקשה השנייה היא "דילוג" */
 .sky { position: fixed; inset: 0; overflow: hidden; touch-action: manipulation; }
 
-/* תמונת-רקע אופציונלית. ברגע שיש קובץ ב-/images/space-bg.jpg הוא נכנס
-   מעל הגרדיאנטים; עד אז הרקע הוא ה-CSS בלבד. */
+/* תמונת-רקע סופית (GALAXY_ART.background) נכנסת כאן מעל הגרדיאנטים */
 .sky::before {
   content: ""; position: absolute; inset: 0; z-index: 0;
   background-image: var(--bg, none);
@@ -46,27 +59,31 @@ body {
   opacity: var(--bg-opacity, 1); pointer-events: none;
 }
 
-/* טבעות-המסלול — עיגולים שנמעכו אנכית, ולכן נראים כאליפסות במבט אלכסוני */
-.rings { position: absolute; inset: 0; display: grid; place-items: center;
-  will-change: transform; pointer-events: none; }
-.ring-o {
-  position: absolute; border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, .13);
-  box-shadow: 0 0 3vmin rgba(120, 190, 255, .06) inset;
-}
-
-/* ---------- שכבות רקע ---------- */
+/* ---------- רקע: ערפיליות, כוכבים, ניצוצות ---------- */
 .layer { position: absolute; inset: -12%; will-change: transform; pointer-events: none; }
-.layer i {
-  position: absolute; background: #fff; border-radius: 50%;
-  animation: tw 3.6s ease-in-out infinite;
+/* ערפיליות = גרדיאנטים רדיאליים סטטיים. בלי filter: blur — זול יותר ורך יותר */
+.neb { position: absolute; border-radius: 50%; }
+.neb--1 { width: 82vmin; height: 70vmin; top: 4%; right: 6%; background: radial-gradient(closest-side, rgba(150, 124, 242, 0.4), rgba(150, 124, 242, 0)); }
+.neb--2 { width: 80vmin; height: 66vmin; bottom: 2%; left: 4%; background: radial-gradient(closest-side, rgba(40, 200, 182, 0.28), rgba(40, 200, 182, 0)); }
+.neb--3 { width: 60vmin; height: 46vmin; bottom: 12%; right: 30%; background: radial-gradient(closest-side, rgba(236, 132, 190, 0.18), rgba(236, 132, 190, 0)); }
+.neb--4 { width: 58vmin; height: 50vmin; top: 6%; left: 14%; background: radial-gradient(closest-side, rgba(96, 152, 255, 0.2), rgba(96, 152, 255, 0)); }
+
+/* שמיים קבועים (זרע קבוע ב-JS): רובם סטטיים, מעטים מנצנצים */
+.star { position: absolute; border-radius: 50%; background: #fff; }
+.star--tw { animation: tw 4.2s ease-in-out infinite; }
+@keyframes tw { 50% { opacity: 0.2; } }
+/* ניצוצות-גיבור: מעטים, במקומות מכוונים, מנצנצים לאט */
+.spark { position: absolute; width: 1.8vmin; height: 1.8vmin; color: #fff; opacity: 0.9; animation: spark 6s ease-in-out infinite; }
+.spark::before {
+  content: ""; position: absolute; inset: -110%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(200, 228, 255, 0.34), rgba(200, 228, 255, 0));
 }
-@keyframes tw { 50% { opacity: .18; } }
-.neb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5; }
-.neb--1 { width: 62vmin; height: 62vmin; top: 14%; right: 16%; background: #7c6bd6; }
-.neb--2 { width: 54vmin; height: 54vmin; bottom: 12%; left: 14%; background: #0d9488; }
-.neb--3 { width: 44vmin; height: 44vmin; top: 56%; right: 48%; background: #d66ba8; opacity: .3; }
-.neb--4 { width: 50vmin; height: 50vmin; top: 8%;  left: 20%;  background: #3f7fd6; opacity: .26; }
+.spark svg { position: relative; width: 100%; height: 100%; display: block; }
+@keyframes spark { 50% { opacity: 0.35; transform: scale(0.72); } }
+
+/* טבעות-המסלול — עיגולים שנמעכו אנכית, ולכן נראים כאליפסות במבט אלכסוני */
+.rings { position: absolute; inset: 0; display: grid; place-items: center; will-change: transform; pointer-events: none; }
+.ring-o { position: absolute; border-radius: 50%; border: 1px solid rgba(196, 222, 255, 0.14); }
 
 /* ---------- השמש = הכיתה ---------- */
 .sun {
@@ -75,202 +92,315 @@ body {
   width: 27vmin; height: 27vmin; display: grid; place-items: center;
   will-change: transform;
 }
+.sun__glow, .sun__flare, .sun__corona, .sun__core { position: absolute; border-radius: 50%; pointer-events: none; }
+.sun__glow { inset: -55%; background: radial-gradient(closest-side, rgba(255, 190, 112, 0.34), rgba(255, 160, 96, 0.12) 55%, rgba(255, 160, 96, 0)); }
+.sun__flare { inset: -16%; background: radial-gradient(closest-side, rgba(255, 226, 156, 0.36), rgba(255, 226, 156, 0)); animation: breathe 6s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: scale(1.08); opacity: 0.7; } }
+.sun__corona { inset: -5%; background: radial-gradient(closest-side, rgba(255, 214, 140, 0) 86%, rgba(255, 214, 140, 0.55) 93%, rgba(255, 214, 140, 0) 100%); }
 .sun__core {
-  position: absolute; inset: 0; border-radius: 50%;
-  background: radial-gradient(circle at 38% 32%, #fff 0%, var(--sun) 40%, #f0932b 100%);
-  box-shadow: 0 0 0 1.4vmin rgba(255, 217, 122, .22), 0 0 12vmin rgba(240, 169, 43, .55);
+  inset: 0;
+  background:
+    radial-gradient(circle at 66% 72%, rgba(232, 128, 58, 0.16), rgba(232, 128, 58, 0) 24%),
+    radial-gradient(circle at 28% 66%, rgba(232, 128, 58, 0.1), rgba(232, 128, 58, 0) 16%),
+    radial-gradient(circle at 36% 30%, #fffaf0 0%, #ffe9b2 20%, #ffc872 56%, #f6a04e 100%);
+  background-position: center; background-size: cover; background-repeat: no-repeat;
+  box-shadow: inset -1.2vmin -1.6vmin 2.8vmin rgba(212, 106, 40, 0.3), inset 0.6vmin 0.8vmin 1.6vmin rgba(255, 255, 255, 0.45);
 }
-.sun__flare {
-  position: absolute; inset: -18%; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,217,122,.34) 0%, transparent 62%);
-  animation: breathe 5.5s ease-in-out infinite;
-}
-@keyframes breathe { 50% { transform: scale(1.12); opacity: .72; } }
 .sun__label {
-  position: relative; z-index: 2; font-size: 3.4vmin; font-weight: 700;
-  color: #5a3505; letter-spacing: -.01em; text-shadow: 0 1px 0 rgba(255,255,255,.45);
+  position: relative; z-index: 2; font-size: 3.3vmin; font-weight: 700; letter-spacing: 0.01em;
+  color: #6a3a0c; text-shadow: 0 1px 0 rgba(255, 250, 235, 0.6);
 }
 
-/* ---------- כוכב לכת ---------- */
+/* ---------- כוכב לכת: המיקום ----------
+   הכפתור הוא בדיוק הכדור (השלט מונח לידו ב-absolute), ולכן --tx/--ty הם
+   מרכז הכדור עצמו. */
 .planets { position: absolute; inset: 0; will-change: transform; }
 .planet {
   position: absolute; top: 50%; right: 50%;
-  display: grid; justify-items: center; gap: .9vmin;
+  display: grid; place-items: center;
   background: none; border: 0; padding: 0; cursor: pointer;
-  color: inherit; font: inherit;
-  /* --tx/--ty נקבעים ב-JS; --s הוא קנה-המידה לפי עומק */
+  color: inherit; font: inherit; -webkit-tap-highlight-color: transparent;
   transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty)));
-  transition: transform .34s var(--ease);
+  transition: transform 0.34s var(--ease);
   will-change: transform;
 }
 .planet__orb {
   position: relative; width: var(--d); height: var(--d); border-radius: 50%;
-  display: grid; place-items: center;
   animation: float var(--dur, 7s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
-  transition: filter .3s ease, box-shadow .3s ease;
 }
-@keyframes float {
-  50% { transform: translateY(-1.4vmin) rotate(2.2deg); }
-}
-/* מציין-מקום: כדור CSS. יוחלף ב-<img> ברגע שיגיעו האיורים */
-.planet__orb--ph {
-  background: radial-gradient(circle at 34% 28%, var(--hue) 0%, var(--hue) 44%, rgba(10,20,40,.92) 100%);
-  box-shadow: inset -0.8vmin -1vmin 2.4vmin rgba(0,0,0,.42), 0 0 3vmin rgba(255,255,255,.10);
-}
-.planet__orb img { width: 100%; height: 100%; object-fit: contain; display: block; }
-/* זוהר "קבלת החללית" — כבוי, מודלק רק בשיגור (opacity בלבד). בתוך הכדור, כך
-   שהוא צף יחד איתו. */
-.planet__glow {
-  position: absolute; inset: -38%; border-radius: 50%; z-index: -1; pointer-events: none; opacity: 0;
-  background: radial-gradient(closest-side, var(--hue), transparent);
-}
-.planet__art {
-  position: absolute; width: 58%; height: 58%; object-fit: contain;
-  filter: drop-shadow(0 .4vmin .8vmin rgba(0,0,0,.35)); pointer-events: none;
-}
-.planet__name {
-  font-size: 1.85vmin; font-weight: 600; white-space: nowrap;
-  text-shadow: 0 .2vmin 1vmin rgba(4, 16, 34, .85);
-  transition: transform .28s var(--ease), color .2s ease;
-}
-.planet__sub { font-family: "Rubik", sans-serif; font-size: 1.45vmin; color: var(--muted); }
+@keyframes float { 50% { transform: translateY(-1.4vmin) rotate(2.2deg); } }
 
-/* מצבים */
-.planet--done .planet__orb { box-shadow: 0 0 0 .5vmin rgba(240,169,43,.55), 0 0 4vmin rgba(240,169,43,.4); }
-.planet--now  .planet__orb { box-shadow: 0 0 0 .5vmin rgba(63,214,196,.55), 0 0 4.6vmin rgba(63,214,196,.45); }
-.planet--new  .planet__orb { filter: saturate(.62) brightness(.82); }
-.badge {
-  position: absolute; top: -.6vmin; right: -.6vmin; width: 3.4vmin; height: 3.4vmin;
-  border-radius: 50%; display: grid; place-items: center; font-size: 1.7vmin; z-index: 3;
-  background: linear-gradient(155deg, #ffd97a, var(--gold));
-  box-shadow: 0 .3vmin 1vmin rgba(240,169,43,.6);
+/* ---------- גוף הכוכב — רכיב אחד לכוכב שבמסלול ולעותק שמתקרב ----------
+   כל מידה יחסית לקוטר (--d), ולכן אותו HTML נראה זהה בכל גודל. שכבות:
+   halo (זוהר "קבלה") · glow (זוהר-מצב) · ring-back · base (גוף מצויר) או
+   art (איור סופי) · icon (אייקון-נושא) · shade (עמעום "טרם התחלנו") · rim
+   (אור-שפה והברקה) · ring-front. */
+.pbody { position: absolute; inset: 0; border-radius: 50%; }
+.pbody > * { position: absolute; border-radius: 50%; pointer-events: none; }
+.pbody__halo {
+  inset: -38%; opacity: 0; transition: opacity 0.3s ease;
+  background: radial-gradient(closest-side, var(--hue), rgba(0, 0, 0, 0));
 }
-.ring { position: absolute; inset: -.7vmin; transform: rotate(-90deg); z-index: 2; }
-.ring circle { fill: none; stroke-width: 3.2; stroke-linecap: round; }
-.tip {
-  position: absolute; top: -3.4vmin; right: 50%; transform: translateX(50%);
-  background: var(--teal); color: #06322e; font-size: 1.4vmin; font-weight: 700;
-  padding: .4vmin 1.2vmin; border-radius: 999px; white-space: nowrap; z-index: 4;
-  font-family: "Rubik", sans-serif;
+.pbody__glow { inset: -24%; opacity: 0; }
+.pbody--now .pbody__glow { opacity: 1; background: radial-gradient(closest-side, rgba(63, 214, 196, 0.5) 64%, rgba(63, 214, 196, 0)); }
+.pbody--done .pbody__glow { opacity: 1; background: radial-gradient(closest-side, rgba(255, 194, 71, 0.52) 64%, rgba(255, 194, 71, 0)); }
+.pbody__base, .pbody__art, .pbody__shade, .pbody__rim { inset: 0; }
+.pbody__base {
+  --sphere: radial-gradient(circle at 34% 30%, var(--hue-hi) 0%, var(--hue) 44%, var(--hue-lo) 100%);
+  background: var(--sphere);
 }
+/* שלושה משטחים עדינים, כדי שכל כוכב ירגיש "עולם" אחר ולא עוד עיגול צבעוני */
+.pbody--tex1 .pbody__base {
+  background:
+    radial-gradient(circle at 68% 64%, rgba(12, 20, 56, 0.16) 0 10%, rgba(12, 20, 56, 0) 11%),
+    radial-gradient(circle at 40% 73%, rgba(12, 20, 56, 0.12) 0 6%, rgba(12, 20, 56, 0) 7%),
+    radial-gradient(circle at 62% 33%, rgba(255, 255, 255, 0.14) 0 5%, rgba(255, 255, 255, 0) 6%),
+    var(--sphere);
+}
+.pbody--tex2 .pbody__base {
+  background:
+    linear-gradient(162deg, transparent 30%, rgba(255, 255, 255, 0.12) 30% 38%, transparent 38% 52%,
+      rgba(12, 20, 56, 0.1) 52% 60%, transparent 60% 72%, rgba(255, 255, 255, 0.08) 72% 76%, transparent 76%),
+    var(--sphere);
+}
+.pbody--tex3 .pbody__base {
+  background:
+    radial-gradient(ellipse 34% 22% at 62% 66%, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)),
+    radial-gradient(ellipse 26% 16% at 36% 44%, rgba(12, 20, 56, 0.13), rgba(12, 20, 56, 0)),
+    var(--sphere);
+}
+.pbody__art { width: 100%; height: 100%; object-fit: contain; border-radius: 0; }
+.pbody__icon {
+  inset: 21%; width: 58%; height: 58%; object-fit: contain; border-radius: 0;
+  filter: drop-shadow(0 calc(var(--d) * 0.02) calc(var(--d) * 0.04) rgba(0, 0, 0, 0.28));
+}
+.pbody__shade { background: rgba(14, 22, 58, 0.26); opacity: 0; transition: opacity 0.3s ease; }
+.pbody--new .pbody__shade { opacity: 1; }
+.pbody__icon { transition: opacity 0.3s ease; }
+.pbody--new .pbody__icon { opacity: 0.82; }
+.pbody--picked .pbody__icon, .planet.is-picked .pbody__icon { opacity: 1; }
+.pbody__rim {
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 20%),
+    radial-gradient(closest-side, rgba(10, 18, 50, 0) 70%, rgba(10, 18, 50, 0.3) 100%);
+  box-shadow:
+    inset calc(var(--d) * 0.03) calc(var(--d) * 0.04) calc(var(--d) * 0.05) rgba(255, 255, 255, 0.26),
+    0 0 0 calc(var(--d) * 0.012) rgba(255, 255, 255, 0.1);
+}
+/* טבעת-קישוט (accent: "ring"): חצי אחורי מאחורי הגוף, חצי קדמי מולו */
+.pbody__ring {
+  left: -26%; right: -26%; top: 40%; height: 20%;
+  border: calc(var(--d) * 0.032) solid var(--hue-hi); opacity: 0.78;
+  transform: rotate(-14deg);
+}
+.pbody__ring--back { clip-path: inset(0 0 50% 0); }
+.pbody__ring--front { clip-path: inset(50% 0 0 0); }
 
-/* hover — גדל, זוהר, השם בולט. רק עם עכבר: במגע ה-hover "נתקע" על הכוכב
-   שנלחץ, וממילא הלחיצה עצמה כבר מפעילה את הטיסה. */
+/* ---------- סימני-משחק: טבעת-התקדמות, כוכב-השלמה, "מומלץ עכשיו" ----------
+   נפרדים מגוף הכוכב (הם ממשק), וכל אחד ניתן להחלפה באמנות (GALAXY_ART.marks). */
+.pmark { position: absolute; pointer-events: none; z-index: 3; }
+.pmark--ring { left: -9%; top: -9%; width: 118%; height: 118%; transform: rotate(-90deg); overflow: visible; }
+.pmark__track { fill: none; stroke: rgba(255, 255, 255, 0.16); stroke-width: 5; }
+.pmark__glow { fill: none; stroke: rgba(63, 214, 196, 0.26); stroke-width: 10; stroke-linecap: round; }
+.pmark__arc { fill: none; stroke: url(#g-ring); stroke-width: 5; stroke-linecap: round; }
+.pmark--star {
+  top: -8%; right: -10%; width: calc(var(--d) * 0.36); height: calc(var(--d) * 0.36);
+  min-width: 18px; min-height: 18px;
+  filter: drop-shadow(0 2px 4px rgba(120, 70, 0, 0.35));
+}
+.pmark--rec {
+  bottom: calc(100% + 0.9vmin); left: 50%; transform: translateX(calc(-50% + var(--plate-shift, 0px)));
+  pointer-events: inherit; /* חלק מהכפתור: לחיצה על התגית = לחיצה על הכוכב (ובשיגור — כבוי כמוהו) */
+  display: inline-flex; align-items: center; gap: 0.35em; white-space: nowrap;
+  padding: 0.34em 0.85em 0.38em; border-radius: var(--r-pill);
+  font: 600 clamp(10px, 1.3vmin, 14px) / 1 "Rubik", sans-serif; color: #04413a;
+  background: linear-gradient(180deg, #95f6e6, #43d8c6);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0.35em 1em rgba(20, 184, 166, 0.34), var(--hi);
+}
+.pmark--rec svg, .pmark--rec img { width: 1em; height: 1em; color: #fff; }
+
+/* ---------- שם הנושא: שלט רך מתחת לכוכב (טקסט HTML אמיתי) ---------- */
+.planet__label {
+  position: absolute; top: calc(100% + var(--label-gap, 0.9vmin)); left: 50%; transform: translateX(calc(-50% + var(--plate-shift, 0px)));
+  display: grid; justify-items: center; gap: 0.14em; white-space: nowrap;
+  padding: 0.42em 1em 0.46em; border-radius: var(--r-pill);
+  background-color: var(--plate); border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-soft), var(--hi);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+/* המקום של כל שלט נבחר ב-JS (placeLabels) — שם הוא מכסה הכי מעט */
+.planet[data-label="top"] .planet__label { top: auto; bottom: calc(100% + var(--label-gap, 0.9vmin)); }
+.planet[data-label="right"] .planet__label { top: 50%; left: calc(100% + var(--label-gap, 0.9vmin)); transform: translateY(-50%); }
+.planet[data-label="left"] .planet__label { top: 50%; left: auto; right: calc(100% + var(--label-gap, 0.9vmin)); transform: translateY(-50%); }
+.pmark--rec { bottom: calc(100% + var(--label-gap, 0.9vmin)); }
+.planet[data-rec="bottom"] .pmark--rec { bottom: auto; top: calc(100% + var(--label-gap, 0.9vmin)); }
+.planet[data-rec="right"] .pmark--rec { bottom: auto; top: 50%; left: calc(100% + var(--label-gap, 0.9vmin)); transform: translateY(-50%); }
+.planet[data-rec="left"] .pmark--rec { bottom: auto; top: 50%; left: auto; right: calc(100% + var(--label-gap, 0.9vmin)); transform: translateY(-50%); }
+.planet__name { font-size: clamp(12px, 1.8vmin, 20px); font-weight: 600; line-height: 1.1; color: #fff; }
+.planet__sub { font: 500 clamp(10px, 1.3vmin, 14px) / 1.1 "Rubik", sans-serif; color: var(--muted); }
+.planet--now .planet__sub { color: #95f6e6; }
+.planet--done .planet__sub { color: #ffdb8f; }
+
+/* hover — רק עם עכבר: במגע ה-hover "נתקע", וממילא הלחיצה כבר מפעילה את הטיסה */
 @media (hover: hover) and (pointer: fine) {
-  .planet:hover { transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty))) scale(1.12); }
+  .planet:hover { transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty))) scale(1.1); }
   .planet:hover { opacity: 1 !important; z-index: 60 !important; }
-  .planet:hover .planet__orb { filter: none; box-shadow: 0 0 0 .6vmin rgba(255,255,255,.22), 0 0 6vmin rgba(255,255,255,.3); }
-  .planet:hover .planet__name { transform: translateY(.3vmin); color: #fff; }
-}
-.planet:focus-visible { outline: 3px solid var(--teal); outline-offset: 6px; border-radius: 12px; }
+  .planet:hover .pbody__halo { opacity: 0.5; }
+  .planet:hover .pbody--new .pbody__shade { opacity: 0.3; }
+  .planet:hover .pbody__icon { opacity: 1; }
+  .planet:hover .planet__label { background-color: var(--plate-hover); border-color: rgba(255, 255, 255, 0.22); }
 
-/* ---------- החללית ---------- */
-/* #ship הוא המיכל שהטיסה מזיזה (galaxy.js). בלי filter: זוהר על אלמנט שזז
-   יקר — את ההילה מצייר גרדיאנט סטטי, ואת זוהר-המנוע אלמנט נפרד. */
+  /* גשר שקוף מהשלט אל מרכז הכוכב. ה-hover מגדיל את הכפתור סביב המרכז, ובלי
+     הגשר העכבר נופל לרווח שבין השלט לכוכב והכוכב מהבהב. המשולש מצביע על
+     המרכז, כך שההגדלה רק מרחיבה את השטח ולא מזיזה אותו מתחת לעכבר. */
+  .planet__label::before, .pmark--rec::before {
+    content: ""; position: absolute; inset: auto 0 100% 0;
+    height: calc(var(--label-gap, 0.9vmin) + var(--d) / 2);
+    clip-path: polygon(0 100%, 100% 100%, calc(50% - var(--plate-shift, 0px)) 0);
+  }
+  .planet[data-label="top"] .planet__label::before, .planet:not([data-rec]) .pmark--rec::before, .planet[data-rec="top"] .pmark--rec::before {
+    inset: 100% 0 auto 0;
+    clip-path: polygon(0 0, 100% 0, calc(50% - var(--plate-shift, 0px)) 100%);
+  }
+  .planet[data-label="right"] .planet__label::before, .planet[data-rec="right"] .pmark--rec::before {
+    inset: 0 100% 0 auto; height: auto; width: calc(var(--label-gap, 0.9vmin) + var(--d) / 2);
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+  }
+  .planet[data-label="left"] .planet__label::before, .planet[data-rec="left"] .pmark--rec::before {
+    inset: 0 auto 0 100%; height: auto; width: calc(var(--label-gap, 0.9vmin) + var(--d) / 2);
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+  }
+}
+.planet:focus-visible { outline: none; }
+.planet:focus-visible .planet__orb { outline: 3px solid var(--teal); outline-offset: 0.7vmin; }
+
+/* ---------- החללית ----------
+   #ship הוא המיכל שהטיסה מזיזה (galaxy.js); השכבות בתוכו ניתנות להחלפה:
+   aura (הילה סטטית) · glow (זוהר-מנוע) · flame (להבה) · body (גוף). */
 .ship {
   position: absolute; top: 50%; right: 50%; width: 7vmin;
   transform: translate(50%, -50%) translate(var(--sx, 0px), var(--sy, 14vmin)) rotate(var(--sr, 0deg));
   transition: transform 1s var(--ease);
   pointer-events: none; z-index: 6;
 }
-.ship::before {
-  content: ""; position: absolute; left: 50%; top: 45%; width: 150%; height: 120%;
-  transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
-  background: radial-gradient(closest-side, rgba(63, 214, 196, .34), rgba(63, 214, 196, 0));
+.ship__aura {
+  position: absolute; left: 50%; top: 46%; width: 150%; height: 118%;
+  transform: translate(-50%, -50%); border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(126, 232, 222, 0.28), rgba(126, 232, 222, 0));
 }
-.ship__svg { position: relative; width: 100%; display: block; overflow: visible; }
-/* זוהר-המנוע, מאחורי הזנב. במנוחה כבוי; השיגור מדליק אותו (opacity/scale בלבד) */
+/* זוהר-המנוע מאחורי הזנב: כבוי במנוחה, השיגור מדליק (opacity/scale בלבד) */
 .ship__glow {
-  position: absolute; left: 50%; top: 84%; width: 88%; aspect-ratio: 1; border-radius: 50%;
-  pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.7);
-  background: radial-gradient(closest-side, rgba(255, 240, 190, .85), rgba(255, 170, 80, .45) 45%, rgba(240, 114, 43, 0));
+  position: absolute; left: 50%; top: 88%; width: 92%; aspect-ratio: 1; border-radius: 50%;
+  opacity: 0; transform: translate(-50%, -50%) scale(0.7);
+  background: radial-gradient(closest-side, rgba(255, 240, 190, 0.85), rgba(255, 170, 80, 0.45) 45%, rgba(240, 114, 43, 0));
 }
-/* הלהבה גדלה מהזנב אחורה; ההבהוב הקיים ממשיך בתוכה */
-.ship__flame { transform-box: view-box; transform-origin: 32px 64px; }
-.ship__fire { animation: fire .26s ease-in-out infinite alternate; transform-origin: 32px 66px; }
-@keyframes fire { to { transform: scaleY(1.35) scaleX(.85); } }
+/* הלהבה גדלה מהזנב אחורה (transform-origin למעלה); ההבהוב ממשיך בתוכה */
+.ship__flame { position: absolute; left: 34%; width: 32%; top: 84%; height: 40%; transform-origin: 50% 0; }
+.ship__flame > svg, .ship__flame > img { width: 100%; height: 100%; display: block; overflow: visible; }
+.ship__fire { transform-box: fill-box; transform-origin: 50% 0; animation: fire 0.26s ease-in-out infinite alternate; }
+@keyframes fire { to { transform: scaleY(1.28) scaleX(0.88); } }
+.ship__body { position: relative; display: block; width: 100%; }
+.ship__body > svg, .ship__body > img { width: 100%; display: block; overflow: visible; }
 
 /* ---------- HUD ----------
    env(safe-area-inset-*) שומר על הכפתורים מחוץ לחריץ ולפס-הבית באייפון
    (viewport-fit=cover). במחשב הערכים 0, ולכן max() משאיר את המידות כמו שהן. */
 .hud {
   position: absolute; inset-inline: 0; top: 0; z-index: 8;
-  display: flex; align-items: center; gap: 2vmin;
+  display: flex; align-items: center; gap: 1.6vmin;
   padding: max(2vmin, env(safe-area-inset-top, 0px)) max(3vmin, env(safe-area-inset-right, 0px))
            2vmin max(3vmin, env(safe-area-inset-left, 0px));
 }
 .hud__back {
-  width: 5vmin; height: 5vmin; min-width: 40px; min-height: 40px;
-  border-radius: 50%; display: grid; place-items: center; text-decoration: none;
-  background: rgba(255,255,255,.12); color: #fff; font-size: 2.4vmin;
-  border: 1px solid rgba(255,255,255,.16);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  flex: none; width: 5.4vmin; height: 5.4vmin; min-width: 44px; min-height: 44px;
+  display: grid; place-items: center; border-radius: 50%; color: #fff; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--stroke); box-shadow: var(--shadow-soft), var(--hi);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: background-color 0.2s ease, transform 0.15s var(--ease);
 }
+.hud__back svg { width: 46%; height: 46%; }
+.hud__back:active { transform: scale(0.94); }
+.hud__back:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
 @media (hover: hover) and (pointer: fine) {
-  .hud__back:hover { background: rgba(255,255,255,.22); }
+  .hud__back:hover { background: var(--surface-hover); }
 }
-.hud__mid { flex: 1; }
-.hud__t { font-size: 2.6vmin; font-weight: 700; }
-.hud__s { font-family: "Rubik", sans-serif; font-size: 1.6vmin; color: var(--muted); }
+.hud__mid { flex: 1; min-width: 0; }
+.hud__t { font-size: clamp(16px, 2.7vmin, 30px); font-weight: 700; letter-spacing: 0.005em; text-shadow: 0 2px 10px rgba(4, 12, 40, 0.35); }
+.hud__s { font: 500 clamp(11px, 1.6vmin, 17px) / 1.3 "Rubik", sans-serif; color: var(--muted); }
 .hud__stat {
-  display: flex; gap: 1vmin; align-items: center; font-size: 1.9vmin; font-weight: 600;
-  background: rgba(255,255,255,.11); border: 1px solid rgba(255,255,255,.15);
-  border-radius: 999px; padding: 1vmin 2vmin;
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  flex: none; display: inline-flex; align-items: center; gap: 0.45em;
+  padding: 0.5em 1em 0.5em 0.85em; border-radius: var(--r-pill);
+  font: 600 clamp(13px, 2vmin, 22px) / 1 "Fredoka", sans-serif;
+  background: var(--surface); border: 1px solid var(--stroke); box-shadow: var(--shadow-soft), var(--hi);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
 }
+.hud__stat svg, .hud__stat img { width: 1.3em; height: 1.3em; filter: drop-shadow(0 1px 2px rgba(120, 70, 0, 0.35)); }
+.hud__stat bdi { font-variant-numeric: tabular-nums; }
 .hint {
-  position: absolute; inset-inline: 0; bottom: max(2.6vmin, env(safe-area-inset-bottom, 0px));
-  text-align: center; margin: 0;
-  font-family: "Rubik", sans-serif; font-size: 1.7vmin; color: var(--muted);
-  transition: opacity .4s ease;
+  position: absolute; inset-inline: 0; bottom: max(2.4vmin, env(safe-area-inset-bottom, 0px));
+  margin: 0; text-align: center; pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.hint span {
+  display: inline-block; padding: 0.5em 1.15em; border-radius: var(--r-pill);
+  font: 500 clamp(12px, 1.7vmin, 17px) / 1.2 "Rubik", sans-serif; color: #d6e6f5;
+  background: rgba(10, 22, 54, 0.38); border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ---------- שיגור ----------
    תשומת-הלב עוברת לכוכב שנבחר: השאר מתעמעם (opacity בלבד) והכוכב שנבחר
    נשאר מלא. הלחיצות על כוכבים נחסמות — לחיצה שנייה נתפסת ב-JS כדילוג. */
-.rings, .hud { transition: opacity .26s ease; }
+.rings, .hud { transition: opacity 0.26s ease; }
 .sky.is-launching .planet { pointer-events: none; }
 .sky.is-launching .planet:not(.is-picked) {
-  opacity: .28 !important;
-  transition: transform .34s var(--ease), opacity .26s ease;
+  opacity: 0.28 !important;
+  transition: transform 0.34s var(--ease), opacity 0.26s ease;
 }
 .planet.is-picked { opacity: 1 !important; z-index: 60 !important; }
-.planet.is-picked .planet__orb { filter: none; }
+.planet.is-picked .pbody__shade { opacity: 0; }
 /* שיגור מהמקלדת: בלי מסגרת-פוקוס ריקה במקום שהכוכב עזב */
-.sky.is-launching .planet.is-picked { outline: none; }
-.sky.is-launching .rings { opacity: .2; }
-.sky.is-launching .hud { opacity: .4; pointer-events: none; } /* הקשה עליו = דילוג, לא יציאה */
-.sky.is-launching .hint { opacity: 0; transition-duration: .26s; }
+.sky.is-launching .planet.is-picked .planet__orb { outline: none; }
+.sky.is-launching .rings { opacity: 0.2; }
+.sky.is-launching .hud { opacity: 0.4; pointer-events: none; } /* הקשה עליו = דילוג, לא יציאה */
+.sky.is-launching .hint { opacity: 0; transition-duration: 0.26s; }
 
-/* כיסוי-הצבע בצבע הכוכב. זמני — יוחלף בזום של הכוכב. כשהוא אטום, מנווטים. */
+/* כיסוי-הניווט בצבע הכוכב. כשהוא אטום, מנווטים. */
 .warp-cover { position: fixed; inset: 0; z-index: 20; opacity: 0; pointer-events: none; }
 
-/* כניסה לעולם: הצבע מתפשט מהכוכב (18), הכוכב המתקרב (19), ומעליהם כיסוי-
-   הניווט (20). נבנים בכל שיגור ומתפרקים אחריו; זזים ב-transform/opacity בלבד. */
+/* כניסה לעולם: הצבע מתפשט מהכוכב (18), הכוכב המתקרב (19 — אותו רכיב .pbody),
+   ומעליהם כיסוי-הניווט (20). נבנים בכל שיגור ומתפרקים אחריו. */
 .warp-fill { position: fixed; z-index: 18; border-radius: 50%; pointer-events: none; opacity: 0; }
 .warp-hero { position: fixed; z-index: 19; pointer-events: none; }
-.warp-hero__orb { position: absolute; inset: 0; border-radius: 50%; }
-.warp-hero__orb img { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); object-fit: contain; }
-.warp-hero__glow {
-  position: absolute; inset: -38%; border-radius: 50%; opacity: 0;
-  background: radial-gradient(closest-side, var(--hue), transparent);
-}
+.pbody--picked .pbody__shade { opacity: 0; }
 
 /* ---------- מובייל: עדיין גלקסיה, לא רשימה ---------- */
 @media (max-width: 700px) {
-  .planet__name { font-size: 3.1vmin; }
-  .planet__sub  { font-size: 2.5vmin; }
-  .sun__label   { font-size: 5.4vmin; }
-  .hud__t { font-size: 4.4vmin; } .hud__s { font-size: 3vmin; }
+  .planet__name { font-size: max(12px, 3.1vmin); }
+  .planet__sub { font-size: max(10px, 2.5vmin); }
+  .planet__label { padding: 0.3em 0.72em 0.34em; }
+  .pmark--rec { font-size: max(10px, 2.6vmin); }
+  .sun__label { font-size: 5.2vmin; }
+  .hud__t { font-size: 4.4vmin; }
+  .hud__s { font-size: 3vmin; }
   .hud__stat { font-size: 3.4vmin; }
-  .hint { font-size: 3vmin; }
-  .badge { width: 6vmin; height: 6vmin; font-size: 3vmin; }
-  .tip { font-size: 2.6vmin; top: -5.4vmin; }
+  .hint span { font-size: 3vmin; }
   .ship { width: 12vmin; }
+  .spark { width: 3vmin; height: 3vmin; }
+}
+
+/* מסך קטן (לאורך או לרוחב): שלט בשורה אחת — "טרם התחלנו" לא נכתב (הוא עדיין
+   ב-aria-label); אחוזים ו"הושלם" נשארים */
+@media (max-width: 700px), (max-height: 500px) {
+  .planet--new .planet__sub { display: none; }
+}
+/* מסך נמוך (טלפון לרוחב): אין מקום לרמז בתחתית בלי לכסות שלטים */
+@media (max-height: 500px) {
+  .hint { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .planet__orb, .sun__flare, .ship__fire, .layer i { animation: none !important; }
+  .planet__orb, .sun__flare, .ship__fire, .star--tw, .spark { animation: none !important; }
   .planet, .ship { transition: none !important; }
 }
