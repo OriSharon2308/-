@@ -14,7 +14,6 @@
   --ink: #f4f8ff;
   --muted: #a9c1dc;
   --teal: #3fd6c4;
-  --gold: #ffc247;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   --r-pill: 999px;
@@ -27,7 +26,8 @@
   --shadow-soft: 0 0.45em 1.3em rgba(3, 10, 32, 0.28);
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; height: 100%; overflow: hidden; }
+html, body {
+  touch-action: manipulation; /* בלי זום-הקשה-כפולה גם במסך-הטעינה */ margin: 0; height: 100%; overflow: hidden; }
 body {
   font-family: "Fredoka", "Rubik", system-ui, sans-serif;
   color: var(--ink);
@@ -83,11 +83,16 @@ body {
 
 /* טבעות-המסלול — עיגולים שנמעכו אנכית, ולכן נראים כאליפסות במבט אלכסוני */
 .rings { position: absolute; inset: 0; display: grid; place-items: center; will-change: transform; pointer-events: none; }
-.ring-o { position: absolute; border-radius: 50%; border: 1px solid rgba(196, 222, 255, 0.14); }
+/* המסלולים: קו אחד שנדהה כלפי מעלה (g-orbit) — החצי הרחוק חיוור מהקרוב */
+.rings__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.rings__svg ellipse { fill: none; stroke: url(#g-orbit); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+/* העולם כולו זז כיחידה אחת — ההרכב מתמרכז בין ה-HUD לשורת-ההסבר */
+.world { position: absolute; inset: 0; transform: translateY(var(--world-y, 0px)); }
 
 /* ---------- השמש = הכיתה ---------- */
 .sun {
-  position: absolute; top: 50%; right: 50%;
+  position: absolute; top: 50%; right: 50%; pointer-events: none;
   transform: translate(50%, -50%);
   width: var(--sun-size, 27vmin); height: var(--sun-size, 27vmin); display: grid; place-items: center;
   will-change: transform;
@@ -273,6 +278,16 @@ body {
     clip-path: polygon(0 0, 0 100%, 100% 50%);
   }
 }
+/* מגע: הכוכב נלחץ ברגע האצבע (90ms), ומשתחרר ברכות. האנימציה של השיגור
+   מתחילה מהגודל שיש לו באותו רגע, ולכן אין קפיצה */
+.planet.is-press { transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty))) scale(1.06); transition-duration: 0.09s; }
+.planet.is-press .pbody__halo { opacity: 0.5; }
+.planet.is-press .pbody__icon { opacity: 1; }
+.planet.is-press .pbody--new .pbody__shade { opacity: 0.3; }
+
+/* שטח-נגיעה שקוף סביב כוכב קטן (--hit נקבע בפריסה, חצי-דרך לשכן הקרוב) */
+.planet::after { content: ""; position: absolute; inset: calc(-1 * var(--hit, 0px)); border-radius: 50%; }
+
 .planet:focus-visible { outline: none; }
 .planet:focus-visible .planet__orb { outline: 3px solid var(--teal); outline-offset: 0.7vmin; }
 
@@ -314,6 +329,7 @@ body {
            2vmin max(3vmin, env(safe-area-inset-left, 0px));
 }
 .hud__back {
+  -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none;
   flex: none; width: 5.4vmin; height: 5.4vmin; min-width: 44px; min-height: 44px;
   display: grid; place-items: center; border-radius: 50%; color: #fff; text-decoration: none;
   background: var(--surface); border: 1px solid var(--stroke); box-shadow: var(--shadow-soft), var(--hi);
@@ -379,6 +395,7 @@ body {
 
 /* ---------- מובייל: עדיין גלקסיה, לא רשימה ---------- */
 @media (max-width: 700px) {
+  .spark:nth-of-type(n + 4) { display: none; } /* פחות עבודה למכשיר קטן */
   .planet__name { font-size: max(12px, 3.1vmin); }
   .planet__sub { font-size: max(10px, 2.5vmin); }
   .planet__label { padding: 0.3em 0.72em 0.34em; }

@@ -42,9 +42,11 @@
     const star = (size, opacity, twinkle) =>
       `<i class="star${twinkle ? " star--tw" : ""}" style="left:${(r() * 100).toFixed(1)}%;top:${(r() * 100).toFixed(1)}%;` +
       `width:${size}px;height:${size}px;opacity:${opacity}${twinkle ? `;animation-delay:${(-r() * 4).toFixed(1)}s` : ""}"></i>`;
+    // מסך קטן מקבל פחות כוכבים מהבהבים — אותה אווירה, פחות עבודה למכשיר
+    const lite = Math.min(innerWidth, innerHeight) < 600;
     let far = "", mid = "";
-    for (let i = 0; i < 90; i++) far += star((0.8 + r() * 0.9).toFixed(1), (0.25 + r() * 0.4).toFixed(2), false);
-    for (let i = 0; i < 34; i++) mid += star((1.6 + r() * 1.2).toFixed(1), (0.5 + r() * 0.35).toFixed(2), i % 3 === 0);
+    for (let i = 0; i < (lite ? 55 : 90); i++) far += star((0.8 + r() * 0.9).toFixed(1), (0.25 + r() * 0.4).toFixed(2), false);
+    for (let i = 0; i < (lite ? 20 : 34); i++) mid += star((1.6 + r() * 1.2).toFixed(1), (0.5 + r() * 0.35).toFixed(2), i % (lite ? 4 : 3) === 0);
     $("#starsFar").innerHTML = far;
     $("#starsMid").innerHTML = mid;
   }
@@ -289,6 +291,32 @@
     return { x: 0, y: base };
   }
 
+  /** ההרכב יושב נמוך מהמרכז, כי השלטים התחתונים והחללית תלויים מתחת לשמש
+      ואילו למעלה יש רק שלט או שניים. מחשבים מרכז-כובד לפי שטח (כוכבים,
+      שלטים, חללית) ומחזירים כמה להזיז את העולם כדי שהוא יפול במרכז השטח
+      הפנוי שבין ה-HUD לשורת-ההסבר. חוק אחד לכל המסכים, ותמיד קטן. */
+  const WORLD_SHIFT_MAX = 0.035; // עד 3.5% מגובה המסך
+  function compositionOffset(vp, items, park, plates) {
+    const { w, h } = vp;
+    let mass = 0, sum = 0;
+    const add = (cyEl, area) => { mass += area; sum += cyEl * area; };
+    items.forEach((it) => add(h / 2 + it.y, Math.PI * (it.d / 2) ** 2));
+    plates.forEach((a) => add((a.t + a.b) / 2, (a.r - a.l) * (a.b - a.t)));
+    add(h / 2 + park.y, ship.offsetWidth * ship.offsetHeight * 0.5);
+    if (!mass) return 0;
+    const hud = $(".hud"), hint = $("#hint");
+    const top = hud ? hud.getBoundingClientRect().bottom : 0;
+    const bottom = h - (hint && hint.offsetHeight ? hint.offsetHeight + Math.min(w, h) * 0.05 : Math.min(w, h) * 0.03);
+    // רק מסך גבוה: שם ההרכב באמת "תלוי" נמוך. במסך רחב או כמעט-מרובע
+    // ההרכב נשאר בדיוק כפי שהיה (הרמפה מגיעה ל-0 ביחס 1.2)
+    const tall = Math.min(1, Math.max(0, (h / w - 1.2) / 0.2));
+    if (!tall) return 0;
+    const wanted = ((top + bottom) / 2 - sum / mass) * tall; // לאן להזיז את מרכז-הכובד
+    const cap = h * WORLD_SHIFT_MAX;
+    const off = Math.min(cap, Math.max(-cap, wanted));
+    return Math.abs(off) < 3 ? 0 : off; // תזוזה זעירה לא שווה את זה
+  }
+
   function layout() {
     const vp = viewport();
     if (!vp.ok || !CFG) return false;
@@ -299,14 +327,16 @@
     if (sunEl) sunEl.style.setProperty("--sun-size", `${geo.sunPx.toFixed(0)}px`);
 
     // טבעות-המסלול עצמן — אותה גאומטריה בדיוק
+    // SVG כדי שהקו יידהה כלפי מעלה: החצי הרחוק של המסלול חיוור מהקרוב
     const rings = document.getElementById("rings");
     if (rings) {
-      rings.innerHTML = (CFG.rings || [])
+      const ell = (CFG.rings || [])
         .map((r0) => {
-          const r = remap(r0), rw = rx0 * r * 2, rh = rx0 * r * tilt * 2;
-          return `<span class="ring-o" style="width:${rw.toFixed(0)}px;height:${rh.toFixed(0)}px"></span>`;
+          const r = remap(r0);
+          return `<ellipse cx="${(w / 2).toFixed(0)}" cy="${(h / 2).toFixed(0)}" rx="${(rx0 * r).toFixed(0)}" ry="${(rx0 * r * tilt).toFixed(0)}" />`;
         })
         .join("");
+      rings.innerHTML = `<svg class="rings__svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">${ell}</svg>`;
     }
 
     const items = geo.list.map((p) => {
@@ -319,15 +349,29 @@
 
       el.style.setProperty("--tx", `${x.toFixed(1)}px`);
       el.style.setProperty("--ty", `${y.toFixed(1)}px`);
-      el.style.setProperty("--s", "1");
       el.style.zIndex = String(10 + Math.round(depth * 40)); // קרוב מסתיר רחוק
       el.style.opacity = (0.68 + depth * 0.32).toFixed(2);   // אווירת-מרחק
       el.style.setProperty("--d", `${d.toFixed(0)}px`); // גם לשלט (הגשר של ה-hover)
+      el.style.setProperty("--hit", "0px"); // מתמלא אחרי שכל המקומות ידועים
       el.querySelector(".planet__orb").style.setProperty("--d", `${d.toFixed(0)}px`);
       return { el, x, y, d, depth };
     });
+    // שטח-נגיעה נוח לילד גם כשהכוכב קטן — שקוף, ותמיד חצי-דרך לשכן הקרוב
+    items.forEach((it) => {
+      const near = Math.min(...items.filter((o) => o !== it).map((o) => Math.hypot(o.x - it.x, o.y - it.y) - (o.d + it.d) / 2), Infinity);
+      const room = Number.isFinite(near) ? near / 2 - 2 : 12;
+      it.el.style.setProperty("--hit", `${Math.max(0, Math.min((HIT_MIN - it.d) / 2, room)).toFixed(0)}px`);
+    });
     parked = shipPark(vp, items);
-    const platesBottom = placeLabels(items, vp, parked) || 0;
+    // ההרכב (כוכבים + שלטים + חללית) מתמרכז בין ה-HUD לשורת-ההסבר: מחשבים
+    // מרכז-כובד לפי שטח, ומזיזים את כל העולם כיחידה אחת. פריסה ראשונה רק כדי
+    // לדעת איפה נופלים השלטים, ואז פריסה סופית עם ההיסט.
+    const probe = placeLabels(items, vp, parked, 0) || [];
+    const worldY = compositionOffset(vp, items, parked, probe);
+    const world = $("#world");
+    if (world) world.style.setProperty("--world-y", `${worldY.toFixed(0)}px`);
+    const plates = placeLabels(items, vp, parked, worldY) || [];
+    const platesBottom = plates.length ? Math.max(...plates.map((a) => a.b)) : 0;
 
     // שורת-ההסבר יושבת באמצע הרווח שמתחת למערכת, כדי שלא תיראה כמו כתובית
     // מנותקת בתחתית של מסך גבוה
@@ -336,9 +380,9 @@
       // הכל מהמקום המחושב (לא מהכדור שמרחף למעלה-למטה ולא מסגנון שעוד לא
       // הוחל), כדי שהשורה תיפול תמיד באותו מקום
       const low = Math.max(
-        h / 2 + parked.y + ship.offsetHeight / 2,
+        h / 2 + worldY + parked.y + ship.offsetHeight / 2,
         platesBottom,
-        ...items.map((it) => h / 2 + it.y + it.d / 2),
+        ...items.map((it) => h / 2 + worldY + it.y + it.d / 2),
       );
       const free = h - low; // הרווח שמתחת לכל מה שמצויר
       hint.style.setProperty("--hint-bottom", `${Math.max(Math.min(w, h) * 0.024, free / 2 - hint.offsetHeight / 2).toFixed(0)}px`);
@@ -346,15 +390,17 @@
     return true;
   }
 
+  const HIT_MIN = 44; // שטח-נגיעה מינימלי מומלץ (CSS px)
+
   /** שלטים ותגית "מומלץ עכשיו": כל אחד בוחר מקום — מתחת, מעל, בצד, או
       מתחת/מעל בהזזה הצידה — שבו הוא מכסה הכי מעט. לכסות כוכב אחר (שגם
       לוחצים עליו) או שלט אחר כמעט אסור; החללית, ה-HUD ושם הכיתה מסתירים או
       נסתרים, ולכן יקרים; שולי השמש זולים (השלטים מצוירים מעליה). הכוכבים
       הקרובים בוחרים ראשונים. רק השלטים זזים, לא הכוכבים. */
-  function placeLabels(items, vp, park) {
+  function placeLabels(items, vp, park, worldY = 0) {
     if (sky.hidden) return; // שלט מוסתר נמדד כ-0; נקרא שוב אחרי שהשמיים מוצגים
     const gap = Math.max(6, Math.min(vp.w, vp.h) * 0.009);
-    const cx = vp.w / 2, cy = vp.h / 2;
+    const cx = vp.w / 2, cy = vp.h / 2 + worldY; // מרכז העולם על המסך
     const EDGE = Math.max(12, Math.min(vp.w, vp.h) * 0.04); // שוליים שהשלטים לא חורגים מהם
     const box = (x, y, w, h) => ({ l: x - w / 2, r: x + w / 2, t: y - h / 2, b: y + h / 2 });
     const grow = (a, m) => ({ l: a.l - m, r: a.r + m, t: a.t - m, b: a.b + m });
@@ -412,7 +458,7 @@
     const pick = slots.map(() => null);
     const cost = (k, sp, i) => {
       const a = sp.area, it = slots[k].p.it, h = slots[k].h;
-      let score = i * h * 2 + inSun(a) * 8; // העדפה עדינה כשאין הבדל: מתחת > מעל > צד > מוזז
+      let score = i * h * 2 + inSun(a) * 24; // העדפה עדינה כשאין הבדל: מתחת > מעל > צד > מוזז
       obstacles.forEach((o) => { if (o.owner !== it) score += overlap(a, o.area) * o.weight; });
       pick.forEach((q, j) => { if (q && j !== k) score += overlap(a, grow(q.area, gap / 2)) * 20; });
       const out = Math.max(0, EDGE - a.l) + Math.max(0, a.r - (vp.w - EDGE)) + Math.max(0, EDGE - a.t) + Math.max(0, a.b - (vp.h - EDGE));
@@ -432,7 +478,7 @@
       slot.p.it.el.dataset[slot.rec ? "rec" : "label"] = pick[k].side;
       slot.el.style.setProperty("--plate-shift", `${pick[k].shift.toFixed(1)}px`);
     });
-    return Math.max(...pick.map((p) => p.area.b)); // התחתית של השלט הנמוך ביותר
+    return pick.map((p) => p.area); // המלבנים שנבחרו — לשימוש בהרכב ובשורת-ההסבר
   }
 
   /** קודם כל המיקומים נכתבים כשהשמיים עוד מוסתרים — כך הסגנון הראשון שהדפדפן
@@ -465,6 +511,7 @@
     const layers = [...document.querySelectorAll("[data-depth]")];
     let raf = 0, mx = 0, my = 0;
     sky.addEventListener("pointermove", (e) => {
+      if (e.pointerType !== "mouse") return; // במגע אין ריחוף — והיסט שנשאר היה מזיז את העולם לכל הביקור
       if (parallaxPaused) return;
       const vp = viewport();
       if (!vp.ok) return;
@@ -512,9 +559,9 @@
      (#ship), לפי "צילום" של נקודת-המוצא והיעד ברגע הלחיצה: אין חישוב באמצע
      הטיסה, ושינוי-גודל לא מעקם את המסלול. אמנות חללית עתידית צריכה רק את
      .ship__flame ואת .ship__glow — הלוגיקה לא נוגעת ב-SVG עצמו.           */
-  const T_TURN = 200;    // פנייה אל הכוכב
-  const T_LEAN = 150;    // הירתעות קטנה לאחור...
-  const T_LAUNCH = 250;  // ...ואז הזינוק
+  const T_TURN = 160;    // פנייה אל הכוכב
+  const T_LEAN = 110;    // הירתעות קטנה לאחור...
+  const T_LAUNCH = 210;  // ...ואז הזינוק (חופף לסוף הפנייה — תנועה אחת רצופה)
   const T_FADE = 880;    // החללית מתכווצת אל הכוכב; נעלמת כשהכוכב המתקרב בולע אותה (או כאן, אם אין)
   const T_ARRIVE = 950;
   const SAMPLE_MS = 20;  // צפיפות ה-keyframes; הדפדפן מחבר ביניהם בקו ישר
@@ -532,7 +579,7 @@
     boost:    { flameX: 1.18, flameY: 1.7,  glow: 1, glowScale: 1.12 },
     arrival:  { flameX: 1,    flameY: 1.1,  glow: 0, glowScale: 0.85 },
   };
-  const ENGINE_AT = [[0, "idle"], [120, "aim"], [270, "ignition"], [450, "boost"], [760, "boost"], [920, "arrival"], [950, "arrival"]];
+  const ENGINE_AT = [[0, "idle"], [90, "aim"], [210, "ignition"], [380, "boost"], [760, "boost"], [910, "arrival"], [950, "arrival"]];
 
   /** כמו cubic-bezier של CSS — כדי לחשב את התאוצה בתוך ה-keyframes. */
   function cubicBezier(x1, y1, x2, y2) {
@@ -554,9 +601,10 @@
     };
   }
   const turnEase = cubicBezier(0.2, 0.8, 0.3, 1);
-  // איטי בהתחלה ו-BOOST בחצי השני. רכה מעט מ-(.55,.05,.75,.35), כדי שהחללית
-  // תעבור ~70% מהדרך לפני שהיא מתחילה להיעלם — ולא תימוג באמצע החלל.
-  const boostEase = cubicBezier(0.45, 0, 0.7, 0.45);
+  // מאיצה מהזינוק והלאה, אבל בלי "זינוק בסוף": חצי הדרך נעשה כבר ב-630ms
+  // (במקום 750) והפריים הגדול ביותר קטן ב-25% — כך התנועה נראית רצופה ולא
+  // כמו המתנה ואז ריצה. עדיין עוברת ~70% מהדרך לפני שהיא מתחילה להיעלם.
+  const boostEase = cubicBezier(0.35, 0.05, 0.6, 0.75);
 
   const bez = (a, c, b, p) => (1 - p) * (1 - p) * a + 2 * (1 - p) * p * c + p * p * b;
   const bezD = (a, c, b, p) => 2 * (1 - p) * (c - a) + 2 * p * (b - c);
@@ -579,7 +627,11 @@
     const vp = viewport();
     const small = Math.min(vp.w, vp.h) < 600;
     const P = { x: parked.x, y: parked.y };
-    const T = { x: parseFloat(el.style.getPropertyValue("--tx")) || 0, y: parseFloat(el.style.getPropertyValue("--ty")) || 0 };
+    // נמדד ולא נקרא מ---tx: שכבת-הכוכבים נושאת את היסט ה-parallax והחללית לא,
+    // וכך הטיסה, ה"תפיסה" והעותק-הגיבור מחושבים באותו מרחב בדיוק
+    const wb = (ship.parentElement || sky).getBoundingClientRect();
+    const eb = el.getBoundingClientRect(); // הכפתור עצמו — לא הכדור שמרחף בתוכו
+    const T = { x: eb.left + eb.width / 2 - (wb.left + wb.width / 2), y: eb.top + eb.height / 2 - (wb.top + wb.height / 2) };
     const dist = Math.hypot(T.x - P.x, T.y - P.y) || 1;
     const u = { x: (T.x - P.x) / dist, y: (T.y - P.y) / dist }; // כיוון הזינוק
     const n = { x: -u.y, y: u.x };                              // ניצב לו
@@ -770,7 +822,10 @@
     const r = (t) => (D / 2) / (z0 + (1 - z0) * heroNearEase(qn(t)));
     // הכוכב גדל במקומו עד שהחללית מגיעה אליו, ורק אז נע אל המרכז — אחרת הוא
     // עוזב לפני שהיא נכנסת, והיא נעלמת במקום ריק. לכל שיגור הרגע שלו.
-    const home = { x: c0.x - vp.w / 2, y: c0.y - vp.h / 2 };
+    // מרכז העולם, לא מרכז המסך: shipPos מחזיר קואורדינטות של #ship שיושב
+    // בתוך .world ונושא איתו את --world-y
+    const wb = (ship.parentElement || sky).getBoundingClientRect();
+    const home = { x: c0.x - (wb.left + wb.width / 2), y: c0.y - (wb.top + wb.height / 2) };
     let tMove = T_MOVE_LATEST, tCatch = null;
     if (f) {
       for (let t = T_HERO - 60; t <= T_MOVE_LATEST; t += 5) {
@@ -997,7 +1052,7 @@
 
   /** מחזיר את הגלקסיה למצב שמיש לגמרי. נקרא כש-Safari משחזר את הדף מה-bfcache
       אחרי "חזרה" (אחרת הילד היה רואה מסך צבעוני קפוא), וגם כשניווט נתקע. */
-  function resetLaunch() {
+  function resetLaunch(keepHandoff) {
     clearTimeout(watchdog);
     clearTimeout(stuckTimer);
     document.removeEventListener("pointerdown", skipLaunch, true);
@@ -1032,8 +1087,12 @@
     navigationStarted = false;
     skipped = false;
     parallaxPaused = false;
-    try { sessionStorage.removeItem(TRANSITION_KEY); } catch (e) { /* לא קריטי */ }
+    // הניווט כבר יצא? המפתח שייך לדף שנפתח עכשיו — לא מוחקים אותו
+    if (!keepHandoff) { try { sessionStorage.removeItem(TRANSITION_KEY); } catch (e) { /* לא קריטי */ } }
   }
+  // יוצאים מהדף: מנקים את שכבות-השיגור עוד לפני ההקפאה, כדי שהתמונה שהדפדפן
+  // שומר (bfcache) תהיה הגלקסיה ולא מסך צבוע
+  addEventListener("pagehide", () => { if (launching) resetLaunch(navigationStarted); });
   addEventListener("pageshow", (e) => { if (e.persisted) resetLaunch(); });
 
   /** אמנות סופית (galaxy-data.js → GALAXY_ART): כל קובץ שהוגדר מחליף את
@@ -1136,8 +1195,12 @@
     // גם שינוי-גודל של האלמנט עצמו (פאנל שנפתח, סיבוב מכשיר) מפעיל פריסה מחדש
     if (window.ResizeObserver) new ResizeObserver(relayout).observe(document.body);
 
+    // תגובה מיידית למגע: הכוכב נלחץ ברגע האצבע, בלי להמתין ל-click
+    const press = (el, on) => { if (!launching) el.classList.toggle("is-press", on); };
     document.querySelectorAll(".planet").forEach((el) => {
-      el.addEventListener("pointerenter", () => faceTo(el));
+      el.addEventListener("pointerdown", () => press(el, true));
+      ["pointerup", "pointercancel", "pointerleave", "blur"].forEach((e) => el.addEventListener(e, () => press(el, false)));
+      el.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") faceTo(el); });
       el.addEventListener("focus", () => faceTo(el));
       el.addEventListener("click", () => {
         if (launching) return skipLaunch(); // לחיצה שנייה (גם במקלדת) = דילוג; היעד לא משתנה

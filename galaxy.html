@@ -6,7 +6,7 @@
     <title>vela · גלקסיית הנושאים</title>
     <link rel="icon" href="/favicon-teacher.png" />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/galaxy.css?v=11" />
+    <link rel="stylesheet" href="/galaxy.css?v=12" />
   </head>
   <body>
     <!-- ספרייט: סימנים קטנים וגרדיאנטים משותפים. אמנות סופית יכולה להחליף כל
@@ -15,6 +15,11 @@
       <defs>
         <linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#fff2ba" /><stop offset="0.55" stop-color="#ffc947" /><stop offset="1" stop-color="#f59e0b" />
+        </linearGradient>
+        <!-- החצי הרחוק של המסלול (למעלה) חיוור, הקרוב (למטה) בהיר — עומק בלי מסכות -->
+        <linearGradient id="g-orbit" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#c4deff" stop-opacity="0.05" /><stop offset="0.5" stop-color="#c4deff" stop-opacity="0.13" />
+          <stop offset="1" stop-color="#c4deff" stop-opacity="0.24" />
         </linearGradient>
         <linearGradient id="g-ring" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stop-color="#9af7e8" /><stop offset="1" stop-color="#22c3b0" />
@@ -51,68 +56,73 @@
       </div>
 
       <!-- טבעות-המסלול (נבנות ב-JS לפי גודל המסך) -->
-      <div class="rings" id="rings" data-depth="0.05" aria-hidden="true"></div>
+      <!-- העולם: מסלולים, שמש, כוכבים וחללית. נע כיחידה אחת (--world-y) כדי
+           שההרכב כולו יתמרכז במסך; כל החישובים נשארים ביחס למרכז העולם. -->
+      <div class="world" id="world">
+        <div class="rings" id="rings" data-depth="0.05" aria-hidden="true"></div>
 
-      <!-- השמש = הכיתה -->
-      <div class="sun" id="sun" data-depth="0.02">
-        <span class="sun__glow"></span>
-        <span class="sun__flare"></span>
-        <span class="sun__corona"></span>
-        <span class="sun__core"></span>
-        <span class="sun__label" id="sunLabel">כיתה א׳</span>
+        <!-- השמש = הכיתה -->
+        <div class="sun" id="sun" data-depth="0.02">
+          <span class="sun__glow"></span>
+          <span class="sun__flare"></span>
+          <span class="sun__corona"></span>
+          <span class="sun__core"></span>
+          <span class="sun__label" id="sunLabel">כיתה א׳</span>
+        </div>
+
+        <!-- כוכבי הלכת נבנים ב-galaxy.js -->
+        <div class="planets" id="planets" data-depth="0.06"></div>
+
+        <!-- החללית: המיכל זז, השכבות שבתוכו ניתנות להחלפה באמנות סופית -->
+        <div class="ship" id="ship" aria-hidden="true">
+          <span class="ship__aura"></span>
+          <span class="ship__glow"></span>
+          <span class="ship__flame">
+            <svg viewBox="0 0 24 40">
+              <defs>
+                <linearGradient id="sh-fire" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#fff3c4" /><stop offset="0.45" stop-color="#ffb347" /><stop offset="1" stop-color="#ff6a3d" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <g class="ship__fire">
+                <path d="M12 0C19.5 5 21.5 16 12 40 2.5 16 4.5 5 12 0z" fill="url(#sh-fire)" />
+                <path d="M12 1.5c3.8 4.5 4.4 11 0 22.5-4.4-11.5-3.8-18 0-22.5z" fill="#fffbe8" opacity="0.85" />
+              </g>
+            </svg>
+          </span>
+          <span class="ship__body">
+            <svg viewBox="0 0 64 96">
+              <defs>
+                <linearGradient id="sh-hull" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#ffffff" /><stop offset="0.6" stop-color="#eef6fb" /><stop offset="1" stop-color="#c9ddea" />
+                </linearGradient>
+                <linearGradient id="sh-nose" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ff9e8c" /><stop offset="1" stop-color="#f0587a" />
+                </linearGradient>
+                <linearGradient id="sh-fin" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#4fe0cd" /><stop offset="1" stop-color="#159c90" />
+                </linearGradient>
+                <radialGradient id="sh-glass" cx="0.38" cy="0.35" r="0.75">
+                  <stop offset="0" stop-color="#c8f8ff" /><stop offset="1" stop-color="#34bcd3" />
+                </radialGradient>
+              </defs>
+              <path d="M18.5 56C10 60 6.5 70 7.5 82c3.5-3.5 7.5-5.5 12.5-6z" fill="url(#sh-fin)" stroke="rgba(8,40,60,.28)" stroke-width="1.1" stroke-linejoin="round" />
+              <path d="M45.5 56C54 60 57.5 70 56.5 82c-3.5-3.5-7.5-5.5-12.5-6z" fill="url(#sh-fin)" stroke="rgba(8,40,60,.28)" stroke-width="1.1" stroke-linejoin="round" />
+              <path d="M32 5c12 10 16.5 31 15.5 55-.3 8-3 14-7.5 16H24c-4.5-2-7.2-8-7.5-16C15.5 36 20 15 32 5z" fill="url(#sh-hull)" stroke="rgba(8,40,60,.28)" stroke-width="1.2" stroke-linejoin="round" />
+              <path d="M38 12c7 10 10 28 9.5 48-.3 8-3 14-7.5 16h-4c4-10 5.5-32 2-64z" fill="rgba(40,90,130,.12)" />
+              <path d="M32 5c7.5 6 11 13.5 12.6 22-8.4 2.4-16.8 2.4-25.2 0C21 18.5 24.5 11 32 5z" fill="url(#sh-nose)" />
+              <path d="M17.2 63h29.6l-.5 5.5H17.7z" fill="#3fd6c4" />
+              <circle cx="32" cy="45" r="8.6" fill="#13405a" />
+              <circle cx="32" cy="45" r="6.4" fill="url(#sh-glass)" />
+              <ellipse cx="29.6" cy="42.6" rx="2.4" ry="1.8" fill="#fff" opacity="0.85" />
+              <path d="M24.5 76h15l-2.1 6.5H26.6z" fill="#29496b" />
+            </svg>
+          </span>
+        </div>
+
+        <!-- כותרת עליונה -->
       </div>
 
-      <!-- כוכבי הלכת נבנים ב-galaxy.js -->
-      <div class="planets" id="planets" data-depth="0.06"></div>
-
-      <!-- החללית: המיכל זז, השכבות שבתוכו ניתנות להחלפה באמנות סופית -->
-      <div class="ship" id="ship" aria-hidden="true">
-        <span class="ship__aura"></span>
-        <span class="ship__glow"></span>
-        <span class="ship__flame">
-          <svg viewBox="0 0 24 40">
-            <defs>
-              <linearGradient id="sh-fire" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#fff3c4" /><stop offset="0.45" stop-color="#ffb347" /><stop offset="1" stop-color="#ff6a3d" stop-opacity="0" />
-              </linearGradient>
-            </defs>
-            <g class="ship__fire">
-              <path d="M12 0C19.5 5 21.5 16 12 40 2.5 16 4.5 5 12 0z" fill="url(#sh-fire)" />
-              <path d="M12 1.5c3.8 4.5 4.4 11 0 22.5-4.4-11.5-3.8-18 0-22.5z" fill="#fffbe8" opacity="0.85" />
-            </g>
-          </svg>
-        </span>
-        <span class="ship__body">
-          <svg viewBox="0 0 64 96">
-            <defs>
-              <linearGradient id="sh-hull" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#ffffff" /><stop offset="0.6" stop-color="#eef6fb" /><stop offset="1" stop-color="#c9ddea" />
-              </linearGradient>
-              <linearGradient id="sh-nose" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#ff9e8c" /><stop offset="1" stop-color="#f0587a" />
-              </linearGradient>
-              <linearGradient id="sh-fin" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#4fe0cd" /><stop offset="1" stop-color="#159c90" />
-              </linearGradient>
-              <radialGradient id="sh-glass" cx="0.38" cy="0.35" r="0.75">
-                <stop offset="0" stop-color="#c8f8ff" /><stop offset="1" stop-color="#34bcd3" />
-              </radialGradient>
-            </defs>
-            <path d="M18.5 56C10 60 6.5 70 7.5 82c3.5-3.5 7.5-5.5 12.5-6z" fill="url(#sh-fin)" stroke="rgba(8,40,60,.28)" stroke-width="1.1" stroke-linejoin="round" />
-            <path d="M45.5 56C54 60 57.5 70 56.5 82c-3.5-3.5-7.5-5.5-12.5-6z" fill="url(#sh-fin)" stroke="rgba(8,40,60,.28)" stroke-width="1.1" stroke-linejoin="round" />
-            <path d="M32 5c12 10 16.5 31 15.5 55-.3 8-3 14-7.5 16H24c-4.5-2-7.2-8-7.5-16C15.5 36 20 15 32 5z" fill="url(#sh-hull)" stroke="rgba(8,40,60,.28)" stroke-width="1.2" stroke-linejoin="round" />
-            <path d="M38 12c7 10 10 28 9.5 48-.3 8-3 14-7.5 16h-4c4-10 5.5-32 2-64z" fill="rgba(40,90,130,.12)" />
-            <path d="M32 5c7.5 6 11 13.5 12.6 22-8.4 2.4-16.8 2.4-25.2 0C21 18.5 24.5 11 32 5z" fill="url(#sh-nose)" />
-            <path d="M17.2 63h29.6l-.5 5.5H17.7z" fill="#3fd6c4" />
-            <circle cx="32" cy="45" r="8.6" fill="#13405a" />
-            <circle cx="32" cy="45" r="6.4" fill="url(#sh-glass)" />
-            <ellipse cx="29.6" cy="42.6" rx="2.4" ry="1.8" fill="#fff" opacity="0.85" />
-            <path d="M24.5 76h15l-2.1 6.5H26.6z" fill="#29496b" />
-          </svg>
-        </span>
-      </div>
-
-      <!-- כותרת עליונה -->
       <header class="hud">
         <a class="hud__back" href="/learn" aria-label="חזרה"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-back" /></svg></a>
         <div class="hud__mid">
@@ -131,6 +141,6 @@
     <div class="warp-cover" id="warpCover" hidden aria-hidden="true"></div>
 
     <script src="/galaxy-data.js?v=6"></script>
-    <script src="/galaxy.js?v=12"></script>
+    <script src="/galaxy.js?v=14"></script>
   </body>
 </html>
