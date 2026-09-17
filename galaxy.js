@@ -157,34 +157,165 @@
     return { w, h, ok: w > 120 && h > 120 };
   }
 
+  /* ---------- גאומטריה מותאמת-מסך ----------
+     מבט אלכסוני = עיגול שנמעך אנכית (tilt). על מסך רחב המעיכה היא זו של
+     הכיתה; על מסך לאורך אותה מעיכה דוחסת את כל המערכת לפס צר באמצע, ולכן
+     האליפסה נפתחת אנכית — בדיוק כמה שהגובה הפנוי מרשה, ולא יותר. אין
+     breakpoint: הערך נגזר מהמסך, ולכן המעבר רציף (כולל מסך כמעט-מרובע).
+     בנוסף, חוק גאומטרי אחד לכל הטבעות: אם כוכב היה יושב על השמש, כל
+     הטבעות נדחפות יחד החוצה — עד כמה שאפשר בלי לחרוג מהמסך. */
+  const TILT_TALL = 0.66;  // התקרה למסך לאורך (הכיתה מגדירה את ערך-הבסיס)
+  const FILL_V = 0.72;     // חלק הגובה שהמערכת אמורה למלא לפני שהתקרה עוצרת
+  const GROW_MAX = 1.12;   // כמה מותר להגדיל את המערכת כשנשאר גובה פנוי
+  const SUN_MIN_K = 0.80;  // עד כמה מותר להקטין את השמש כדי לפנות מקום לכוכב
+  const SUN_HALO = 1.06;   // הכוכבים מתרחקים מהכותרת הזוהרת של השמש, לא רק מהדיסק
+  const SUN_VMIN = 0.27;   // גודל-השמש שב-galaxy.css (--sun-size ברירת-מחדל 27vmin)
+
+  function geometry(vp) {
+    const { w, h } = vp;
+    const small = Math.min(w, h) < 600;
+    const min = Math.min(w, h);
+    const list = [...document.querySelectorAll(".planet")].map((el) => ({
+      el, a: (+el.dataset.angle * Math.PI) / 180, r: +el.dataset.ring,
+    }));
+    const dOf = (depth) => min * ((small ? 0.070 : 0.082) + depth * (small ? 0.042 : 0.052));
+    const depthOf = (r, a) => (r * Math.sin(a) + 1) / 2; // 0 = רחוק (מאחורי השמש), 1 = קרוב
+    const maxRing = Math.max(...list.map((p) => p.r), ...(CFG.rings || [0]));
+    const EDGE = Math.max(8, min * 0.015);
+    const plate = min * 0.075;   // מקום לשלט של הכוכב הקצה
+    const clear = min * 0.02;    // המרווח המינימלי בין כוכב לשמש
+    list.forEach((p) => { p.d = dOf(depthOf(p.r, p.a)); p.cos = Math.abs(Math.cos(p.a)); p.sin = Math.abs(Math.sin(p.a)); });
+    const reach = (a, t) => Math.hypot(Math.cos(a), t * Math.sin(a)); // מרחק מהמרכז ל-r=1
+
+    // 1) המעיכה: פותחים את האליפסה עד שהמערכת ממלאת את הגובה הפנוי
+    const rx0b = Math.min(w * 0.455, h * 0.95); // חצי-הרוחב הבסיסי (כמו בשולחן)
+    const edgeY = dOf(1) / 2 + min * 0.11;      // הכוכב הקצה + מקום לשלט שלו
+    const want = ((h * FILL_V) / 2 - edgeY) / (rx0b * maxRing);
+    let tilt = Math.min(TILT_TALL, Math.max(CFG.tilt || 0.42, want));
+
+    // 2) אם המעיכה נעצרה בתקרה, נשאר גובה פנוי — ואז המערכת גדלה מעט, עד
+    //    שהטבעת החיצונית או כוכב מתקרבים לשולי המסך. במסך רחב spare = 0.
+    const spare = Math.max(0, want / TILT_TALL - 1);
+    let rx0 = rx0b * Math.min(GROW_MAX, 1 + spare * 0.5);
+    const RIM = Math.max(EDGE, min * 0.03); // הטבעת החיצונית לא נוגעת בזכוכית
+    rx0 = Math.min(rx0, (w / 2 - RIM) / maxRing, (h / 2 - RIM) / (maxRing * tilt));
+    list.forEach((p) => {
+      if (p.cos > 0.001) rx0 = Math.min(rx0, (w / 2 - EDGE - p.d / 2) / (p.r * p.cos));
+      if (p.sin > 0.001) rx0 = Math.min(rx0, (h / 2 - EDGE - p.d / 2 - plate) / (p.r * tilt * p.sin));
+    });
+    rx0 = Math.max(rx0, rx0b); // לעולם לא קטן מהבסיס
+
+    // 3) מרווח מהשמש — אף כוכב לא יושב עליה. שלושה כלים, בסדר הזה:
+    //    (א) השמש מתכווצת מעט (עד SUN_MIN_K), (ב) האליפסה נפתחת עוד — זה
+    //    בדיוק מה שמרחיק את הכוכבים ש"מעל" ו"מתחת" לשמש, (ג) ורק אם נשאר
+    //    לחץ — כל הטבעות נדחפות יחד החוצה. חוק אחד, בלי נושא מיוחד.
+    const sunR0 = (min * SUN_VMIN) / 2;
+    // התקרה לפתיחת האליפסה: הכוכבים והטבעות נשארים על המסך
+    let fitTilt = (h / 2 - RIM) / (rx0 * maxRing);
+    list.forEach((p) => { if (p.sin > 0.05) fitTilt = Math.min(fitTilt, (h / 2 - EDGE - p.d / 2 - plate) / (rx0 * p.r * p.sin)); });
+    let sunR = sunR0;
+    for (let i = 0; i < 5; i++) {
+      sunR = sunR0;
+      list.forEach((p) => {
+        const allow = (rx0 * p.r * reach(p.a, tilt) - p.d / 2 - clear) / SUN_HALO; // רדיוס-שמש שהכוכב הזה מרשה
+        sunR = Math.min(sunR, Math.max(allow, sunR0 * SUN_MIN_K));
+      });
+      let need = tilt;
+      list.forEach((p) => {
+        if (p.sin < 0.05) return;
+        const t2 = ((sunR * SUN_HALO + p.d / 2 + clear) / (rx0 * p.r)) ** 2 - p.cos * p.cos; // = (tilt·sin)²
+        if (t2 > 0) need = Math.max(need, Math.sqrt(t2) / p.sin);
+      });
+      const next = Math.min(TILT_TALL, Math.max(tilt, Math.min(need, fitTilt)));
+      if (Math.abs(next - tilt) < 0.002) break;
+      tilt = next;
+    }
+    // (ג) דחיפת הטבעות — רק אם אחרי הכל עוד יש כוכב על השמש
+    let push = 0, room = 1;
+    list.forEach((p) => {
+      if (p.r >= 1) return;
+      const needR = (sunR * SUN_HALO + p.d / 2 + clear) / (rx0 * reach(p.a, tilt));
+      const fit = Math.min(
+        p.cos > 0.001 ? (w / 2 - EDGE - p.d / 2) / (rx0 * p.cos) : Infinity,
+        p.sin > 0.001 ? (h / 2 - EDGE - p.d / 2) / (rx0 * tilt * p.sin) : Infinity,
+      );
+      if (needR > p.r) push = Math.max(push, (needR - p.r) / (1 - p.r));
+      room = Math.min(room, Math.max(0, (fit - p.r) / (1 - p.r)));
+    });
+    push = Math.min(push, room);
+    const remap = (r) => r + (1 - r) * push;
+    return { small, rx0, tilt, push, remap, list, dOf, depthOf, sunPx: sunR * 2 };
+  }
+
+  /** המקום שבו החללית "חונה": על הציר של השמש, מתחתיה, במרחק הקבוע —
+      וזזה משם רק אם כוכב באמת יושב עליה. קודם מנסים הזזה קטנה הצידה (כדי
+      שתישאר "מסלול-שיגור" מתחת לשמש), ורק אם אין מקום — יורדים. חוק אחד
+      לכל המסכים; על מסך לאורך המסלולים יורדים, ולכן גם המרחק מהשמש גדל. */
+  function shipPark(vp, items) {
+    const min = Math.min(vp.w, vp.h);
+    const sunEl = $("#sun");
+    const sunR = (sunEl && sunEl.offsetWidth ? sunEl.offsetWidth : min * 0.27) / 2;
+    const sh = ship.offsetHeight || min * 0.16, sw = ship.offsetWidth || min * 0.11;
+    const shipR = sw / 2; // גוף החללית (בלי הלהבה שמתחתיה)
+    const base = Math.max(min * 0.19, sunR + sh * 0.45 + min * 0.02);
+    const limit = Math.max(base, vp.h / 2 - sh * 0.6);
+    // נגיעה קלה בשפה מותרת (כך זה נראה גם בשולחן מאז 2B); רק כיסוי אמיתי מזיז.
+    // הפתרון רציף: בגובה נתון כל כוכב חוסם קטע סימטרי סביב ה-x שלו, ואנחנו
+    // בוחרים את ה-x הפנוי הקרוב ביותר לציר השמש. כשכוכב רק נוגע ההסחה היא
+    // אפס, והיא גדלה איתו בהדרגה — ולכן שינוי של פיקסל לא מקפיץ את החללית.
+    const xMax = vp.w / 2 - min * 0.02 - sw / 2;
+    const blocked = (y) => items
+      .map((it) => {
+        const R = (shipR + it.d / 2) * 0.92, dy = it.y - y, s2 = R * R - dy * dy;
+        return s2 > 0 ? [it.x - Math.sqrt(s2), it.x + Math.sqrt(s2)] : null;
+      })
+      .filter(Boolean);
+    const nearestFree = (y) => {
+      const iv = blocked(y);
+      const free = (x) => iv.every(([l, r]) => x <= l || x >= r);
+      if (free(0)) return 0;
+      let best = null;
+      iv.forEach((pair) => pair.forEach((x) => {
+        if (Math.abs(x) <= xMax && free(x) && (best == null || Math.abs(x) < Math.abs(best))) best = x;
+      }));
+      return best;
+    };
+    const x0 = nearestFree(base);
+    if (x0 != null) return { x: x0, y: base };
+    for (let y = base; y <= limit; y += min * 0.015) {
+      const x = nearestFree(y);
+      if (x != null) return { x, y };
+    }
+    return { x: 0, y: base };
+  }
+
   function layout() {
     const vp = viewport();
     if (!vp.ok || !CFG) return false;
     const { w, h } = vp;
-    const small = Math.min(w, h) < 600;
-    const rx0 = Math.min(w * 0.455, h * 0.95); // חצי-רוחב המערכת
-    const tilt = CFG.tilt || 0.42;
+    const geo = geometry(vp);
+    const { rx0, tilt, remap } = geo;
+    const sunEl = $("#sun");
+    if (sunEl) sunEl.style.setProperty("--sun-size", `${geo.sunPx.toFixed(0)}px`);
 
-    // טבעות-המסלול עצמן
+    // טבעות-המסלול עצמן — אותה גאומטריה בדיוק
     const rings = document.getElementById("rings");
     if (rings) {
       rings.innerHTML = (CFG.rings || [])
-        .map((r) => {
-          const rw = rx0 * r * 2, rh = rx0 * r * tilt * 2;
+        .map((r0) => {
+          const r = remap(r0), rw = rx0 * r * 2, rh = rx0 * r * tilt * 2;
           return `<span class="ring-o" style="width:${rw.toFixed(0)}px;height:${rh.toFixed(0)}px"></span>`;
         })
         .join("");
     }
 
-    const items = [];
-    document.querySelectorAll(".planet").forEach((el) => {
-      const a = (+el.dataset.angle * Math.PI) / 180;
-      const r = +el.dataset.ring;
-      const x = Math.cos(a) * rx0 * r;
-      const y = Math.sin(a) * rx0 * r * tilt;
-      // 0 = הרחוק ביותר (מאחורי השמש), 1 = הקרוב ביותר (לפנים)
-      const depth = (y / (rx0 * tilt) + 1) / 2;
-      const d = Math.min(w, h) * ((small ? 0.070 : 0.082) + depth * (small ? 0.042 : 0.052));
+    const items = geo.list.map((p) => {
+      const r = remap(p.r);
+      const x = Math.cos(p.a) * rx0 * r;
+      const y = Math.sin(p.a) * rx0 * r * tilt;
+      const depth = geo.depthOf(r, p.a);
+      const d = geo.dOf(depth);
+      const el = p.el;
 
       el.style.setProperty("--tx", `${x.toFixed(1)}px`);
       el.style.setProperty("--ty", `${y.toFixed(1)}px`);
@@ -193,9 +324,25 @@
       el.style.opacity = (0.68 + depth * 0.32).toFixed(2);   // אווירת-מרחק
       el.style.setProperty("--d", `${d.toFixed(0)}px`); // גם לשלט (הגשר של ה-hover)
       el.querySelector(".planet__orb").style.setProperty("--d", `${d.toFixed(0)}px`);
-      items.push({ el, x, y, d, depth });
+      return { el, x, y, d, depth };
     });
-    placeLabels(items, vp);
+    parked = shipPark(vp, items);
+    const platesBottom = placeLabels(items, vp, parked) || 0;
+
+    // שורת-ההסבר יושבת באמצע הרווח שמתחת למערכת, כדי שלא תיראה כמו כתובית
+    // מנותקת בתחתית של מסך גבוה
+    const hint = $("#hint");
+    if (hint && hint.offsetHeight) {
+      // הכל מהמקום המחושב (לא מהכדור שמרחף למעלה-למטה ולא מסגנון שעוד לא
+      // הוחל), כדי שהשורה תיפול תמיד באותו מקום
+      const low = Math.max(
+        h / 2 + parked.y + ship.offsetHeight / 2,
+        platesBottom,
+        ...items.map((it) => h / 2 + it.y + it.d / 2),
+      );
+      const free = h - low; // הרווח שמתחת לכל מה שמצויר
+      hint.style.setProperty("--hint-bottom", `${Math.max(Math.min(w, h) * 0.024, free / 2 - hint.offsetHeight / 2).toFixed(0)}px`);
+    }
     return true;
   }
 
@@ -204,23 +351,25 @@
       לוחצים עליו) או שלט אחר כמעט אסור; החללית, ה-HUD ושם הכיתה מסתירים או
       נסתרים, ולכן יקרים; שולי השמש זולים (השלטים מצוירים מעליה). הכוכבים
       הקרובים בוחרים ראשונים. רק השלטים זזים, לא הכוכבים. */
-  function placeLabels(items, vp) {
+  function placeLabels(items, vp, park) {
     if (sky.hidden) return; // שלט מוסתר נמדד כ-0; נקרא שוב אחרי שהשמיים מוצגים
     const gap = Math.max(6, Math.min(vp.w, vp.h) * 0.009);
-    const cx = vp.w / 2, cy = vp.h / 2, EDGE = 4;
+    const cx = vp.w / 2, cy = vp.h / 2;
+    const EDGE = Math.max(12, Math.min(vp.w, vp.h) * 0.04); // שוליים שהשלטים לא חורגים מהם
     const box = (x, y, w, h) => ({ l: x - w / 2, r: x + w / 2, t: y - h / 2, b: y + h / 2 });
     const grow = (a, m) => ({ l: a.l - m, r: a.r + m, t: a.t - m, b: a.b + m });
     const fromRect = (r) => ({ l: r.left, r: r.right, t: r.top, b: r.bottom });
     const overlap = (a, b) => Math.max(0, Math.min(a.r, b.r) - Math.max(a.l, b.l)) * Math.max(0, Math.min(a.b, b.b) - Math.max(a.t, b.t));
 
     // קודם כל המדידות, ואז כל הכתיבות — בלי חישוב-פריסה חוזר לכל כוכב
-    const core = $(".sun__core") || $("#sun"), sunR = core ? core.offsetWidth / 2 : 0;
+    const core = $(".sun__core") || $("#sun"), sunR = core ? (core.offsetWidth / 2) * 1.08 : 0; // כולל הכותרת הזוהרת
     const obstacles = [
-      { area: box(cx, cy + Math.min(vp.w, vp.h) * 0.19, ship.offsetWidth, ship.offsetHeight * 1.35), weight: 6 }, // החללית מצוירת מעל השלטים
+      { area: box(cx + park.x, cy + park.y, ship.offsetWidth, ship.offsetHeight * 1.35), weight: 10 }, // החללית מצוירת מעל השלטים
       { area: fromRect($(".hud").getBoundingClientRect()), weight: 20 },      // ה-HUD מעל השלטים — שלט מתחתיו לא נקרא
       { area: fromRect($("#sunLabel").getBoundingClientRect()), weight: 40 }, // שם הכיתה לא מתכסה, כמו כוכב
       { area: fromRect($("#hint span").getBoundingClientRect()), weight: 3 },
-      ...items.map((it) => ({ area: box(cx + it.x, cy + it.y, it.d + gap * 2, it.d + gap * 2), weight: 40, owner: it })),
+      // הכוכב עם ההילה והטבעת שסביבו, לא רק הכדור עצמו
+      ...items.map((it) => ({ area: box(cx + it.x, cy + it.y, it.d * 1.2 + gap * 2, it.d * 1.2 + gap * 2), weight: 40, owner: it })),
     ];
     const plates = items.map((it) => {
       const label = it.el.querySelector(".planet__label"), rec = it.el.querySelector(".pmark--rec");
@@ -239,16 +388,18 @@
     const spotsFor = (it, w, h) => {
       const px = cx + it.x, py = cy + it.y, off = it.d / 2 + gap;
       const below = py + off + h / 2, above = py - off - h / 2;
+      // מעל/מתחת השלט יכול לזוז הצידה, ותמיד נשאר בתוך שולי-המסך
+      const lo = EDGE + w / 2 - px, hi = vp.w - EDGE - w / 2 - px;
+      const fit = (sh) => (lo > hi ? (lo + hi) / 2 : Math.min(Math.max(sh, lo), hi));
       const s = w / 2 - it.d / 4; // בהזזה השלט עדיין נוגע בעמודה של הכוכב
-      const spots = [
-        { side: "bottom", shift: 0, area: box(px, below, w, h) },
-        { side: "top", shift: 0, area: box(px, above, w, h) },
-        { side: "right", shift: 0, area: box(px + off + w / 2, py, w, h) },
-        { side: "left", shift: 0, area: box(px - off - w / 2, py, w, h) },
-      ];
-      if (s > 2) [s, -s].forEach((sh) => spots.push(
-        { side: "bottom", shift: sh, area: box(px + sh, below, w, h) },
-        { side: "top", shift: sh, area: box(px + sh, above, w, h) }));
+      const shifts = s > 2 ? [0, s, -s] : [0];
+      const spots = [];
+      ["bottom", "top"].forEach((side) => shifts.forEach((sh) => {
+        const shift = fit(sh);
+        spots.push({ side, shift, area: box(px + shift, side === "bottom" ? below : above, w, h) });
+      }));
+      spots.splice(1, 0, { side: "right", shift: 0, area: box(px + off + w / 2, py, w, h) });
+      spots.splice(2, 0, { side: "left", shift: 0, area: box(px - off - w / 2, py, w, h) });
       return spots;
     };
     // בחירה חמדנית (הקרובים קודם), ואז כמה סבבי שיפור: כל שלט בוחר שוב כשכל
@@ -261,7 +412,7 @@
     const pick = slots.map(() => null);
     const cost = (k, sp, i) => {
       const a = sp.area, it = slots[k].p.it, h = slots[k].h;
-      let score = i * h * 2 + inSun(a) * 2; // העדפה עדינה כשאין הבדל: מתחת > מעל > צד > מוזז
+      let score = i * h * 2 + inSun(a) * 8; // העדפה עדינה כשאין הבדל: מתחת > מעל > צד > מוזז
       obstacles.forEach((o) => { if (o.owner !== it) score += overlap(a, o.area) * o.weight; });
       pick.forEach((q, j) => { if (q && j !== k) score += overlap(a, grow(q.area, gap / 2)) * 20; });
       const out = Math.max(0, EDGE - a.l) + Math.max(0, a.r - (vp.w - EDGE)) + Math.max(0, EDGE - a.t) + Math.max(0, a.b - (vp.h - EDGE));
@@ -281,6 +432,7 @@
       slot.p.it.el.dataset[slot.rec ? "rec" : "label"] = pick[k].side;
       slot.el.style.setProperty("--plate-shift", `${pick[k].shift.toFixed(1)}px`);
     });
+    return Math.max(...pick.map((p) => p.area.b)); // התחתית של השלט הנמוך ביותר
   }
 
   /** קודם כל המיקומים נכתבים כשהשמיים עוד מוסתרים — כך הסגנון הראשון שהדפדפן
@@ -290,7 +442,13 @@
     if (layout()) {
       parkShip();
       sky.hidden = false;
+      // עכשיו אפשר למדוד באמת (השלטים והחללית נמדדים רק כשהם מוצגים), ומה
+      // שיוצא נכתב בלי מעבר — כך הסגנון הראשון שנצבע הוא כבר הסופי
+      ship.style.transition = "none";
       layout();
+      parkShip();
+      void ship.offsetWidth;
+      ship.style.transition = "";
       return;
     }
     if (tries > 120) { sky.hidden = false; return; }
@@ -332,8 +490,7 @@
   function parkShip() {
     const vp = viewport();
     if (!vp.ok) return;
-    const r = Math.min(vp.w, vp.h) * 0.19;
-    parked = { x: 0, y: r };
+    if (!parked.y) parked = { x: 0, y: Math.min(vp.w, vp.h) * 0.19 }; // לפני הפריסה הראשונה
     setShip(parked.x, parked.y, 0);
   }
   function setShip(x, y, rot) {
