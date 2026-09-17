@@ -237,12 +237,25 @@ body {
 }
 .planet.is-picked { opacity: 1 !important; z-index: 60 !important; }
 .planet.is-picked .planet__orb { filter: none; }
+/* שיגור מהמקלדת: בלי מסגרת-פוקוס ריקה במקום שהכוכב עזב */
+.sky.is-launching .planet.is-picked { outline: none; }
 .sky.is-launching .rings { opacity: .2; }
 .sky.is-launching .hud { opacity: .4; pointer-events: none; } /* הקשה עליו = דילוג, לא יציאה */
 .sky.is-launching .hint { opacity: 0; transition-duration: .26s; }
 
 /* כיסוי-הצבע בצבע הכוכב. זמני — יוחלף בזום של הכוכב. כשהוא אטום, מנווטים. */
 .warp-cover { position: fixed; inset: 0; z-index: 20; opacity: 0; pointer-events: none; }
+
+/* כניסה לעולם: הצבע מתפשט מהכוכב (18), הכוכב המתקרב (19), ומעליהם כיסוי-
+   הניווט (20). נבנים בכל שיגור ומתפרקים אחריו; זזים ב-transform/opacity בלבד. */
+.warp-fill { position: fixed; z-index: 18; border-radius: 50%; pointer-events: none; opacity: 0; }
+.warp-hero { position: fixed; z-index: 19; pointer-events: none; }
+.warp-hero__orb { position: absolute; inset: 0; border-radius: 50%; }
+.warp-hero__orb img { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); object-fit: contain; }
+.warp-hero__glow {
+  position: absolute; inset: -38%; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, var(--hue), transparent);
+}
 
 /* ---------- מובייל: עדיין גלקסיה, לא רשימה ---------- */
 @media (max-width: 700px) {

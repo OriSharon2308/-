@@ -39,3 +39,7 @@ window.GALAXY = {
     },
   },
 };
+
+/* אייקוני-הנושא שקיימים באמת ב-/images/topics (מציין-המקום שבתוך הכדור).
+   נושא שה-art שלו לא ברשימה מקבל כדור צבעוני נקי — בלי בקשה לקובץ שאין (404). */
+window.GALAXY_ICONS = ["numbers", "addition", "subtraction", "add-sub", "shapes", "money", "clock", "word-problems"];

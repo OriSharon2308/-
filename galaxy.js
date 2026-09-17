@@ -76,10 +76,12 @@
         : "";
     const badge = st.state === "done" ? `<span class="badge">⭐</span>` : "";
     const tip = st.recommended ? `<span class="tip">מומלץ עכשיו</span>` : "";
-    // מציין-מקום עד שיגיעו איורי הכוכבים; image !== null → משתמשים בקובץ הסופי
+    // מציין-מקום עד שיגיעו איורי הכוכבים; image !== null → משתמשים בקובץ הסופי.
+    // אייקון-נושא רק אם הוא באמת קיים (GALAXY_ICONS) — בלי בקשות שנגמרות ב-404.
+    const hasIcon = (window.GALAXY_ICONS || []).includes(p.art);
     const orb = p.image
       ? `<img src="${esc(p.image)}" alt="" />`
-      : `<img class="planet__art" src="/images/topics/${esc(p.art)}.png" alt="" />`;
+      : hasIcon ? `<img class="planet__art" src="/images/topics/${esc(p.art)}.png" alt="" />` : "";
     const sub =
       st.state === "done" ? "הושלם" : st.pct > 0 ? `${st.pct}%` : "טרם התחלנו";
 
@@ -215,7 +217,7 @@
   const T_TURN = 200;    // פנייה אל הכוכב
   const T_LEAN = 150;    // הירתעות קטנה לאחור...
   const T_LAUNCH = 250;  // ...ואז הזינוק
-  const T_FADE = 830;    // החללית נכנסת לכוכב: נעלמת ומתכווצת
+  const T_FADE = 880;    // החללית מתכווצת אל הכוכב; נעלמת כשהכוכב המתקרב בולע אותה (או כאן, אם אין)
   const T_ARRIVE = 950;
   const SAMPLE_MS = 20;  // צפיפות ה-keyframes; הדפדפן מחבר ביניהם בקו ישר
   const CURVE = 0.055;   // גובה הקשת — 5.5% מאורך הדרך (עד 40px, ובמסך קטן עד 20px)
@@ -333,32 +335,68 @@
     return 0.92 - 0.17 * ((q - qFade) / (1 - qFade));
   }
 
-  /** פנייה → הירתעות → זינוק בקשת → כניסה לכוכב, ומנוע שמתעורר בהתאם. */
-  function flightAnimations(el, r0) {
-    const f = planFlight(el);
+  /** מיקום החללית בזמן t לפי "צילום" הטיסה: חנייה → הירתעות → קשת מואצת. */
+  function shipPos(f, t) {
+    if (t <= T_LEAN) return { x: f.P.x, y: f.P.y };
+    if (t < T_LAUNCH) {
+      const k = (t - T_LEAN) / (T_LAUNCH - T_LEAN);
+      const e = 1 - (1 - k) * (1 - k);
+      return { x: f.P.x + (f.S.x - f.P.x) * e, y: f.P.y + (f.S.y - f.P.y) * e };
+    }
+    const p = boostEase((t - T_LAUNCH) / (T_ARRIVE - T_LAUNCH));
+    return { x: bez(f.S.x, f.C.x, f.T.x, p), y: bez(f.S.y, f.C.y, f.T.y, p) };
+  }
+
+  /** פנייה → הירתעות → זינוק בקשת → כניסה לכוכב, ומנוע שמתעורר בהתאם.
+      hp — תכנון הכוכב המתקרב (planHero): החללית נעלמת ברגע שהוא "בולע" אותה. */
+  function flightAnimations(el, r0, hp, f = planFlight(el)) {
     const a0 = nearAngle(headingAt(f, 0), r0);
     const bankDir = Math.sign(nearAngle(headingAt(f, 1), a0) - a0) || 1;
+    const posAt = (t) => shipPos(f, t);
+    // החללית והכוכב נעים זה אל זה (הכוכב אל המרכז, החללית ממנו). הרגע שבו שפת
+    // הכוכב עוברת עליה הוא רגע הכניסה: משם היא "נוסעת" בתוכו, מוסתרת מאחוריו,
+    // ונעלמת — כך היא לא יוצאת מהצד השני ולא נעלמת באמצע החלל.
+    let tIn = null;
+    if (hp) {
+      for (let t = T_HERO - 60; t <= T_ARRIVE; t += 5) {
+        const s = posAt(t), c = hp.at(t);
+        if (Math.hypot(s.x - c.x, s.y - c.y) < hp.r(t) - ship.offsetWidth * 0.15) { tIn = t; break; }
+      }
+      if (tIn == null) tIn = hp.tCatch; // רשת-ביטחון: הרגע שבו הכוכב עוד חיכה לה במקומו
+    }
+    const inside = (t) => tIn != null && t > tIn;
+    const anchor = tIn != null ? posAt(tIn) : null;
+    const hIn = tIn != null ? hp.at(tIn) : null;
+    const where = (t) => {
+      if (!inside(t)) return posAt(t);
+      // נמשכת מהר פנימה, אל לב הכוכב — כך גם אם הכוכב מאחר בפריים, היא לא מבצבצת מהשפה
+      const c = hp.at(t), k = 1 - 0.7 * Math.min(1, (t - tIn) / 90);
+      return { x: c.x + (anchor.x - hIn.x) * k, y: c.y + (anchor.y - hIn.y) * k };
+    };
+    let fadeFrom = tIn == null ? T_FADE : tIn - 30;
+    let fadeTo = tIn == null ? T_ARRIVE : Math.min(T_ARRIVE, tIn + 60);
+    // כבר חופפת לכוכב ברגע ההחלפה (כוכב קרוב לחנייה)? נמוגה לפניה — אחרת העותק,
+    // שנמצא מעל השמיים, היה "חותך" אותה בבת אחת
+    if (hp) {
+      const cH = hp.at(T_HERO), sH = posAt(T_HERO);
+      if (Math.hypot(sH.x - cH.x, sH.y - cH.y) < hp.r(T_HERO) + ship.offsetHeight * 0.5 && fadeTo > T_HERO) {
+        fadeTo = T_HERO;
+        fadeFrom = Math.min(fadeFrom, T_HERO - 90);
+      }
+    }
     const frames = [];
     let heading = a0;
     for (let i = 0; ; i++) {
       const t = Math.min(i * SAMPLE_MS, T_ARRIVE);
-      let x = f.P.x, y = f.P.y, rot = a0, s = 1, o = 1;
+      const { x, y } = where(t);
+      let rot = a0, s = 1;
+      const o = t <= fadeFrom ? 1 : t >= fadeTo ? 0 : 1 - (t - fadeFrom) / (fadeTo - fadeFrom);
       if (t < T_TURN) rot = r0 + (a0 - r0) * turnEase(t / T_TURN);
-      if (t > T_LEAN && t < T_LAUNCH) {
-        const k = (t - T_LEAN) / (T_LAUNCH - T_LEAN);
-        const e = 1 - (1 - k) * (1 - k);
-        x = f.P.x + (f.S.x - f.P.x) * e;
-        y = f.P.y + (f.S.y - f.P.y) * e;
-      }
       if (t >= T_LAUNCH) {
         const q = (t - T_LAUNCH) / (T_ARRIVE - T_LAUNCH);
-        const p = boostEase(q);
-        x = bez(f.S.x, f.C.x, f.T.x, p);
-        y = bez(f.S.y, f.C.y, f.T.y, p);
-        heading = nearAngle(headingAt(f, p), heading);
+        if (!inside(t)) heading = nearAngle(headingAt(f, boostEase(q)), heading); // בפנים — כבר לא פונה
         rot = heading + bankDir * BANK * Math.sin(Math.PI * q); // חוזרת לאפס ליד הכוכב
         s = flightScale(q);
-        if (t > T_FADE) o = 1 - (t - T_FADE) / (T_ARRIVE - T_FADE);
       }
       frames.push({
         offset: t / T_ARRIVE,
@@ -389,7 +427,169 @@
       { delay: from, duration: 250, easing: "cubic-bezier(.2,.8,.3,1)", fill: "forwards" })];
     const g = el.querySelector(".planet__glow");
     if (g) out.push(g.animate([{ opacity: 0 }, { opacity: 0.85 }], { delay: from, duration: 250, easing: "ease-out", fill: "forwards" }));
+    // השם הוא ממשק, לא חלק מהכוכב — לא גדל איתו, נעלם כשהעולם מתחיל להתקרב
+    el.querySelectorAll(".planet__name, .planet__sub").forEach((n) =>
+      out.push(n.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 700, duration: 150, fill: "forwards" })));
+    // טבעת-ההתקדמות, הכוכבית ו"מומלץ" — נעלמות רגע לפני שהעותק מחליף את הכוכב
+    el.querySelectorAll(".ring, .badge, .tip").forEach((n) =>
+      out.push(n.animate([{ opacity: 1 }, { opacity: 0 }], { delay: T_HERO - 120, duration: 120, fill: "forwards" })));
     return out;
+  }
+
+  /* ---------- כניסה לעולם ----------
+     לקראת סוף הטיסה נוצר עותק "גיבור" של הכוכב שנבחר: בגודלו הסופי (כדי
+     שיישאר חד), מוקטן בדיוק למקום ולגודל של הכוכב המקורי, ומשם מתקרב אל
+     המצלמה (FLIP). העותק מעתיק את הסגנון המחושב של הכדור ואת התמונות שבו,
+     ולכן עובד כמו שהוא גם עם מציין-המקום של היום וגם עם איור עתידי. מאחוריו
+     הצבע של הכוכב מתפשט עד שממלא את המסך, ומעל הכל — כיסוי-הניווט.       */
+  const T_HERO = 760;       // העותק מחליף את הכוכב
+  const T_FILL = 830;       // הצבע יוצא מאחורי הכוכב
+  const T_HERO_FULL = 1060; // הכוכב בגודלו, והצבע כבר מכסה את כל המסך
+  const T_END = 1140;       // כיסוי-הניווט אטום → ניווט
+  const T_MOVE_LATEST = 930; // הכוכב יוצא אל המרכז כשהחללית נכנסת — לכל המאוחר כאן
+  const HERO_VMIN = 0.38;   // קוטר סופי: 38vmin (בין 120 ל-520px)
+  const HERO_BIAS = 0.035;  // קצת מתחת למרכז — כאילו מתקרבים אל פני הכוכב
+  const HERO_SPIN = 4;      // סיבוב עדין כולל, במעלות. 0 = בלי סיבוב (לאיור עם כיוון ברור)
+  const heroMoveEase = cubicBezier(0.2, 0.75, 0.25, 1); // התנועה אל המרכז
+  const heroNearEase = cubicBezier(0, 0, 0.58, 1);      // ההתקרבות בעומק
+  const fillGrow = cubicBezier(0.6, 0, 0.4, 1);         // הצבע: הילה צמודה, ואז מתפרץ לכל המסך
+  const hero = $("#warpHero");
+  const fill = $("#warpFill");
+
+  /** לאן ובאיזה גודל הכוכב יתקרב — מחושב כבר ברגע הלחיצה, כדי שהחללית תדע
+      מתי הוא בולע אותה. at(t) = המרכז בזמן t, r(t) = הרדיוס, בקואורדינטות של
+      החללית (יחסית למרכז המסך). */
+  function planHero(el, f) {
+    const vp = viewport();
+    const orb = el.querySelector(".planet__orb");
+    const rc = orb.getBoundingClientRect();
+    const c0 = { x: rc.left + rc.width / 2, y: rc.top + rc.height / 2 };
+    const D = Math.min(520, Math.max(120, Math.min(vp.w, vp.h) * HERO_VMIN));
+    const cf = { x: vp.w / 2, y: vp.h / 2 + vp.h * HERO_BIAS };
+    const d0 = orb.offsetWidth * 1.1; // הכדור ברגע ההחלפה, אחרי הפולס של "קבלת החללית"
+    const z0 = D / d0;
+    const qn = (t) => Math.min(1, Math.max(0, (t - T_HERO) / (T_HERO_FULL - T_HERO)));
+    const r = (t) => (D / 2) / (z0 + (1 - z0) * heroNearEase(qn(t)));
+    // הכוכב גדל במקומו עד שהחללית מגיעה אליו, ורק אז נע אל המרכז — אחרת הוא
+    // עוזב לפני שהיא נכנסת, והיא נעלמת במקום ריק. לכל שיגור הרגע שלו.
+    const home = { x: c0.x - vp.w / 2, y: c0.y - vp.h / 2 };
+    let tMove = T_MOVE_LATEST, tCatch = null;
+    if (f) {
+      for (let t = T_HERO - 60; t <= T_MOVE_LATEST; t += 5) {
+        const s = shipPos(f, t);
+        if (Math.hypot(s.x - home.x, s.y - home.y) < r(t) - ship.offsetWidth * 0.15) { tCatch = t; tMove = Math.max(T_HERO, t - 20); break; }
+      }
+    }
+    const move = (t) => heroMoveEase(Math.min(1, Math.max(0, (t - tMove) / (T_HERO_FULL - tMove))));
+    const at = (t) => { const k = move(t); return { x: home.x + (cf.x - c0.x) * k, y: home.y + (cf.y - c0.y) * k }; };
+    return { vp, D, cf, at, r, move, tMove, tCatch };
+  }
+
+  /** העותק מחליף את הכוכב באותו פריים — אף פעם לא רואים שני כוכבים. */
+  function spawnHero(el, plan, cue) {
+    const { vp, D, cf } = plan;
+    // השעון של הטיסה: כל מה שנוצר כאן מתחיל בזמן-השיגור T_HERO, לא ברגע שהקוד
+    // רץ (ההבטחה נפתרת פריים מאוחר, ואנימציה חדשה מתחילה עוד פריים אחרי) — כך
+    // הכוכב, הצבע והחללית ש"נוסעת" בתוכו זזים יחד. e = כמה מהזמן הזה כבר עבר.
+    const base = cue && cue.startTime != null ? cue.startTime + T_HERO : null;
+    const e = base == null ? 0 : Math.min(60, Math.max(0, (document.timeline.currentTime || base) - base));
+    const onClock = (a) => { if (base != null) a.startTime = base; return a; };
+    const orb = el.querySelector(".planet__orb");
+    const cs = getComputedStyle(orb);
+    const r = orb.getBoundingClientRect();
+    const c0 = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    const pm = new DOMMatrixReadOnly(getComputedStyle(el).transform); // הפולס של הכוכב
+    const d0 = orb.offsetWidth * Math.hypot(pm.a, pm.b);
+    const om = cs.transform && cs.transform !== "none" ? new DOMMatrixReadOnly(cs.transform) : null;
+    const rot0 = om ? (Math.atan2(om.b, om.a) * 180) / Math.PI : 0;
+    // העותק גדול פי k מהכדור (בגודל-הפריסה) — צללים מוגדלים באותו יחס ונראים זהים;
+    // הפולס של הכוכב כבר נמצא בקנה-המידה של העותק עצמו
+    const k = D / orb.offsetWidth;
+    const grow = (v) => String(v || "none").replace(/(-?\d*\.?\d+)px/g, (_, n) => `${(+n * k).toFixed(2)}px`);
+    const hue = (byKey.get(el.dataset.key) || {}).hue || "#0e4a63";
+
+    hero.style.cssText = `left:${(cf.x - D / 2).toFixed(1)}px;top:${(cf.y - D / 2).toFixed(1)}px;` +
+      `width:${D.toFixed(1)}px;height:${D.toFixed(1)}px;--hue:${hue}`;
+    // הזוהר בתוך גוף הכדור: מעל הרקע והצללים ומתחת לאיור — כמו בכוכב המקורי
+    hero.innerHTML = `<span class="warp-hero__orb"><span class="warp-hero__glow"></span></span>`;
+    const body = hero.firstElementChild;
+    const heroGlow = body.firstElementChild;
+    body.style.backgroundImage = cs.backgroundImage;
+    body.style.backgroundColor = cs.backgroundColor;
+    body.style.boxShadow = grow(cs.boxShadow);
+    orb.querySelectorAll("img").forEach((img) => {
+      if (!img.complete || !img.naturalWidth) return; // תמונה שלא נטענה לא עוברת לעותק
+      const c = document.createElement("img");
+      c.src = img.currentSrc || img.src;
+      c.alt = "";
+      c.style.width = `${((img.offsetWidth / orb.offsetWidth) * 100).toFixed(2)}%`;
+      c.style.height = `${((img.offsetHeight / orb.offsetWidth) * 100).toFixed(2)}%`;
+      c.style.filter = grow(getComputedStyle(img).filter);
+      body.appendChild(c);
+    });
+    const liveGlow = el.querySelector(".planet__glow");
+    const g0 = liveGlow ? Number(getComputedStyle(liveGlow).opacity) || 0 : 0;
+    hero.hidden = false;
+    orb.style.opacity = "0";
+
+    // הגודל לפי עומק (1/z): מתקרב כמו עצם אמיתי, לא כמו כרטיס שגדל. הפריים הראשון
+    // שמוצג הוא בזמן e (לא 0) — ולכן הפרמטרים מכוילים כך שדווקא בו העותק זהה לכוכב.
+    const span = T_HERO_FULL - T_HERO;
+    const ne = heroNearEase(e / span), me = plan.move(T_HERO + e);
+    const z0 = ne < 1 ? (D / d0 - ne) / (1 - ne) : D / d0;
+    const dx = (c0.x - cf.x) / (1 - me || 1), dy = (c0.y - cf.y) / (1 - me || 1);
+    const rotStart = rot0 - HERO_SPIN * 0.8 * (e / span);
+    const heroAt = (t) => {
+      if (t <= T_HERO_FULL) {
+        // גדל במקום מההתחלה; נע אל המרכז מרגע הכניסה של החללית (plan.tMove)
+        const q = (t - T_HERO) / span, m = plan.move(t);
+        return { x: dx * (1 - m), y: dy * (1 - m), s: 1 / (z0 + (1 - z0) * heroNearEase(q)), rot: rotStart + HERO_SPIN * 0.8 * q };
+      }
+      const q = (t - T_HERO_FULL) / (T_END - T_HERO_FULL); // ממשיך "לעבור דרכנו" בזמן שהצבע נסגר
+      return { x: 0, y: 0, s: 1 + 0.07 * q, rot: rotStart + HERO_SPIN * (0.8 + 0.2 * q) };
+    };
+    const frames = [];
+    for (let t = T_HERO; ; t += SAMPLE_MS) {
+      const tt = Math.min(t, T_END), h = heroAt(tt);
+      frames.push({ offset: (tt - T_HERO) / (T_END - T_HERO),
+        transform: `translate(${h.x.toFixed(1)}px, ${h.y.toFixed(1)}px) scale(${h.s.toFixed(4)}) rotate(${h.rot.toFixed(2)}deg)` });
+      if (tt >= T_END) break;
+    }
+    launchAnims.push(onClock(hero.animate(frames, { duration: T_END - T_HERO, fill: "forwards" })));
+    launchAnims.push(onClock(heroGlow.animate([{ opacity: g0 }, { opacity: 0.9 }],
+      { duration: T_HERO_FULL - T_HERO, easing: "ease-out", fill: "forwards" })));
+
+    // הצבע: עיגול שמרכזו תמיד מאחורי הכוכב המתקרב. ב-T_FILL הוא עוד מוסתר
+    // מאחוריו, ומשם גדל עד שהוא מכסה את הפינה הרחוקה ביותר מהמיקום הסופי —
+    // רדיוס מחושב, לא scale קבוע מנוחש. (לפני T_FILL הוא שקוף — ב-CSS.)
+    // מרכז אטום ושוליים רכים — אור שמתפשט מהכוכב, לא עיגול קשיח. החלק האטום
+    // (FILL_SOLID מהרדיוס) הוא זה שחייב להגיע לפינה הרחוקה.
+    const FILL_SOLID = 0.86;
+    const far = Math.max(Math.hypot(cf.x, cf.y), Math.hypot(vp.w - cf.x, cf.y), Math.hypot(cf.x, vp.h - cf.y), Math.hypot(vp.w - cf.x, vp.h - cf.y));
+    const R = far / FILL_SOLID + 4;
+    fill.style.cssText = `left:${(cf.x - R).toFixed(1)}px;top:${(cf.y - R).toFixed(1)}px;` +
+      `width:${(2 * R).toFixed(1)}px;height:${(2 * R).toFixed(1)}px;` +
+      `background:radial-gradient(closest-side, ${hue} ${FILL_SOLID * 100}%, transparent)`;
+    fill.hidden = false;
+    const fillFrames = [];
+    for (let t = T_FILL; ; t += SAMPLE_MS) {
+      const tt = Math.min(t, T_HERO_FULL), h = heroAt(tt);
+      const g = fillGrow((tt - T_FILL) / (T_HERO_FULL - T_FILL));
+      const rNow = (D / 2) * h.s * 0.92 * (1 - g) + R * g;
+      fillFrames.push({ offset: (tt - T_FILL) / (T_HERO_FULL - T_FILL), opacity: 1,
+        transform: `translate(${h.x.toFixed(1)}px, ${h.y.toFixed(1)}px) scale(${(rNow / R).toFixed(4)})` });
+      if (tt >= T_HERO_FULL) break;
+    }
+    launchAnims.push(onClock(fill.animate(fillFrames, { delay: T_FILL - T_HERO, duration: T_HERO_FULL - T_FILL, fill: "forwards" })));
+
+    // השמיים נסוגים בהדרגה — עד כמעט שקופים כשהכוכב בגודלו
+    const recede = (node, to) => node && launchAnims.push(onClock(node.animate([{ opacity: getComputedStyle(node).opacity }, { opacity: to }],
+      { duration: T_HERO_FULL - T_HERO, easing: "ease-in", fill: "forwards" })));
+    document.querySelectorAll("#sky .layer").forEach((n) => recede(n, 0.1));
+    recede($("#rings"), 0);
+    recede($("#sun"), 0.2);
+    recede($("#planets"), 0.3); // הכוכבים האחרים: .28 × .3 ≈ .08
+    recede(hud, 0);
   }
 
   /* ---------- שיגור: מכונת-מצבים קטנה ----------
@@ -397,8 +597,8 @@
      במסך — מדלגת על מה שנשאר ונכנסת מיד לשיעור של הכוכב הראשון.
      navigationStarted מבטיח שהניווט קורה פעם אחת בלבד.                */
   const TRANSITION_KEY = "velaGalaxyTransition"; // נקרא ב-learn-board.html
-  const COVER_AT = 700;     // הכיסוי מתחיל להתמלא — אחרי שרואים את ה-BOOST
-  const COVER_MS = 380;     // ...ואטום לגמרי ב-1080 (החללית כבר נעלמה ב-950)
+  const COVER_AT = 1020;    // כיסוי-הניווט השטוח — רק בסוף, מעל הכוכב והצבע שכבר ממלא
+  const COVER_MS = 120;     // ...ואטום לגמרי ב-1140, באותו צבע שבו learn-board נפתח
   const SKIP_MS = 110;      // דילוג: נסגר כמעט מיד, בלי הבזק לבן
   const REDUCED_MS = 140;   // תנועה מופחתת: רק מעבר-צבע קצר
   const WATCHDOG_MS = 2500; // רשת-ביטחון אם אנימציה לא מסתיימת (למשל לשונית ברקע)
@@ -455,8 +655,16 @@
     if (el.animate) {
       const r0 = currentRotation(); // לפני שמבטלים את מעבר-ה-hover — מתחילים מהזווית שרואים
       ship.style.transition = "none"; // מעבר CSS שרץ היה גובר על אנימציית-הטיסה
+      // הכדור מפסיק לצוף — כך העותק יתחיל בדיוק במקום שבו הוא נמצא
+      el.querySelector(".planet__orb").style.animationPlayState = "paused";
+      const flight = planFlight(el);
+      const hp = planHero(el, flight);
       pressAnim = el.animate(pressFrames(el), { duration: 150, fill: "forwards" });
-      launchAnims = flightAnimations(el, r0).concat(receiveAnimations(el));
+      launchAnims = flightAnimations(el, r0, hp, flight).concat(receiveAnimations(el));
+      // שעון על ציר-האנימציות (לא setTimeout): דילוג משהה אותו, והעותק פשוט לא נוצר
+      const cue = hero.animate([], { duration: T_HERO });
+      launchAnims.push(cue);
+      cue.finished.then(() => { if (launching && !skipped && !navigationStarted) spawnHero(el, hp, cue); }, () => { /* בוטל */ });
     }
     fillCover(COVER_AT, COVER_MS, "cubic-bezier(.65,0,.35,1)");
   }
@@ -517,6 +725,13 @@
     coverAnim = pressAnim = null;
     cover.hidden = true;
     cover.style.opacity = "";
+    // הכוכב המתקרב והצבע — מתפרקים; הכוכב המקורי חוזר לצוף ולהיראות
+    hero.hidden = true;
+    hero.innerHTML = "";
+    hero.style.cssText = "";
+    fill.hidden = true;
+    fill.style.cssText = "";
+    document.querySelectorAll(".planet__orb").forEach((o) => { o.style.opacity = ""; o.style.animationPlayState = ""; });
     sky.classList.remove("is-launching");
     document.querySelectorAll(".planet.is-picked").forEach((p) => p.classList.remove("is-picked"));
     // החללית חוזרת לחנייה מיד — בלי לטוס אחורה מול הילד. הפריסה מתעדכנת
