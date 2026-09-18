@@ -559,11 +559,11 @@
      (#ship), לפי "צילום" של נקודת-המוצא והיעד ברגע הלחיצה: אין חישוב באמצע
      הטיסה, ושינוי-גודל לא מעקם את המסלול. אמנות חללית עתידית צריכה רק את
      .ship__flame ואת .ship__glow — הלוגיקה לא נוגעת ב-SVG עצמו.           */
-  const T_TURN = 160;    // פנייה אל הכוכב
-  const T_LEAN = 110;    // הירתעות קטנה לאחור...
-  const T_LAUNCH = 210;  // ...ואז הזינוק (חופף לסוף הפנייה — תנועה אחת רצופה)
-  const T_FADE = 880;    // החללית מתכווצת אל הכוכב; נעלמת כשהכוכב המתקרב בולע אותה (או כאן, אם אין)
-  const T_ARRIVE = 950;
+  const T_TURN = 195;    // פנייה אל הכוכב
+  const T_LEAN = 135;    // הירתעות קטנה לאחור...
+  const T_LAUNCH = 255;  // ...ואז הזינוק (חופף לסוף הפנייה — תנועה אחת רצופה)
+  const T_FADE = 1075;    // החללית מתכווצת אל הכוכב; נעלמת כשהכוכב המתקרב בולע אותה (או כאן, אם אין)
+  const T_ARRIVE = 1160;
   const SAMPLE_MS = 20;  // צפיפות ה-keyframes; הדפדפן מחבר ביניהם בקו ישר
   const CURVE = 0.055;   // גובה הקשת — 5.5% מאורך הדרך (עד 40px, ובמסך קטן עד 20px)
   const SUN_MARGIN = 12; // מרווח-נשימה סביב השמש, מעבר לחצי רוחב החללית
@@ -579,7 +579,7 @@
     boost:    { flameX: 1.18, flameY: 1.7,  glow: 1, glowScale: 1.12 },
     arrival:  { flameX: 1,    flameY: 1.1,  glow: 0, glowScale: 0.85 },
   };
-  const ENGINE_AT = [[0, "idle"], [90, "aim"], [210, "ignition"], [380, "boost"], [760, "boost"], [910, "arrival"], [950, "arrival"]];
+  const ENGINE_AT = [[0, "idle"], [110, "aim"], [255, "ignition"], [465, "boost"], [925, "boost"], [1110, "arrival"], [1160, "arrival"]];
 
   /** כמו cubic-bezier של CSS — כדי לחשב את התאוצה בתוך ה-keyframes. */
   function cubicBezier(x1, y1, x2, y2) {
@@ -601,9 +601,10 @@
     };
   }
   const turnEase = cubicBezier(0.2, 0.8, 0.3, 1);
-  // מאיצה מהזינוק והלאה, אבל בלי "זינוק בסוף": חצי הדרך נעשה כבר ב-630ms
-  // (במקום 750) והפריים הגדול ביותר קטן ב-25% — כך התנועה נראית רצופה ולא
-  // כמו המתנה ואז ריצה. עדיין עוברת ~70% מהדרך לפני שהיא מתחילה להיעלם.
+  // מאיצה מהזינוק והלאה, אבל בלי "זינוק בסוף": חצי הדרך נעשה כבר ב-q≈0.54
+  // של הטיסה (במקום q≈0.71), והפריים הגדול ביותר קטן ב-25% — כך התנועה נראית
+  // רצופה ולא כמו המתנה ואז ריצה. q הוא ההתקדמות בתוך T_LAUNCH→T_ARRIVE, ולכן
+  // הערך שורד שינויי-תזמון. עדיין עוברת ~70% מהדרך לפני שהיא מתחילה להיעלם.
   const boostEase = cubicBezier(0.35, 0.05, 0.6, 0.75);
 
   const bez = (a, c, b, p) => (1 - p) * (1 - p) * a + 2 * (1 - p) * p * c + p * p * b;
@@ -772,17 +773,17 @@
 
   /** הכוכב "מקבל" את החללית: ברבע-השנייה האחרון גדל מעט וזוהר. */
   function receiveAnimations(el) {
-    const from = T_ARRIVE - 250;
+    const from = T_ARRIVE - 305;
     const out = [el.animate([{ transform: planetTransform(el, 1.07) }, { transform: planetTransform(el, 1.125) }],
       { delay: from, duration: 250, easing: "cubic-bezier(.2,.8,.3,1)", fill: "forwards" })];
     const g = el.querySelector(".pbody__halo");
     if (g) out.push(g.animate([{ opacity: 0 }, { opacity: 0.85 }], { delay: from, duration: 250, easing: "ease-out", fill: "forwards" }));
     // השלט הוא ממשק, לא חלק מהכוכב — לא גדל איתו, נעלם כשהעולם מתחיל להתקרב
     el.querySelectorAll(".planet__label").forEach((n) =>
-      out.push(n.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 700, duration: 150, fill: "forwards" })));
+      out.push(n.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 855, duration: 185, fill: "forwards" })));
     // סימני-המשחק (טבעת, כוכב, "מומלץ") — נעלמים רגע לפני שהעותק מחליף את הכוכב
     el.querySelectorAll(".pmark").forEach((n) =>
-      out.push(n.animate([{ opacity: 1 }, { opacity: 0 }], { delay: T_HERO - 120, duration: 120, fill: "forwards" })));
+      out.push(n.animate([{ opacity: 1 }, { opacity: 0 }], { delay: T_HERO - 145, duration: 145, fill: "forwards" })));
     return out;
   }
 
@@ -792,11 +793,11 @@
      המצלמה (FLIP). העותק מעתיק את הסגנון המחושב של הכדור ואת התמונות שבו,
      ולכן עובד כמו שהוא גם עם מציין-המקום של היום וגם עם איור עתידי. מאחוריו
      הצבע של הכוכב מתפשט עד שממלא את המסך, ומעל הכל — כיסוי-הניווט.       */
-  const T_HERO = 760;       // העותק מחליף את הכוכב
-  const T_FILL = 830;       // הצבע יוצא מאחורי הכוכב
-  const T_HERO_FULL = 1060; // הכוכב בגודלו, והצבע כבר מכסה את כל המסך
-  const T_END = 1140;       // כיסוי-הניווט אטום → ניווט
-  const T_MOVE_LATEST = 930; // הכוכב יוצא אל המרכז כשהחללית נכנסת — לכל המאוחר כאן
+  const T_HERO = 925;       // העותק מחליף את הכוכב
+  const T_FILL = 1015;      // הצבע יוצא מאחורי הכוכב
+  const T_HERO_FULL = 1295; // הכוכב בגודלו, והצבע כבר מכסה את כל המסך
+  const T_END = 1390;       // כיסוי-הניווט אטום → ניווט
+  const T_MOVE_LATEST = 1135; // הכוכב יוצא אל המרכז כשהחללית נכנסת — לכל המאוחר כאן
   const HERO_VMIN = 0.38;   // קוטר סופי: 38vmin (בין 120 ל-520px)
   const HERO_BIAS = 0.035;  // קצת מתחת למרכז — כאילו מתקרבים אל פני הכוכב
   const HERO_SPIN = 4;      // סיבוב עדין כולל, במעלות. 0 = בלי סיבוב (לאיור עם כיוון ברור)
@@ -934,11 +935,11 @@
      במסך — מדלגת על מה שנשאר ונכנסת מיד לשיעור של הכוכב הראשון.
      navigationStarted מבטיח שהניווט קורה פעם אחת בלבד.                */
   const TRANSITION_KEY = "velaGalaxyTransition"; // נקרא ב-learn-board.html
-  const COVER_AT = 1020;    // כיסוי-הניווט השטוח — רק בסוף, מעל הכוכב והצבע שכבר ממלא
-  const COVER_MS = 120;     // ...ואטום לגמרי ב-1140, באותו צבע שבו learn-board נפתח
+  const COVER_AT = 1245;    // כיסוי-הניווט השטוח — רק בסוף, מעל הכוכב והצבע שכבר ממלא
+  const COVER_MS = 145;     // ...ואטום לגמרי ב-1390, באותו צבע שבו learn-board נפתח
   const SKIP_MS = 110;      // דילוג: נסגר כמעט מיד, בלי הבזק לבן
   const REDUCED_MS = 140;   // תנועה מופחתת: רק מעבר-צבע קצר
-  const WATCHDOG_MS = 2500; // רשת-ביטחון אם אנימציה לא מסתיימת (למשל לשונית ברקע)
+  const WATCHDOG_MS = 2800; // רשת-ביטחון אם אנימציה לא מסתיימת (למשל לשונית ברקע)
   const RETRY_MS = 1500;    // עדיין כאן אחרי הניווט (Stop / שרת רדום)? הקשה מנסה שוב
   const STUCK_MS = 10000;   // ...ואם עדיין כאן — הגלקסיה חוזרת, לא נשארים מול מסך צבעוני
 

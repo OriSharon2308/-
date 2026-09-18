@@ -7,11 +7,14 @@
          בהדרגה — בלי הבזק. ביקור רגיל (בלי סימון טרי מהגלקסיה) לא מושפע בכלל. -->
     <style>
       html.vela-arrive::after {
-        content: ""; position: fixed; inset: 0; z-index: 2147483647; pointer-events: none;
+        content: ""; position: fixed; inset: 0; z-index: 2147483646;
+        /* מסך-טעינה, לא הבזק: כל עוד הוא למעלה הוא בולע נגיעות — אחרת אצבע
+           על הצבע הייתה מזיזה ומקרבת את הלוח שמתחתיו בלי שרואים כלום */
+        pointer-events: auto; touch-action: none;
         background: var(--vela-arrive-hue); opacity: 1;
         transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
       }
-      html.vela-arrive.vela-arrive--out::after { opacity: 0; }
+      html.vela-arrive.vela-arrive--out::after { opacity: 0; pointer-events: none; }
       /* גם רקע-הקנבס: באייפון עם חריץ לרוחב, הפסים בצדדים לוקחים את צבע ה-html
          (הדף הזה בלי viewport-fit=cover) — בלעדיו הם היו לבנים בזמן הכיסוי */
       html.vela-arrive {
@@ -19,13 +22,35 @@
         transition: background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
       }
       html.vela-arrive.vela-arrive--out { background-color: #fff; }
+
+      /* פס-הטעינה: קו אחד נקי על צבע הנושא. בלי מסגרת, בלי אחוזים, בלי ספינר. */
+      .vela-arrive-bar {
+        position: fixed; z-index: 2147483647; left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: min(300px, 52vw); height: 4px; border-radius: 999px;
+        background: rgba(255, 255, 255, 0.18);
+        opacity: 1; transition: opacity 260ms ease;
+        pointer-events: none;
+      }
+      .vela-arrive-bar > i {
+        display: block; width: 0%; height: 100%; border-radius: inherit;
+        background: linear-gradient(90deg, #fff, #f7fbff);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
+        transition: width 260ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      html.vela-arrive--out .vela-arrive-bar { opacity: 0; }
+      @media (max-width: 700px) { .vela-arrive-bar { width: 50vw; height: 4px; } }
       @media (prefers-reduced-motion: reduce) {
         html.vela-arrive, html.vela-arrive::after { transition-duration: 120ms; }
+        .vela-arrive-bar { transition-duration: 120ms; }
+        .vela-arrive-bar > i { transition: none; } /* בלי תנועה — רק שינוי מצב */
       }
     </style>
     <script>
       (function () {
         var KEY = "velaGalaxyTransition", MAX_AGE = 5000, t = null;
+        // ברירת-מחדל לכל ביקור: אין כיסוי ואין פס, והדף קורא לזה בלי לבדוק
+        window.velaLoad = { step: function () {}, done: function () {}, fail: function () {} };
         // נקרא ונמחק מיד — גם אם הוא פגום: רענון הדף לא יציג את הכיסוי שוב
         try {
           var raw = sessionStorage.getItem(KEY);
@@ -37,30 +62,74 @@
         var age = Date.now() - Number(t.timestamp);
         // רק סימון טרי, של הנושא הזה, ובצבע תקין — אחרת הדף נפתח בדיוק כמו תמיד
         if (!(age >= 0 && age <= MAX_AGE) || t.topic !== topic || !/^#[0-9a-f]{3,8}$/i.test(String(t.hue))) return;
-        var root = document.documentElement, done = false;
+
+        var root = document.documentElement, done = false, revealed = false;
         root.style.setProperty("--vela-arrive-hue", t.hue);
         root.classList.add("vela-arrive");
-        function reveal() {
+
+        // ── פס-הטעינה ──────────────────────────────────────────────────────
+        // מסך-הטעינה הוא ההמשך של הכניסה לכוכב: אותו צבע, וקו שמתקדם לפי
+        // אירועים אמיתיים בדף. אף פעם לא מגיע ל-100% לפני שהשיעור באמת מוכן:
+        // בזמן המתנה הוא מאט ומתקרב ל-90% בלבד (חשיפה אסימפטוטית).
+        var MIN_VISIBLE = 850;   // גם בטעינה מהירה — רגע-מעבר, לא הבזק
+        var HOLD_FULL = 160;     // שהייה קצרה על 100% לפני החשיפה
+        var CAP_MS = 10000;      // רשת-ביטחון: אף פעם לא לוכדים ילד מאחורי הכיסוי
+        var STEPS = { start: 0, dom: 15, board: 30, request: 45 };
+        var CEIL = { start: 14, dom: 29, board: 44, request: 90 }; // עד לאן כל שלב מטפס לבד
+        var TAU = { start: 1600, dom: 1600, board: 1200, request: 2500 }; // ככל שמחכים יותר — לאט יותר
+        var t0 = Date.now(), base = 0, stage = "start", stageFrom = Date.now(), pct = 0, raf = 0;
+        var bar = document.createElement("div");
+        bar.className = "vela-arrive-bar";
+        bar.setAttribute("aria-hidden", "true");
+        var fill = document.createElement("i");
+        bar.appendChild(fill);
+        (document.body || root).appendChild(bar);
+
+        function paint(v) { pct = v; fill.style.width = v.toFixed(1) + "%"; }
+        function tick() {
+          raf = 0;
           if (done) return;
-          done = true;
+          var dt = Date.now() - stageFrom;
+          var v = base + (CEIL[stage] - base) * (1 - Math.exp(-dt / TAU[stage]));
+          if (v > pct) paint(v);
+          raf = requestAnimationFrame(tick);
+        }
+        function step(name) {
+          if (done || !(name in STEPS) || STEPS[name] < base) return;
+          base = Math.max(base, STEPS[name]);
+          stage = name; stageFrom = Date.now();
+          if (base > pct) paint(base);
+          if (!raf) raf = requestAnimationFrame(tick);
+        }
+        function reveal() {
+          if (revealed) return;
+          revealed = true;
+          if (raf) cancelAnimationFrame(raf);
           root.classList.add("vela-arrive--out");
           // אחרי הדעיכה לא נשאר כלום
           setTimeout(function () {
             root.classList.remove("vela-arrive", "vela-arrive--out");
             root.style.removeProperty("--vela-arrive-hue");
-          }, 400);
+            if (bar.parentNode) bar.parentNode.removeChild(bar);
+          }, 420);
         }
-        // מוכן להצגה = הסקריפטים של הדף רצו (הלוח מצויר) והגופנים נטענו, ועוד שני
-        // פריימים. לא מחכים לגופנים יותר מ-1.2 שניות, ולא מחזיקים כיסוי יותר מ-4 שניות.
-        function whenReady() {
-          var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-          Promise.race([fonts, new Promise(function (r) { setTimeout(r, 1200); })]).then(function () {
-            requestAnimationFrame(function () { requestAnimationFrame(reveal); });
-          });
+        function finish(skipFull) {
+          if (done) return;
+          done = true;
+          if (raf) cancelAnimationFrame(raf);
+          var wait = Math.max(0, MIN_VISIBLE - (Date.now() - t0));
+          if (skipFull) { setTimeout(reveal, Math.min(wait, 150)); return; } // תקלה: לא מעמידים פנים שהכל מוכן
+          setTimeout(function () { paint(100); setTimeout(reveal, HOLD_FULL); }, wait);
         }
-        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", whenReady);
-        else whenReady();
-        setTimeout(reveal, 4000);
+        window.velaLoad = { step: step, done: function () { finish(false); }, fail: function () { finish(true); } };
+
+        paint(2);
+        raf = requestAnimationFrame(tick); // הפס זוחל מהרגע הראשון, גם לפני DOMContentLoaded
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { step("dom"); });
+        else step("dom");
+        // תקלה בדף — חושפים מיד כדי שהודעת-השגיאה של המסך תהיה גלויה
+        window.addEventListener("error", function () { finish(true); });
+        setTimeout(function () { finish(true); }, CAP_MS);
       })();
     </script>
     <title>אזור הלמידה</title>
@@ -1787,7 +1856,11 @@
         }
         introStart.addEventListener("click", startLesson);
 
-        if (L.active && !tryResume()) {
+        // מסך-הטעינה (כניסה מהגלקסיה): הלוח ומצב-השיעור מוכנים
+        window.velaLoad.step("board");
+        var resumed = L.active ? tryResume() : false; // נקרא פעם אחת — יש לו תופעות-לוואי
+        if (!L.active || resumed) window.velaLoad.done(); // שיעור שממשיך — הלוח עצמו הוא המצב השמיש
+        if (L.active && !resumed) {
           // דמות המורה בגוף מלא "מגיעה" למרכז המסך (בכפתור הצף — רק הפנים)
           if (introAvatar && !introAvatar.firstChild) {
             var introImg = document.createElement("img");
@@ -1804,6 +1877,7 @@
             if (greetDone) return;
             greetDone = true;
             showGreeting(text);
+            window.velaLoad.done(); // יש תוכן אמיתי על המסך — אפשר לחשוף
             if (pushHist && window.velaPushHistory) {
               window.velaPushHistory("user", "(פתיחת שיעור)");
               window.velaPushHistory("assistant", text || "");
@@ -1824,6 +1898,7 @@
               greetOnce("שלום! 👋\nמוכנים להתחיל בשיעור שלנו?\nהיום נלמד על " + L.topic + ".", false);
             });
           }
+          window.velaLoad.step("request"); // הבקשה הראשונה של השיעור יוצאת
           var greetP = window.velaPostTeach
             ? window.velaPostTeach("(פתיחת שיעור)")
             : Promise.reject(new Error("no-teach"));
