@@ -50,7 +50,9 @@ window.GALAXY = {
    marks.star / marks.recommended — כוכב-השלמה / אייקון "מומלץ עכשיו"
    sun        — איור השמש (עיגול שקוף-רקע); background — רקע החלל כולו */
 window.GALAXY_ART = {
-  ship: { body: null, flame: null },
+  // החללית האמיתית. הלהבה היא WebP מונפש (12 פריימים, לולאה 0.9 שנ') — הקוד לא
+  // מחקה את תנועת האש, רק את מצב-המנוע (גודל/שקיפות) של השכבה כולה.
+  ship: { body: "/images/galaxy/ship-body.webp", flame: "/images/galaxy/ship-flame.webp" },
   marks: { star: null, recommended: null },
   sun: null,
   background: null,

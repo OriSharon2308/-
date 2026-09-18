@@ -572,12 +572,14 @@
 
   // מצבי-המנוע: להבה (רוחב × אורך — מתארכת יותר משהיא מתרחבת) וזוהר.
   // ENGINE_AT קובע מתי כל מצב מגיע.
+  // הערכים מרוסנים בכוונה: הלהבה האמיתית כבר זזה מבפנים (WebP מונפש), והקוד
+  // רק מספר באיזה מצב המנוע נמצא. אנכית זז יותר מאופקית — לא להבת-גומי.
   const ENGINE = {
-    idle:     { flameX: 1,    flameY: 1,    glow: 0, glowScale: 0.7 },
-    aim:      { flameX: 1,    flameY: 1.08, glow: 0, glowScale: 0.7 },
-    ignition: { flameX: 1.12, flameY: 1.5,  glow: 1, glowScale: 1 },
-    boost:    { flameX: 1.18, flameY: 1.7,  glow: 1, glowScale: 1.12 },
-    arrival:  { flameX: 1,    flameY: 1.1,  glow: 0, glowScale: 0.85 },
+    idle:     { flameX: 0.94, flameY: 0.72, flameO: 0.80, glow: 0.12, glowScale: 0.70 },
+    aim:      { flameX: 0.96, flameY: 0.80, flameO: 0.90, glow: 0.22, glowScale: 0.80 },
+    ignition: { flameX: 1.00, flameY: 0.98, flameO: 1,    glow: 0.85, glowScale: 1 },
+    boost:    { flameX: 1.06, flameY: 1.22, flameO: 1,    glow: 1,    glowScale: 1.12 },
+    arrival:  { flameX: 0.96, flameY: 0.78, flameO: 0.35, glow: 0.20, glowScale: 0.85 },
   };
   const ENGINE_AT = [[0, "idle"], [110, "aim"], [255, "ignition"], [465, "boost"], [925, "boost"], [1110, "arrival"], [1160, "arrival"]];
 
@@ -761,8 +763,8 @@
     const flame = ship.querySelector(".ship__flame");
     const glow = ship.querySelector(".ship__glow");
     if (flame) {
-      anims.push(flame.animate(ENGINE_AT.map(at).map((k) => ({ offset: k.offset, easing: k.easing, transform: `scale(${k.flameX}, ${k.flameY})` })),
-        { duration: T_ARRIVE, fill: "forwards" }));
+      anims.push(flame.animate(ENGINE_AT.map(at).map((k) => ({ offset: k.offset, easing: k.easing, opacity: k.flameO,
+        transform: `scale(${k.flameX}, ${k.flameY})` })), { duration: T_ARRIVE, fill: "forwards" }));
     }
     if (glow) {
       anims.push(glow.animate(ENGINE_AT.map(at).map((k) => ({ offset: k.offset, easing: k.easing, opacity: k.glow,
@@ -1100,9 +1102,23 @@
       מציין-המקום שלו. בלי קבצים — הכל נשאר מצויר ב-CSS/SVG. */
   function applyArt() {
     const A = window.GALAXY_ART || {};
-    const img = (src, cls) => `<img class="${cls}" src="${esc(src)}" alt="" />`;
-    if (A.ship && A.ship.body) $(".ship__body").innerHTML = img(A.ship.body, "ship__body-art");
-    if (A.ship && A.ship.flame) $(".ship__flame").innerHTML = img(A.ship.flame, "ship__fire");
+    const img = (src, cls) => `<img class="${cls}" src="${esc(src)}" alt="" decoding="async" />`;
+    // הקובץ מחליף את הציור — ואם הוא לא נטען, הציור חוזר בדיוק כפי שהיה
+    const swap = (sel, src, cls, flag) => {
+      const host = $(sel);
+      if (!host || !src) return;
+      const fallback = host.innerHTML;
+      host.innerHTML = img(src, cls);
+      if (flag) ship.classList.add(flag); // הגאומטריה של האיור; בלעדיו נשארת זו של הציור
+      host.firstElementChild.addEventListener("error", () => {
+        host.innerHTML = fallback;
+        if (flag) ship.classList.remove(flag);
+      }, { once: true });
+    };
+    swap(".ship__body", A.ship && A.ship.body, "ship__body-art", "ship--art");
+    // הלהבה: תמונה מונפשת אחת שנשארת מותקנת. מצבי-המנוע מזיזים את השכבה
+    // שמסביבה (scale/opacity) ולא נוגעים ב-src — כך הלולאה לא מתחילה מחדש.
+    swap(".ship__flame", A.ship && A.ship.flame, "ship__flame-art", "ship--flame-art");
     if (A.sun) {
       const core = $(".sun__core");
       core.style.background = `url("${encodeURI(A.sun)}") center / contain no-repeat`;

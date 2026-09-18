@@ -313,11 +313,26 @@ body {
 }
 /* הלהבה גדלה מהזנב אחורה (transform-origin למעלה); ההבהוב ממשיך בתוכה */
 .ship__flame { position: absolute; left: 34%; width: 32%; top: 84%; height: 40%; transform-origin: 50% 0; }
-.ship__flame > svg, .ship__flame > img { width: 100%; height: 100%; display: block; overflow: visible; }
+.ship__flame > svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* ---------- האיור האמיתי ----------
+   כשהקבצים נטענים הם מקבלים גאומטריה משלהם, והציור המקורי (הנפילה-לאחור)
+   נשאר בדיוק כפי שהיה. גוף-החללית ריבועי (768×768), ולכן הרוחב הוא גם הגובה. */
+.ship--art { width: 9vmin; }
+.ship--art .ship__aura { top: 52%; width: 132%; height: 132%; }
+.ship--art .ship__glow { top: 92%; width: 54%; }
+/* הלהבה יוצאת מפתח-המנוע המרכזי של האיור (x 50%, y ~88%) וגדלה כלפי מטה.
+   במנוחה היא קטנה ועמומה — "המנוע דולק", לא "בוסט". התנועה הפנימית של האש
+   מגיעה מהקובץ המונפש עצמו, ולכן אין כאן שום אנימציית CSS. */
+.ship--flame-art .ship__flame {
+  left: 39.5%; width: 21%; top: 88%; height: auto;
+  transform: scale(0.94, 0.72); opacity: 0.8; /* מנוחה = מצב idle, כדי שהשיגור לא יקפוץ */
+}
+.ship__flame-art { width: 100%; height: auto; display: block; }
 .ship__fire { transform-box: fill-box; transform-origin: 50% 0; animation: fire 0.26s ease-in-out infinite alternate; }
 @keyframes fire { to { transform: scaleY(1.28) scaleX(0.88); } }
 .ship__body { position: relative; display: block; width: 100%; }
-.ship__body > svg, .ship__body > img { width: 100%; display: block; overflow: visible; }
+.ship__body > svg, .ship__body > img { width: 100%; height: auto; display: block; overflow: visible; }
 
 /* ---------- HUD ----------
    env(safe-area-inset-*) שומר על הכפתורים מחוץ לחריץ ולפס-הבית באייפון
@@ -406,6 +421,7 @@ body {
   .hud__stat { font-size: 3.4vmin; }
   .hint span { font-size: 3vmin; }
   .ship { width: 12vmin; }
+  .ship--art { width: 10.5vmin; }
   .spark { width: 3vmin; height: 3vmin; }
 }
 
