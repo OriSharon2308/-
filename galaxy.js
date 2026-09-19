@@ -91,6 +91,17 @@
   /** גוף הכוכב — אותו HTML לכוכב שבמסלול ולעותק שמתקרב. כל המידות יחסיות
       ל---d, ולכן הוא נראה זהה בכל גודל. image → האיור הסופי; אחרת כדור מצויר
       (הצללה, משטח, אור-שפה) עם אייקון-הנושא — רק אם הקובץ קיים (בלי 404). */
+  /** מסגור איור: p.fit מתאר איפה הכדור יושב בתוך הקנבס (קוטר ומרכז, כשברים).
+      מכאן נגזר בדיוק ההגדלה וההיסט שמצמידים אותו למקום-הכוכב, וכל מה שסביבו
+      (טבעת, אנטנה) חורג החוצה בלי לזוז. בלי fit — התמונה ממלאת את התיבה. */
+  function artFit(fit) {
+    if (!fit || !fit.d) return "";
+    const s = 1 / fit.d;
+    const x = -(((fit.cx ?? 0.5) - 0.5) * s * 100).toFixed(2);
+    const y = -(((fit.cy ?? 0.5) - 0.5) * s * 100).toFixed(2);
+    return `style="--art-s:${s.toFixed(3)};--art-x:${x}%;--art-y:${y}%"`;
+  }
+
   function planetBodyHtml(p, state, extra = "") {
     const hasIcon = !p.image && (window.GALAXY_ICONS || []).includes(p.art);
     const ring = p.accent === "ring";
@@ -99,7 +110,7 @@
     return `<span class="pbody pbody--${state} pbody--${textureOf(p.art)}${extra}" style="${style}">` +
       `<span class="pbody__halo"></span><span class="pbody__glow"></span>` +
       (ring ? `<span class="pbody__ring pbody__ring--back"></span>` : "") +
-      (p.image ? `<img class="pbody__art" src="${esc(p.image)}" alt="" />` : `<span class="pbody__base"></span>`) +
+      (p.image ? `<img class="pbody__art" src="${esc(p.image)}" alt="" ${artFit(p.fit)} />` : `<span class="pbody__base"></span>`) +
       `<span class="pbody__shade"></span>` +
       (p.image ? "" : `<span class="pbody__rim"></span>`) +
       (hasIcon ? `<img class="pbody__icon" src="/images/topics/${esc(p.art)}.png" alt="" />` : "") +
@@ -134,7 +145,7 @@
 
   function planetHtml(p, st) {
     const sub = st.state === "done" ? "הושלם" : st.pct > 0 ? `${st.pct}%` : "טרם התחלנו";
-    return `<button class="planet planet--${st.state}" type="button"
+    return `<button class="planet planet--${st.state}${p.image ? " planet--art" : ""}" type="button"
        data-key="${esc(p.key)}" data-state="${st.state}" data-angle="${p.angle}" data-ring="${p.ring}"
        aria-label="${esc(p.key)} — ${esc(sub)}${st.recommended ? " — מומלץ עכשיו" : ""}">
       <span class="planet__orb" style="--dur:${(6 + Math.random() * 3).toFixed(1)}s;--delay:${(Math.random() * 3).toFixed(1)}s">

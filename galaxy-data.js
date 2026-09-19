@@ -38,7 +38,11 @@ window.GALAXY = {
       "שאלות חשיבה":        { art: "thinking",    image: null, ring: 0.643, angle: 267, hue: "#e08fb4", accent: "ring" },
       "צורות גאומטריות":    { art: "shapes",      image: null, ring: 0.967, angle: 227, hue: "#7ecb8f" },
       "כסף ומטבעות":        { art: "money",       image: null, ring: 0.967, angle: 127, hue: "#efb45c" },
-      "שעון":               { art: "clock",       image: null, ring: 0.967, angle:  39, hue: "#63c9d6", accent: "ring" },
+      // האיור האמיתי הראשון לכוכב. fit = איפה הכדור יושב בתוך הקנבס (נמדד):
+      // קוטר כשבר מרוחב הקנבס ומרכזו — מכאן הקוד ממסגר אותו בדיוק על מקום
+      // הכוכב, והטבעת והטלסקופ חורגים החוצה כמו שהאיור מתכוון. accent הוסר:
+      // לאיור יש טבעת משלו.
+      "שעון":               { art: "clock",       image: "/images/galaxy/planet-clock.webp", fit: { d: 0.778, cx: 0.503, cy: 0.539 }, ring: 0.967, angle:  39, hue: "#63c9d6" },
     },
   },
 };

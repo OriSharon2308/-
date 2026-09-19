@@ -175,7 +175,12 @@ body {
     radial-gradient(ellipse 26% 16% at 36% 44%, rgba(12, 20, 56, 0.13), rgba(12, 20, 56, 0)),
     var(--sphere);
 }
-.pbody__art { width: 100%; height: 100%; object-fit: contain; border-radius: 0; }
+/* האיור ממוסגר לפי המדידה שב-galaxy-data (--art-s/x/y): הכדור יושב בדיוק על
+   מקום-הכוכב, וטבעת/אנטנה חורגות החוצה כמו באיור */
+.pbody__art {
+  width: 100%; height: 100%; object-fit: contain; border-radius: 0;
+  transform: translate(var(--art-x, 0), var(--art-y, 0)) scale(var(--art-s, 1));
+}
 .pbody__icon {
   inset: 21%; width: 58%; height: 58%; object-fit: contain; border-radius: 0;
   filter: drop-shadow(0 calc(var(--d) * 0.02) calc(var(--d) * 0.04) rgba(0, 0, 0, 0.28));
@@ -209,6 +214,11 @@ body {
 .pmark__track { fill: none; stroke: rgba(255, 255, 255, 0.16); stroke-width: 5; }
 .pmark__glow { fill: none; stroke: rgba(63, 214, 196, 0.26); stroke-width: 10; stroke-linecap: round; }
 .pmark__arc { fill: none; stroke: url(#g-ring); stroke-width: 5; stroke-linecap: round; }
+/* כוכב עם איור: לאיור יש טבעת משלו, ולכן סימני-המשחק מתרחקים החוצה כדי לא
+   להתנגש בה (טבעת-ההתקדמות 118% → 142%, וכוכב-ההשלמה מעט יותר בחוץ) */
+.planet--art .pmark--ring { left: -21%; top: -21%; width: 142%; height: 142%; }
+.planet--art .pmark--star { top: -14%; right: -15%; }
+
 .pmark--star {
   top: -8%; right: -10%; width: calc(var(--d) * 0.36); height: calc(var(--d) * 0.36);
   min-width: 18px; min-height: 18px;
