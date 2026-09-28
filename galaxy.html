@@ -6,7 +6,7 @@
     <title>vela · גלקסיית הנושאים</title>
     <link rel="icon" href="/favicon-teacher.png" />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/galaxy.css?v=19" />
+    <link rel="stylesheet" href="/galaxy.css?v=38" />
   </head>
   <body>
     <!-- ספרייט: סימנים קטנים וגרדיאנטים משותפים. אמנות סופית יכולה להחליף כל
@@ -18,8 +18,8 @@
         </linearGradient>
         <!-- החצי הרחוק של המסלול (למעלה) חיוור, הקרוב (למטה) בהיר — עומק בלי מסכות -->
         <linearGradient id="g-orbit" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#c4deff" stop-opacity="0.05" /><stop offset="0.5" stop-color="#c4deff" stop-opacity="0.13" />
-          <stop offset="1" stop-color="#c4deff" stop-opacity="0.24" />
+          <stop offset="0" stop-color="#9fd4ff" stop-opacity="0.03" /><stop offset="0.38" stop-color="#bfe4ff" stop-opacity="0.1" />
+          <stop offset="0.72" stop-color="#d8f2ff" stop-opacity="0.2" /><stop offset="1" stop-color="#eaf8ff" stop-opacity="0.3" />
         </linearGradient>
         <linearGradient id="g-ring" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stop-color="#9af7e8" /><stop offset="1" stop-color="#22c3b0" />
@@ -41,6 +41,12 @@
 
     <main id="sky" class="sky" hidden>
       <!-- שכבות רקע — כל אחת זזה בקצב אחר (parallax) -->
+      <!-- הרחוקה מכולן: פס-גלקסיה אלכסוני ואבק-חלל. כמעט לא זזה, ולכן היא
+           נקראת כ"עומק" ולא כתמונה שמרחפת מעל -->
+      <div class="layer layer--deep" data-depth="0.006" aria-hidden="true">
+        <span class="band"></span>
+        <span class="dust dust--1"></span><span class="dust dust--2"></span>
+      </div>
       <div class="layer layer--neb" data-depth="0.045" aria-hidden="true">
         <span class="neb neb--1"></span><span class="neb neb--2"></span><span class="neb neb--3"></span><span class="neb neb--4"></span>
       </div>
@@ -53,6 +59,13 @@
         <span class="spark" style="top:75%;left:9%;animation-delay:-4.4s"><svg viewBox="0 0 24 24"><use href="#g-spark" /></svg></span>
         <span class="spark" style="top:88%;left:63%;animation-delay:-0.6s;transform:scale(.8)"><svg viewBox="0 0 24 24"><use href="#g-spark" /></svg></span>
         <span class="spark" style="top:10%;left:41%;animation-delay:-2.7s;transform:scale(.65)"><svg viewBox="0 0 24 24"><use href="#g-spark" /></svg></span>
+      </div>
+
+      <!-- כדור-הארץ: שכבת-נוף בלבד בפינה השמאלית-התחתונה. יושב אחרי שכבות
+           הרקע ולפני .world, ולכן הוא מאחורי הכוכבים, החללית וה-UI. אין לו
+           שום תפקיד במשחק — pointer-events כבוי, aria-hidden. -->
+      <div class="layer layer--earth" data-depth="0.018" aria-hidden="true">
+        <img class="earth" src="/images/galaxy/earth.webp" alt="" />
       </div>
 
       <!-- טבעות-המסלול (נבנות ב-JS לפי גודל המסך) -->
@@ -123,6 +136,13 @@
         <!-- כותרת עליונה -->
       </div>
 
+      <!-- קדמת-הבמה: גופים קטנים מחוץ למוקד, בשוליים בלבד. הם רק מוסיפים עומק —
+           pointer-events כבוי, ואין להם שום תפקיד במשחק -->
+      <div class="layer layer--fore" data-depth="0.08" aria-hidden="true">
+        <span class="mote mote--1"></span><span class="mote mote--2"></span><span class="mote mote--3"></span>
+        <span class="rock rock--1"></span><span class="rock rock--2"></span><span class="rock rock--3"></span>
+      </div>
+
       <header class="hud">
         <a class="hud__back" href="/learn" aria-label="חזרה"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#g-back" /></svg></a>
         <div class="hud__mid">
@@ -140,7 +160,7 @@
     <div class="warp-hero" id="warpHero" hidden aria-hidden="true"></div>
     <div class="warp-cover" id="warpCover" hidden aria-hidden="true"></div>
 
-    <script src="/galaxy-data.js?v=8"></script>
-    <script src="/galaxy.js?v=19"></script>
+    <script src="/galaxy-data.js?v=16"></script>
+    <script src="/galaxy.js?v=32"></script>
   </body>
 </html>

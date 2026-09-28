@@ -31,10 +31,12 @@ html, body {
 body {
   font-family: "Fredoka", "Rubik", system-ui, sans-serif;
   color: var(--ink);
-  /* חלל קסום ובהיר — כחול-סגלגל שמתבהר לטורקיז, עם הצללה רכה בשוליים */
+  /* חלל קסום ובהיר — כחול-סגלגל שמתבהר לטורקיז. העומק נבנה משלוש שכבות:
+     אור חם סביב השמש, קירור לכיוון השוליים, והחשכה בפינות שממסגרת את הבמה */
   background:
-    radial-gradient(120% 95% at 50% 46%, transparent 56%, rgba(6, 12, 40, 0.4) 100%),
-    linear-gradient(170deg, #1c2b6c 0%, #183b79 38%, #144c78 70%, #105b70 100%);
+    radial-gradient(34% 26% at 50% 46%, rgba(255, 190, 122, 0.08), rgba(255, 170, 104, 0) 100%),
+    radial-gradient(128% 104% at 50% 44%, transparent 26%, rgba(7, 12, 42, 0.42) 66%, rgba(3, 6, 26, 0.86) 100%),
+    linear-gradient(168deg, #101a45 0%, #152769 26%, #123a72 52%, #0e466d 76%, #0a5165 100%);
 }
 [hidden] { display: none !important; }
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
@@ -59,14 +61,61 @@ body {
   opacity: var(--bg-opacity, 1); pointer-events: none;
 }
 
+/* מצב-תצלום: לרקע האמיתי יש כבר כוכבים, ערפיליות וזרועות-גלקסיה משלו. השכבות
+   המצוירות של הקוד נחלשות כדי שלא תהיה ערפילית על ערפילית, והתצלום עצמו נדחף
+   אחורה בצעיף ובהנמכת-רוויה — הכוכבים הם הגיבורים, לא הטפט. */
+.sky--photo { --bg-opacity: 0.6; }
+/* הרוויה והבהירות יורדות כדי שהזרועות והנקודות החמות של התצלום לא יתחרו
+   בכוכבים. העומק נשאר — רק ההתרברבות יורדת. */
+.sky--photo::before { filter: saturate(0.68) brightness(0.84) contrast(0.94); }
+.sky--photo .layer--neb { opacity: 0.2; }
+.sky--photo .layer--deep { opacity: 0.26; }
+.sky--photo .layer--far { opacity: 0.32; }
+.sky--photo .layer--mid { opacity: 0.6; }
+.sky--photo::after {
+  background:
+    radial-gradient(62% 46% at 50% 47%, rgba(4, 9, 30, 0.24), rgba(4, 9, 30, 0.5) 64%, rgba(2, 5, 22, 0.8) 100%),
+    linear-gradient(180deg, rgba(4, 8, 28, 0.5) 0%, rgba(5, 10, 32, 0.14) 24%, rgba(5, 10, 32, 0.14) 72%, rgba(3, 7, 26, 0.56) 100%);
+}
+
+/* מסגור הבמה: הילה חמה רחבה סביב המרכז והחשכה בפינות. יושב מעל הרקע ומתחת
+   לכל השאר, ולכן הוא מעמיק את הסצנה בלי לגעת באף אובייקט */
+.sky::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(100% 78% at 50% 48%, transparent 42%, rgba(5, 9, 32, 0.3) 78%, rgba(2, 5, 24, 0.62) 100%),
+    linear-gradient(180deg, rgba(4, 8, 30, 0.26) 0%, transparent 22%, transparent 74%, rgba(3, 7, 28, 0.34) 100%);
+}
+
 /* ---------- רקע: ערפיליות, כוכבים, ניצוצות ---------- */
 .layer { position: absolute; inset: -12%; will-change: transform; pointer-events: none; }
+/* השכבה הרחוקה: פס-גלקסיה אלכסוני חיוור ושני ענני-אבק. הכל גרדיאנטים —
+   אין filter, ולכן הפרלקס נשאר חינם גם במובייל */
+.band {
+  position: absolute; left: -30%; right: -30%; top: 6%; height: 74%;
+  transform: rotate(-17deg); border-radius: 50%;
+  background:
+    radial-gradient(60% 50% at 50% 50%, rgba(214, 226, 255, 0.11), rgba(190, 210, 255, 0.05) 46%, rgba(170, 195, 255, 0) 78%),
+    radial-gradient(32% 40% at 26% 54%, rgba(160, 130, 245, 0.1), rgba(160, 130, 245, 0) 72%),
+    radial-gradient(30% 38% at 74% 46%, rgba(70, 200, 210, 0.08), rgba(70, 200, 210, 0) 74%);
+}
+.dust { position: absolute; border-radius: 50%; }
+.dust--1 { width: 96vmin; height: 58vmin; top: -6%; left: -12%; background: radial-gradient(closest-side, rgba(96, 126, 220, 0.14), rgba(96, 126, 220, 0)); }
+.dust--2 { width: 88vmin; height: 62vmin; bottom: -10%; right: -10%; background: radial-gradient(closest-side, rgba(34, 168, 176, 0.13), rgba(34, 168, 176, 0)); }
+
 /* ערפיליות = גרדיאנטים רדיאליים סטטיים. בלי filter: blur — זול יותר ורך יותר */
 .neb { position: absolute; border-radius: 50%; }
-.neb--1 { width: 82vmin; height: 70vmin; top: 4%; right: 6%; background: radial-gradient(closest-side, rgba(150, 124, 242, 0.4), rgba(150, 124, 242, 0)); }
-.neb--2 { width: 80vmin; height: 66vmin; bottom: 2%; left: 4%; background: radial-gradient(closest-side, rgba(40, 200, 182, 0.28), rgba(40, 200, 182, 0)); }
-.neb--3 { width: 60vmin; height: 46vmin; bottom: 12%; right: 30%; background: radial-gradient(closest-side, rgba(236, 132, 190, 0.18), rgba(236, 132, 190, 0)); }
-.neb--4 { width: 58vmin; height: 50vmin; top: 6%; left: 14%; background: radial-gradient(closest-side, rgba(96, 152, 255, 0.2), rgba(96, 152, 255, 0)); }
+/* לכל ערפילית ליבה חמה יותר ושוליים שנמוגים — כך היא נקראת כנפח ולא כעיגול */
+.neb--1 { width: 82vmin; height: 70vmin; top: 4%; right: 6%; background:
+  radial-gradient(closest-side, rgba(176, 150, 255, 0.42), rgba(140, 116, 236, 0.16) 52%, rgba(130, 108, 230, 0) 100%),
+  radial-gradient(34% 30% at 58% 40%, rgba(226, 196, 255, 0.2), rgba(226, 196, 255, 0) 100%); }
+.neb--2 { width: 80vmin; height: 66vmin; bottom: 2%; left: 4%; background:
+  radial-gradient(closest-side, rgba(48, 214, 194, 0.3), rgba(40, 190, 180, 0.11) 54%, rgba(40, 200, 182, 0) 100%),
+  radial-gradient(30% 28% at 44% 58%, rgba(170, 255, 240, 0.16), rgba(170, 255, 240, 0) 100%); }
+.neb--3 { width: 60vmin; height: 46vmin; bottom: 12%; right: 30%; background:
+  radial-gradient(closest-side, rgba(240, 140, 196, 0.2), rgba(236, 132, 190, 0) 100%); }
+.neb--4 { width: 58vmin; height: 50vmin; top: 6%; left: 14%; background:
+  radial-gradient(closest-side, rgba(110, 166, 255, 0.22), rgba(96, 152, 255, 0) 100%); }
 
 /* שמיים קבועים (זרע קבוע ב-JS): רובם סטטיים, מעטים מנצנצים */
 .star { position: absolute; border-radius: 50%; background: #fff; }
@@ -81,11 +130,62 @@ body {
 .spark svg { position: relative; width: 100%; height: 100%; display: block; }
 @keyframes spark { 50% { opacity: 0.35; transform: scale(0.72); } }
 
+/* קדמת-הבמה — גופים מטושטשים בשוליים בלבד. הם יושבים מעל העולם, ולכן הם
+   קוראים כ"קרובים למצלמה"; שקופים מספיק כדי לא לגנוב מבט מהכוכבים */
+.layer--fore { z-index: 7; }
+.mote { position: absolute; border-radius: 50%; }
+.mote--1 { width: 8vmin; height: 8vmin; top: 11%; left: 5%; background: radial-gradient(closest-side, rgba(206, 232, 255, 0.3), rgba(198, 226, 255, 0.09) 56%, rgba(198, 226, 255, 0)); }
+.mote--2 { width: 5.4vmin; height: 5.4vmin; bottom: 15%; right: 6.5%; background: radial-gradient(closest-side, rgba(168, 250, 236, 0.28), rgba(160, 246, 232, 0.07) 58%, rgba(160, 246, 232, 0)); }
+.mote--3 { width: 10vmin; height: 10vmin; bottom: 3%; left: 20%; background: radial-gradient(closest-side, rgba(228, 202, 255, 0.2), rgba(226, 198, 255, 0.05) 60%, rgba(226, 198, 255, 0)); }
+/* אסטרואידים רחוקים: צללית רכה עם נגיעת אור מלמעלה-שמאל, כמו כל שאר הסצנה */
+.rock { position: absolute; border-radius: 46% 54% 52% 48% / 56% 44% 58% 42%; opacity: 0.72; }
+.rock--1 { width: 2.2vmin; height: 1.7vmin; top: 26%; right: 4%; background: linear-gradient(150deg, rgba(190, 208, 240, 0.5), rgba(46, 62, 110, 0.55)); }
+.rock--2 { width: 1.5vmin; height: 1.2vmin; top: 70%; left: 3.5%; background: linear-gradient(150deg, rgba(180, 200, 236, 0.45), rgba(40, 56, 104, 0.5)); }
+.rock--3 { width: 1.1vmin; height: 0.9vmin; top: 8%; left: 62%; background: linear-gradient(150deg, rgba(186, 204, 238, 0.4), rgba(42, 58, 106, 0.45)); }
+
+/* כדור-הארץ — קצה-עולם ענק שנכנס מהפינה השמאלית-התחתונה. רוב הכדור מחוץ
+   למסך; רואים רק את הקשת הימנית-העליונה שלו. שתי שכבות בכוונה: העטיפה
+   נושאת את ה-parallax (הקוד כותב לה transform), והתמונה שבתוכה נושאת את
+   התנועה — אחרת אחד היה דורס את השני. */
+.layer--earth { inset: 0; }
+.earth {
+  position: absolute;
+  /* --e-size הוא הקוטר; המרכז של הכדור באיור יושב ב-50%/72.9% מהקנבס, ולכן
+     גם ציר-הסיבוב שם. שלוש הידיות האלה הן כל הכוונון של המיקום. */
+  --e-size: 90vmin; --e-left: -18vmin; --e-bottom: -24vmin;
+  width: var(--e-size); height: var(--e-size);
+  left: var(--e-left); bottom: var(--e-bottom);
+  opacity: 1; pointer-events: none; user-select: none;
+  /* אטום כמו שביקשת — ההנמכה נעשית בבהירות ולא בשקיפות, כדי שהוא יישאר
+     גוף מוצק ורק יפסיק למשוך את העין מהכוכבים */
+  filter: brightness(0.76) saturate(0.88);
+  /* ציר-הסיבוב הוא מרכז הכדור האמיתי, שנמדד מהאיור: התאמת-מעגל לקו-השפה
+     נתנה 11.94%/106.51% מהקנבס בסטייה של 1.2px. מכאן שסיבוב סביב הנקודה
+     הזאת משאיר את השפה וההילה במקום מדויק — רק פני-הכדור מסתובבים. */
+  transform-origin: 11.94% 106.51%;
+  animation: earthspin 150s ease-in-out infinite;
+  will-change: transform;
+}
+/* סיבוב אמיתי של פני-הכדור, אבל בקשת מוגבלת. 360° בלתי אפשרי כאן: האיור
+   הוא חיתוך של כדור ולא דיסק שלם, ולכן מעבר ל-‎+12°/-14° פינת-הקנבס נכנסת
+   לפריים כקו ישר. נמדד: ב-‎20° יש חתך גלוי, ב-‎14° נקי. הקשת שנבחרה היא
+   24 מעלות במחזור של 4:20 דקות — 0.18 מעלות בשנייה. ביקור טיפוסי במסך
+   נמשך שניות בודדות, ולכן רואים תנועה מתמשכת לכיוון אחד, לא נדנוד. */
+@keyframes earthspin {
+  0%   { transform: rotate(-13deg); }
+  50%  { transform: rotate(11deg); }
+  100% { transform: rotate(-13deg); }
+}
 /* טבעות-המסלול — עיגולים שנמעכו אנכית, ולכן נראים כאליפסות במבט אלכסוני */
 .rings { position: absolute; inset: 0; display: grid; place-items: center; will-change: transform; pointer-events: none; }
 /* המסלולים: קו אחד שנדהה כלפי מעלה (g-orbit) — החצי הרחוק חיוור מהקרוב */
-.rings__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.rings__svg ellipse { fill: none; stroke: url(#g-orbit); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.rings__svg {
+  position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none;
+  /* הזוהר יושב על ה-svg הפנימי ולא על .rings שזזה בפרלקס — הדפדפן מרסטר אותו
+     פעם אחת ורק מזיז את התוצאה, ולכן זה לא עולה כלום בתנועה */
+  filter: drop-shadow(0 0 0.55vmin rgba(150, 214, 255, 0.42)) drop-shadow(0 0 0.15vmin rgba(8, 16, 44, 0.5));
+}
+.rings__svg ellipse { fill: none; stroke: url(#g-orbit); stroke-width: 1.3; vector-effect: non-scaling-stroke; }
 
 /* העולם כולו זז כיחידה אחת — ההרכב מתמרכז בין ה-HUD לשורת-ההסבר */
 .world { position: absolute; inset: 0; transform: translateY(var(--world-y, 0px)); }
@@ -94,26 +194,94 @@ body {
 .sun {
   position: absolute; top: 50%; right: 50%; pointer-events: none;
   transform: translate(50%, -50%);
-  width: var(--sun-size, 27vmin); height: var(--sun-size, 27vmin); display: grid; place-items: center;
+  width: var(--sun-size, 33vmin); height: var(--sun-size, 33vmin); display: grid; place-items: center;
   will-change: transform;
 }
 .sun__glow, .sun__flare, .sun__corona, .sun__core { position: absolute; border-radius: 50%; pointer-events: none; }
-.sun__glow { inset: -55%; background: radial-gradient(closest-side, rgba(255, 190, 112, 0.34), rgba(255, 160, 96, 0.12) 55%, rgba(255, 160, 96, 0)); }
-.sun__flare { inset: -16%; background: radial-gradient(closest-side, rgba(255, 226, 156, 0.36), rgba(255, 226, 156, 0)); animation: breathe 6s ease-in-out infinite; }
+/* הזוהר החיצוני בשתי טבעות: אחת רחבה וקרירה שממיסה את השמש לחלל, ואחת
+   צמודה וחמה שנותנת לה נפח. שתיהן גרדיאנטים — אין blur על גוף שזז */
+.sun__glow {
+  inset: -74%;
+  background:
+    radial-gradient(closest-side, rgba(255, 196, 116, 0.44), rgba(255, 166, 98, 0.2) 40%, rgba(255, 150, 92, 0.07) 66%, rgba(255, 150, 92, 0)),
+    radial-gradient(closest-side, rgba(255, 236, 190, 0.26), rgba(255, 236, 190, 0) 28%);
+}
+.sun__flare { inset: -20%; background: radial-gradient(closest-side, rgba(255, 238, 186, 0.5), rgba(255, 220, 150, 0.15) 58%, rgba(255, 226, 156, 0)); animation: breathe 6s ease-in-out infinite; }
 @keyframes breathe { 50% { transform: scale(1.08); opacity: 0.7; } }
-.sun__corona { inset: -5%; background: radial-gradient(closest-side, rgba(255, 214, 140, 0) 86%, rgba(255, 214, 140, 0.55) 93%, rgba(255, 214, 140, 0) 100%); }
+/* השפה: טבעת דקה ובהירה, ומעליה נשימה רחבה יותר כדי שהמעבר לחלל לא ייחתך */
+.sun__corona {
+  inset: -5%;
+  background:
+    radial-gradient(closest-side, rgba(255, 214, 140, 0) 84%, rgba(255, 222, 158, 0.42) 93%, rgba(255, 206, 132, 0) 100%),
+    radial-gradient(closest-side, rgba(255, 190, 112, 0) 70%, rgba(255, 198, 122, 0.14) 88%, rgba(255, 190, 112, 0) 100%);
+}
 .sun__core {
-  inset: 0;
+  inset: 0; overflow: hidden;
   background:
     radial-gradient(circle at 66% 72%, rgba(232, 128, 58, 0.16), rgba(232, 128, 58, 0) 24%),
     radial-gradient(circle at 28% 66%, rgba(232, 128, 58, 0.1), rgba(232, 128, 58, 0) 16%),
-    radial-gradient(circle at 36% 30%, #fffaf0 0%, #ffe9b2 20%, #ffc872 56%, #f6a04e 100%);
+    radial-gradient(circle at 40% 34%, #fffdf6 0%, #fff3cf 14%, #ffdc93 42%, #ffc169 72%, #f79a46 100%);
   background-position: center; background-size: cover; background-repeat: no-repeat;
   box-shadow: inset -1.2vmin -1.6vmin 2.8vmin rgba(212, 106, 40, 0.3), inset 0.6vmin 0.8vmin 1.6vmin rgba(255, 255, 255, 0.45);
 }
+/* גרעיניות-פני-השמש: כמה תאי-אור רכים שמסתובבים לאט מאוד. זו הסיבה
+   היחידה שהשמש נראית "חיה" ולא דיסק — ולכן היא נשארת עדינה מאוד */
+.sun__core::before {
+  content: ""; position: absolute; inset: -12%; border-radius: 50%;
+  background:
+    radial-gradient(22% 19% at 34% 38%, rgba(255, 252, 232, 0.55), rgba(255, 252, 232, 0) 100%),
+    radial-gradient(17% 15% at 66% 30%, rgba(255, 238, 190, 0.32), rgba(255, 238, 190, 0) 100%),
+    radial-gradient(26% 22% at 60% 66%, rgba(236, 138, 58, 0.34), rgba(236, 138, 58, 0) 100%),
+    radial-gradient(20% 18% at 28% 70%, rgba(228, 124, 50, 0.3), rgba(228, 124, 50, 0) 100%),
+    radial-gradient(16% 14% at 76% 52%, rgba(240, 160, 78, 0.26), rgba(240, 160, 78, 0) 100%),
+    radial-gradient(13% 12% at 46% 22%, rgba(255, 248, 220, 0.3), rgba(255, 248, 220, 0) 100%),
+    radial-gradient(14% 13% at 20% 46%, rgba(246, 176, 96, 0.22), rgba(246, 176, 96, 0) 100%);
+  animation: sunspin 64s linear infinite;
+}
+@keyframes sunspin { to { transform: rotate(360deg); } }
+/* הכהיית-שוליים: הדיסק מתעגל ולא נראה שטוח, והתווית נשארת על אזור בהיר */
+.sun__core::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(236, 148, 66, 0) 56%, rgba(232, 138, 58, 0.16) 84%, rgba(214, 112, 42, 0.26) 97%, rgba(238, 158, 78, 0.16) 100%);
+}
+/* ---------- השמש: איור סופי ----------
+   הדיסק באיור תופס 87.8% מרוחב הקנבס (נמדד, 64% תמיכה), ומרכזו 50.1%/50.2% —
+   כלומר בדיוק במרכז. מתיחה ל-113.9% מציבה את הדיסק בדיוק על --sun-size,
+   ומכאן שמיקום השמש, מרווח-הכוכבים וכל הגאומטריה לא זזו במילימטר.
+   השכבות המצוירות של הקוד נכבות או נחלשות — לאיור יש קורונה ולולאות משלו. */
+.sun--art .sun__core {
+  /* רקע-CSS אף פעם לא נצבע מחוץ לאלמנט שלו — overflow לא עוזר לו. לכן
+     כשהתמונה נמתחה ל-113.9% הקורונה נחתכה בדיוק על גבול התיבה. התיקון:
+     התיבה עצמה גדלה ב-6.95% לכל צד (‎1/0.878 = 1.139), והתמונה נכנסת אליה
+     ב-contain — כך כל האיור נצבע, והדיסק עדיין נוחת בדיוק על --sun-size. */
+  inset: -6.95%;
+  border-radius: 0; overflow: visible; box-shadow: none;
+  background: var(--sun-img) center / contain no-repeat;
+  animation: sunturn 120s linear infinite;
+  will-change: transform;
+}
+.sun--art .sun__core::before, .sun--art .sun__core::after { content: none; }
+.sun--art .sun__corona { display: none; }          /* לאיור יש שפה משלו */
+.sun--art .sun__flare { opacity: 0.55; }           /* הנשימה נשארת, חלשה */
+/* נוכחות דרך אור ולא דרך גודל: הדיסק לא גדל (0.33 הוא הגבול הנקי), אבל
+   ההילה מתרחבת ומתחזקת — וכך המרכז מושך את העין בלי לדחוס את הכוכבים. */
+.sun--art .sun__glow { opacity: 1; inset: -88%; }
+@keyframes sunturn { to { transform: rotate(360deg); } }
+
 .sun__label {
   position: relative; z-index: 2; font-size: 3.3vmin; font-weight: 700; letter-spacing: 0.01em;
   color: #6a3a0c; text-shadow: 0 1px 0 rgba(255, 250, 235, 0.6);
+}
+/* על האיור פני-השמש מתחלפים מתחת לטקסט (הוא מסתובב), ולכן צל אחד לא מספיק:
+   הילה בהירה רחבה נותנת קריאוּת מעל המערבולות הכהות, והטקסט הכהה עצמו נקרא
+   מעל הליבה הלוהטת. הטקסט נשאר HTML אמיתי — לא נצרב לתמונה, לא מסתובב. */
+.sun--art .sun__label {
+  color: #4a2403;
+  text-shadow:
+    0 0 0.28em rgba(255, 249, 228, 0.95),
+    0 0 0.6em rgba(255, 244, 210, 0.85),
+    0 0 1.1em rgba(255, 236, 186, 0.6),
+    0 1px 0 rgba(255, 252, 240, 0.8);
 }
 
 /* ---------- כוכב לכת: המיקום ----------
@@ -185,8 +353,24 @@ body {
   inset: 21%; width: 58%; height: 58%; object-fit: contain; border-radius: 0;
   filter: drop-shadow(0 calc(var(--d) * 0.02) calc(var(--d) * 0.04) rgba(0, 0, 0, 0.28));
 }
+/* אור מהשמש: בסצנה יש מקור-אור אחד, והוא במרכז. --lx/--ly (מ-galaxy.js) הם
+   הנקודה על פני הכוכב שפונה אל השמש, ולכן כל כוכב מואר מזווית אחרת — וזה
+   מה שמחבר את כולם לאותו עולם במקום שכל איור יביא תאורה משלו. */
+.pbody__lit {
+  inset: 0;
+  background: radial-gradient(circle at var(--lx, 38%) var(--ly, 32%),
+    rgba(255, 240, 206, 0.26), rgba(255, 228, 180, 0.07) 26%, rgba(255, 220, 170, 0) 46%);
+}
+/* הצד הרחוק מהשמש נופל לצל, עם קצה רך (הטרמינטור) ולא קו חד */
+.pbody__dark {
+  inset: 0;
+  background: radial-gradient(circle at calc(100% - var(--lx, 38%)) calc(100% - var(--ly, 32%)),
+    rgba(5, 10, 34, 0.32), rgba(5, 10, 34, 0.1) 26%, rgba(5, 10, 34, 0) 48%);
+}
 .pbody__shade { background: rgba(14, 22, 58, 0.26); opacity: 0; transition: opacity 0.3s ease; }
-.pbody--new .pbody__shade { opacity: 1; }
+/* פעם מצב "טרם התחלנו" היה מכסה את הכוכב בצעיף כחול-אפור. עכשיו כל שבעת
+   הכוכבים הם איור אמיתי, והצעיף הזה רק הפך אותם לאפורים — הוא כבוי. */
+.pbody--new .pbody__shade { opacity: 0; }
 .pbody__icon { transition: opacity 0.3s ease; }
 .pbody--new .pbody__icon { opacity: 0.82; }
 .pbody--picked .pbody__icon, .planet.is-picked .pbody__icon { opacity: 1; }
@@ -230,49 +414,69 @@ body {
   display: inline-flex; align-items: center; gap: 0.35em; white-space: nowrap;
   padding: 0.34em 0.85em 0.38em; border-radius: var(--r-pill);
   font: 600 clamp(10px, 1.3vmin, 14px) / 1 "Rubik", sans-serif; color: #04413a;
-  background: linear-gradient(180deg, #95f6e6, #43d8c6);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0.35em 1em rgba(20, 184, 166, 0.34), var(--hi);
+  background: linear-gradient(180deg, #8ef1e0, #3ed0be);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 0 0.28em 0.8em rgba(16, 150, 136, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .pmark--rec svg, .pmark--rec img { width: 1em; height: 1em; color: #fff; }
 
 /* ---------- שם הנושא: שלט רך מתחת לכוכב (טקסט HTML אמיתי) ---------- */
 .planet__label {
-  position: absolute; top: calc(100% + var(--label-gap, 0.9vmin)); left: 50%; transform: translateX(calc(-50% + var(--plate-shift, 0px)));
+  position: absolute; top: calc(100% + var(--label-gap, 1.25vmin)); left: 50%; transform: translateX(calc(-50% + var(--plate-shift, 0px)));
   display: grid; justify-items: center; gap: 0.14em; white-space: nowrap;
   padding: 0.42em 1em 0.46em; border-radius: var(--r-pill);
-  background-color: var(--plate); border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow-soft), var(--hi);
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  /* זכוכית ולא כפתור-אפליקציה: מילוי שמתבהר כלפי מעלה, קו-אור בשפה העליונה,
+     והילה רכה בגוון הכוכב שמניחה את השלט בתוך הסצנה במקום מעליה.
+     המידות (padding/גופן/מסגרת) לא השתנו — פותר-המיקום ממשיך לקבל אותה תיבה */
+  /* שלוש שכבות במקום שש: מילוי קליל, קו-אור אחד בשפה העליונה, והילה בגוון
+     הכוכב. פחות רעש, אותו טקסט, אותה תיבה בדיוק — רק חומר נקי יותר. */
+  background-color: rgba(8, 18, 46, 0.46);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.02) 46%, rgba(4, 12, 36, 0.13));
+  border: 1px solid rgba(190, 222, 255, 0.13);
+  box-shadow:
+    0 0.36em 1em rgba(3, 10, 32, 0.26),
+    0 0 1.2em -0.4em var(--hue-glow, rgba(150, 200, 255, 0.26)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 /* המקום של כל שלט נבחר ב-JS (placeLabels) — שם הוא מכסה הכי מעט */
-.planet[data-label="top"] .planet__label { top: auto; bottom: calc(100% + var(--label-gap, 0.9vmin)); }
-.planet[data-label="right"] .planet__label { top: 50%; left: calc(100% + var(--label-gap, 0.9vmin)); transform: translateY(-50%); }
-.planet[data-label="left"] .planet__label { top: 50%; left: auto; right: calc(100% + var(--label-gap, 0.9vmin)); transform: translateY(-50%); }
-.pmark--rec { bottom: calc(100% + var(--label-gap, 0.9vmin)); }
-.planet[data-rec="bottom"] .pmark--rec { bottom: auto; top: calc(100% + var(--label-gap, 0.9vmin)); }
-.planet[data-rec="right"] .pmark--rec { bottom: auto; top: 50%; left: calc(100% + var(--label-gap, 0.9vmin)); transform: translateY(-50%); }
-.planet[data-rec="left"] .pmark--rec { bottom: auto; top: 50%; left: auto; right: calc(100% + var(--label-gap, 0.9vmin)); transform: translateY(-50%); }
-.planet__name { font-size: clamp(12px, 1.8vmin, 20px); font-weight: 600; line-height: 1.1; color: #fff; }
-.planet__sub { font: 500 clamp(10px, 1.3vmin, 14px) / 1.1 "Rubik", sans-serif; color: var(--muted); }
+.planet[data-label="top"] .planet__label { top: auto; bottom: calc(100% + var(--label-gap, 1.25vmin)); }
+.planet[data-label="right"] .planet__label { top: 50%; left: calc(100% + var(--label-gap, 1.25vmin)); transform: translateY(-50%); }
+.planet[data-label="left"] .planet__label { top: 50%; left: auto; right: calc(100% + var(--label-gap, 1.25vmin)); transform: translateY(-50%); }
+.pmark--rec { bottom: calc(100% + var(--label-gap, 1.25vmin)); }
+.planet[data-rec="bottom"] .pmark--rec { bottom: auto; top: calc(100% + var(--label-gap, 1.25vmin)); }
+.planet[data-rec="right"] .pmark--rec { bottom: auto; top: 50%; left: calc(100% + var(--label-gap, 1.25vmin)); transform: translateY(-50%); }
+.planet[data-rec="left"] .pmark--rec { bottom: auto; top: 50%; left: auto; right: calc(100% + var(--label-gap, 1.25vmin)); transform: translateY(-50%); }
+.planet__name { font-size: clamp(12px, 1.8vmin, 20px); font-weight: 600; line-height: 1.1; color: #fff; letter-spacing: 0.005em; }
+.planet__sub { font: 500 clamp(10px, 1.3vmin, 14px) / 1.1 "Rubik", sans-serif; color: rgba(180, 200, 224, 0.72); }
 .planet--now .planet__sub { color: #95f6e6; }
 .planet--done .planet__sub { color: #ffdb8f; }
+/* השלט לוקח את גוון הכוכב שלו להילה — כך הוא שייך לכוכב ולא לממשק */
+.planet__label { --hue-glow: rgba(150, 200, 255, 0.3); }
+.planet--now .planet__label { --hue-glow: rgba(90, 232, 212, 0.34); }
+.planet--done .planet__label { --hue-glow: rgba(255, 206, 122, 0.34); }
 
 /* hover — רק עם עכבר: במגע ה-hover "נתקע", וממילא הלחיצה כבר מפעילה את הטיסה */
 @media (hover: hover) and (pointer: fine) {
-  .planet:hover { transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty))) scale(1.1); }
+  .planet:hover { transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty))) scale(1.08); }
   .planet:hover { opacity: 1 !important; z-index: 60 !important; }
-  .planet:hover .pbody__halo { opacity: 0.5; }
-  .planet:hover .pbody--new .pbody__shade { opacity: 0.3; }
+  /* ההבדל בריחוף הוא בעיקר הגודל. ההילה נוגעת רק קלות — בלי קפיצת-צבע. */
+  .planet:hover .pbody__halo { opacity: 0.26; }
   .planet:hover .pbody__icon { opacity: 1; }
-  .planet:hover .planet__label { background-color: var(--plate-hover); border-color: rgba(255, 255, 255, 0.22); }
+  .planet:hover .planet__label {
+    background-color: rgba(16, 32, 72, 0.62); border-color: rgba(214, 238, 255, 0.24);
+    box-shadow:
+      0 0.44em 1.2em rgba(3, 10, 32, 0.32),
+      0 0 1.5em -0.3em var(--hue-glow, rgba(150, 200, 255, 0.4)),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
 
   /* גשר שקוף מהשלט אל מרכז הכוכב. ה-hover מגדיל את הכפתור סביב המרכז, ובלי
      הגשר העכבר נופל לרווח שבין השלט לכוכב והכוכב מהבהב. המשולש מצביע על
      המרכז, כך שההגדלה רק מרחיבה את השטח ולא מזיזה אותו מתחת לעכבר. */
   .planet__label::before, .pmark--rec::before {
     content: ""; position: absolute; inset: auto 0 100% 0;
-    height: calc(var(--label-gap, 0.9vmin) + var(--d) / 2);
+    height: calc(var(--label-gap, 1.25vmin) + var(--d) / 2);
     clip-path: polygon(0 100%, 100% 100%, calc(50% - var(--plate-shift, 0px)) 0);
   }
   .planet[data-label="top"] .planet__label::before, .planet:not([data-rec]) .pmark--rec::before, .planet[data-rec="top"] .pmark--rec::before {
@@ -280,20 +484,19 @@ body {
     clip-path: polygon(0 0, 100% 0, calc(50% - var(--plate-shift, 0px)) 100%);
   }
   .planet[data-label="right"] .planet__label::before, .planet[data-rec="right"] .pmark--rec::before {
-    inset: 0 100% 0 auto; height: auto; width: calc(var(--label-gap, 0.9vmin) + var(--d) / 2);
+    inset: 0 100% 0 auto; height: auto; width: calc(var(--label-gap, 1.25vmin) + var(--d) / 2);
     clip-path: polygon(100% 0, 100% 100%, 0 50%);
   }
   .planet[data-label="left"] .planet__label::before, .planet[data-rec="left"] .pmark--rec::before {
-    inset: 0 auto 0 100%; height: auto; width: calc(var(--label-gap, 0.9vmin) + var(--d) / 2);
+    inset: 0 auto 0 100%; height: auto; width: calc(var(--label-gap, 1.25vmin) + var(--d) / 2);
     clip-path: polygon(0 0, 0 100%, 100% 50%);
   }
 }
 /* מגע: הכוכב נלחץ ברגע האצבע (90ms), ומשתחרר ברכות. האנימציה של השיגור
    מתחילה מהגודל שיש לו באותו רגע, ולכן אין קפיצה */
 .planet.is-press { transform: translate(calc(50% + var(--tx)), calc(-50% + var(--ty))) scale(1.06); transition-duration: 0.09s; }
-.planet.is-press .pbody__halo { opacity: 0.5; }
+.planet.is-press .pbody__halo { opacity: 0.3; }
 .planet.is-press .pbody__icon { opacity: 1; }
-.planet.is-press .pbody--new .pbody__shade { opacity: 0.3; }
 
 /* שטח-נגיעה שקוף סביב כוכב קטן (--hit נקבע בפריסה, חצי-דרך לשכן הקרוב) */
 .planet::after { content: ""; position: absolute; inset: calc(-1 * var(--hit, 0px)); border-radius: 50%; }
@@ -313,8 +516,13 @@ body {
 .ship__aura {
   position: absolute; left: 50%; top: 46%; width: 150%; height: 118%;
   transform: translate(-50%, -50%); border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(126, 232, 222, 0.28), rgba(126, 232, 222, 0));
+  background:
+    radial-gradient(closest-side, rgba(126, 232, 222, 0.26), rgba(126, 232, 222, 0.06) 62%, rgba(126, 232, 222, 0)),
+    radial-gradient(closest-side, rgba(255, 238, 200, 0.1), rgba(255, 238, 200, 0) 48%);
 }
+/* עיגון החללית בסצנה: צל רך מתחתיה ואור-שפה קריר. רק אור — הגוף, הלהבה,
+   המיקום והטיסה לא נגעו. הפילטר יושב על הילד הסטטי ולא על #ship שזז */
+.ship__body { filter: drop-shadow(0 0.35vmin 0.5vmin rgba(4, 12, 36, 0.45)) drop-shadow(0 0 0.7vmin rgba(150, 214, 255, 0.18)); }
 /* זוהר-המנוע מאחורי הזנב: כבוי במנוחה, השיגור מדליק (opacity/scale בלבד) */
 .ship__glow {
   position: absolute; left: 50%; top: 88%; width: 92%; aspect-ratio: 1; border-radius: 50%;
@@ -328,14 +536,16 @@ body {
 /* ---------- האיור האמיתי ----------
    כשהקבצים נטענים הם מקבלים גאומטריה משלהם, והציור המקורי (הנפילה-לאחור)
    נשאר בדיוק כפי שהיה. גוף-החללית ריבועי (768×768), ולכן הרוחב הוא גם הגובה. */
-.ship--art { width: 9vmin; }
-.ship--art .ship__aura { top: 52%; width: 132%; height: 132%; }
-.ship--art .ship__glow { top: 92%; width: 54%; }
+/* האיור: 1254×1254, הגוף תופס 70% מהרוחב ו-85% מהגובה של הקנבס — ולכן
+   התיבה גדולה מהצללית עצמה. פתח-המנוע האחורי נמדד ב-x 50%, y ≈ 84%. */
+.ship--art { width: 11vmin; }
+.ship--art .ship__aura { top: 50%; width: 118%; height: 126%; }
+.ship--art .ship__glow { top: 86%; width: 40%; }
 /* הלהבה יוצאת מפתח-המנוע המרכזי של האיור (x 50%, y ~88%) וגדלה כלפי מטה.
    במנוחה היא קטנה ועמומה — "המנוע דולק", לא "בוסט". התנועה הפנימית של האש
    מגיעה מהקובץ המונפש עצמו, ולכן אין כאן שום אנימציית CSS. */
 .ship--flame-art .ship__flame {
-  left: 39.5%; width: 21%; top: 88%; height: auto;
+  left: 39.5%; width: 21%; top: 81%; height: auto;
   transform: scale(0.94, 0.72); opacity: 0.8; /* מנוחה = מצב idle, כדי שהשיגור לא יקפוץ */
 }
 .ship__flame-art { width: 100%; height: auto; display: block; }
@@ -357,8 +567,9 @@ body {
   -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none;
   flex: none; width: 5.4vmin; height: 5.4vmin; min-width: 44px; min-height: 44px;
   display: grid; place-items: center; border-radius: 50%; color: #fff; text-decoration: none;
-  background: var(--surface); border: 1px solid var(--stroke); box-shadow: var(--shadow-soft), var(--hi);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0.3em 0.9em rgba(3, 10, 32, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   transition: background-color 0.2s ease, transform 0.15s var(--ease);
 }
 .hud__back svg { width: 46%; height: 46%; }
@@ -374,8 +585,9 @@ body {
   flex: none; display: inline-flex; align-items: center; gap: 0.45em;
   padding: 0.5em 1em 0.5em 0.85em; border-radius: var(--r-pill);
   font: 600 clamp(13px, 2vmin, 22px) / 1 "Fredoka", sans-serif;
-  background: var(--surface); border: 1px solid var(--stroke); box-shadow: var(--shadow-soft), var(--hi);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0.3em 0.9em rgba(3, 10, 32, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
 }
 .hud__stat svg, .hud__stat img { width: 1.3em; height: 1.3em; filter: drop-shadow(0 1px 2px rgba(120, 70, 0, 0.35)); }
 .hud__stat bdi { font-variant-numeric: tabular-nums; }
@@ -384,12 +596,15 @@ body {
   /* המקום מחושב בפריסה (--hint-bottom): אמצע הרווח שמתחת למערכת */
   bottom: max(var(--hint-bottom, 2.4vmin), env(safe-area-inset-bottom, 0px));
   margin: 0; text-align: center; pointer-events: none;
+  z-index: 8; /* מעל שכבת-הקדמה, כמו ה-HUD */
   transition: opacity 0.4s ease;
 }
 .hint span {
   display: inline-block; padding: 0.5em 1.15em; border-radius: var(--r-pill);
   font: 500 clamp(12px, 1.7vmin, 17px) / 1.2 "Rubik", sans-serif; color: #d6e6f5;
-  background: rgba(10, 22, 54, 0.38); border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 18, 46, 0.34); border: 1px solid rgba(190, 222, 255, 0.1);
+  box-shadow: 0 0.3em 0.9em rgba(3, 10, 32, 0.2);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
 
 /* ---------- שיגור ----------
@@ -425,13 +640,37 @@ body {
   .planet__sub { font-size: max(10px, 2.5vmin); }
   .planet__label { padding: 0.3em 0.72em 0.34em; }
   .pmark--rec { font-size: max(10px, 2.6vmin); }
-  .sun__label { font-size: 5.2vmin; }
+  /* ---------- השמש: איור סופי ----------
+   הדיסק באיור תופס 87.8% מרוחב הקנבס (נמדד, 64% תמיכה), ומרכזו 50.1%/50.2% —
+   כלומר בדיוק במרכז. מתיחה ל-113.9% מציבה את הדיסק בדיוק על --sun-size,
+   ומכאן שמיקום השמש, מרווח-הכוכבים וכל הגאומטריה לא זזו במילימטר.
+   השכבות המצוירות של הקוד נכבות או נחלשות — לאיור יש קורונה ולולאות משלו. */
+.sun--art .sun__core {
+  /* רקע-CSS אף פעם לא נצבע מחוץ לאלמנט שלו — overflow לא עוזר לו. לכן
+     כשהתמונה נמתחה ל-113.9% הקורונה נחתכה בדיוק על גבול התיבה. התיקון:
+     התיבה עצמה גדלה ב-6.95% לכל צד (‎1/0.878 = 1.139), והתמונה נכנסת אליה
+     ב-contain — כך כל האיור נצבע, והדיסק עדיין נוחת בדיוק על --sun-size. */
+  inset: -6.95%;
+  border-radius: 0; overflow: visible; box-shadow: none;
+  background: var(--sun-img) center / contain no-repeat;
+  animation: sunturn 120s linear infinite;
+  will-change: transform;
+}
+.sun--art .sun__core::before, .sun--art .sun__core::after { content: none; }
+.sun--art .sun__corona { display: none; }          /* לאיור יש שפה משלו */
+.sun--art .sun__flare { opacity: 0.55; }           /* הנשימה נשארת, חלשה */
+/* נוכחות דרך אור ולא דרך גודל: הדיסק לא גדל (0.33 הוא הגבול הנקי), אבל
+   ההילה מתרחבת ומתחזקת — וכך המרכז מושך את העין בלי לדחוס את הכוכבים. */
+.sun--art .sun__glow { opacity: 1; inset: -88%; }
+@keyframes sunturn { to { transform: rotate(360deg); } }
+
+.sun__label { font-size: 5.2vmin; }
   .hud__t { font-size: 4.4vmin; }
   .hud__s { font-size: 3vmin; }
   .hud__stat { font-size: 3.4vmin; }
   .hint span { font-size: 3vmin; }
   .ship { width: 12vmin; }
-  .ship--art { width: 10.5vmin; }
+  .ship--art { width: 13vmin; }
   .spark { width: 3vmin; height: 3vmin; }
 }
 
@@ -446,6 +685,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .planet__orb, .sun__flare, .ship__fire, .star--tw, .spark { animation: none !important; }
+  .planet__orb, .sun__flare, .sun__core, .sun__core::before, .earth, .ship__fire, .star--tw, .spark { animation: none !important; }
   .planet, .ship { transition: none !important; }
 }

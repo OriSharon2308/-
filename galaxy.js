@@ -111,6 +111,7 @@
       `<span class="pbody__halo"></span><span class="pbody__glow"></span>` +
       (ring ? `<span class="pbody__ring pbody__ring--back"></span>` : "") +
       (p.image ? `<img class="pbody__art" src="${esc(p.image)}" alt="" ${artFit(p.fit)} />` : `<span class="pbody__base"></span>`) +
+      (p.image ? `<span class="pbody__lit"></span><span class="pbody__dark"></span>` : "") +
       `<span class="pbody__shade"></span>` +
       (p.image ? "" : `<span class="pbody__rim"></span>`) +
       (hasIcon ? `<img class="pbody__icon" src="/images/topics/${esc(p.art)}.png" alt="" />` : "") +
@@ -181,8 +182,9 @@
   const FILL_V = 0.72;     // חלק הגובה שהמערכת אמורה למלא לפני שהתקרה עוצרת
   const GROW_MAX = 1.12;   // כמה מותר להגדיל את המערכת כשנשאר גובה פנוי
   const SUN_MIN_K = 0.80;  // עד כמה מותר להקטין את השמש כדי לפנות מקום לכוכב
+  const PLANET_K = 1.62;   // הגדלת הכוכבים. ידית אחת — הפותר כבר יודע לפנות מקום
   const SUN_HALO = 1.06;   // הכוכבים מתרחקים מהכותרת הזוהרת של השמש, לא רק מהדיסק
-  const SUN_VMIN = 0.27;   // גודל-השמש שב-galaxy.css (--sun-size ברירת-מחדל 27vmin)
+  const SUN_VMIN = 0.33;   // גודל-השמש. הפותר עשוי להקטין אותה כדי לפנות מקום לכוכב
 
   function geometry(vp) {
     const { w, h } = vp;
@@ -191,7 +193,7 @@
     const list = [...document.querySelectorAll(".planet")].map((el) => ({
       el, a: (+el.dataset.angle * Math.PI) / 180, r: +el.dataset.ring,
     }));
-    const dOf = (depth) => min * ((small ? 0.070 : 0.082) + depth * (small ? 0.042 : 0.052));
+    const dOf = (depth) => min * ((small ? 0.070 : 0.082) + depth * (small ? 0.042 : 0.052)) * PLANET_K;
     const depthOf = (r, a) => (r * Math.sin(a) + 1) / 2; // 0 = רחוק (מאחורי השמש), 1 = קרוב
     const maxRing = Math.max(...list.map((p) => p.r), ...(CFG.rings || [0]));
     const EDGE = Math.max(8, min * 0.015);
@@ -257,7 +259,25 @@
     });
     push = Math.min(push, room);
     const remap = (r) => r + (1 - r) * push;
-    return { small, rx0, tilt, push, remap, list, dOf, depthOf, sunPx: sunR * 2 };
+    // כוכבים שנוגעים זה בזה נראים כמו באג. הפותר מרחיק כוכב מהשמש ומהשוליים,
+    // אבל אין לו אילוץ בין כוכב לכוכב — ובמסך הצר-והגבוה (טאבלט) שני מסלולים
+    // נפגשים והכדורים נחתכו. כאן מתווסף מקדם אחרון: אם אחרי הכל יש חפיפה,
+    // כל הכוכבים מתכווצים יחד בדיוק כמה שצריך כדי להיפרד. יחסי-העומק
+    // נשמרים (זו הכפלה אחידה), והמסלולים לא זזים בכלל.
+    const GAP_MIN = min * 0.012;
+    let dK = 1;
+    for (const a of list) for (const b of list) {
+      if (a === b) continue;
+      const ra = remap(a.r), rb = remap(b.r);
+      const dist = Math.hypot(Math.cos(a.a) * rx0 * ra - Math.cos(b.a) * rx0 * rb,
+        (Math.sin(a.a) * rx0 * ra - Math.sin(b.a) * rx0 * rb) * tilt);
+      const need = (a.d + b.d) / 2 + GAP_MIN;
+      if (need > dist) dK = Math.min(dK, (dist - GAP_MIN) / ((a.d + b.d) / 2));
+    }
+    dK = Math.max(0.7, dK); // רשת-ביטחון: לעולם לא מתכווצים מעבר לזה
+    const dOfClamped = (depth) => dOf(depth) * dK;
+    if (dK < 1) list.forEach((p) => { p.d *= dK; });
+    return { small, rx0, tilt, push, remap, list, dOf: dOfClamped, depthOf, sunPx: sunR * 2, dK };
   }
 
   /** המקום שבו החללית "חונה": על הציר של השמש, מתחתיה, במרחק הקבוע —
@@ -267,19 +287,21 @@
   function shipPark(vp, items) {
     const min = Math.min(vp.w, vp.h);
     const sunEl = $("#sun");
-    const sunR = (sunEl && sunEl.offsetWidth ? sunEl.offsetWidth : min * 0.27) / 2;
+    // 1.14 = חריגת הקורונה מעבר ל---sun-size (האיור נמתח ל-113.9%)
+    const sunR = ((sunEl && sunEl.offsetWidth ? sunEl.offsetWidth : min * 0.33) / 2) * 1.14;
     const sh = ship.offsetHeight || min * 0.16, sw = ship.offsetWidth || min * 0.11;
     const shipR = sw / 2; // גוף החללית (בלי הלהבה שמתחתיה)
     const base = Math.max(min * 0.19, sunR + sh * 0.45 + min * 0.02);
     const limit = Math.max(base, vp.h / 2 - sh * 0.6);
-    // נגיעה קלה בשפה מותרת (כך זה נראה גם בשולחן מאז 2B); רק כיסוי אמיתי מזיז.
+    // החללית שומרת מרחק מהכוכבים ולא רק נמנעת מכיסוי: המקדם היה 0.92 ("נגיעה
+    // קלה מותרת"), ובגודל הכוכבים של היום זה נראה כמו התנגשות. 1.12 מרחיק אותה.
     // הפתרון רציף: בגובה נתון כל כוכב חוסם קטע סימטרי סביב ה-x שלו, ואנחנו
     // בוחרים את ה-x הפנוי הקרוב ביותר לציר השמש. כשכוכב רק נוגע ההסחה היא
     // אפס, והיא גדלה איתו בהדרגה — ולכן שינוי של פיקסל לא מקפיץ את החללית.
     const xMax = vp.w / 2 - min * 0.02 - sw / 2;
     const blocked = (y) => items
       .map((it) => {
-        const R = (shipR + it.d / 2) * 0.92, dy = it.y - y, s2 = R * R - dy * dy;
+        const R = (shipR + it.d / 2) * 1.25, dy = it.y - y, s2 = R * R - dy * dy;
         return s2 > 0 ? [it.x - Math.sqrt(s2), it.x + Math.sqrt(s2)] : null;
       })
       .filter(Boolean);
@@ -360,9 +382,19 @@
 
       el.style.setProperty("--tx", `${x.toFixed(1)}px`);
       el.style.setProperty("--ty", `${y.toFixed(1)}px`);
+      // וקטור-יחידה מהכוכב אל השמש: הנקודה על פני הכוכב שפונה אליה היא מקור
+      // האור שלו, ולכן כל שבעת הכוכבים מוארים מאותו גוף אחד במרכז
+      const len = Math.hypot(x, y) || 1;
+      el.style.setProperty("--lx", `${(50 - (x / len) * 34).toFixed(1)}%`);
+      el.style.setProperty("--ly", `${(50 - (y / len) * 34).toFixed(1)}%`);
       el.style.zIndex = String(10 + Math.round(depth * 40)); // קרוב מסתיר רחוק
-      el.style.opacity = (0.68 + depth * 0.32).toFixed(2);   // אווירת-מרחק
+      el.style.opacity = (0.88 + depth * 0.12).toFixed(2);   // אווירת-מרחק, עדינה
       el.style.setProperty("--d", `${d.toFixed(0)}px`); // גם לשלט (הגשר של ה-hover)
+      // כל איור חורג מהעיגול בשיעור אחר (1/fit.d). בגדלים האלה החריגה הזאת
+      // היא מה שנוגע בשלט, ולכן המרווח של כל כוכב כולל אותה מראש.
+      const fitD = (byKey.get(el.dataset.key) || {}).fit?.d;
+      const over = fitD ? (d * (1 / fitD - 1)) / 2 : 0;
+      el.style.setProperty("--label-gap", `${(Math.min(w, h) * 0.012 + over).toFixed(1)}px`);
       el.style.setProperty("--hit", "0px"); // מתמלא אחרי שכל המקומות ידועים
       el.querySelector(".planet__orb").style.setProperty("--d", `${d.toFixed(0)}px`);
       return { el, x, y, d, depth };
@@ -517,6 +549,22 @@
   // בזמן שיגור השכבות קופאות בדיוק איפה שהן — בלי לקפוץ חזרה ל-0
   let parallaxPaused = false;
 
+  function initAim() {
+    if (REDUCED) return;
+    sky.addEventListener("pointermove", (e) => {
+      if (e.pointerType !== "mouse" || launching) return;
+      aimX = e.clientX; aimY = e.clientY;
+      if (!aimRaf) aimRaf = requestAnimationFrame(aimAtPointer);
+    });
+    // העכבר יצא מהמסך — החללית חוזרת לעמידה ישרה, כמו שהיא מתחילה
+    sky.addEventListener("pointerleave", (e) => {
+      if (e.pointerType !== "mouse" || launching) return;
+      if (aimRaf) { cancelAnimationFrame(aimRaf); aimRaf = 0; }
+      aimDeg = nearAngle(0, aimDeg);
+      setShip(parked.x, parked.y, aimDeg);
+    });
+  }
+
   function initParallax() {
     if (REDUCED) return;
     const layers = [...document.querySelectorAll("[data-depth]")];
@@ -556,6 +604,26 @@
     ship.style.setProperty("--sy", `${y.toFixed(0)}px`);
     ship.style.setProperty("--sr", `${rot.toFixed(1)}deg`);
   }
+  /* ---------- מבט: החללית עוקבת אחרי הסמן ----------
+     במנוחה החללית מסתובבת אל הסמן בכל מקום במסך, לא רק כשהוא מעל כוכב.
+     הזווית נכתבת דרך אותו setShip, ולכן המעבר הרך של ה-CSS (1 שנ') הוא
+     שנותן את תחושת המשקל — החללית "מחפשת" את הסמן ולא ננעלת עליו מיד.
+     העדכון נדחס ל-frame אחד, ובזמן שיגור או ב-reduced-motion אין בכלל. */
+  let aimRaf = 0, aimX = 0, aimY = 0, aimDeg = 0;
+  function aimAtPointer() {
+    aimRaf = 0;
+    if (REDUCED || launching || sky.hidden) return;
+    const r = ship.getBoundingClientRect();
+    if (!r.width) return;
+    const cx = (r.left + r.right) / 2, cy = (r.top + r.bottom) / 2;
+    const dx = aimX - cx, dy = aimY - cy;
+    if (Math.hypot(dx, dy) < 12) return; // סמן על החללית עצמה — אין כיוון ברור
+    // nearAngle בוחר את הייצוג הקרוב לזווית הנוכחית, ולכן מעבר מ-179° ל--179°
+    // הוא תזוזה של 2 מעלות ולא סיבוב של 358. אין שום מצב של סיבוב מלא.
+    aimDeg = nearAngle((Math.atan2(dy, dx) * 180) / Math.PI + 90, aimDeg); // 0° = האף למעלה
+    setShip(parked.x, parked.y, aimDeg);
+  }
+
   /** מפנה את החללית אל כוכב מרוחף — בלי לעוף אליו. */
   function faceTo(el) {
     if (REDUCED || launching) return;
@@ -570,7 +638,6 @@
      (#ship), לפי "צילום" של נקודת-המוצא והיעד ברגע הלחיצה: אין חישוב באמצע
      הטיסה, ושינוי-גודל לא מעקם את המסלול. אמנות חללית עתידית צריכה רק את
      .ship__flame ואת .ship__glow — הלוגיקה לא נוגעת ב-SVG עצמו.           */
-  const T_TURN = 195;    // פנייה אל הכוכב
   const T_LEAN = 135;    // הירתעות קטנה לאחור...
   const T_LAUNCH = 255;  // ...ואז הזינוק (חופף לסוף הפנייה — תנועה אחת רצופה)
   const T_FADE = 1075;    // החללית מתכווצת אל הכוכב; נעלמת כשהכוכב המתקרב בולע אותה (או כאן, אם אין)
@@ -579,7 +646,6 @@
   const CURVE = 0.055;   // גובה הקשת — 5.5% מאורך הדרך (עד 40px, ובמסך קטן עד 20px)
   const SUN_MARGIN = 12; // מרווח-נשימה סביב השמש, מעבר לחצי רוחב החללית
   const CURVE_MAX_BLOCKED = 130, CURVE_MAX_BLOCKED_SMALL = 62; // קשת חריגה — רק כשהשמש חוסמת
-  const BANK = 5;        // הטיה נוספת לתוך הפנייה, במעלות
 
   // מצבי-המנוע: להבה (רוחב × אורך — מתארכת יותר משהיא מתרחבת) וזוהר.
   // ENGINE_AT קובע מתי כל מצב מגיע.
@@ -613,7 +679,6 @@
       return Y(t);
     };
   }
-  const turnEase = cubicBezier(0.2, 0.8, 0.3, 1);
   // מאיצה מהזינוק והלאה, אבל בלי "זינוק בסוף": חצי הדרך נעשה כבר ב-q≈0.54
   // של הטיסה (במקום q≈0.71), והפריים הגדול ביותר קטן ב-25% — כך התנועה נראית
   // רצופה ולא כמו המתנה ואז ריצה. q הוא ההתקדמות בתוך T_LAUNCH→T_ARRIVE, ולכן
@@ -621,10 +686,6 @@
   const boostEase = cubicBezier(0.35, 0.05, 0.6, 0.75);
 
   const bez = (a, c, b, p) => (1 - p) * (1 - p) * a + 2 * (1 - p) * p * c + p * p * b;
-  const bezD = (a, c, b, p) => 2 * (1 - p) * (c - a) + 2 * p * (b - c);
-  /** כיוון החללית בנקודה p של המסלול. 0° = אף למעלה. */
-  const headingAt = (f, p) =>
-    (Math.atan2(bezD(f.S.y, f.C.y, f.T.y, p), bezD(f.S.x, f.C.x, f.T.x, p)) * 180) / Math.PI + 90;
   /** אותה זווית, בגרסה הקרובה ביותר ל-ref — הפנייה תמיד הקצרה (לא 300° סביב). */
   const nearAngle = (a, ref) => ref + ((((a - ref) % 360) + 540) % 360) - 180;
 
@@ -714,8 +775,6 @@
   /** פנייה → הירתעות → זינוק בקשת → כניסה לכוכב, ומנוע שמתעורר בהתאם.
       hp — תכנון הכוכב המתקרב (planHero): החללית נעלמת ברגע שהוא "בולע" אותה. */
   function flightAnimations(el, r0, hp, f = planFlight(el)) {
-    const a0 = nearAngle(headingAt(f, 0), r0);
-    const bankDir = Math.sign(nearAngle(headingAt(f, 1), a0) - a0) || 1;
     const posAt = (t) => shipPos(f, t);
     // החללית והכוכב נעים זה אל זה (הכוכב אל המרכז, החללית ממנו). הרגע שבו שפת
     // הכוכב עוברת עליה הוא רגע הכניסה: משם היא "נוסעת" בתוכו, מוסתרת מאחוריו,
@@ -749,18 +808,16 @@
       }
     }
     const frames = [];
-    let heading = a0;
+    // החללית לא מסתובבת בטיסה: הזווית שהייתה לה ברגע הלחיצה (r0 — הכיוון אל
+    // הסמן) נשמרת לאורך כל המסלול. הסיבוב היחיד במסך הוא המעקב אחרי העכבר.
     for (let i = 0; ; i++) {
       const t = Math.min(i * SAMPLE_MS, T_ARRIVE);
       const { x, y } = where(t);
-      let rot = a0, s = 1;
+      const rot = r0;
+      let s = 1;
       const o = t <= fadeFrom ? 1 : t >= fadeTo ? 0 : 1 - (t - fadeFrom) / (fadeTo - fadeFrom);
-      if (t < T_TURN) rot = r0 + (a0 - r0) * turnEase(t / T_TURN);
       if (t >= T_LAUNCH) {
-        const q = (t - T_LAUNCH) / (T_ARRIVE - T_LAUNCH);
-        if (!inside(t)) heading = nearAngle(headingAt(f, boostEase(q)), heading); // בפנים — כבר לא פונה
-        rot = heading + bankDir * BANK * Math.sin(Math.PI * q); // חוזרת לאפס ליד הכוכב
-        s = flightScale(q);
+        s = flightScale(t >= T_LAUNCH ? (t - T_LAUNCH) / (T_ARRIVE - T_LAUNCH) : 0);
       }
       frames.push({
         offset: t / T_ARRIVE,
@@ -875,7 +932,8 @@
     // אותו רכיב-גוף בדיוק כמו בכוכב שבמסלול, בקוטר D (כל המידות שלו יחסיות
     // ל---d) — ולכן ברגע ההחלפה הם זהים, עם איור סופי או עם מציין-המקום
     hero.style.cssText = `left:${(cf.x - D / 2).toFixed(1)}px;top:${(cf.y - D / 2).toFixed(1)}px;` +
-      `width:${D.toFixed(1)}px;height:${D.toFixed(1)}px;--d:${D.toFixed(1)}px`;
+      `width:${D.toFixed(1)}px;height:${D.toFixed(1)}px;--d:${D.toFixed(1)}px;` +
+      `--lx:${el.style.getPropertyValue("--lx") || "50%"};--ly:${el.style.getPropertyValue("--ly") || "50%"}`;
     hero.innerHTML = planetBodyHtml(planet, el.dataset.state || "new", " pbody--picked");
     const heroGlow = hero.querySelector(".pbody__halo");
     const liveGlow = el.querySelector(".pbody__halo");
@@ -1131,11 +1189,19 @@
     // שמסביבה (scale/opacity) ולא נוגעים ב-src — כך הלולאה לא מתחילה מחדש.
     swap(".ship__flame", A.ship && A.ship.flame, "ship__flame-art", "ship--flame-art");
     if (A.sun) {
-      const core = $(".sun__core");
-      core.style.background = `url("${encodeURI(A.sun)}") center / contain no-repeat`;
-      core.style.boxShadow = "none";
+      // המסגור עצמו יושב ב-CSS (.sun--art): הדיסק באיור הוא 86.2% מרוחב הקנבס,
+      // ולכן הוא נמתח ל-116% כדי שהדיסק — ולא הקנבס — ייפול על --sun-size,
+      // והקורונה תחרוג החוצה כמו שהאיור מתכוון.
+      const sunEl = $("#sun");
+      sunEl.style.setProperty("--sun-img", `url("${encodeURI(A.sun)}")`);
+      sunEl.classList.add("sun--art");
     }
-    if (A.background) sky.style.setProperty("--bg", `url("${encodeURI(A.background)}")`);
+    // כשיש תמונת-רקע אמיתית היא מביאה איתה כוכבים וערפיליות משלה, ולכן הסצנה
+    // עוברת ל"מצב תצלום": שכבות-הערפילית של הקוד נחלשות כדי שלא יהיו כפולות.
+    if (A.background) {
+      sky.style.setProperty("--bg", `url("${encodeURI(A.background)}")`);
+      sky.classList.add("sky--photo");
+    }
   }
 
   /** אין מה להציג (אין הגדרת-מראה לכיתה, או שהשרת לא ענה) — הודעה ברורה
@@ -1207,6 +1273,7 @@
     $("#boot").hidden = true;
     layoutWhenReady(); // מציג את השמיים אחרי שהמיקומים כבר כתובים
     initParallax();
+    initAim();
     // בזמן שיגור לא פורסים מחדש — המסלול נשען על "צילום" מרגע הלחיצה. שינוי
     // ממשי (סיבוב מכשיר) באמצע השיגור = דילוג לשיעור, במקום מסלול שבור.
     const relayout = () => {
