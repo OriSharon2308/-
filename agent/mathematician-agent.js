@@ -122,7 +122,7 @@ async function mathematicianCreate(payload = {}) {
   //    כדי שהילד יפגוש חשיבה בתוך הרצף הרגיל ולא כ"נושא" נפרד.
   //    מחיקת הקובץ ב-question-packs/ מסירה את זה מיד.
   if (level >= 3 && Math.random() < 0.34) {
-    const packQ = packs.pick(gradeNum, topic, level, payload.excludeIds || []);
+    const packQ = packs.pick(gradeNum, topic, level, payload.excludeIds || [], exact);
     if (packQ) return { problem: packQ, mode: "pack", topic, gradeNum, repeatable };
   }
 
@@ -141,10 +141,14 @@ async function mathematicianCreate(payload = {}) {
   // 2) נושא עם מחולל — המתמטיקאי תמיד מכין שאלה הבאה, בלי "מיצוי":
   if (hasGen) {
     // א. מייצר חדשה ברמה המדויקת (אם נעול)
-    let fresh = generateFreshAlgo(gradeNum, topic, entry, level, exact);
-    // ב. אם מרחב הרמה המדויקת מוצה — מרפים: מייצר חדשה מרמה קרובה (כך לא נתקעים)
-    if (!fresh && exact) fresh = generateFreshAlgo(gradeNum, topic, entry, level, false);
+    const fresh = generateFreshAlgo(gradeNum, topic, entry, level, exact);
     if (fresh) return { problem: fresh, mode: "algo", topic, gradeNum, repeatable };
+    // ב. רמה נעולה שמרחבה מוצה — חוזרים על שאלה *מאותה רמה*. חזרה על שאלה
+    //    היא מחיר קטן; להגיש רמה אחרת כשהתלמיד נעל רמה זה פשוט באג על המסך.
+    if (exact) {
+      const same = bank.getQuestion(gradeNum, topic, level, [], true);
+      if (same) return { problem: same, mode: "bank", topic, gradeNum, repeatable };
+    }
     // ג. אי אפשר לייצר חדשה — מגישים שאלה כלשהי שעוד לא נראתה (לא מדויקת)
     let any = bank.getQuestion(gradeNum, topic, level, payload.excludeIds || [], false);
     // ד. הכל כבר נראה — מחזור אחרון כדי לא להיתקע (קורה רק כשבאמת אזל הכל)

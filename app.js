@@ -1496,6 +1496,40 @@ function renderAgentDebug(u, entries) {
   }
 }
 
+/** סולם-הרמות של הנושא (הערכים האמיתיים שנשלחים לשרת). */
+function levelLadder(topic) {
+  const l = topic && topic.availableLevels;
+  return Array.isArray(l) && l.length ? l.slice().sort((a, b) => a - b) : [];
+}
+/** המקום בסולם (1..N) — זה מה שהילד רואה. */
+function levelPos(topic, level) {
+  const lad = levelLadder(topic);
+  const i = lad.indexOf(Number(level));
+  if (i >= 0) return i + 1;
+  if (!lad.length) return Number(level) || 1;
+  // רמה שאינה בסולם (למשל שאלה ישנה מהמאגר) — המקום הקרוב ביותר
+  let best = 0;
+  for (let k = 1; k < lad.length; k++) {
+    if (Math.abs(lad[k] - level) < Math.abs(lad[best] - level)) best = k;
+  }
+  return best + 1;
+}
+/** מיישר את רמת-הנושא לסולם שלו. נושא נפתח ב-level=1, אבל יש נושאים
+ *  שהסולם שלהם מתחיל ב-3 — ובלי היישור הבקשה הראשונה יוצאת ברמה שאינה
+ *  קיימת, המאגר מרפה, והשאלה הראשונה עלולה להיות דווקא הקשה ביותר. */
+function snapLevelToLadder(topic) {
+  const lad = levelLadder(topic);
+  if (!lad.length || lad.includes(Number(topic.level))) return;
+  topic.level = topic.levelLocked
+    ? lad.reduce((best, l) => (Math.abs(l - topic.level) < Math.abs(best - topic.level) ? l : best), lad[0])
+    : lad[0];
+}
+
+/** כמה רמות יש לנושא. */
+function levelTotal(topic) {
+  return levelLadder(topic).length || 10;
+}
+
 function renderStats(u, state) {
   // הסטטיסטיקות לא מוצגות לילד (כדי לא לפגוע במוטיבציה) — אבל עדיין נצברות ב-state
   // לצורך התאמת הרמה האוטומטית. אם האלמנטים קיימים (למשל במסך הורה עתידי) — נעדכן.
@@ -1763,6 +1797,7 @@ async function main() {
     const p = res && res.problem;
     if (res && Array.isArray(res.availableLevels) && res.availableLevels.length) {
       topic.availableLevels = res.availableLevels; // לבורר הרמות
+      snapLevelToLadder(topic);
     }
     if (res && res.levelCounts && Object.keys(res.levelCounts).length) {
       topic.levelCounts = res.levelCounts; // כמה שאלות בכל רמה — למד השאלות
@@ -1837,16 +1872,14 @@ async function main() {
   /** מציג את דירוג הקושי של השאלה ככוכבים (1–10) עם חלונית הסבר. */
   function renderDifficulty(diff) {
     if (!u.difficultyPill) return;
-    const d = clamp(Math.round(diff || 1), 1, 10);
-    const locked = !!getCurrentTopic()?.levelLocked;
+    const topic = getCurrentTopic();
+    const n = levelTotal(topic);
+    const pos = clamp(levelPos(topic, Math.round(diff || 1)), 1, n);
+    const locked = !!topic?.levelLocked;
     u.difficultyPill.title = locked
-      ? `רמה נעולה: ${d} מתוך 10. לחצו לשינוי או לחזרה לאוטומטי.`
-      : `רמת קושי: ${d} מתוך 10. לחצו לבחירת רמה קבועה.`;
-    // המקסימום הוא הרמה הגבוהה של הנושא, לא 10: "⭐ 3/10" גרם לרמה 3 מתוך 3
-    // להיראות כמו שליש מהדרך.
-    const lvls = getCurrentTopic()?.availableLevels;
-    const top = Array.isArray(lvls) && lvls.length ? lvls[lvls.length - 1] : 10;
-    u.difficultyPill.innerHTML = `⭐ ${d}<span class="diffMax">/${top}</span>`;
+      ? `רמה נעולה: ${pos} מתוך ${n}. לחצו לשינוי או לחזרה לאוטומטי.`
+      : `רמת קושי: ${pos} מתוך ${n}. לחצו לבחירת רמה קבועה.`;
+    u.difficultyPill.innerHTML = `⭐ ${pos}<span class="diffMax">/${n}</span>`;
     u.difficultyPill.classList.toggle("pill--locked", locked);
   }
 
@@ -1857,23 +1890,21 @@ async function main() {
     const cur = topic?.level ?? 1;
     const locked = !!topic?.levelLocked;
     u.levelPicker.innerHTML = "";
-    // רק רמות שקיימות בפועל לנושא (אם ידוע); אחרת 1–10
-    const levels =
-      Array.isArray(topic?.availableLevels) && topic.availableLevels.length
-        ? topic.availableLevels
-        : Array.from({ length: 10 }, (_, i) => i + 1);
+    // הערכים האמיתיים של הנושא; הכיתוב על הכפתור הוא המקום בסולם (1..N)
+    const levels = levelLadder(topic).length
+      ? levelLadder(topic)
+      : Array.from({ length: 10 }, (_, i) => i + 1);
     const title = document.createElement("div");
     title.className = "levelPicker__title";
-    title.textContent = levels.length
-      ? `בחר/י רמה (${levels[0]} = קל, ${levels[levels.length - 1]} = קשה):`
-      : "בחר/י רמה:";
+    title.textContent = `בחר/י רמה (1 = קל, ${levels.length} = קשה):`;
     u.levelPicker.appendChild(title);
-    for (const n of levels) {
+    for (let i = 0; i < levels.length; i++) {
+      const real = levels[i];
       const b = document.createElement("button");
       b.type = "button";
-      b.className = `levelPicker__opt${locked && n === cur ? " levelPicker__opt--active" : ""}`;
-      b.textContent = String(n);
-      b.addEventListener("click", () => pickLevel(n));
+      b.className = `levelPicker__opt${locked && real === cur ? " levelPicker__opt--active" : ""}`;
+      b.textContent = String(i + 1);
+      b.addEventListener("click", () => pickLevel(real));
       u.levelPicker.appendChild(b);
     }
     const auto = document.createElement("button");
@@ -1897,7 +1928,7 @@ async function main() {
       topic.levelLocked = false; // חזרה לאוטומטי — לא משנים את הרמה הנוכחית, רק ממשיכים לטפס
     } else {
       topic.levelLocked = true;
-      topic.level = clamp(n, 1, 10);
+      topic.level = n; // ערך אמיתי מהסולם של הנושא (הכפתור הציג את המקום)
       loadBankProblem(topic, true); // שאלה חדשה ברמה שנבחרה
     }
     toggleLevelPicker(false);
@@ -2042,7 +2073,7 @@ async function main() {
     const unsolvedOnScreen = cp && !cp.solved ? 1 : 0;
     const total = Math.max(N, done + unsolvedOnScreen);
     u.levelMeter.hidden = false;
-    if (u.meterLevel) u.meterLevel.textContent = String(topic.level);
+    if (u.meterLevel) u.meterLevel.textContent = String(levelPos(topic, topic.level));
     if (u.meterDone) u.meterDone.textContent = String(Math.min(done, total));
     if (u.meterTotal) u.meterTotal.textContent = String(total);
     if (u.meterFill) u.meterFill.style.width = `${total ? Math.min(100, Math.round((done / total) * 100)) : 0}%`;
@@ -2076,7 +2107,7 @@ async function main() {
   }
   function showLevelDone() {
     const topic = getCurrentTopic();
-    if (u.doneLevel) u.doneLevel.textContent = String(topic?.level ?? 1);
+    if (u.doneLevel) u.doneLevel.textContent = String(levelPos(topic, topic?.level ?? 1));
     // כפתור "לרמה הבאה" מוצג רק אם יש רמה גבוהה יותר זמינה
     const higher = (topic?.availableLevels || []).filter((l) => l > (topic?.level ?? 1));
     if (u.levelNextBtn) u.levelNextBtn.hidden = higher.length === 0;
@@ -2773,6 +2804,7 @@ async function main() {
           topic.levelCounts = res.levelCounts;
           if (Array.isArray(res.availableLevels) && res.availableLevels.length) {
             topic.availableLevels = res.availableLevels;
+            snapLevelToLadder(topic);
           }
           ensureMeter(topic);
           saveAll();
