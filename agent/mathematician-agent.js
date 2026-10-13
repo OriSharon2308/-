@@ -4,6 +4,7 @@
 // עדיפות: מאגר (חינם, מיידי) → מחולל אלגוריתמי → AI (ושומר למאגר לתלמידים הבאים).
 
 const llm = require("../lib/llm");
+const packs = require("../lib/question-packs");
 const bank = require("../lib/bank");
 const { CURRICULUM, gradeToNum, findLeaf } = require("../lib/curriculum");
 const { GENERATORS, uid } = require("../lib/generators");
@@ -112,6 +113,15 @@ async function mathematicianCreate(payload = {}) {
   const entry = topicEntry(gradeNum, topic);
   const hasGen = !!(entry && entry.gen && GENERATORS[entry.gen]);
   const repeatable = !!(entry && entry.repeatable); // נושא שמותר לחזור עליו (למשל ציור צורות)
+
+  // 0) חבילת שאלות-חשיבה — תוכן כתוב-ביד ברמות הגבוהות (אסטרטגיה, היפוך,
+  //    ביקורת). משולבת ולא דורסת: אחת מכל שלוש בערך, ורק מרמה 3 ומעלה,
+  //    כדי שהילד יפגוש חשיבה בתוך הרצף הרגיל ולא כ"נושא" נפרד.
+  //    מחיקת הקובץ ב-question-packs/ מסירה את זה מיד.
+  if (level >= 3 && Math.random() < 0.34) {
+    const packQ = packs.pick(gradeNum, topic, level, payload.excludeIds || []);
+    if (packQ) return { problem: packQ, mode: "pack", topic, gradeNum, repeatable };
+  }
 
   // 1) מהמאגר — חינם ומיידי. excludeIds = שאלות שהתלמיד כבר קיבל (לא חוזרות).
   const fromBank = bank.getQuestion(gradeNum, topic, level, payload.excludeIds || [], exact);
