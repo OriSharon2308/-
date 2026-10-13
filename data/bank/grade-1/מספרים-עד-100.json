@@ -4,1954 +4,2254 @@
   "topic": "מספרים עד 100",
   "questions": [
     {
-      "id": "q-366aa4a55b",
-      "text": "מה המספר שבא אחרי 83?",
-      "answer": 84,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 83 בא 84."
-      ],
-      "explanation": "אחרי 83 בא 84.",
-      "source": "algo"
-    },
-    {
-      "id": "q-863012a5a2",
-      "text": "מה המספר שבא לפני 13?",
-      "answer": 12,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 13 בא 12."
-      ],
-      "explanation": "לפני 13 בא 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3975957bf3",
-      "text": "מה המספר שבא אחרי 99?",
-      "answer": 100,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 99 בא 100."
-      ],
-      "explanation": "אחרי 99 בא 100.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9a5227d80e",
-      "text": "מה המספר שבא לפני 56?",
-      "answer": 55,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 56 בא 55."
-      ],
-      "explanation": "לפני 56 בא 55.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0de896fded",
-      "text": "מה המספר שבא לפני 52?",
-      "answer": 51,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 52 בא 51."
-      ],
-      "explanation": "לפני 52 בא 51.",
-      "source": "algo"
-    },
-    {
-      "id": "q-291d204d91",
-      "text": "איזה מספר נמצא בין 81 ל-83?",
-      "answer": 82,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 81 ל-83 יש את 82."
-      ],
-      "explanation": "בין 81 ל-83 נמצא 82.",
-      "source": "algo"
-    },
-    {
-      "id": "q-303c6de28f",
-      "text": "איזה מספר נמצא בין 96 ל-98?",
-      "answer": 97,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 96 ל-98 יש את 97."
-      ],
-      "explanation": "בין 96 ל-98 נמצא 97.",
-      "source": "algo"
-    },
-    {
-      "id": "q-60e76526b1",
-      "text": "מה המספר שבא לפני 17?",
-      "answer": 16,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 17 בא 16."
-      ],
-      "explanation": "לפני 17 בא 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-275e5c6730",
-      "text": "מה המספר שבא לפני 50?",
-      "answer": 49,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 50 בא 49."
-      ],
-      "explanation": "לפני 50 בא 49.",
-      "source": "algo"
-    },
-    {
-      "id": "q-dbc40f267d",
-      "text": "איזה מספר נמצא בין 17 ל-19?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 17 ל-19 יש את 18."
-      ],
-      "explanation": "בין 17 ל-19 נמצא 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b5fbbdd759",
-      "text": "מה המספר שבא אחרי 46?",
-      "answer": 47,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 46 בא 47."
-      ],
-      "explanation": "אחרי 46 בא 47.",
-      "source": "algo"
-    },
-    {
-      "id": "q-52c88080d5",
-      "text": "מה המספר שבא אחרי 63?",
-      "answer": 64,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 63 בא 64."
-      ],
-      "explanation": "אחרי 63 בא 64.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e8a95ec2cc",
-      "text": "איזה מספר נמצא בין 5 ל-7?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 5 ל-7 יש את 6."
-      ],
-      "explanation": "בין 5 ל-7 נמצא 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-de8117d304",
-      "text": "מה המספר שבא לפני 77?",
-      "answer": 76,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 77 בא 76."
-      ],
-      "explanation": "לפני 77 בא 76.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f5662848c7",
-      "text": "איזה מספר נמצא בין 20 ל-22?",
-      "answer": 21,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 20 ל-22 יש את 21."
-      ],
-      "explanation": "בין 20 ל-22 נמצא 21.",
-      "source": "algo"
-    },
-    {
-      "id": "q-691c09107b",
-      "text": "איזה מספר נמצא בין 57 ל-59?",
-      "answer": 58,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 57 ל-59 יש את 58."
-      ],
-      "explanation": "בין 57 ל-59 נמצא 58.",
-      "source": "algo"
-    },
-    {
-      "id": "q-67d48666e4",
-      "text": "מה המספר שבא לפני 48?",
-      "answer": 47,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 48 בא 47."
-      ],
-      "explanation": "לפני 48 בא 47.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d04402ed93",
-      "text": "מה המספר שבא לפני 7?",
-      "answer": 6,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 7 בא 6."
-      ],
-      "explanation": "לפני 7 בא 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-73c079dec6",
-      "text": "מה המספר שבא לפני 83?",
-      "answer": 82,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 83 בא 82."
-      ],
-      "explanation": "לפני 83 בא 82.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1a60d8b306",
-      "text": "איזה מספר נמצא בין 8 ל-10?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 8 ל-10 יש את 9."
-      ],
-      "explanation": "בין 8 ל-10 נמצא 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-94c6b843f3",
-      "text": "מה המספר שבא לפני 86?",
-      "answer": 85,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 86 בא 85."
-      ],
-      "explanation": "לפני 86 בא 85.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ff0f25a1f9",
-      "text": "איזה מספר נמצא בין 52 ל-54?",
-      "answer": 53,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 52 ל-54 יש את 53."
-      ],
-      "explanation": "בין 52 ל-54 נמצא 53.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ae12dbac57",
-      "text": "מה המספר שבא אחרי 95?",
-      "answer": 96,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 95 בא 96."
-      ],
-      "explanation": "אחרי 95 בא 96.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d945f8d1dc",
-      "text": "מה המספר שבא לפני 41?",
-      "answer": 40,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 41 בא 40."
-      ],
-      "explanation": "לפני 41 בא 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1076e9d730",
-      "text": "מה המספר שבא לפני 80?",
-      "answer": 79,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 80 בא 79."
-      ],
-      "explanation": "לפני 80 בא 79.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8555bfd54e",
-      "text": "איזה מספר נמצא בין 42 ל-44?",
-      "answer": 43,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 42 ל-44 יש את 43."
-      ],
-      "explanation": "בין 42 ל-44 נמצא 43.",
-      "source": "algo"
-    },
-    {
-      "id": "q-977ff9f0f6",
-      "text": "מה המספר שבא אחרי 25?",
-      "answer": 26,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 25 בא 26."
-      ],
-      "explanation": "אחרי 25 בא 26.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4a3465af39",
-      "text": "מה המספר שבא לפני 70?",
-      "answer": 69,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 70 בא 69."
-      ],
-      "explanation": "לפני 70 בא 69.",
-      "source": "algo"
-    },
-    {
-      "id": "q-936814b65b",
-      "text": "איזה מספר נמצא בין 90 ל-92?",
-      "answer": 91,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 90 ל-92 יש את 91."
-      ],
-      "explanation": "בין 90 ל-92 נמצא 91.",
-      "source": "algo"
-    },
-    {
-      "id": "q-65bf3c26b0",
-      "text": "איזה מספר נמצא בין 58 ל-60?",
-      "answer": 59,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 58 ל-60 יש את 59."
-      ],
-      "explanation": "בין 58 ל-60 נמצא 59.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fb72051d88",
-      "text": "איזה מספר נמצא בין 94 ל-96?",
-      "answer": 95,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 94 ל-96 יש את 95."
-      ],
-      "explanation": "בין 94 ל-96 נמצא 95.",
-      "source": "algo"
-    },
-    {
-      "id": "q-89dd2966ed",
-      "text": "איזה מספר נמצא בין 87 ל-89?",
-      "answer": 88,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 87 ל-89 יש את 88."
-      ],
-      "explanation": "בין 87 ל-89 נמצא 88.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bc46e17a25",
-      "text": "מה המספר שבא אחרי 84?",
-      "answer": 85,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 84 בא 85."
-      ],
-      "explanation": "אחרי 84 בא 85.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4538363c64",
-      "text": "מה המספר שבא לפני 49?",
-      "answer": 48,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 49 בא 48."
-      ],
-      "explanation": "לפני 49 בא 48.",
-      "source": "algo"
-    },
-    {
-      "id": "q-807868f6f1",
-      "text": "מה המספר שבא אחרי 18?",
-      "answer": 19,
+      "id": "q-8415f89ae7",
+      "text": "מה המספר שבא אחרי 40?",
+      "answer": 41,
       "level": 1,
       "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 18 בא 19."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 18 בא 19.",
-      "source": "algo"
+      "explanation": "אחרי 40 בא 41.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-a765f86a34",
-      "text": "איזה מספר נמצא בין 62 ל-64?",
-      "answer": 63,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 62 ל-64 יש את 63."
-      ],
-      "explanation": "בין 62 ל-64 נמצא 63.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5cb27c5eb9",
-      "text": "מה המספר שבא אחרי 78?",
-      "answer": 79,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 78 בא 79."
-      ],
-      "explanation": "אחרי 78 בא 79.",
-      "source": "algo"
-    },
-    {
-      "id": "q-59b4a01ada",
-      "text": "מה המספר שבא לפני 36?",
-      "answer": 35,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 36 בא 35."
-      ],
-      "explanation": "לפני 36 בא 35.",
-      "source": "algo"
-    },
-    {
-      "id": "q-65e6a331b3",
-      "text": "איזה מספר נמצא בין 71 ל-73?",
-      "answer": 72,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 71 ל-73 יש את 72."
-      ],
-      "explanation": "בין 71 ל-73 נמצא 72.",
-      "source": "algo"
-    },
-    {
-      "id": "q-054ed838f0",
-      "text": "מה המספר שבא לפני 31?",
-      "answer": 30,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 31 בא 30."
-      ],
-      "explanation": "לפני 31 בא 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6ec7ae239b",
-      "text": "איזה מספר נמצא בין 39 ל-41?",
-      "answer": 40,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 39 ל-41 יש את 40."
-      ],
-      "explanation": "בין 39 ל-41 נמצא 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c14c291c3a",
-      "text": "מה המספר שבא אחרי 28?",
-      "answer": 29,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 28 בא 29."
-      ],
-      "explanation": "אחרי 28 בא 29.",
-      "source": "algo"
-    },
-    {
-      "id": "q-476346e4bc",
-      "text": "מה המספר שבא אחרי 7?",
-      "answer": 8,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 7 בא 8."
-      ],
-      "explanation": "אחרי 7 בא 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b46984696b",
-      "text": "מה המספר שבא אחרי 12?",
-      "answer": 13,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 12 בא 13."
-      ],
-      "explanation": "אחרי 12 בא 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5f83a64556",
-      "text": "איזה מספר נמצא בין 31 ל-33?",
-      "answer": 32,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 31 ל-33 יש את 32."
-      ],
-      "explanation": "בין 31 ל-33 נמצא 32.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8fce5ff9e2",
-      "text": "איזה מספר נמצא בין 79 ל-81?",
-      "answer": 80,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 79 ל-81 יש את 80."
-      ],
-      "explanation": "בין 79 ל-81 נמצא 80.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2d484cc3f2",
-      "text": "מה המספר שבא לפני 27?",
-      "answer": 26,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 27 בא 26."
-      ],
-      "explanation": "לפני 27 בא 26.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9644c2b742",
-      "text": "מה המספר שבא אחרי 1?",
-      "answer": 2,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 1 בא 2."
-      ],
-      "explanation": "אחרי 1 בא 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f693cd8af6",
-      "text": "מה המספר שבא אחרי 79?",
-      "answer": 80,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 79 בא 80."
-      ],
-      "explanation": "אחרי 79 בא 80.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d9df7307c3",
-      "text": "מה המספר שבא לפני 35?",
-      "answer": 34,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 35 בא 34."
-      ],
-      "explanation": "לפני 35 בא 34.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8653063548",
-      "text": "מה המספר שבא אחרי 90?",
-      "answer": 91,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 90 בא 91."
-      ],
-      "explanation": "אחרי 90 בא 91.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b68e281402",
-      "text": "מה המספר שבא אחרי 17?",
-      "answer": 18,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 17 בא 18."
-      ],
-      "explanation": "אחרי 17 בא 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ee8c28c1ca",
-      "text": "איזה מספר נמצא בין 85 ל-87?",
-      "answer": 86,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 85 ל-87 יש את 86."
-      ],
-      "explanation": "בין 85 ל-87 נמצא 86.",
-      "source": "algo"
-    },
-    {
-      "id": "q-29bc3c2cfc",
-      "text": "מה המספר שבא אחרי 52?",
-      "answer": 53,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 52 בא 53."
-      ],
-      "explanation": "אחרי 52 בא 53.",
-      "source": "algo"
-    },
-    {
-      "id": "q-49739902b3",
-      "text": "מה המספר שבא אחרי 9?",
-      "answer": 10,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 9 בא 10."
-      ],
-      "explanation": "אחרי 9 בא 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-cf5983b4f4",
-      "text": "איזה מספר נמצא בין 34 ל-36?",
-      "answer": 35,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 34 ל-36 יש את 35."
-      ],
-      "explanation": "בין 34 ל-36 נמצא 35.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5405d460cf",
-      "text": "מה המספר שבא לפני 2?",
-      "answer": 1,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 2 בא 1."
-      ],
-      "explanation": "לפני 2 בא 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-23449805b2",
-      "text": "איזה מספר נמצא בין 12 ל-14?",
-      "answer": 13,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 12 ל-14 יש את 13."
-      ],
-      "explanation": "בין 12 ל-14 נמצא 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ea12c3c26c",
-      "text": "מה המספר שבא אחרי 54?",
-      "answer": 55,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 54 בא 55."
-      ],
-      "explanation": "אחרי 54 בא 55.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f84e37a1a6",
-      "text": "מה המספר שבא לפני 3?",
-      "answer": 2,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 3 בא 2."
-      ],
-      "explanation": "לפני 3 בא 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-db7299188d",
-      "text": "מה המספר שבא אחרי 98?",
-      "answer": 99,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 98 בא 99."
-      ],
-      "explanation": "אחרי 98 בא 99.",
-      "source": "algo"
-    },
-    {
-      "id": "q-caa2372bc7",
-      "text": "מה המספר שבא לפני 76?",
-      "answer": 75,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 76 בא 75."
-      ],
-      "explanation": "לפני 76 בא 75.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3dcd9d56b3",
-      "text": "איזה מספר נמצא בין 82 ל-84?",
-      "answer": 83,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 82 ל-84 יש את 83."
-      ],
-      "explanation": "בין 82 ל-84 נמצא 83.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a6c06d19ef",
-      "text": "מה המספר שבא לפני 19?",
-      "answer": 18,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מורידים 1.",
-        "לפני 19 בא 18."
-      ],
-      "explanation": "לפני 19 בא 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-550810a4b8",
-      "text": "מה המספר שבא אחרי 33?",
-      "answer": 34,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 33 בא 34."
-      ],
-      "explanation": "אחרי 33 בא 34.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8973277388",
-      "text": "מה המספר שבא אחרי 2?",
-      "answer": 3,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 2 בא 3."
-      ],
-      "explanation": "אחרי 2 בא 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-dec964d1ba",
-      "text": "איזה מספר נמצא בין 29 ל-31?",
-      "answer": 30,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 29 ל-31 יש את 30."
-      ],
-      "explanation": "בין 29 ל-31 נמצא 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5e673d44e1",
-      "text": "מה המספר שבא לפני 95?",
+      "id": "q-fd6061a004",
+      "text": "מה המספר שבא אחרי 93?",
       "answer": 94,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 95 בא 94."
-      ],
-      "explanation": "לפני 95 בא 94.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b596a22d7c",
-      "text": "מה המספר שבא לפני 6?",
-      "answer": 5,
       "level": 1,
       "difficulty": 1,
       "hints": [
-        "מורידים 1.",
-        "לפני 6 בא 5."
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "לפני 6 בא 5.",
-      "source": "algo"
+      "explanation": "אחרי 93 בא 94.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-0efdbf66a1",
-      "text": "מה המספר שבא אחרי 41?",
-      "answer": 42,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-c4e652ffa4",
+      "text": "מה המספר שבא אחרי 85?",
+      "answer": 86,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 41 בא 42."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 41 בא 42.",
-      "source": "algo"
+      "explanation": "אחרי 85 בא 86.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-fce0450fe1",
-      "text": "איזה מספר נמצא בין 1 ל-3?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 1 ל-3 יש את 2."
-      ],
-      "explanation": "בין 1 ל-3 נמצא 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-cbdc7437e2",
-      "text": "איזה מספר נמצא בין 49 ל-51?",
-      "answer": 50,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 49 ל-51 יש את 50."
-      ],
-      "explanation": "בין 49 ל-51 נמצא 50.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a623232758",
-      "text": "איזה מספר נמצא בין 61 ל-63?",
-      "answer": 62,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 61 ל-63 יש את 62."
-      ],
-      "explanation": "בין 61 ל-63 נמצא 62.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d8a019c8df",
-      "text": "איזה מספר נמצא בין 4 ל-6?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 4 ל-6 יש את 5."
-      ],
-      "explanation": "בין 4 ל-6 נמצא 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d791569216",
-      "text": "מה המספר שבא אחרי 26?",
-      "answer": 27,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-797f208c1b",
+      "text": "מה המספר שבא אחרי 27?",
+      "answer": 28,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 26 בא 27."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 26 בא 27.",
-      "source": "algo"
+      "explanation": "אחרי 27 בא 28.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-28013b5f8e",
-      "text": "מה המספר שבא אחרי 70?",
-      "answer": 71,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 70 בא 71."
-      ],
-      "explanation": "אחרי 70 בא 71.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a9ebd06913",
-      "text": "מה המספר שבא אחרי 92?",
-      "answer": 93,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 92 בא 93."
-      ],
-      "explanation": "אחרי 92 בא 93.",
-      "source": "algo"
-    },
-    {
-      "id": "q-846b5432f0",
-      "text": "איזה מספר נמצא בין 54 ל-56?",
-      "answer": 55,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 54 ל-56 יש את 55."
-      ],
-      "explanation": "בין 54 ל-56 נמצא 55.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c3d979e3b0",
-      "text": "איזה מספר נמצא בין 70 ל-72?",
-      "answer": 71,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 70 ל-72 יש את 71."
-      ],
-      "explanation": "בין 70 ל-72 נמצא 71.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a42a79b3ae",
-      "text": "איזה מספר נמצא בין 47 ל-49?",
-      "answer": 48,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 47 ל-49 יש את 48."
-      ],
-      "explanation": "בין 47 ל-49 נמצא 48.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e420b362f5",
-      "text": "איזה מספר נמצא בין 88 ל-90?",
-      "answer": 89,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 88 ל-90 יש את 89."
-      ],
-      "explanation": "בין 88 ל-90 נמצא 89.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4c83a1dc4c",
+      "id": "q-e033403d61",
       "text": "מה המספר שבא אחרי 6?",
       "answer": 7,
       "level": 1,
       "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 6 בא 7."
+        "זה המספר הבא כשסופרים קדימה."
       ],
       "explanation": "אחרי 6 בא 7.",
-      "source": "algo"
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-6f36c16c9a",
-      "text": "איזה מספר נמצא בין 93 ל-95?",
-      "answer": 94,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 93 ל-95 יש את 94."
-      ],
-      "explanation": "בין 93 ל-95 נמצא 94.",
-      "source": "algo"
-    },
-    {
-      "id": "q-29b51f6b91",
-      "text": "מה המספר שבא אחרי 43?",
-      "answer": 44,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-c2197b722c",
+      "text": "מה המספר שבא אחרי 60?",
+      "answer": 61,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 43 בא 44."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 43 בא 44.",
-      "source": "algo"
+      "explanation": "אחרי 60 בא 61.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-5452cd5cc2",
-      "text": "מה המספר שבא אחרי 61?",
-      "answer": 62,
-      "level": 3,
-      "difficulty": 3,
+      "id": "q-636c0c56ee",
+      "text": "מה המספר שבא אחרי 10?",
+      "answer": 11,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 61 בא 62."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 61 בא 62.",
-      "source": "algo"
+      "explanation": "אחרי 10 בא 11.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-192da247bc",
-      "text": "איזה מספר נמצא בין 28 ל-30?",
-      "answer": 29,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 28 ל-30 יש את 29."
-      ],
-      "explanation": "בין 28 ל-30 נמצא 29.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e007e023db",
-      "text": "מה המספר שבא אחרי 93?",
-      "answer": 94,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 93 בא 94."
-      ],
-      "explanation": "אחרי 93 בא 94.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f2583297a6",
+      "id": "q-ada4c3bdfd",
       "text": "מה המספר שבא אחרי 53?",
       "answer": 54,
-      "level": 3,
-      "difficulty": 3,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 53 בא 54."
+        "זה המספר הבא כשסופרים קדימה."
       ],
       "explanation": "אחרי 53 בא 54.",
-      "source": "algo"
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-25e6c8e894",
-      "text": "מה המספר שבא לפני 29?",
-      "answer": 28,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 29 בא 28."
-      ],
-      "explanation": "לפני 29 בא 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-531e56430a",
-      "text": "מה המספר שבא לפני 67?",
-      "answer": 66,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 67 בא 66."
-      ],
-      "explanation": "לפני 67 בא 66.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ff91e146e3",
-      "text": "איזה מספר נמצא בין 63 ל-65?",
-      "answer": 64,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 63 ל-65 יש את 64."
-      ],
-      "explanation": "בין 63 ל-65 נמצא 64.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2c6ec0ab43",
-      "text": "איזה מספר נמצא בין 65 ל-67?",
-      "answer": 66,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 65 ל-67 יש את 66."
-      ],
-      "explanation": "בין 65 ל-67 נמצא 66.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9b7c657a88",
-      "text": "מה המספר שבא אחרי 86?",
-      "answer": 87,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 86 בא 87."
-      ],
-      "explanation": "אחרי 86 בא 87.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7f9b1f87f2",
-      "text": "מה המספר שבא אחרי 31?",
-      "answer": 32,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 31 בא 32."
-      ],
-      "explanation": "אחרי 31 בא 32.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6bff32e2b4",
-      "text": "איזה מספר נמצא בין 95 ל-97?",
-      "answer": 96,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 95 ל-97 יש את 96."
-      ],
-      "explanation": "בין 95 ל-97 נמצא 96.",
-      "source": "algo"
-    },
-    {
-      "id": "q-60b0681e7b",
-      "text": "מה המספר שבא לפני 91?",
-      "answer": 90,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 91 בא 90."
-      ],
-      "explanation": "לפני 91 בא 90.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1c61a750a2",
-      "text": "איזה מספר נמצא בין 92 ל-94?",
-      "answer": 93,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 92 ל-94 יש את 93."
-      ],
-      "explanation": "בין 92 ל-94 נמצא 93.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8eb63c978c",
-      "text": "מה המספר שבא לפני 81?",
-      "answer": 80,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 81 בא 80."
-      ],
-      "explanation": "לפני 81 בא 80.",
-      "source": "algo"
-    },
-    {
-      "id": "q-abfa7cdf8d",
-      "text": "מה המספר שבא אחרי 55?",
-      "answer": 56,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 55 בא 56."
-      ],
-      "explanation": "אחרי 55 בא 56.",
-      "source": "algo"
-    },
-    {
-      "id": "q-840a0b7733",
-      "text": "איזה מספר נמצא בין 67 ל-69?",
-      "answer": 68,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 67 ל-69 יש את 68."
-      ],
-      "explanation": "בין 67 ל-69 נמצא 68.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4396b822e6",
-      "text": "מה המספר שבא אחרי 30?",
-      "answer": 31,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 30 בא 31."
-      ],
-      "explanation": "אחרי 30 בא 31.",
-      "source": "algo"
-    },
-    {
-      "id": "q-44264ff8dd",
-      "text": "מה המספר שבא אחרי 85?",
-      "answer": 86,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 85 בא 86."
-      ],
-      "explanation": "אחרי 85 בא 86.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b7979dfa3b",
-      "text": "מה המספר שבא לפני 75?",
-      "answer": 74,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 75 בא 74."
-      ],
-      "explanation": "לפני 75 בא 74.",
-      "source": "algo"
-    },
-    {
-      "id": "q-720dd07eb9",
-      "text": "איזה מספר נמצא בין 38 ל-40?",
-      "answer": 39,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 38 ל-40 יש את 39."
-      ],
-      "explanation": "בין 38 ל-40 נמצא 39.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fc82755d27",
-      "text": "מה המספר שבא אחרי 87?",
-      "answer": 88,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 87 בא 88."
-      ],
-      "explanation": "אחרי 87 בא 88.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d287ee7b69",
-      "text": "איזה מספר נמצא בין 56 ל-58?",
-      "answer": 57,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 56 ל-58 יש את 57."
-      ],
-      "explanation": "בין 56 ל-58 נמצא 57.",
-      "source": "algo"
-    },
-    {
-      "id": "q-cb5ecea589",
-      "text": "מה המספר שבא אחרי 24?",
-      "answer": 25,
+      "id": "q-dbeb04b490",
+      "text": "מה המספר שבא אחרי 82?",
+      "answer": 83,
       "level": 1,
       "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 24 בא 25."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 24 בא 25.",
-      "source": "algo"
+      "explanation": "אחרי 82 בא 83.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-52fa3322a3",
-      "text": "מה המספר שבא לפני 78?",
-      "answer": 77,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 78 בא 77."
-      ],
-      "explanation": "לפני 78 בא 77.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d9d039fe46",
-      "text": "מה המספר שבא לפני 59?",
-      "answer": 58,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 59 בא 58."
-      ],
-      "explanation": "לפני 59 בא 58.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3a6ff9c1d6",
-      "text": "איזה מספר נמצא בין 32 ל-34?",
-      "answer": 33,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "המספר באמצע.",
-        "בין 32 ל-34 יש את 33."
-      ],
-      "explanation": "בין 32 ל-34 נמצא 33.",
-      "source": "algo"
-    },
-    {
-      "id": "q-28ba0eb8e7",
-      "text": "מה המספר שבא לפני 28?",
-      "answer": 27,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מורידים 1.",
-        "לפני 28 בא 27."
-      ],
-      "explanation": "לפני 28 בא 27.",
-      "source": "algo"
-    },
-    {
-      "id": "q-adc0d21054",
-      "text": "מה המספר שבא לפני 8?",
-      "answer": 7,
+      "id": "q-0753ab7ec0",
+      "text": "מה המספר שבא אחרי 3?",
+      "answer": 4,
       "level": 1,
       "difficulty": 1,
       "hints": [
-        "מורידים 1.",
-        "לפני 8 בא 7."
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "לפני 8 בא 7.",
-      "source": "algo"
+      "explanation": "אחרי 3 בא 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-f5d96ffbb9",
-      "text": "איזה מספר נמצא בין 0 ל-2?",
-      "answer": 1,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 0 ל-2 יש את 1."
-      ],
-      "explanation": "בין 0 ל-2 נמצא 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7e8ee27f8f",
-      "text": "מה המספר שבא לפני 24?",
-      "answer": 23,
+      "id": "q-2ffea677b0",
+      "text": "מה המספר שבא אחרי 83?",
+      "answer": 84,
       "level": 1,
       "difficulty": 1,
       "hints": [
-        "מורידים 1.",
-        "לפני 24 בא 23."
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "לפני 24 בא 23.",
-      "source": "algo"
+      "explanation": "אחרי 83 בא 84.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-3528b8222e",
-      "text": "איזה מספר נמצא בין 51 ל-53?",
-      "answer": 52,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 51 ל-53 יש את 52."
-      ],
-      "explanation": "בין 51 ל-53 נמצא 52.",
-      "source": "algo"
-    },
-    {
-      "id": "q-44792ac61f",
-      "text": "איזה מספר נמצא בין 11 ל-13?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 11 ל-13 יש את 12."
-      ],
-      "explanation": "בין 11 ל-13 נמצא 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7543c11233",
-      "text": "איזה מספר נמצא בין 22 ל-24?",
-      "answer": 23,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "המספר באמצע.",
-        "בין 22 ל-24 יש את 23."
-      ],
-      "explanation": "בין 22 ל-24 נמצא 23.",
-      "source": "algo"
-    },
-    {
-      "id": "q-565bf68f3f",
-      "text": "מה המספר שבא לפני 96?",
-      "answer": 95,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 96 בא 95."
-      ],
-      "explanation": "לפני 96 בא 95.",
-      "source": "algo"
-    },
-    {
-      "id": "q-45775de60c",
-      "text": "מה המספר שבא לפני 74?",
-      "answer": 73,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 74 בא 73."
-      ],
-      "explanation": "לפני 74 בא 73.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a3fde799aa",
+      "id": "q-e55f8c9a1b",
       "text": "מה המספר שבא אחרי 44?",
       "answer": 45,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 44 בא 45."
-      ],
-      "explanation": "אחרי 44 בא 45.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1bacd694c5",
-      "text": "מה המספר שבא אחרי 64?",
-      "answer": 65,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 64 בא 65."
-      ],
-      "explanation": "אחרי 64 בא 65.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9c06b6d00c",
-      "text": "איזה מספר נמצא בין 69 ל-71?",
-      "answer": 70,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "המספר באמצע.",
-        "בין 69 ל-71 יש את 70."
-      ],
-      "explanation": "בין 69 ל-71 נמצא 70.",
-      "source": "algo"
-    },
-    {
-      "id": "q-816c3c4a86",
-      "text": "מה המספר שבא לפני 20?",
-      "answer": 19,
       "level": 1,
       "difficulty": 1,
       "hints": [
-        "מורידים 1.",
-        "לפני 20 בא 19."
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "לפני 20 בא 19.",
-      "source": "algo"
+      "explanation": "אחרי 44 בא 45.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-5e51e1d515",
-      "text": "איזה מספר נמצא בין 55 ל-57?",
-      "answer": 56,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-122658e6c0",
+      "text": "מה המספר שבא אחרי 72?",
+      "answer": 73,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "המספר באמצע.",
-        "בין 55 ל-57 יש את 56."
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "בין 55 ל-57 נמצא 56.",
-      "source": "algo"
+      "explanation": "אחרי 72 בא 73.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-bbfb00bc5d",
+      "id": "q-903d2bfc2e",
+      "text": "מה המספר שבא אחרי 65?",
+      "answer": 66,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 65 בא 66.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ead3b02ca7",
+      "text": "מה המספר שבא אחרי 54?",
+      "answer": 55,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 54 בא 55.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6db1b2817a",
+      "text": "מה המספר שבא אחרי 51?",
+      "answer": 52,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 51 בא 52.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-4cbf471d3a",
+      "text": "מה המספר שבא אחרי 39?",
+      "answer": 40,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 39 בא 40.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-50a5c43be7",
+      "text": "מה המספר שבא אחרי 86?",
+      "answer": 87,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 86 בא 87.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-580e580493",
+      "text": "מה המספר שבא אחרי 28?",
+      "answer": 29,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 28 בא 29.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5878e792b0",
+      "text": "מה המספר שבא אחרי 55?",
+      "answer": 56,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 55 בא 56.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9cf2fb4958",
+      "text": "מה המספר שבא אחרי 76?",
+      "answer": 77,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 76 בא 77.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d9f5a29e62",
+      "text": "מה המספר שבא אחרי 59?",
+      "answer": 60,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 59 בא 60.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ad4753a933",
+      "text": "מה המספר שבא אחרי 42?",
+      "answer": 43,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 42 בא 43.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-f43c35ce72",
+      "text": "מה המספר שבא אחרי 68?",
+      "answer": 69,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 68 בא 69.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cc46709577",
+      "text": "מה המספר שבא אחרי 63?",
+      "answer": 64,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 63 בא 64.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ba8d647a03",
+      "text": "מה המספר שבא אחרי 87?",
+      "answer": 88,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 87 בא 88.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a51dcd982f",
       "text": "מה המספר שבא אחרי 11?",
       "answer": 12,
       "level": 1,
       "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 11 בא 12."
+        "זה המספר הבא כשסופרים קדימה."
       ],
       "explanation": "אחרי 11 בא 12.",
-      "source": "algo"
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-ecd65415be",
-      "text": "מה המספר שבא לפני 71?",
-      "answer": 70,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מורידים 1.",
-        "לפני 71 בא 70."
-      ],
-      "explanation": "לפני 71 בא 70.",
-      "source": "algo"
-    },
-    {
-      "id": "q-239af30e08",
-      "text": "מה המספר שבא לפני 10?",
-      "answer": 9,
+      "id": "q-51c6b3cfeb",
+      "text": "מה המספר שבא אחרי 9?",
+      "answer": 10,
       "level": 1,
       "difficulty": 1,
       "hints": [
-        "מורידים 1.",
-        "לפני 10 בא 9."
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "לפני 10 בא 9.",
-      "source": "algo"
+      "explanation": "אחרי 9 בא 10.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-f01e226ff1",
-      "text": "מה המספר שבא אחרי 94?",
-      "answer": 95,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-e3abc8c785",
+      "text": "מה המספר שבא אחרי 56?",
+      "answer": 57,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 94 בא 95."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 94 בא 95.",
-      "source": "algo"
+      "explanation": "אחרי 56 בא 57.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-38ac01cba0",
-      "text": "מה המספר שבא אחרי 36?",
-      "answer": 37,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-ecda7c7357",
+      "text": "מה המספר שבא אחרי 84?",
+      "answer": 85,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 36 בא 37."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 36 בא 37.",
-      "source": "algo"
+      "explanation": "אחרי 84 בא 85.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-7764a28352",
-      "text": "איזה מספר נמצא בין 33 ל-35?",
-      "answer": 34,
-      "level": 3,
-      "difficulty": 3,
+      "id": "q-a83f93e245",
+      "text": "מה המספר שבא אחרי 25?",
+      "answer": 26,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "המספר באמצע.",
-        "בין 33 ל-35 יש את 34."
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "בין 33 ל-35 נמצא 34.",
-      "source": "algo"
+      "explanation": "אחרי 25 בא 26.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-607149353c",
+      "id": "q-86e12c09b2",
+      "text": "מה המספר שבא אחרי 88?",
+      "answer": 89,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 88 בא 89.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6905f91cdf",
+      "text": "מה המספר שבא אחרי 74?",
+      "answer": 75,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 74 בא 75.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2a2675c956",
+      "text": "מה המספר שבא אחרי 77?",
+      "answer": 78,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 77 בא 78.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2fae91c78d",
+      "text": "מה המספר שבא אחרי 37?",
+      "answer": 38,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 37 בא 38.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cba4afd91d",
+      "text": "מה המספר שבא אחרי 79?",
+      "answer": 80,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 79 בא 80.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d9e33c0cd9",
+      "text": "מה המספר שבא אחרי 16?",
+      "answer": 17,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 16 בא 17.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-898b5df8bd",
+      "text": "מה המספר שבא אחרי 23?",
+      "answer": 24,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 23 בא 24.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-fffcd263d8",
       "text": "מה המספר שבא אחרי 34?",
       "answer": 35,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 34 בא 35."
-      ],
-      "explanation": "אחרי 34 בא 35.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3914ff3858",
-      "text": "מה המספר שבא אחרי 20?",
-      "answer": 21,
       "level": 1,
       "difficulty": 1,
       "hints": [
         "מוסיפים 1.",
-        "אחרי 20 בא 21."
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "אחרי 20 בא 21.",
-      "source": "algo"
+      "explanation": "אחרי 34 בא 35.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-398fe81c20",
-      "text": "איזה מספר נמצא בין 37 ל-39?",
-      "answer": 38,
-      "level": 3,
-      "difficulty": 3,
+      "id": "q-be0f413a92",
+      "text": "מה המספר שבא אחרי 21?",
+      "answer": 22,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "המספר באמצע.",
-        "בין 37 ל-39 יש את 38."
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
       ],
-      "explanation": "בין 37 ל-39 נמצא 38.",
-      "source": "algo"
+      "explanation": "אחרי 21 בא 22.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-910fdb6978",
+      "id": "q-882a045185",
+      "text": "מה המספר שבא אחרי 7?",
+      "answer": 8,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 7 בא 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0224765b88",
+      "text": "מה המספר שבא אחרי 61?",
+      "answer": 62,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 61 בא 62.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6cc331d8fb",
+      "text": "מה המספר שבא אחרי 94?",
+      "answer": 95,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 94 בא 95.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9ff3a08563",
+      "text": "מה המספר שבא אחרי 41?",
+      "answer": 42,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 41 בא 42.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-11690c7803",
+      "text": "מה המספר שבא אחרי 5?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 5 בא 6.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cd956ac71a",
+      "text": "מה המספר שבא אחרי 48?",
+      "answer": 49,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 48 בא 49.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-11fc8c0734",
+      "text": "מה המספר שבא אחרי 75?",
+      "answer": 76,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 75 בא 76.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d805d6a333",
+      "text": "מה המספר שבא אחרי 62?",
+      "answer": 63,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 62 בא 63.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-58ca374bf5",
+      "text": "מה המספר שבא אחרי 24?",
+      "answer": 25,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 24 בא 25.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5bf258655c",
+      "text": "מה המספר שבא אחרי 18?",
+      "answer": 19,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מוסיפים 1.",
+        "זה המספר הבא כשסופרים קדימה."
+      ],
+      "explanation": "אחרי 18 בא 19.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ce05fa4855",
+      "text": "מה המספר שבא לפני 31?",
+      "answer": 30,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 31 בא 30.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-044cdaf870",
+      "text": "מה המספר שבא לפני 35?",
+      "answer": 34,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 35 בא 34.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-231cd5fecc",
+      "text": "מה המספר שבא לפני 56?",
+      "answer": 55,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 56 בא 55.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-50c6111102",
+      "text": "מה המספר שבא לפני 49?",
+      "answer": 48,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 49 בא 48.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d95786b2c7",
+      "text": "מה המספר שבא לפני 73?",
+      "answer": 72,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 73 בא 72.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-4c3a42ed11",
+      "text": "מה המספר שבא לפני 2?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 2 בא 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e47af64c5b",
+      "text": "מה המספר שבא לפני 74?",
+      "answer": 73,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 74 בא 73.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0173a7c125",
+      "text": "מה המספר שבא לפני 18?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 18 בא 17.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-740d3c3f43",
+      "text": "מה המספר שבא לפני 3?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 3 בא 2.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6503fc4610",
+      "text": "מה המספר שבא לפני 80?",
+      "answer": 79,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 80 בא 79.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e56e8b587d",
+      "text": "מה המספר שבא לפני 57?",
+      "answer": 56,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 57 בא 56.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-b7d54cf157",
+      "text": "מה המספר שבא לפני 17?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 17 בא 16.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6e5a1a9849",
+      "text": "מה המספר שבא לפני 67?",
+      "answer": 66,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 67 בא 66.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-7a4a1df374",
+      "text": "מה המספר שבא לפני 23?",
+      "answer": 22,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 23 בא 22.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ea16d6d14e",
+      "text": "מה המספר שבא לפני 9?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 9 בא 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e3dfdd7c8e",
+      "text": "מה המספר שבא לפני 6?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 6 בא 5.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9935c343c8",
+      "text": "מה המספר שבא לפני 24?",
+      "answer": 23,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 24 בא 23.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ecd2930720",
       "text": "מה המספר שבא לפני 89?",
       "answer": 88,
-      "level": 4,
-      "difficulty": 4,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "מורידים 1.",
-        "לפני 89 בא 88."
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
       ],
       "explanation": "לפני 89 בא 88.",
-      "source": "algo"
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-6dc78a2cde",
-      "text": "מה המספר שבא לפני 84?",
-      "answer": 83,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-16bfdbad56",
+      "text": "מה המספר שבא לפני 91?",
+      "answer": 90,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "מורידים 1.",
-        "לפני 84 בא 83."
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
       ],
-      "explanation": "לפני 84 בא 83.",
-      "source": "algo"
+      "explanation": "לפני 91 בא 90.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-4433b930c0",
-      "text": "איזה מספר נמצא בין 75 ל-77?",
-      "answer": 76,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "המספר באמצע.",
-        "בין 75 ל-77 יש את 76."
-      ],
-      "explanation": "בין 75 ל-77 נמצא 76.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c46d2a4b11",
-      "text": "מה המספר שבא לפני 93?",
-      "answer": 92,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מורידים 1.",
-        "לפני 93 בא 92."
-      ],
-      "explanation": "לפני 93 בא 92.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fa25d0e5bb",
-      "text": "מה המספר שבא אחרי 32?",
+      "id": "q-8fc1d251ca",
+      "text": "מה המספר שבא לפני 34?",
       "answer": 33,
       "level": 2,
       "difficulty": 2,
       "hints": [
-        "מוסיפים 1.",
-        "אחרי 32 בא 33."
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
       ],
-      "explanation": "אחרי 32 בא 33.",
-      "source": "algo"
+      "explanation": "לפני 34 בא 33.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-3a3485b7f2",
-      "text": "מה המספר שבא לפני 26?",
-      "answer": 25,
+      "id": "q-3fff30921c",
+      "text": "מה המספר שבא לפני 27?",
+      "answer": 26,
       "level": 2,
       "difficulty": 2,
       "hints": [
         "מורידים 1.",
-        "לפני 26 בא 25."
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
       ],
-      "explanation": "לפני 26 בא 25.",
-      "source": "algo"
+      "explanation": "לפני 27 בא 26.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-8dacc4f233",
-      "text": "מה המספר שבא אחרי 73?",
-      "answer": 74,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מוסיפים 1.",
-        "אחרי 73 בא 74."
-      ],
-      "explanation": "אחרי 73 בא 74.",
-      "source": "algo"
-    },
-    {
-      "id": "q-91ce5b6e0b",
-      "text": "מה המספר שבא לפני 69?",
-      "answer": 68,
-      "level": 3,
-      "difficulty": 3,
+      "id": "q-789ecf82e2",
+      "text": "מה המספר שבא לפני 63?",
+      "answer": 62,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "מורידים 1.",
-        "לפני 69 בא 68."
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
       ],
-      "explanation": "לפני 69 בא 68.",
-      "source": "algo"
+      "explanation": "לפני 63 בא 62.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-ee0bdb763a",
-      "text": "איזה מספר נמצא בין 97 ל-99?",
-      "answer": 98,
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-7f6a706b13",
+      "text": "מה המספר שבא לפני 88?",
+      "answer": 87,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
-        "המספר באמצע.",
-        "בין 97 ל-99 יש את 98."
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
       ],
-      "explanation": "בין 97 ל-99 נמצא 98.",
-      "source": "algo"
+      "explanation": "לפני 88 בא 87.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-ab38b5e277",
-      "text": "איזה מספר נמצא בין 6 ל-8?",
+      "id": "q-3013165eb5",
+      "text": "מה המספר שבא לפני 90?",
+      "answer": 89,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 90 בא 89.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ace794d2cb",
+      "text": "מה המספר שבא לפני 8?",
       "answer": 7,
       "level": 2,
       "difficulty": 2,
       "hints": [
-        "המספר באמצע.",
-        "בין 6 ל-8 יש את 7."
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
       ],
-      "explanation": "בין 6 ל-8 נמצא 7.",
-      "source": "algo"
+      "explanation": "לפני 8 בא 7.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-db0c964f94",
-      "text": "מה המספר שבא אחרי 75?",
-      "answer": 76,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-3ca59b884b",
+      "text": "מה המספר שבא לפני 81?",
+      "answer": 80,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
-        "מוסיפים 1.",
-        "אחרי 75 בא 76."
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
       ],
-      "explanation": "אחרי 75 בא 76.",
-      "source": "algo"
+      "explanation": "לפני 81 בא 80.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-d6833956c0",
-      "text": "מה המספר שבא לפני 68?",
-      "answer": 67,
+      "id": "q-5681d442f3",
+      "text": "מה המספר שבא לפני 100?",
+      "answer": 99,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 100 בא 99.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-26ef82c7cd",
+      "text": "מה המספר שבא לפני 51?",
+      "answer": 50,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 51 בא 50.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-43937215b1",
+      "text": "מה המספר שבא לפני 36?",
+      "answer": 35,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 36 בא 35.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-abcb116c42",
+      "text": "מה המספר שבא לפני 50?",
+      "answer": 49,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 50 בא 49.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-36e80ea606",
+      "text": "מה המספר שבא לפני 62?",
+      "answer": 61,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 62 בא 61.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-11cc8fbb71",
+      "text": "מה המספר שבא לפני 12?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 12 בא 11.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-618ab4cc70",
+      "text": "מה המספר שבא לפני 71?",
+      "answer": 70,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 71 בא 70.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6c08a91485",
+      "text": "מה המספר שבא לפני 96?",
+      "answer": 95,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 96 בא 95.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-eeb459dde1",
+      "text": "מה המספר שבא לפני 53?",
+      "answer": 52,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 53 בא 52.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2c5d41fb61",
+      "text": "מה המספר שבא לפני 14?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 14 בא 13.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-fe9269c384",
+      "text": "מה המספר שבא לפני 83?",
+      "answer": 82,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 83 בא 82.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-4d6407eb71",
+      "text": "מה המספר שבא לפני 61?",
+      "answer": 60,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 61 בא 60.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d858482c84",
+      "text": "מה המספר שבא לפני 59?",
+      "answer": 58,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 59 בא 58.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6fd6642ceb",
+      "text": "מה המספר שבא לפני 92?",
+      "answer": 91,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 92 בא 91.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a68572be9f",
+      "text": "מה המספר שבא לפני 94?",
+      "answer": 93,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 94 בא 93.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a2fcc47907",
+      "text": "מה המספר שבא לפני 87?",
+      "answer": 86,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 87 בא 86.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c10759cdd0",
+      "text": "מה המספר שבא לפני 41?",
+      "answer": 40,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 41 בא 40.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ed42e56048",
+      "text": "מה המספר שבא לפני 54?",
+      "answer": 53,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 54 בא 53.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e26f6bd8cd",
+      "text": "מה המספר שבא לפני 39?",
+      "answer": 38,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 39 בא 38.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9f55a40055",
+      "text": "מה המספר שבא לפני 60?",
+      "answer": 59,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 60 בא 59.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c31a8c1b87",
+      "text": "מה המספר שבא לפני 70?",
+      "answer": 69,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 70 בא 69.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-231fda9a9e",
+      "text": "מה המספר שבא לפני 7?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 7 בא 6.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-dfde608cf9",
+      "text": "מה המספר שבא לפני 98?",
+      "answer": 97,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 98 בא 97.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a0c62cc467",
+      "text": "מה המספר שבא לפני 4?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "מורידים 1.",
+        "זה המספר שאומרים רגע לפני, כשסופרים קדימה."
+      ],
+      "explanation": "לפני 4 בא 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-33bf8f50af",
+      "text": "המשך/המשיכי את הסדרה: 56, 61, 66, ___",
+      "answer": 71,
       "level": 3,
       "difficulty": 3,
       "hints": [
-        "מורידים 1.",
-        "לפני 68 בא 67."
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
       ],
-      "explanation": "לפני 68 בא 67.",
-      "source": "algo"
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 66 בא 71.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-0e2e7cb1a8",
-      "text": "איזה מספר נמצא בין 66 ל-68?",
-      "answer": 67,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-63437a7867",
+      "text": "המשך/המשיכי את הסדרה: 34, 36, 38, ___",
+      "answer": 40,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "המספר באמצע.",
-        "בין 66 ל-68 יש את 67."
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
       ],
-      "explanation": "בין 66 ל-68 נמצא 67.",
-      "source": "algo"
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 38 בא 40.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-7efd3b2c79",
-      "text": "מה המספר שבא לפני 54?",
+      "id": "q-0f082be4c5",
+      "text": "המשך/המשיכי את הסדרה: 9, 19, 29, ___",
+      "answer": 39,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 29 בא 39.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-5f0ba3f34b",
+      "text": "המשך/המשיכי את הסדרה: 12, 22, 32, ___",
+      "answer": 42,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 32 בא 42.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-c1bfc9ae5b",
+      "text": "המשך/המשיכי את הסדרה: 20, 25, 30, ___",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 30 בא 35.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-5bfa8640b6",
+      "text": "המשך/המשיכי את הסדרה: 81, 83, 85, ___",
+      "answer": 87,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 85 בא 87.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-143fdc2bc9",
+      "text": "המשך/המשיכי את הסדרה: 51, 56, 61, ___",
+      "answer": 66,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 61 בא 66.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-472584f0d0",
+      "text": "המשך/המשיכי את הסדרה: 71, 76, 81, ___",
+      "answer": 86,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 81 בא 86.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-b2cf4ad18d",
+      "text": "המשך/המשיכי את הסדרה: 65, 67, 69, ___",
+      "answer": 71,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 69 בא 71.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-3957a3e305",
+      "text": "המשך/המשיכי את הסדרה: 47, 49, 51, ___",
       "answer": 53,
       "level": 3,
       "difficulty": 3,
       "hints": [
-        "מורידים 1.",
-        "לפני 54 בא 53."
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
       ],
-      "explanation": "לפני 54 בא 53.",
-      "source": "algo"
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 51 בא 53.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-7952a5234d",
-      "text": "מה המספר שבא לפני 58?",
+      "id": "q-7cd12af195",
+      "text": "המשך/המשיכי את הסדרה: 39, 44, 49, ___",
+      "answer": 54,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 49 בא 54.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-b805e26670",
+      "text": "המשך/המשיכי את הסדרה: 23, 25, 27, ___",
+      "answer": 29,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 27 בא 29.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-68f107f6a3",
+      "text": "המשך/המשיכי את הסדרה: 23, 33, 43, ___",
+      "answer": 53,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 43 בא 53.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-76ed758f77",
+      "text": "המשך/המשיכי את הסדרה: 21, 23, 25, ___",
+      "answer": 27,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 25 בא 27.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-a60c69cc14",
+      "text": "המשך/המשיכי את הסדרה: 39, 49, 59, ___",
+      "answer": 69,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 59 בא 69.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-1abf858d72",
+      "text": "המשך/המשיכי את הסדרה: 27, 37, 47, ___",
       "answer": 57,
       "level": 3,
       "difficulty": 3,
       "hints": [
-        "מורידים 1.",
-        "לפני 58 בא 57."
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
       ],
-      "explanation": "לפני 58 בא 57.",
-      "source": "algo"
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 47 בא 57.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-d57ed4eb1b",
-      "text": "מה המספר שבא אחרי 15?",
-      "answer": 16,
-      "level": 1,
-      "difficulty": 1,
+      "id": "q-a6b0f18971",
+      "text": "המשך/המשיכי את הסדרה: 31, 36, 41, ___",
+      "answer": 46,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "מוסיפים 1.",
-        "אחרי 15 בא 16."
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
       ],
-      "explanation": "אחרי 15 בא 16.",
-      "source": "algo"
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 41 בא 46.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-c0e474d907",
-      "text": "מה המספר שבא אחרי 22?",
-      "answer": 23,
-      "level": 1,
-      "difficulty": 1,
+      "id": "q-7d6201afd2",
+      "text": "המשך/המשיכי את הסדרה: 85, 87, 89, ___",
+      "answer": 91,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "מוסיפים 1.",
-        "אחרי 22 בא 23."
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
       ],
-      "explanation": "אחרי 22 בא 23.",
-      "source": "algo"
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 89 בא 91.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-869a47e84d",
+      "text": "המשך/המשיכי את הסדרה: 64, 66, 68, ___",
+      "answer": 70,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 68 בא 70.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-9b50f7caa0",
+      "text": "המשך/המשיכי את הסדרה: 60, 65, 70, ___",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 70 בא 75.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-1d6e7e8dd9",
+      "text": "המשך/המשיכי את הסדרה: 6, 16, 26, ___",
+      "answer": 36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 26 בא 36.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-84e3c489ff",
+      "text": "המשך/המשיכי את הסדרה: 20, 30, 40, ___",
+      "answer": 50,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 40 בא 50.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-ffe77eac32",
+      "text": "המשך/המשיכי את הסדרה: 24, 29, 34, ___",
+      "answer": 39,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 34 בא 39.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-a51fdc924d",
+      "text": "המשך/המשיכי את הסדרה: 75, 80, 85, ___",
+      "answer": 90,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 85 בא 90.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-dfb834ce5f",
+      "text": "המשך/המשיכי את הסדרה: 59, 61, 63, ___",
+      "answer": 65,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 63 בא 65.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-4ee71e69d1",
+      "text": "המשך/המשיכי את הסדרה: 73, 78, 83, ___",
+      "answer": 88,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 83 בא 88.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-05804ff2ff",
+      "text": "המשך/המשיכי את הסדרה: 54, 64, 74, ___",
+      "answer": 84,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 74 בא 84.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-f25c1dcc0e",
+      "text": "המשך/המשיכי את הסדרה: 39, 41, 43, ___",
+      "answer": 45,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 43 בא 45.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-b1c4f854bb",
+      "text": "המשך/המשיכי את הסדרה: 10, 15, 20, ___",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 20 בא 25.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-fa48703854",
+      "text": "המשך/המשיכי את הסדרה: 56, 66, 76, ___",
+      "answer": 86,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 76 בא 86.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-449476ab11",
+      "text": "המשך/המשיכי את הסדרה: 67, 69, 71, ___",
+      "answer": 73,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 71 בא 73.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-e47b6e3061",
+      "text": "המשך/המשיכי את הסדרה: 79, 81, 83, ___",
+      "answer": 85,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 83 בא 85.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-2ed6c21846",
+      "text": "המשך/המשיכי את הסדרה: 5, 15, 25, ___",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 25 בא 35.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-6db230f264",
+      "text": "המשך/המשיכי את הסדרה: 74, 76, 78, ___",
+      "answer": 80,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 78 בא 80.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-db6538f5ce",
+      "text": "המשך/המשיכי את הסדרה: 4, 14, 24, ___",
+      "answer": 34,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 24 בא 34.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-f857a44404",
+      "text": "המשך/המשיכי את הסדרה: 14, 24, 34, ___",
+      "answer": 44,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 34 בא 44.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-460263214d",
+      "text": "המשך/המשיכי את הסדרה: 43, 48, 53, ___",
+      "answer": 58,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 53 בא 58.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-a45fcd2d94",
+      "text": "המשך/המשיכי את הסדרה: 31, 41, 51, ___",
+      "answer": 61,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 51 בא 61.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-94fbecc8f9",
+      "text": "המשך/המשיכי את הסדרה: 54, 59, 64, ___",
+      "answer": 69,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 64 בא 69.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-7cc3cbc40e",
+      "text": "המשך/המשיכי את הסדרה: 0, 2, 4, ___",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 4 בא 6.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-b2248d41f7",
+      "text": "המשך/המשיכי את הסדרה: 8, 18, 28, ___",
+      "answer": 38,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 28 בא 38.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-8178833d9c",
+      "text": "המשך/המשיכי את הסדרה: 7, 9, 11, ___",
+      "answer": 13,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 11 בא 13.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-693cad3578",
+      "text": "המשך/המשיכי את הסדרה: 63, 65, 67, ___",
+      "answer": 69,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 67 בא 69.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-c6578c3f14",
+      "text": "המשך/המשיכי את הסדרה: 91, 93, 95, ___",
+      "answer": 97,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 95 בא 97.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-6cc3ea8b42",
+      "text": "המשך/המשיכי את הסדרה: 13, 18, 23, ___",
+      "answer": 28,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 23 בא 28.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-994e283425",
+      "text": "המשך/המשיכי את הסדרה: 57, 62, 67, ___",
+      "answer": 72,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 5."
+      ],
+      "explanation": "בכל צעד מוסיפים 5, ולכן אחרי 67 בא 72.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-b9194735c9",
+      "text": "המשך/המשיכי את הסדרה: 46, 56, 66, ___",
+      "answer": 76,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 66 בא 76.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-07d3913a66",
+      "text": "המשך/המשיכי את הסדרה: 7, 17, 27, ___",
+      "answer": 37,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 27 בא 37.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-6cded0efd4",
+      "text": "המשך/המשיכי את הסדרה: 4, 6, 8, ___",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 2."
+      ],
+      "explanation": "בכל צעד מוסיפים 2, ולכן אחרי 8 בא 10.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-89a08426bb",
+      "text": "המשך/המשיכי את הסדרה: 30, 40, 50, ___",
+      "answer": 60,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "בדוק/בדקי כמה מוסיפים בין שני מספרים שכנים.",
+        "כאן הקפיצה היא 10."
+      ],
+      "explanation": "בכל צעד מוסיפים 10, ולכן אחרי 50 בא 60.",
+      "source": "algo",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     }
   ]
 }

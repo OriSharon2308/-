@@ -4,1953 +4,2153 @@
   "topic": "מעורב עד 100",
   "questions": [
     {
-      "id": "q-243ed4bdc1",
-      "text": "29 + 61 − 79 = ?",
-      "answer": 11,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "29 + 61 = 90, ופחות 79."
-      ],
-      "explanation": "29 + 61 − 79 = 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4ee08b7381",
-      "text": "48 − 10 + 1 = ?",
-      "answer": 39,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "48 − 10 = 38, ועוד 1."
-      ],
-      "explanation": "48 − 10 + 1 = 39.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0e4e7d6719",
-      "text": "66 + 2 − 6 = ?",
-      "answer": 62,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "66 + 2 = 68, ופחות 6."
-      ],
-      "explanation": "66 + 2 − 6 = 62.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0fc67c05fc",
-      "text": "78 − 55 + 55 = ?",
-      "answer": 78,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "78 − 55 = 23, ועוד 55."
-      ],
-      "explanation": "78 − 55 + 55 = 78.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a5aab65633",
-      "text": "77 + 18 − 7 = ?",
-      "answer": 88,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "77 + 18 = 95, ופחות 7."
-      ],
-      "explanation": "77 + 18 − 7 = 88.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d25851ea53",
-      "text": "98 − 53 + 32 = ?",
-      "answer": 77,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "98 − 53 = 45, ועוד 32."
-      ],
-      "explanation": "98 − 53 + 32 = 77.",
-      "source": "algo"
-    },
-    {
-      "id": "q-afefc1feab",
-      "text": "71 − 47 + 68 = ?",
-      "answer": 92,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "71 − 47 = 24, ועוד 68."
-      ],
-      "explanation": "71 − 47 + 68 = 92.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8b03126c32",
-      "text": "87 + 10 = ?",
-      "answer": 97,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות ויחידות.",
-        "87 + 10."
-      ],
-      "explanation": "87 + 10 = 97.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6c8657e00d",
-      "text": "91 − 8 = ?",
-      "answer": 83,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "91 − 8."
-      ],
-      "explanation": "91 − 8 = 83.",
-      "source": "algo"
-    },
-    {
-      "id": "q-51c277c0c1",
-      "text": "70 − 24 = ?",
-      "answer": 46,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "70 − 24."
-      ],
-      "explanation": "70 − 24 = 46.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6e30f15cbf",
-      "text": "15 + 70 − 51 = ?",
-      "answer": 34,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "15 + 70 = 85, ופחות 51."
-      ],
-      "explanation": "15 + 70 − 51 = 34.",
-      "source": "algo"
-    },
-    {
-      "id": "q-99c796ee51",
-      "text": "98 − 11 + 10 = ?",
-      "answer": 97,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "98 − 11 = 87, ועוד 10."
-      ],
-      "explanation": "98 − 11 + 10 = 97.",
-      "source": "algo"
-    },
-    {
-      "id": "q-30de846db4",
-      "text": "76 − 74 + 50 = ?",
-      "answer": 52,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "76 − 74 = 2, ועוד 50."
-      ],
-      "explanation": "76 − 74 + 50 = 52.",
-      "source": "algo"
-    },
-    {
-      "id": "q-06b8576182",
-      "text": "4 + 42 = ?",
-      "answer": 46,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות ויחידות.",
-        "4 + 42."
-      ],
-      "explanation": "4 + 42 = 46.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ea3eab1349",
-      "text": "41 − 20 + 76 = ?",
-      "answer": 97,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "41 − 20 = 21, ועוד 76."
-      ],
-      "explanation": "41 − 20 + 76 = 97.",
-      "source": "algo"
-    },
-    {
-      "id": "q-24b3e4a599",
-      "text": "78 − 25 + 42 = ?",
-      "answer": 95,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "78 − 25 = 53, ועוד 42."
-      ],
-      "explanation": "78 − 25 + 42 = 95.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9e7bec5100",
-      "text": "38 + 51 − 88 = ?",
-      "answer": 1,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "38 + 51 = 89, ופחות 88."
-      ],
-      "explanation": "38 + 51 − 88 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8e56159ba2",
-      "text": "18 + 61 − 72 = ?",
-      "answer": 7,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "18 + 61 = 79, ופחות 72."
-      ],
-      "explanation": "18 + 61 − 72 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d037fa138f",
-      "text": "90 + 9 = ?",
-      "answer": 99,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות ויחידות.",
-        "90 + 9."
-      ],
-      "explanation": "90 + 9 = 99.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9f3557285c",
-      "text": "64 − 22 = ?",
-      "answer": 42,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "64 − 22."
-      ],
-      "explanation": "64 − 22 = 42.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ae342dd8e8",
-      "text": "85 − 24 = ?",
-      "answer": 61,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "85 − 24."
-      ],
-      "explanation": "85 − 24 = 61.",
-      "source": "algo"
-    },
-    {
-      "id": "q-22ea7ec353",
-      "text": "36 − 19 + 82 = ?",
-      "answer": 99,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "36 − 19 = 17, ועוד 82."
-      ],
-      "explanation": "36 − 19 + 82 = 99.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3d5fd1c4ba",
-      "text": "79 − 40 + 33 = ?",
-      "answer": 72,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "79 − 40 = 39, ועוד 33."
-      ],
-      "explanation": "79 − 40 + 33 = 72.",
-      "source": "algo"
-    },
-    {
-      "id": "q-60f5a13619",
-      "text": "39 − 37 + 66 = ?",
-      "answer": 68,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "39 − 37 = 2, ועוד 66."
-      ],
-      "explanation": "39 − 37 + 66 = 68.",
-      "source": "algo"
-    },
-    {
-      "id": "q-26f85f7afc",
-      "text": "88 − 19 + 15 = ?",
-      "answer": 84,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "88 − 19 = 69, ועוד 15."
-      ],
-      "explanation": "88 − 19 + 15 = 84.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f5f7fcd731",
-      "text": "55 − 50 + 7 = ?",
+      "id": "q-e3b5f0fa1e",
+      "text": "68 − 56 = ?",
       "answer": 12,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "55 − 50 = 5, ועוד 7."
-      ],
-      "explanation": "55 − 50 + 7 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d0e94f11ef",
-      "text": "89 + 10 − 57 = ?",
-      "answer": 42,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "89 + 10 = 99, ופחות 57."
-      ],
-      "explanation": "89 + 10 − 57 = 42.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f780947f5f",
-      "text": "65 + 16 − 22 = ?",
-      "answer": 59,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "65 + 16 = 81, ופחות 22."
-      ],
-      "explanation": "65 + 16 − 22 = 59.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c744ea2383",
-      "text": "30 − 28 + 78 = ?",
-      "answer": 80,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "30 − 28 = 2, ועוד 78."
-      ],
-      "explanation": "30 − 28 + 78 = 80.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1bb05fd4e5",
-      "text": "66 − 58 = ?",
-      "answer": 8,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "אפשר לפרק לעשרות.",
-        "66 − 58."
+        "68 − 56."
       ],
-      "explanation": "66 − 58 = 8.",
-      "source": "algo"
+      "explanation": "68 − 56 = 12.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
     },
     {
-      "id": "q-17c26f18fb",
-      "text": "30 + 27 − 26 = ?",
-      "answer": 31,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "30 + 27 = 57, ופחות 26."
-      ],
-      "explanation": "30 + 27 − 26 = 31.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d05d7de135",
-      "text": "11 + 50 − 9 = ?",
-      "answer": 52,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "11 + 50 = 61, ופחות 9."
-      ],
-      "explanation": "11 + 50 − 9 = 52.",
-      "source": "algo"
-    },
-    {
-      "id": "q-de2aede523",
-      "text": "50 + 36 − 39 = ?",
-      "answer": 47,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "50 + 36 = 86, ופחות 39."
-      ],
-      "explanation": "50 + 36 − 39 = 47.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9d34e372f6",
-      "text": "76 + 10 − 62 = ?",
-      "answer": 24,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "76 + 10 = 86, ופחות 62."
-      ],
-      "explanation": "76 + 10 − 62 = 24.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0558fd9528",
-      "text": "34 − 10 + 34 = ?",
-      "answer": 58,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "34 − 10 = 24, ועוד 34."
-      ],
-      "explanation": "34 − 10 + 34 = 58.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c3bc3a6221",
-      "text": "84 + 2 − 39 = ?",
-      "answer": 47,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "84 + 2 = 86, ופחות 39."
-      ],
-      "explanation": "84 + 2 − 39 = 47.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2a08cd2066",
-      "text": "34 − 22 + 24 = ?",
-      "answer": 36,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "34 − 22 = 12, ועוד 24."
-      ],
-      "explanation": "34 − 22 + 24 = 36.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1e4722bb12",
-      "text": "7 + 12 = ?",
-      "answer": 19,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות ויחידות.",
-        "7 + 12."
-      ],
-      "explanation": "7 + 12 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-64b67846c6",
-      "text": "99 − 15 = ?",
-      "answer": 84,
+      "id": "q-cfd763aacc",
+      "text": "10 − 9 = ?",
+      "answer": 1,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "אפשר לפרק לעשרות.",
-        "99 − 15."
+        "10 − 9."
       ],
-      "explanation": "99 − 15 = 84.",
-      "source": "algo"
+      "explanation": "10 − 9 = 1.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
     },
     {
-      "id": "q-41b39b6750",
-      "text": "53 + 2 = ?",
-      "answer": 55,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות ויחידות.",
-        "53 + 2."
-      ],
-      "explanation": "53 + 2 = 55.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a7c33dff9d",
-      "text": "39 + 10 − 24 = ?",
-      "answer": 25,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "39 + 10 = 49, ופחות 24."
-      ],
-      "explanation": "39 + 10 − 24 = 25.",
-      "source": "algo"
-    },
-    {
-      "id": "q-82ae882dde",
-      "text": "80 + 14 − 75 = ?",
-      "answer": 19,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "80 + 14 = 94, ופחות 75."
-      ],
-      "explanation": "80 + 14 − 75 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d8f21558fe",
-      "text": "52 + 44 = ?",
-      "answer": 96,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות ויחידות.",
-        "52 + 44."
-      ],
-      "explanation": "52 + 44 = 96.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9e8e31e3b0",
-      "text": "41 − 40 + 36 = ?",
-      "answer": 37,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "41 − 40 = 1, ועוד 36."
-      ],
-      "explanation": "41 − 40 + 36 = 37.",
-      "source": "algo"
-    },
-    {
-      "id": "q-902ef97211",
-      "text": "47 − 32 + 74 = ?",
+      "id": "q-63c319953d",
+      "text": "29 + 60 = ?",
       "answer": 89,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "47 − 32 = 15, ועוד 74."
-      ],
-      "explanation": "47 − 32 + 74 = 89.",
-      "source": "algo"
-    },
-    {
-      "id": "q-cea283b0fd",
-      "text": "40 − 33 + 82 = ?",
-      "answer": 89,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "40 − 33 = 7, ועוד 82."
-      ],
-      "explanation": "40 − 33 + 82 = 89.",
-      "source": "algo"
-    },
-    {
-      "id": "q-60a8edd2b2",
-      "text": "49 − 46 = ?",
-      "answer": 3,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "49 − 46."
-      ],
-      "explanation": "49 − 46 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-efd95d794e",
-      "text": "82 + 11 − 56 = ?",
-      "answer": 37,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "82 + 11 = 93, ופחות 56."
-      ],
-      "explanation": "82 + 11 − 56 = 37.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bc30ca17e7",
-      "text": "61 − 40 + 8 = ?",
-      "answer": 29,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "61 − 40 = 21, ועוד 8."
-      ],
-      "explanation": "61 − 40 + 8 = 29.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e48ffa0737",
-      "text": "81 − 66 + 31 = ?",
-      "answer": 46,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "81 − 66 = 15, ועוד 31."
-      ],
-      "explanation": "81 − 66 + 31 = 46.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e9582012c0",
-      "text": "4 + 9 = ?",
-      "answer": 13,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "אפשר לפרק לעשרות ויחידות.",
-        "4 + 9."
+        "29 + 60."
       ],
-      "explanation": "4 + 9 = 13.",
-      "source": "algo"
+      "explanation": "29 + 60 = 89.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
     },
     {
-      "id": "q-ac3dfa578c",
-      "text": "77 − 41 = ?",
-      "answer": 36,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "77 − 41."
-      ],
-      "explanation": "77 − 41 = 36.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8ac15e372b",
-      "text": "53 + 21 − 43 = ?",
-      "answer": 31,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "53 + 21 = 74, ופחות 43."
-      ],
-      "explanation": "53 + 21 − 43 = 31.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c014073331",
-      "text": "27 − 15 + 82 = ?",
-      "answer": 94,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "27 − 15 = 12, ועוד 82."
-      ],
-      "explanation": "27 − 15 + 82 = 94.",
-      "source": "algo"
-    },
-    {
-      "id": "q-943a95ad61",
-      "text": "42 + 55 = ?",
-      "answer": 97,
+      "id": "q-bf88d16745",
+      "text": "32 + 11 = ?",
+      "answer": 43,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "אפשר לפרק לעשרות ויחידות.",
-        "42 + 55."
+        "32 + 11."
       ],
-      "explanation": "42 + 55 = 97.",
-      "source": "algo"
+      "explanation": "32 + 11 = 43.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
     },
     {
-      "id": "q-13e472deac",
-      "text": "21 + 78 − 6 = ?",
-      "answer": 93,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "21 + 78 = 99, ופחות 6."
-      ],
-      "explanation": "21 + 78 − 6 = 93.",
-      "source": "algo"
-    },
-    {
-      "id": "q-563b85d474",
-      "text": "80 − 1 + 7 = ?",
-      "answer": 86,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "80 − 1 = 79, ועוד 7."
-      ],
-      "explanation": "80 − 1 + 7 = 86.",
-      "source": "algo"
-    },
-    {
-      "id": "q-96347639c0",
-      "text": "76 − 25 + 46 = ?",
-      "answer": 97,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "76 − 25 = 51, ועוד 46."
-      ],
-      "explanation": "76 − 25 + 46 = 97.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c062388573",
-      "text": "39 − 17 + 15 = ?",
-      "answer": 37,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "39 − 17 = 22, ועוד 15."
-      ],
-      "explanation": "39 − 17 + 15 = 37.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1cb54af76a",
-      "text": "88 − 11 = ?",
-      "answer": 77,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "88 − 11."
-      ],
-      "explanation": "88 − 11 = 77.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7e59882141",
-      "text": "98 + 2 = ?",
+      "id": "q-32a39408d7",
+      "text": "88 + 12 = ?",
       "answer": 100,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "אפשר לפרק לעשרות ויחידות.",
-        "98 + 2."
+        "88 + 12."
       ],
-      "explanation": "98 + 2 = 100.",
-      "source": "algo"
+      "explanation": "88 + 12 = 100.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
     },
     {
-      "id": "q-f67a5ae798",
-      "text": "86 + 1 − 69 = ?",
-      "answer": 18,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-76f429a387",
+      "text": "35 + 50 = ?",
+      "answer": 85,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "86 + 1 = 87, ופחות 69."
+        "אפשר לפרק לעשרות ויחידות.",
+        "35 + 50."
       ],
-      "explanation": "86 + 1 − 69 = 18.",
-      "source": "algo"
+      "explanation": "35 + 50 = 85.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
     },
     {
-      "id": "q-4b7e8ea467",
-      "text": "24 − 5 + 1 = ?",
-      "answer": 20,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-d2c85fb310",
+      "text": "96 − 84 = ?",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "24 − 5 = 19, ועוד 1."
+        "אפשר לפרק לעשרות.",
+        "96 − 84."
       ],
-      "explanation": "24 − 5 + 1 = 20.",
-      "source": "algo"
+      "explanation": "96 − 84 = 12.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
     },
     {
-      "id": "q-be05a26429",
-      "text": "15 − 2 + 2 = ?",
-      "answer": 15,
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-6a358f126c",
+      "text": "94 − 68 = ?",
+      "answer": 26,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "15 − 2 = 13, ועוד 2."
+        "אפשר לפרק לעשרות.",
+        "94 − 68."
       ],
-      "explanation": "15 − 2 + 2 = 15.",
-      "source": "algo"
+      "explanation": "94 − 68 = 26.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
     },
     {
-      "id": "q-96de219dd2",
-      "text": "78 − 57 = ?",
+      "id": "q-14dcc162d9",
+      "text": "92 − 5 = ?",
+      "answer": 87,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "92 − 5."
+      ],
+      "explanation": "92 − 5 = 87.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-f37e792e56",
+      "text": "82 − 61 = ?",
       "answer": 21,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "אפשר לפרק לעשרות.",
-        "78 − 57."
+        "82 − 61."
       ],
-      "explanation": "78 − 57 = 21.",
-      "source": "algo"
+      "explanation": "82 − 61 = 21.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
     },
     {
-      "id": "q-f9cf4a3318",
-      "text": "54 + 27 − 73 = ?",
-      "answer": 8,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "54 + 27 = 81, ופחות 73."
-      ],
-      "explanation": "54 + 27 − 73 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-63d00042f4",
-      "text": "71 + 4 = ?",
-      "answer": 75,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות ויחידות.",
-        "71 + 4."
-      ],
-      "explanation": "71 + 4 = 75.",
-      "source": "algo"
-    },
-    {
-      "id": "q-58f5021e03",
-      "text": "33 + 14 − 41 = ?",
-      "answer": 6,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "33 + 14 = 47, ופחות 41."
-      ],
-      "explanation": "33 + 14 − 41 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-23debd2fb8",
-      "text": "24 − 16 + 91 = ?",
-      "answer": 99,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "24 − 16 = 8, ועוד 91."
-      ],
-      "explanation": "24 − 16 + 91 = 99.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b9da919fce",
-      "text": "99 + 1 − 36 = ?",
-      "answer": 64,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "99 + 1 = 100, ופחות 36."
-      ],
-      "explanation": "99 + 1 − 36 = 64.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fb18e41b47",
-      "text": "46 + 32 − 8 = ?",
-      "answer": 70,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "46 + 32 = 78, ופחות 8."
-      ],
-      "explanation": "46 + 32 − 8 = 70.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0376bb67f2",
-      "text": "66 − 12 + 9 = ?",
-      "answer": 63,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "66 − 12 = 54, ועוד 9."
-      ],
-      "explanation": "66 − 12 + 9 = 63.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d061c66056",
-      "text": "18 − 5 = ?",
-      "answer": 13,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "18 − 5."
-      ],
-      "explanation": "18 − 5 = 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-82b45082bc",
-      "text": "16 + 82 − 70 = ?",
-      "answer": 28,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "16 + 82 = 98, ופחות 70."
-      ],
-      "explanation": "16 + 82 − 70 = 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-59d0d73cec",
-      "text": "21 + 7 − 14 = ?",
-      "answer": 14,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "21 + 7 = 28, ופחות 14."
-      ],
-      "explanation": "21 + 7 − 14 = 14.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7e27cd6881",
-      "text": "51 + 49 − 26 = ?",
-      "answer": 74,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "51 + 49 = 100, ופחות 26."
-      ],
-      "explanation": "51 + 49 − 26 = 74.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7cae18d110",
-      "text": "91 − 71 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "91 − 71."
-      ],
-      "explanation": "91 − 71 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5fd7eb81df",
-      "text": "33 + 6 − 35 = ?",
-      "answer": 4,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "33 + 6 = 39, ופחות 35."
-      ],
-      "explanation": "33 + 6 − 35 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-dcdfcb136f",
-      "text": "49 − 36 = ?",
-      "answer": 13,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "49 − 36."
-      ],
-      "explanation": "49 − 36 = 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-08cc012cc6",
-      "text": "46 − 45 = ?",
-      "answer": 1,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "46 − 45."
-      ],
-      "explanation": "46 − 45 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4554850169",
-      "text": "33 − 5 = ?",
-      "answer": 28,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "33 − 5."
-      ],
-      "explanation": "33 − 5 = 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-87d9edfe59",
-      "text": "19 − 9 + 20 = ?",
-      "answer": 30,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "19 − 9 = 10, ועוד 20."
-      ],
-      "explanation": "19 − 9 + 20 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8e6006b1af",
-      "text": "75 − 11 = ?",
-      "answer": 64,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "75 − 11."
-      ],
-      "explanation": "75 − 11 = 64.",
-      "source": "algo"
-    },
-    {
-      "id": "q-34ed219d66",
-      "text": "69 − 52 + 36 = ?",
-      "answer": 53,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "69 − 52 = 17, ועוד 36."
-      ],
-      "explanation": "69 − 52 + 36 = 53.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f39398bc65",
-      "text": "71 − 20 + 46 = ?",
-      "answer": 97,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "71 − 20 = 51, ועוד 46."
-      ],
-      "explanation": "71 − 20 + 46 = 97.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c0f1d59354",
-      "text": "79 + 10 − 55 = ?",
+      "id": "q-55da91c126",
+      "text": "25 + 9 = ?",
       "answer": 34,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "79 + 10 = 89, ופחות 55."
-      ],
-      "explanation": "79 + 10 − 55 = 34.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fd39e4e543",
-      "text": "53 − 33 + 28 = ?",
-      "answer": 48,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "53 − 33 = 20, ועוד 28."
-      ],
-      "explanation": "53 − 33 + 28 = 48.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b58c9a99b0",
-      "text": "63 − 8 + 32 = ?",
-      "answer": 87,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "63 − 8 = 55, ועוד 32."
-      ],
-      "explanation": "63 − 8 + 32 = 87.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e962ed8f48",
-      "text": "28 − 16 = ?",
-      "answer": 12,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "28 − 16."
-      ],
-      "explanation": "28 − 16 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bb472c65f5",
-      "text": "98 + 2 − 4 = ?",
-      "answer": 96,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "98 + 2 = 100, ופחות 4."
-      ],
-      "explanation": "98 + 2 − 4 = 96.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2f099c1708",
-      "text": "29 − 21 + 26 = ?",
-      "answer": 34,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "29 − 21 = 8, ועוד 26."
-      ],
-      "explanation": "29 − 21 + 26 = 34.",
-      "source": "algo"
-    },
-    {
-      "id": "q-411a6ea1fa",
-      "text": "18 + 12 − 18 = ?",
-      "answer": 12,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "18 + 12 = 30, ופחות 18."
-      ],
-      "explanation": "18 + 12 − 18 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-adaa3b578e",
-      "text": "74 + 1 − 39 = ?",
-      "answer": 36,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "74 + 1 = 75, ופחות 39."
-      ],
-      "explanation": "74 + 1 − 39 = 36.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0a0dd4ef6a",
-      "text": "98 − 26 = ?",
-      "answer": 72,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "98 − 26."
-      ],
-      "explanation": "98 − 26 = 72.",
-      "source": "algo"
-    },
-    {
-      "id": "q-346338c472",
-      "text": "88 − 9 = ?",
-      "answer": 79,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "88 − 9."
-      ],
-      "explanation": "88 − 9 = 79.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2025c7cb45",
-      "text": "85 − 2 = ?",
-      "answer": 83,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "85 − 2."
-      ],
-      "explanation": "85 − 2 = 83.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d66648ff5f",
-      "text": "51 − 49 + 3 = ?",
-      "answer": 5,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "51 − 49 = 2, ועוד 3."
-      ],
-      "explanation": "51 − 49 + 3 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-31f8ea2d60",
-      "text": "23 − 14 + 19 = ?",
-      "answer": 28,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "23 − 14 = 9, ועוד 19."
-      ],
-      "explanation": "23 − 14 + 19 = 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2ac1da79fa",
-      "text": "96 + 4 − 17 = ?",
-      "answer": 83,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "96 + 4 = 100, ופחות 17."
-      ],
-      "explanation": "96 + 4 − 17 = 83.",
-      "source": "algo"
-    },
-    {
-      "id": "q-006c8ccd74",
-      "text": "40 + 31 − 70 = ?",
-      "answer": 1,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "40 + 31 = 71, ופחות 70."
-      ],
-      "explanation": "40 + 31 − 70 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3509c109de",
-      "text": "86 − 29 = ?",
-      "answer": 57,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "86 − 29."
-      ],
-      "explanation": "86 − 29 = 57.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0e5775c2f7",
-      "text": "98 − 49 + 44 = ?",
-      "answer": 93,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "98 − 49 = 49, ועוד 44."
-      ],
-      "explanation": "98 − 49 + 44 = 93.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0beaa61983",
-      "text": "14 − 7 + 15 = ?",
-      "answer": 22,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "14 − 7 = 7, ועוד 15."
-      ],
-      "explanation": "14 − 7 + 15 = 22.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8392e6704c",
-      "text": "37 + 39 − 43 = ?",
-      "answer": 33,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "37 + 39 = 76, ופחות 43."
-      ],
-      "explanation": "37 + 39 − 43 = 33.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e4b0fd39d6",
-      "text": "71 − 63 + 22 = ?",
-      "answer": 30,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "71 − 63 = 8, ועוד 22."
-      ],
-      "explanation": "71 − 63 + 22 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1ba37ec00a",
-      "text": "78 − 65 + 62 = ?",
-      "answer": 75,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "78 − 65 = 13, ועוד 62."
-      ],
-      "explanation": "78 − 65 + 62 = 75.",
-      "source": "algo"
-    },
-    {
-      "id": "q-27b4571e03",
-      "text": "44 + 7 − 32 = ?",
-      "answer": 19,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "44 + 7 = 51, ופחות 32."
-      ],
-      "explanation": "44 + 7 − 32 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-929949f91f",
-      "text": "37 + 44 − 64 = ?",
-      "answer": 17,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "37 + 44 = 81, ופחות 64."
-      ],
-      "explanation": "37 + 44 − 64 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-cc50644297",
-      "text": "96 − 89 = ?",
-      "answer": 7,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "96 − 89."
-      ],
-      "explanation": "96 − 89 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d8fb23286d",
-      "text": "27 + 19 = ?",
-      "answer": 46,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "אפשר לפרק לעשרות ויחידות.",
-        "27 + 19."
+        "25 + 9."
       ],
-      "explanation": "27 + 19 = 46.",
-      "source": "algo"
+      "explanation": "25 + 9 = 34.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
     },
     {
-      "id": "q-00c9b126c4",
-      "text": "27 − 22 = ?",
-      "answer": 5,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "27 − 22."
-      ],
-      "explanation": "27 − 22 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-13068870ee",
-      "text": "74 + 15 − 81 = ?",
-      "answer": 8,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "74 + 15 = 89, ופחות 81."
-      ],
-      "explanation": "74 + 15 − 81 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ca10fb6bd2",
-      "text": "80 + 16 − 13 = ?",
-      "answer": 83,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "80 + 16 = 96, ופחות 13."
-      ],
-      "explanation": "80 + 16 − 13 = 83.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d1ccf8e043",
-      "text": "56 − 9 + 38 = ?",
-      "answer": 85,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "56 − 9 = 47, ועוד 38."
-      ],
-      "explanation": "56 − 9 + 38 = 85.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c1703b3f81",
-      "text": "17 − 9 + 34 = ?",
-      "answer": 42,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "17 − 9 = 8, ועוד 34."
-      ],
-      "explanation": "17 − 9 + 34 = 42.",
-      "source": "algo"
-    },
-    {
-      "id": "q-85e954bf77",
-      "text": "57 − 44 + 34 = ?",
-      "answer": 47,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "57 − 44 = 13, ועוד 34."
-      ],
-      "explanation": "57 − 44 + 34 = 47.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6bae359aef",
-      "text": "97 + 1 − 97 = ?",
-      "answer": 1,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "97 + 1 = 98, ופחות 97."
-      ],
-      "explanation": "97 + 1 − 97 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-28a16d0240",
-      "text": "53 − 49 + 50 = ?",
-      "answer": 54,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "53 − 49 = 4, ועוד 50."
-      ],
-      "explanation": "53 − 49 + 50 = 54.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b1e415f8cf",
-      "text": "19 + 72 = ?",
-      "answer": 91,
+      "id": "q-97467b21dc",
+      "text": "14 + 86 = ?",
+      "answer": 100,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "אפשר לפרק לעשרות ויחידות.",
-        "19 + 72."
+        "14 + 86."
       ],
-      "explanation": "19 + 72 = 91.",
-      "source": "algo"
+      "explanation": "14 + 86 = 100.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
     },
     {
-      "id": "q-ede5adedd2",
-      "text": "50 + 49 − 7 = ?",
-      "answer": 92,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "50 + 49 = 99, ופחות 7."
-      ],
-      "explanation": "50 + 49 − 7 = 92.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fa2da968c6",
-      "text": "56 − 30 + 51 = ?",
-      "answer": 77,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "56 − 30 = 26, ועוד 51."
-      ],
-      "explanation": "56 − 30 + 51 = 77.",
-      "source": "algo"
-    },
-    {
-      "id": "q-62405eec75",
-      "text": "83 − 60 = ?",
-      "answer": 23,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "83 − 60."
-      ],
-      "explanation": "83 − 60 = 23.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5783a2a2e9",
-      "text": "49 − 39 = ?",
-      "answer": 10,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "49 − 39."
-      ],
-      "explanation": "49 − 39 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-62ce454f50",
-      "text": "11 − 3 + 37 = ?",
-      "answer": 45,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "11 − 3 = 8, ועוד 37."
-      ],
-      "explanation": "11 − 3 + 37 = 45.",
-      "source": "algo"
-    },
-    {
-      "id": "q-397377c37f",
-      "text": "70 + 19 − 29 = ?",
-      "answer": 60,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "70 + 19 = 89, ופחות 29."
-      ],
-      "explanation": "70 + 19 − 29 = 60.",
-      "source": "algo"
-    },
-    {
-      "id": "q-82d83ebb20",
-      "text": "61 + 11 − 15 = ?",
-      "answer": 57,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "61 + 11 = 72, ופחות 15."
-      ],
-      "explanation": "61 + 11 − 15 = 57.",
-      "source": "algo"
-    },
-    {
-      "id": "q-80df325b89",
-      "text": "93 − 77 + 75 = ?",
-      "answer": 91,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "93 − 77 = 16, ועוד 75."
-      ],
-      "explanation": "93 − 77 + 75 = 91.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9f49a46cb7",
-      "text": "36 + 47 − 51 = ?",
+      "id": "q-edaa13b421",
+      "text": "88 − 56 = ?",
       "answer": 32,
-      "level": 4,
-      "difficulty": 4,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "36 + 47 = 83, ופחות 51."
+        "אפשר לפרק לעשרות.",
+        "88 − 56."
       ],
-      "explanation": "36 + 47 − 51 = 32.",
-      "source": "algo"
+      "explanation": "88 − 56 = 32.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
     },
     {
-      "id": "q-9b61f0e26c",
-      "text": "30 + 1 − 25 = ?",
-      "answer": 6,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-3ca0dbeb29",
+      "text": "85 − 68 = ?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "30 + 1 = 31, ופחות 25."
+        "אפשר לפרק לעשרות.",
+        "85 − 68."
       ],
-      "explanation": "30 + 1 − 25 = 6.",
-      "source": "algo"
+      "explanation": "85 − 68 = 17.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
     },
     {
-      "id": "q-a426a5dd4e",
-      "text": "93 + 2 − 53 = ?",
+      "id": "q-9adc1b4bcc",
+      "text": "62 − 26 = ?",
+      "answer": 36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "62 − 26."
+      ],
+      "explanation": "62 − 26 = 36.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-498315fbb4",
+      "text": "43 + 40 = ?",
+      "answer": 83,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "43 + 40."
+      ],
+      "explanation": "43 + 40 = 83.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-f8968e8a9c",
+      "text": "73 + 5 = ?",
+      "answer": 78,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "73 + 5."
+      ],
+      "explanation": "73 + 5 = 78.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-ab562eb45d",
+      "text": "96 − 27 = ?",
+      "answer": 69,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "96 − 27."
+      ],
+      "explanation": "96 − 27 = 69.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-7004241e58",
+      "text": "78 − 36 = ?",
       "answer": 42,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "78 − 36."
+      ],
+      "explanation": "78 − 36 = 42.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-dc9c2a2761",
+      "text": "97 + 2 = ?",
+      "answer": 99,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "97 + 2."
+      ],
+      "explanation": "97 + 2 = 99.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-46a989eed1",
+      "text": "39 − 20 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "39 − 20."
+      ],
+      "explanation": "39 − 20 = 19.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-6204f1d3ac",
+      "text": "46 − 8 = ?",
+      "answer": 38,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "46 − 8."
+      ],
+      "explanation": "46 − 8 = 38.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-2423ff2d9e",
+      "text": "46 − 10 = ?",
+      "answer": 36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "46 − 10."
+      ],
+      "explanation": "46 − 10 = 36.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-fe3afae225",
+      "text": "37 + 38 = ?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "37 + 38."
+      ],
+      "explanation": "37 + 38 = 75.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-17551d4d4e",
+      "text": "28 + 36 = ?",
+      "answer": 64,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "28 + 36."
+      ],
+      "explanation": "28 + 36 = 64.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-7eb64818fc",
+      "text": "91 − 67 = ?",
+      "answer": 24,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "91 − 67."
+      ],
+      "explanation": "91 − 67 = 24.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-f468785fbe",
+      "text": "69 + 26 = ?",
+      "answer": 95,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "69 + 26."
+      ],
+      "explanation": "69 + 26 = 95.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-8638068a8b",
+      "text": "66 − 1 = ?",
+      "answer": 65,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "66 − 1."
+      ],
+      "explanation": "66 − 1 = 65.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-eeec4fd8a3",
+      "text": "36 + 64 = ?",
+      "answer": 100,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "36 + 64."
+      ],
+      "explanation": "36 + 64 = 100.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-5365c8d754",
+      "text": "69 + 21 = ?",
+      "answer": 90,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "69 + 21."
+      ],
+      "explanation": "69 + 21 = 90.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-58457b90d1",
+      "text": "54 − 14 = ?",
+      "answer": 40,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "54 − 14."
+      ],
+      "explanation": "54 − 14 = 40.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-4ff810f4c3",
+      "text": "51 − 39 = ?",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "51 − 39."
+      ],
+      "explanation": "51 − 39 = 12.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-9be0b63730",
+      "text": "17 − 15 = ?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "17 − 15."
+      ],
+      "explanation": "17 − 15 = 2.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-028fcc70f2",
+      "text": "88 − 12 = ?",
+      "answer": 76,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "88 − 12."
+      ],
+      "explanation": "88 − 12 = 76.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-d3fb1bd15d",
+      "text": "20 + 77 = ?",
+      "answer": 97,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "20 + 77."
+      ],
+      "explanation": "20 + 77 = 97.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-8b7981ba20",
+      "text": "65 + 13 = ?",
+      "answer": 78,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "65 + 13."
+      ],
+      "explanation": "65 + 13 = 78.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-bac93d6403",
+      "text": "95 − 89 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "95 − 89."
+      ],
+      "explanation": "95 − 89 = 6.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-07410bbd72",
+      "text": "99 + 0 = ?",
+      "answer": 99,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "99 + 0."
+      ],
+      "explanation": "99 + 0 = 99.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-53756dfb42",
+      "text": "48 − 43 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "48 − 43."
+      ],
+      "explanation": "48 − 43 = 5.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-4b55d2ffca",
+      "text": "2 + 17 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "2 + 17."
+      ],
+      "explanation": "2 + 17 = 19.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-adf37161e7",
+      "text": "100 + 0 = ?",
+      "answer": 100,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "100 + 0."
+      ],
+      "explanation": "100 + 0 = 100.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-1ebe675033",
+      "text": "97 + 1 = ?",
+      "answer": 98,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "97 + 1."
+      ],
+      "explanation": "97 + 1 = 98.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-5476066587",
+      "text": "65 + 16 = ?",
+      "answer": 81,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "65 + 16."
+      ],
+      "explanation": "65 + 16 = 81.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-974ff73ac4",
+      "text": "86 − 2 = ?",
+      "answer": 84,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות.",
+        "86 − 2."
+      ],
+      "explanation": "86 − 2 = 84.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-71e3a51dfd",
+      "text": "31 + 55 = ?",
+      "answer": 86,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "31 + 55."
+      ],
+      "explanation": "31 + 55 = 86.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-b563db9b7f",
+      "text": "65 + 9 = ?",
+      "answer": 74,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "65 + 9."
+      ],
+      "explanation": "65 + 9 = 74.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-48853efd6c",
+      "text": "73 + 21 = ?",
+      "answer": 94,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "73 + 21."
+      ],
+      "explanation": "73 + 21 = 94.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-189b87017e",
+      "text": "29 + 42 = ?",
+      "answer": 71,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "29 + 42."
+      ],
+      "explanation": "29 + 42 = 71.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-e04c2936cd",
+      "text": "16 + 31 = ?",
+      "answer": 47,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "16 + 31."
+      ],
+      "explanation": "16 + 31 = 47.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-de8e173914",
+      "text": "95 + 2 = ?",
+      "answer": 97,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר לפרק לעשרות ויחידות.",
+        "95 + 2."
+      ],
+      "explanation": "95 + 2 = 97.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-c328cc6896",
+      "text": "60 + 35 − 22 = ?",
+      "answer": 73,
       "level": 4,
       "difficulty": 4,
       "hints": [
         "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "93 + 2 = 95, ופחות 53."
+        "60 + 35 = 95, ופחות 22."
       ],
-      "explanation": "93 + 2 − 53 = 42.",
-      "source": "algo"
+      "explanation": "60 + 35 − 22 = 73.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
     },
     {
-      "id": "q-a2f7efe75b",
-      "text": "17 + 47 − 20 = ?",
-      "answer": 44,
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-f94f9defa2",
+      "text": "89 + 7 − 96 = ?",
+      "answer": 0,
+      "level": 4,
+      "difficulty": 4,
       "hints": [
         "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "17 + 47 = 64, ופחות 20."
+        "89 + 7 = 96, ופחות 96."
       ],
-      "explanation": "17 + 47 − 20 = 44.",
-      "source": "algo"
+      "explanation": "89 + 7 − 96 = 0.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
     },
     {
-      "id": "q-7cc8afec87",
-      "text": "38 + 26 − 21 = ?",
+      "id": "q-266517d5ce",
+      "text": "86 + 5 − 17 = ?",
+      "answer": 74,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "86 + 5 = 91, ופחות 17."
+      ],
+      "explanation": "86 + 5 − 17 = 74.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-4781375ee6",
+      "text": "84 + 16 − 71 = ?",
+      "answer": 29,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "84 + 16 = 100, ופחות 71."
+      ],
+      "explanation": "84 + 16 − 71 = 29.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-2949d3aad7",
+      "text": "99 + 1 − 56 = ?",
+      "answer": 44,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "99 + 1 = 100, ופחות 56."
+      ],
+      "explanation": "99 + 1 − 56 = 44.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-dfa80012a8",
+      "text": "14 − 1 + 68 = ?",
+      "answer": 81,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "14 − 1 = 13, ועוד 68."
+      ],
+      "explanation": "14 − 1 + 68 = 81.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-a3ea216d72",
+      "text": "41 − 30 + 60 = ?",
+      "answer": 71,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "41 − 30 = 11, ועוד 60."
+      ],
+      "explanation": "41 − 30 + 60 = 71.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-133a9c9ac1",
+      "text": "60 + 7 − 48 = ?",
+      "answer": 19,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "60 + 7 = 67, ופחות 48."
+      ],
+      "explanation": "60 + 7 − 48 = 19.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-e53c97eba7",
+      "text": "58 + 32 − 34 = ?",
+      "answer": 56,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "58 + 32 = 90, ופחות 34."
+      ],
+      "explanation": "58 + 32 − 34 = 56.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-1d6892d41e",
+      "text": "11 − 5 + 85 = ?",
+      "answer": 91,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "11 − 5 = 6, ועוד 85."
+      ],
+      "explanation": "11 − 5 + 85 = 91.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-dfbd500304",
+      "text": "100 + 1 − 37 = ?",
+      "answer": 64,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "100 + 1 = 101, ופחות 37."
+      ],
+      "explanation": "100 + 1 − 37 = 64.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-1a32a56849",
+      "text": "58 + 2 − 17 = ?",
       "answer": 43,
       "level": 4,
       "difficulty": 4,
       "hints": [
         "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "38 + 26 = 64, ופחות 21."
+        "58 + 2 = 60, ופחות 17."
       ],
-      "explanation": "38 + 26 − 21 = 43.",
-      "source": "algo"
+      "explanation": "58 + 2 − 17 = 43.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
     },
     {
-      "id": "q-c2b91fb930",
-      "text": "83 + 6 − 13 = ?",
-      "answer": 76,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "83 + 6 = 89, ופחות 13."
-      ],
-      "explanation": "83 + 6 − 13 = 76.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7ab21e9e60",
-      "text": "42 + 34 − 73 = ?",
-      "answer": 3,
+      "id": "q-fa5bb3e533",
+      "text": "19 + 74 − 69 = ?",
+      "answer": 24,
       "level": 4,
       "difficulty": 4,
       "hints": [
         "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "42 + 34 = 76, ופחות 73."
+        "19 + 74 = 93, ופחות 69."
       ],
-      "explanation": "42 + 34 − 73 = 3.",
-      "source": "algo"
+      "explanation": "19 + 74 − 69 = 24.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
     },
     {
-      "id": "q-b2a4d88ac8",
-      "text": "62 + 34 − 90 = ?",
+      "id": "q-cd9e99274a",
+      "text": "28 − 27 + 5 = ?",
       "answer": 6,
-      "level": 5,
-      "difficulty": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "28 − 27 = 1, ועוד 5."
+      ],
+      "explanation": "28 − 27 + 5 = 6.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-515d1f99b8",
+      "text": "92 − 53 + 6 = ?",
+      "answer": 45,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "92 − 53 = 39, ועוד 6."
+      ],
+      "explanation": "92 − 53 + 6 = 45.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-4cab9d193c",
+      "text": "82 − 22 + 2 = ?",
+      "answer": 62,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "82 − 22 = 60, ועוד 2."
+      ],
+      "explanation": "82 − 22 + 2 = 62.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-5c50f55c32",
+      "text": "31 − 11 + 51 = ?",
+      "answer": 71,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "31 − 11 = 20, ועוד 51."
+      ],
+      "explanation": "31 − 11 + 51 = 71.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-aea7f7e414",
+      "text": "90 − 19 + 21 = ?",
+      "answer": 92,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "90 − 19 = 71, ועוד 21."
+      ],
+      "explanation": "90 − 19 + 21 = 92.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-bb2eae4510",
+      "text": "89 + 4 − 14 = ?",
+      "answer": 79,
+      "level": 4,
+      "difficulty": 4,
       "hints": [
         "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "62 + 34 = 96, ופחות 90."
+        "89 + 4 = 93, ופחות 14."
       ],
-      "explanation": "62 + 34 − 90 = 6.",
-      "source": "algo"
+      "explanation": "89 + 4 − 14 = 79.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
     },
     {
-      "id": "q-ddbfae6620",
-      "text": "94 − 81 = ?",
-      "answer": 13,
-      "level": 3,
-      "difficulty": 3,
+      "id": "q-6bc2c1bcf9",
+      "text": "93 − 73 + 72 = ?",
+      "answer": 92,
+      "level": 4,
+      "difficulty": 4,
       "hints": [
-        "אפשר לפרק לעשרות.",
-        "94 − 81."
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "93 − 73 = 20, ועוד 72."
       ],
-      "explanation": "94 − 81 = 13.",
-      "source": "algo"
+      "explanation": "93 − 73 + 72 = 92.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
     },
     {
-      "id": "q-5303247a95",
-      "text": "16 + 17 = ?",
-      "answer": 33,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות ויחידות.",
-        "16 + 17."
-      ],
-      "explanation": "16 + 17 = 33.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f512cb1aba",
-      "text": "98 − 21 + 16 = ?",
+      "id": "q-803d384c86",
+      "text": "19 − 8 + 82 = ?",
       "answer": 93,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "98 − 21 = 77, ועוד 16."
-      ],
-      "explanation": "98 − 21 + 16 = 93.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f13e026555",
-      "text": "16 + 9 − 8 = ?",
-      "answer": 17,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "16 + 9 = 25, ופחות 8."
-      ],
-      "explanation": "16 + 9 − 8 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bcd5ab0c13",
-      "text": "31 − 4 + 8 = ?",
-      "answer": 35,
       "level": 4,
       "difficulty": 4,
       "hints": [
         "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "31 − 4 = 27, ועוד 8."
+        "19 − 8 = 11, ועוד 82."
       ],
-      "explanation": "31 − 4 + 8 = 35.",
-      "source": "algo"
+      "explanation": "19 − 8 + 82 = 93.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
     },
     {
-      "id": "q-526c1cfc0a",
-      "text": "58 − 22 = ?",
+      "id": "q-e8ebe896c0",
+      "text": "48 + 2 − 9 = ?",
+      "answer": 41,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "48 + 2 = 50, ופחות 9."
+      ],
+      "explanation": "48 + 2 − 9 = 41.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-f82c5119c0",
+      "text": "66 − 26 + 20 = ?",
+      "answer": 60,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "66 − 26 = 40, ועוד 20."
+      ],
+      "explanation": "66 − 26 + 20 = 60.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-98c578e383",
+      "text": "77 + 18 − 15 = ?",
+      "answer": 80,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "77 + 18 = 95, ופחות 15."
+      ],
+      "explanation": "77 + 18 − 15 = 80.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-e73e100886",
+      "text": "78 + 3 − 69 = ?",
+      "answer": 12,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "78 + 3 = 81, ופחות 69."
+      ],
+      "explanation": "78 + 3 − 69 = 12.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-d2b260a305",
+      "text": "90 − 26 + 18 = ?",
+      "answer": 82,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "90 − 26 = 64, ועוד 18."
+      ],
+      "explanation": "90 − 26 + 18 = 82.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-3f0438ede2",
+      "text": "80 − 3 + 23 = ?",
+      "answer": 100,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "80 − 3 = 77, ועוד 23."
+      ],
+      "explanation": "80 − 3 + 23 = 100.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-332ab51f92",
+      "text": "51 + 35 − 70 = ?",
+      "answer": 16,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "51 + 35 = 86, ופחות 70."
+      ],
+      "explanation": "51 + 35 − 70 = 16.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-04d17ff600",
+      "text": "97 + 2 − 28 = ?",
+      "answer": 71,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "97 + 2 = 99, ופחות 28."
+      ],
+      "explanation": "97 + 2 − 28 = 71.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-b5650f9014",
+      "text": "39 − 6 + 41 = ?",
+      "answer": 74,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "39 − 6 = 33, ועוד 41."
+      ],
+      "explanation": "39 − 6 + 41 = 74.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-6e8b17b8f8",
+      "text": "98 + 2 − 44 = ?",
+      "answer": 56,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "98 + 2 = 100, ופחות 44."
+      ],
+      "explanation": "98 + 2 − 44 = 56.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
+    },
+    {
+      "id": "q-8f343252b0",
+      "text": "52 − 15 + 46 = ?",
+      "answer": 83,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "52 − 15 = 37, ועוד 46."
+      ],
+      "explanation": "52 − 15 + 46 = 83.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-cc2d5c9f1f",
+      "text": "91 − 89 + 9 = ?",
+      "answer": 11,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "91 − 89 = 2, ועוד 9."
+      ],
+      "explanation": "91 − 89 + 9 = 11.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-dc319b4d91",
+      "text": "38 + 54 − 56 = ?",
       "answer": 36,
-      "level": 3,
-      "difficulty": 3,
+      "level": 4,
+      "difficulty": 4,
       "hints": [
-        "אפשר לפרק לעשרות.",
-        "58 − 22."
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "38 + 54 = 92, ופחות 56."
       ],
-      "explanation": "58 − 22 = 36.",
-      "source": "algo"
+      "explanation": "38 + 54 − 56 = 36.",
+      "source": "algo",
+      "skill": "add_carry",
+      "skillHe": "חיבור עם נשיאה"
     },
     {
-      "id": "q-0035256910",
-      "text": "82 + 18 − 24 = ?",
+      "id": "q-3a684ae316",
+      "text": "24 − 15 + 22 = ?",
+      "answer": 31,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "24 − 15 = 9, ועוד 22."
+      ],
+      "explanation": "24 − 15 + 22 = 31.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-9207be542c",
+      "text": "41 + 31 − 21 = ?",
+      "answer": 51,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "41 + 31 = 72, ופחות 21."
+      ],
+      "explanation": "41 + 31 − 21 = 51.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-41cb6b0059",
+      "text": "68 + 21 − 76 = ?",
+      "answer": 13,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "68 + 21 = 89, ופחות 76."
+      ],
+      "explanation": "68 + 21 − 76 = 13.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-94bf248e30",
+      "text": "94 − 26 + 10 = ?",
+      "answer": 78,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "94 − 26 = 68, ועוד 10."
+      ],
+      "explanation": "94 − 26 + 10 = 78.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-e6a03fe958",
+      "text": "41 − 40 + 41 = ?",
+      "answer": 42,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "41 − 40 = 1, ועוד 41."
+      ],
+      "explanation": "41 − 40 + 41 = 42.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-abea118793",
+      "text": "56 + 2 − 41 = ?",
+      "answer": 17,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "56 + 2 = 58, ופחות 41."
+      ],
+      "explanation": "56 + 2 − 41 = 17.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-1988433f51",
+      "text": "47 − 23 + 55 = ?",
+      "answer": 79,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "47 − 23 = 24, ועוד 55."
+      ],
+      "explanation": "47 − 23 + 55 = 79.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-1ddb2e987d",
+      "text": "65 − 39 + 3 = ?",
+      "answer": 29,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "65 − 39 = 26, ועוד 3."
+      ],
+      "explanation": "65 − 39 + 3 = 29.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-891ccad1fa",
+      "text": "23 − 5 + 63 = ?",
+      "answer": 81,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "23 − 5 = 18, ועוד 63."
+      ],
+      "explanation": "23 − 5 + 63 = 81.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-85ad33496f",
+      "text": "21 + 60 − 15 = ?",
+      "answer": 66,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "21 + 60 = 81, ופחות 15."
+      ],
+      "explanation": "21 + 60 − 15 = 66.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-bb26fa4684",
+      "text": "90 + 1 − 15 = ?",
       "answer": 76,
-      "level": 5,
-      "difficulty": 5,
+      "level": 4,
+      "difficulty": 4,
       "hints": [
         "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "82 + 18 = 100, ופחות 24."
+        "90 + 1 = 91, ופחות 15."
       ],
-      "explanation": "82 + 18 − 24 = 76.",
-      "source": "algo"
+      "explanation": "90 + 1 − 15 = 76.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
     },
     {
-      "id": "q-1dee92f45a",
-      "text": "98 + 1 − 29 = ?",
-      "answer": 70,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "98 + 1 = 99, ופחות 29."
-      ],
-      "explanation": "98 + 1 − 29 = 70.",
-      "source": "algo"
-    },
-    {
-      "id": "q-214ee59b38",
-      "text": "42 − 32 = ?",
-      "answer": 10,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "אפשר לפרק לעשרות.",
-        "42 − 32."
-      ],
-      "explanation": "42 − 32 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-67337aa0a5",
-      "text": "62 − 7 + 4 = ?",
-      "answer": 59,
+      "id": "q-45f84a51f4",
+      "text": "60 − 17 + 50 = ?",
+      "answer": 93,
       "level": 4,
       "difficulty": 4,
       "hints": [
         "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "62 − 7 = 55, ועוד 4."
+        "60 − 17 = 43, ועוד 50."
       ],
-      "explanation": "62 − 7 + 4 = 59.",
+      "explanation": "60 − 17 + 50 = 93.",
+      "source": "algo",
+      "skill": "sub_borrow",
+      "skillHe": "חיסור עם פריטה"
+    },
+    {
+      "id": "q-0a1c5d4377",
+      "text": "66 − 40 + 54 = ?",
+      "answer": 80,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "66 − 40 = 26, ועוד 54."
+      ],
+      "explanation": "66 − 40 + 54 = 80.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-406e79ac44",
+      "text": "40 + 55 − 4 = ?",
+      "answer": 91,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "40 + 55 = 95, ופחות 4."
+      ],
+      "explanation": "40 + 55 − 4 = 91.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-a54b6817d2",
+      "text": "24 − 13 + 26 = ?",
+      "answer": 37,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
+        "24 − 13 = 11, ועוד 26."
+      ],
+      "explanation": "24 − 13 + 26 = 37.",
+      "source": "algo",
+      "skill": "sub_plain",
+      "skillHe": "חיסור בלי פריטה"
+    },
+    {
+      "id": "q-8334f057aa",
+      "text": "64 + 5 − 60 = ?",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
+        "64 + 5 = 69, ופחות 60."
+      ],
+      "explanation": "64 + 5 − 60 = 9.",
+      "source": "algo",
+      "skill": "add_plain",
+      "skillHe": "חיבור בלי נשיאה"
+    },
+    {
+      "id": "q-9e7e891662",
+      "text": "95 + ___ − 16 = 81",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "81 + 16 = 97, ומזה פחות 95."
+      ],
+      "explanation": "95 + 2 − 16 = 81, ולכן החסר הוא 2.",
       "source": "algo"
     },
     {
-      "id": "q-980954c437",
-      "text": "64 − 52 + 3 = ?",
+      "id": "q-ff3c6d1f8a",
+      "text": "37 + ___ − 28 = 23",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "23 + 28 = 51, ומזה פחות 37."
+      ],
+      "explanation": "37 + 14 − 28 = 23, ולכן החסר הוא 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c9d9850f80",
+      "text": "97 + ___ − 42 = 56",
+      "answer": 1,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "56 + 42 = 98, ומזה פחות 97."
+      ],
+      "explanation": "97 + 1 − 42 = 56, ולכן החסר הוא 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-804ce0d377",
+      "text": "32 + ___ − 29 = 22",
+      "answer": 19,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "22 + 29 = 51, ומזה פחות 32."
+      ],
+      "explanation": "32 + 19 − 29 = 22, ולכן החסר הוא 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-66da730069",
+      "text": "20 + ___ − 14 = 27",
+      "answer": 21,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "27 + 14 = 41, ומזה פחות 20."
+      ],
+      "explanation": "20 + 21 − 14 = 27, ולכן החסר הוא 21.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0864ff1760",
+      "text": "82 + ___ − 62 = 35",
       "answer": 15,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "64 − 52 = 12, ועוד 3."
-      ],
-      "explanation": "64 − 52 + 3 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0f02652a53",
-      "text": "19 − 16 + 24 = ?",
-      "answer": 27,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מחשבים משמאל לימין: קודם חיסור ואז חיבור.",
-        "19 − 16 = 3, ועוד 24."
-      ],
-      "explanation": "19 − 16 + 24 = 27.",
-      "source": "algo"
-    },
-    {
-      "id": "q-211fb7b39b",
-      "text": "60 + 4 − 41 = ?",
-      "answer": 23,
       "level": 5,
       "difficulty": 5,
       "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "60 + 4 = 64, ופחות 41."
+        "מה היה הסכום לפני שחיסרנו?",
+        "35 + 62 = 97, ומזה פחות 82."
       ],
-      "explanation": "60 + 4 − 41 = 23.",
+      "explanation": "82 + 15 − 62 = 35, ולכן החסר הוא 15.",
       "source": "algo"
     },
     {
-      "id": "q-5faaf0b037",
-      "text": "17 + 9 − 21 = ?",
+      "id": "q-d6f411fab7",
+      "text": "48 + ___ − 34 = 23",
+      "answer": 9,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "23 + 34 = 57, ומזה פחות 48."
+      ],
+      "explanation": "48 + 9 − 34 = 23, ולכן החסר הוא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-79e57a3005",
+      "text": "94 + ___ − 11 = 84",
+      "answer": 1,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "84 + 11 = 95, ומזה פחות 94."
+      ],
+      "explanation": "94 + 1 − 11 = 84, ולכן החסר הוא 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3b09d9c765",
+      "text": "76 + ___ − 60 = 35",
+      "answer": 19,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "35 + 60 = 95, ומזה פחות 76."
+      ],
+      "explanation": "76 + 19 − 60 = 35, ולכן החסר הוא 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cac8fb50fc",
+      "text": "82 + ___ − 74 = 12",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "12 + 74 = 86, ומזה פחות 82."
+      ],
+      "explanation": "82 + 4 − 74 = 12, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4b37680f19",
+      "text": "33 + ___ − 90 = 5",
+      "answer": 62,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "5 + 90 = 95, ומזה פחות 33."
+      ],
+      "explanation": "33 + 62 − 90 = 5, ולכן החסר הוא 62.",
+      "source": "algo"
+    },
+    {
+      "id": "q-78ca0d4ae3",
+      "text": "79 + ___ − 71 = 15",
+      "answer": 7,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "15 + 71 = 86, ומזה פחות 79."
+      ],
+      "explanation": "79 + 7 − 71 = 15, ולכן החסר הוא 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-badeb57c6b",
+      "text": "72 + ___ − 6 = 93",
+      "answer": 27,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "93 + 6 = 99, ומזה פחות 72."
+      ],
+      "explanation": "72 + 27 − 6 = 93, ולכן החסר הוא 27.",
+      "source": "algo"
+    },
+    {
+      "id": "q-01f43b862f",
+      "text": "53 + ___ − 25 = 42",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "42 + 25 = 67, ומזה פחות 53."
+      ],
+      "explanation": "53 + 14 − 25 = 42, ולכן החסר הוא 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8bd2a17b95",
+      "text": "51 + ___ − 35 = 20",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "20 + 35 = 55, ומזה פחות 51."
+      ],
+      "explanation": "51 + 4 − 35 = 20, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-639dd91694",
+      "text": "40 + ___ − 15 = 52",
+      "answer": 27,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "52 + 15 = 67, ומזה פחות 40."
+      ],
+      "explanation": "40 + 27 − 15 = 52, ולכן החסר הוא 27.",
+      "source": "algo"
+    },
+    {
+      "id": "q-53e7ebd3a0",
+      "text": "60 + ___ − 81 = 16",
+      "answer": 37,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "16 + 81 = 97, ומזה פחות 60."
+      ],
+      "explanation": "60 + 37 − 81 = 16, ולכן החסר הוא 37.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7ec64b30d3",
+      "text": "32 + ___ − 32 = 7",
+      "answer": 7,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "7 + 32 = 39, ומזה פחות 32."
+      ],
+      "explanation": "32 + 7 − 32 = 7, ולכן החסר הוא 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6826d90cc4",
+      "text": "96 + ___ − 68 = 31",
+      "answer": 3,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "31 + 68 = 99, ומזה פחות 96."
+      ],
+      "explanation": "96 + 3 − 68 = 31, ולכן החסר הוא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cf249a476c",
+      "text": "63 + ___ − 57 = 28",
+      "answer": 22,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "28 + 57 = 85, ומזה פחות 63."
+      ],
+      "explanation": "63 + 22 − 57 = 28, ולכן החסר הוא 22.",
+      "source": "algo"
+    },
+    {
+      "id": "q-58429e365d",
+      "text": "77 + ___ − 66 = 15",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "15 + 66 = 81, ומזה פחות 77."
+      ],
+      "explanation": "77 + 4 − 66 = 15, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-36c468891d",
+      "text": "34 + ___ − 42 = 42",
+      "answer": 50,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "42 + 42 = 84, ומזה פחות 34."
+      ],
+      "explanation": "34 + 50 − 42 = 42, ולכן החסר הוא 50.",
+      "source": "algo"
+    },
+    {
+      "id": "q-58954a92f4",
+      "text": "52 + ___ − 22 = 57",
+      "answer": 27,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "57 + 22 = 79, ומזה פחות 52."
+      ],
+      "explanation": "52 + 27 − 22 = 57, ולכן החסר הוא 27.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a93105638c",
+      "text": "29 + ___ − 3 = 28",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "28 + 3 = 31, ומזה פחות 29."
+      ],
+      "explanation": "29 + 2 − 3 = 28, ולכן החסר הוא 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1065fcdb5d",
+      "text": "77 + ___ − 36 = 42",
+      "answer": 1,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "42 + 36 = 78, ומזה פחות 77."
+      ],
+      "explanation": "77 + 1 − 36 = 42, ולכן החסר הוא 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bb2407eada",
+      "text": "30 + ___ − 40 = 4",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "4 + 40 = 44, ומזה פחות 30."
+      ],
+      "explanation": "30 + 14 − 40 = 4, ולכן החסר הוא 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-230fed8f6d",
+      "text": "58 + ___ − 53 = 38",
+      "answer": 33,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "38 + 53 = 91, ומזה פחות 58."
+      ],
+      "explanation": "58 + 33 − 53 = 38, ולכן החסר הוא 33.",
+      "source": "algo"
+    },
+    {
+      "id": "q-16b5473139",
+      "text": "46 + ___ − 16 = 64",
+      "answer": 34,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "64 + 16 = 80, ומזה פחות 46."
+      ],
+      "explanation": "46 + 34 − 16 = 64, ולכן החסר הוא 34.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ff6c7cd03b",
+      "text": "51 + ___ − 83 = 16",
+      "answer": 48,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "16 + 83 = 99, ומזה פחות 51."
+      ],
+      "explanation": "51 + 48 − 83 = 16, ולכן החסר הוא 48.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ef48d9b6ff",
+      "text": "44 + ___ − 22 = 29",
+      "answer": 7,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "29 + 22 = 51, ומזה פחות 44."
+      ],
+      "explanation": "44 + 7 − 22 = 29, ולכן החסר הוא 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0d1e859823",
+      "text": "22 + ___ − 10 = 61",
+      "answer": 49,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "61 + 10 = 71, ומזה פחות 22."
+      ],
+      "explanation": "22 + 49 − 10 = 61, ולכן החסר הוא 49.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2bea8ffd6d",
+      "text": "57 + ___ − 29 = 52",
+      "answer": 24,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "52 + 29 = 81, ומזה פחות 57."
+      ],
+      "explanation": "57 + 24 − 29 = 52, ולכן החסר הוא 24.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ec7805c799",
+      "text": "68 + ___ − 60 = 21",
+      "answer": 13,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "21 + 60 = 81, ומזה פחות 68."
+      ],
+      "explanation": "68 + 13 − 60 = 21, ולכן החסר הוא 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9c4f868ce7",
+      "text": "11 + ___ − 53 = 17",
+      "answer": 59,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "17 + 53 = 70, ומזה פחות 11."
+      ],
+      "explanation": "11 + 59 − 53 = 17, ולכן החסר הוא 59.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4b8fa82cb7",
+      "text": "95 + ___ − 41 = 56",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "56 + 41 = 97, ומזה פחות 95."
+      ],
+      "explanation": "95 + 2 − 41 = 56, ולכן החסר הוא 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7a6af3756e",
+      "text": "16 + ___ − 18 = 16",
+      "answer": 18,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "16 + 18 = 34, ומזה פחות 16."
+      ],
+      "explanation": "16 + 18 − 18 = 16, ולכן החסר הוא 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ff074858e1",
+      "text": "83 + ___ − 7 = 87",
+      "answer": 11,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "87 + 7 = 94, ומזה פחות 83."
+      ],
+      "explanation": "83 + 11 − 7 = 87, ולכן החסר הוא 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1f5229c415",
+      "text": "95 + ___ − 18 = 82",
       "answer": 5,
       "level": 5,
       "difficulty": 5,
       "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "17 + 9 = 26, ופחות 21."
+        "מה היה הסכום לפני שחיסרנו?",
+        "82 + 18 = 100, ומזה פחות 95."
       ],
-      "explanation": "17 + 9 − 21 = 5.",
+      "explanation": "95 + 5 − 18 = 82, ולכן החסר הוא 5.",
       "source": "algo"
     },
     {
-      "id": "q-3ba23f1e76",
-      "text": "70 + 20 − 57 = ?",
-      "answer": 33,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-305206719b",
+      "text": "29 + ___ − 6 = 38",
+      "answer": 15,
+      "level": 5,
+      "difficulty": 5,
       "hints": [
-        "מחשבים משמאל לימין: קודם חיבור ואז חיסור.",
-        "70 + 20 = 90, ופחות 57."
+        "מה היה הסכום לפני שחיסרנו?",
+        "38 + 6 = 44, ומזה פחות 29."
       ],
-      "explanation": "70 + 20 − 57 = 33.",
+      "explanation": "29 + 15 − 6 = 38, ולכן החסר הוא 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fabf113fad",
+      "text": "75 + ___ − 79 = 21",
+      "answer": 25,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "21 + 79 = 100, ומזה פחות 75."
+      ],
+      "explanation": "75 + 25 − 79 = 21, ולכן החסר הוא 25.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1a42f3ef34",
+      "text": "10 + ___ − 31 = 15",
+      "answer": 36,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "15 + 31 = 46, ומזה פחות 10."
+      ],
+      "explanation": "10 + 36 − 31 = 15, ולכן החסר הוא 36.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5641de7c1a",
+      "text": "32 + ___ − 17 = 35",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "35 + 17 = 52, ומזה פחות 32."
+      ],
+      "explanation": "32 + 20 − 17 = 35, ולכן החסר הוא 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-04b5e4891e",
+      "text": "17 + ___ − 2 = 31",
+      "answer": 16,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "31 + 2 = 33, ומזה פחות 17."
+      ],
+      "explanation": "17 + 16 − 2 = 31, ולכן החסר הוא 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2c5202b2ad",
+      "text": "95 + ___ − 24 = 74",
+      "answer": 3,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "74 + 24 = 98, ומזה פחות 95."
+      ],
+      "explanation": "95 + 3 − 24 = 74, ולכן החסר הוא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dd6f945b5f",
+      "text": "88 + ___ − 66 = 32",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "32 + 66 = 98, ומזה פחות 88."
+      ],
+      "explanation": "88 + 10 − 66 = 32, ולכן החסר הוא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-12bc29ef64",
+      "text": "15 + ___ − 46 = 25",
+      "answer": 56,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "25 + 46 = 71, ומזה פחות 15."
+      ],
+      "explanation": "15 + 56 − 46 = 25, ולכן החסר הוא 56.",
+      "source": "algo"
+    },
+    {
+      "id": "q-54504d7bd5",
+      "text": "25 + ___ − 40 = 27",
+      "answer": 42,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "27 + 40 = 67, ומזה פחות 25."
+      ],
+      "explanation": "25 + 42 − 40 = 27, ולכן החסר הוא 42.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6e21b2da09",
+      "text": "41 + ___ − 52 = 23",
+      "answer": 34,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "23 + 52 = 75, ומזה פחות 41."
+      ],
+      "explanation": "41 + 34 − 52 = 23, ולכן החסר הוא 34.",
+      "source": "algo"
+    },
+    {
+      "id": "q-899e35ab9d",
+      "text": "55 + ___ − 74 = 15",
+      "answer": 34,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "15 + 74 = 89, ומזה פחות 55."
+      ],
+      "explanation": "55 + 34 − 74 = 15, ולכן החסר הוא 34.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d58fe9548a",
+      "text": "23 + ___ − 72 = 4",
+      "answer": 53,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מה היה הסכום לפני שחיסרנו?",
+        "4 + 72 = 76, ומזה פחות 23."
+      ],
+      "explanation": "23 + 53 − 72 = 4, ולכן החסר הוא 53.",
       "source": "algo"
     }
   ]

@@ -591,7 +591,11 @@ function showKitWidget(u, dd) {
   const el = u.problemDiagram;
   if (!el) return;
   const kit = window.VelaWidgets;
-  const name = dd && dd.widget;
+  // כמה כלים נקראים על הלוח בשם אחר מאשר בערכה (board.js ממפה ביניהם).
+  // בלי המיפוי הזה שם-לוח נופל בשקט ל"בלי ציור" — ושאלה שמפנה לציור
+  // הופכת לבלתי-פתירה.
+  const ALIAS = { interactive_fraction: "fraction", clock_interactive: "clock_interactive" };
+  const name = (dd && (ALIAS[dd.widget] || dd.widget)) || "";
   if (!kit || typeof kit[name] !== "function") return showProblemDiagram(u, null);
   let html;
   try { html = kit[name](dd.params || {}); }
@@ -1706,6 +1710,13 @@ async function main() {
     const old = document.getElementById("choiceRow");
     if (old) old.remove();
     const opts = p && Array.isArray(p.options) ? p.options : null;
+    // שאלת-בחירה שנשמרה אצל הילד לפני שהשרת התחיל להגיש את האפשרויות —
+    // בלעדיהן אין על מה ללחוץ. מושכים שאלה חדשה במקום להשאיר אותו תקוע.
+    if (!opts && p && p.answerKind === "choice") {
+      const t = getCurrentTopic();
+      if (t) loadBankProblem(t, true);
+      return;
+    }
     if (u.answerRowNumeric) u.answerRowNumeric.hidden = !!opts;
     if (!opts || !host) return;
 
@@ -2776,6 +2787,7 @@ async function main() {
       u.problemText.textContent = questionText(p);
       showProblemVisual(u, p);
       applyAnswerMode(p);
+      renderChoices(p);
       renderDifficulty(p.difficulty);
     } else {
       // נושא שכבר נפתח אך בלי שאלה טעונה — טוענים שאלה מהמאגר כדי שהמעבר תמיד יציג תוכן
@@ -3375,6 +3387,7 @@ async function main() {
       u.problemText.textContent = questionText(p);
       showProblemVisual(u, p);
       applyAnswerMode(p);
+      renderChoices(p);
       renderDifficulty(p.difficulty);
       u.answerInput.value = "";
       setFeedback(u.feedbackBox, "", null);
@@ -3397,6 +3410,7 @@ async function main() {
         u.problemText.textContent = questionText(p);
         showProblemVisual(u, p);
         applyAnswerMode(p);
+        renderChoices(p);
         renderDifficulty(p.difficulty);
         u.answerInput.value = "";
         setFeedback(u.feedbackBox, "", null);

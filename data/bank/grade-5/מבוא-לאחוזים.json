@@ -4,784 +4,1699 @@
   "topic": "מבוא לאחוזים",
   "questions": [
     {
-      "id": "q-6c8b9254b2",
-      "text": "כמה זה 10% מתוך 40?",
-      "answer": 4,
-      "level": 3,
-      "difficulty": 3,
+      "id": "q-1a4f32565a",
+      "text": "כמה זה 10% מתוך 90?",
+      "answer": 9,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 40 × 10 ÷ 100."
+        "10% זה חלוקה ל-10.",
+        "90 חלקי 10."
       ],
-      "explanation": "10% מתוך 40 = 40 × 10 ÷ 100 = 4.",
-      "source": "algo"
+      "explanation": "10% מתוך 90 = 9.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-6749c079f4",
-      "text": "כמה זה 25% מתוך 100?",
-      "answer": 25,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 100 × 25 ÷ 100."
-      ],
-      "explanation": "25% מתוך 100 = 100 × 25 ÷ 100 = 25.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3867d580aa",
-      "text": "כמה זה 75% מתוך 180?",
-      "answer": 135,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 180 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 180 = 180 × 75 ÷ 100 = 135.",
-      "source": "algo"
-    },
-    {
-      "id": "q-427031411e",
-      "text": "כמה זה 50% מתוך 200?",
-      "answer": 100,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 200 × 50 ÷ 100."
-      ],
-      "explanation": "50% מתוך 200 = 200 × 50 ÷ 100 = 100.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c09508c3f0",
-      "text": "כמה זה 10% מתוך 80?",
-      "answer": 8,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 80 × 10 ÷ 100."
-      ],
-      "explanation": "10% מתוך 80 = 80 × 10 ÷ 100 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-40921d365b",
-      "text": "כמה זה 50% מתוך 180?",
-      "answer": 90,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 180 × 50 ÷ 100."
-      ],
-      "explanation": "50% מתוך 180 = 180 × 50 ÷ 100 = 90.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ffb1c86cae",
-      "text": "כמה זה 100% מתוך 200?",
-      "answer": 200,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 200 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 200 = 200 × 100 ÷ 100 = 200.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e50cb7ca15",
-      "text": "כמה זה 100% מתוך 160?",
-      "answer": 160,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 160 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 160 = 160 × 100 ÷ 100 = 160.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1d8bda09a7",
-      "text": "כמה זה 20% מתוך 100?",
-      "answer": 20,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 100 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 100 = 100 × 20 ÷ 100 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-600220b819",
-      "text": "כמה זה 20% מתוך 140?",
-      "answer": 28,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 140 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 140 = 140 × 20 ÷ 100 = 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0712d97030",
-      "text": "כמה זה 25% מתוך 140?",
-      "answer": 35,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 140 × 25 ÷ 100."
-      ],
-      "explanation": "25% מתוך 140 = 140 × 25 ÷ 100 = 35.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0ae9daff2a",
-      "text": "כמה זה 75% מתוך 120?",
-      "answer": 90,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 120 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 120 = 120 × 75 ÷ 100 = 90.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8e26d20b0d",
-      "text": "כמה זה 50% מתוך 160?",
-      "answer": 80,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 160 × 50 ÷ 100."
-      ],
-      "explanation": "50% מתוך 160 = 160 × 50 ÷ 100 = 80.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f0ce9b7f90",
-      "text": "כמה זה 25% מתוך 20?",
-      "answer": 5,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 20 × 25 ÷ 100."
-      ],
-      "explanation": "25% מתוך 20 = 20 × 25 ÷ 100 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6815ac3c90",
-      "text": "כמה זה 75% מתוך 40?",
-      "answer": 30,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 40 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 40 = 40 × 75 ÷ 100 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-792a480bbc",
-      "text": "כמה זה 50% מתוך 40?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 40 × 50 ÷ 100."
-      ],
-      "explanation": "50% מתוך 40 = 40 × 50 ÷ 100 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1e528bb7e2",
-      "text": "כמה זה 10% מתוך 60?",
-      "answer": 6,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 60 × 10 ÷ 100."
-      ],
-      "explanation": "10% מתוך 60 = 60 × 10 ÷ 100 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6595ef6f32",
-      "text": "כמה זה 20% מתוך 40?",
-      "answer": 8,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 40 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 40 = 40 × 20 ÷ 100 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-31c52bd63f",
-      "text": "כמה זה 10% מתוך 180?",
-      "answer": 18,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 180 × 10 ÷ 100."
-      ],
-      "explanation": "10% מתוך 180 = 180 × 10 ÷ 100 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-10d38104a3",
-      "text": "כמה זה 100% מתוך 180?",
-      "answer": 180,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 180 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 180 = 180 × 100 ÷ 100 = 180.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e0227bde34",
-      "text": "כמה זה 20% מתוך 180?",
-      "answer": 36,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 180 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 180 = 180 × 20 ÷ 100 = 36.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ce385f72ad",
-      "text": "כמה זה 75% מתוך 80?",
-      "answer": 60,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 80 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 80 = 80 × 75 ÷ 100 = 60.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e015d568e8",
-      "text": "כמה זה 10% מתוך 120?",
-      "answer": 12,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 120 × 10 ÷ 100."
-      ],
-      "explanation": "10% מתוך 120 = 120 × 10 ÷ 100 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e236c52c51",
-      "text": "כמה זה 10% מתוך 140?",
-      "answer": 14,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 140 × 10 ÷ 100."
-      ],
-      "explanation": "10% מתוך 140 = 140 × 10 ÷ 100 = 14.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7ecdb77999",
-      "text": "כמה זה 50% מתוך 20?",
-      "answer": 10,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 20 × 50 ÷ 100."
-      ],
-      "explanation": "50% מתוך 20 = 20 × 50 ÷ 100 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3e35a493a5",
-      "text": "כמה זה 20% מתוך 200?",
-      "answer": 40,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 200 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 200 = 200 × 20 ÷ 100 = 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4b6f4c948a",
-      "text": "כמה זה 75% מתוך 60?",
-      "answer": 45,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 60 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 60 = 60 × 75 ÷ 100 = 45.",
-      "source": "algo"
-    },
-    {
-      "id": "q-409922b988",
-      "text": "כמה זה 100% מתוך 80?",
-      "answer": 80,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 80 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 80 = 80 × 100 ÷ 100 = 80.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2cf63c5e54",
-      "text": "כמה זה 75% מתוך 20?",
-      "answer": 15,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 20 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 20 = 20 × 75 ÷ 100 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1e57af2505",
-      "text": "כמה זה 75% מתוך 200?",
-      "answer": 150,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 200 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 200 = 200 × 75 ÷ 100 = 150.",
-      "source": "algo"
-    },
-    {
-      "id": "q-546a1501c0",
-      "text": "כמה זה 20% מתוך 80?",
-      "answer": 16,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 80 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 80 = 80 × 20 ÷ 100 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f0e10eb28b",
-      "text": "כמה זה 50% מתוך 100?",
-      "answer": 50,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 100 × 50 ÷ 100."
-      ],
-      "explanation": "50% מתוך 100 = 100 × 50 ÷ 100 = 50.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5388b3923a",
-      "text": "כמה זה 50% מתוך 60?",
-      "answer": 30,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 60 × 50 ÷ 100."
-      ],
-      "explanation": "50% מתוך 60 = 60 × 50 ÷ 100 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-599e430c36",
-      "text": "כמה זה 25% מתוך 80?",
-      "answer": 20,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 80 × 25 ÷ 100."
-      ],
-      "explanation": "25% מתוך 80 = 80 × 25 ÷ 100 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d58fcd3e00",
-      "text": "כמה זה 75% מתוך 160?",
-      "answer": 120,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 160 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 160 = 160 × 75 ÷ 100 = 120.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7ab0ad3e21",
-      "text": "כמה זה 10% מתוך 160?",
-      "answer": 16,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 160 × 10 ÷ 100."
-      ],
-      "explanation": "10% מתוך 160 = 160 × 10 ÷ 100 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6a001b9d0f",
-      "text": "כמה זה 100% מתוך 120?",
-      "answer": 120,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 120 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 120 = 120 × 100 ÷ 100 = 120.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e275532121",
-      "text": "כמה זה 100% מתוך 60?",
-      "answer": 60,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 60 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 60 = 60 × 100 ÷ 100 = 60.",
-      "source": "algo"
-    },
-    {
-      "id": "q-17d7f35da9",
-      "text": "כמה זה 20% מתוך 20?",
-      "answer": 4,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 20 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 20 = 20 × 20 ÷ 100 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-900103e6ae",
-      "text": "כמה זה 25% מתוך 60?",
-      "answer": 15,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 60 × 25 ÷ 100."
-      ],
-      "explanation": "25% מתוך 60 = 60 × 25 ÷ 100 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-241421d41b",
-      "text": "כמה זה 100% מתוך 100?",
-      "answer": 100,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 100 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 100 = 100 × 100 ÷ 100 = 100.",
-      "source": "algo"
-    },
-    {
-      "id": "q-40cb45d115",
-      "text": "כמה זה 100% מתוך 40?",
-      "answer": 40,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 40 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 40 = 40 × 100 ÷ 100 = 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e3d6e82304",
-      "text": "כמה זה 20% מתוך 120?",
-      "answer": 24,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 120 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 120 = 120 × 20 ÷ 100 = 24.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2f98b90ea5",
-      "text": "כמה זה 20% מתוך 60?",
-      "answer": 12,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 60 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 60 = 60 × 20 ÷ 100 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-623e39a6a7",
-      "text": "כמה זה 25% מתוך 120?",
-      "answer": 30,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 120 × 25 ÷ 100."
-      ],
-      "explanation": "25% מתוך 120 = 120 × 25 ÷ 100 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f49542a47f",
-      "text": "כמה זה 100% מתוך 140?",
-      "answer": 140,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 140 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 140 = 140 × 100 ÷ 100 = 140.",
-      "source": "algo"
-    },
-    {
-      "id": "q-18f76dfc40",
-      "text": "כמה זה 25% מתוך 160?",
-      "answer": 40,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 160 × 25 ÷ 100."
-      ],
-      "explanation": "25% מתוך 160 = 160 × 25 ÷ 100 = 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-462c6a9c78",
-      "text": "כמה זה 100% מתוך 20?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "100% זה 100 מתוך 100.",
-        "חשב/י 20 × 100 ÷ 100."
-      ],
-      "explanation": "100% מתוך 20 = 20 × 100 ÷ 100 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5b986b0d8b",
-      "text": "כמה זה 10% מתוך 200?",
-      "answer": 20,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 200 × 10 ÷ 100."
-      ],
-      "explanation": "10% מתוך 200 = 200 × 10 ÷ 100 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-26c5b917f4",
-      "text": "כמה זה 75% מתוך 140?",
-      "answer": 105,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 140 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 140 = 140 × 75 ÷ 100 = 105.",
-      "source": "algo"
-    },
-    {
-      "id": "q-f92e91aa40",
-      "text": "כמה זה 25% מתוך 40?",
-      "answer": 10,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 40 × 25 ÷ 100."
-      ],
-      "explanation": "25% מתוך 40 = 40 × 25 ÷ 100 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5022d4383b",
+      "id": "q-bdf83f3c7b",
       "text": "כמה זה 50% מתוך 140?",
       "answer": 70,
-      "level": 5,
-      "difficulty": 5,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 140 × 50 ÷ 100."
+        "50% זה בדיוק חצי.",
+        "140 חלקי 2."
       ],
-      "explanation": "50% מתוך 140 = 140 × 50 ÷ 100 = 70.",
-      "source": "algo"
+      "explanation": "50% מתוך 140 = 70.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-6f036b9ff6",
-      "text": "כמה זה 25% מתוך 180?",
-      "answer": 45,
-      "level": 6,
-      "difficulty": 6,
+      "id": "q-25479dd5db",
+      "text": "כמה זה 100% מתוך 150?",
+      "answer": 150,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 180 × 25 ÷ 100."
+        "100% זה הכול.",
+        "התשובה היא 150 עצמו."
       ],
-      "explanation": "25% מתוך 180 = 180 × 25 ÷ 100 = 45.",
-      "source": "algo"
+      "explanation": "100% מתוך 150 = 150.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-a6213fac6c",
+      "id": "q-ac68fa7746",
+      "text": "כמה זה 100% מתוך 140?",
+      "answer": 140,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 140 עצמו."
+      ],
+      "explanation": "100% מתוך 140 = 140.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-7def7d7b00",
+      "text": "כמה זה 100% מתוך 100?",
+      "answer": 100,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 100 עצמו."
+      ],
+      "explanation": "100% מתוך 100 = 100.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-24a78527e2",
+      "text": "כמה זה 10% מתוך 120?",
+      "answer": 12,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "120 חלקי 10."
+      ],
+      "explanation": "10% מתוך 120 = 12.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-7d2099aa9a",
+      "text": "כמה זה 50% מתוך 110?",
+      "answer": 55,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "110 חלקי 2."
+      ],
+      "explanation": "50% מתוך 110 = 55.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-8911436a6a",
+      "text": "כמה זה 10% מתוך 80?",
+      "answer": 8,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "80 חלקי 10."
+      ],
+      "explanation": "10% מתוך 80 = 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2a63bd25a1",
+      "text": "כמה זה 100% מתוך 110?",
+      "answer": 110,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 110 עצמו."
+      ],
+      "explanation": "100% מתוך 110 = 110.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-68040541fe",
+      "text": "כמה זה 10% מתוך 150?",
+      "answer": 15,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "150 חלקי 10."
+      ],
+      "explanation": "10% מתוך 150 = 15.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-12fc2a76d8",
+      "text": "כמה זה 100% מתוך 70?",
+      "answer": 70,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 70 עצמו."
+      ],
+      "explanation": "100% מתוך 70 = 70.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-103c370d32",
+      "text": "כמה זה 50% מתוך 50?",
+      "answer": 25,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "50 חלקי 2."
+      ],
+      "explanation": "50% מתוך 50 = 25.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-69cbec9375",
+      "text": "כמה זה 10% מתוך 100?",
+      "answer": 10,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "100 חלקי 10."
+      ],
+      "explanation": "10% מתוך 100 = 10.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-11a667607b",
+      "text": "כמה זה 100% מתוך 160?",
+      "answer": 160,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 160 עצמו."
+      ],
+      "explanation": "100% מתוך 160 = 160.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-40e85f353c",
+      "text": "כמה זה 100% מתוך 80?",
+      "answer": 80,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 80 עצמו."
+      ],
+      "explanation": "100% מתוך 80 = 80.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ecfd9f4685",
+      "text": "כמה זה 10% מתוך 110?",
+      "answer": 11,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "110 חלקי 10."
+      ],
+      "explanation": "10% מתוך 110 = 11.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-8139c2f47d",
+      "text": "כמה זה 10% מתוך 50?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "50 חלקי 10."
+      ],
+      "explanation": "10% מתוך 50 = 5.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-46eed253a0",
       "text": "כמה זה 10% מתוך 20?",
       "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "20 חלקי 10."
+      ],
+      "explanation": "10% מתוך 20 = 2.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-81eccff290",
+      "text": "כמה זה 50% מתוך 200?",
+      "answer": 100,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "200 חלקי 2."
+      ],
+      "explanation": "50% מתוך 200 = 100.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d171892273",
+      "text": "כמה זה 100% מתוך 170?",
+      "answer": 170,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 170 עצמו."
+      ],
+      "explanation": "100% מתוך 170 = 170.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-72d1817176",
+      "text": "כמה זה 10% מתוך 130?",
+      "answer": 13,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "130 חלקי 10."
+      ],
+      "explanation": "10% מתוך 130 = 13.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-96d91c6159",
+      "text": "כמה זה 10% מתוך 140?",
+      "answer": 14,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "140 חלקי 10."
+      ],
+      "explanation": "10% מתוך 140 = 14.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-03cea21c01",
+      "text": "כמה זה 10% מתוך 40?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "40 חלקי 10."
+      ],
+      "explanation": "10% מתוך 40 = 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6c0edb68ef",
+      "text": "כמה זה 50% מתוך 170?",
+      "answer": 85,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "170 חלקי 2."
+      ],
+      "explanation": "50% מתוך 170 = 85.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-76057eb9f9",
+      "text": "כמה זה 50% מתוך 40?",
+      "answer": 20,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "40 חלקי 2."
+      ],
+      "explanation": "50% מתוך 40 = 20.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-97b279febb",
+      "text": "כמה זה 100% מתוך 190?",
+      "answer": 190,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 190 עצמו."
+      ],
+      "explanation": "100% מתוך 190 = 190.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0f3854648c",
+      "text": "כמה זה 100% מתוך 120?",
+      "answer": 120,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 120 עצמו."
+      ],
+      "explanation": "100% מתוך 120 = 120.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-be503d53db",
+      "text": "כמה זה 100% מתוך 200?",
+      "answer": 200,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 200 עצמו."
+      ],
+      "explanation": "100% מתוך 200 = 200.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0bfcf37407",
+      "text": "כמה זה 10% מתוך 200?",
+      "answer": 20,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "200 חלקי 10."
+      ],
+      "explanation": "10% מתוך 200 = 20.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5916118600",
+      "text": "כמה זה 10% מתוך 70?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "70 חלקי 10."
+      ],
+      "explanation": "10% מתוך 70 = 7.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-57a3196650",
+      "text": "כמה זה 50% מתוך 90?",
+      "answer": 45,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "90 חלקי 2."
+      ],
+      "explanation": "50% מתוך 90 = 45.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ec7f72af8c",
+      "text": "כמה זה 10% מתוך 170?",
+      "answer": 17,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "170 חלקי 10."
+      ],
+      "explanation": "10% מתוך 170 = 17.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-90fc9c2a36",
+      "text": "כמה זה 50% מתוך 70?",
+      "answer": 35,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "70 חלקי 2."
+      ],
+      "explanation": "50% מתוך 70 = 35.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a20768be84",
+      "text": "כמה זה 100% מתוך 60?",
+      "answer": 60,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 60 עצמו."
+      ],
+      "explanation": "100% מתוך 60 = 60.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-64c2c8baef",
+      "text": "כמה זה 50% מתוך 130?",
+      "answer": 65,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "130 חלקי 2."
+      ],
+      "explanation": "50% מתוך 130 = 65.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ce5313ec25",
+      "text": "כמה זה 50% מתוך 80?",
+      "answer": 40,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "80 חלקי 2."
+      ],
+      "explanation": "50% מתוך 80 = 40.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c3e47eb342",
+      "text": "כמה זה 50% מתוך 60?",
+      "answer": 30,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "60 חלקי 2."
+      ],
+      "explanation": "50% מתוך 60 = 30.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e64e0052c7",
+      "text": "כמה זה 10% מתוך 30?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "30 חלקי 10."
+      ],
+      "explanation": "10% מתוך 30 = 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-8ddedfb2f3",
+      "text": "כמה זה 50% מתוך 150?",
+      "answer": 75,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "150 חלקי 2."
+      ],
+      "explanation": "50% מתוך 150 = 75.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c1ce93ccb0",
+      "text": "כמה זה 50% מתוך 20?",
+      "answer": 10,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "20 חלקי 2."
+      ],
+      "explanation": "50% מתוך 20 = 10.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a704151c86",
+      "text": "כמה זה 50% מתוך 180?",
+      "answer": 90,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "180 חלקי 2."
+      ],
+      "explanation": "50% מתוך 180 = 90.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-96242b7975",
+      "text": "כמה זה 100% מתוך 130?",
+      "answer": 130,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 130 עצמו."
+      ],
+      "explanation": "100% מתוך 130 = 130.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a7e5e8b88c",
+      "text": "כמה זה 10% מתוך 60?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "60 חלקי 10."
+      ],
+      "explanation": "10% מתוך 60 = 6.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cc1a12f9c8",
+      "text": "כמה זה 100% מתוך 30?",
+      "answer": 30,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 30 עצמו."
+      ],
+      "explanation": "100% מתוך 30 = 30.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2347c9a5e4",
+      "text": "כמה זה 50% מתוך 30?",
+      "answer": 15,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "30 חלקי 2."
+      ],
+      "explanation": "50% מתוך 30 = 15.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-8c26afdf7c",
+      "text": "כמה זה 50% מתוך 100?",
+      "answer": 50,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "100 חלקי 2."
+      ],
+      "explanation": "50% מתוך 100 = 50.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-715f885ed3",
+      "text": "כמה זה 100% מתוך 40?",
+      "answer": 40,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "100% זה הכול.",
+        "התשובה היא 40 עצמו."
+      ],
+      "explanation": "100% מתוך 40 = 40.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2762f64a22",
+      "text": "כמה זה 10% מתוך 180?",
+      "answer": 18,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "180 חלקי 10."
+      ],
+      "explanation": "10% מתוך 180 = 18.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-927cf218b6",
+      "text": "כמה זה 10% מתוך 160?",
+      "answer": 16,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "10% זה חלוקה ל-10.",
+        "160 חלקי 10."
+      ],
+      "explanation": "10% מתוך 160 = 16.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2d5b46ccf2",
+      "text": "כמה זה 50% מתוך 160?",
+      "answer": 80,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "50% זה בדיוק חצי.",
+        "160 חלקי 2."
+      ],
+      "explanation": "50% מתוך 160 = 80.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-438c897caf",
+      "text": "כמה זה 75% מתוך 40?",
+      "answer": 30,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 4, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 40 = 40 × 75 ÷ 100 = 30.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-99bea7df45",
+      "text": "כמה זה 20% מתוך 220?",
+      "answer": 44,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 22, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 220 = 220 × 20 ÷ 100 = 44.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-624c157c7d",
+      "text": "כמה זה 25% מתוך 180?",
+      "answer": 45,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 18, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 180 = 180 × 25 ÷ 100 = 45.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cd0409de22",
+      "text": "כמה זה 25% מתוך 160?",
+      "answer": 40,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 16, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 160 = 160 × 25 ÷ 100 = 40.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6e6957c9d5",
+      "text": "כמה זה 75% מתוך 140?",
+      "answer": 105,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 14, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 140 = 140 × 75 ÷ 100 = 105.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ebba686272",
+      "text": "כמה זה 75% מתוך 100?",
+      "answer": 75,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 10, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 100 = 100 × 75 ÷ 100 = 75.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-39a6e94b29",
+      "text": "כמה זה 75% מתוך 200?",
+      "answer": 150,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 20, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 200 = 200 × 75 ÷ 100 = 150.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cc5d424bcd",
+      "text": "כמה זה 25% מתוך 40?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 4, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 40 = 40 × 25 ÷ 100 = 10.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-7c52136194",
+      "text": "כמה זה 20% מתוך 200?",
+      "answer": 40,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 20, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 200 = 200 × 20 ÷ 100 = 40.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-7826a667bd",
+      "text": "כמה זה 25% מתוך 100?",
+      "answer": 25,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 10, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 100 = 100 × 25 ÷ 100 = 25.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-19fa5d2a50",
+      "text": "כמה זה 25% מתוך 240?",
+      "answer": 60,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 24, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 240 = 240 × 25 ÷ 100 = 60.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-b70b9b2c19",
+      "text": "כמה זה 20% מתוך 40?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 4, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 40 = 40 × 20 ÷ 100 = 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-948cc0a98f",
+      "text": "כמה זה 25% מתוך 120?",
+      "answer": 30,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 12, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 120 = 120 × 25 ÷ 100 = 30.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-f1e98852d3",
+      "text": "כמה זה 20% מתוך 180?",
+      "answer": 36,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 18, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 180 = 180 × 20 ÷ 100 = 36.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-4482ce5a20",
+      "text": "כמה זה 25% מתוך 200?",
+      "answer": 50,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 20, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 200 = 200 × 25 ÷ 100 = 50.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5caf5b2b8d",
+      "text": "כמה זה 75% מתוך 120?",
+      "answer": 90,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 12, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 120 = 120 × 75 ÷ 100 = 90.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c066e79c0e",
+      "text": "כמה זה 75% מתוך 180?",
+      "answer": 135,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 18, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 180 = 180 × 75 ÷ 100 = 135.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-748da82b04",
+      "text": "כמה זה 20% מתוך 60?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 6, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 60 = 60 × 20 ÷ 100 = 12.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a4ebdcc822",
+      "text": "כמה זה 75% מתוך 80?",
+      "answer": 60,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 8, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 80 = 80 × 75 ÷ 100 = 60.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c68c9215c4",
+      "text": "כמה זה 20% מתוך 160?",
+      "answer": 32,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 16, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 160 = 160 × 20 ÷ 100 = 32.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0f16caf8ca",
+      "text": "כמה זה 20% מתוך 120?",
+      "answer": 24,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 12, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 120 = 120 × 20 ÷ 100 = 24.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-38b002a791",
+      "text": "כמה זה 75% מתוך 240?",
+      "answer": 180,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 24, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 240 = 240 × 75 ÷ 100 = 180.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9af610193b",
+      "text": "כמה זה 20% מתוך 80?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 8, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 80 = 80 × 20 ÷ 100 = 16.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c72c056bf5",
+      "text": "כמה זה 20% מתוך 240?",
+      "answer": 48,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 24, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 240 = 240 × 20 ÷ 100 = 48.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-66e45faad8",
+      "text": "כמה זה 75% מתוך 220?",
+      "answer": 165,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 22, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 220 = 220 × 75 ÷ 100 = 165.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c98d464f6f",
+      "text": "כמה זה 25% מתוך 60?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 6, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 60 = 60 × 25 ÷ 100 = 15.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a7217ccd70",
+      "text": "כמה זה 25% מתוך 140?",
+      "answer": 35,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 14, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 140 = 140 × 25 ÷ 100 = 35.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d52c82e18c",
+      "text": "כמה זה 20% מתוך 100?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 10, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 100 = 100 × 20 ÷ 100 = 20.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-b107db61a4",
+      "text": "כמה זה 75% מתוך 60?",
+      "answer": 45,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 6, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 60 = 60 × 75 ÷ 100 = 45.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a74c67085e",
+      "text": "כמה זה 20% מתוך 140?",
+      "answer": 28,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "20% זה חמישית.",
+        "קודם 10% = 14, ומשם בונים 20%."
+      ],
+      "explanation": "20% מתוך 140 = 140 × 20 ÷ 100 = 28.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-962f4b714b",
+      "text": "כמה זה 75% מתוך 160?",
+      "answer": 120,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "75% זה שלושה רבעים.",
+        "קודם 10% = 16, ומשם בונים 75%."
+      ],
+      "explanation": "75% מתוך 160 = 160 × 75 ÷ 100 = 120.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-fc5f6e50d8",
+      "text": "כמה זה 25% מתוך 220?",
+      "answer": 55,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 22, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 220 = 220 × 25 ÷ 100 = 55.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-03178f73f0",
+      "text": "כמה זה 25% מתוך 80?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "25% זה רבע.",
+        "קודם 10% = 8, ומשם בונים 25%."
+      ],
+      "explanation": "25% מתוך 80 = 80 × 25 ÷ 100 = 20.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a034707073",
+      "text": "8 מתוך 40 — כמה אחוז זה?",
+      "answer": 20,
       "level": 3,
       "difficulty": 3,
       "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 20 × 10 ÷ 100."
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "8 ÷ 40 × 100."
       ],
-      "explanation": "10% מתוך 20 = 20 × 10 ÷ 100 = 2.",
-      "source": "algo"
+      "explanation": "8 ÷ 40 = 0.2, וכפול 100 זה 20%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-a94b5b0512",
-      "text": "כמה זה 50% מתוך 80?",
-      "answer": 40,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-24b87ffbe2",
+      "text": "10 מתוך 40 — כמה אחוז זה?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 80 × 50 ÷ 100."
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "10 ÷ 40 × 100."
       ],
-      "explanation": "50% מתוך 80 = 80 × 50 ÷ 100 = 40.",
-      "source": "algo"
+      "explanation": "10 ÷ 40 = 0.25, וכפול 100 זה 25%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-b17eff36ff",
-      "text": "כמה זה 75% מתוך 100?",
-      "answer": 75,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "75% זה 75 מתוך 100.",
-        "חשב/י 100 × 75 ÷ 100."
-      ],
-      "explanation": "75% מתוך 100 = 100 × 75 ÷ 100 = 75.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e12744cab8",
-      "text": "כמה זה 50% מתוך 120?",
-      "answer": 60,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "50% זה 50 מתוך 100.",
-        "חשב/י 120 × 50 ÷ 100."
-      ],
-      "explanation": "50% מתוך 120 = 120 × 50 ÷ 100 = 60.",
-      "source": "algo"
-    },
-    {
-      "id": "q-18572f2afa",
-      "text": "כמה זה 20% מתוך 160?",
-      "answer": 32,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "20% זה 20 מתוך 100.",
-        "חשב/י 160 × 20 ÷ 100."
-      ],
-      "explanation": "20% מתוך 160 = 160 × 20 ÷ 100 = 32.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9fb97996fa",
-      "text": "כמה זה 10% מתוך 100?",
-      "answer": 10,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "10% זה 10 מתוך 100.",
-        "חשב/י 100 × 10 ÷ 100."
-      ],
-      "explanation": "10% מתוך 100 = 100 × 10 ÷ 100 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a5d756a5fe",
-      "text": "כמה זה 25% מתוך 200?",
+      "id": "q-838e28e3e6",
+      "text": "12.5 מתוך 25 — כמה אחוז זה?",
       "answer": 50,
-      "level": 6,
-      "difficulty": 6,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "25% זה 25 מתוך 100.",
-        "חשב/י 200 × 25 ÷ 100."
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "12.5 ÷ 25 × 100."
       ],
-      "explanation": "25% מתוך 200 = 200 × 25 ÷ 100 = 50.",
-      "source": "algo"
+      "explanation": "12.5 ÷ 25 = 0.5, וכפול 100 זה 50%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cb843babc5",
+      "text": "16 מתוך 80 — כמה אחוז זה?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "16 ÷ 80 × 100."
+      ],
+      "explanation": "16 ÷ 80 = 0.2, וכפול 100 זה 20%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-29e10a52ca",
+      "text": "20 מתוך 40 — כמה אחוז זה?",
+      "answer": 50,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "20 ÷ 40 × 100."
+      ],
+      "explanation": "20 ÷ 40 = 0.5, וכפול 100 זה 50%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a67c4d5a8c",
+      "text": "100 מתוך 200 — כמה אחוז זה?",
+      "answer": 50,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "100 ÷ 200 × 100."
+      ],
+      "explanation": "100 ÷ 200 = 0.5, וכפול 100 זה 50%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-1dfe9ec820",
+      "text": "20 מתוך 200 — כמה אחוז זה?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "20 ÷ 200 × 100."
+      ],
+      "explanation": "20 ÷ 200 = 0.1, וכפול 100 זה 10%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-38342826a2",
+      "text": "8 מתוך 80 — כמה אחוז זה?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "8 ÷ 80 × 100."
+      ],
+      "explanation": "8 ÷ 80 = 0.1, וכפול 100 זה 10%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9be96534c0",
+      "text": "4 מתוך 40 — כמה אחוז זה?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "4 ÷ 40 × 100."
+      ],
+      "explanation": "4 ÷ 40 = 0.1, וכפול 100 זה 10%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-84af72b9d6",
+      "text": "5 מתוך 50 — כמה אחוז זה?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "5 ÷ 50 × 100."
+      ],
+      "explanation": "5 ÷ 50 = 0.1, וכפול 100 זה 10%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6c5b4ebb12",
+      "text": "10 מתוך 50 — כמה אחוז זה?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "10 ÷ 50 × 100."
+      ],
+      "explanation": "10 ÷ 50 = 0.2, וכפול 100 זה 20%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-4b3ec01954",
+      "text": "30 מתוך 40 — כמה אחוז זה?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "30 ÷ 40 × 100."
+      ],
+      "explanation": "30 ÷ 40 = 0.75, וכפול 100 זה 75%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-11eaa03b4a",
+      "text": "37.5 מתוך 50 — כמה אחוז זה?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "37.5 ÷ 50 × 100."
+      ],
+      "explanation": "37.5 ÷ 50 = 0.75, וכפול 100 זה 75%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c7898200de",
+      "text": "18.75 מתוך 25 — כמה אחוז זה?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "18.75 ÷ 25 × 100."
+      ],
+      "explanation": "18.75 ÷ 25 = 0.75, וכפול 100 זה 75%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-60603cfb2a",
+      "text": "60 מתוך 80 — כמה אחוז זה?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "60 ÷ 80 × 100."
+      ],
+      "explanation": "60 ÷ 80 = 0.75, וכפול 100 זה 75%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ecb9ce0349",
+      "text": "20 מתוך 80 — כמה אחוז זה?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "20 ÷ 80 × 100."
+      ],
+      "explanation": "20 ÷ 80 = 0.25, וכפול 100 זה 25%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-8e1740e79d",
+      "text": "2.5 מתוך 25 — כמה אחוז זה?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "2.5 ÷ 25 × 100."
+      ],
+      "explanation": "2.5 ÷ 25 = 0.1, וכפול 100 זה 10%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0b50b06694",
+      "text": "12.5 מתוך 50 — כמה אחוז זה?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "12.5 ÷ 50 × 100."
+      ],
+      "explanation": "12.5 ÷ 50 = 0.25, וכפול 100 זה 25%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ce4a975269",
+      "text": "10 מתוך 20 — כמה אחוז זה?",
+      "answer": 50,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "10 ÷ 20 × 100."
+      ],
+      "explanation": "10 ÷ 20 = 0.5, וכפול 100 זה 50%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-71e4635de6",
+      "text": "40 מתוך 80 — כמה אחוז זה?",
+      "answer": 50,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "40 ÷ 80 × 100."
+      ],
+      "explanation": "40 ÷ 80 = 0.5, וכפול 100 זה 50%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d5bd28c1d6",
+      "text": "2 מתוך 20 — כמה אחוז זה?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "2 ÷ 20 × 100."
+      ],
+      "explanation": "2 ÷ 20 = 0.1, וכפול 100 זה 10%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-adb9c5de07",
+      "text": "50 מתוך 200 — כמה אחוז זה?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "50 ÷ 200 × 100."
+      ],
+      "explanation": "50 ÷ 200 = 0.25, וכפול 100 זה 25%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-353abccb52",
+      "text": "5 מתוך 25 — כמה אחוז זה?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "5 ÷ 25 × 100."
+      ],
+      "explanation": "5 ÷ 25 = 0.2, וכפול 100 זה 20%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a825a5cd62",
+      "text": "25 מתוך 50 — כמה אחוז זה?",
+      "answer": 50,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "25 ÷ 50 × 100."
+      ],
+      "explanation": "25 ÷ 50 = 0.5, וכפול 100 זה 50%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-b06ccd9d33",
+      "text": "15 מתוך 20 — כמה אחוז זה?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "15 ÷ 20 × 100."
+      ],
+      "explanation": "15 ÷ 20 = 0.75, וכפול 100 זה 75%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-aabf281bf6",
+      "text": "6.25 מתוך 25 — כמה אחוז זה?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "6.25 ÷ 25 × 100."
+      ],
+      "explanation": "6.25 ÷ 25 = 0.25, וכפול 100 זה 25%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6c0fed8b08",
+      "text": "40 מתוך 200 — כמה אחוז זה?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "40 ÷ 200 × 100."
+      ],
+      "explanation": "40 ÷ 200 = 0.2, וכפול 100 זה 20%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-562d11e2a0",
+      "text": "5 מתוך 20 — כמה אחוז זה?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "5 ÷ 20 × 100."
+      ],
+      "explanation": "5 ÷ 20 = 0.25, וכפול 100 זה 25%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9c7b295f82",
+      "text": "150 מתוך 200 — כמה אחוז זה?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "150 ÷ 200 × 100."
+      ],
+      "explanation": "150 ÷ 200 = 0.75, וכפול 100 זה 75%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-deb34a5c69",
+      "text": "4 מתוך 20 — כמה אחוז זה?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אחוז = החלק חלקי השלם, כפול 100.",
+        "4 ÷ 20 × 100."
+      ],
+      "explanation": "4 ÷ 20 = 0.2, וכפול 100 זה 20%.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     }
   ]
 }

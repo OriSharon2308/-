@@ -4,116 +4,95 @@
   "topic": "מעגל ועיגול",
   "questions": [
     {
-      "id": "q-3965f3e282",
-      "text": "רדיוס העיגול 5 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 78.5,
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-6bf51923ff",
+      "text": "קוטר המעגל 12 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 5 × 5, ורק אז כופלים ב-3.14."
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 12 ב-2."
       ],
-      "explanation": "5 × 5 = 25, ו-3.14 × 25 = 78.5 סמ״ר.",
+      "explanation": "12 : 2 = 6 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 5,
-          "show": "radius",
+          "radius": 6,
+          "show": "diameter",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "עיגול"
+        "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-0470d3678d",
-      "text": "רדיוס המעגל 12 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 24,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-91604ea477",
+      "text": "קוטר המעגל 14 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 14 ב-2."
+      ],
+      "explanation": "14 : 2 = 7 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 7,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2d245a7f75",
+      "text": "רדיוס המעגל 2 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הקוטר עובר דרך המרכז מקצה לקצה.",
         "הוא בדיוק פעמיים הרדיוס."
       ],
-      "explanation": "12 × 2 = 24 ס״מ.",
+      "explanation": "2 × 2 = 4 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 12,
+          "radius": 2,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-37bc1d29e4",
-      "text": "קוטר המעגל 18 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 18 ב-2."
-      ],
-      "explanation": "18 : 2 = 9 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 9,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-647a9a407a",
-      "text": "קוטר המעגל 32 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 32 ב-2."
-      ],
-      "explanation": "32 : 2 = 16 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 16,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-867da57263",
+      "id": "q-530e55b2e7",
       "text": "רדיוס המעגל 11 ס״מ. כמה ס״מ הקוטר?",
       "answer": 22,
-      "level": 2,
-      "difficulty": 2,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הקוטר עובר דרך המרכז מקצה לקצה.",
         "הוא בדיוק פעמיים הרדיוס."
@@ -132,285 +111,21 @@
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-cacc082371",
-      "text": "רדיוס העיגול 3 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 28.26,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 3 × 3, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "3 × 3 = 9, ו-3.14 × 9 = 28.26 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 3,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-524c8568c8",
-      "text": "קוטר המעגל 36 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 36 ב-2."
-      ],
-      "explanation": "36 : 2 = 18 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 18,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-ba2c446b19",
-      "text": "קוטר המעגל 4 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 4 ב-2."
-      ],
-      "explanation": "4 : 2 = 2 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 2,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-8701c90c0e",
-      "text": "רדיוס העיגול 9 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 254.34,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 9 × 9, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "9 × 9 = 81, ו-3.14 × 81 = 254.34 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 9,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-3360856f7d",
-      "text": "רדיוס העיגול 10 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 314,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 10 × 10, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "10 × 10 = 100, ו-3.14 × 100 = 314 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 10,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-68045874cf",
-      "text": "רדיוס העיגול 19 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 1133.54,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 19 × 19, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "19 × 19 = 361, ו-3.14 × 361 = 1133.54 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 19,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-c687461eb8",
-      "text": "רדיוס המעגל 15 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 30,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-eba5b0188f",
+      "text": "רדיוס המעגל 12 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 24,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הקוטר עובר דרך המרכז מקצה לקצה.",
         "הוא בדיוק פעמיים הרדיוס."
       ],
-      "explanation": "15 × 2 = 30 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 15,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-3c8facc4ed",
-      "text": "קוטר המעגל 16 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 50.24,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 16"
-      ],
-      "explanation": "3.14 × 16 = 50.24 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 8,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-cdd432f7f9",
-      "text": "קוטר המעגל 30 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 30 ב-2."
-      ],
-      "explanation": "30 : 2 = 15 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 15,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-773c1c5b27",
-      "text": "קוטר המעגל 40 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 125.6,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 40"
-      ],
-      "explanation": "3.14 × 40 = 125.6 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 20,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-b5654cdf7b",
-      "text": "קוטר המעגל 24 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 75.36,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 24"
-      ],
-      "explanation": "3.14 × 24 = 75.36 ס״מ.",
+      "explanation": "12 × 2 = 24 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -418,26 +133,27 @@
         "widget": "circle_parts",
         "params": {
           "radius": 12,
-          "show": "diameter",
+          "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-1b2df15659",
-      "text": "קוטר המעגל 10 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-968983cf26",
+      "text": "רדיוס המעגל 5 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 10,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 10 ב-2."
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
       ],
-      "explanation": "10 : 2 = 5 ס״מ.",
+      "explanation": "5 × 2 = 10 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -445,112 +161,34 @@
         "widget": "circle_parts",
         "params": {
           "radius": 5,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-aa86ffb485",
-      "text": "קוטר המעגל 18 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 56.52,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 18"
-      ],
-      "explanation": "3.14 × 18 = 56.52 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 9,
-          "show": "diameter",
+          "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-1981d2e11d",
-      "text": "קוטר המעגל 34 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 106.76,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 34"
-      ],
-      "explanation": "3.14 × 34 = 106.76 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 17,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-822ce07215",
-      "text": "קוטר המעגל 28 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 14,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-a4114f3bec",
+      "text": "קוטר המעגל 26 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 13,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 28 ב-2."
+        "חלק/י את 26 ב-2."
       ],
-      "explanation": "28 : 2 = 14 ס״מ.",
+      "explanation": "26 : 2 = 13 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 14,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-999df03acd",
-      "text": "קוטר המעגל 30 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 94.2,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 30"
-      ],
-      "explanation": "3.14 × 30 = 94.2 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 15,
+          "radius": 13,
           "show": "diameter",
           "lock": true
         },
@@ -558,14 +196,15 @@
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-550f80fe4c",
+      "id": "q-2d9503b0d1",
       "text": "רדיוס המעגל 4 ס״מ. כמה ס״מ הקוטר?",
       "answer": 8,
-      "level": 2,
-      "difficulty": 2,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הקוטר עובר דרך המרכז מקצה לקצה.",
         "הוא בדיוק פעמיים הרדיוס."
@@ -584,419 +223,21 @@
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-5dbe48e323",
-      "text": "רדיוס העיגול 14 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 615.44,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 14 × 14, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "14 × 14 = 196, ו-3.14 × 196 = 615.44 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 14,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-bd257862c1",
-      "text": "רדיוס העיגול 2 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 12.56,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 2 × 2, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "2 × 2 = 4, ו-3.14 × 4 = 12.56 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 2,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-efefff397b",
-      "text": "קוטר המעגל 28 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 87.92,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 28"
-      ],
-      "explanation": "3.14 × 28 = 87.92 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 14,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-e07de79ba2",
-      "text": "רדיוס המעגל 6 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
-      ],
-      "explanation": "6 × 2 = 12 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 6,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-ae0961962c",
-      "text": "קוטר המעגל 32 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 100.48,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 32"
-      ],
-      "explanation": "3.14 × 32 = 100.48 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 16,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-047310b13b",
-      "text": "רדיוס העיגול 7 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 153.86,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 7 × 7, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "7 × 7 = 49, ו-3.14 × 49 = 153.86 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 7,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-304167bc84",
-      "text": "רדיוס המעגל 7 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 14,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
-      ],
-      "explanation": "7 × 2 = 14 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 7,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-df8faeda74",
-      "text": "רדיוס העיגול 20 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 1256,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 20 × 20, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "20 × 20 = 400, ו-3.14 × 400 = 1256 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 20,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-5c26d46a3e",
-      "text": "קוטר המעגל 4 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 12.56,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 4"
-      ],
-      "explanation": "3.14 × 4 = 12.56 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 2,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-a885a2dd80",
-      "text": "רדיוס העיגול 15 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 706.5,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 15 × 15, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "15 × 15 = 225, ו-3.14 × 225 = 706.5 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 15,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-bbedb1fd46",
-      "text": "רדיוס העיגול 13 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 530.66,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 13 × 13, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "13 × 13 = 169, ו-3.14 × 169 = 530.66 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 13,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-80e459d460",
-      "text": "רדיוס המעגל 8 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
-      ],
-      "explanation": "8 × 2 = 16 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 8,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-b3432e72d3",
-      "text": "קוטר המעגל 20 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 62.8,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 20"
-      ],
-      "explanation": "3.14 × 20 = 62.8 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 10,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-310879a99a",
-      "text": "קוטר המעגל 34 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 17,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-ffcd85c5ea",
+      "text": "קוטר המעגל 36 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 18,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 34 ב-2."
+        "חלק/י את 36 ב-2."
       ],
-      "explanation": "34 : 2 = 17 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 17,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-7454971652",
-      "text": "רדיוס המעגל 14 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 28,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
-      ],
-      "explanation": "14 × 2 = 28 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 14,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-4b8a5d7981",
-      "text": "רדיוס העיגול 18 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 1017.36,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 18 × 18, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "18 × 18 = 324, ו-3.14 × 324 = 1017.36 סמ״ר.",
+      "explanation": "36 : 2 = 18 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -1004,87 +245,6 @@
         "widget": "circle_parts",
         "params": {
           "radius": 18,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-04a9dd2ec9",
-      "text": "רדיוס העיגול 11 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 379.94,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 11 × 11, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "11 × 11 = 121, ו-3.14 × 121 = 379.94 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 11,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-c6ff7df141",
-      "text": "רדיוס העיגול 4 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 50.24,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 4 × 4, ורק אז כופלים ב-3.14."
-      ],
-      "explanation": "4 × 4 = 16, ו-3.14 × 16 = 50.24 סמ״ר.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 4,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-b6c92b7d7c",
-      "text": "קוטר המעגל 12 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 37.68,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 12"
-      ],
-      "explanation": "3.14 × 12 = 37.68 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 6,
           "show": "diameter",
           "lock": true
         },
@@ -1092,14 +252,99 @@
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-07a958e63d",
+      "id": "q-4f48853517",
+      "text": "קוטר המעגל 16 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 8,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 16 ב-2."
+      ],
+      "explanation": "16 : 2 = 8 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 8,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5dd5f83675",
+      "text": "רדיוס המעגל 16 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 32,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "16 × 2 = 32 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 16,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d93118d9f9",
+      "text": "רדיוס המעגל 19 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 38,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "19 × 2 = 38 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 19,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-7dda6061ae",
       "text": "רדיוס המעגל 3 ס״מ. כמה ס״מ הקוטר?",
       "answer": 6,
-      "level": 2,
-      "difficulty": 2,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הקוטר עובר דרך המרכז מקצה לקצה.",
         "הוא בדיוק פעמיים הרדיוס."
@@ -1118,41 +363,100 @@
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-cccbade259",
-      "text": "רדיוס העיגול 17 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 907.46,
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-9c6dc819ab",
+      "text": "רדיוס המעגל 10 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 20,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 17 × 17, ורק אז כופלים ב-3.14."
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
       ],
-      "explanation": "17 × 17 = 289, ו-3.14 × 289 = 907.46 סמ״ר.",
+      "explanation": "10 × 2 = 20 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 17,
+          "radius": 10,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "עיגול"
+        "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-b87fa5a80d",
+      "id": "q-6f7c360eab",
+      "text": "רדיוס המעגל 13 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 26,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "13 × 2 = 26 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 13,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-01587e5d6d",
+      "text": "קוטר המעגל 38 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 19,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 38 ב-2."
+      ],
+      "explanation": "38 : 2 = 19 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 19,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-766fa9bcd9",
       "text": "קוטר המעגל 6 ס״מ. כמה ס״מ הרדיוס?",
       "answer": 3,
-      "level": 2,
-      "difficulty": 2,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הרדיוס הוא חצי מהקוטר.",
         "חלק/י את 6 ב-2."
@@ -1171,14 +475,16 @@
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-57c5ca258f",
+      "id": "q-515ca21f3a",
       "text": "קוטר המעגל 22 ס״מ. כמה ס״מ הרדיוס?",
       "answer": 11,
-      "level": 2,
-      "difficulty": 2,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הרדיוס הוא חצי מהקוטר.",
         "חלק/י את 22 ב-2."
@@ -1197,26 +503,28 @@
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-cc2eabbf6b",
-      "text": "קוטר המעגל 14 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 43.96,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-cd7bb1565d",
+      "text": "קוטר המעגל 30 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 15,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 14"
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 30 ב-2."
       ],
-      "explanation": "3.14 × 14 = 43.96 ס״מ.",
+      "explanation": "30 : 2 = 15 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 7,
+          "radius": 15,
           "show": "diameter",
           "lock": true
         },
@@ -1224,14 +532,127 @@
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-f3a7f53fd0",
+      "id": "q-d14b46ae1e",
+      "text": "קוטר המעגל 40 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 20,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 40 ב-2."
+      ],
+      "explanation": "40 : 2 = 20 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 20,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9dbdd1c4b4",
+      "text": "רדיוס המעגל 15 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 30,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "15 × 2 = 30 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 15,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0d0f1df5f9",
+      "text": "קוטר המעגל 20 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 10,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 20 ב-2."
+      ],
+      "explanation": "20 : 2 = 10 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 10,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-27687b3572",
+      "text": "קוטר המעגל 24 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 12,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 24 ב-2."
+      ],
+      "explanation": "24 : 2 = 12 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 12,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-384f02429c",
       "text": "רדיוס המעגל 20 ס״מ. כמה ס״מ הקוטר?",
       "answer": 40,
-      "level": 2,
-      "difficulty": 2,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "הקוטר עובר דרך המרכז מקצה לקצה.",
         "הוא בדיוק פעמיים הרדיוס."
@@ -1250,14 +671,437 @@
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-c5e52b27c5",
+      "id": "q-ee602636f2",
+      "text": "קוטר המעגל 34 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 17,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 34 ב-2."
+      ],
+      "explanation": "34 : 2 = 17 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 17,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-784626f3e8",
+      "text": "רדיוס המעגל 18 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 36,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "18 × 2 = 36 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 18,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0bdd9fce18",
+      "text": "רדיוס המעגל 7 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 14,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "7 × 2 = 14 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 7,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-36317ffa6f",
+      "text": "קוטר המעגל 28 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 14,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 28 ב-2."
+      ],
+      "explanation": "28 : 2 = 14 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 14,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-06d9cc6245",
+      "text": "קוטר המעגל 18 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 9,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 18 ב-2."
+      ],
+      "explanation": "18 : 2 = 9 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 9,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-888c321eac",
+      "text": "רדיוס המעגל 17 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 34,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "17 × 2 = 34 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 17,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0f06c0bde4",
+      "text": "רדיוס המעגל 8 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 16,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "8 × 2 = 16 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 8,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cba604200a",
+      "text": "רדיוס המעגל 9 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 18,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "9 × 2 = 18 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 9,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-be2b6f5ca9",
+      "text": "רדיוס המעגל 6 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 12,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "6 × 2 = 12 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 6,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c4c030dc33",
+      "text": "קוטר המעגל 10 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 10 ב-2."
+      ],
+      "explanation": "10 : 2 = 5 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 5,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2a645567d7",
+      "text": "קוטר המעגל 4 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 4 ב-2."
+      ],
+      "explanation": "4 : 2 = 2 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 2,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ce38d21e31",
+      "text": "קוטר המעגל 8 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 8 ב-2."
+      ],
+      "explanation": "8 : 2 = 4 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 4,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-aa23481708",
+      "text": "קוטר המעגל 32 ס״מ. כמה ס״מ הרדיוס?",
+      "answer": 16,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הרדיוס הוא חצי מהקוטר.",
+        "חלק/י את 32 ב-2."
+      ],
+      "explanation": "32 : 2 = 16 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 16,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6de839749b",
+      "text": "רדיוס המעגל 14 ס״מ. כמה ס״מ הקוטר?",
+      "answer": 28,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "הקוטר עובר דרך המרכז מקצה לקצה.",
+        "הוא בדיוק פעמיים הרדיוס."
+      ],
+      "explanation": "14 × 2 = 28 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 14,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0cdd4f0e46",
+      "text": "רדיוס המעגל 25 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 157,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 25 × 2 = 50, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 50 = 157 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 25,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-d8fcb55e76",
       "text": "קוטר המעגל 36 ס״מ. מה ההיקף? (π = 3.14)",
       "answer": 113.04,
-      "level": 4,
-      "difficulty": 4,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "היקף = π כפול הקוטר.",
         "3.14 × 36"
@@ -1277,19 +1121,166 @@
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-1d7eae143d",
-      "text": "רדיוס המעגל 17 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 34,
+      "id": "q-c39b781a40",
+      "text": "קוטר המעגל 62 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 194.68,
       "level": 2,
       "difficulty": 2,
       "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
+        "היקף = π כפול הקוטר.",
+        "3.14 × 62"
       ],
-      "explanation": "17 × 2 = 34 ס״מ.",
+      "explanation": "3.14 × 62 = 194.68 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 31,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-132033de02",
+      "text": "רדיוס המעגל 35 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 219.8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 35 × 2 = 70, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 70 = 219.8 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 35,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-49b62f5d1e",
+      "text": "קוטר המעגל 60 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 188.4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 60"
+      ],
+      "explanation": "3.14 × 60 = 188.4 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 30,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-0675bb680f",
+      "text": "רדיוס המעגל 32 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 200.96,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 32 × 2 = 64, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 64 = 200.96 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 32,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-7fb9539f05",
+      "text": "קוטר המעגל 12 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 37.68,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 12"
+      ],
+      "explanation": "3.14 × 12 = 37.68 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 6,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-94a0c7a35a",
+      "text": "קוטר המעגל 34 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 106.76,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 34"
+      ],
+      "explanation": "3.14 × 34 = 106.76 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -1297,77 +1288,376 @@
         "widget": "circle_parts",
         "params": {
           "radius": 17,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-6f9f5acef0",
+      "text": "רדיוס המעגל 24 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 150.72,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 24 × 2 = 48, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 48 = 150.72 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 24,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-71b4ab140e",
-      "text": "קוטר המעגל 26 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 13,
+      "id": "q-70a6094351",
+      "text": "רדיוס המעגל 28 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 175.84,
       "level": 2,
       "difficulty": 2,
       "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 26 ב-2."
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 28 × 2 = 56, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "26 : 2 = 13 ס״מ.",
+      "explanation": "3.14 × 56 = 175.84 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 13,
-          "show": "diameter",
+          "radius": 28,
+          "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-bd727c9ced",
-      "text": "קוטר המעגל 16 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 8,
+      "id": "q-889a6efe05",
+      "text": "רדיוס המעגל 19 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 119.32,
       "level": 2,
       "difficulty": 2,
       "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 16 ב-2."
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 19 × 2 = 38, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "16 : 2 = 8 ס״מ.",
+      "explanation": "3.14 × 38 = 119.32 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 8,
+          "radius": 19,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-c08953b023",
+      "text": "קוטר המעגל 14 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 43.96,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 14"
+      ],
+      "explanation": "3.14 × 14 = 43.96 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 7,
           "show": "diameter",
           "lock": true
         },
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-5c39672887",
-      "text": "רדיוס העיגול 6 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 113.04,
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-c380ab6736",
+      "text": "רדיוס המעגל 29 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 182.12,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 6 × 6, ורק אז כופלים ב-3.14."
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 29 × 2 = 58, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "6 × 6 = 36, ו-3.14 × 36 = 113.04 סמ״ר.",
+      "explanation": "3.14 × 58 = 182.12 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 29,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-e230ff633c",
+      "text": "קוטר המעגל 40 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 125.6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 40"
+      ],
+      "explanation": "3.14 × 40 = 125.6 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 20,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-38e805db5c",
+      "text": "קוטר המעגל 76 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 238.64,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 76"
+      ],
+      "explanation": "3.14 × 76 = 238.64 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 38,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-20d53375d9",
+      "text": "קוטר המעגל 84 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 263.76,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 84"
+      ],
+      "explanation": "3.14 × 84 = 263.76 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 42,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-3280498fe6",
+      "text": "רדיוס המעגל 37 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 232.36,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 37 × 2 = 74, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 74 = 232.36 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 37,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-0978b50575",
+      "text": "קוטר המעגל 86 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 270.04,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 86"
+      ],
+      "explanation": "3.14 × 86 = 270.04 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 43,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-d674b790f8",
+      "text": "קוטר המעגל 30 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 94.2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 30"
+      ],
+      "explanation": "3.14 × 30 = 94.2 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 15,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-f440a1e142",
+      "text": "קוטר המעגל 24 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 75.36,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 24"
+      ],
+      "explanation": "3.14 × 24 = 75.36 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 12,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-933008df56",
+      "text": "רדיוס המעגל 6 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 37.68,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 6 × 2 = 12, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 12 = 37.68 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -1380,16 +1670,47 @@
         },
         "w": 340,
         "h": 260,
-        "alt": "עיגול"
+        "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-bc5dbe667a",
+      "id": "q-9ce41f1803",
+      "text": "רדיוס המעגל 18 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 113.04,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 18 × 2 = 36, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 36 = 113.04 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 18,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-3cc452dc83",
       "text": "קוטר המעגל 26 ס״מ. מה ההיקף? (π = 3.14)",
       "answer": 81.64,
-      "level": 4,
-      "difficulty": 4,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "היקף = π כפול הקוטר.",
         "3.14 × 26"
@@ -1409,26 +1730,57 @@
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-49644fc2e0",
-      "text": "קוטר המעגל 10 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 31.4,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-57dea1f1a4",
+      "text": "רדיוס המעגל 4 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 25.12,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 10"
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 4 × 2 = 8, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "3.14 × 10 = 31.4 ס״מ.",
+      "explanation": "3.14 × 8 = 25.12 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 5,
+          "radius": 4,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-ec40737663",
+      "text": "קוטר המעגל 54 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 169.56,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 54"
+      ],
+      "explanation": "3.14 × 54 = 169.56 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 27,
           "show": "diameter",
           "lock": true
         },
@@ -1436,19 +1788,108 @@
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-70d893afbd",
-      "text": "רדיוס העיגול 16 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 803.84,
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-b0e4ed2adf",
+      "text": "רדיוס המעגל 8 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 50.24,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 16 × 16, ורק אז כופלים ב-3.14."
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 8 × 2 = 16, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "16 × 16 = 256, ו-3.14 × 256 = 803.84 סמ״ר.",
+      "explanation": "3.14 × 16 = 50.24 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 8,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-deaaa84ac3",
+      "text": "רדיוס המעגל 39 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 244.92,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 39 × 2 = 78, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 78 = 244.92 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 39,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-e652c98787",
+      "text": "קוטר המעגל 16 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 50.24,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 16"
+      ],
+      "explanation": "3.14 × 16 = 50.24 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 8,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-7f00a4deec",
+      "text": "קוטר המעגל 32 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 100.48,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 32"
+      ],
+      "explanation": "3.14 × 32 = 100.48 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -1456,33 +1897,6 @@
         "widget": "circle_parts",
         "params": {
           "radius": 16,
-          "show": "radius",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-77ad12bb33",
-      "text": "קוטר המעגל 22 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 69.08,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 22"
-      ],
-      "explanation": "3.14 × 22 = 69.08 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 11,
           "show": "diameter",
           "lock": true
         },
@@ -1490,14 +1904,393 @@
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-d48261cea6",
+      "id": "q-26ab5ec65e",
+      "text": "קוטר המעגל 56 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 175.84,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 56"
+      ],
+      "explanation": "3.14 × 56 = 175.84 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 28,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-e335248a13",
+      "text": "קוטר המעגל 68 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 213.52,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 68"
+      ],
+      "explanation": "3.14 × 68 = 213.52 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 34,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-685e2cf18c",
+      "text": "רדיוס המעגל 43 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 270.04,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 43 × 2 = 86, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 86 = 270.04 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 43,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-e8f758719f",
+      "text": "קוטר המעגל 80 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 251.2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 80"
+      ],
+      "explanation": "3.14 × 80 = 251.2 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 40,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-241b51c2cf",
+      "text": "קוטר המעגל 52 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 163.28,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 52"
+      ],
+      "explanation": "3.14 × 52 = 163.28 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 26,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-97a026409d",
+      "text": "קוטר המעגל 74 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 232.36,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 74"
+      ],
+      "explanation": "3.14 × 74 = 232.36 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 37,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-915a842e45",
+      "text": "רדיוס המעגל 14 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 87.92,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 14 × 2 = 28, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 28 = 87.92 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 14,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-fcccde6e67",
+      "text": "קוטר המעגל 72 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 226.08,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 72"
+      ],
+      "explanation": "3.14 × 72 = 226.08 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 36,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-2b04af8fb1",
+      "text": "קוטר המעגל 88 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 276.32,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 88"
+      ],
+      "explanation": "3.14 × 88 = 276.32 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 44,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-c71b71aa4e",
+      "text": "רדיוס המעגל 38 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 238.64,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 38 × 2 = 76, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 76 = 238.64 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 38,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-feb8d5c98d",
+      "text": "קוטר המעגל 78 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 244.92,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 78"
+      ],
+      "explanation": "3.14 × 78 = 244.92 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 39,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-24a2ff59c8",
+      "text": "רדיוס המעגל 30 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 188.4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 30 × 2 = 60, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 60 = 188.4 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 30,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-f8787f931f",
+      "text": "רדיוס המעגל 20 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 125.6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 20 × 2 = 40, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 40 = 125.6 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 20,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-554c88d2c9",
       "text": "קוטר המעגל 38 ס״מ. מה ההיקף? (π = 3.14)",
       "answer": 119.32,
-      "level": 4,
-      "difficulty": 4,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "היקף = π כפול הקוטר.",
         "3.14 × 38"
@@ -1517,45 +2310,166 @@
         "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-b5a528e0d0",
-      "text": "רדיוס המעגל 9 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 18,
+      "id": "q-d1fe230df5",
+      "text": "רדיוס המעגל 13 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 81.64,
       "level": 2,
       "difficulty": 2,
       "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 13 × 2 = 26, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "9 × 2 = 18 ס״מ.",
+      "explanation": "3.14 × 26 = 81.64 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 9,
+          "radius": 13,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-14c5b48b57",
-      "text": "רדיוס העיגול 12 ס״מ. מה השטח? (π = 3.14)",
-      "answer": 452.16,
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-60654a98d4",
+      "text": "קוטר המעגל 10 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 31.4,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
-        "שטח = π כפול הרדיוס בריבוע.",
-        "קודם 12 × 12, ורק אז כופלים ב-3.14."
+        "היקף = π כפול הקוטר.",
+        "3.14 × 10"
       ],
-      "explanation": "12 × 12 = 144, ו-3.14 × 144 = 452.16 סמ״ר.",
+      "explanation": "3.14 × 10 = 31.4 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 5,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-ccb2aed42c",
+      "text": "רדיוס המעגל 41 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 257.48,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 41 × 2 = 82, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 82 = 257.48 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 41,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-d8ba2a909f",
+      "text": "קוטר המעגל 28 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 87.92,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר.",
+        "3.14 × 28"
+      ],
+      "explanation": "3.14 × 28 = 87.92 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 14,
+          "show": "diameter",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-80777e9e79",
+      "text": "רדיוס המעגל 44 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 276.32,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 44 × 2 = 88, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 88 = 276.32 ס״מ.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 44,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "מעגל"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-51feaec1d4",
+      "text": "רדיוס המעגל 12 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 75.36,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 12 × 2 = 24, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "3.14 × 24 = 75.36 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -1568,101 +2482,835 @@
         },
         "w": 340,
         "h": 260,
-        "alt": "עיגול"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-48e14721d7",
-      "text": "קוטר המעגל 8 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 25.12,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 8"
-      ],
-      "explanation": "3.14 × 8 = 25.12 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 4,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
         "alt": "מעגל"
       },
-      "answerKind": "decimal"
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-65054ee4bf",
-      "text": "קוטר המעגל 6 ס״מ. מה ההיקף? (π = 3.14)",
-      "answer": 18.84,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "היקף = π כפול הקוטר.",
-        "3.14 × 6"
-      ],
-      "explanation": "3.14 × 6 = 18.84 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 3,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      },
-      "answerKind": "decimal"
-    },
-    {
-      "id": "q-f4ea9003a2",
-      "text": "רדיוס המעגל 2 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 4,
+      "id": "q-9fc19b5644",
+      "text": "רדיוס המעגל 33 ס״מ. מה ההיקף? (π = 3.14)",
+      "answer": 207.24,
       "level": 2,
       "difficulty": 2,
       "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
+        "היקף = π כפול הקוטר — ולא כפול הרדיוס.",
+        "קודם 33 × 2 = 66, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "2 × 2 = 4 ס״מ.",
+      "explanation": "3.14 × 66 = 207.24 ס״מ.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 2,
+          "radius": 33,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
         "alt": "מעגל"
-      }
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-01fb50bba6",
-      "text": "קוטר המעגל 38 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 19,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-82ea5c85d2",
+      "text": "רדיוס העיגול 44 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 6079.04,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 38 ב-2."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 44 × 44, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "38 : 2 = 19 ס״מ.",
+      "explanation": "44 × 44 = 1936, ו-3.14 × 1936 = 6079.04 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 44,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-d63ec4a3ee",
+      "text": "רדיוס העיגול 9 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 254.34,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 9 × 9, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "9 × 9 = 81, ו-3.14 × 81 = 254.34 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 9,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-2cabd2e077",
+      "text": "רדיוס העיגול 17 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 907.46,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 17 × 17, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "17 × 17 = 289, ו-3.14 × 289 = 907.46 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 17,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-417bd376d7",
+      "text": "רדיוס העיגול 10 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 314,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 10 × 10, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "10 × 10 = 100, ו-3.14 × 100 = 314 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 10,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-8e108f5b92",
+      "text": "רדיוס העיגול 31 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 3017.54,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 31 × 31, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "31 × 31 = 961, ו-3.14 × 961 = 3017.54 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 31,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-7f0c39f399",
+      "text": "רדיוס העיגול 5 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 78.5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 5 × 5, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "5 × 5 = 25, ו-3.14 × 25 = 78.5 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 5,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-2c27f03bf9",
+      "text": "רדיוס העיגול 15 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 706.5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 15 × 15, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "15 × 15 = 225, ו-3.14 × 225 = 706.5 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 15,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-c8b97350ab",
+      "text": "רדיוס העיגול 33 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 3419.46,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 33 × 33, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "33 × 33 = 1089, ו-3.14 × 1089 = 3419.46 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 33,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-8819a0667a",
+      "text": "רדיוס העיגול 27 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 2289.06,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 27 × 27, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "27 × 27 = 729, ו-3.14 × 729 = 2289.06 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 27,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-a7a1341d57",
+      "text": "רדיוס העיגול 29 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 2640.74,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 29 × 29, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "29 × 29 = 841, ו-3.14 × 841 = 2640.74 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 29,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-7a554c1609",
+      "text": "רדיוס העיגול 26 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 2122.64,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 26 × 26, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "26 × 26 = 676, ו-3.14 × 676 = 2122.64 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 26,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-f6df34279d",
+      "text": "רדיוס העיגול 16 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 803.84,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 16 × 16, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "16 × 16 = 256, ו-3.14 × 256 = 803.84 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 16,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-c423f781d2",
+      "text": "רדיוס העיגול 21 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 1384.74,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 21 × 21, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "21 × 21 = 441, ו-3.14 × 441 = 1384.74 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 21,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-15811bae62",
+      "text": "רדיוס העיגול 45 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 6358.5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 45 × 45, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "45 × 45 = 2025, ו-3.14 × 2025 = 6358.5 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 45,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-d1a8e686ac",
+      "text": "רדיוס העיגול 38 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 4534.16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 38 × 38, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "38 × 38 = 1444, ו-3.14 × 1444 = 4534.16 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 38,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-ce31923453",
+      "text": "רדיוס העיגול 35 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 3846.5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 35 × 35, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "35 × 35 = 1225, ו-3.14 × 1225 = 3846.5 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 35,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-8a03dc5571",
+      "text": "רדיוס העיגול 14 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 615.44,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 14 × 14, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "14 × 14 = 196, ו-3.14 × 196 = 615.44 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 14,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-8e0c5c2c4c",
+      "text": "רדיוס העיגול 11 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 379.94,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 11 × 11, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "11 × 11 = 121, ו-3.14 × 121 = 379.94 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 11,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-497b3643b5",
+      "text": "רדיוס העיגול 13 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 530.66,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 13 × 13, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "13 × 13 = 169, ו-3.14 × 169 = 530.66 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 13,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-897a4d1f5d",
+      "text": "רדיוס העיגול 20 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 1256,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 20 × 20, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "20 × 20 = 400, ו-3.14 × 400 = 1256 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 20,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-42cd17c605",
+      "text": "רדיוס העיגול 41 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 5278.34,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 41 × 41, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "41 × 41 = 1681, ו-3.14 × 1681 = 5278.34 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 41,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-969c739ac0",
+      "text": "רדיוס העיגול 24 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 1808.64,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 24 × 24, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "24 × 24 = 576, ו-3.14 × 576 = 1808.64 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 24,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-cc634618c5",
+      "text": "רדיוס העיגול 22 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 1519.76,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 22 × 22, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "22 × 22 = 484, ו-3.14 × 484 = 1519.76 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 22,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-b89821f257",
+      "text": "רדיוס העיגול 37 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 4298.66,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 37 × 37, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "37 × 37 = 1369, ו-3.14 × 1369 = 4298.66 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 37,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-8adbf8536b",
+      "text": "רדיוס העיגול 18 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 1017.36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 18 × 18, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "18 × 18 = 324, ו-3.14 × 324 = 1017.36 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 18,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-88fc3c2fa7",
+      "text": "רדיוס העיגול 42 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 5538.96,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 42 × 42, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "42 × 42 = 1764, ו-3.14 × 1764 = 5538.96 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 42,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-87f1a47723",
+      "text": "רדיוס העיגול 7 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 153.86,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 7 × 7, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "7 × 7 = 49, ו-3.14 × 49 = 153.86 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 7,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-4fbb15785e",
+      "text": "רדיוס העיגול 19 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 1133.54,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 19 × 19, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "19 × 19 = 361, ו-3.14 × 361 = 1133.54 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -1670,25 +3318,28 @@
         "widget": "circle_parts",
         "params": {
           "radius": 19,
-          "show": "diameter",
+          "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-8a566cf187",
-      "text": "קוטר המעגל 12 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-783d7c989b",
+      "text": "רדיוס העיגול 6 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 113.04,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 12 ב-2."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 6 × 6, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "12 : 2 = 6 ס״מ.",
+      "explanation": "6 × 6 = 36, ו-3.14 × 36 = 113.04 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -1696,20 +3347,110 @@
         "widget": "circle_parts",
         "params": {
           "radius": 6,
-          "show": "diameter",
+          "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-f993c2d915",
+      "id": "q-42a58e4019",
+      "text": "רדיוס העיגול 30 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 2826,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 30 × 30, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "30 × 30 = 900, ו-3.14 × 900 = 2826 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 30,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-93c0ca5b82",
+      "text": "רדיוס העיגול 23 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 1661.06,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 23 × 23, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "23 × 23 = 529, ו-3.14 × 529 = 1661.06 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 23,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-ccb7f76bda",
+      "text": "רדיוס העיגול 36 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 4069.44,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 36 × 36, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "36 × 36 = 1296, ו-3.14 × 1296 = 4069.44 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 36,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-b3aa9bbe76",
       "text": "רדיוס העיגול 8 ס״מ. מה השטח? (π = 3.14)",
       "answer": 200.96,
-      "level": 5,
-      "difficulty": 5,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
         "שטח = π כפול הרדיוס בריבוע.",
         "קודם 8 × 8, ורק אז כופלים ב-3.14."
@@ -1729,253 +3470,166 @@
         "h": 260,
         "alt": "עיגול"
       },
-      "answerKind": "decimal"
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-b8df6c9b18",
-      "text": "רדיוס המעגל 5 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 10,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-048a13dc4b",
+      "text": "רדיוס העיגול 28 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 2461.76,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 28 × 28, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "5 × 2 = 10 ס״מ.",
+      "explanation": "28 × 28 = 784, ו-3.14 × 784 = 2461.76 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 5,
+          "radius": 28,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-0489c0e031",
-      "text": "קוטר המעגל 14 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 7,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-160a15baaa",
+      "text": "רדיוס העיגול 3 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 28.26,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 14 ב-2."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 3 × 3, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "14 : 2 = 7 ס״מ.",
+      "explanation": "3 × 3 = 9, ו-3.14 × 9 = 28.26 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 7,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-cdf38d44e3",
-      "text": "קוטר המעגל 40 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 40 ב-2."
-      ],
-      "explanation": "40 : 2 = 20 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 20,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-ea766e33fe",
-      "text": "רדיוס המעגל 10 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
-      ],
-      "explanation": "10 × 2 = 20 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 10,
+          "radius": 3,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-817d132ba0",
-      "text": "רדיוס המעגל 16 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 32,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-eb778228b4",
+      "text": "רדיוס העיגול 43 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 5805.86,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 43 × 43, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "16 × 2 = 32 ס״מ.",
+      "explanation": "43 × 43 = 1849, ו-3.14 × 1849 = 5805.86 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 16,
+          "radius": 43,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-360a5cd240",
-      "text": "רדיוס המעגל 13 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 26,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-f402a00241",
+      "text": "רדיוס העיגול 39 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 4775.94,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 39 × 39, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "13 × 2 = 26 ס״מ.",
+      "explanation": "39 × 39 = 1521, ו-3.14 × 1521 = 4775.94 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 13,
+          "radius": 39,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-8489492586",
-      "text": "קוטר המעגל 20 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 10,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-611beddb45",
+      "text": "רדיוס העיגול 25 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 1962.5,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 20 ב-2."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 25 × 25, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "20 : 2 = 10 ס״מ.",
+      "explanation": "25 × 25 = 625, ו-3.14 × 625 = 1962.5 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 10,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-5aaeb25fc8",
-      "text": "קוטר המעגל 8 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 4,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 8 ב-2."
-      ],
-      "explanation": "8 : 2 = 4 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 4,
-          "show": "diameter",
-          "lock": true
-        },
-        "w": 340,
-        "h": 260,
-        "alt": "מעגל"
-      }
-    },
-    {
-      "id": "q-5305081a07",
-      "text": "רדיוס המעגל 18 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 36,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
-      ],
-      "explanation": "18 × 2 = 36 ס״מ.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "circle_parts",
-        "params": {
-          "radius": 18,
+          "radius": 25,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-46969c560f",
-      "text": "קוטר המעגל 24 ס״מ. כמה ס״מ הרדיוס?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-ba7ebc7c1e",
+      "text": "רדיוס העיגול 12 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 452.16,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הרדיוס הוא חצי מהקוטר.",
-        "חלק/י את 24 ב-2."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 12 × 12, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "24 : 2 = 12 ס״מ.",
+      "explanation": "12 × 12 = 144, ו-3.14 × 144 = 452.16 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -1983,39 +3637,161 @@
         "widget": "circle_parts",
         "params": {
           "radius": 12,
-          "show": "diameter",
+          "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     },
     {
-      "id": "q-d9a2f08a3e",
-      "text": "רדיוס המעגל 19 ס״מ. כמה ס״מ הקוטר?",
-      "answer": 38,
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-fd711a154a",
+      "text": "רדיוס העיגול 2 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 12.56,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "הקוטר עובר דרך המרכז מקצה לקצה.",
-        "הוא בדיוק פעמיים הרדיוס."
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 2 × 2, ורק אז כופלים ב-3.14."
       ],
-      "explanation": "19 × 2 = 38 ס״מ.",
+      "explanation": "2 × 2 = 4, ו-3.14 × 4 = 12.56 סמ״ר.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "circle_parts",
         "params": {
-          "radius": 19,
+          "radius": 2,
           "show": "radius",
           "lock": true
         },
         "w": 340,
         "h": 260,
-        "alt": "מעגל"
-      }
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-e03b829c03",
+      "text": "רדיוס העיגול 34 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 3629.84,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 34 × 34, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "34 × 34 = 1156, ו-3.14 × 1156 = 3629.84 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 34,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-25c19f0924",
+      "text": "רדיוס העיגול 40 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 5024,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 40 × 40, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "40 × 40 = 1600, ו-3.14 × 1600 = 5024 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 40,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-7d72ee82ef",
+      "text": "רדיוס העיגול 32 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 3215.36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 32 × 32, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "32 × 32 = 1024, ו-3.14 × 1024 = 3215.36 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 32,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
+    },
+    {
+      "id": "q-d1f13d57e9",
+      "text": "רדיוס העיגול 4 ס״מ. מה השטח? (π = 3.14)",
+      "answer": 50.24,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "שטח = π כפול הרדיוס בריבוע.",
+        "קודם 4 × 4, ורק אז כופלים ב-3.14."
+      ],
+      "explanation": "4 × 4 = 16, ו-3.14 × 16 = 50.24 סמ״ר.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "circle_parts",
+        "params": {
+          "radius": 4,
+          "show": "radius",
+          "lock": true
+        },
+        "w": 340,
+        "h": 260,
+        "alt": "עיגול"
+      },
+      "answerKind": "decimal",
+      "skill": "reading_task",
+      "skillHe": "קריאה והבנה"
     }
   ]
 }

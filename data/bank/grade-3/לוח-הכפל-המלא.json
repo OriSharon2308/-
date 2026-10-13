@@ -4,1303 +4,1778 @@
   "topic": "לוח הכפל המלא",
   "questions": [
     {
-      "id": "q-b019b4f509",
-      "text": "2 × 2 = ?",
-      "answer": 4,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 2."
-      ],
-      "explanation": "2 × 2 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-94532e4697",
-      "text": "7 × 10 = ?",
-      "answer": 70,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 10."
-      ],
-      "explanation": "7 × 10 = 70.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bf09161eb6",
-      "text": "10 × 5 = ?",
-      "answer": 50,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 5."
-      ],
-      "explanation": "10 × 5 = 50.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e2f6ba74b5",
-      "text": "9 × 3 = ?",
-      "answer": 27,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 3."
-      ],
-      "explanation": "9 × 3 = 27.",
-      "source": "algo"
-    },
-    {
-      "id": "q-36fcabcf15",
-      "text": "1 × 1 = ?",
-      "answer": 1,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 1."
-      ],
-      "explanation": "1 × 1 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e0e8bb4507",
-      "text": "5 × 9 = ?",
-      "answer": 45,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 9."
-      ],
-      "explanation": "5 × 9 = 45.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e708df1da4",
-      "text": "4 × 1 = ?",
-      "answer": 4,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 1."
-      ],
-      "explanation": "4 × 1 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-945d6b57ca",
-      "text": "1 × 4 = ?",
-      "answer": 4,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 4."
-      ],
-      "explanation": "1 × 4 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-513f6e2c7f",
-      "text": "2 × 1 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 1."
-      ],
-      "explanation": "2 × 1 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a4db3e9b03",
-      "text": "8 × 9 = ?",
-      "answer": 72,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 9."
-      ],
-      "explanation": "8 × 9 = 72.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ee3fbc4a43",
-      "text": "3 × 1 = ?",
-      "answer": 3,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 1."
-      ],
-      "explanation": "3 × 1 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7a7f6bc778",
-      "text": "2 × 9 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 9."
-      ],
-      "explanation": "2 × 9 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-52381d05da",
+      "id": "q-43f2fef3b0",
       "text": "7 × 3 = ?",
       "answer": 21,
-      "level": 3,
-      "difficulty": 3,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 3."
+        "7 ועוד 7, 3 פעמים."
       ],
       "explanation": "7 × 3 = 21.",
-      "source": "algo"
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
     },
     {
-      "id": "q-08eecec40b",
-      "text": "7 × 2 = ?",
-      "answer": 14,
+      "id": "q-9cdfe173fb",
+      "text": "10 × 10 = ?",
+      "answer": 100,
       "level": 2,
       "difficulty": 2,
       "hints": [
         "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 2."
+        "10 ועוד 10, 10 פעמים."
       ],
-      "explanation": "7 × 2 = 14.",
-      "source": "algo"
+      "explanation": "10 × 10 = 100.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
     },
     {
-      "id": "q-cb000bad25",
-      "text": "5 × 4 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 4."
-      ],
-      "explanation": "5 × 4 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-12ecce4f5c",
-      "text": "1 × 5 = ?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 5."
-      ],
-      "explanation": "1 × 5 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-505f9a7eda",
-      "text": "8 × 7 = ?",
-      "answer": 56,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 7."
-      ],
-      "explanation": "8 × 7 = 56.",
-      "source": "algo"
-    },
-    {
-      "id": "q-19fe4cfe6e",
-      "text": "5 × 6 = ?",
-      "answer": 30,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 6."
-      ],
-      "explanation": "5 × 6 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3299b1bc91",
-      "text": "6 × 3 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 3."
-      ],
-      "explanation": "6 × 3 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9d34fbe53f",
-      "text": "3 × 3 = ?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 3."
-      ],
-      "explanation": "3 × 3 = 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1ea82b4e35",
-      "text": "6 × 2 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 2."
-      ],
-      "explanation": "6 × 2 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a212e92b5d",
-      "text": "9 × 8 = ?",
-      "answer": 72,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 8."
-      ],
-      "explanation": "9 × 8 = 72.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a4252f7063",
-      "text": "4 × 7 = ?",
-      "answer": 28,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 7."
-      ],
-      "explanation": "4 × 7 = 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-19f1ca0437",
-      "text": "6 × 7 = ?",
-      "answer": 42,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 7."
-      ],
-      "explanation": "6 × 7 = 42.",
-      "source": "algo"
-    },
-    {
-      "id": "q-23b8313695",
-      "text": "5 × 10 = ?",
-      "answer": 50,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 10."
-      ],
-      "explanation": "5 × 10 = 50.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c3ea21eda7",
-      "text": "3 × 4 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 4."
-      ],
-      "explanation": "3 × 4 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fa355e233f",
-      "text": "5 × 8 = ?",
-      "answer": 40,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 8."
-      ],
-      "explanation": "5 × 8 = 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5a4df71bda",
-      "text": "8 × 8 = ?",
-      "answer": 64,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 8."
-      ],
-      "explanation": "8 × 8 = 64.",
-      "source": "algo"
-    },
-    {
-      "id": "q-78d107535b",
-      "text": "7 × 4 = ?",
-      "answer": 28,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 4."
-      ],
-      "explanation": "7 × 4 = 28.",
-      "source": "algo"
-    },
-    {
-      "id": "q-533c3023c1",
-      "text": "9 × 2 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 2."
-      ],
-      "explanation": "9 × 2 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-94d8de22d0",
-      "text": "4 × 9 = ?",
-      "answer": 36,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 9."
-      ],
-      "explanation": "4 × 9 = 36.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ac8a4ab8b0",
-      "text": "8 × 3 = ?",
-      "answer": 24,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 3."
-      ],
-      "explanation": "8 × 3 = 24.",
-      "source": "algo"
-    },
-    {
-      "id": "q-586f90f4ab",
-      "text": "10 × 3 = ?",
-      "answer": 30,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 3."
-      ],
-      "explanation": "10 × 3 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e589934cfd",
-      "text": "9 × 4 = ?",
-      "answer": 36,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 4."
-      ],
-      "explanation": "9 × 4 = 36.",
-      "source": "algo"
-    },
-    {
-      "id": "q-178493239b",
-      "text": "3 × 2 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 2."
-      ],
-      "explanation": "3 × 2 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-dcfa0e0d5d",
-      "text": "10 × 4 = ?",
-      "answer": 40,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 4."
-      ],
-      "explanation": "10 × 4 = 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-04146a0e4f",
-      "text": "6 × 1 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 1."
-      ],
-      "explanation": "6 × 1 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4eab73841a",
-      "text": "4 × 6 = ?",
-      "answer": 24,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 6."
-      ],
-      "explanation": "4 × 6 = 24.",
-      "source": "algo"
-    },
-    {
-      "id": "q-09345a876c",
-      "text": "3 × 9 = ?",
-      "answer": 27,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 9."
-      ],
-      "explanation": "3 × 9 = 27.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bf9d133acf",
-      "text": "5 × 2 = ?",
-      "answer": 10,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 2."
-      ],
-      "explanation": "5 × 2 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d5c6af71f9",
-      "text": "7 × 5 = ?",
-      "answer": 35,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 5."
-      ],
-      "explanation": "7 × 5 = 35.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d7da8135fc",
-      "text": "8 × 2 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 2."
-      ],
-      "explanation": "8 × 2 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-be1f3672e7",
-      "text": "7 × 1 = ?",
-      "answer": 7,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 1."
-      ],
-      "explanation": "7 × 1 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fdb2c41924",
-      "text": "1 × 2 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 2."
-      ],
-      "explanation": "1 × 2 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5852b03ca7",
-      "text": "10 × 8 = ?",
-      "answer": 80,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 8."
-      ],
-      "explanation": "10 × 8 = 80.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b6e7c5828a",
-      "text": "2 × 3 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 3."
-      ],
-      "explanation": "2 × 3 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9c9a77a10b",
-      "text": "10 × 1 = ?",
-      "answer": 10,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 1."
-      ],
-      "explanation": "10 × 1 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9002f4c7c0",
-      "text": "4 × 5 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 5."
-      ],
-      "explanation": "4 × 5 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-98ab096a5c",
-      "text": "1 × 3 = ?",
-      "answer": 3,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 3."
-      ],
-      "explanation": "1 × 3 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-990564195d",
-      "text": "5 × 1 = ?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 1."
-      ],
-      "explanation": "5 × 1 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-57c27783a1",
-      "text": "7 × 6 = ?",
-      "answer": 42,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 6."
-      ],
-      "explanation": "7 × 6 = 42.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4d8d045209",
-      "text": "1 × 6 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 6."
-      ],
-      "explanation": "1 × 6 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-daee879ddf",
-      "text": "3 × 7 = ?",
-      "answer": 21,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 7."
-      ],
-      "explanation": "3 × 7 = 21.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d55764d7b3",
+      "id": "q-3ef5baf8e4",
       "text": "4 × 2 = ?",
       "answer": 8,
       "level": 2,
       "difficulty": 2,
       "hints": [
         "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 2."
+        "4 ועוד 4, 2 פעמים."
       ],
       "explanation": "4 × 2 = 8.",
-      "source": "algo"
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
     },
     {
-      "id": "q-246b0f41f6",
-      "text": "4 × 3 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 3."
-      ],
-      "explanation": "4 × 3 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0306017231",
-      "text": "9 × 6 = ?",
-      "answer": 54,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 6."
-      ],
-      "explanation": "9 × 6 = 54.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9c10650b5d",
-      "text": "2 × 8 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 8."
-      ],
-      "explanation": "2 × 8 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-53394bb81b",
-      "text": "8 × 6 = ?",
-      "answer": 48,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 6."
-      ],
-      "explanation": "8 × 6 = 48.",
-      "source": "algo"
-    },
-    {
-      "id": "q-98490a6c1f",
-      "text": "8 × 10 = ?",
-      "answer": 80,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 10."
-      ],
-      "explanation": "8 × 10 = 80.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c35da01b00",
-      "text": "9 × 5 = ?",
-      "answer": 45,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 5."
-      ],
-      "explanation": "9 × 5 = 45.",
-      "source": "algo"
-    },
-    {
-      "id": "q-035356fd99",
-      "text": "10 × 2 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 2."
-      ],
-      "explanation": "10 × 2 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b970113ff9",
-      "text": "10 × 9 = ?",
-      "answer": 90,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 9."
-      ],
-      "explanation": "10 × 9 = 90.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a1bef7cda8",
-      "text": "2 × 4 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 4."
-      ],
-      "explanation": "2 × 4 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-76b2d5c9a7",
-      "text": "5 × 7 = ?",
-      "answer": 35,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 7."
-      ],
-      "explanation": "5 × 7 = 35.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9f86c0374e",
-      "text": "10 × 10 = ?",
-      "answer": 100,
-      "level": 7,
-      "difficulty": 7,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 10."
-      ],
-      "explanation": "10 × 10 = 100.",
-      "source": "algo"
-    },
-    {
-      "id": "q-dd5a880196",
-      "text": "2 × 6 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 6."
-      ],
-      "explanation": "2 × 6 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d569072698",
-      "text": "9 × 10 = ?",
-      "answer": 90,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 10."
-      ],
-      "explanation": "9 × 10 = 90.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1f8808b054",
-      "text": "3 × 5 = ?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 5."
-      ],
-      "explanation": "3 × 5 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e386449ab3",
-      "text": "9 × 7 = ?",
-      "answer": 63,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 7."
-      ],
-      "explanation": "9 × 7 = 63.",
-      "source": "algo"
-    },
-    {
-      "id": "q-408ea24d55",
-      "text": "3 × 8 = ?",
-      "answer": 24,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 8."
-      ],
-      "explanation": "3 × 8 = 24.",
-      "source": "algo"
-    },
-    {
-      "id": "q-59d5a3a31e",
-      "text": "7 × 7 = ?",
-      "answer": 49,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 7."
-      ],
-      "explanation": "7 × 7 = 49.",
-      "source": "algo"
-    },
-    {
-      "id": "q-41389e3960",
-      "text": "9 × 1 = ?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 1."
-      ],
-      "explanation": "9 × 1 = 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2a0be457db",
-      "text": "10 × 6 = ?",
-      "answer": 60,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 6."
-      ],
-      "explanation": "10 × 6 = 60.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a23538a21a",
-      "text": "2 × 5 = ?",
-      "answer": 10,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 5."
-      ],
-      "explanation": "2 × 5 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-67b847d98e",
-      "text": "5 × 3 = ?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 3."
-      ],
-      "explanation": "5 × 3 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-72c9752fe9",
-      "text": "4 × 4 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 4."
-      ],
-      "explanation": "4 × 4 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c29c1e6c2b",
-      "text": "8 × 1 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 1."
-      ],
-      "explanation": "8 × 1 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2f4dbbf569",
-      "text": "9 × 9 = ?",
-      "answer": 81,
-      "level": 6,
-      "difficulty": 6,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 9 פעמים 9."
-      ],
-      "explanation": "9 × 9 = 81.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6fdd47de12",
-      "text": "10 × 7 = ?",
-      "answer": 70,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 10 פעמים 7."
-      ],
-      "explanation": "10 × 7 = 70.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fbb67dc523",
-      "text": "4 × 8 = ?",
-      "answer": 32,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 8."
-      ],
-      "explanation": "4 × 8 = 32.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6ee9e856ff",
-      "text": "1 × 8 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 8."
-      ],
-      "explanation": "1 × 8 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e5ba9ffc78",
-      "text": "5 × 5 = ?",
-      "answer": 25,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 5 פעמים 5."
-      ],
-      "explanation": "5 × 5 = 25.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4e0caa27b5",
-      "text": "8 × 4 = ?",
-      "answer": 32,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 4."
-      ],
-      "explanation": "8 × 4 = 32.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a0855c9d02",
-      "text": "3 × 6 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 6."
-      ],
-      "explanation": "3 × 6 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b801de5977",
-      "text": "6 × 5 = ?",
-      "answer": 30,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 5."
-      ],
-      "explanation": "6 × 5 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-29ffb9f9b9",
-      "text": "6 × 6 = ?",
-      "answer": 36,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 6."
-      ],
-      "explanation": "6 × 6 = 36.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7ee579e943",
-      "text": "6 × 8 = ?",
-      "answer": 48,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 8."
-      ],
-      "explanation": "6 × 8 = 48.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fbd048326c",
-      "text": "8 × 5 = ?",
-      "answer": 40,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 8 פעמים 5."
-      ],
-      "explanation": "8 × 5 = 40.",
-      "source": "algo"
-    },
-    {
-      "id": "q-418fdd1fce",
-      "text": "6 × 4 = ?",
-      "answer": 24,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 4."
-      ],
-      "explanation": "6 × 4 = 24.",
-      "source": "algo"
-    },
-    {
-      "id": "q-be8d766c5c",
-      "text": "1 × 10 = ?",
-      "answer": 10,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 10."
-      ],
-      "explanation": "1 × 10 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-69c6a63033",
-      "text": "7 × 8 = ?",
-      "answer": 56,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 8."
-      ],
-      "explanation": "7 × 8 = 56.",
-      "source": "algo"
-    },
-    {
-      "id": "q-585858330f",
-      "text": "1 × 7 = ?",
-      "answer": 7,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 7."
-      ],
-      "explanation": "1 × 7 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ca09720fa1",
-      "text": "3 × 10 = ?",
-      "answer": 30,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 3 פעמים 10."
-      ],
-      "explanation": "3 × 10 = 30.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ea2fbc8059",
+      "id": "q-c47bce6956",
       "text": "2 × 7 = ?",
       "answer": 14,
       "level": 2,
       "difficulty": 2,
       "hints": [
         "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 7."
+        "2 ועוד 2, 7 פעמים."
       ],
       "explanation": "2 × 7 = 14.",
-      "source": "algo"
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
     },
     {
-      "id": "q-6f7a874c88",
-      "text": "7 × 9 = ?",
-      "answer": 63,
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 7 פעמים 9."
-      ],
-      "explanation": "7 × 9 = 63.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2b07a875b7",
-      "text": "1 × 9 = ?",
-      "answer": 9,
+      "id": "q-9d89dfec87",
+      "text": "9 × 4 = ?",
+      "answer": 36,
       "level": 2,
       "difficulty": 2,
       "hints": [
         "כפל הוא חיבור חוזר.",
-        "חשב/י 1 פעמים 9."
+        "9 ועוד 9, 4 פעמים."
       ],
-      "explanation": "1 × 9 = 9.",
-      "source": "algo"
+      "explanation": "9 × 4 = 36.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
     },
     {
-      "id": "q-0e731a64ee",
+      "id": "q-fe95f34f5d",
+      "text": "6 × 6 = ?",
+      "answer": 36,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "6 ועוד 6, 6 פעמים."
+      ],
+      "explanation": "6 × 6 = 36.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-774dcd2108",
+      "text": "4 × 7 = ?",
+      "answer": 28,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "4 ועוד 4, 7 פעמים."
+      ],
+      "explanation": "4 × 7 = 28.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-87086a2b03",
+      "text": "8 × 4 = ?",
+      "answer": 32,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "8 ועוד 8, 4 פעמים."
+      ],
+      "explanation": "8 × 4 = 32.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-f30f820229",
+      "text": "9 × 7 = ?",
+      "answer": 63,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "9 ועוד 9, 7 פעמים."
+      ],
+      "explanation": "9 × 7 = 63.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-cfa6eec718",
+      "text": "6 × 9 = ?",
+      "answer": 54,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "6 ועוד 6, 9 פעמים."
+      ],
+      "explanation": "6 × 9 = 54.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-792719f325",
+      "text": "8 × 3 = ?",
+      "answer": 24,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "8 ועוד 8, 3 פעמים."
+      ],
+      "explanation": "8 × 3 = 24.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-00c654b957",
+      "text": "7 × 5 = ?",
+      "answer": 35,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "7 ועוד 7, 5 פעמים."
+      ],
+      "explanation": "7 × 5 = 35.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-11e6611ffb",
+      "text": "4 × 3 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "4 ועוד 4, 3 פעמים."
+      ],
+      "explanation": "4 × 3 = 12.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-251b01c79f",
+      "text": "10 × 3 = ?",
+      "answer": 30,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "10 ועוד 10, 3 פעמים."
+      ],
+      "explanation": "10 × 3 = 30.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-085c9b1e3a",
+      "text": "5 × 2 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "5 ועוד 5, 2 פעמים."
+      ],
+      "explanation": "5 × 2 = 10.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-7254184592",
+      "text": "7 × 2 = ?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "7 ועוד 7, 2 פעמים."
+      ],
+      "explanation": "7 × 2 = 14.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-7b7b530723",
+      "text": "3 × 4 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "3 ועוד 3, 4 פעמים."
+      ],
+      "explanation": "3 × 4 = 12.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-ce6889f4ca",
+      "text": "7 × 4 = ?",
+      "answer": 28,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "7 ועוד 7, 4 פעמים."
+      ],
+      "explanation": "7 × 4 = 28.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-8b0e80c039",
+      "text": "5 × 7 = ?",
+      "answer": 35,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "5 ועוד 5, 7 פעמים."
+      ],
+      "explanation": "5 × 7 = 35.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-712874273b",
+      "text": "5 × 9 = ?",
+      "answer": 45,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "5 ועוד 5, 9 פעמים."
+      ],
+      "explanation": "5 × 9 = 45.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-a89f5074ba",
+      "text": "2 × 2 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "2 ועוד 2, 2 פעמים."
+      ],
+      "explanation": "2 × 2 = 4.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-ba8908a53b",
       "text": "2 × 10 = ?",
       "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "2 ועוד 2, 10 פעמים."
+      ],
+      "explanation": "2 × 10 = 20.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-8b16850912",
+      "text": "5 × 4 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "5 ועוד 5, 4 פעמים."
+      ],
+      "explanation": "5 × 4 = 20.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-e4e9167c30",
+      "text": "6 × 2 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "6 ועוד 6, 2 פעמים."
+      ],
+      "explanation": "6 × 2 = 12.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-05347bc469",
+      "text": "10 × 9 = ?",
+      "answer": 90,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "10 ועוד 10, 9 פעמים."
+      ],
+      "explanation": "10 × 9 = 90.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-cda6f30cc0",
+      "text": "3 × 5 = ?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "3 ועוד 3, 5 פעמים."
+      ],
+      "explanation": "3 × 5 = 15.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-0b0813809e",
+      "text": "8 × 8 = ?",
+      "answer": 64,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "8 ועוד 8, 8 פעמים."
+      ],
+      "explanation": "8 × 8 = 64.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-aa1f176c51",
+      "text": "6 × 8 = ?",
+      "answer": 48,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "6 ועוד 6, 8 פעמים."
+      ],
+      "explanation": "6 × 8 = 48.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-87ca648714",
+      "text": "8 × 7 = ?",
+      "answer": 56,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "8 ועוד 8, 7 פעמים."
+      ],
+      "explanation": "8 × 7 = 56.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-67166a24f3",
+      "text": "8 × 6 = ?",
+      "answer": 48,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "8 ועוד 8, 6 פעמים."
+      ],
+      "explanation": "8 × 6 = 48.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-c89913573d",
+      "text": "4 × 10 = ?",
+      "answer": 40,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "4 ועוד 4, 10 פעמים."
+      ],
+      "explanation": "4 × 10 = 40.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-81a708ea34",
+      "text": "10 × 5 = ?",
+      "answer": 50,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "10 ועוד 10, 5 פעמים."
+      ],
+      "explanation": "10 × 5 = 50.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-b3867b09e1",
+      "text": "6 × 7 = ?",
+      "answer": 42,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "6 ועוד 6, 7 פעמים."
+      ],
+      "explanation": "6 × 7 = 42.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-a9dab6b478",
+      "text": "5 × 3 = ?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "5 ועוד 5, 3 פעמים."
+      ],
+      "explanation": "5 × 3 = 15.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-f2b37b4b3e",
+      "text": "5 × 6 = ?",
+      "answer": 30,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "5 ועוד 5, 6 פעמים."
+      ],
+      "explanation": "5 × 6 = 30.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-ffcf423ab2",
+      "text": "3 × 8 = ?",
+      "answer": 24,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "3 ועוד 3, 8 פעמים."
+      ],
+      "explanation": "3 × 8 = 24.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-3af19feca9",
+      "text": "2 × 8 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "2 ועוד 2, 8 פעמים."
+      ],
+      "explanation": "2 × 8 = 16.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-6ad24d7f0d",
+      "text": "7 × 8 = ?",
+      "answer": 56,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "7 ועוד 7, 8 פעמים."
+      ],
+      "explanation": "7 × 8 = 56.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-2de51218b3",
+      "text": "8 × 2 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "8 ועוד 8, 2 פעמים."
+      ],
+      "explanation": "8 × 2 = 16.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-5a88068ad5",
+      "text": "8 × 10 = ?",
+      "answer": 80,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "8 ועוד 8, 10 פעמים."
+      ],
+      "explanation": "8 × 10 = 80.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-9815421903",
+      "text": "3 × 10 = ?",
+      "answer": 30,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "3 ועוד 3, 10 פעמים."
+      ],
+      "explanation": "3 × 10 = 30.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-e1f779f4c3",
+      "text": "2 × 6 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "2 ועוד 2, 6 פעמים."
+      ],
+      "explanation": "2 × 6 = 12.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-a171dd7557",
+      "text": "3 × 9 = ?",
+      "answer": 27,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "3 ועוד 3, 9 פעמים."
+      ],
+      "explanation": "3 × 9 = 27.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-036ac5b73e",
+      "text": "4 × 9 = ?",
+      "answer": 36,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "4 ועוד 4, 9 פעמים."
+      ],
+      "explanation": "4 × 9 = 36.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-d67f851280",
+      "text": "2 × 4 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "2 ועוד 2, 4 פעמים."
+      ],
+      "explanation": "2 × 4 = 8.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-18e5cf5b50",
+      "text": "4 × 5 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "4 ועוד 4, 5 פעמים."
+      ],
+      "explanation": "4 × 5 = 20.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-c47d66bb18",
+      "text": "5 × 5 = ?",
+      "answer": 25,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "5 ועוד 5, 5 פעמים."
+      ],
+      "explanation": "5 × 5 = 25.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-b6f72511f2",
+      "text": "7 × 7 = ?",
+      "answer": 49,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "7 ועוד 7, 7 פעמים."
+      ],
+      "explanation": "7 × 7 = 49.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-4fc0694778",
+      "text": "8 × 5 = ?",
+      "answer": 40,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "8 ועוד 8, 5 פעמים."
+      ],
+      "explanation": "8 × 5 = 40.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-72e446f18b",
+      "text": "4 × 4 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "4 ועוד 4, 4 פעמים."
+      ],
+      "explanation": "4 × 4 = 16.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-ddb09dd177",
+      "text": "8 × 10 = ?",
+      "answer": 80,
       "level": 3,
       "difficulty": 3,
       "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 2 פעמים 10."
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "8 × 9 ועוד 8."
       ],
-      "explanation": "2 × 10 = 20.",
-      "source": "algo"
+      "explanation": "8 × 10 = 80.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
     },
     {
-      "id": "q-ce8acd5e5e",
+      "id": "q-47d362fa63",
+      "text": "8 × 6 = ?",
+      "answer": 48,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "8 × 5 ועוד 8."
+      ],
+      "explanation": "8 × 6 = 48.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-a48061e87d",
       "text": "6 × 10 = ?",
       "answer": 60,
-      "level": 5,
-      "difficulty": 5,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 10."
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "6 × 9 ועוד 6."
       ],
       "explanation": "6 × 10 = 60.",
-      "source": "algo"
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
     },
     {
-      "id": "q-96f23b104d",
-      "text": "4 × 10 = ?",
-      "answer": 40,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-6e11965f05",
+      "text": "10 × 7 = ?",
+      "answer": 70,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 4 פעמים 10."
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "10 × 6 ועוד 10."
       ],
-      "explanation": "4 × 10 = 40.",
-      "source": "algo"
+      "explanation": "10 × 7 = 70.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
     },
     {
-      "id": "q-0a24614727",
+      "id": "q-658630d8c9",
+      "text": "8 × 9 = ?",
+      "answer": 72,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "8 × 8 ועוד 8."
+      ],
+      "explanation": "8 × 9 = 72.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-e6beada1fe",
+      "text": "10 × 8 = ?",
+      "answer": 80,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "10 × 7 ועוד 10."
+      ],
+      "explanation": "10 × 8 = 80.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-3263dab340",
+      "text": "10 × 6 = ?",
+      "answer": 60,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "10 × 5 ועוד 10."
+      ],
+      "explanation": "10 × 6 = 60.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-f183d3781c",
+      "text": "7 × 9 = ?",
+      "answer": 63,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "7 × 8 ועוד 7."
+      ],
+      "explanation": "7 × 9 = 63.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-a98a278f82",
+      "text": "7 × 10 = ?",
+      "answer": 70,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "7 × 9 ועוד 7."
+      ],
+      "explanation": "7 × 10 = 70.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-062ecbc454",
+      "text": "6 × 6 = ?",
+      "answer": 36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "6 × 5 ועוד 6."
+      ],
+      "explanation": "6 × 6 = 36.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-aa696bdc02",
+      "text": "8 × 7 = ?",
+      "answer": 56,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "8 × 6 ועוד 8."
+      ],
+      "explanation": "8 × 7 = 56.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-ab2ba02167",
+      "text": "8 × 8 = ?",
+      "answer": 64,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "8 × 7 ועוד 8."
+      ],
+      "explanation": "8 × 8 = 64.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-2c42bb7f53",
       "text": "6 × 9 = ?",
       "answer": 54,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "6 × 8 ועוד 6."
+      ],
+      "explanation": "6 × 9 = 54.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-cfc9c4f82d",
+      "text": "10 × 9 = ?",
+      "answer": 90,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "10 × 8 ועוד 10."
+      ],
+      "explanation": "10 × 9 = 90.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-65eeccc89e",
+      "text": "9 × 7 = ?",
+      "answer": 63,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "9 × 6 ועוד 9."
+      ],
+      "explanation": "9 × 7 = 63.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-a1589660e2",
+      "text": "6 × 7 = ?",
+      "answer": 42,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "6 × 6 ועוד 6."
+      ],
+      "explanation": "6 × 7 = 42.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-b016eda08f",
+      "text": "7 × 6 = ?",
+      "answer": 42,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "7 × 5 ועוד 7."
+      ],
+      "explanation": "7 × 6 = 42.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-a0394c8fc6",
+      "text": "9 × 10 = ?",
+      "answer": 90,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "9 × 9 ועוד 9."
+      ],
+      "explanation": "9 × 10 = 90.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-52eb695cd3",
+      "text": "6 × 8 = ?",
+      "answer": 48,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "6 × 7 ועוד 6."
+      ],
+      "explanation": "6 × 8 = 48.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-328e2f57b3",
+      "text": "9 × 9 = ?",
+      "answer": 81,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "9 × 8 ועוד 9."
+      ],
+      "explanation": "9 × 9 = 81.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-9914087ec9",
+      "text": "9 × 6 = ?",
+      "answer": 54,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "9 × 5 ועוד 9."
+      ],
+      "explanation": "9 × 6 = 54.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-dc24c18a04",
+      "text": "10 × 10 = ?",
+      "answer": 100,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "10 × 9 ועוד 10."
+      ],
+      "explanation": "10 × 10 = 100.",
+      "source": "algo",
+      "skill": "mul_ten",
+      "skillHe": "כפל בעשרת עגולה"
+    },
+    {
+      "id": "q-6e99aeabac",
+      "text": "9 × 8 = ?",
+      "answer": 72,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "9 × 7 ועוד 9."
+      ],
+      "explanation": "9 × 8 = 72.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-73a2212a30",
+      "text": "7 × 8 = ?",
+      "answer": 56,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "7 × 7 ועוד 7."
+      ],
+      "explanation": "7 × 8 = 56.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-f3bde0886e",
+      "text": "7 × 7 = ?",
+      "answer": 49,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "אפשר להיעזר בעובדה קרובה שכבר ידועה.",
+        "7 × 6 ועוד 7."
+      ],
+      "explanation": "7 × 7 = 49.",
+      "source": "algo",
+      "skill": "mul_table",
+      "skillHe": "לוח הכפל"
+    },
+    {
+      "id": "q-77ca13aaeb",
+      "text": "4 × ___ = 24",
+      "answer": 6,
       "level": 4,
       "difficulty": 4,
       "hints": [
-        "כפל הוא חיבור חוזר.",
-        "חשב/י 6 פעמים 9."
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 24 ÷ 4."
       ],
-      "explanation": "6 × 9 = 54.",
+      "explanation": "4 × 6 = 24, ולכן החסר הוא 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-009bc713ef",
+      "text": "5 × ___ = 20",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 20 ÷ 5."
+      ],
+      "explanation": "5 × 4 = 20, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-16de44ec11",
+      "text": "6 × ___ = 60",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 60 ÷ 6."
+      ],
+      "explanation": "6 × 10 = 60, ולכן החסר הוא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e01b08446c",
+      "text": "6 × ___ = 54",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 54 ÷ 6."
+      ],
+      "explanation": "6 × 9 = 54, ולכן החסר הוא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-75d9bc18a1",
+      "text": "8 × ___ = 72",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 72 ÷ 8."
+      ],
+      "explanation": "8 × 9 = 72, ולכן החסר הוא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0ab02c817d",
+      "text": "7 × ___ = 70",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 70 ÷ 7."
+      ],
+      "explanation": "7 × 10 = 70, ולכן החסר הוא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a4624441f7",
+      "text": "8 × ___ = 64",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 64 ÷ 8."
+      ],
+      "explanation": "8 × 8 = 64, ולכן החסר הוא 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0350bd5c1d",
+      "text": "3 × ___ = 24",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 24 ÷ 3."
+      ],
+      "explanation": "3 × 8 = 24, ולכן החסר הוא 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ec0f1f660f",
+      "text": "8 × ___ = 80",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 80 ÷ 8."
+      ],
+      "explanation": "8 × 10 = 80, ולכן החסר הוא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d61ffa3f81",
+      "text": "9 × ___ = 90",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 90 ÷ 9."
+      ],
+      "explanation": "9 × 10 = 90, ולכן החסר הוא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-07aed85d34",
+      "text": "4 × ___ = 36",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 36 ÷ 4."
+      ],
+      "explanation": "4 × 9 = 36, ולכן החסר הוא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-db251fcff2",
+      "text": "6 × ___ = 36",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 36 ÷ 6."
+      ],
+      "explanation": "6 × 6 = 36, ולכן החסר הוא 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fa587d20cd",
+      "text": "5 × ___ = 45",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 45 ÷ 5."
+      ],
+      "explanation": "5 × 9 = 45, ולכן החסר הוא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-aaae5982d4",
+      "text": "9 × ___ = 27",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 27 ÷ 9."
+      ],
+      "explanation": "9 × 3 = 27, ולכן החסר הוא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e733fbd62d",
+      "text": "4 × ___ = 16",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 16 ÷ 4."
+      ],
+      "explanation": "4 × 4 = 16, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7e99a262e4",
+      "text": "8 × ___ = 40",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 40 ÷ 8."
+      ],
+      "explanation": "8 × 5 = 40, ולכן החסר הוא 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-74d22241c7",
+      "text": "7 × ___ = 49",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 49 ÷ 7."
+      ],
+      "explanation": "7 × 7 = 49, ולכן החסר הוא 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ec1c2ec1ce",
+      "text": "10 × ___ = 100",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 100 ÷ 10."
+      ],
+      "explanation": "10 × 10 = 100, ולכן החסר הוא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-48520953f9",
+      "text": "6 × ___ = 24",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 24 ÷ 6."
+      ],
+      "explanation": "6 × 4 = 24, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-36c0041048",
+      "text": "4 × ___ = 40",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 40 ÷ 4."
+      ],
+      "explanation": "4 × 10 = 40, ולכן החסר הוא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b2507c84cd",
+      "text": "7 × ___ = 21",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 21 ÷ 7."
+      ],
+      "explanation": "7 × 3 = 21, ולכן החסר הוא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-db05c92321",
+      "text": "7 × ___ = 35",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 35 ÷ 7."
+      ],
+      "explanation": "7 × 5 = 35, ולכן החסר הוא 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f3f8051ee7",
+      "text": "3 × ___ = 15",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 15 ÷ 3."
+      ],
+      "explanation": "3 × 5 = 15, ולכן החסר הוא 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-414e834135",
+      "text": "3 × ___ = 12",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 12 ÷ 3."
+      ],
+      "explanation": "3 × 4 = 12, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-031d18c195",
+      "text": "7 × ___ = 28",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 28 ÷ 7."
+      ],
+      "explanation": "7 × 4 = 28, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-66c249c84c",
+      "text": "4 × ___ = 12",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 12 ÷ 4."
+      ],
+      "explanation": "4 × 3 = 12, ולכן החסר הוא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-663191e5c6",
+      "text": "10 × ___ = 80",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 80 ÷ 10."
+      ],
+      "explanation": "10 × 8 = 80, ולכן החסר הוא 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1e51887c35",
+      "text": "3 × ___ = 18",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 18 ÷ 3."
+      ],
+      "explanation": "3 × 6 = 18, ולכן החסר הוא 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e7c1e08fb9",
+      "text": "5 × ___ = 30",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 30 ÷ 5."
+      ],
+      "explanation": "5 × 6 = 30, ולכן החסר הוא 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-83c466e6f7",
+      "text": "9 × ___ = 63",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 63 ÷ 9."
+      ],
+      "explanation": "9 × 7 = 63, ולכן החסר הוא 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-29d9fcf72a",
+      "text": "5 × ___ = 35",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 35 ÷ 5."
+      ],
+      "explanation": "5 × 7 = 35, ולכן החסר הוא 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1b8d445c99",
+      "text": "6 × ___ = 48",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 48 ÷ 6."
+      ],
+      "explanation": "6 × 8 = 48, ולכן החסר הוא 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-34974df0be",
+      "text": "3 × ___ = 30",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 30 ÷ 3."
+      ],
+      "explanation": "3 × 10 = 30, ולכן החסר הוא 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a1a4c5e205",
+      "text": "10 × ___ = 30",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 30 ÷ 10."
+      ],
+      "explanation": "10 × 3 = 30, ולכן החסר הוא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-257bc77544",
+      "text": "6 × ___ = 30",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 30 ÷ 6."
+      ],
+      "explanation": "6 × 5 = 30, ולכן החסר הוא 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8b47fd5eae",
+      "text": "3 × ___ = 21",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 21 ÷ 3."
+      ],
+      "explanation": "3 × 7 = 21, ולכן החסר הוא 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-246c9fb782",
+      "text": "3 × ___ = 27",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 27 ÷ 3."
+      ],
+      "explanation": "3 × 9 = 27, ולכן החסר הוא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5d482d2f72",
+      "text": "7 × ___ = 56",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 56 ÷ 7."
+      ],
+      "explanation": "7 × 8 = 56, ולכן החסר הוא 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3776d497c1",
+      "text": "10 × ___ = 90",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 90 ÷ 10."
+      ],
+      "explanation": "10 × 9 = 90, ולכן החסר הוא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e2a94e22f1",
+      "text": "5 × ___ = 25",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 25 ÷ 5."
+      ],
+      "explanation": "5 × 5 = 25, ולכן החסר הוא 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-681a8be039",
+      "text": "8 × ___ = 24",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 24 ÷ 8."
+      ],
+      "explanation": "8 × 3 = 24, ולכן החסר הוא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a457d958a7",
+      "text": "5 × ___ = 15",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 15 ÷ 5."
+      ],
+      "explanation": "5 × 3 = 15, ולכן החסר הוא 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2df7dbacfc",
+      "text": "10 × ___ = 50",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 50 ÷ 10."
+      ],
+      "explanation": "10 × 5 = 50, ולכן החסר הוא 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-19376f5ba2",
+      "text": "9 × ___ = 81",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 81 ÷ 9."
+      ],
+      "explanation": "9 × 9 = 81, ולכן החסר הוא 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f492ff5b39",
+      "text": "8 × ___ = 48",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 48 ÷ 8."
+      ],
+      "explanation": "8 × 6 = 48, ולכן החסר הוא 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-835b1ecda2",
+      "text": "5 × ___ = 40",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 40 ÷ 5."
+      ],
+      "explanation": "5 × 8 = 40, ולכן החסר הוא 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-01425a264c",
+      "text": "9 × ___ = 45",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 45 ÷ 9."
+      ],
+      "explanation": "9 × 5 = 45, ולכן החסר הוא 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-edf8c5107e",
+      "text": "4 × ___ = 32",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 32 ÷ 4."
+      ],
+      "explanation": "4 × 8 = 32, ולכן החסר הוא 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e431a13eac",
+      "text": "10 × ___ = 40",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 40 ÷ 10."
+      ],
+      "explanation": "10 × 4 = 40, ולכן החסר הוא 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-de9b4c2bfc",
+      "text": "8 × ___ = 56",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כמה פעמים נכנס המספר הראשון בתוצאה?",
+        "אפשר לחלק: 56 ÷ 8."
+      ],
+      "explanation": "8 × 7 = 56, ולכן החסר הוא 7.",
       "source": "algo"
     }
   ]

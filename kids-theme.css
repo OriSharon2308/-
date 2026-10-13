@@ -1061,6 +1061,15 @@ body.chat-resizing .chatResizeHandle::after {
   max-height: 100% !important;
 }
 
+/* ווידג'ט מערכת-הכלים מגיע ב-iframe ולא ב-svg, ולכן הכלל שמעל לא נגע בו:
+   הוא שמר על הגובה הקבוע שלו (240px), גלש מהמסגרת שהתכווצה ל-101px —
+   ונח על גבי השאלה. ה-SVG שבתוכו שומר יחס לבד (preserveAspectRatio),
+   ולכן הגבלת-גובה בלבד מספיקה ולא מעוותת כלום. */
+.study-v2 #lessonCard #problemDiagram .problemDiagram__kit {
+  flex: 0 1 auto;
+  max-height: 100%;
+}
+
 /* ===== איור חפצים (חיבור/חיסור) — מופיע רק על-פי החלטת המורה, מתחת לתרגיל, בלי שום מסגרת ===== */
 /* כשיש איור חפצים — מסדרים: שאלה, ואז התרגיל, ואז החפצים מתחת */
 .study-v2 #lessonCard .problem:has(.objViz) .problem__label { order: 0; }

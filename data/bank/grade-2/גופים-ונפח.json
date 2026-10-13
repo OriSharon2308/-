@@ -4,323 +4,11 @@
   "topic": "גופים ונפח",
   "questions": [
     {
-      "id": "q-94e449f7e2",
-      "text": "כמה פאות יש למנסרה משולשת?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "למנסרה משולשת יש 5 פאות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "prism"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "מנסרה משולשת והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-78841dc8ac",
-      "text": "כמה פאות יש לכדור?",
-      "answer": 1,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לכדור יש 1 פאות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "sphere"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "כדור והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-f91cc4974b",
-      "text": "כמה פאות יש לקובייה?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לקובייה יש 6 פאות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "cube"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "קובייה והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-fb83e03039",
-      "text": "כמה פאות יש לחרוט?",
-      "answer": 2,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לחרוט יש 2 פאות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "cone"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "חרוט והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-6f1ef0a0bf",
-      "text": "כמה פאות יש לגליל?",
-      "answer": 3,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לגליל יש 3 פאות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "cylinder"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "גליל והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-8e1e1ecc84",
-      "text": "כמה קדקודים יש לכדור?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לכדור יש 0 קדקודים. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "sphere"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "כדור והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-183036c91e",
-      "text": "כמה קדקודים יש לפירמידה?",
-      "answer": 5,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לפירמידה יש 5 קדקודים. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "pyramid"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "פירמידה והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-4a6780e805",
-      "text": "כמה מקצועות יש לקובייה?",
-      "answer": 12,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מקצוע הוא הקו שבו שתי פאות נפגשות.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לקובייה יש 12 מקצועות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "cube"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "קובייה והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-a170cae4a5",
-      "text": "כמה מקצועות יש לכדור?",
-      "answer": 0,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מקצוע הוא הקו שבו שתי פאות נפגשות.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לכדור יש 0 מקצועות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "sphere"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "כדור והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-7825cfd030",
-      "text": "כמה פאות יש לתיבה?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לתיבה יש 6 פאות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "box"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "תיבה והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-5c99327c5b",
-      "text": "כמה פאות יש לפירמידה?",
-      "answer": 5,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לפירמידה יש 5 פאות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "pyramid"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "פירמידה והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-a7acc6f85d",
-      "text": "כמה קדקודים יש לקובייה?",
-      "answer": 8,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לקובייה יש 8 קדקודים. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "cube"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "קובייה והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-c57c7b8a0c",
-      "text": "כמה מקצועות יש לתיבה?",
-      "answer": 12,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "מקצוע הוא הקו שבו שתי פאות נפגשות.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לתיבה יש 12 מקצועות. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "box"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "תיבה והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-197e2bc75b",
+      "id": "q-eabbee4a2b",
       "text": "כמה מקצועות יש למנסרה משולשת?",
       "answer": 9,
-      "level": 4,
-      "difficulty": 4,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מקצוע הוא הקו שבו שתי פאות נפגשות.",
         "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
@@ -337,43 +25,21 @@
         "w": 400,
         "h": 240,
         "alt": "מנסרה משולשת והפריסה שלה"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-bbf74cb2a0",
-      "text": "כמה קדקודים יש לגליל?",
-      "answer": 0,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-0ef26c9bce",
+      "text": "כמה פאות יש לחרוט?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
         "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
       ],
-      "explanation": "לגליל יש 0 קדקודים. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "cylinder"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "גליל והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-8678614dff",
-      "text": "כמה קדקודים יש לחרוט?",
-      "answer": 1,
-      "level": 4,
-      "difficulty": 4,
-      "hints": [
-        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "לחרוט יש 1 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "explanation": "לחרוט יש 2 פאות. הפריסה שלצד הגוף מראה את זה.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
@@ -385,86 +51,68 @@
         "w": 400,
         "h": 240,
         "alt": "חרוט והפריסה שלה"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-391eb95d34",
-      "text": "כמה קדקודים יש למנסרה משולשת?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
-        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
-      ],
-      "explanation": "למנסרה משולשת יש 6 קדקודים. הפריסה שלצד הגוף מראה את זה.",
-      "source": "algo",
-      "needsDiagram": true,
-      "diagramData": {
-        "type": "kit",
-        "widget": "solid_net",
-        "params": {
-          "solid": "prism"
-        },
-        "w": 400,
-        "h": 240,
-        "alt": "מנסרה משולשת והפריסה שלה"
-      }
-    },
-    {
-      "id": "q-e016b28e31",
-      "text": "כמה מקצועות יש לפירמידה?",
-      "answer": 8,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-829ebfa6a5",
+      "text": "כמה מקצועות יש לקובייה?",
+      "answer": 12,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מקצוע הוא הקו שבו שתי פאות נפגשות.",
         "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
       ],
-      "explanation": "לפירמידה יש 8 מקצועות. הפריסה שלצד הגוף מראה את זה.",
+      "explanation": "לקובייה יש 12 מקצועות. הפריסה שלצד הגוף מראה את זה.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "solid_net",
         "params": {
-          "solid": "pyramid"
+          "solid": "cube"
         },
         "w": 400,
         "h": 240,
-        "alt": "פירמידה והפריסה שלה"
-      }
+        "alt": "קובייה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-1cad2abd0e",
-      "text": "כמה קדקודים יש לתיבה?",
-      "answer": 8,
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-a687cb9ac4",
+      "text": "כמה פאות יש לגליל?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
-        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
         "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
       ],
-      "explanation": "לתיבה יש 8 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "explanation": "לגליל יש 3 פאות. הפריסה שלצד הגוף מראה את זה.",
       "source": "algo",
       "needsDiagram": true,
       "diagramData": {
         "type": "kit",
         "widget": "solid_net",
         "params": {
-          "solid": "box"
+          "solid": "cylinder"
         },
         "w": 400,
         "h": 240,
-        "alt": "תיבה והפריסה שלה"
-      }
+        "alt": "גליל והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-a5089dbabe",
+      "id": "q-5ac2a922c6",
       "text": "כמה מקצועות יש לגליל?",
       "answer": 2,
-      "level": 4,
-      "difficulty": 4,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מקצוע הוא הקו שבו שתי פאות נפגשות.",
         "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
@@ -481,14 +129,250 @@
         "w": 400,
         "h": 240,
         "alt": "גליל והפריסה שלה"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     },
     {
-      "id": "q-49c8b69a68",
+      "id": "q-04946d0378",
+      "text": "כמה קדקודים יש למנסרה משולשת?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "למנסרה משולשת יש 6 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "prism"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "מנסרה משולשת והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2f907ef38e",
+      "text": "כמה קדקודים יש לפירמידה?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לפירמידה יש 5 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "pyramid"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "פירמידה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-f570d3be63",
+      "text": "כמה פאות יש לתיבה?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לתיבה יש 6 פאות. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "box"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "תיבה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-003ff29763",
+      "text": "כמה פאות יש לכדור?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לכדור יש 1 פאות. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "sphere"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "כדור והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-3e1fe3c85d",
+      "text": "כמה קדקודים יש לקובייה?",
+      "answer": 8,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לקובייה יש 8 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cube"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "קובייה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cb28f15239",
+      "text": "כמה מקצועות יש לתיבה?",
+      "answer": 12,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מקצוע הוא הקו שבו שתי פאות נפגשות.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לתיבה יש 12 מקצועות. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "box"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "תיבה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c6bc76a941",
+      "text": "כמה קדקודים יש לתיבה?",
+      "answer": 8,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לתיבה יש 8 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "box"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "תיבה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ad12d00dce",
+      "text": "כמה קדקודים יש לגליל?",
+      "answer": 0,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לגליל יש 0 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cylinder"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "גליל והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e6c460f8fe",
+      "text": "כמה פאות יש למנסרה משולשת?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "למנסרה משולשת יש 5 פאות. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "prism"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "מנסרה משולשת והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-543e6f256d",
       "text": "כמה מקצועות יש לחרוט?",
       "answer": 1,
-      "level": 4,
-      "difficulty": 4,
+      "level": 1,
+      "difficulty": 1,
       "hints": [
         "מקצוע הוא הקו שבו שתי פאות נפגשות.",
         "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
@@ -505,7 +389,1461 @@
         "w": 400,
         "h": 240,
         "alt": "חרוט והפריסה שלה"
-      }
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ced4d7d305",
+      "text": "כמה פאות יש לקובייה?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לקובייה יש 6 פאות. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cube"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "קובייה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-63eff246a7",
+      "text": "כמה מקצועות יש לכדור?",
+      "answer": 0,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מקצוע הוא הקו שבו שתי פאות נפגשות.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לכדור יש 0 מקצועות. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "sphere"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "כדור והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9d4fb4ab10",
+      "text": "כמה קדקודים יש לכדור?",
+      "answer": 0,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לכדור יש 0 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "sphere"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "כדור והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6d03efbb9a",
+      "text": "כמה קדקודים יש לחרוט?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לחרוט יש 1 קדקודים. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cone"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "חרוט והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5d9ec1ef31",
+      "text": "כמה פאות יש לפירמידה?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "פאה היא משטח שאפשר להניח עליו את הגוף. אל תשכח/י את התחתית ואת המכסה.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לפירמידה יש 5 פאות. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "pyramid"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "פירמידה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c07637b832",
+      "text": "כמה מקצועות יש לפירמידה?",
+      "answer": 8,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "מקצוע הוא הקו שבו שתי פאות נפגשות.",
+        "עבוד/עבדי לפי סדר קבוע כדי לא לספור פעמיים — ותעזר/י גם בפריסה שבצד."
+      ],
+      "explanation": "לפירמידה יש 8 מקצועות. הפריסה שלצד הגוף מראה את זה.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "pyramid"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "פירמידה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-efc12966c5",
+      "text": "כמה פאות וקדקודים יש לתיבה ביחד?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז קדקודים — ורק בסוף מחברים.",
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת."
+      ],
+      "explanation": "6 פאות ועוד 8 קדקודים = 14.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "box"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "תיבה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-1d9f081a3d",
+      "text": "כמה קדקודים ומקצועות יש לתיבה ביחד?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים קדקודים, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "8 קדקודים ועוד 12 מקצועות = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "box"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "תיבה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c532743ddc",
+      "text": "כמה קדקודים ומקצועות יש לחרוט ביחד?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים קדקודים, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "1 קדקודים ועוד 1 מקצועות = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cone"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "חרוט והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e491f72b2f",
+      "text": "כמה פאות וקדקודים יש לגליל ביחד?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז קדקודים — ורק בסוף מחברים.",
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת."
+      ],
+      "explanation": "3 פאות ועוד 0 קדקודים = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cylinder"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "גליל והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d21e4ae112",
+      "text": "כמה פאות ומקצועות יש לפירמידה ביחד?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "5 פאות ועוד 8 מקצועות = 13.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "pyramid"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "פירמידה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ead22ed2e8",
+      "text": "כמה פאות וקדקודים יש לקובייה ביחד?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז קדקודים — ורק בסוף מחברים.",
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת."
+      ],
+      "explanation": "6 פאות ועוד 8 קדקודים = 14.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cube"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "קובייה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-066b22ec79",
+      "text": "כמה פאות ומקצועות יש לחרוט ביחד?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "2 פאות ועוד 1 מקצועות = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cone"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "חרוט והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5698773d0c",
+      "text": "כמה קדקודים ומקצועות יש לקובייה ביחד?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים קדקודים, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "8 קדקודים ועוד 12 מקצועות = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cube"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "קובייה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-b3b3fd1867",
+      "text": "כמה פאות ומקצועות יש לכדור ביחד?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "1 פאות ועוד 0 מקצועות = 1.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "sphere"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "כדור והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-23874edb60",
+      "text": "כמה פאות ומקצועות יש למנסרה משולשת ביחד?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "5 פאות ועוד 9 מקצועות = 14.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "prism"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "מנסרה משולשת והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c20dcd87ad",
+      "text": "כמה קדקודים ומקצועות יש למנסרה משולשת ביחד?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים קדקודים, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "6 קדקודים ועוד 9 מקצועות = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "prism"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "מנסרה משולשת והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e39e8f317b",
+      "text": "כמה קדקודים ומקצועות יש לפירמידה ביחד?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים קדקודים, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "5 קדקודים ועוד 8 מקצועות = 13.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "pyramid"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "פירמידה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-cf461a0192",
+      "text": "כמה פאות וקדקודים יש לפירמידה ביחד?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז קדקודים — ורק בסוף מחברים.",
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת."
+      ],
+      "explanation": "5 פאות ועוד 5 קדקודים = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "pyramid"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "פירמידה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-764ddd70e9",
+      "text": "כמה פאות ומקצועות יש לקובייה ביחד?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "6 פאות ועוד 12 מקצועות = 18.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cube"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "קובייה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5ce363ab9e",
+      "text": "כמה פאות ומקצועות יש לגליל ביחד?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "3 פאות ועוד 2 מקצועות = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cylinder"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "גליל והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-51963b8896",
+      "text": "כמה פאות ומקצועות יש לתיבה ביחד?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "6 פאות ועוד 12 מקצועות = 18.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "box"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "תיבה והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ae06615b55",
+      "text": "כמה קדקודים ומקצועות יש לכדור ביחד?",
+      "answer": 0,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים קדקודים, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "0 קדקודים ועוד 0 מקצועות = 0.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "sphere"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "כדור והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-d3d1f8f937",
+      "text": "כמה קדקודים ומקצועות יש לגליל ביחד?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים קדקודים, ואז מקצועות — ורק בסוף מחברים.",
+        "מקצוע הוא הקו שבו שתי פאות נפגשות."
+      ],
+      "explanation": "0 קדקודים ועוד 2 מקצועות = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cylinder"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "גליל והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-043992dda1",
+      "text": "כמה פאות וקדקודים יש לכדור ביחד?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז קדקודים — ורק בסוף מחברים.",
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת."
+      ],
+      "explanation": "1 פאות ועוד 0 קדקודים = 1.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "sphere"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "כדור והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-f1ed2c9198",
+      "text": "כמה פאות וקדקודים יש למנסרה משולשת ביחד?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז קדקודים — ורק בסוף מחברים.",
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת."
+      ],
+      "explanation": "5 פאות ועוד 6 קדקודים = 11.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "prism"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "מנסרה משולשת והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-582c12d115",
+      "text": "כמה פאות וקדקודים יש לחרוט ביחד?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "קודם סופרים פאות, ואז קדקודים — ורק בסוף מחברים.",
+        "קדקוד הוא פינה חדה שבה נפגשות כמה פאות. לגליל אין אף אחת."
+      ],
+      "explanation": "2 פאות ועוד 1 קדקודים = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "solid_net",
+        "params": {
+          "solid": "cone"
+        },
+        "w": 400,
+        "h": 240,
+        "alt": "חרוט והפריסה שלה"
+      },
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-3255d485a6",
+      "text": "לקובייה יש יותר מקצועות מאשר למנסרה משולשת. בכמה יותר?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 12 פחות 9."
+      ],
+      "explanation": "לקובייה 12 מקצועות ולמנסרה משולשת 9 — ההפרש 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-55b171b9b2",
+      "text": "לקובייה יש יותר פאות מאשר לכדור. בכמה יותר?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 1."
+      ],
+      "explanation": "לקובייה 6 פאות ולכדור 1 — ההפרש 5.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-371e4c9139",
+      "text": "למנסרה משולשת יש יותר מקצועות מאשר לכדור. בכמה יותר?",
+      "answer": 9,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 9 פחות 0."
+      ],
+      "explanation": "למנסרה משולשת 9 מקצועות ולכדור 0 — ההפרש 9.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0901e4593e",
+      "text": "למנסרה משולשת יש יותר פאות מאשר לחרוט. בכמה יותר?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 2."
+      ],
+      "explanation": "למנסרה משולשת 5 פאות ולחרוט 2 — ההפרש 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-94ef447989",
+      "text": "לחרוט יש יותר פאות מאשר לכדור. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 2 פחות 1."
+      ],
+      "explanation": "לחרוט 2 פאות ולכדור 1 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-620d425eb1",
+      "text": "לתיבה יש יותר קדקודים מאשר לכדור. בכמה יותר?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 0."
+      ],
+      "explanation": "לתיבה 8 קדקודים ולכדור 0 — ההפרש 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-a7e5cbfc58",
+      "text": "לגליל יש יותר מקצועות מאשר לחרוט. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 2 פחות 1."
+      ],
+      "explanation": "לגליל 2 מקצועות ולחרוט 1 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-250d81fc6d",
+      "text": "לתיבה יש יותר קדקודים מאשר לגליל. בכמה יותר?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 0."
+      ],
+      "explanation": "לתיבה 8 קדקודים ולגליל 0 — ההפרש 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2d762c2d85",
+      "text": "לקובייה יש יותר פאות מאשר למנסרה משולשת. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 5."
+      ],
+      "explanation": "לקובייה 6 פאות ולמנסרה משולשת 5 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-b9046a03ef",
+      "text": "לפירמידה יש יותר פאות מאשר לחרוט. בכמה יותר?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 2."
+      ],
+      "explanation": "לפירמידה 5 פאות ולחרוט 2 — ההפרש 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-4de29818b0",
+      "text": "לקובייה יש יותר קדקודים מאשר לחרוט. בכמה יותר?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 1."
+      ],
+      "explanation": "לקובייה 8 קדקודים ולחרוט 1 — ההפרש 7.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-8af25e7931",
+      "text": "לפירמידה יש יותר פאות מאשר לגליל. בכמה יותר?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 3."
+      ],
+      "explanation": "לפירמידה 5 פאות ולגליל 3 — ההפרש 2.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-bfe9bf7fbf",
+      "text": "למנסרה משולשת יש יותר מקצועות מאשר לחרוט. בכמה יותר?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 9 פחות 1."
+      ],
+      "explanation": "למנסרה משולשת 9 מקצועות ולחרוט 1 — ההפרש 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-58a9aca8d3",
+      "text": "לתיבה יש יותר מקצועות מאשר למנסרה משולשת. בכמה יותר?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 12 פחות 9."
+      ],
+      "explanation": "לתיבה 12 מקצועות ולמנסרה משולשת 9 — ההפרש 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5a00b443a1",
+      "text": "לתיבה יש יותר קדקודים מאשר לפירמידה. בכמה יותר?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 5."
+      ],
+      "explanation": "לתיבה 8 קדקודים ולפירמידה 5 — ההפרש 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-99d4a57a21",
+      "text": "לחרוט יש יותר קדקודים מאשר לגליל. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 1 פחות 0."
+      ],
+      "explanation": "לחרוט 1 קדקודים ולגליל 0 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9ff5f9398e",
+      "text": "לקובייה יש יותר פאות מאשר לגליל. בכמה יותר?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 3."
+      ],
+      "explanation": "לקובייה 6 פאות ולגליל 3 — ההפרש 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-2c9dfd562e",
+      "text": "לקובייה יש יותר קדקודים מאשר למנסרה משולשת. בכמה יותר?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 6."
+      ],
+      "explanation": "לקובייה 8 קדקודים ולמנסרה משולשת 6 — ההפרש 2.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c2f81786fe",
+      "text": "לחרוט יש יותר קדקודים מאשר לכדור. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 1 פחות 0."
+      ],
+      "explanation": "לחרוט 1 קדקודים ולכדור 0 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-83025304b6",
+      "text": "למנסרה משולשת יש יותר קדקודים מאשר לחרוט. בכמה יותר?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 1."
+      ],
+      "explanation": "למנסרה משולשת 6 קדקודים ולחרוט 1 — ההפרש 5.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6b31fd2488",
+      "text": "לתיבה יש יותר קדקודים מאשר למנסרה משולשת. בכמה יותר?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 6."
+      ],
+      "explanation": "לתיבה 8 קדקודים ולמנסרה משולשת 6 — ההפרש 2.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-4f6008edf3",
+      "text": "לגליל יש יותר מקצועות מאשר לכדור. בכמה יותר?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 2 פחות 0."
+      ],
+      "explanation": "לגליל 2 מקצועות ולכדור 0 — ההפרש 2.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-ab2e762cd3",
+      "text": "למנסרה משולשת יש יותר מקצועות מאשר לפירמידה. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 9 פחות 8."
+      ],
+      "explanation": "למנסרה משולשת 9 מקצועות ולפירמידה 8 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-aec02f4685",
+      "text": "לקובייה יש יותר קדקודים מאשר לפירמידה. בכמה יותר?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 5."
+      ],
+      "explanation": "לקובייה 8 קדקודים ולפירמידה 5 — ההפרש 3.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-078444a7b7",
+      "text": "לתיבה יש יותר מקצועות מאשר לכדור. בכמה יותר?",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 12 פחות 0."
+      ],
+      "explanation": "לתיבה 12 מקצועות ולכדור 0 — ההפרש 12.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-db50e92ac4",
+      "text": "לתיבה יש יותר פאות מאשר לחרוט. בכמה יותר?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 2."
+      ],
+      "explanation": "לתיבה 6 פאות ולחרוט 2 — ההפרש 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-041faf8cad",
+      "text": "לתיבה יש יותר פאות מאשר לפירמידה. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 5."
+      ],
+      "explanation": "לתיבה 6 פאות ולפירמידה 5 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-1f37f8542d",
+      "text": "לתיבה יש יותר פאות מאשר למנסרה משולשת. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 5."
+      ],
+      "explanation": "לתיבה 6 פאות ולמנסרה משולשת 5 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-80f520e306",
+      "text": "למנסרה משולשת יש יותר פאות מאשר לכדור. בכמה יותר?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 1."
+      ],
+      "explanation": "למנסרה משולשת 5 פאות ולכדור 1 — ההפרש 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-8159558232",
+      "text": "למנסרה משולשת יש יותר פאות מאשר לגליל. בכמה יותר?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 3."
+      ],
+      "explanation": "למנסרה משולשת 5 פאות ולגליל 3 — ההפרש 2.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-6172004e6a",
+      "text": "לפירמידה יש יותר מקצועות מאשר לכדור. בכמה יותר?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 0."
+      ],
+      "explanation": "לפירמידה 8 מקצועות ולכדור 0 — ההפרש 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-323b084857",
+      "text": "לקובייה יש יותר פאות מאשר לפירמידה. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 5."
+      ],
+      "explanation": "לקובייה 6 פאות ולפירמידה 5 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-5d5ccc6d7b",
+      "text": "לקובייה יש יותר פאות מאשר לחרוט. בכמה יותר?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 2."
+      ],
+      "explanation": "לקובייה 6 פאות ולחרוט 2 — ההפרש 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-0684213370",
+      "text": "לתיבה יש יותר פאות מאשר לכדור. בכמה יותר?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 1."
+      ],
+      "explanation": "לתיבה 6 פאות ולכדור 1 — ההפרש 5.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-f14f0d92b2",
+      "text": "לפירמידה יש יותר פאות מאשר לכדור. בכמה יותר?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 1."
+      ],
+      "explanation": "לפירמידה 5 פאות ולכדור 1 — ההפרש 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-9bf51fcbc5",
+      "text": "לקובייה יש יותר מקצועות מאשר לפירמידה. בכמה יותר?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 12 פחות 8."
+      ],
+      "explanation": "לקובייה 12 מקצועות ולפירמידה 8 — ההפרש 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-15b2d93bb5",
+      "text": "למנסרה משולשת יש יותר קדקודים מאשר לפירמידה. בכמה יותר?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 5."
+      ],
+      "explanation": "למנסרה משולשת 6 קדקודים ולפירמידה 5 — ההפרש 1.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e79e5965e3",
+      "text": "לתיבה יש יותר מקצועות מאשר לחרוט. בכמה יותר?",
+      "answer": 11,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 12 פחות 1."
+      ],
+      "explanation": "לתיבה 12 מקצועות ולחרוט 1 — ההפרש 11.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-e0b7a7ed72",
+      "text": "למנסרה משולשת יש יותר קדקודים מאשר לגליל. בכמה יותר?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 6 פחות 0."
+      ],
+      "explanation": "למנסרה משולשת 6 קדקודים ולגליל 0 — ההפרש 6.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-fe4b1b85d8",
+      "text": "לקובייה יש יותר קדקודים מאשר לכדור. בכמה יותר?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 0."
+      ],
+      "explanation": "לקובייה 8 קדקודים ולכדור 0 — ההפרש 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-458bc2307c",
+      "text": "לפירמידה יש יותר קדקודים מאשר לגליל. בכמה יותר?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 0."
+      ],
+      "explanation": "לפירמידה 5 קדקודים ולגליל 0 — ההפרש 5.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-95a9e12eed",
+      "text": "לקובייה יש יותר קדקודים מאשר לגליל. בכמה יותר?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 0."
+      ],
+      "explanation": "לקובייה 8 קדקודים ולגליל 0 — ההפרש 8.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-82106805ff",
+      "text": "לתיבה יש יותר מקצועות מאשר לפירמידה. בכמה יותר?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 12 פחות 8."
+      ],
+      "explanation": "לתיבה 12 מקצועות ולפירמידה 8 — ההפרש 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-468a328590",
+      "text": "לקובייה יש יותר מקצועות מאשר לגליל. בכמה יותר?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 12 פחות 2."
+      ],
+      "explanation": "לקובייה 12 מקצועות ולגליל 2 — ההפרש 10.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-c2aed1f52e",
+      "text": "לפירמידה יש יותר קדקודים מאשר לכדור. בכמה יותר?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 0."
+      ],
+      "explanation": "לפירמידה 5 קדקודים ולכדור 0 — ההפרש 5.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-504c9f59e7",
+      "text": "לפירמידה יש יותר קדקודים מאשר לחרוט. בכמה יותר?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה קדקודים יש לכל אחד מהם?",
+        "ואז מחסרים: 5 פחות 1."
+      ],
+      "explanation": "לפירמידה 5 קדקודים ולחרוט 1 — ההפרש 4.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-122c32234e",
+      "text": "לגליל יש יותר פאות מאשר לכדור. בכמה יותר?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה פאות יש לכל אחד מהם?",
+        "ואז מחסרים: 3 פחות 1."
+      ],
+      "explanation": "לגליל 3 פאות ולכדור 1 — ההפרש 2.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-f5a7869f4d",
+      "text": "לפירמידה יש יותר מקצועות מאשר לחרוט. בכמה יותר?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 8 פחות 1."
+      ],
+      "explanation": "לפירמידה 8 מקצועות ולחרוט 1 — ההפרש 7.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-f9df3eae05",
+      "text": "למנסרה משולשת יש יותר מקצועות מאשר לגליל. בכמה יותר?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 9 פחות 2."
+      ],
+      "explanation": "למנסרה משולשת 9 מקצועות ולגליל 2 — ההפרש 7.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
+    },
+    {
+      "id": "q-528d38be57",
+      "text": "לקובייה יש יותר מקצועות מאשר לחרוט. בכמה יותר?",
+      "answer": 11,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כמה מקצועות יש לכל אחד מהם?",
+        "ואז מחסרים: 12 פחות 1."
+      ],
+      "explanation": "לקובייה 12 מקצועות ולחרוט 1 — ההפרש 11.",
+      "source": "algo",
+      "skill": "word_problem",
+      "skillHe": "בעיה מילולית"
     }
   ]
 }

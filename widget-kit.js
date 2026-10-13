@@ -1021,7 +1021,7 @@
   "solid_net": function (p) {
     p = p || {};
     var solid = String(p.solid || "cube").toLowerCase();
-    if (["cube", "box", "cylinder", "prism", "pyramid"].indexOf(solid) < 0) solid = "cube";
+    if (["cube", "box", "cylinder", "prism", "pyramid", "cone", "sphere"].indexOf(solid) < 0) solid = "cube";
     var INK = "#0f3b36", F = "#99f6e4", body = "", net = "", nm = "";
     if (solid === "cube" || solid === "box") {
       var W2 = solid === "cube" ? 70 : 92, H2 = 70, D2 = 30;
@@ -1040,15 +1040,32 @@
         + '<rect x="196" y="80" width="150" height="66" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
         + '<ellipse cx="238" cy="170" rx="26" ry="14" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>';
       nm = "גליל — 2 עיגולים ומלבן";
+    } else if (solid === "cone") {
+      body = '<path d="M34,150 L80,46 L126,150" fill="' + F + '" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/>'
+        + '<ellipse cx="80" cy="150" rx="46" ry="16" fill="#ccfbf1" stroke="' + INK + '" stroke-width="2"/>'
+        + '<path d="M34,150 a46,16 0 0 0 92,0" fill="none" stroke="' + INK + '" stroke-width="2"/>';
+      // הפריסה: עיגול-בסיס + גזרה (המעטפת). הגזרה היא בדיוק מה שילדים
+      // מתקשים לדמיין, ולכן היא מצוירת ולא רק נאמרת.
+      net = '<path d="M250,56 A74,74 0 0 1 324,130 L250,130 Z" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<ellipse cx="226" cy="178" rx="34" ry="34" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>';
+      nm = "חרוט — בסיס עגול ומעטפת";
+    } else if (solid === "sphere") {
+      body = '<circle cx="110" cy="120" r="68" fill="' + F + '" stroke="' + INK + '" stroke-width="2"/>'
+        + '<ellipse cx="110" cy="120" rx="68" ry="22" fill="none" stroke="' + INK + '" stroke-width="1.2" stroke-dasharray="5 4"/>'
+        + '<ellipse cx="86" cy="94" rx="18" ry="12" fill="#ffffff" opacity="0.6"/>';
+      // לכדור אין פריסה — וזו בדיוק הנקודה שהשאלה בודקת.
+      net = '<text x="286" y="118" text-anchor="middle" font-size="14" fill="#64748b">לכדור אין פריסה —</text>'
+        + '<text x="286" y="140" text-anchor="middle" font-size="14" fill="#64748b">אין לו אף פאה שטוחה</text>';
+      nm = "כדור — בלי פינות ובלי מקצועות";
     } else if (solid === "prism") {
       body = '<path d="M40,150 L80,66 L120,150 Z" fill="' + F + '" stroke="' + INK + '" stroke-width="2"/>'
         + '<path d="M40,150 l26,-24 L106,42 L80,66 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="2"/>'
         + '<path d="M120,150 l26,-24 L106,42" fill="#5eead4" stroke="' + INK + '" stroke-width="2"/>';
-      net = '<path d="M212,60 L248,110 L176,110 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>'
-        + '<rect x="176" y="110" width="72" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
-        + '<rect x="248" y="110" width="72" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
-        + '<rect x="104" y="110" width="72" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
-        + '<path d="M212,212 L248,162 L176,162 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>';
+      net = '<path d="M248,62 L284,110 L212,110 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<rect x="212" y="110" width="56" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<rect x="268" y="110" width="56" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<rect x="324" y="110" width="56" height="52" fill="' + F + '" stroke="' + INK + '" stroke-width="1.8"/>'
+        + '<path d="M248,210 L284,162 L212,162 Z" fill="#ccfbf1" stroke="' + INK + '" stroke-width="1.8"/>';
       nm = "מנסרה משולשת — 2 משולשים ו-3 מלבנים";
     } else {
       body = '<path d="M40,152 L120,152 L80,60 Z" fill="' + F + '" stroke="' + INK + '" stroke-width="2"/>'
@@ -1065,7 +1082,8 @@
       + '<text x="200" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="' + INK + '">' + nm + '</text>'
       + body + net
       + '<text x="80" y="230" text-anchor="middle" font-size="13" fill="#64748b">הגוף</text>'
-      + '<text x="260" y="230" text-anchor="middle" font-size="13" fill="#64748b">הפריסה</text></svg>';
+      + (solid === "sphere" ? '' : '<text x="260" y="230" text-anchor="middle" font-size="13" fill="#64748b">הפריסה</text>')
+      + '</svg>';
   }
   };
 
