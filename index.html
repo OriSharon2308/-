@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css?v=47" />
     <!-- שכבת עיצוב ילדים (רידיזיין) — נטענת אחרי styles.css, דורסת מראה+מיקומים. הסרה = חזרה למקור -->
-    <link rel="stylesheet" href="./kids-theme.css?v=112" />
+    <link rel="stylesheet" href="./kids-theme.css?v=114" />
     <style>
       /* מקום שמור לדמות המדברת (מסקוט) בראש הצ'אט — נותן פנים למורה */
       .chatSidebar__header {
@@ -851,6 +851,17 @@
             <div class="problem__text" id="problemText">טוען…</div>
           </div>
 
+          <!-- "הסבר" — יושב מעל אזור-הכתיבה, שם העיניים של הילד כשהוא נתקע.
+               לכל שאלה בבנק כבר כתוב explanation, ולכן הלחיצה מחזירה טקסט שמור
+               מיידית: בלי קריאת-מודל, בלי המתנה ובלי עלות. המורה נכנס רק אם
+               נגמר החומר השמור (serveStoredHelp ב-app.js). -->
+          <div class="helpRow">
+            <button id="explainBtn" class="btn btn--secondary helpRow__btn" type="button">הסבר</button>
+          </div>
+          <!-- ההסבר מופיע כאן, בתוך כרטיס-השאלה. הצ'אט בפריסה הזאת מקופל מאחורי
+               אווטאר המורה, ולכן טקסט שנשלח רק לשם לא נראה לילד בכלל. -->
+          <div class="explainBox" id="explainBox" role="status" aria-live="polite" hidden></div>
+
           <!-- מחשבון תשובה: קלט למעלה · מספרים נפתחים באמצע · "סיימתי" מעוגן למטה (לא זז) -->
           <div class="answerRow" id="answerRowNumeric">
             <!-- מסגרת המחשבון: הקלט למעלה · המספרים נפתחים מתחתיו · התחתית נשארת במקום (גדל מעלה) -->
@@ -911,7 +922,6 @@
             <button id="prevProblemBtn" class="btn btn--secondary" type="button">שאלה קודמת</button>
             <button id="nextProblemBtn" class="btn btn--secondary" type="button">שאלה הבאה</button>
             <button id="hintBtn" class="btn btn--secondary" type="button">רמז</button>
-            <button id="explainBtn" class="btn btn--secondary" type="button">הסבר</button>
           </div>
 
           <div class="feedback feedback--hidden" id="feedbackBox" role="status" aria-live="polite" hidden></div>
@@ -974,7 +984,7 @@
     <!-- ערכת-הווידג'טים: אותם כלים אינטראקטיביים שהלוח משתמש בהם, כדי שגם
          שאלת-תרגול תוכל להציג מד-זווית, קיר-שברים או דיאגרמה — ולא רק טקסט. -->
     <script src="./widget-kit.js?v=1"></script>
-    <script src="./app.js?v=85" defer></script>
+    <script src="./app.js?v=86" defer></script>
 
     <!-- חלונית המורה: הפס הלבן האמיתי (#chatHeader) גדל כלפי מטה לריבוע, והמורה גדל (width/height — חד) ונע למרכז. סגירה ב-X / Esc -->
     <script>

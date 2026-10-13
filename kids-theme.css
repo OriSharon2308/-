@@ -1362,12 +1362,42 @@ body.chat-collapsed main.study-v2.layout {
 .study-v2 .qNav--prev { right: 6px; }
 .study-v2 .qNav--next { left: 6px; }
 
-/* הסרת שורת הפעולות כולה (קודם/הבא/רמז/הסבר) — ההנדלרים נשארים פעילים */
+/* הסרת שורת הפעולות (קודם/הבא/רמז) — ההנדלרים נשארים פעילים.
+   "הסבר" יצא מהשורה הזאת ויושב עכשיו מעל אזור-הכתיבה (.helpRow), ולכן
+   הוא כבר לא ברשימת המוסתרים. */
 .study-v2 .actions,
 .study-v2 #prevProblemBtn,
 .study-v2 #nextProblemBtn,
-.study-v2 #hintBtn,
-.study-v2 #explainBtn { display: none; }
+.study-v2 #hintBtn { display: none; }
+
+/* שורת-העזרה מעל אזור-הכתיבה: נוכחת אבל שקטה — לא מתחרה ב"סיימתי" */
+.helpRow {
+  display: flex; justify-content: center;
+  margin: 0 0 10px;
+}
+.helpRow__btn {
+  min-height: 40px; padding: 8px 22px;
+  font-size: 16px; font-weight: 600;
+  border-radius: 999px;
+  background: rgb(var(--accent-rgb) / 0.09);
+  border: 1px solid rgb(var(--accent-rgb) / 0.22);
+  color: var(--kid-teal-ink, currentColor);
+}
+.helpRow__btn:hover { background: rgb(var(--accent-rgb) / 0.16); }
+.helpRow__btn:active { transform: scale(0.96); }
+
+/* ההסבר השמור, בתוך הכרטיס — קרוב לשאלה ולאזור-הכתיבה */
+.explainBox {
+  margin: 0 auto 12px;
+  max-width: 44ch;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: rgb(var(--accent-rgb) / 0.08);
+  border: 1px solid rgb(var(--accent-rgb) / 0.18);
+  font-size: 18px; line-height: 1.5; font-weight: 600;
+  text-align: center; white-space: pre-line;
+}
+@media (max-width: 600px) { .explainBox { font-size: 16px; padding: 10px 14px; } }
 
 /* (11) השאלה למעלה, וההגשה נדחפת כמעט לתחתית המסגרת */
 .study-v2 .problem { margin-top: clamp(28px, 10vh, 120px); }
