@@ -446,6 +446,7 @@ function ui() {
     nextProblemBtn: document.getElementById("nextProblemBtn"),
     hintBtn: document.getElementById("hintBtn"),
     explainBtn: document.getElementById("explainBtn"),
+    explainBox: document.getElementById("explainBox"),
     feedbackBox: document.getElementById("feedbackBox"),
     difficultyPill: document.getElementById("difficultyPill"),
     levelPicker: document.getElementById("levelPicker"),
@@ -1627,6 +1628,41 @@ async function main() {
     if (!Array.isArray(topic.problems)) topic.problems = [];
   }
 
+  /* ── רב-ברירה ───────────────────────────────────────────────────────
+     השאלה מגיעה עם options, והתשובה היא מספר-הסעיף. מציגים כפתורים
+     ומסתירים את שורת-ההקלדה: ילד שרואה ארבע אפשרויות רוצה ללחוץ, לא
+     לתרגם לאחת מהן למספר. ההקלדה עדיין עובדת אם מישהו מעדיף אותה. */
+  function renderChoices(p) {
+    const host = u.answerRowNumeric && u.answerRowNumeric.parentElement;
+    const old = document.getElementById("choiceRow");
+    if (old) old.remove();
+    const opts = p && Array.isArray(p.options) ? p.options : null;
+    if (u.answerRowNumeric) u.answerRowNumeric.hidden = !!opts;
+    if (!opts || !host) return;
+
+    const row = document.createElement("div");
+    row.className = "choiceRow";
+    row.id = "choiceRow";
+    opts.forEach((opt, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "choiceBtn";
+      b.innerHTML = '<span class="choiceBtn__num">' + (i + 1) + "</span><span></span>";
+      b.lastChild.textContent = genderizeText(String(opt));
+      b.addEventListener("click", () => {
+        if (b.disabled) return;
+        const right = i + 1 === Number(p.answer);
+        b.classList.add(right ? "is-right" : "is-wrong");
+        // טעות: הכפתור ננעל אבל השאר נשארים פתוחים — ניסיון נוסף, לא כישלון
+        if (right) row.querySelectorAll(".choiceBtn").forEach((x) => { x.disabled = true; });
+        else b.disabled = true;
+        checkAnswerText(String(i + 1));
+      });
+      row.appendChild(b);
+    });
+    u.answerRowNumeric.insertAdjacentElement("afterend", row);
+  }
+
   /* ── אפקט "המורה מכין שאלה" ─────────────────────────────────────────
      מוצג רק כששאלה באמת *נוצרת* עכשיו (המורה בונה אותה לפי מה שהילד
      מתקשה בו). שאלה מהמאגר או מהמחולל מגיעה מיידית ולא מקבלת אפקט —
@@ -1665,6 +1701,7 @@ async function main() {
   function showArrivedQuestion(p) {
     showComposing(false);
     u.problemText.textContent = questionText(p);
+    renderChoices(p);
     u.problemText.classList.remove("is-arrived");
     void u.problemText.offsetWidth; // הפעלה-מחדש של האנימציה
     u.problemText.classList.add("is-arrived");
@@ -1721,6 +1758,9 @@ async function main() {
         shapeTarget: p.shapeTarget || null,
         // בעיה רב-סעיפית — הילד עונה סעיף-סעיף, ו-_partIdx עוקב איפה הוא
         parts: Array.isArray(p.parts) ? p.parts : null,
+        options: Array.isArray(p.options) ? p.options : null,
+        skill: p.skill || null,
+        skillHe: p.skillHe || null,
         _partIdx: 0,
         createdAt: Date.now(),
       },
@@ -2073,8 +2113,10 @@ async function main() {
     u.problemText.textContent = questionText(p);
     showProblemVisual(u, p);
     applyAnswerMode(p);
+    renderChoices(p);
     renderDifficulty(p.difficulty);
     u.answerInput.value = "";
+    if (u.explainBox) { u.explainBox.hidden = true; u.explainBox.textContent = ""; } // שאלה חדשה — הסבר ישן יורד
     setFeedback(u.feedbackBox, "", null);
     u.feedbackBox.hidden = true;
     u.feedbackBox.classList.add("feedback--hidden");
@@ -2870,9 +2912,12 @@ async function main() {
     if (p && expected != null) {
       const correct = answersMatch(raw, expected);
       const part = currentPart(p);
-      // כל סעיף נרשם בנפרד עם תגית-המיומנות שלו — זה מה שהופך את הבעיה
-      // הרב-סעיפית גם למכשיר-אבחון
-      applyAnswerStats(topic, correct, part ? { skill: part.skill, skillHe: part.skillHe } : null);
+      // תגית-המיומנות: של הסעיף אם זו בעיה רב-סעיפית, אחרת של השאלה עצמה.
+      // כך האבחון ("נופל דווקא ב-X") עובד בכל הנושאים, לא רק ברב-סעיפי.
+      const tag = part
+        ? { skill: part.skill, skillHe: part.skillHe }
+        : (p.skill ? { skill: p.skill, skillHe: p.skillHe } : null);
+      applyAnswerStats(topic, correct, tag);
       if (correct) {
         p._wrongAttempts = 0;
         // עוד סעיפים? ממשיכים בתוך אותה בעיה במקום לטעון שאלה חדשה
@@ -2963,9 +3008,20 @@ async function main() {
     });
   }
 
+  /** מציג את ההסבר בתוך כרטיס-השאלה. הצ'אט מקופל בפריסה הזאת, ולכן בלי זה
+      הילד לוחץ "הסבר" ולא רואה כלום. */
+  function showInlineExplain(text) {
+    if (!u.explainBox) return;
+    const t = String(text || "").trim();
+    if (!t) return;
+    u.explainBox.textContent = t;
+    u.explainBox.hidden = false;
+  }
+
   async function requestExplain() {
     const p = getCurrentProblem(getCurrentTopic());
     if (serveStoredHelp(p, { wantSolution: true })) {
+      showInlineExplain(p.explanation); // ההסבר השמור — מיידי, בלי קריאת-מודל
       revealArithViz(u, p);
       return;
     }

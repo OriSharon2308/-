@@ -925,9 +925,21 @@
   "area_grid": function (p) {
     p = p || {};
     var w = wkNum(p.w, 1, 12, 5), h = wkNum(p.h, 1, 8, 3), INK = "#0f3b36";
+    // cells — רשימת "שורה,עמודה" לצורה שאינה מלבן (צורת-L, מדרגה). במבחני
+    // כיתה ג׳ שטח והיקף נשאלים דווקא על צורות כאלה, ומלבן לבדו לא מכין לזה.
+    var cells = null;
+    if (p.cells) {
+      cells = {};
+      String(p.cells).split(";").forEach(function (pair) {
+        var a = pair.split(",");
+        if (a.length === 2) cells[(+a[0]) * 20 + (+a[1])] = 1;
+      });
+    }
     var cs = Math.min(36, 300 / w, 170 / h), gx = (340 - cs * w) / 2, gy = 48, sq = "";
-    for (var r = 0; r < h; r++) for (var c = 0; c < w; c++)
-      sq += '<rect class="c" data-i="' + (r * w + c) + '" x="' + (gx + c * cs).toFixed(1) + '" y="' + (gy + r * cs).toFixed(1) + '" width="' + (cs - 1).toFixed(1) + '" height="' + (cs - 1).toFixed(1) + '" fill="#fff" stroke="' + INK + '" stroke-width="1.2"/>';
+    for (var r = 0; r < h; r++) for (var c = 0; c < w; c++) {
+      var on = !cells || cells[r * 20 + c];
+      sq += '<rect class="' + (on ? "c" : "o") + '" data-i="' + (r * w + c) + '" x="' + (gx + c * cs).toFixed(1) + '" y="' + (gy + r * cs).toFixed(1) + '" width="' + (cs - 1).toFixed(1) + '" height="' + (cs - 1).toFixed(1) + '" fill="' + (on ? "#fff" : "#f1f5f9") + '" stroke="' + (on ? INK : "#cbd5e1") + '" stroke-width="' + (on ? 1.2 : 0.8) + '"/>';
+    }
     return '<svg viewBox="0 0 340 300" width="100%" height="100%" style="display:block;touch-action:none">'
       + '<text x="170" y="28" text-anchor="middle" font-size="14" fill="#64748b">לחץ/י על משבצות — השטח נספר בפנים</text>' + sq
       + '<rect x="' + gx + '" y="' + gy + '" width="' + (cs * w - 1).toFixed(1) + '" height="' + (cs * h - 1).toFixed(1) + '" fill="none" stroke="#e11d48" stroke-width="3"/>'
