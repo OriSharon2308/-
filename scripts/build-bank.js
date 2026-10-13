@@ -32,18 +32,33 @@ function buildGrade(gradeNum) {
     const levels = t.levels && t.levels.length ? t.levels : [1];
     const seen = new Set();
     const questions = [];
-    let attempts = 0;
-    while (questions.length < TARGET && attempts < MAX_ATTEMPTS) {
-      attempts++;
-      const lvl = levels[Math.floor(Math.random() * levels.length)];
-      const q = gen(lvl, t.params || {});
-      const key = `${q.text}|${JSON.stringify(q.diagramData || "")}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      questions.push(q);
+    // מכסה לכל רמה בנפרד. קודם נבחרה רמה אקראית לכל ניסיון, ולכן רמה עם
+    // מרחב-שאלות גדול "בלעה" את המכסה ורמה צרה נשארה עם קומץ שאלות —
+    // והתלמיד מיצה אותה אחרי כמה דקות.
+    const quota = Math.ceil(TARGET / levels.length);
+    const per = {};
+    for (const lvl of levels) {
+      let got = 0;
+      let dup = 0;
+      // הרמה חלק מהמפתח: שתי רמות עשויות לחלוק מרחב-שאלות (לוח הכפל הוא
+      // 100 עובדות), ובלי זה הרמה שנזרעה שנייה יוצאת ריקה.
+      // יוצאים אחרי 400 כפילויות רצופות — שם מרחב-השאלות של הרמה מוצה,
+      // ואין טעם לשרוף עוד אלפי ניסיונות.
+      while (got < quota && dup < 400) {
+        const q = gen(lvl, t.params || {});
+        const key = `${lvl}|${q.text}|${JSON.stringify(q.diagramData || "")}`;
+        if (seen.has(key)) { dup++; continue; }
+        dup = 0;
+        seen.add(key);
+        questions.push(q);
+        got++;
+      }
+      per[lvl] = got;
     }
     const n = bank.setQuestions(gradeNum, t.key, questions);
-    console.log(`  ✓ ${t.key}: ${n} שאלות`);
+    const spread = levels.map((l) => `${l}:${per[l]}`).join(" ");
+    const thin = levels.filter((l) => per[l] < Math.min(20, quota));
+    console.log(`  ${thin.length ? "⚠" : "✓"} ${t.key}: ${n} שאלות  [${spread}]`);
   }
 }
 

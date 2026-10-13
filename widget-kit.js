@@ -849,6 +849,24 @@
   },
 
   /** טבלת ערך-מקום — עד מיליון. לחיצה על ספרה מגלה כמה היא באמת שווה. */
+  /**
+   * קלף-מספר — רק המספר, גדול וברור.
+   * זה העזר של רמה 2: אין פירוק, אין תוויות ואין רמז. ברמה 1 יושבת כאן
+   * טבלת ערך-המקום שמפרקת את המספר עבור הילד — וברמה 2 היא *פותרת* את
+   * השאלה ("כמה שווה הספרה ביחידות"), ולכן חייבת לרדת ולהשאיר מספר בלבד.
+   */
+  "number_card": function (p) {
+    p = p || {};
+    var v = String(p.value == null ? 0 : p.value).slice(0, 14).replace(/[^0-9.,\-]/g, "");
+    var INK = "#0f3b36";
+    var fs = v.length <= 4 ? 84 : v.length <= 6 ? 66 : 50;
+    return '<svg viewBox="0 0 420 160" width="100%" height="100%" style="display:block">'
+      + '<rect x="46" y="22" width="328" height="116" rx="20" fill="#f0fdfa" stroke="' + INK + '" stroke-width="2.5"/>'
+      // dir="ltr" — בלעדיו מספר עשרוני בתוך דף ימין-לשמאל עלול להתהפך בתצוגה
+      + '<text x="210" y="' + (80 + fs * 0.34).toFixed(0) + '" text-anchor="middle" dir="ltr" style="direction:ltr" font-size="' + fs + '" font-weight="800" fill="' + INK + '">' + v + '</text>'
+      + '</svg>';
+  },
+
   "place_value_table": function (p) {
     p = p || {};
     var val = String(wkNum(p.value, 0, 9999999, 3456));

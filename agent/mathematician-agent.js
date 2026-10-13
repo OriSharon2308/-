@@ -7,7 +7,7 @@ const llm = require("../lib/llm");
 const packs = require("../lib/question-packs");
 const bank = require("../lib/bank");
 const { CURRICULUM, gradeToNum, findLeaf } = require("../lib/curriculum");
-const { GENERATORS, uid } = require("../lib/generators");
+const { GENERATORS, uid, levelSpan } = require("../lib/generators");
 const reference = require("../lib/reference");
 
 function topicEntry(gradeNum, topicKey) {
@@ -18,12 +18,15 @@ function topicEntry(gradeNum, topicKey) {
 // מחזיר את השאלה השמורה, או null אם מרחב המחולל מוצה (כל הנוסחים כבר קיימים).
 function generateFreshAlgo(gradeNum, topic, entry, level, exact = false) {
   const gen = GENERATORS[entry.gen];
+  // הרמה המבוקשת נחתכת לטווח של המחולל עצמו; בלי זה נעילה על רמה שמעבר
+  // לטווח הייתה מסובבת 20,000 ניסיונות ריקים לפני שמרפים.
+  const want = Math.max(1, Math.min(levelSpan(entry.gen), Math.round(level) || 1));
   if (!gen) return null;
   const existing = bank.existingKeys(gradeNum, topic);
   const tries = exact ? 400 : 80; // בנעילה על רמה צריך יותר ניסיונות כדי לפגוע ברמה המדויקת
   for (let i = 0; i < tries; i++) {
-    const q = gen(level, entry.params || {});
-    if (exact && (q.difficulty || 1) !== level) continue; // רק רמה מדויקת
+    const q = gen(want, entry.params || {});
+    if (exact && (q.difficulty || 1) !== want) continue; // רק רמה מדויקת
     if (!existing.has(bank.qKey(q))) {
       return bank.addQuestion(gradeNum, topic, { ...q, source: "algo" });
     }

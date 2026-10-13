@@ -841,6 +841,7 @@
   VelaBoard.prototype._tools.percent_bar = kitTool("percent_bar", 380, 180, "פס אחוזים");
   VelaBoard.prototype._tools.circle_parts = kitTool("circle_parts", 340, 260, "מעגל");
   VelaBoard.prototype._tools.place_value_table = kitTool("place_value_table", 420, 200, "טבלת ערך-מקום");
+  VelaBoard.prototype._tools.number_card = kitTool("number_card", 420, 160, "קלף-מספר");
   VelaBoard.prototype._tools.bar_chart = kitTool("bar_chart", 400, 250, "דיאגרמת עמודות");
   VelaBoard.prototype._tools.area_grid = kitTool("area_grid", 340, 300, "שטח והיקף");
   VelaBoard.prototype._tools.fraction_wall = kitTool("fraction_wall", 340, 300, "קיר שברים");

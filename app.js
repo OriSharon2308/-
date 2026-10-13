@@ -1842,7 +1842,11 @@ async function main() {
     u.difficultyPill.title = locked
       ? `רמה נעולה: ${d} מתוך 10. לחצו לשינוי או לחזרה לאוטומטי.`
       : `רמת קושי: ${d} מתוך 10. לחצו לבחירת רמה קבועה.`;
-    u.difficultyPill.innerHTML = `⭐ ${d}<span class="diffMax">/10</span>`;
+    // המקסימום הוא הרמה הגבוהה של הנושא, לא 10: "⭐ 3/10" גרם לרמה 3 מתוך 3
+    // להיראות כמו שליש מהדרך.
+    const lvls = getCurrentTopic()?.availableLevels;
+    const top = Array.isArray(lvls) && lvls.length ? lvls[lvls.length - 1] : 10;
+    u.difficultyPill.innerHTML = `⭐ ${d}<span class="diffMax">/${top}</span>`;
     u.difficultyPill.classList.toggle("pill--locked", locked);
   }
 
@@ -1853,15 +1857,17 @@ async function main() {
     const cur = topic?.level ?? 1;
     const locked = !!topic?.levelLocked;
     u.levelPicker.innerHTML = "";
-    const title = document.createElement("div");
-    title.className = "levelPicker__title";
-    title.textContent = "בחר/י רמה (1 = קל, 10 = קשה):";
-    u.levelPicker.appendChild(title);
     // רק רמות שקיימות בפועל לנושא (אם ידוע); אחרת 1–10
     const levels =
       Array.isArray(topic?.availableLevels) && topic.availableLevels.length
         ? topic.availableLevels
         : Array.from({ length: 10 }, (_, i) => i + 1);
+    const title = document.createElement("div");
+    title.className = "levelPicker__title";
+    title.textContent = levels.length
+      ? `בחר/י רמה (${levels[0]} = קל, ${levels[levels.length - 1]} = קשה):`
+      : "בחר/י רמה:";
+    u.levelPicker.appendChild(title);
     for (const n of levels) {
       const b = document.createElement("button");
       b.type = "button";
