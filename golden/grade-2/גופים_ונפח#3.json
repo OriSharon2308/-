@@ -1,257 +1,257 @@
 {
-  "topic": "גופים ונפח",
-  "lesson": 3,
-  "title": "בסיס וקדקוד — פירמידה וחרוט",
-  "phases": {
-    "instruct": [
-      {
-        "reply": "היום נתחיל ממילה חדשה: בסיס 🙂 הבסיס הוא הפאה שהגוף עומד עליה, למטה. בגליל הבסיס הוא עיגול. בתיבה הבסיס הוא מלבן. צבעתי לך את הבסיס בכתום — תראה/י אותו בשני הגופים. לחץ/י ✓.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "מהו בסיס?",
-              "x": 480,
-              "y": 78,
-              "size": 36
-            }
-          },
-          {
-            "name": "render_widget",
-            "input": {
-              "html": "<svg viewBox='0 0 820 310' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 550,85 L 550,215 A 70,23 0 0 0 690,215 L 690,85 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='620' cy='85' rx='70' ry='23' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><path d='M 550,215 A 70,23 0 0 0 690,215' fill='none' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><path d='M 550,215 A 70,23 0 0 1 690,215' fill='none' stroke='#f59e0b' stroke-width='3' stroke-dasharray='7 6'/><text x='620' y='272' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>גליל</text><polygon points='180,110 230,60 430,60 380,110' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='380,110 430,60 430,170 380,220' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='180,110 380,110 380,220 180,220' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><line x1='180' y1='220' x2='380' y2='220' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><line x1='180' y1='220' x2='230' y2='170' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='230' y1='170' x2='430' y2='170' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><text x='280' y='272' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>תיבה</text></svg>",
-              "title": "בסיס",
-              "x": 90,
-              "y": 145,
-              "w": 820,
-              "h": 310
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "הבסיס — הפאה שעומדים עליה",
-              "x": 480,
-              "y": 500,
-              "size": 28
-            }
-          }
-        ]
-      },
-      {
-        "reply": "הגוף הראשון: פירמידה. הבסיס שלה מצולע — למשל ריבוע — וכל הפאות עולות למעלה ונפגשות בקדקוד אחד. זוכר/ת מהשיעור הקודם? קדקוד זו הנקודה החדה. בדיוק כמו הפירמידות במצרים: בסיס רחב למטה, קדקוד אחד למעלה. לחץ/י ✓.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "פירמידה — בסיס וקדקוד",
-              "x": 480,
-              "y": 78,
-              "size": 34
-            }
-          },
-          {
-            "name": "render_widget",
-            "input": {
-              "html": "<svg viewBox='0 0 390 330' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='70,260 260,260 320,200 130,200' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='260,260 320,200 195,60' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='70,260 260,260 195,60' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><line x1='70' y1='260' x2='260' y2='260' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><line x1='70' y1='260' x2='130' y2='200' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='130' y1='200' x2='320' y2='200' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><circle cx='195' cy='60' r='8' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><text x='195' y='302' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>פירמידה</text></svg>",
-              "title": "פירמידה",
-              "x": 520,
-              "y": 150,
-              "w": 390,
-              "h": 330
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "הבסיס: מצולע",
-              "x": 250,
-              "y": 230,
-              "size": 32,
-              "color": "#d97706"
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "למעלה: קדקוד אחד",
-              "x": 250,
-              "y": 310,
-              "size": 32,
-              "color": "#ef4444"
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "כמו הפירמידות במצרים",
-              "x": 250,
-              "y": 395,
-              "size": 26
-            }
-          }
-        ]
-      },
-      {
-        "reply": "עכשיו החרוט. גם לו יש קדקוד אחד למעלה, אבל הבסיס שלו עיגול — לא מצולע. תחשוב/תחשבי על גביע גלידה הפוך, או על כובע מסיבה. עיגול למטה, קדקוד למעלה — זה חרוט. לחץ/י ✓.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "חרוט — עיגול וקדקוד",
-              "x": 480,
-              "y": 78,
-              "size": 34
-            }
-          },
-          {
-            "name": "render_widget",
-            "input": {
-              "html": "<svg viewBox='0 0 390 330' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 195,65 L 90,255 A 105,34 0 0 0 300,255 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><path d='M 90,255 A 105,34 0 0 0 300,255' fill='none' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><path d='M 90,255 A 105,34 0 0 1 300,255' fill='none' stroke='#f59e0b' stroke-width='3' stroke-dasharray='7 6'/><circle cx='195' cy='65' r='8' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><text x='195' y='318' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>חרוט</text></svg>",
-              "title": "חרוט",
-              "x": 520,
-              "y": 150,
-              "w": 390,
-              "h": 330
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "הבסיס: עיגול",
-              "x": 250,
-              "y": 230,
-              "size": 32,
-              "color": "#d97706"
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "למעלה: קדקוד",
-              "x": 250,
-              "y": 310,
-              "size": 32,
-              "color": "#ef4444"
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "כמו גביע גלידה",
-              "x": 250,
-              "y": 395,
-              "size": 26
-            }
-          }
-        ]
-      },
-      {
-        "reply": "אז איך יודעים מי זה? שתי שאלות קטנות. ראשונה: יש קדקוד אחד למעלה, שכל הפאות נפגשות בו? שנייה: מה הבסיס? הבסיס עיגול — זה חרוט. הבסיס מצולע — זו פירמידה. עכשיו תורך!",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "שתי שאלות ויודעים מי זה",
-              "x": 480,
-              "y": 78,
-              "size": 32
-            }
-          },
-          {
-            "name": "render_widget",
-            "input": {
-              "html": "<svg viewBox='0 0 880 240' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 800,35 L 762,105 A 38,13 0 0 0 838,105 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><circle cx='800' cy='35' r='7' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><text x='400' y='82' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>יש קדקוד למעלה, הבסיס עיגול — חרוט</text><line x1='80' y1='125' x2='700' y2='125' stroke='#0f3b36' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='6 6'/><polygon points='762,205 828,205 850,183 784,183' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='828,205 850,183 806,130' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='762,205 828,205 806,130' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><circle cx='806' cy='130' r='7' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><text x='400' y='182' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>יש קדקוד למעלה, הבסיס מצולע — פירמידה</text></svg>",
-              "title": "הכלל",
-              "x": 60,
-              "y": 160,
-              "w": 880,
-              "h": 240
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "1) יש קדקוד למעלה?  2) מה הבסיס?",
-              "x": 480,
-              "y": 470,
-              "size": 28
-            }
-          }
-        ]
+ "topic": "גופים ונפח",
+ "lesson": 3,
+ "title": "בסיס וקדקוד — פירמידה וחרוט",
+ "phases": {
+  "instruct": [
+   {
+    "reply": "היום נתחיל ממילה חדשה: בסיס 🙂 הבסיס הוא הפאה שהגוף עומד עליה, למטה. בגליל הבסיס הוא עיגול. בתיבה הבסיס הוא מלבן. צבעתי לך את הבסיס בכתום — תראה/י אותו בשני הגופים. לחץ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מהו בסיס?",
+       "x": 480,
+       "y": 78,
+       "size": 36
       }
-    ],
-    "guided": {
-      "reply": "עכשיו ביחד! על הלוח גוף אחד. שאל/י את שתי השאלות. ראשונה: יש לו קדקוד אחד למעלה? כן! שנייה: מה הבסיס שלו? תסתכל/י על הכתום שלמטה. עכשיו בחר/י אחד מהשניים וכתוב/כתבי אותו בתיבה.",
-      "toolCalls": [
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "מי זה — פירמידה או חרוט?",
-            "answer": "חרוט",
-            "kind": "text",
-            "hint": "יש קדקוד למעלה, אז זה אחד מהשניים בלבד. עכשיו תסתכל/י על הבסיס הכתום שלמטה: הוא עיגול חלק, בלי אף פינה. מי מהשניים יושב על עיגול?",
-            "praise": "מצוין! זה חרוט. הלכת לפי הקדקוד ולפי הבסיס — בדיוק הכלל של היום!"
-          }
-        },
-        {
-          "name": "render_widget",
-          "input": {
-            "html": "<svg viewBox='0 0 440 330' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 220,55 L 105,265 A 115,37 0 0 0 335,265 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><path d='M 105,265 A 115,37 0 0 0 335,265' fill='none' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><path d='M 105,265 A 115,37 0 0 1 335,265' fill='none' stroke='#f59e0b' stroke-width='3' stroke-dasharray='7 6'/></svg>",
-            "title": "הגוף שעל הלוח",
-            "x": 280,
-            "y": 180,
-            "w": 440,
-            "h": 330
-          }
-        }
-      ]
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "html": "<svg viewBox='0 0 820 310' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 550,85 L 550,215 A 70,23 0 0 0 690,215 L 690,85 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><ellipse cx='620' cy='85' rx='70' ry='23' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><path d='M 550,215 A 70,23 0 0 0 690,215' fill='none' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><path d='M 550,215 A 70,23 0 0 1 690,215' fill='none' stroke='#f59e0b' stroke-width='3' stroke-dasharray='7 6'/><text x='620' y='272' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>גליל</text><polygon points='180,110 230,60 430,60 380,110' fill='#b6ecdf' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='380,110 430,60 430,170 380,220' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='180,110 380,110 380,220 180,220' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><line x1='180' y1='220' x2='380' y2='220' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><line x1='180' y1='220' x2='230' y2='170' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='230' y1='170' x2='430' y2='170' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><text x='280' y='272' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>תיבה</text></svg>",
+       "title": "בסיס",
+       "x": 90,
+       "y": 145,
+       "w": 820,
+       "h": 310
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "הבסיס — הפאה שעומדים עליה",
+       "x": 480,
+       "y": 500,
+       "size": 28
+      }
+     }
+    ]
+   },
+   {
+    "reply": "הגוף הראשון: פירמידה. הבסיס שלה מצולע — למשל ריבוע — וכל הפאות עולות למעלה ונפגשות בקדקוד אחד. זוכר/ת מהשיעור הקודם? קדקוד זו הנקודה החדה. בדיוק כמו הפירמידות במצרים: בסיס רחב למטה, קדקוד אחד למעלה. לחץ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "פירמידה — בסיס וקדקוד",
+       "x": 480,
+       "y": 78,
+       "size": 34
+      }
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "html": "<svg viewBox='0 0 390 330' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='70,260 260,260 320,200 130,200' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='260,260 320,200 195,60' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='70,260 260,260 195,60' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><line x1='70' y1='260' x2='260' y2='260' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><line x1='70' y1='260' x2='130' y2='200' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='130' y1='200' x2='320' y2='200' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><circle cx='195' cy='60' r='8' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><text x='195' y='302' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>פירמידה</text></svg>",
+       "title": "פירמידה",
+       "x": 520,
+       "y": 150,
+       "w": 390,
+       "h": 330
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "הבסיס: מצולע",
+       "x": 250,
+       "y": 230,
+       "size": 32,
+       "color": "#d97706"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "למעלה: קדקוד אחד",
+       "x": 250,
+       "y": 310,
+       "size": 32,
+       "color": "#ef4444"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "כמו הפירמידות במצרים",
+       "x": 250,
+       "y": 395,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "עכשיו החרוט. גם לו יש קדקוד אחד למעלה, אבל הבסיס שלו עיגול — לא מצולע. תחשוב/תחשבי על גביע גלידה הפוך, או על כובע מסיבה. עיגול למטה, קדקוד למעלה — זה חרוט. לחץ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "חרוט — עיגול וקדקוד",
+       "x": 480,
+       "y": 78,
+       "size": 34
+      }
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "html": "<svg viewBox='0 0 390 330' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 195,65 L 90,255 A 105,34 0 0 0 300,255 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><path d='M 90,255 A 105,34 0 0 0 300,255' fill='none' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><path d='M 90,255 A 105,34 0 0 1 300,255' fill='none' stroke='#f59e0b' stroke-width='3' stroke-dasharray='7 6'/><circle cx='195' cy='65' r='8' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><text x='195' y='318' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>חרוט</text></svg>",
+       "title": "חרוט",
+       "x": 520,
+       "y": 150,
+       "w": 390,
+       "h": 330
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "הבסיס: עיגול",
+       "x": 250,
+       "y": 230,
+       "size": 32,
+       "color": "#d97706"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "למעלה: קדקוד",
+       "x": 250,
+       "y": 310,
+       "size": 32,
+       "color": "#ef4444"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "כמו גביע גלידה",
+       "x": 250,
+       "y": 395,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "אז איך יודעים מי זה? שתי שאלות קטנות. ראשונה: יש קדקוד אחד למעלה, שכל הפאות נפגשות בו? שנייה: מה הבסיס? הבסיס עיגול — זה חרוט. הבסיס מצולע — זו פירמידה. עכשיו תורך!",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "שתי שאלות ויודעים מי זה",
+       "x": 480,
+       "y": 78,
+       "size": 32
+      }
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "html": "<svg viewBox='0 0 880 240' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 800,35 L 762,105 A 38,13 0 0 0 838,105 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><circle cx='800' cy='35' r='7' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><text x='400' y='82' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>יש קדקוד למעלה, הבסיס עיגול — חרוט</text><line x1='80' y1='125' x2='700' y2='125' stroke='#0f3b36' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='6 6'/><polygon points='762,205 828,205 850,183 784,183' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='828,205 850,183 806,130' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='762,205 828,205 806,130' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><circle cx='806' cy='130' r='7' fill='#ef4444' stroke='#0f3b36' stroke-width='2'/><text x='400' y='182' text-anchor='middle' font-size='26' font-weight='700' fill='#0f3b36'>יש קדקוד למעלה, הבסיס מצולע — פירמידה</text></svg>",
+       "title": "הכלל",
+       "x": 60,
+       "y": 160,
+       "w": 880,
+       "h": 240
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "1) יש קדקוד למעלה?  2) מה הבסיס?",
+       "x": 480,
+       "y": 470,
+       "size": 28
+      }
+     }
+    ]
+   }
+  ],
+  "guided": {
+   "reply": "עכשיו ביחד! על הלוח גוף אחד. שאל/י את שתי השאלות. ראשונה: יש לו קדקוד אחד למעלה? כן! שנייה: מה הבסיס שלו? תסתכל/י על הכתום שלמטה. עכשיו בחר/י אחד מהשניים וכתוב/כתבי אותו בתיבה.",
+   "toolCalls": [
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "מי זה — פירמידה או חרוט?",
+      "answer": "חרוט",
+      "kind": "text",
+      "hint": "יש קדקוד למעלה, אז זה אחד מהשניים בלבד. עכשיו תסתכל/י על הבסיס הכתום שלמטה: הוא עיגול חלק, בלי אף פינה. מי מהשניים יושב על עיגול?",
+      "praise": "מצוין! זה חרוט. הלכת לפי הקדקוד ולפי הבסיס — בדיוק הכלל של היום!"
+     }
     },
-    "independent": {
-      "reply": "תורך לבד! בראשונה יש גוף על הלוח — תסתכל/י על הבסיס הכתום שלו. בשנייה תחשוב/תחשבי על גזר: רחב למטה ונגמר בנקודה חדה. ובשלישית — ספור/ספרי את כל הפינות החדות של הגוף שעל הלוח. שאלה אחת בכל פעם 🙂",
-      "toolCalls": [
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "פירמידה או חרוט?",
-            "answer": "פירמידה",
-            "kind": "text",
-            "hint": "לגוף שעל הלוח יש קדקוד אחד למעלה, אז הוא אחד מהשניים. עכשיו תסתכל/י על הבסיס הכתום: יש לו פינות וקווים ישרים, הוא בכלל לא עיגול. מי מהשניים זה?",
-            "praise": "כל הכבוד! זו פירמידה — בסיס עם פינות וקדקוד אחד למעלה 🙂"
-          }
-        },
-        {
-          "name": "render_widget",
-          "input": {
-            "html": "<svg viewBox='0 0 330 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='60,195 215,195 265,155 110,155' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='215,195 265,155 162,50' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='60,195 215,195 162,50' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><line x1='110' y1='155' x2='162' y2='50' stroke='#0f3b36' stroke-width='2' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='60' y1='195' x2='215' y2='195' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><line x1='215' y1='195' x2='265' y2='155' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><line x1='60' y1='195' x2='110' y2='155' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='110' y1='155' x2='265' y2='155' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/></svg>",
-            "title": "הגוף שעל הלוח",
-            "x": 40,
-            "y": 120,
-            "w": 260,
-            "h": 197
-          }
-        },
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "גזר — פירמידה או חרוט?",
-            "answer": "חרוט",
-            "kind": "text",
-            "hint": "תדמיין/י גזר עומד על הצד העבה שלו. הצד הזה שלמטה הוא עיגול, ולמעלה הגזר נגמר בנקודה אחת חדה. מי מהשניים יושב על עיגול?",
-            "praise": "נכון! גזר הוא חרוט — בסיס עיגול וקדקוד אחד למעלה 🙂"
-          }
-        },
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "כמה קדקודים לגוף הזה?",
-            "answer": "5",
-            "kind": "number",
-            "hint": "בשיטה! קודם ספור/ספרי רק את הפינות של הבסיס שלמטה, אחת-אחת — כולל זו שמאחורי הקו המקווקו. עכשיו הוסף/הוסיפי את הנקודה החדה שלמעלה.",
-            "praise": "מצוין! 5 קדקודים — 4 בבסיס ועוד אחד למעלה. סיימת כמו אלוף/ה 🏆"
-          }
-        }
-      ]
+    {
+     "name": "render_widget",
+     "input": {
+      "html": "<svg viewBox='0 0 440 330' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><path d='M 220,55 L 105,265 A 115,37 0 0 0 335,265 Z' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><path d='M 105,265 A 115,37 0 0 0 335,265' fill='none' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><path d='M 105,265 A 115,37 0 0 1 335,265' fill='none' stroke='#f59e0b' stroke-width='3' stroke-dasharray='7 6'/></svg>",
+      "title": "הגוף שעל הלוח",
+      "x": 40,
+      "y": 180,
+      "w": 440,
+      "h": 330
+     }
     }
+   ]
+  },
+  "independent": {
+   "reply": "תורך לבד! בראשונה יש גוף על הלוח — תסתכל/י על הבסיס הכתום שלו. בשנייה תחשוב/תחשבי על גזר: רחב למטה ונגמר בנקודה חדה. ובשלישית — ספור/ספרי את כל הפינות החדות של הגוף שעל הלוח. שאלה אחת בכל פעם 🙂",
+   "toolCalls": [
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "פירמידה או חרוט?",
+      "answer": "פירמידה",
+      "kind": "text",
+      "hint": "לגוף שעל הלוח יש קדקוד אחד למעלה, אז הוא אחד מהשניים. עכשיו תסתכל/י על הבסיס הכתום: יש לו פינות וקווים ישרים, הוא בכלל לא עיגול. מי מהשניים זה?",
+      "praise": "כל הכבוד! זו פירמידה — בסיס עם פינות וקדקוד אחד למעלה 🙂"
+     }
+    },
+    {
+     "name": "render_widget",
+     "input": {
+      "html": "<svg viewBox='0 0 330 250' style='width:100%;height:100%;display:block' xmlns='http://www.w3.org/2000/svg'><polygon points='60,195 215,195 265,155 110,155' fill='#f59e0b' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='215,195 265,155 162,50' fill='#38a08f' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><polygon points='60,195 215,195 162,50' fill='#6ecfba' stroke='#0f3b36' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/><line x1='110' y1='155' x2='162' y2='50' stroke='#0f3b36' stroke-width='2' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='60' y1='195' x2='215' y2='195' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><line x1='215' y1='195' x2='265' y2='155' stroke='#f59e0b' stroke-width='6' stroke-linecap='round'/><line x1='60' y1='195' x2='110' y2='155' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/><line x1='110' y1='155' x2='265' y2='155' stroke='#f59e0b' stroke-width='3' stroke-linecap='round' stroke-dasharray='7 6'/></svg>",
+      "title": "הגוף שעל הלוח",
+      "x": 40,
+      "y": 120,
+      "w": 260,
+      "h": 197
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "גזר — פירמידה או חרוט?",
+      "answer": "חרוט",
+      "kind": "text",
+      "hint": "תדמיין/י גזר עומד על הצד העבה שלו. הצד הזה שלמטה הוא עיגול, ולמעלה הגזר נגמר בנקודה אחת חדה. מי מהשניים יושב על עיגול?",
+      "praise": "נכון! גזר הוא חרוט — בסיס עיגול וקדקוד אחד למעלה 🙂"
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה קדקודים לגוף הזה?",
+      "answer": "5",
+      "kind": "number",
+      "hint": "בשיטה! קודם ספור/ספרי רק את הפינות של הבסיס שלמטה, אחת-אחת — כולל זו שמאחורי הקו המקווקו. עכשיו הוסף/הוסיפי את הנקודה החדה שלמעלה.",
+      "praise": "מצוין! 5 קדקודים — 4 בבסיס ועוד אחד למעלה. סיימת כמו אלוף/ה 🏆"
+     }
+    }
+   ]
   }
+ }
 }

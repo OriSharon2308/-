@@ -1,554 +1,548 @@
 {
-  "topic": "מדידות אורך",
-  "lesson": 3,
-  "title": "המטר — חבילה של 100 ס״מ",
-  "phases": {
-    "instruct": [
-      {
-        "reply": "יש רעיון שמלווה אותנו כל השנה: כשמשהו מצטבר — אורזים אותו לחבילה. עשר יחידות התאגדו לעשרת, עשר עשרות למאה. עכשיו התור של המדידה! על הלוח מלבנים, כל אחד 10 ס״מ. נחש/י כמה מהם נכנסים במטר אחד — ואז נספור ביחד.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "כמה מלבנים של 10 ס״מ במטר?",
-              "x": 480,
-              "y": 85,
-              "size": 34
-            }
-          },
-          {
-            "name": "render_widget",
-            "input": {
-              "html": "<svg viewBox=\"0 0 900 310\" width=\"100%\" height=\"100%\" style=\"display:block\"><text x=\"700\" y=\"56\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"700\" fill=\"#334155\">כמה מלבנים לדעתך?</text><g id=\"mi\" style=\"cursor:pointer\"><circle cx=\"300\" cy=\"44\" r=\"30\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text x=\"300\" y=\"56\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#334155\">−</text></g><rect x=\"355\" y=\"12\" width=\"90\" height=\"64\" rx=\"14\" fill=\"#FFFFFF\" stroke=\"#0F766E\" stroke-width=\"3\"/><text id=\"gv\" x=\"400\" y=\"58\" text-anchor=\"middle\" font-size=\"38\" font-weight=\"700\" fill=\"#0F766E\">?</text><g id=\"pl\" style=\"cursor:pointer\"><circle cx=\"500\" cy=\"44\" r=\"30\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text x=\"500\" y=\"56\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#334155\">+</text></g><rect id=\"b0\" x=\"30\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt0\" x=\"69\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b1\" x=\"115\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt1\" x=\"154\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b2\" x=\"200\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt2\" x=\"239\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b3\" x=\"285\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt3\" x=\"324\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b4\" x=\"370\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt4\" x=\"409\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b5\" x=\"455\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt5\" x=\"494\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b6\" x=\"540\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt6\" x=\"579\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b7\" x=\"625\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt7\" x=\"664\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b8\" x=\"710\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt8\" x=\"749\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b9\" x=\"795\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt9\" x=\"834\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><text id=\"cnt\" x=\"450\" y=\"198\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#0F766E\">0 ס״מ</text><g id=\"btn\" style=\"cursor:pointer\"><rect x=\"285\" y=\"216\" width=\"330\" height=\"58\" rx=\"29\" fill=\"#0D9488\"/><text x=\"450\" y=\"256\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"700\" fill=\"#FFFFFF\">בואו נספור!</text></g><text id=\"res\" x=\"450\" y=\"298\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#334155\"></text></svg><script>\n(function(){\n  var g=null, gv=document.getElementById('gv'), res=document.getElementById('res'), done=false;\n  function set(v){ g=Math.max(1,Math.min(20,v)); gv.textContent=g; }\n  function tap(el,fn){ if(!el) return; el.addEventListener('pointerdown',function(e){e.preventDefault();e.stopPropagation();fn();}); }\n  tap(document.getElementById('mi'),function(){ if(done) return; set(g===null?5:g-1); });\n  tap(document.getElementById('pl'),function(){ if(done) return; set(g===null?5:g+1); });\n  tap(document.getElementById('btn'),function(){\n    if(done) return;\n    if(g===null){ res.textContent='קודם בוחרים ניחוש עם + ו−'; return; }\n    done=true;\n    \n    for(var i=0;i<10;i++)(function(i){setTimeout(function(){\n      var b=document.getElementById('b'+i), t=document.getElementById('bt'+i);\n      if(b){ b.setAttribute('fill','#5EEAD4'); b.setAttribute('stroke','#0D9488'); }\n      if(t) t.setAttribute('fill','#0F766E');\n      document.getElementById('cnt').textContent=((i+1)*10)+' \\u05E1\\u05F4\\u05DE';\n    }, i*250);})(i);\n    setTimeout(function(){\n      document.getElementById('cnt').textContent='100 \\u05E1\\u05F4\\u05DE = 1 \\u05DE\\u05D8\\u05E8 \\uD83C\\uDF89';\n      window.velaCompare(10);\n    }, 2700);\n  });\n  window.velaCompare=function(real){\n    var d=Math.abs(g-real);\n    res.textContent='ניחשת '+g+' · יצא '+real+' — '+(d===0?'בול! 🎯':(d<=2?'ניחוש קרוב מאוד! 👏':'עכשיו יודעים בדיוק 🙂'));\n    try{ parent.postMessage({type:'vela:correct'},'*'); }catch(_){}\n  };\n})();</script>",
-              "title": "מטר בשורה אחת",
-              "x": 70,
-              "y": 140,
-              "w": 860,
-              "h": 296
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "כל מלבן = 10 ס״מ",
-              "x": 480,
-              "y": 480,
-              "size": 28
-            }
-          }
-        ]
-      },
-      {
-        "reply": "אז מצאנו: מאה סנטימטרים בשורה אחת הם מטר אחד. 1 מטר = 100 ס״מ. וכמה זה? הפס הצהוב הארוך על הלוח הוא מטר. הפס הכחול הקטן לידו הוא 10 ס״מ — בערך כף היד שלך, וצריך עשר כאלה למטר. בחדר: מטר זה בערך רוחב של דלת. לחץ/י ✓.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "מטר אחד = 100 ס״מ",
-              "x": 480,
-              "y": 80,
-              "size": 40
-            }
-          },
-          {
-            "name": "draw_polygon",
-            "input": {
-              "points": [
-                [
-                  100,
-                  200
-                ],
-                [
-                  900,
-                  200
-                ],
-                [
-                  900,
-                  250
-                ],
-                [
-                  100,
-                  250
-                ]
-              ],
-              "color": "#F59E0B",
-              "fill": true
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "1 מטר",
-              "x": 480,
-              "y": 175,
-              "size": 26
-            }
-          },
-          {
-            "name": "draw_polygon",
-            "input": {
-              "points": [
-                [
-                  100,
-                  330
-                ],
-                [
-                  180,
-                  330
-                ],
-                [
-                  180,
-                  380
-                ],
-                [
-                  100,
-                  380
-                ]
-              ],
-              "color": "#3B82F6",
-              "fill": true
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "10 ס״מ",
-              "x": 140,
-              "y": 308,
-              "size": 24
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "צריך 10 כאלה כדי להשלים מטר",
-              "x": 480,
-              "y": 440,
-              "size": 28
-            }
-          }
-        ]
-      },
-      {
-        "reply": "ואם יש שני מטרים? פשוט מניחים מטר ועוד מטר זה אחרי זה. מטר אחד הוא 100 ס״מ, ועוד מטר זה עוד 100. 100 ועוד 100 — 200. אז 2 מטר הם 200 ס״מ. לחץ/י ✓.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "ואם יש 2 מטר?",
-              "x": 480,
-              "y": 80,
-              "size": 34
-            }
-          },
-          {
-            "name": "draw_polygon",
-            "input": {
-              "points": [
-                [
-                  90,
-                  190
-                ],
-                [
-                  490,
-                  190
-                ],
-                [
-                  490,
-                  240
-                ],
-                [
-                  90,
-                  240
-                ]
-              ],
-              "color": "#F59E0B",
-              "fill": true
-            }
-          },
-          {
-            "name": "draw_polygon",
-            "input": {
-              "points": [
-                [
-                  500,
-                  190
-                ],
-                [
-                  900,
-                  190
-                ],
-                [
-                  900,
-                  240
-                ],
-                [
-                  500,
-                  240
-                ]
-              ],
-              "color": "#F59E0B",
-              "fill": true
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "מטר = 100 ס״מ",
-              "x": 290,
-              "y": 165,
-              "size": 24
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "ועוד מטר = עוד 100",
-              "x": 700,
-              "y": 165,
-              "size": 24
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "מאה ועוד מאה",
-              "x": 480,
-              "y": 320,
-              "size": 34
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "שני מטרים = 200 ס״מ",
-              "x": 480,
-              "y": 400,
-              "size": 40
-            }
-          }
-        ]
-      },
-      {
-        "reply": "עכשיו שאלה חשובה: במה מודדים? עיפרון, אצבע או מחברת — הם קטנים, אז מודדים אותם בסנטימטרים. הכיתה, הדלת או המגרש — הם גדולים, אז מודדים אותם במטרים. לבחור את היחידה הנכונה — זה הצעד הראשון בכל מדידה! לחץ/י ✓.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "במה מודדים?",
-              "x": 480,
-              "y": 80,
-              "size": 34
-            }
-          },
-          {
-            "name": "draw_line",
-            "input": {
-              "x1": 480,
-              "y1": 140,
-              "x2": 480,
-              "y2": 460,
-              "color": "#94A3B8",
-              "width": 3
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "בס״מ — הקטנים",
-              "x": 730,
-              "y": 180,
-              "size": 30
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "עיפרון",
-              "x": 730,
-              "y": 250,
-              "size": 28
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "אצבע",
-              "x": 730,
-              "y": 315,
-              "size": 28
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "מחברת",
-              "x": 730,
-              "y": 380,
-              "size": 28
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "במטרים — הגדולים",
-              "x": 230,
-              "y": 180,
-              "size": 30
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "הכיתה",
-              "x": 230,
-              "y": 250,
-              "size": 28
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "דלת",
-              "x": 230,
-              "y": 315,
-              "size": 28
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "מגרש",
-              "x": 230,
-              "y": 380,
-              "size": 28
-            }
-          }
-        ]
-      },
-      {
-        "reply": "בעיה אמיתית: יש סרט של מטר אחד, וגזרנו ממנו 30 ס״מ. כמה נשאר? רגע — אי אפשר לחסר מטר פחות ס״מ, אלה שתי שפות שונות. אז קודם הופכים הכול לאותה שפה: מטר אחד הוא 100 ס״מ. עכשיו זה פשוט 100 פחות 30. לחץ/י ✓.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "סרט של 1 מטר. גזרנו 30 ס״מ",
-              "x": 480,
-              "y": 90,
-              "size": 32
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "1 מטר = 100 ס״מ",
-              "x": 480,
-              "y": 200,
-              "size": 36
-            }
-          },
-          {
-            "name": "draw_arrow",
-            "input": {
-              "x1": 480,
-              "y1": 240,
-              "x2": 480,
-              "y2": 300
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "100 − 30 = ?",
-              "x": 480,
-              "y": 355,
-              "size": 44
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "קודם הופכים לאותה שפה",
-              "x": 480,
-              "y": 450,
-              "size": 26
-            }
-          }
-        ]
-      },
-      {
-        "reply": "בוא/י נראה את זה על הציר. עומדים על 100 וקופצים אחורה 30: 100... 90... 80... 70. נחתנו על 70! אז נשארו 70 ס״מ — קצת פחות ממטר. ככה פותרים כל בעיה של מטרים וס״מ: קודם הופכים הכול לס״מ, ורק אז מחשבים. לחץ/י ✓.",
-        "toolCalls": [
-          {
-            "name": "write_text",
-            "input": {
-              "text": "100 פחות 30",
-              "x": 480,
-              "y": 80,
-              "size": 34
-            }
-          },
-          {
-            "name": "draw_number_line",
-            "input": {
-              "from": 0,
-              "to": 100,
-              "step": 10,
-              "x": 120,
-              "y": 300,
-              "length": 760,
-              "jumps": [
-                [
-                  100,
-                  70,
-                  "−30"
-                ]
-              ]
-            }
-          },
-          {
-            "name": "write_text",
-            "input": {
-              "text": "נשארו 70 ס״מ",
-              "x": 480,
-              "y": 420,
-              "size": 36
-            }
-          }
-        ]
+ "topic": "מדידות אורך",
+ "lesson": 3,
+ "title": "המטר — חבילה של 100 ס״מ",
+ "phases": {
+  "instruct": [
+   {
+    "reply": "יש רעיון שמלווה אותנו כל השנה: כשמשהו מצטבר — אורזים אותו לחבילה. עשר יחידות התאגדו לעשרת, עשר עשרות למאה. עכשיו התור של המדידה! על הלוח מלבנים, כל אחד 10 ס״מ. נחש/י כמה מהם נכנסים במטר אחד — ואז נספור ביחד.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "כמה מלבנים של 10 ס״מ במטר?",
+       "x": 480,
+       "y": 85,
+       "size": 34
       }
-    ],
-    "guided": {
-      "reply": "עכשיו ביחד! סרט של מטר אחד, וגזרנו ממנו 40 ס״מ. קודם נחש/י: נשאר יותר או פחות מ-50 ס״מ? ועכשיו נבדוק. לאיזו שפה הופכים? לס״מ: מטר אחד הוא 100 ס״מ. יש לך ציר על הלוח — עמוד/עמדי על 100 וקפוץ/קפצי אחורה 40: 100, 90, 80... איפה נחתת? כתוב/כתבי בתיבה!",
-      "toolCalls": [
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "1 מטר פחות 40 ס״מ =",
-            "answer": "60",
-            "kind": "number",
-            "hint": "מטר אחד הוא 100 ס״מ, אז זה בעצם 100 פחות 40. על הציר: עמוד/עמדי על 100 ורד/י אחורה 40 — 100, 90, 80, 70... איפה עצרת?",
-            "praise": "יופי! הפכת את המטר ל-100 ס״מ ואז חיסרת — בדיוק הדרך הנכונה."
-          }
-        },
-        {
-          "name": "write_text",
-          "input": {
-            "text": "1 מטר = 100 ס״מ",
-            "x": 480,
-            "y": 200,
-            "size": 32
-          }
-        },
-        {
-          "name": "draw_number_line",
-          "input": {
-            "from": 0,
-            "to": 100,
-            "step": 10,
-            "x": 120,
-            "y": 360,
-            "length": 760
-          }
-        },
-        {
-          "name": "write_text",
-          "input": {
-            "text": "התשובה בסנטימטרים",
-            "x": 480,
-            "y": 460,
-            "size": 26
-          }
-        }
-      ]
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "html": "<svg viewBox=\"0 0 900 310\" width=\"100%\" height=\"100%\" style=\"display:block\"><text x=\"700\" y=\"56\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"700\" fill=\"#334155\">כמה מלבנים לדעתך?</text><g id=\"mi\" style=\"cursor:pointer\"><circle cx=\"300\" cy=\"44\" r=\"30\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text x=\"300\" y=\"56\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#334155\">−</text></g><rect x=\"355\" y=\"12\" width=\"90\" height=\"64\" rx=\"14\" fill=\"#FFFFFF\" stroke=\"#0F766E\" stroke-width=\"3\"/><text id=\"gv\" x=\"400\" y=\"58\" text-anchor=\"middle\" font-size=\"38\" font-weight=\"700\" fill=\"#0F766E\">?</text><g id=\"pl\" style=\"cursor:pointer\"><circle cx=\"500\" cy=\"44\" r=\"30\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text x=\"500\" y=\"56\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#334155\">+</text></g><rect id=\"b0\" x=\"30\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt0\" x=\"69\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b1\" x=\"115\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt1\" x=\"154\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b2\" x=\"200\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt2\" x=\"239\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b3\" x=\"285\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt3\" x=\"324\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b4\" x=\"370\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt4\" x=\"409\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b5\" x=\"455\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt5\" x=\"494\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b6\" x=\"540\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt6\" x=\"579\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b7\" x=\"625\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt7\" x=\"664\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b8\" x=\"710\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt8\" x=\"749\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><rect id=\"b9\" x=\"795\" y=\"110\" width=\"78\" height=\"50\" rx=\"8\" fill=\"#E2E8F0\" stroke=\"#94A3B8\" stroke-width=\"2\"/><text id=\"bt9\" x=\"834\" y=\"143\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"700\" fill=\"#64748B\">10</text><text id=\"cnt\" x=\"450\" y=\"198\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"700\" fill=\"#0F766E\">0 ס״מ</text><g id=\"btn\" style=\"cursor:pointer\"><rect x=\"285\" y=\"216\" width=\"330\" height=\"58\" rx=\"29\" fill=\"#0D9488\"/><text x=\"450\" y=\"256\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"700\" fill=\"#FFFFFF\">בואו נספור!</text></g><text id=\"res\" x=\"450\" y=\"298\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"700\" fill=\"#334155\"></text></svg><script>\n(function(){\n  var g=null, gv=document.getElementById('gv'), res=document.getElementById('res'), done=false;\n  function set(v){ g=Math.max(1,Math.min(20,v)); gv.textContent=g; }\n  function tap(el,fn){ if(!el) return; el.addEventListener('pointerdown',function(e){e.preventDefault();e.stopPropagation();fn();}); }\n  tap(document.getElementById('mi'),function(){ if(done) return; set(g===null?5:g-1); });\n  tap(document.getElementById('pl'),function(){ if(done) return; set(g===null?5:g+1); });\n  tap(document.getElementById('btn'),function(){\n    if(done) return;\n    if(g===null){ res.textContent='קודם בוחרים ניחוש עם + ו−'; return; }\n    done=true;\n    \n    for(var i=0;i<10;i++)(function(i){setTimeout(function(){\n      var b=document.getElementById('b'+i), t=document.getElementById('bt'+i);\n      if(b){ b.setAttribute('fill','#5EEAD4'); b.setAttribute('stroke','#0D9488'); }\n      if(t) t.setAttribute('fill','#0F766E');\n      document.getElementById('cnt').textContent=((i+1)*10)+' \\u05E1\\u05F4\\u05DE';\n    }, i*250);})(i);\n    setTimeout(function(){\n      document.getElementById('cnt').textContent='100 \\u05E1\\u05F4\\u05DE = 1 \\u05DE\\u05D8\\u05E8 \\uD83C\\uDF89';\n      window.velaCompare(10);\n    }, 2700);\n  });\n  window.velaCompare=function(real){\n    var d=Math.abs(g-real);\n    res.textContent='ניחשת '+g+' · יצא '+real+' — '+(d===0?'בול! 🎯':(d<=2?'ניחוש קרוב מאוד! 👏':'עכשיו יודעים בדיוק 🙂'));\n    try{ parent.postMessage({type:'vela:correct'},'*'); }catch(_){}\n  };\n})();</script>",
+       "title": "מטר בשורה אחת",
+       "x": 70,
+       "y": 140,
+       "w": 860,
+       "h": 296
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "כל מלבן = 10 ס״מ",
+       "x": 480,
+       "y": 480,
+       "size": 28
+      }
+     }
+    ]
+   },
+   {
+    "reply": "אז מצאנו: מאה סנטימטרים בשורה אחת הם מטר אחד. 1 מטר = 100 ס״מ. וכמה זה? הפס הצהוב הארוך על הלוח הוא מטר. הפס הכחול הקטן לידו הוא 10 ס״מ — בערך כף היד שלך, וצריך עשר כאלה למטר. בחדר: מטר זה בערך רוחב של דלת. לחץ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מטר אחד = 100 ס״מ",
+       "x": 480,
+       "y": 80,
+       "size": 40
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         100,
+         200
+        ],
+        [
+         900,
+         200
+        ],
+        [
+         900,
+         250
+        ],
+        [
+         100,
+         250
+        ]
+       ],
+       "color": "#F59E0B",
+       "fill": true
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "1 מטר",
+       "x": 480,
+       "y": 175,
+       "size": 26
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         100,
+         330
+        ],
+        [
+         180,
+         330
+        ],
+        [
+         180,
+         380
+        ],
+        [
+         100,
+         380
+        ]
+       ],
+       "color": "#3B82F6",
+       "fill": true
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "10 ס״מ",
+       "x": 140,
+       "y": 308,
+       "size": 24
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "צריך 10 כאלה כדי להשלים מטר",
+       "x": 480,
+       "y": 440,
+       "size": 28
+      }
+     }
+    ]
+   },
+   {
+    "reply": "ואם יש שני מטרים? פשוט מניחים מטר ועוד מטר זה אחרי זה. מטר אחד הוא 100 ס״מ, ועוד מטר זה עוד 100. 100 ועוד 100 — 200. אז 2 מטר הם 200 ס״מ. לחץ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "ואם יש 2 מטר?",
+       "x": 480,
+       "y": 80,
+       "size": 34
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         90,
+         190
+        ],
+        [
+         490,
+         190
+        ],
+        [
+         490,
+         240
+        ],
+        [
+         90,
+         240
+        ]
+       ],
+       "color": "#F59E0B",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         500,
+         190
+        ],
+        [
+         900,
+         190
+        ],
+        [
+         900,
+         240
+        ],
+        [
+         500,
+         240
+        ]
+       ],
+       "color": "#F59E0B",
+       "fill": true
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מטר = 100 ס״מ",
+       "x": 290,
+       "y": 165,
+       "size": 24
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "ועוד מטר = עוד 100",
+       "x": 700,
+       "y": 165,
+       "size": 24
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מאה ועוד מאה",
+       "x": 480,
+       "y": 320,
+       "size": 34
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "שני מטרים = 200 ס״מ",
+       "x": 480,
+       "y": 400,
+       "size": 40
+      }
+     }
+    ]
+   },
+   {
+    "reply": "עכשיו שאלה חשובה: במה מודדים? עיפרון, אצבע או מחברת — הם קטנים, אז מודדים אותם בסנטימטרים. הכיתה, הדלת או המגרש — הם גדולים, אז מודדים אותם במטרים. לבחור את היחידה הנכונה — זה הצעד הראשון בכל מדידה! לחץ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "במה מודדים?",
+       "x": 480,
+       "y": 80,
+       "size": 34
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 480,
+       "y1": 140,
+       "x2": 480,
+       "y2": 460,
+       "color": "#94A3B8",
+       "width": 3
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "בס״מ — הקטנים",
+       "x": 730,
+       "y": 180,
+       "size": 30
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "עיפרון",
+       "x": 730,
+       "y": 250,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אצבע",
+       "x": 730,
+       "y": 315,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מחברת",
+       "x": 730,
+       "y": 380,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "במטרים — הגדולים",
+       "x": 230,
+       "y": 180,
+       "size": 30
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "הכיתה",
+       "x": 230,
+       "y": 250,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "דלת",
+       "x": 230,
+       "y": 315,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מגרש",
+       "x": 230,
+       "y": 380,
+       "size": 28
+      }
+     }
+    ]
+   },
+   {
+    "reply": "בעיה אמיתית: יש סרט של מטר אחד, וגזרנו ממנו 30 ס״מ. כמה נשאר? רגע — אי אפשר לחסר מטר פחות ס״מ, אלה שתי שפות שונות. אז קודם הופכים הכול לאותה שפה: מטר אחד הוא 100 ס״מ. עכשיו זה פשוט 100 פחות 30. לחץ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "סרט של 1 מטר. גזרנו 30 ס״מ",
+       "x": 480,
+       "y": 90,
+       "size": 32
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "1 מטר = 100 ס״מ",
+       "x": 480,
+       "y": 200,
+       "size": 36
+      }
+     },
+     {
+      "name": "draw_arrow",
+      "input": {
+       "x1": 480,
+       "y1": 240,
+       "x2": 480,
+       "y2": 300
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "100 − 30 = ?",
+       "x": 480,
+       "y": 355,
+       "size": 44
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "קודם הופכים לאותה שפה",
+       "x": 480,
+       "y": 450,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "בוא/י נראה את זה על הציר. עומדים על 100 וקופצים אחורה 30: 100... 90... 80... 70. נחתנו על 70! אז נשארו 70 ס״מ — קצת פחות ממטר. ככה פותרים כל בעיה של מטרים וס״מ: קודם הופכים הכול לס״מ, ורק אז מחשבים. לחץ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "100 פחות 30",
+       "x": 480,
+       "y": 80,
+       "size": 34
+      }
+     },
+     {
+      "name": "draw_number_line",
+      "input": {
+       "from": 0,
+       "to": 100,
+       "step": 10,
+       "x": 120,
+       "y": 300,
+       "length": 760,
+       "jumps": [
+        [
+         100,
+         70,
+         "−30"
+        ]
+       ]
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "נשארו 70 ס״מ",
+       "x": 480,
+       "y": 420,
+       "size": 36
+      }
+     }
+    ]
+   }
+  ],
+  "guided": {
+   "reply": "עכשיו ביחד! סרט של מטר אחד, וגזרנו ממנו 40 ס״מ. קודם נחש/י: נשאר יותר או פחות מ-50 ס״מ? ועכשיו נבדוק. לאיזו שפה הופכים? לס״מ: מטר אחד הוא 100 ס״מ. יש לך ציר על הלוח — עמוד/עמדי על 100 וקפוץ/קפצי אחורה 40: 100, 90, 80... איפה נחתת? כתוב/כתבי בתיבה!",
+   "toolCalls": [
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "1 מטר פחות 40 ס״מ =",
+      "answer": "60",
+      "kind": "number",
+      "hint": "מטר אחד הוא 100 ס״מ, אז זה בעצם 100 פחות 40. על הציר: עמוד/עמדי על 100 ורד/י אחורה 40 — 100, 90, 80, 70... איפה עצרת?",
+      "praise": "יופי! הפכת את המטר ל-100 ס״מ ואז חיסרת — בדיוק הדרך הנכונה."
+     }
     },
-    "independent": {
-      "reply": "עכשיו לבד. בשאלה הראשונה השארתי לך ציר על הלוח. בשנייה תכתוב/תכתבי מספר: 1 או 2. בשלישית תיזכר/י בשני המטרים שראינו — 100 ועוד 100. את/ה כבר מכיר/ה את החבילה: 100 ס״מ הם מטר אחד 🙂",
-      "toolCalls": [
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "1 מטר פחות 20 ס״מ =",
-            "answer": "80",
-            "kind": "number",
-            "x": 150,
-            "y": 100,
-            "hint": "קודם הופכים: מטר אחד הוא 100 ס״מ. עכשיו זה 100 פחות 20. על הציר — עמוד/עמדי על 100 ורד/י אחורה 20: 100, 90... איפה עצרת?",
-            "praise": "מעולה! גם המרת למטבע אחד וגם חיסרת נכון."
-          }
-        },
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "מה מודדים במטרים? 1 או 2:",
-            "answer": "2",
-            "kind": "number",
-            "x": 150,
-            "y": 180,
-            "hint": "תחשוב/תחשבי על הגודל: מטר אחד הוא בערך רוחב של דלת. מה גדול הרבה יותר מדלת, ומה קטן מכף היד? את הגדול מודדים במטרים.",
-            "praise": "נכון! דברים גדולים — במטרים. דברים קטנים — בס״מ."
-          }
-        },
-        {
-          "name": "write_text",
-          "input": {
-            "text": "מספר 1 — גומייה",
-            "x": 360,
-            "y": 232,
-            "size": 24
-          }
-        },
-        {
-          "name": "write_text",
-          "input": {
-            "text": "מספר 2 — אוטובוס",
-            "x": 620,
-            "y": 232,
-            "size": 24
-          }
-        },
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "2 מטר בסנטימטרים =",
-            "answer": "200",
-            "kind": "number",
-            "x": 150,
-            "y": 285,
-            "hint": "מטר אחד הוא 100 ס״מ, כמו שראינו על שני הפסים הצהובים. אז שני מטרים זה 100 ועוד 100. ספור/י בקפיצות של מאה: 100... ואחריו?",
-            "praise": "וואו! 2 מטר הם 200 ס״מ. אלוף/ת המטרים 🏆"
-          }
-        },
-        {
-          "name": "write_text",
-          "input": {
-            "text": "מטר אחד = 100 ס״מ",
-            "x": 480,
-            "y": 350,
-            "size": 28
-          }
-        },
-        {
-          "name": "write_text",
-          "input": {
-            "text": "הציר לשאלה הראשונה",
-            "x": 480,
-            "y": 400,
-            "size": 24
-          }
-        },
-        {
-          "name": "draw_number_line",
-          "input": {
-            "from": 0,
-            "to": 100,
-            "step": 10,
-            "x": 120,
-            "y": 460,
-            "length": 760
-          }
-        }
-      ]
+    {
+     "name": "write_text",
+     "input": {
+      "text": "1 מטר = 100 ס״מ",
+      "x": 400,
+      "y": 200,
+      "size": 32
+     }
+    },
+    {
+     "name": "draw_number_line",
+     "input": {
+      "from": 0,
+      "to": 100,
+      "step": 10,
+      "x": 40,
+      "y": 360,
+      "length": 760
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "התשובה בסנטימטרים",
+      "x": 400,
+      "y": 460,
+      "size": 26
+     }
     }
+   ]
+  },
+  "independent": {
+   "reply": "עכשיו לבד. בשאלה הראשונה השארתי לך ציר על הלוח. בשנייה תכתוב/תכתבי מספר: 1 או 2. בשלישית תיזכר/י בשני המטרים שראינו — 100 ועוד 100. את/ה כבר מכיר/ה את החבילה: 100 ס״מ הם מטר אחד 🙂",
+   "toolCalls": [
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "1 מטר פחות 20 ס״מ =",
+      "answer": "80",
+      "kind": "number",
+      "hint": "קודם הופכים: מטר אחד הוא 100 ס״מ. עכשיו זה 100 פחות 20. על הציר — עמוד/עמדי על 100 ורד/י אחורה 20: 100, 90... איפה עצרת?",
+      "praise": "מעולה! גם המרת למטבע אחד וגם חיסרת נכון."
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "מה מודדים במטרים? 1 או 2:",
+      "answer": "2",
+      "kind": "number",
+      "hint": "תחשוב/תחשבי על הגודל: מטר אחד הוא בערך רוחב של דלת. מה גדול הרבה יותר מדלת, ומה קטן מכף היד? את הגדול מודדים במטרים.",
+      "praise": "נכון! דברים גדולים — במטרים. דברים קטנים — בס״מ."
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "מספר 1 — גומייה",
+      "x": 280,
+      "y": 232,
+      "size": 24
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "מספר 2 — אוטובוס",
+      "x": 540,
+      "y": 232,
+      "size": 24
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "2 מטר בסנטימטרים =",
+      "answer": "200",
+      "kind": "number",
+      "hint": "מטר אחד הוא 100 ס״מ, כמו שראינו על שני הפסים הצהובים. אז שני מטרים זה 100 ועוד 100. ספור/י בקפיצות של מאה: 100... ואחריו?",
+      "praise": "וואו! 2 מטר הם 200 ס״מ. אלוף/ת המטרים 🏆"
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "מטר אחד = 100 ס״מ",
+      "x": 400,
+      "y": 350,
+      "size": 28
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "הציר לשאלה הראשונה",
+      "x": 400,
+      "y": 400,
+      "size": 24
+     }
+    },
+    {
+     "name": "draw_number_line",
+     "input": {
+      "from": 0,
+      "to": 100,
+      "step": 10,
+      "x": 40,
+      "y": 460,
+      "length": 760
+     }
+    }
+   ]
   }
+ }
 }

@@ -1,169 +1,899 @@
 {
-  "topic": "צורות גאומטריות",
-  "lesson": 4,
-  "title": "לפרק ולהרכיב צורות",
-  "phases": {
-    "instruct": [
-      {
-        "reply": "היום נעשה משהו כיפי: נפרק צורות ונרכיב מהן צורות חדשות. על הלוח מלבן, והעברתי בתוכו קו אדום אחד מפינה לפינה. נוצרו שתי צורות, 1 ו-2. ספור/י את הצלעות של כל אחת: שלוש! שני משולשים. לחצ/י ✓.",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "קו אחד — ושתי צורות חדשות", "x": 480, "y": 76, "size": 34 } },
-          { "name": "draw_polygon", "input": { "points": [[340, 180], [660, 180], [660, 400], [340, 400]], "color": "#2f80ed", "fill": true } },
-          { "name": "draw_line", "input": { "x1": 340, "y1": 180, "x2": 660, "y2": 400, "color": "#eb5757", "width": 5 } },
-          { "name": "write_text", "input": { "text": "1", "x": 420, "y": 340, "size": 40 } },
-          { "name": "write_text", "input": { "text": "2", "x": 580, "y": 240, "size": 40 } },
-          { "name": "write_text", "input": { "text": "מלבן אחד — שני משולשים", "x": 480, "y": 455, "size": 30 } },
-          { "name": "write_text", "input": { "text": "הקו האדום פירק אותו לשניים", "x": 480, "y": 505, "size": 26 } }
-        ]
-      },
-      {
-        "reply": "ועכשיו הכיוון ההפוך — מרכיבים! מימין שני משולשים זהים לגמרי. מצמידים את הצלע הארוכה של אחד לצלע הארוכה של השני, וקיבלנו... מלבן! משמאל רואים את התוצאה. אותם חלקים — רק שמנו אותם אחרת. לחצ/י ✓.",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "אפשר גם הפוך — מרכיבים", "x": 480, "y": 76, "size": 34 } },
-          { "name": "draw_polygon", "input": { "points": [[480, 180], [680, 180], [480, 330]], "color": "#27ae60", "fill": true } },
-          { "name": "draw_polygon", "input": { "points": [[700, 330], [900, 330], [900, 180]], "color": "#27ae60", "fill": true } },
-          { "name": "write_text", "input": { "text": "שני משולשים זהים", "x": 690, "y": 385, "size": 28 } },
-          { "name": "draw_arrow", "input": { "x1": 450, "y1": 255, "x2": 370, "y2": 255 } },
-          { "name": "draw_polygon", "input": { "points": [[120, 180], [320, 180], [320, 330], [120, 330]], "color": "#2f80ed", "fill": true } },
-          { "name": "draw_line", "input": { "x1": 120, "y1": 180, "x2": 320, "y2": 330, "color": "#bdbdbd", "width": 3 } },
-          { "name": "write_text", "input": { "text": "מלבן!", "x": 220, "y": 375, "size": 30 } },
-          { "name": "write_text", "input": { "text": "אותם חלקים — צורה חדשה", "x": 480, "y": 470, "size": 28 } }
-        ]
-      },
-      {
-        "reply": "עכשיו הידיים עובדות. מימין מסגרת אפורה — שם ייבנה המלבן. משמאל מחכים שני משולשים. גרור/גררי כל משולש אל המקום שלו במסגרת. כשהוא מגיע קרוב — הוא נתפס לבד. כששניהם בפנים, לחצ/י ✓.",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "מרכיבים מלבן משני משולשים", "x": 480, "y": 72, "size": 32 } },
-          {
-            "name": "render_widget",
-            "input": {
-              "title": "בונים מלבן",
-              "x": 240,
-              "y": 130,
-              "w": 520,
-              "h": 260,
-              "html": "<svg id='s' viewBox='0 0 480 240' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' style='font-family:Fredoka,Assistant,sans-serif'><polygon id='fr' points='330,60 460,60 460,150 330,150' fill='none' stroke='#9aa5a1' stroke-width='3' stroke-dasharray='8 6'></polygon><text x='395' y='176' text-anchor='middle' font-size='15' fill='#6b7a76'>כאן בונים</text><polygon id='p1' points='330,60 460,60 330,150' fill='rgba(39,174,96,0.35)' stroke='#27ae60' stroke-width='3' stroke-linejoin='round' transform='translate(-300,0)'></polygon><polygon id='p2' points='460,60 460,150 330,150' fill='rgba(242,153,74,0.35)' stroke='#f2994a' stroke-width='3' stroke-linejoin='round' transform='translate(-160,50)'></polygon><text id='msg' x='170' y='228' text-anchor='middle' font-size='16' fill='#0f3b36'>גוררים כל משולש אל המסגרת</text></svg><script>(function(){var svg=document.getElementById('s'),msg=document.getElementById('msg'),fr=document.getElementById('fr');var st={p1:{dx:-300,dy:0,lock:0},p2:{dx:-160,dy:50,lock:0}};function P(e){var r=svg.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*480,y:(e.clientY-r.top)/r.height*240};}function near(s){return Math.abs(s.dx)<40&&Math.abs(s.dy)<40;}var dg=null;['p1','p2'].forEach(function(id){var el=document.getElementById(id);el.style.cursor='grab';el.addEventListener('pointerdown',function(e){if(st[id].lock)return;var p=P(e);dg={id:id,el:el,ox:p.x-st[id].dx,oy:p.y-st[id].dy};try{el.setPointerCapture(e.pointerId);}catch(err){}});});svg.addEventListener('pointermove',function(e){if(!dg)return;var p=P(e),s=st[dg.id];s.dx=p.x-dg.ox;s.dy=p.y-dg.oy;dg.el.setAttribute('transform','translate('+s.dx+','+s.dy+')');var k=near(s);fr.setAttribute('stroke',k?'#27ae60':'#9aa5a1');fr.setAttribute('stroke-width',k?'5':'3');});function up(){if(!dg)return;var s=st[dg.id];if(near(s)){s.dx=0;s.dy=0;s.lock=1;dg.el.setAttribute('transform','translate(0,0)');dg.el.style.cursor='default';}dg=null;fr.setAttribute('stroke','#9aa5a1');fr.setAttribute('stroke-width','3');if(st.p1.lock&&st.p2.lock)msg.textContent='נבנה מלבן משני משולשים! 🎉';}svg.addEventListener('pointerup',up);svg.addEventListener('pointercancel',up);svg.addEventListener('pointerleave',up);})();<\/script>"
-            }
-          },
-          { "name": "write_text", "input": { "text": "גוררים — והחלק נתפס לבד", "x": 480, "y": 450, "size": 26 } }
-        ]
-      },
-      {
-        "reply": "עוד דבר יפה: את אותה צורה אפשר לבנות בכמה דרכים. שלושת הריבועים שעל הלוח זהים לגמרי. מימין הריבוע בנוי משני משולשים, באמצע משני מלבנים, ומשמאל מארבעה ריבועים קטנים. אותה צורה — חלקים אחרים. לחצ/י ✓.",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "אותה צורה — כמה דרכים לבנות", "x": 480, "y": 72, "size": 32 } },
-          { "name": "draw_polygon", "input": { "points": [[680, 170], [880, 170], [880, 370], [680, 370]], "color": "#2f80ed", "fill": true } },
-          { "name": "draw_line", "input": { "x1": 680, "y1": 170, "x2": 880, "y2": 370, "color": "#eb5757", "width": 4 } },
-          { "name": "write_text", "input": { "text": "2 משולשים", "x": 780, "y": 410, "size": 28 } },
-          { "name": "draw_polygon", "input": { "points": [[380, 170], [580, 170], [580, 370], [380, 370]], "color": "#2f80ed", "fill": true } },
-          { "name": "draw_line", "input": { "x1": 380, "y1": 270, "x2": 580, "y2": 270, "color": "#eb5757", "width": 4 } },
-          { "name": "write_text", "input": { "text": "2 מלבנים", "x": 480, "y": 410, "size": 28 } },
-          { "name": "draw_polygon", "input": { "points": [[100, 170], [300, 170], [300, 370], [100, 370]], "color": "#2f80ed", "fill": true } },
-          { "name": "draw_line", "input": { "x1": 200, "y1": 170, "x2": 200, "y2": 370, "color": "#eb5757", "width": 4 } },
-          { "name": "draw_line", "input": { "x1": 100, "y1": 270, "x2": 300, "y2": 270, "color": "#eb5757", "width": 4 } },
-          { "name": "write_text", "input": { "text": "4 ריבועים קטנים", "x": 200, "y": 410, "size": 26 } },
-          { "name": "write_text", "input": { "text": "אותו ריבוע בדיוק — בנוי אחרת", "x": 480, "y": 480, "size": 28 } }
-        ]
-      },
-      {
-        "reply": "ולסיום, דבר יפה במיוחד: זה בדיוק מה שעשינו עם מספרים! 10 בנוי מ-6 ועוד 4 — מספר גדול בנוי ממספרים קטנים. ומלבן בנוי משני משולשים — צורה גדולה בנויה מצורות קטנות. אותו רעיון: מפרקים ומרכיבים. לחצ/י ✓.",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "בדיוק כמו לפרק מספר", "x": 480, "y": 76, "size": 36 } },
-          { "name": "draw_polygon", "input": { "points": [[660, 180], [860, 180], [860, 330], [660, 330]], "color": "#2f80ed", "fill": true } },
-          { "name": "draw_line", "input": { "x1": 660, "y1": 180, "x2": 860, "y2": 330, "color": "#eb5757", "width": 4 } },
-          { "name": "write_text", "input": { "text": "מלבן = משולש + משולש", "x": 760, "y": 375, "size": 26 } },
-          { "name": "write_text", "input": { "text": "10 = 6 + 4", "x": 250, "y": 250, "size": 44 } },
-          { "name": "write_text", "input": { "text": "מספר גדול = מספרים קטנים", "x": 250, "y": 320, "size": 26 } },
-          { "name": "write_text", "input": { "text": "מפרקים ומרכיבים — צורות ומספרים", "x": 480, "y": 495, "size": 26 } }
-        ]
-      },
-      {
-        "reply": "ועוד דבר, קצת קשה: יש צורות שאי אפשר לבנות. הנה שוב שני משולשים זהים. אפשר להרכיב מהם עיגול? נסה/י לדמיין... לא! לעיגול אין אף קו ישר, ולמשולשים יש רק קווים ישרים. מקווים ישרים לא יוצא קו עגול. לחצ/י ✓.",
-        "toolCalls": [
-          { "name": "write_text", "input": { "text": "מה אי אפשר לבנות?", "x": 480, "y": 80, "size": 36 } },
-          { "name": "draw_polygon", "input": { "points": [[560, 180], [720, 180], [560, 300]], "color": "#f2994a", "fill": true } },
-          { "name": "draw_polygon", "input": { "points": [[740, 300], [900, 300], [900, 180]], "color": "#f2994a", "fill": true } },
-          { "name": "write_text", "input": { "text": "שני משולשים זהים", "x": 730, "y": 345, "size": 26 } },
-          { "name": "draw_circle", "input": { "x": 300, "y": 245, "r": 70, "color": "#bdbdbd" } },
-          { "name": "draw_line", "input": { "x1": 225, "y1": 170, "x2": 375, "y2": 320, "color": "#eb5757", "width": 7 } },
-          { "name": "draw_line", "input": { "x1": 375, "y1": 170, "x2": 225, "y2": 320, "color": "#eb5757", "width": 7 } },
-          { "name": "write_text", "input": { "text": "עיגול? לא", "x": 300, "y": 360, "size": 28 } },
-          { "name": "write_text", "input": { "text": "לעיגול אין קווים ישרים", "x": 480, "y": 435, "size": 30 } },
-          { "name": "write_text", "input": { "text": "מקווים ישרים יוצאים רק מצולעים", "x": 480, "y": 495, "size": 26 } }
-        ]
+ "topic": "צורות גאומטריות",
+ "lesson": 4,
+ "title": "לפרק ולהרכיב צורות",
+ "phases": {
+  "instruct": [
+   {
+    "reply": "היום נעשה משהו כיפי: נפרק צורות ונרכיב מהן צורות חדשות. על הלוח מלבן, והעברתי בתוכו קו אדום אחד מפינה לפינה. נוצרו שתי צורות, 1 ו-2. ספור/י את הצלעות של כל אחת: שלוש! שני משולשים. לחצ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "קו אחד — ושתי צורות חדשות",
+       "x": 480,
+       "y": 76,
+       "size": 34
       }
-    ],
-    "guided": {
-      "reply": "עכשיו ביחד. על הלוח מחומש — מצולע עם 5 צלעות. העברתי בתוכו שני קווים אדומים מהפינה שלמעלה. עבור/י עם האצבע סביב כל חלק וספור/י את הצלעות שלו — לכל חלק שלוש, אז כל אחד משולש. כמה יצאו? כתוב/י בתיבה!",
-      "toolCalls": [
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "כמה משולשים יש בציור?",
-            "answer": "3",
-            "kind": "number",
-            "x": 70,
-            "y": 100,
-            "hint": "שני הקווים האדומים יוצאים מאותה פינה למעלה, וחתכו את המחומש לחלקים. כדאי לעבור עם האצבע סביב חלק אחד, אחר כך סביב החלק שלידו, וכך הלאה — וסופרים בקול כמה חלקים עברת.",
-            "praise": "מדויק! שני קווים פירקו את המחומש לשלושה משולשים."
-          }
-        },
-        { "name": "draw_polygon", "input": { "points": [[280, 180], [420, 270], [370, 420], [190, 420], [140, 270]], "color": "#2f80ed", "fill": true } },
-        { "name": "draw_line", "input": { "x1": 280, "y1": 180, "x2": 370, "y2": 420, "color": "#eb5757", "width": 5 } },
-        { "name": "draw_line", "input": { "x1": 280, "y1": 180, "x2": 190, "y2": 420, "color": "#eb5757", "width": 5 } }
-      ]
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         340,
+         180
+        ],
+        [
+         660,
+         180
+        ],
+        [
+         660,
+         400
+        ],
+        [
+         340,
+         400
+        ]
+       ],
+       "color": "#2f80ed",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 340,
+       "y1": 180,
+       "x2": 660,
+       "y2": 400,
+       "color": "#eb5757",
+       "width": 5
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "1",
+       "x": 420,
+       "y": 340,
+       "size": 40
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "2",
+       "x": 580,
+       "y": 240,
+       "size": 40
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מלבן אחד — שני משולשים",
+       "x": 480,
+       "y": 455,
+       "size": 30
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "הקו האדום פירק אותו לשניים",
+       "x": 480,
+       "y": 505,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "ועכשיו הכיוון ההפוך — מרכיבים! מימין שני משולשים זהים לגמרי. מצמידים את הצלע הארוכה של אחד לצלע הארוכה של השני, וקיבלנו... מלבן! משמאל רואים את התוצאה. אותם חלקים — רק שמנו אותם אחרת. לחצ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אפשר גם הפוך — מרכיבים",
+       "x": 480,
+       "y": 76,
+       "size": 34
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         480,
+         180
+        ],
+        [
+         680,
+         180
+        ],
+        [
+         480,
+         330
+        ]
+       ],
+       "color": "#27ae60",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         700,
+         330
+        ],
+        [
+         900,
+         330
+        ],
+        [
+         900,
+         180
+        ]
+       ],
+       "color": "#27ae60",
+       "fill": true
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "שני משולשים זהים",
+       "x": 690,
+       "y": 385,
+       "size": 28
+      }
+     },
+     {
+      "name": "draw_arrow",
+      "input": {
+       "x1": 450,
+       "y1": 255,
+       "x2": 370,
+       "y2": 255
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         120,
+         180
+        ],
+        [
+         320,
+         180
+        ],
+        [
+         320,
+         330
+        ],
+        [
+         120,
+         330
+        ]
+       ],
+       "color": "#2f80ed",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 120,
+       "y1": 180,
+       "x2": 320,
+       "y2": 330,
+       "color": "#bdbdbd",
+       "width": 3
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מלבן!",
+       "x": 220,
+       "y": 375,
+       "size": 30
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אותם חלקים — צורה חדשה",
+       "x": 480,
+       "y": 470,
+       "size": 28
+      }
+     }
+    ]
+   },
+   {
+    "reply": "עכשיו הידיים עובדות. מימין מסגרת אפורה — שם ייבנה המלבן. משמאל מחכים שני משולשים. גרור/גררי כל משולש אל המקום שלו במסגרת. כשהוא מגיע קרוב — הוא נתפס לבד. כששניהם בפנים, לחצ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מרכיבים מלבן משני משולשים",
+       "x": 480,
+       "y": 72,
+       "size": 32
+      }
+     },
+     {
+      "name": "render_widget",
+      "input": {
+       "title": "בונים מלבן",
+       "x": 240,
+       "y": 130,
+       "w": 520,
+       "h": 260,
+       "html": "<svg id='s' viewBox='0 0 480 240' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' style='font-family:Fredoka,Assistant,sans-serif'><polygon id='fr' points='330,60 460,60 460,150 330,150' fill='none' stroke='#9aa5a1' stroke-width='3' stroke-dasharray='8 6'></polygon><text x='395' y='176' text-anchor='middle' font-size='15' fill='#6b7a76'>כאן בונים</text><polygon id='p1' points='330,60 460,60 330,150' fill='rgba(39,174,96,0.35)' stroke='#27ae60' stroke-width='3' stroke-linejoin='round' transform='translate(-300,0)'></polygon><polygon id='p2' points='460,60 460,150 330,150' fill='rgba(242,153,74,0.35)' stroke='#f2994a' stroke-width='3' stroke-linejoin='round' transform='translate(-160,50)'></polygon><text id='msg' x='170' y='228' text-anchor='middle' font-size='16' fill='#0f3b36'>גוררים כל משולש אל המסגרת</text></svg><script>(function(){var svg=document.getElementById('s'),msg=document.getElementById('msg'),fr=document.getElementById('fr');var st={p1:{dx:-300,dy:0,lock:0},p2:{dx:-160,dy:50,lock:0}};function P(e){var r=svg.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*480,y:(e.clientY-r.top)/r.height*240};}function near(s){return Math.abs(s.dx)<40&&Math.abs(s.dy)<40;}var dg=null;['p1','p2'].forEach(function(id){var el=document.getElementById(id);el.style.cursor='grab';el.addEventListener('pointerdown',function(e){if(st[id].lock)return;var p=P(e);dg={id:id,el:el,ox:p.x-st[id].dx,oy:p.y-st[id].dy};try{el.setPointerCapture(e.pointerId);}catch(err){}});});svg.addEventListener('pointermove',function(e){if(!dg)return;var p=P(e),s=st[dg.id];s.dx=p.x-dg.ox;s.dy=p.y-dg.oy;dg.el.setAttribute('transform','translate('+s.dx+','+s.dy+')');var k=near(s);fr.setAttribute('stroke',k?'#27ae60':'#9aa5a1');fr.setAttribute('stroke-width',k?'5':'3');});function up(){if(!dg)return;var s=st[dg.id];if(near(s)){s.dx=0;s.dy=0;s.lock=1;dg.el.setAttribute('transform','translate(0,0)');dg.el.style.cursor='default';}dg=null;fr.setAttribute('stroke','#9aa5a1');fr.setAttribute('stroke-width','3');if(st.p1.lock&&st.p2.lock)msg.textContent='נבנה מלבן משני משולשים! 🎉';}svg.addEventListener('pointerup',up);svg.addEventListener('pointercancel',up);svg.addEventListener('pointerleave',up);})();</script>"
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "גוררים — והחלק נתפס לבד",
+       "x": 480,
+       "y": 450,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "עוד דבר יפה: את אותה צורה אפשר לבנות בכמה דרכים. שלושת הריבועים שעל הלוח זהים לגמרי. מימין הריבוע בנוי משני משולשים, באמצע משני מלבנים, ומשמאל מארבעה ריבועים קטנים. אותה צורה — חלקים אחרים. לחצ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אותה צורה — כמה דרכים לבנות",
+       "x": 480,
+       "y": 72,
+       "size": 32
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         680,
+         170
+        ],
+        [
+         880,
+         170
+        ],
+        [
+         880,
+         370
+        ],
+        [
+         680,
+         370
+        ]
+       ],
+       "color": "#2f80ed",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 680,
+       "y1": 170,
+       "x2": 880,
+       "y2": 370,
+       "color": "#eb5757",
+       "width": 4
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "2 משולשים",
+       "x": 780,
+       "y": 410,
+       "size": 28
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         380,
+         170
+        ],
+        [
+         580,
+         170
+        ],
+        [
+         580,
+         370
+        ],
+        [
+         380,
+         370
+        ]
+       ],
+       "color": "#2f80ed",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 380,
+       "y1": 270,
+       "x2": 580,
+       "y2": 270,
+       "color": "#eb5757",
+       "width": 4
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "2 מלבנים",
+       "x": 480,
+       "y": 410,
+       "size": 28
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         100,
+         170
+        ],
+        [
+         300,
+         170
+        ],
+        [
+         300,
+         370
+        ],
+        [
+         100,
+         370
+        ]
+       ],
+       "color": "#2f80ed",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 200,
+       "y1": 170,
+       "x2": 200,
+       "y2": 370,
+       "color": "#eb5757",
+       "width": 4
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 100,
+       "y1": 270,
+       "x2": 300,
+       "y2": 270,
+       "color": "#eb5757",
+       "width": 4
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "4 ריבועים קטנים",
+       "x": 200,
+       "y": 410,
+       "size": 26
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "אותו ריבוע בדיוק — בנוי אחרת",
+       "x": 480,
+       "y": 480,
+       "size": 28
+      }
+     }
+    ]
+   },
+   {
+    "reply": "ולסיום, דבר יפה במיוחד: זה בדיוק מה שעשינו עם מספרים! 10 בנוי מ-6 ועוד 4 — מספר גדול בנוי ממספרים קטנים. ומלבן בנוי משני משולשים — צורה גדולה בנויה מצורות קטנות. אותו רעיון: מפרקים ומרכיבים. לחצ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "בדיוק כמו לפרק מספר",
+       "x": 480,
+       "y": 76,
+       "size": 36
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         660,
+         180
+        ],
+        [
+         860,
+         180
+        ],
+        [
+         860,
+         330
+        ],
+        [
+         660,
+         330
+        ]
+       ],
+       "color": "#2f80ed",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 660,
+       "y1": 180,
+       "x2": 860,
+       "y2": 330,
+       "color": "#eb5757",
+       "width": 4
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מלבן = משולש + משולש",
+       "x": 760,
+       "y": 375,
+       "size": 26
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "10 = 6 + 4",
+       "x": 250,
+       "y": 250,
+       "size": 44
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מספר גדול = מספרים קטנים",
+       "x": 250,
+       "y": 320,
+       "size": 26
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מפרקים ומרכיבים — צורות ומספרים",
+       "x": 480,
+       "y": 495,
+       "size": 26
+      }
+     }
+    ]
+   },
+   {
+    "reply": "ועוד דבר, קצת קשה: יש צורות שאי אפשר לבנות. הנה שוב שני משולשים זהים. אפשר להרכיב מהם עיגול? נסה/י לדמיין... לא! לעיגול אין אף קו ישר, ולמשולשים יש רק קווים ישרים. מקווים ישרים לא יוצא קו עגול. לחצ/י ✓.",
+    "toolCalls": [
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מה אי אפשר לבנות?",
+       "x": 480,
+       "y": 80,
+       "size": 36
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         560,
+         180
+        ],
+        [
+         720,
+         180
+        ],
+        [
+         560,
+         300
+        ]
+       ],
+       "color": "#f2994a",
+       "fill": true
+      }
+     },
+     {
+      "name": "draw_polygon",
+      "input": {
+       "points": [
+        [
+         740,
+         300
+        ],
+        [
+         900,
+         300
+        ],
+        [
+         900,
+         180
+        ]
+       ],
+       "color": "#f2994a",
+       "fill": true
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "שני משולשים זהים",
+       "x": 730,
+       "y": 345,
+       "size": 26
+      }
+     },
+     {
+      "name": "draw_circle",
+      "input": {
+       "x": 300,
+       "y": 245,
+       "r": 70,
+       "color": "#bdbdbd"
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 225,
+       "y1": 170,
+       "x2": 375,
+       "y2": 320,
+       "color": "#eb5757",
+       "width": 7
+      }
+     },
+     {
+      "name": "draw_line",
+      "input": {
+       "x1": 375,
+       "y1": 170,
+       "x2": 225,
+       "y2": 320,
+       "color": "#eb5757",
+       "width": 7
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "עיגול? לא",
+       "x": 300,
+       "y": 360,
+       "size": 28
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "לעיגול אין קווים ישרים",
+       "x": 480,
+       "y": 435,
+       "size": 30
+      }
+     },
+     {
+      "name": "write_text",
+      "input": {
+       "text": "מקווים ישרים יוצאים רק מצולעים",
+       "x": 480,
+       "y": 495,
+       "size": 26
+      }
+     }
+    ]
+   }
+  ],
+  "guided": {
+   "reply": "עכשיו ביחד. על הלוח מחומש — מצולע עם 5 צלעות. העברתי בתוכו שני קווים אדומים מהפינה שלמעלה. עבור/י עם האצבע סביב כל חלק וספור/י את הצלעות שלו — לכל חלק שלוש, אז כל אחד משולש. כמה יצאו? כתוב/י בתיבה!",
+   "toolCalls": [
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה משולשים יש בציור?",
+      "answer": "3",
+      "kind": "number",
+      "hint": "שני הקווים האדומים יוצאים מאותה פינה למעלה, וחתכו את המחומש לחלקים. כדאי לעבור עם האצבע סביב חלק אחד, אחר כך סביב החלק שלידו, וכך הלאה — וסופרים בקול כמה חלקים עברת.",
+      "praise": "מדויק! שני קווים פירקו את המחומש לשלושה משולשים."
+     }
     },
-    "independent": {
-      "reply": "עכשיו לבד. בתחתית הלוח שלושה ציורים, ולכל אחד כתוב הצבע שלו. בשתי השאלות הראשונות סופרים כמה חלקים קטנים יש בתוך הצורה. בשלישית מדמיינים שמצמידים את שתי הצלעות הארוכות של המשולשים הכתומים. בהצלחה, אלוף/ה! 🏆",
-      "toolCalls": [
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "כמה מלבנים קטנים בציור הכחול?",
-            "answer": "3",
-            "kind": "number",
-            "x": 70,
-            "y": 100,
-            "hint": "בציור הכחול יש קווים אדומים שחילקו את המלבן הגדול. כדאי לשים אצבע על החלק הימני ולספור אותו, אחר כך על החלק שלידו, וכך הלאה עד הסוף.",
-            "praise": "נכון! שני קווים חילקו את המלבן לשלושה מלבנים קטנים."
-          }
-        },
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "כמה ריבועים קטנים בציור הירוק?",
-            "answer": "4",
-            "kind": "number",
-            "x": 70,
-            "y": 190,
-            "hint": "בציור הירוק יש קו אחד למעלה-למטה וקו אחד מצד לצד. כדאי לספור קודם את שני החלקים שבשורה העליונה, ואחר כך את שני החלקים שבשורה התחתונה.",
-            "praise": "יפה מאוד! ריבוע גדול אחד בנוי מארבעה ריבועים קטנים."
-          }
-        },
-        {
-          "name": "draw_exercise",
-          "input": {
-            "text": "מצמידים את הצלעות הארוכות — כמה צלעות?",
-            "answer": "4",
-            "kind": "number",
-            "x": 70,
-            "y": 280,
-            "hint": "הצלע הארוכה של כל משולש כתום היא הלוכסן. מצמידים לוכסן ללוכסן — הם נעלמים בפנים. עכשיו עוברים באצבע מסביב לצורה שיצאה וסופרים כמה קווים ישרים יש לה.",
-            "praise": "בדיוק! 4 צלעות — 2 ארוכות ו-2 קצרות. זו בדיוק צורת המלבן! סיימת את נושא הצורות! 🏆"
-          }
-        },
-        { "name": "draw_polygon", "input": { "points": [[40, 395], [340, 395], [340, 470], [40, 470]], "color": "#2f80ed", "fill": true } },
-        { "name": "draw_line", "input": { "x1": 140, "y1": 395, "x2": 140, "y2": 470, "color": "#eb5757", "width": 4 } },
-        { "name": "draw_line", "input": { "x1": 240, "y1": 395, "x2": 240, "y2": 470, "color": "#eb5757", "width": 4 } },
-        { "name": "write_text", "input": { "text": "כחול", "x": 190, "y": 498, "size": 24 } },
-        { "name": "draw_polygon", "input": { "points": [[440, 380], [540, 380], [540, 480], [440, 480]], "color": "#27ae60", "fill": true } },
-        { "name": "draw_line", "input": { "x1": 490, "y1": 380, "x2": 490, "y2": 480, "color": "#eb5757", "width": 4 } },
-        { "name": "draw_line", "input": { "x1": 440, "y1": 430, "x2": 540, "y2": 430, "color": "#eb5757", "width": 4 } },
-        { "name": "write_text", "input": { "text": "ירוק", "x": 490, "y": 505, "size": 24 } },
-        { "name": "draw_polygon", "input": { "points": [[620, 395], [740, 395], [620, 485]], "color": "#f2994a", "fill": true } },
-        { "name": "draw_polygon", "input": { "points": [[780, 485], [900, 485], [900, 395]], "color": "#f2994a", "fill": true } },
-        { "name": "write_text", "input": { "text": "כתום", "x": 760, "y": 512, "size": 24 } }
-      ]
+    {
+     "name": "draw_polygon",
+     "input": {
+      "points": [
+       [
+        280,
+        180
+       ],
+       [
+        420,
+        270
+       ],
+       [
+        370,
+        420
+       ],
+       [
+        190,
+        420
+       ],
+       [
+        140,
+        270
+       ]
+      ],
+      "color": "#2f80ed",
+      "fill": true
+     }
+    },
+    {
+     "name": "draw_line",
+     "input": {
+      "x1": 280,
+      "y1": 180,
+      "x2": 370,
+      "y2": 420,
+      "color": "#eb5757",
+      "width": 5
+     }
+    },
+    {
+     "name": "draw_line",
+     "input": {
+      "x1": 280,
+      "y1": 180,
+      "x2": 190,
+      "y2": 420,
+      "color": "#eb5757",
+      "width": 5
+     }
     }
+   ]
+  },
+  "independent": {
+   "reply": "עכשיו לבד. בתחתית הלוח שלושה ציורים, ולכל אחד כתוב הצבע שלו. בשתי השאלות הראשונות סופרים כמה חלקים קטנים יש בתוך הצורה. בשלישית מדמיינים שמצמידים את שתי הצלעות הארוכות של המשולשים הכתומים. בהצלחה, אלוף/ה! 🏆",
+   "toolCalls": [
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה מלבנים קטנים בציור הכחול?",
+      "answer": "3",
+      "kind": "number",
+      "hint": "בציור הכחול יש קווים אדומים שחילקו את המלבן הגדול. כדאי לשים אצבע על החלק הימני ולספור אותו, אחר כך על החלק שלידו, וכך הלאה עד הסוף.",
+      "praise": "נכון! שני קווים חילקו את המלבן לשלושה מלבנים קטנים."
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "כמה ריבועים קטנים בציור הירוק?",
+      "answer": "4",
+      "kind": "number",
+      "hint": "בציור הירוק יש קו אחד למעלה-למטה וקו אחד מצד לצד. כדאי לספור קודם את שני החלקים שבשורה העליונה, ואחר כך את שני החלקים שבשורה התחתונה.",
+      "praise": "יפה מאוד! ריבוע גדול אחד בנוי מארבעה ריבועים קטנים."
+     }
+    },
+    {
+     "name": "draw_exercise",
+     "input": {
+      "text": "מצמידים את הצלעות הארוכות — כמה צלעות?",
+      "answer": "4",
+      "kind": "number",
+      "hint": "הצלע הארוכה של כל משולש כתום היא הלוכסן. מצמידים לוכסן ללוכסן — הם נעלמים בפנים. עכשיו עוברים באצבע מסביב לצורה שיצאה וסופרים כמה קווים ישרים יש לה.",
+      "praise": "בדיוק! 4 צלעות — 2 ארוכות ו-2 קצרות. זו בדיוק צורת המלבן! סיימת את נושא הצורות! 🏆"
+     }
+    },
+    {
+     "name": "draw_polygon",
+     "input": {
+      "points": [
+       [
+        40,
+        395
+       ],
+       [
+        340,
+        395
+       ],
+       [
+        340,
+        470
+       ],
+       [
+        40,
+        470
+       ]
+      ],
+      "color": "#2f80ed",
+      "fill": true
+     }
+    },
+    {
+     "name": "draw_line",
+     "input": {
+      "x1": 140,
+      "y1": 395,
+      "x2": 140,
+      "y2": 470,
+      "color": "#eb5757",
+      "width": 4
+     }
+    },
+    {
+     "name": "draw_line",
+     "input": {
+      "x1": 240,
+      "y1": 395,
+      "x2": 240,
+      "y2": 470,
+      "color": "#eb5757",
+      "width": 4
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "כחול",
+      "x": 40,
+      "y": 498,
+      "size": 24
+     }
+    },
+    {
+     "name": "draw_polygon",
+     "input": {
+      "points": [
+       [
+        440,
+        380
+       ],
+       [
+        540,
+        380
+       ],
+       [
+        540,
+        480
+       ],
+       [
+        440,
+        480
+       ]
+      ],
+      "color": "#27ae60",
+      "fill": true
+     }
+    },
+    {
+     "name": "draw_line",
+     "input": {
+      "x1": 490,
+      "y1": 380,
+      "x2": 490,
+      "y2": 480,
+      "color": "#eb5757",
+      "width": 4
+     }
+    },
+    {
+     "name": "draw_line",
+     "input": {
+      "x1": 440,
+      "y1": 430,
+      "x2": 540,
+      "y2": 430,
+      "color": "#eb5757",
+      "width": 4
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "ירוק",
+      "x": 340,
+      "y": 505,
+      "size": 24
+     }
+    },
+    {
+     "name": "draw_polygon",
+     "input": {
+      "points": [
+       [
+        620,
+        395
+       ],
+       [
+        740,
+        395
+       ],
+       [
+        620,
+        485
+       ]
+      ],
+      "color": "#f2994a",
+      "fill": true
+     }
+    },
+    {
+     "name": "draw_polygon",
+     "input": {
+      "points": [
+       [
+        780,
+        485
+       ],
+       [
+        900,
+        485
+       ],
+       [
+        900,
+        395
+       ]
+      ],
+      "color": "#f2994a",
+      "fill": true
+     }
+    },
+    {
+     "name": "write_text",
+     "input": {
+      "text": "כתום",
+      "x": 610,
+      "y": 512,
+      "size": 24
+     }
+    }
+   ]
   }
+ }
 }
