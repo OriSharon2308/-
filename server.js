@@ -290,6 +290,13 @@ const server = http.createServer(async (req, res) => {
     const method = req.method || "GET";
     const url = req.url || "/";
 
+    // בדיקת-בריאות ל-keep-alive (UptimeRobot וכו'): מחזיר 200 מיד, בלי נתונים/AI/סשן.
+    // זה היעד הבטוח לנקר כדי למנוע מ-Render החינמי להירדם — אפס עלות טוקנים/Upstash.
+    if (url === "/health" || url === "/healthz") {
+      res.writeHead(200, { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" });
+      return res.end("ok");
+    }
+
     /* ---------------- API: אימות ---------------- */
 
     if (url.startsWith("/api/register")) {
