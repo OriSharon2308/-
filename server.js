@@ -1195,7 +1195,12 @@ const server = http.createServer(async (req, res) => {
     // אזור ההורים — שלד הדף ציבורי (הנתונים מוגנים ב-API לפי session הורה נפרד)
     // גלקסיית הנושאים — מסך נסיוני, עומד בפני עצמו. לא מחליף את הקרוסלה.
     if (rel === "/galaxy" || rel === "/galaxy/") {
-      if (!sessions.currentUserId(req)) return send(res, 302, { location: "/auth" }, "");
+      // מסך-פיתוח: פתוח רק לחשבונות-הבדיקה (GRADE_SWITCH_USERS). אין אליו קישור בשום מקום
+      // באפליקציה, והשער הזה מוודא שגם מי שינחש את הכתובת לא ייכנס.
+      const gUser = sessions.currentUserId(req);
+      if (!gUser) return send(res, 302, { location: "/auth" }, "");
+      const gName = (users.getUserById(gUser) || {}).username || "";
+      if (!GRADE_SWITCH_USERS.includes(gName)) return send(res, 302, { location: "/" }, "");
       return serveFile(res, "/galaxy.html", method);
     }
 
