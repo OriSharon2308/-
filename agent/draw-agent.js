@@ -218,10 +218,13 @@ async function teacherDraw(p = {}) {
   const isInstructEntry = phase === "instruct" && /בוא נתחיל|הצג מחדש|מסך הבא/.test(entryMsg);
   const isGuidedEntry = phase === "guided" && /התרגול המודרך/.test(entryMsg);
   const isIndependentEntry = phase === "independent" && /התרגול העצמאי/.test(entryMsg);
+  // סגירת-השיעור היא השלב היחיד שעד עכשיו תמיד עלה כסף: שאלת-ההבנה המסכמת זהה
+  // בכל פעם ולכל ילד, ולכן היא נכתבת מראש בקובץ-הזהב כמו שאר השלבים.
+  const isClosingEntry = phase === "closing" && /סגירת השיעור/.test(entryMsg);
 
   // ── שיעור-זהב: המערך המוכן של אורי — עדיפות ראשונה, רץ בלי AI (אפס טוקנים, אפס המתנה). ──
   // הוראה יכולה להיות כמה מסכים (goldenScreen מהלקוח); ✓ בין מסך למסך — הכל מהקובץ.
-  if ((isInstructEntry || isGuidedEntry || isIndependentEntry) && p.topic) {
+  if ((isInstructEntry || isGuidedEntry || isIndependentEntry || isClosingEntry) && p.topic) {
     try {
       const tn = learnerProfile.topicLessonNumber(p.userId, p.topic);
       const g = golden.phase(p.topic, tn, phase, phase === "instruct" ? +p.goldenScreen || 0 : 0, p.grade);
