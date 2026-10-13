@@ -46,7 +46,8 @@ function buildSystemPrompt({ advice, contextText, problem, student, vizName, sha
       `שם התלמיד/ה: ${student.name}. פנה/י אליו/ה בשמו/ה מדי פעם (לא בכל משפט) — זה מחזק קשר אישי ומיקוד, אבל שלא יישמע מאולץ.`
     );
   }
-  if (contextText) lines.push(`זיכרון התלמיד:\n${contextText}`);
+  // (זיכרון התלמיד לא נמצא כאן בכוונה — הוא משתנה בכל קריאה ולכן היה מבטל את
+  //  המטמון. הוא נשלח בהודעה האחרונה, אחרי נקודת-השמירה. ראו buildTurnText.)
   if (shapeNote) lines.push(shapeNote);
   if (vizName) {
     lines.push(
@@ -132,7 +133,7 @@ async function teacherReply(params) {
     return { reply: genderize(localReply({ messageKind, problem, correct, student }), gender), mode: "local" };
   }
 
-  const system = buildSystemPrompt({ advice, contextText, problem, student, vizName, shapeNote, gender, voice });
+  const system = buildSystemPrompt({ advice, problem, student, vizName, shapeNote, gender, voice });
   let userText = messageText;
   if (messageKind === "CheckAnswer" && correct != null) {
     userText = `${messageText}\n(הערכת המערכת: התשובה ${correct ? "נכונה" : "שגויה"}.)`;
@@ -140,24 +141,34 @@ async function teacherReply(params) {
     userText = `הצג לתלמיד את התרגיל החדש בעידוד קצר: ${problem.text}`;
   }
 
+  // הזיכרון נוסע עם ההודעה האחרונה: כך הוא עדיין מגיע למורה במלואו, אבל הוא
+  // יושב אחרי נקודת-השמירה ולא מבטל את המטמון של כל מה שלפניו.
+  const turnText = contextText
+    ? `זיכרון התלמיד:\n${contextText}\n\n${userText || "..."}`
+    : userText || "...";
+
   const messages = [
     ...history
       .filter((m) => m && (m.role === "user" || m.role === "assistant") && m.content)
       .slice(-12)
       .map((m) => ({ role: m.role, content: String(m.content) })),
-    { role: "user", content: userText || "..." },
+    { role: "user", content: turnText },
   ];
 
   try {
     const tLlm = Date.now();
     // בקול — מודל מהיר (Haiku ~2s מול Sonnet ~3.3s) + תקרת טוקנים נמוכה = תשובה קצרה ומהירה.
-    // חזרה ל-Sonnet בקול: ANTHROPIC_VOICE_MODEL=claude-sonnet-4-6 ב-.env
-    const voiceModel = (process.env.ANTHROPIC_VOICE_MODEL || "claude-haiku-4-5-20251001").trim();
+    // שדרוג מודל-הקול: ANTHROPIC_VOICE_MODEL=claude-sonnet-5-5 ב-.env (או בענן)
+    const voiceModel = (process.env.ANTHROPIC_VOICE_MODEL || "claude-haiku-5-5").trim();
     const reply = await llm.complete({
       system,
       messages,
       maxTokens: voice ? 160 : 500,
       model: voice ? voiceModel : null,
+      // נקודת-השמירה בסוף ההיסטוריה: בתוך אותה שאלה ה-system לא משתנה, ולכן
+      // כל התורים הקודמים נקראים מהמטמון ב-10%. בשאלה חדשה ה-system משתנה
+      // והמטמון נבנה מחדש — זה בסדר, הוא משתלם כבר מהתור השני.
+      cacheHistory: true,
       userId,
       label: "מורה",
     });
