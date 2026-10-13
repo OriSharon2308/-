@@ -12,8 +12,9 @@ const { CURRICULUM, leafTopics } = require(path.join(ROOT, "lib/curriculum"));
 const { GENERATORS } = require(path.join(ROOT, "lib/generators"));
 const bank = require(path.join(ROOT, "lib/bank"));
 
-const TARGET = 100;
-const MAX_ATTEMPTS = 6000;
+// 150 לנושא: מספיק כדי שילד לא יפגוש חזרה גם אחרי שבועות, ועדיין קובץ קטן.
+const TARGET = Number(process.env.BANK_TARGET || 150);
+const MAX_ATTEMPTS = 20000;
 
 function buildGrade(gradeNum) {
   const g = CURRICULUM[gradeNum];

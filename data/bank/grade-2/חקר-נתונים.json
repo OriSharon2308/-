@@ -1,0 +1,4057 @@
+{
+  "grade": "ב׳",
+  "gradeNum": 2,
+  "topic": "חקר נתונים",
+  "questions": [
+    {
+      "id": "q-27278d4bd9",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "25,35,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ae52396c62",
+      "text": "לכמה יותר ילדים יש כלב מאשר חתול?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 4 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "12,4,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9b07c68c8a",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא חתול: 3 משבצות × 5 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,15,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-fcc63bc9ed",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 50,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ארנב: 5 משבצות × 10 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "40,30,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-3637302c62",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 60,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 30 = 60.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "30,30,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0b105fb765",
+      "text": "כמה ילדים בחוג שחייה?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 1 — 6 × 1 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,7,3",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ec3490d99b",
+      "text": "לכמה ילדים יש חתול?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 5 — 2 × 5 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "30,10,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9274637dba",
+      "text": "כמה ילדים בחרו תפוח?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "7,3,5",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-980de9dfd1",
+      "text": "לכמה ילדים יש כלב?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "7,3,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-068b2349e0",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג שחייה?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "40 פחות 20 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,30,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-90c2f254e2",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "20 + 50 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,50,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c22158603a",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "7,3,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2c3cd3f183",
+      "text": "לכמה ילדים יש כלב?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 5 — 5 × 5 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "25,30,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-635c0e5f80",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 100,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 70 = 100.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "70,30,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f0bc4dec6a",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 1 — 4 × 1 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "4,5,2",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2d71992ee8",
+      "text": "כמה ילדים בחרו אגס?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "2,5,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cf832eb2a1",
+      "text": "כמה ילדים בחרו אגס?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "6,5,2",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-7546f1918d",
+      "text": "לכמה יותר ילדים יש ארנב מאשר חתול?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "25 פחות 10 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "20,10,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-884800fd04",
+      "text": "כמה תלמידים בסך הכול בכל העמודות?",
+      "answer": 34,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "12 + 8 + 14 = 34.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "12,8,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-03116146c2",
+      "text": "כמה תלמידים בחוג שחמט?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "15,15,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-14278f6a91",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "6 + 8 = 14.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "8,6,8",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-97a63d7f7f",
+      "text": "כמה תלמידים בסך הכול בכל העמודות?",
+      "answer": 22,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "10 + 6 + 6 = 22.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "10,6,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a84f2ee9f8",
+      "text": "לכמה ילדים יש ארנב?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 5 — 3 × 5 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "35,25,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-bc2845047a",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 5 — 5 × 5 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "15,10,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0ab1f38e31",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ריקוד: 3 משבצות × 5 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "10,15,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a789176387",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 35,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא שחמט: 7 משבצות × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "25,15,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-e84dbdb248",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 50,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ארנב: 5 משבצות × 10 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "40,20,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-38f7c9ebcc",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 70,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כדורסל: 7 משבצות × 10 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "70,50,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a5ca2a93c8",
+      "text": "לכמה ילדים יש ארנב?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 1 — 5 × 1 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "5,4,5",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-50de878bc7",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "20 + 50 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,50,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-dff6458f73",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 5 — 3 × 5 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "20,15,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8cfe7d7409",
+      "text": "כמה ילדים בחוג ריקוד?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 1 — 3 × 1 = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "4,3,2",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-1586c5f3c0",
+      "text": "לכמה יותר ילדים יש חתול מאשר ארנב?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 6 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "8,10,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-6f3e3b824f",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 30,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 5 — 6 × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "25,30,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-dae9a1ae15",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג ריקוד?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 25 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "25,25,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-45e6e840c0",
+      "text": "כמה ילדים בחרו בננה?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 5 — 2 × 5 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "10,10,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-879472c633",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג ריקוד?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 6 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "10,6,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-535d6bd1d0",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג טניס?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "60 פחות 40 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "60,60,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-e8067226f5",
+      "text": "לכמה יותר ילדים יש ארנב מאשר כלב?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "20 פחות 10 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,15,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c325013833",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 5 — 5 × 5 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "25,25,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-6f32559c69",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 80,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "40 + 40 = 80.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "40,40,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0ea47d1ca8",
+      "text": "כמה ילדים בחרו אגס?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "20,20,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cee20f3835",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר אגס?",
+      "answer": 25,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 10 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "35,20,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-3939f860c9",
+      "text": "כמה ילדים בחוג ריקוד?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "4,2,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-3a414e910c",
+      "text": "כמה ילדים בחוג שחייה?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "7,6,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-55ebc44279",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 95,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "30 + 30 + 35 = 95.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "30,30,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8dfe3f8a5b",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 30,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 5 — 6 × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "30,10,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c7e03bf1a9",
+      "text": "כמה תלמידים בחוג שחמט?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "3,3,2",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-32ac209d0f",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 30,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 5 — 6 × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "20,30,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0e93cd9313",
+      "text": "כמה ילדים בחוג ריקוד?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 1 — 4 × 1 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "3,4,5",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cd8d634b7a",
+      "text": "לכמה ילדים יש ארנב?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "7,5,2",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-226828063b",
+      "text": "כמה ילדים בחוג שחייה?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 5 — 4 × 5 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,20,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2c58982f80",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "2,4,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-582ffb5692",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג ריקוד?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 10 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "30,10,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-979efa3c65",
+      "text": "לכמה יותר ילדים יש חתול מאשר כלב?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 6 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "6,12,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-03653cdf9e",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 120,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "30 + 60 + 30 = 120.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "30,60,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-341045da82",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 40 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "40,70,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-43455662cd",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 1 — 4 × 1 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "7,4,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ff3982364e",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 50,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "20 + 30 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "35,20,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-59e5fef021",
+      "text": "כמה ילדים בחרו תפוח?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "2,7,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b4f843e15e",
+      "text": "כמה תלמידים בחוג שחמט?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 1 — 6 × 1 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "3,4,6",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-336652de94",
+      "text": "כמה ילדים בחוג שחייה?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "2,6,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-72adfa24b3",
+      "text": "בכמה יותר תלמידים בחוג שחמט מאשר בחוג ציור?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "50 פחות 30 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "40,30,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2fb6a63bf5",
+      "text": "כמה תלמידים בסך הכול בכל העמודות?",
+      "answer": 22,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "6 + 6 + 10 = 22.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "6,6,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4132a6b8bb",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 1 — 6 × 1 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "7,2,6",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5d314634e5",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג ציור?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 6 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "14,6,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-01617dbd23",
+      "text": "בכמה יותר תלמידים בחוג שחמט מאשר בחוג ציור?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 10 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "10,10,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-17b7c74600",
+      "text": "לכמה ילדים יש חתול?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 1 — 5 × 1 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "7,5,5",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-d8378334e4",
+      "text": "כמה ילדים בחוג ריקוד?",
+      "answer": 30,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 5 — 6 × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "10,30,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8cc95a8a6f",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,20,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-749f0ab805",
+      "text": "כמה ילדים בחרו בננה?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "7,2,3",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-36274e2d25",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "30,35,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ba7c47a188",
+      "text": "כמה ילדים בחרו תפוח?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 5 — 3 × 5 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "15,30,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-faef2e587d",
+      "text": "כמה תלמידים בחוג שחמט?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 1 — 3 × 1 = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "6,4,3",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cfb23345e9",
+      "text": "לכמה ילדים יש חתול?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 5 — 3 × 5 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "25,15,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8a6d17e386",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 60,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ציור: 6 משבצות × 10 = 60.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "50,60,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-670c7b67ac",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג טניס?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 25 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "35,35,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ad21ed3d66",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 90,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "40 + 50 = 90.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "60,50,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f9c25f4241",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 26,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "4 + 10 + 12 = 26.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "4,10,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-d4a3f2f82b",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 150,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "40 + 50 + 60 = 150.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "40,50,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5b423e3d50",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר בננה?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "70 פחות 40 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "70,40,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-633b8c6710",
+      "text": "כמה ילדים בחרו בננה?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 1 — 4 × 1 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "5,4,5",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0a3bdbe2fb",
+      "text": "כמה ילדים בחרו בננה?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 5 — 3 × 5 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "15,15,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a61ccd87a5",
+      "text": "כמה תלמידים בחוג שחמט?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 1 — 5 × 1 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "3,3,5",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0ac7f6d989",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "10 + 10 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "10,35,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-45ef31ad58",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,2,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-449b3acaa9",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג טניס?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 12 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "14,14,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a65b29d5c2",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "6 + 8 = 14.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "8,6,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4f42f5fa8f",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 30,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 5 — 6 × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "25,30,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f7d408ffbf",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 45,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "15 + 30 = 45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "30,35,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8b301646c3",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "30,30,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9324719b20",
+      "text": "לכמה יותר ילדים יש חתול מאשר ארנב?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 4 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "6,12,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-afd1c6f9c0",
+      "text": "כמה ילדים בחוג שחייה?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 5 — 3 × 5 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "15,25,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9aff237654",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 30,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 5 — 6 × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "20,30,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2f0c1808dd",
+      "text": "כמה ילדים בחרו בננה?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 5 — 4 × 5 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "10,20,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-518bc18dc3",
+      "text": "לכמה ילדים יש חתול?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "7,7,6",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-eb993e91d1",
+      "text": "כמה תלמידים בחוג שחמט?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "30,20,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c388e2771b",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר בננה?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 25 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "30,25,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0730c0d747",
+      "text": "כמה תלמידים בחוג שחמט?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 1 — 3 × 1 = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "7,5,3",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-1b7f5bcbf8",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 40 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "40,40,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-71f9d6f29e",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 8 = 12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "14,8,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-94e818d95e",
+      "text": "בכמה יותר תלמידים בחוג ציור מאשר בחוג שחמט?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "6 פחות 4 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "4,6,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cd879d4453",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג ריקוד?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 6 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "14,6,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-d249597327",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 150,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "70 + 40 + 40 = 150.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "70,40,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-7886c8f4cc",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 5 — 4 × 5 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "20,30,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-3e392bd20d",
+      "text": "לכמה יותר ילדים יש חתול מאשר כלב?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 6 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "6,12,8",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4702a253ff",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 22,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "6 + 10 + 6 = 22.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,10,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-eb2ef4f103",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 65,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "10 + 20 + 35 = 65.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,20,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-87dd291790",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 6 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "4,10,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-162e266229",
+      "text": "כמה ילדים בחרו בננה?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 1 — 6 × 1 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "6,6,3",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-e4d85ef304",
+      "text": "כמה ילדים בחוג שחייה?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "7,6,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-477d4715b8",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 5 — 5 × 5 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "35,20,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9965f5945a",
+      "text": "כמה ילדים בחוג ריקוד?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 5 — 4 × 5 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "25,20,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5f431a94d5",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא בננה: 4 משבצות × 2 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "6,8,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-917d25cd11",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 1 — 5 × 1 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "5,7,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2ac227594b",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 60,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כלב: 6 משבצות × 10 = 60.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "60,40,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5d04de7e50",
+      "text": "בכמה יותר ילדים בחרו אגס מאשר בננה?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 10 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "10,10,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f64c5302b2",
+      "text": "לכמה ילדים יש כלב?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 5 — 2 × 5 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,10,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-3bb1b4dd3a",
+      "text": "לכמה ילדים יש כלב?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 1 — 4 × 1 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "4,7,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-502880384b",
+      "text": "כמה ילדים בחרו תפוח?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 5 — 5 × 5 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "25,20,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ca76559811",
+      "text": "לכמה ילדים יש ארנב?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "30,15,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c85dcbb8e4",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 1 — 4 × 1 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "7,4,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-da550e2fdf",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 120,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "60 + 30 + 30 = 120.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "60,30,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2e87878163",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "2,2,2",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-aa443887d6",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 12,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כלב: 6 משבצות × 2 = 12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "12,8,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-527b67e939",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר בננה?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "20 פחות 10 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "20,10,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-479137c98c",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר בננה?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "20 פחות 10 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "20,10,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f584eed760",
+      "text": "לכמה ילדים יש ארנב?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "2,2,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a4ed3a59b3",
+      "text": "כמה ילדים בחוג טניס?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 1 — 7 × 1 = 7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "5,6,7",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-775175f87c",
+      "text": "לכמה ילדים יש חתול?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "3,2,6",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-61c25c3d1e",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 8 = 12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "8,4,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5dd4bb7bb3",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "2,5,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-806ed86f4e",
+      "text": "לכמה ילדים יש חתול?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 1 — 4 × 1 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "3,4,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2efa751af9",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 65,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "10 + 30 + 25 = 65.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,30,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-1be5a44b3d",
+      "text": "בכמה יותר ילדים בחוג ריקוד מאשר בחוג טניס?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 4 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "4,10,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f9a5c18608",
+      "text": "כמה ילדים בחרו אגס?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 5 משבצות, וכל משבצת שווה 1 — 5 × 1 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "4,2,5",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-16d3efcf3c",
+      "text": "לכמה ילדים יש כלב?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 3 משבצות, וכל משבצת שווה 1 — 3 × 1 = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "3,6,4",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-84d71d14e4",
+      "text": "לכמה ילדים יש חתול?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 6 משבצות, וכל משבצת שווה 1 — 6 × 1 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "7,6,2",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9fb25e397b",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג ציור?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 10 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "12,10,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-1cb84ece69",
+      "text": "כמה ילדים בחוג שחייה?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "35,25,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c258f14b75",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג טניס?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 30 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "35,35,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-809af03d4e",
+      "text": "כמה ילדים בחרו בננה?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 5 — 2 × 5 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "25,10,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-39740ff7aa",
+      "text": "כמה ילדים בחוג ריקוד?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 1 — 2 × 1 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "3,2,6",
+          "step": 1,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-67a48bf2ee",
+      "text": "כמה תלמידים בחוג ציור?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 4 משבצות, וכל משבצת שווה 5 — 4 × 5 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "10,20,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9bc0bb21e9",
+      "text": "כמה תלמידים בחוג כדורסל?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "35,15,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a9264ef005",
+      "text": "לכמה יותר ילדים יש כלב מאשר חתול?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "6 פחות 4 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "6,4,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b9befe7bd8",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 28,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "6 + 10 + 12 = 28.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,10,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-facaaaeb04",
+      "text": "כמה ילדים בחרו אגס?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 7 משבצות, וכל משבצת שווה 5 — 7 × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "25,20,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-25509f220e",
+      "text": "כמה ילדים בחוג ריקוד?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "קודם כול — כמה שווה משבצת אחת? כתוב על הדיאגרמה.",
+        "ספור/י את המשבצות בעמודה, ואז הכפל/י בערך של משבצת."
+      ],
+      "explanation": "בעמודה 2 משבצות, וכל משבצת שווה 5 — 2 × 5 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,10,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-d6ac334712",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 35,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "15 + 20 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "20,35,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    }
+  ]
+}

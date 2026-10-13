@@ -1,0 +1,2706 @@
+{
+  "grade": "ד׳",
+  "gradeNum": 4,
+  "topic": "השבר הפשוט",
+  "questions": [
+    {
+      "id": "q-02b2137f62",
+      "text": "כמה זה 2 חלקים מתוך 6 של 48?",
+      "answer": 16,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 48 : 6.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "48 : 6 = 8, ו-8 × 2 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2310e90df4",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 1 מתוך 2, כלומר 1/2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 2,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-805b83334d",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-6 חלקים שווים, ולכן המכנה הוא 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-a8180c88a5",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-8 חלקים שווים, ולכן המכנה הוא 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-aa64ccdfc1",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-6 חלקים שווים, ולכן המכנה הוא 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-bbfbd299a4",
+      "text": "כמה זה חלק אחד מתוך 6 של 30?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 6\" אומר לחלק ל-6 חלקים שווים.",
+        "30 : 6 = ?"
+      ],
+      "explanation": "30 : 6 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-03678067df",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 1 מתוך 4, כלומר 1/4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 4,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-bb137794d3",
+      "text": "כמה זה 3 חלקים מתוך 4 של 36?",
+      "answer": 27,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 36 : 4.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "36 : 4 = 9, ו-9 × 3 = 27.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a18962b434",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-4 חלקים שווים, ולכן המכנה הוא 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 4,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-2a660cde7d",
+      "text": "כמה חלקים מתוך 4 שווים לחלק אחד מתוך 2?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-2 מול שורת ה-4.",
+        "כמה חלקים של 1/4 נכנסים בתוך 1/2?"
+      ],
+      "explanation": "1/2 = 2/4, כי 4 : 2 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,2,4"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-6d6b117b80",
+      "text": "כמה זה חלק אחד מתוך 3 של 9?",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 3\" אומר לחלק ל-3 חלקים שווים.",
+        "9 : 3 = ?"
+      ],
+      "explanation": "9 : 3 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b7d6678b98",
+      "text": "כמה זה 2 חלקים מתוך 4 של 36?",
+      "answer": 18,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 36 : 4.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "36 : 4 = 9, ו-9 × 2 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2ac5875f17",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 3 מתוך 8, כלומר 3/8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-3e31622e64",
+      "text": "כמה זה 2 חלקים מתוך 3 של 12?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 12 : 3.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "12 : 3 = 4, ו-4 × 2 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5d6116b1ad",
+      "text": "כמה חלקים מתוך 12 שווים לחלק אחד מתוך 4?",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-4 מול שורת ה-12.",
+        "כמה חלקים של 1/12 נכנסים בתוך 1/4?"
+      ],
+      "explanation": "1/4 = 3/12, כי 12 : 4 = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,4,12"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-2b785e1ba9",
+      "text": "כמה זה חלק אחד מתוך 6 של 42?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 6\" אומר לחלק ל-6 חלקים שווים.",
+        "42 : 6 = ?"
+      ],
+      "explanation": "42 : 6 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e0e3977a0c",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-4 חלקים שווים, ולכן המכנה הוא 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 4,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-7450c20b46",
+      "text": "כמה זה חלק אחד מתוך 6 של 36?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 6\" אומר לחלק ל-6 חלקים שווים.",
+        "36 : 6 = ?"
+      ],
+      "explanation": "36 : 6 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ed50d23b09",
+      "text": "כמה חלקים מתוך 8 שווים לחלק אחד מתוך 4?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-4 מול שורת ה-8.",
+        "כמה חלקים של 1/8 נכנסים בתוך 1/4?"
+      ],
+      "explanation": "1/4 = 2/8, כי 8 : 4 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,4,8"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-6cacb8b73e",
+      "text": "כמה זה 3 חלקים מתוך 5 של 10?",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 10 : 5.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "10 : 5 = 2, ו-2 × 3 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-01073a11f0",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 2 מתוך 4, כלומר 2/4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 4,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-993b620bcf",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-5 חלקים שווים, ולכן המכנה הוא 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 5,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-7b51726d8b",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-4 חלקים שווים, ולכן המכנה הוא 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 4,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-c941f9b00d",
+      "text": "כמה זה 3 חלקים מתוך 5 של 45?",
+      "answer": 27,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 45 : 5.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "45 : 5 = 9, ו-9 × 3 = 27.",
+      "source": "algo"
+    },
+    {
+      "id": "q-930bae4711",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 2 מתוך 3, כלומר 2/3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 3,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-50b75ab963",
+      "text": "כמה חלקים מתוך 6 שווים לחלק אחד מתוך 3?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-3 מול שורת ה-6.",
+        "כמה חלקים של 1/6 נכנסים בתוך 1/3?"
+      ],
+      "explanation": "1/3 = 2/6, כי 6 : 3 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,3,6"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-c35cf7ba20",
+      "text": "כמה זה חלק אחד מתוך 5 של 40?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 5\" אומר לחלק ל-5 חלקים שווים.",
+        "40 : 5 = ?"
+      ],
+      "explanation": "40 : 5 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-70a8589701",
+      "text": "כמה חלקים מתוך 9 שווים לחלק אחד מתוך 3?",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-3 מול שורת ה-9.",
+        "כמה חלקים של 1/9 נכנסים בתוך 1/3?"
+      ],
+      "explanation": "1/3 = 3/9, כי 9 : 3 = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,3,9"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-5b0c191d9a",
+      "text": "כמה זה 3 חלקים מתוך 6 של 36?",
+      "answer": 18,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 36 : 6.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "36 : 6 = 6, ו-6 × 3 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-eb70426571",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 1 מתוך 5, כלומר 1/5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 5,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-44e29dfa74",
+      "text": "כמה זה 3 חלקים מתוך 4 של 16?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 16 : 4.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "16 : 4 = 4, ו-4 × 3 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-32554bcccb",
+      "text": "כמה זה חלק אחד מתוך 4 של 20?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 4\" אומר לחלק ל-4 חלקים שווים.",
+        "20 : 4 = ?"
+      ],
+      "explanation": "20 : 4 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-acda1c8c83",
+      "text": "כמה חלקים מתוך 6 שווים לחלק אחד מתוך 2?",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-2 מול שורת ה-6.",
+        "כמה חלקים של 1/6 נכנסים בתוך 1/2?"
+      ],
+      "explanation": "1/2 = 3/6, כי 6 : 2 = 3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,2,6"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-354f6adde3",
+      "text": "כמה זה חלק אחד מתוך 4 של 8?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 4\" אומר לחלק ל-4 חלקים שווים.",
+        "8 : 4 = ?"
+      ],
+      "explanation": "8 : 4 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2a92b2bc48",
+      "text": "כמה זה 2 חלקים מתוך 3 של 18?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 18 : 3.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "18 : 3 = 6, ו-6 × 2 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-360efbd7b4",
+      "text": "כמה זה חלק אחד מתוך 4 של 32?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 4\" אומר לחלק ל-4 חלקים שווים.",
+        "32 : 4 = ?"
+      ],
+      "explanation": "32 : 4 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0d5d8a5992",
+      "text": "כמה חלקים מתוך 8 שווים לחלק אחד מתוך 2?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-2 מול שורת ה-8.",
+        "כמה חלקים של 1/8 נכנסים בתוך 1/2?"
+      ],
+      "explanation": "1/2 = 4/8, כי 8 : 2 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,2,8"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-e40ff7aa16",
+      "text": "כמה זה חלק אחד מתוך 6 של 48?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 6\" אומר לחלק ל-6 חלקים שווים.",
+        "48 : 6 = ?"
+      ],
+      "explanation": "48 : 6 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c73772ff6a",
+      "text": "כמה זה 2 חלקים מתוך 3 של 15?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 15 : 3.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "15 : 3 = 5, ו-5 × 2 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8360fa88f6",
+      "text": "כמה זה חלק אחד מתוך 4 של 24?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 4\" אומר לחלק ל-4 חלקים שווים.",
+        "24 : 4 = ?"
+      ],
+      "explanation": "24 : 4 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-16ba38fcd6",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 4 מתוך 8, כלומר 4/8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 4
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-cfa415c05c",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 1 מתוך 6, כלומר 1/6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-00937ec0f9",
+      "text": "כמה זה חלק אחד מתוך 3 של 15?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 3\" אומר לחלק ל-3 חלקים שווים.",
+        "15 : 3 = ?"
+      ],
+      "explanation": "15 : 3 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b4fa591d6b",
+      "text": "כמה זה חלק אחד מתוך 3 של 12?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 3\" אומר לחלק ל-3 חלקים שווים.",
+        "12 : 3 = ?"
+      ],
+      "explanation": "12 : 3 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c5b22bd670",
+      "text": "כמה זה חלק אחד מתוך 2 של 4?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 2\" אומר לחלק ל-2 חלקים שווים.",
+        "4 : 2 = ?"
+      ],
+      "explanation": "4 : 2 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1bb39fa4fb",
+      "text": "כמה זה חלק אחד מתוך 3 של 24?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 3\" אומר לחלק ל-3 חלקים שווים.",
+        "24 : 3 = ?"
+      ],
+      "explanation": "24 : 3 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7cf9feeaa2",
+      "text": "כמה זה חלק אחד מתוך 6 של 24?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 6\" אומר לחלק ל-6 חלקים שווים.",
+        "24 : 6 = ?"
+      ],
+      "explanation": "24 : 6 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-356adca329",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 4 מתוך 5, כלומר 4/5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 5,
+          "shaded": 4
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-fa00a7d4f0",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 5 מתוך 8, כלומר 5/8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 5
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-f77af1d391",
+      "text": "כמה זה חלק אחד מתוך 6 של 54?",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 6\" אומר לחלק ל-6 חלקים שווים.",
+        "54 : 6 = ?"
+      ],
+      "explanation": "54 : 6 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1e76d72150",
+      "text": "כמה זה 2 חלקים מתוך 5 של 25?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 25 : 5.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "25 : 5 = 5, ו-5 × 2 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dcbdff9960",
+      "text": "כמה חלקים מתוך 10 שווים לחלק אחד מתוך 5?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-5 מול שורת ה-10.",
+        "כמה חלקים של 1/10 נכנסים בתוך 1/5?"
+      ],
+      "explanation": "1/5 = 2/10, כי 10 : 5 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,5,10"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-51f30fbf31",
+      "text": "כמה זה 2 חלקים מתוך 3 של 21?",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 21 : 3.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "21 : 3 = 7, ו-7 × 2 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-efab0095e9",
+      "text": "כמה זה 4 חלקים מתוך 6 של 24?",
+      "answer": 16,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 24 : 6.",
+        "אחר כך כופלים ב-4."
+      ],
+      "explanation": "24 : 6 = 4, ו-4 × 4 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1a5886d076",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-8 חלקים שווים, ולכן המכנה הוא 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 6
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-57fa83ac43",
+      "text": "כמה זה 2 חלקים מתוך 5 של 20?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 20 : 5.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "20 : 5 = 4, ו-4 × 2 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4006be9788",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-5 חלקים שווים, ולכן המכנה הוא 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 5,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-3908790751",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-8 חלקים שווים, ולכן המכנה הוא 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-c961f6c5a2",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 7
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-04406d3dfd",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 9
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-9cc81872c8",
+      "text": "כמה זה חלק אחד מתוך 6 של 18?",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 6\" אומר לחלק ל-6 חלקים שווים.",
+        "18 : 6 = ?"
+      ],
+      "explanation": "18 : 6 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d6b313b686",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 3 מתוך 5, כלומר 3/5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 5,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-0ad19edc9a",
+      "text": "כמה חלקים מתוך 10 שווים לחלק אחד מתוך 2?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הסתכל/י בקיר-השברים: שורת ה-2 מול שורת ה-10.",
+        "כמה חלקים של 1/10 נכנסים בתוך 1/2?"
+      ],
+      "explanation": "1/2 = 5/10, כי 10 : 2 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "fraction_wall",
+        "params": {
+          "rows": "1,2,10"
+        },
+        "w": 340,
+        "h": 300,
+        "alt": "קיר שברים"
+      }
+    },
+    {
+      "id": "q-2a0b8b82d6",
+      "text": "כמה זה 3 חלקים מתוך 4 של 24?",
+      "answer": 18,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 24 : 4.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "24 : 4 = 6, ו-6 × 3 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ea404f27e0",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-6 חלקים שווים, ולכן המכנה הוא 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-d2fc34a4f1",
+      "text": "כמה זה 4 חלקים מתוך 6 של 12?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 12 : 6.",
+        "אחר כך כופלים ב-4."
+      ],
+      "explanation": "12 : 6 = 2, ו-2 × 4 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-41c73834f8",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 3 מתוך 4, כלומר 3/4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 4,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-a6dbf799f2",
+      "text": "כמה זה 2 חלקים מתוך 3 של 9?",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 9 : 3.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "9 : 3 = 3, ו-3 × 2 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4d116ed82d",
+      "text": "כמה זה חלק אחד מתוך 3 של 18?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 3\" אומר לחלק ל-3 חלקים שווים.",
+        "18 : 3 = ?"
+      ],
+      "explanation": "18 : 3 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c9290a2213",
+      "text": "כמה זה 5 חלקים מתוך 6 של 12?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 12 : 6.",
+        "אחר כך כופלים ב-5."
+      ],
+      "explanation": "12 : 6 = 2, ו-2 × 5 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-258d10d3a8",
+      "text": "כמה זה 2 חלקים מתוך 5 של 30?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 30 : 5.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "30 : 5 = 6, ו-6 × 2 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-781f7da5bc",
+      "text": "כמה זה 4 חלקים מתוך 5 של 25?",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 25 : 5.",
+        "אחר כך כופלים ב-4."
+      ],
+      "explanation": "25 : 5 = 5, ו-5 × 4 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8674fed40f",
+      "text": "כמה זה חלק אחד מתוך 6 של 12?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 6\" אומר לחלק ל-6 חלקים שווים.",
+        "12 : 6 = ?"
+      ],
+      "explanation": "12 : 6 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-774d9201aa",
+      "text": "כמה זה חלק אחד מתוך 5 של 35?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 5\" אומר לחלק ל-5 חלקים שווים.",
+        "35 : 5 = ?"
+      ],
+      "explanation": "35 : 5 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-16dbbfb466",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 6 מתוך 8, כלומר 6/8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 6
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-4ea133408f",
+      "text": "כמה זה 2 חלקים מתוך 5 של 35?",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 35 : 5.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "35 : 5 = 7, ו-7 × 2 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1ac5d6637a",
+      "text": "כמה זה 2 חלקים מתוך 6 של 54?",
+      "answer": 18,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 54 : 6.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "54 : 6 = 9, ו-9 × 2 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-750603f09d",
+      "text": "כמה זה 2 חלקים מתוך 4 של 20?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 20 : 4.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "20 : 4 = 5, ו-5 × 2 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f9ee8d71b5",
+      "text": "כמה זה חלק אחד מתוך 2 של 10?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 2\" אומר לחלק ל-2 חלקים שווים.",
+        "10 : 2 = ?"
+      ],
+      "explanation": "10 : 2 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-03d2f11e63",
+      "text": "כמה זה חלק אחד מתוך 5 של 25?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 5\" אומר לחלק ל-5 חלקים שווים.",
+        "25 : 5 = ?"
+      ],
+      "explanation": "25 : 5 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f532e640d5",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-8 חלקים שווים, ולכן המכנה הוא 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 7
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-4d8eef2b36",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 1 מתוך 3, כלומר 1/3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 3,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-48d1d060c4",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 5 מתוך 6, כלומר 5/6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 5
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-4baa9d9f87",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-8 חלקים שווים, ולכן המכנה הוא 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 4
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-907d873a98",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-8 חלקים שווים, ולכן המכנה הוא 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-ce83188501",
+      "text": "כמה זה חלק אחד מתוך 5 של 30?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 5\" אומר לחלק ל-5 חלקים שווים.",
+        "30 : 5 = ?"
+      ],
+      "explanation": "30 : 5 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c335bdaac6",
+      "text": "כמה זה חלק אחד מתוך 2 של 16?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 2\" אומר לחלק ל-2 חלקים שווים.",
+        "16 : 2 = ?"
+      ],
+      "explanation": "16 : 2 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fabee5c705",
+      "text": "כמה זה 4 חלקים מתוך 5 של 10?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 10 : 5.",
+        "אחר כך כופלים ב-4."
+      ],
+      "explanation": "10 : 5 = 2, ו-2 × 4 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b4d0878462",
+      "text": "כמה זה 2 חלקים מתוך 3 של 24?",
+      "answer": 16,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 24 : 3.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "24 : 3 = 8, ו-8 × 2 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e26aff39a3",
+      "text": "כמה זה 3 חלקים מתוך 6 של 42?",
+      "answer": 21,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 42 : 6.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "42 : 6 = 7, ו-7 × 3 = 21.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7cec423add",
+      "text": "כמה זה חלק אחד מתוך 5 של 45?",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 5\" אומר לחלק ל-5 חלקים שווים.",
+        "45 : 5 = ?"
+      ],
+      "explanation": "45 : 5 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-79c08b75c6",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 2 מתוך 5, כלומר 2/5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 5,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-81ec15cf91",
+      "text": "כמה זה חלק אחד מתוך 5 של 10?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 5\" אומר לחלק ל-5 חלקים שווים.",
+        "10 : 5 = ?"
+      ],
+      "explanation": "10 : 5 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1ea31ecf02",
+      "text": "כמה זה חלק אחד מתוך 5 של 20?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 5\" אומר לחלק ל-5 חלקים שווים.",
+        "20 : 5 = ?"
+      ],
+      "explanation": "20 : 5 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cc213bf64b",
+      "text": "כמה זה 2 חלקים מתוך 4 של 12?",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 12 : 4.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "12 : 4 = 3, ו-3 × 2 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d09e45e5a7",
+      "text": "כמה זה חלק אחד מתוך 3 של 21?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 3\" אומר לחלק ל-3 חלקים שווים.",
+        "21 : 3 = ?"
+      ],
+      "explanation": "21 : 3 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c56b5bdbd2",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 1 מתוך 8, כלומר 1/8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-e65ab15a6a",
+      "text": "כמה זה 4 חלקים מתוך 6 של 30?",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 30 : 6.",
+        "אחר כך כופלים ב-4."
+      ],
+      "explanation": "30 : 6 = 5, ו-5 × 4 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-522483513d",
+      "text": "כמה זה 5 חלקים מתוך 6 של 18?",
+      "answer": 15,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 18 : 6.",
+        "אחר כך כופלים ב-5."
+      ],
+      "explanation": "18 : 6 = 3, ו-3 × 5 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6ea39de474",
+      "text": "כמה זה חלק אחד מתוך 2 של 18?",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 2\" אומר לחלק ל-2 חלקים שווים.",
+        "18 : 2 = ?"
+      ],
+      "explanation": "18 : 2 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7542dce466",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-5 חלקים שווים, ולכן המכנה הוא 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 5,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-01bb66d4b9",
+      "text": "כמה זה 2 חלקים מתוך 4 של 24?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 24 : 4.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "24 : 4 = 6, ו-6 × 2 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0b691cbd83",
+      "text": "כמה זה 2 חלקים מתוך 4 של 28?",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 28 : 4.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "28 : 4 = 7, ו-7 × 2 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-01cfaee13d",
+      "text": "כמה זה חלק אחד מתוך 3 של 27?",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 3\" אומר לחלק ל-3 חלקים שווים.",
+        "27 : 3 = ?"
+      ],
+      "explanation": "27 : 3 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d7b5e3af27",
+      "text": "כמה זה 3 חלקים מתוך 5 של 25?",
+      "answer": 15,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 25 : 5.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "25 : 5 = 5, ו-5 × 3 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-02d05a9256",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-5 חלקים שווים, ולכן המכנה הוא 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 5,
+          "shaded": 4
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-c9bc7f4d57",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 3 מתוך 6, כלומר 3/6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-ad2d3afb07",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 7 מתוך 8, כלומר 7/8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 7
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-72784884a3",
+      "text": "כמה זה חלק אחד מתוך 2 של 12?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 2\" אומר לחלק ל-2 חלקים שווים.",
+        "12 : 2 = ?"
+      ],
+      "explanation": "12 : 2 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f5ffae3fb5",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 2 מתוך 8, כלומר 2/8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-71ea43f741",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 6
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-864ce61871",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 1
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-d624e57308",
+      "text": "כמה זה 2 חלקים מתוך 4 של 8?",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 8 : 4.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "8 : 4 = 2, ו-2 × 2 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-452d027542",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 5
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-178e8920a2",
+      "text": "כמה זה 3 חלקים מתוך 4 של 32?",
+      "answer": 24,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 32 : 4.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "32 : 4 = 8, ו-8 × 3 = 24.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1044824893",
+      "text": "כמה זה 4 חלקים מתוך 5 של 45?",
+      "answer": 36,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 45 : 5.",
+        "אחר כך כופלים ב-4."
+      ],
+      "explanation": "45 : 5 = 9, ו-9 × 4 = 36.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bb3b5b1267",
+      "text": "כמה זה חלק אחד מתוך 4 של 36?",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 4\" אומר לחלק ל-4 חלקים שווים.",
+        "36 : 4 = ?"
+      ],
+      "explanation": "36 : 4 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5b41bd7bc3",
+      "text": "כמה זה 2 חלקים מתוך 5 של 15?",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 15 : 5.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "15 : 5 = 3, ו-3 × 2 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-611aa6f1e3",
+      "text": "כמה זה 2 חלקים מתוך 6 של 12?",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 12 : 6.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "12 : 6 = 2, ו-2 × 2 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f895820aee",
+      "text": "כמה זה 3 חלקים מתוך 4 של 20?",
+      "answer": 15,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 20 : 4.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "20 : 4 = 5, ו-5 × 3 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-327425e84c",
+      "text": "כמה זה 4 חלקים מתוך 5 של 15?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 15 : 5.",
+        "אחר כך כופלים ב-4."
+      ],
+      "explanation": "15 : 5 = 3, ו-3 × 4 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8f53da2362",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-8 חלקים שווים, ולכן המכנה הוא 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 8,
+          "shaded": 5
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-22a1fe0c01",
+      "text": "כמה זה 2 חלקים מתוך 4 של 16?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 16 : 4.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "16 : 4 = 4, ו-4 × 2 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-44b06048f4",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-6 חלקים שווים, ולכן המכנה הוא 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 5
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-f13e06c5ac",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-16a5e6103c",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 2 מתוך 6, כלומר 2/6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 2
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-4022a4926a",
+      "text": "כמה זה 5 חלקים מתוך 6 של 36?",
+      "answer": 30,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 36 : 6.",
+        "אחר כך כופלים ב-5."
+      ],
+      "explanation": "36 : 6 = 6, ו-6 × 5 = 30.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b3ddff861d",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 3
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-abaacd1960",
+      "text": "כמה זה 2 חלקים מתוך 3 של 6?",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 6 : 3.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "6 : 3 = 2, ו-2 × 2 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e4f3b0cec7",
+      "text": "כמה זה 3 חלקים מתוך 4 של 28?",
+      "answer": 21,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 28 : 4.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "28 : 4 = 7, ו-7 × 3 = 21.",
+      "source": "algo"
+    },
+    {
+      "id": "q-37667f6d95",
+      "text": "כמה זה חלק אחד מתוך 4 של 28?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 4\" אומר לחלק ל-4 חלקים שווים.",
+        "28 : 4 = ?"
+      ],
+      "explanation": "28 : 4 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8eff05dfa3",
+      "text": "כמה זה חלק אחד מתוך 2 של 8?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 2\" אומר לחלק ל-2 חלקים שווים.",
+        "8 : 2 = ?"
+      ],
+      "explanation": "8 : 2 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d11af93ed6",
+      "text": "כמה זה 3 חלקים מתוך 5 של 35?",
+      "answer": 21,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 35 : 5.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "35 : 5 = 7, ו-7 × 3 = 21.",
+      "source": "algo"
+    },
+    {
+      "id": "q-61f33666b8",
+      "text": "כמה חלקים צבועים בציור?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "ספור/י רק את החלקים הצבועים.",
+        "החלק התחתון של השבר הוא כמה חלקים יש בסך הכול — כאן שואלים על העליון."
+      ],
+      "explanation": "צבועים 4 מתוך 6, כלומר 4/6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 4
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-3a6ee110ea",
+      "text": "כמה זה 2 חלקים מתוך 6 של 30?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 30 : 6.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "30 : 6 = 5, ו-5 × 2 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b58070ba4f",
+      "text": "כמה זה 2 חלקים מתוך 6 של 18?",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 18 : 6.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "18 : 6 = 3, ו-3 × 2 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bdac88bc5a",
+      "text": "כמה זה 3 חלקים מתוך 5 של 20?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 20 : 5.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "20 : 5 = 4, ו-4 × 3 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-23739947df",
+      "text": "כמה זה 2 חלקים מתוך 6 של 36?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 36 : 6.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "36 : 6 = 6, ו-6 × 2 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-48c74aaf0c",
+      "text": "כמה זה 5 חלקים מתוך 6 של 24?",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 24 : 6.",
+        "אחר כך כופלים ב-5."
+      ],
+      "explanation": "24 : 6 = 4, ו-4 × 5 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fa96ce9e08",
+      "text": "כמה זה 3 חלקים מתוך 6 של 54?",
+      "answer": 27,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 54 : 6.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "54 : 6 = 9, ו-9 × 3 = 27.",
+      "source": "algo"
+    },
+    {
+      "id": "q-089cbd6bce",
+      "text": "כמה זה 3 חלקים מתוך 4 של 8?",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 8 : 4.",
+        "אחר כך כופלים ב-3."
+      ],
+      "explanation": "8 : 4 = 2, ו-2 × 3 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-520dd9d4d8",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-6 חלקים שווים, ולכן המכנה הוא 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 6,
+          "shaded": 4
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-47a590ab58",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 8
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-48cd446352",
+      "text": "כמה זה 2 חלקים מתוך 5 של 45?",
+      "answer": 18,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 45 : 5.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "45 : 5 = 9, ו-9 × 2 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8ba47772bc",
+      "text": "כמה זה חלק אחד מתוך 2 של 6?",
+      "answer": 3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 2\" אומר לחלק ל-2 חלקים שווים.",
+        "6 : 2 = ?"
+      ],
+      "explanation": "6 : 2 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b0746fbc9e",
+      "text": "כמה זה חלק אחד מתוך 2 של 14?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "\"חלק אחד מתוך 2\" אומר לחלק ל-2 חלקים שווים.",
+        "14 : 2 = ?"
+      ],
+      "explanation": "14 : 2 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ea40d03059",
+      "text": "כמה זה 2 חלקים מתוך 3 של 27?",
+      "answer": 18,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 27 : 3.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "27 : 3 = 9, ו-9 × 2 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bc285eb5fd",
+      "text": "כמה זה 4 חלקים מתוך 5 של 35?",
+      "answer": 28,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 35 : 5.",
+        "אחר כך כופלים ב-4."
+      ],
+      "explanation": "35 : 5 = 7, ו-7 × 4 = 28.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8c6a264405",
+      "text": "לכמה חלקים מחולק השלם בציור?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "סופרים את *כל* החלקים — גם הצבועים וגם הריקים.",
+        "המספר הזה הוא המכנה: החלק התחתון של השבר."
+      ],
+      "explanation": "השלם מחולק ל-10 חלקים שווים, ולכן המכנה הוא 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "interactive_fraction",
+        "params": {
+          "shape": "bar",
+          "parts": 10,
+          "shaded": 4
+        },
+        "w": 360,
+        "h": 220,
+        "alt": "מוט שברים"
+      }
+    },
+    {
+      "id": "q-9ca20d4718",
+      "text": "כמה זה 2 חלקים מתוך 5 של 40?",
+      "answer": 16,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מוצאים כמה זה חלק אחד: 40 : 5.",
+        "אחר כך כופלים ב-2."
+      ],
+      "explanation": "40 : 5 = 8, ו-8 × 2 = 16.",
+      "source": "algo"
+    }
+  ]
+}

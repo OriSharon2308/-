@@ -4,748 +4,33 @@
   "topic": "חיבור תרגילים",
   "questions": [
     {
-      "id": "q-3b2c9f1bf1",
-      "text": "5 + 11 + 2 = ?",
-      "answer": 18,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "5 + 11 = 16, ועוד 2."
-      ],
-      "explanation": "5 + 11 + 2 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-85c9186907",
-      "text": "4 + 4 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-4 והוסף/י 4."
-      ],
-      "explanation": "4 + 4 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4efca38b7a",
-      "text": "11 + 5 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-11 והוסף/י 5."
-      ],
-      "explanation": "11 + 5 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-62ed5f87c8",
-      "text": "1 + 8 + 5 = ?",
-      "answer": 14,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "1 + 8 = 9, ועוד 5."
-      ],
-      "explanation": "1 + 8 + 5 = 14.",
-      "source": "algo"
-    },
-    {
-      "id": "q-616cd556af",
-      "text": "8 + 6 + 4 = ?",
-      "answer": 18,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "8 + 6 = 14, ועוד 4."
-      ],
-      "explanation": "8 + 6 + 4 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-99a94a26f7",
-      "text": "20 + 0 = ?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-20 והוסף/י 0."
-      ],
-      "explanation": "20 + 0 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-11ec7d0c31",
-      "text": "8 + 4 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-8 והוסף/י 4."
-      ],
-      "explanation": "8 + 4 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-eabb0bd64d",
-      "text": "11 + 8 + 1 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "11 + 8 = 19, ועוד 1."
-      ],
-      "explanation": "11 + 8 + 1 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-52aa2514ee",
-      "text": "18 + 0 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-18 והוסף/י 0."
-      ],
-      "explanation": "18 + 0 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bbc8e2e201",
-      "text": "9 + 10 + 1 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "9 + 10 = 19, ועוד 1."
-      ],
-      "explanation": "9 + 10 + 1 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-93936aacd9",
-      "text": "14 + 5 = ?",
-      "answer": 19,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-14 והוסף/י 5."
-      ],
-      "explanation": "14 + 5 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fedd8efae6",
-      "text": "7 + 5 + 8 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "7 + 5 = 12, ועוד 8."
-      ],
-      "explanation": "7 + 5 + 8 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a42430faa3",
-      "text": "17 + 2 + 1 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "17 + 2 = 19, ועוד 1."
-      ],
-      "explanation": "17 + 2 + 1 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-12c3fd7c18",
-      "text": "0 + 1 = ?",
-      "answer": 1,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-0 והוסף/י 1."
-      ],
-      "explanation": "0 + 1 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-05c014ac47",
-      "text": "7 + 1 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-7 והוסף/י 1."
-      ],
-      "explanation": "7 + 1 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b43d5c9f33",
-      "text": "9 + 10 = ?",
-      "answer": 19,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-9 והוסף/י 10."
-      ],
-      "explanation": "9 + 10 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-57e5532ee9",
-      "text": "3 + 0 = ?",
-      "answer": 3,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-3 והוסף/י 0."
-      ],
-      "explanation": "3 + 0 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-be5dca2fae",
-      "text": "16 + 2 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-16 והוסף/י 2."
-      ],
-      "explanation": "16 + 2 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-08698cb6cd",
-      "text": "8 + 8 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-8 והוסף/י 8."
-      ],
-      "explanation": "8 + 8 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-96862f984b",
-      "text": "10 + 2 + 2 = ?",
-      "answer": 14,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "10 + 2 = 12, ועוד 2."
-      ],
-      "explanation": "10 + 2 + 2 = 14.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3417b286a3",
-      "text": "15 + 1 + 3 = ?",
-      "answer": 19,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "15 + 1 = 16, ועוד 3."
-      ],
-      "explanation": "15 + 1 + 3 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3bc42561bd",
-      "text": "1 + 10 = ?",
+      "id": "q-18ac8c4438",
+      "text": "0 + 11 = ?",
       "answer": 11,
       "level": 2,
       "difficulty": 2,
       "hints": [
         "אפשר לספור קדימה.",
-        "התחל/י מ-1 והוסף/י 10."
+        "התחל/י מ-0 והוסף/י 11."
       ],
-      "explanation": "1 + 10 = 11.",
+      "explanation": "0 + 11 = 11.",
       "source": "algo"
     },
     {
-      "id": "q-1180798061",
-      "text": "1 + 11 + 1 = ?",
-      "answer": 13,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "1 + 11 = 12, ועוד 1."
-      ],
-      "explanation": "1 + 11 + 1 = 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-698be6a3fd",
-      "text": "9 + 9 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-9 והוסף/י 9."
-      ],
-      "explanation": "9 + 9 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-26843aa139",
-      "text": "8 + 3 = ?",
-      "answer": 11,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-8 והוסף/י 3."
-      ],
-      "explanation": "8 + 3 = 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-96640c9b94",
-      "text": "19 + 0 = ?",
-      "answer": 19,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-19 והוסף/י 0."
-      ],
-      "explanation": "19 + 0 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a9d44c8e0a",
-      "text": "11 + 1 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-11 והוסף/י 1."
-      ],
-      "explanation": "11 + 1 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-93a168350e",
-      "text": "0 + 13 = ?",
-      "answer": 13,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-0 והוסף/י 13."
-      ],
-      "explanation": "0 + 13 = 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-dae74d0ace",
-      "text": "17 + 1 + 2 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "17 + 1 = 18, ועוד 2."
-      ],
-      "explanation": "17 + 1 + 2 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a2b9266f5b",
-      "text": "15 + 2 + 2 = ?",
-      "answer": 19,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "15 + 2 = 17, ועוד 2."
-      ],
-      "explanation": "15 + 2 + 2 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2a94ddd179",
-      "text": "11 + 9 = ?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-11 והוסף/י 9."
-      ],
-      "explanation": "11 + 9 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-00ddd85841",
-      "text": "11 + 7 + 2 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "11 + 7 = 18, ועוד 2."
-      ],
-      "explanation": "11 + 7 + 2 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-78c87759ce",
-      "text": "9 + 6 + 1 = ?",
-      "answer": 16,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "9 + 6 = 15, ועוד 1."
-      ],
-      "explanation": "9 + 6 + 1 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b104296590",
-      "text": "1 + 6 = ?",
-      "answer": 7,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-1 והוסף/י 6."
-      ],
-      "explanation": "1 + 6 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4635a4aae8",
-      "text": "5 + 8 = ?",
-      "answer": 13,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-5 והוסף/י 8."
-      ],
-      "explanation": "5 + 8 = 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3e45ba43e4",
-      "text": "6 + 10 + 4 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "6 + 10 = 16, ועוד 4."
-      ],
-      "explanation": "6 + 10 + 4 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d975a1f99f",
-      "text": "1 + 7 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-1 והוסף/י 7."
-      ],
-      "explanation": "1 + 7 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8fe9be4495",
-      "text": "8 + 7 = ?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-8 והוסף/י 7."
-      ],
-      "explanation": "8 + 7 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-88d1fcacfe",
-      "text": "8 + 12 = ?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-8 והוסף/י 12."
-      ],
-      "explanation": "8 + 12 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-06630e54c3",
-      "text": "2 + 4 + 6 = ?",
-      "answer": 12,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "2 + 4 = 6, ועוד 6."
-      ],
-      "explanation": "2 + 4 + 6 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d8ce5ce6cb",
-      "text": "3 + 6 = ?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-3 והוסף/י 6."
-      ],
-      "explanation": "3 + 6 = 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4098b3f034",
-      "text": "12 + 6 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-12 והוסף/י 6."
-      ],
-      "explanation": "12 + 6 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fa0943a6eb",
-      "text": "8 + 0 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-8 והוסף/י 0."
-      ],
-      "explanation": "8 + 0 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e39f0e8881",
-      "text": "13 + 0 = ?",
-      "answer": 13,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-13 והוסף/י 0."
-      ],
-      "explanation": "13 + 0 = 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-896ef7de5f",
-      "text": "13 + 3 + 1 = ?",
-      "answer": 17,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "13 + 3 = 16, ועוד 1."
-      ],
-      "explanation": "13 + 3 + 1 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c74e9d24ac",
-      "text": "6 + 11 = ?",
+      "id": "q-e48c14e89c",
+      "text": "3 + 14 = ?",
       "answer": 17,
       "level": 2,
       "difficulty": 2,
       "hints": [
         "אפשר לספור קדימה.",
-        "התחל/י מ-6 והוסף/י 11."
+        "התחל/י מ-3 והוסף/י 14."
       ],
-      "explanation": "6 + 11 = 17.",
+      "explanation": "3 + 14 = 17.",
       "source": "algo"
     },
     {
-      "id": "q-1bc20520f8",
-      "text": "11 + 3 = ?",
-      "answer": 14,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-11 והוסף/י 3."
-      ],
-      "explanation": "11 + 3 = 14.",
-      "source": "algo"
-    },
-    {
-      "id": "q-43326ac474",
-      "text": "6 + 3 = ?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-6 והוסף/י 3."
-      ],
-      "explanation": "6 + 3 = 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-19eeaceb49",
-      "text": "0 + 16 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-0 והוסף/י 16."
-      ],
-      "explanation": "0 + 16 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fce8313ed1",
-      "text": "8 + 7 + 2 = ?",
-      "answer": 17,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "8 + 7 = 15, ועוד 2."
-      ],
-      "explanation": "8 + 7 + 2 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9577fdf16c",
-      "text": "9 + 2 + 9 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "9 + 2 = 11, ועוד 9."
-      ],
-      "explanation": "9 + 2 + 9 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ce3bad5f22",
-      "text": "10 + 0 = ?",
-      "answer": 10,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-10 והוסף/י 0."
-      ],
-      "explanation": "10 + 0 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e7cbfcbb79",
-      "text": "8 + 11 + 1 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "8 + 11 = 19, ועוד 1."
-      ],
-      "explanation": "8 + 11 + 1 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-385b015e50",
-      "text": "5 + 11 + 4 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "5 + 11 = 16, ועוד 4."
-      ],
-      "explanation": "5 + 11 + 4 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-29f8b991eb",
-      "text": "15 + 5 = ?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-15 והוסף/י 5."
-      ],
-      "explanation": "15 + 5 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-84cc042de5",
-      "text": "11 + 4 = ?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-11 והוסף/י 4."
-      ],
-      "explanation": "11 + 4 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6c9ba865a4",
-      "text": "3 + 3 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-3 והוסף/י 3."
-      ],
-      "explanation": "3 + 3 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-970d105e75",
+      "id": "q-03e6fdc2b6",
       "text": "13 + 4 = ?",
       "answer": 17,
       "level": 2,
@@ -758,33 +43,7 @@
       "source": "algo"
     },
     {
-      "id": "q-ac6d4beb3c",
-      "text": "12 + 6 + 1 = ?",
-      "answer": 19,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "12 + 6 = 18, ועוד 1."
-      ],
-      "explanation": "12 + 6 + 1 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-56a7fd9741",
-      "text": "12 + 5 = ?",
-      "answer": 17,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-12 והוסף/י 5."
-      ],
-      "explanation": "12 + 5 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-00325ec73e",
+      "id": "q-6eba8c4ee2",
       "text": "18 + 1 + 1 = ?",
       "answer": 20,
       "level": 3,
@@ -797,293 +56,7 @@
       "source": "algo"
     },
     {
-      "id": "q-ae38621529",
-      "text": "11 + 2 = ?",
-      "answer": 13,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-11 והוסף/י 2."
-      ],
-      "explanation": "11 + 2 = 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-00bb884280",
-      "text": "19 + 1 = ?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-19 והוסף/י 1."
-      ],
-      "explanation": "19 + 1 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-26383e74d8",
-      "text": "3 + 9 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-3 והוסף/י 9."
-      ],
-      "explanation": "3 + 9 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-98a04c90b8",
-      "text": "11 + 8 = ?",
-      "answer": 19,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-11 והוסף/י 8."
-      ],
-      "explanation": "11 + 8 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1f93b7dd1e",
-      "text": "1 + 17 = ?",
-      "answer": 18,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-1 והוסף/י 17."
-      ],
-      "explanation": "1 + 17 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4a1ff0caa4",
-      "text": "7 + 5 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-7 והוסף/י 5."
-      ],
-      "explanation": "7 + 5 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3ad086f5b5",
-      "text": "12 + 8 = ?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-12 והוסף/י 8."
-      ],
-      "explanation": "12 + 8 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-627574415b",
-      "text": "5 + 4 = ?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-5 והוסף/י 4."
-      ],
-      "explanation": "5 + 4 = 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-db9d725d50",
-      "text": "9 + 8 + 1 = ?",
-      "answer": 18,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "9 + 8 = 17, ועוד 1."
-      ],
-      "explanation": "9 + 8 + 1 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a5145eaf24",
-      "text": "3 + 1 = ?",
-      "answer": 4,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-3 והוסף/י 1."
-      ],
-      "explanation": "3 + 1 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-797387a350",
-      "text": "4 + 7 = ?",
-      "answer": 11,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-4 והוסף/י 7."
-      ],
-      "explanation": "4 + 7 = 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fc2c543199",
-      "text": "14 + 1 + 4 = ?",
-      "answer": 19,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "14 + 1 = 15, ועוד 4."
-      ],
-      "explanation": "14 + 1 + 4 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-291cac60ce",
-      "text": "12 + 7 = ?",
-      "answer": 19,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-12 והוסף/י 7."
-      ],
-      "explanation": "12 + 7 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-beeca58925",
-      "text": "7 + 1 + 7 = ?",
-      "answer": 15,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "7 + 1 = 8, ועוד 7."
-      ],
-      "explanation": "7 + 1 + 7 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d7c098c87a",
-      "text": "1 + 17 + 1 = ?",
-      "answer": 19,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "1 + 17 = 18, ועוד 1."
-      ],
-      "explanation": "1 + 17 + 1 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7ded6a50af",
-      "text": "5 + 14 + 1 = ?",
-      "answer": 20,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "5 + 14 = 19, ועוד 1."
-      ],
-      "explanation": "5 + 14 + 1 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0ac2756192",
-      "text": "15 + 0 = ?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-15 והוסף/י 0."
-      ],
-      "explanation": "15 + 0 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4f66dd8ccb",
-      "text": "6 + 1 + 5 = ?",
-      "answer": 12,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "6 + 1 = 7, ועוד 5."
-      ],
-      "explanation": "6 + 1 + 5 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d4a04c2ca0",
-      "text": "4 + 2 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-4 והוסף/י 2."
-      ],
-      "explanation": "4 + 2 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-43eee289ce",
-      "text": "17 + 3 = ?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-17 והוסף/י 3."
-      ],
-      "explanation": "17 + 3 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-893eee70fb",
-      "text": "6 + 7 = ?",
-      "answer": 13,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-6 והוסף/י 7."
-      ],
-      "explanation": "6 + 7 = 13.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4b1c37a68a",
-      "text": "2 + 10 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-2 והוסף/י 10."
-      ],
-      "explanation": "2 + 10 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-efc419ad9a",
+      "id": "q-2b4318bc97",
       "text": "18 + 1 = ?",
       "answer": 19,
       "level": 2,
@@ -1096,189 +69,72 @@
       "source": "algo"
     },
     {
-      "id": "q-f5b5c71d42",
-      "text": "3 + 8 + 5 = ?",
-      "answer": 16,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "3 + 8 = 11, ועוד 5."
-      ],
-      "explanation": "3 + 8 + 5 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d77be4702c",
-      "text": "5 + 7 + 6 = ?",
-      "answer": 18,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "5 + 7 = 12, ועוד 6."
-      ],
-      "explanation": "5 + 7 + 6 = 18.",
-      "source": "algo"
-    },
-    {
-      "id": "q-be1e177fba",
-      "text": "16 + 1 + 2 = ?",
-      "answer": 19,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "16 + 1 = 17, ועוד 2."
-      ],
-      "explanation": "16 + 1 + 2 = 19.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7b14a9d2b9",
-      "text": "11 + 4 + 2 = ?",
-      "answer": 17,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "11 + 4 = 15, ועוד 2."
-      ],
-      "explanation": "11 + 4 + 2 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b3207d2494",
-      "text": "14 + 2 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-14 והוסף/י 2."
-      ],
-      "explanation": "14 + 2 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-852a0463f8",
-      "text": "6 + 9 = ?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-6 והוסף/י 9."
-      ],
-      "explanation": "6 + 9 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-53fab91437",
-      "text": "15 + 1 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-15 והוסף/י 1."
-      ],
-      "explanation": "15 + 1 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-469c164f76",
-      "text": "10 + 7 = ?",
-      "answer": 17,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-10 והוסף/י 7."
-      ],
-      "explanation": "10 + 7 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-67caf3e3e3",
-      "text": "17 + 0 = ?",
-      "answer": 17,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-17 והוסף/י 0."
-      ],
-      "explanation": "17 + 0 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-29ca23f6ce",
-      "text": "3 + 8 = ?",
-      "answer": 11,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-3 והוסף/י 8."
-      ],
-      "explanation": "3 + 8 = 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5f7c1d3a66",
-      "text": "5 + 1 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-5 והוסף/י 1."
-      ],
-      "explanation": "5 + 1 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8142f9c7ad",
-      "text": "10 + 4 + 1 = ?",
-      "answer": 15,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "10 + 4 = 14, ועוד 1."
-      ],
-      "explanation": "10 + 4 + 1 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a45060c57e",
-      "text": "2 + 6 + 12 = ?",
+      "id": "q-7e416aa2a3",
+      "text": "18 + 2 = ?",
       "answer": 20,
-      "level": 3,
-      "difficulty": 3,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "2 + 6 = 8, ועוד 12."
+        "אפשר לספור קדימה.",
+        "התחל/י מ-18 והוסף/י 2."
       ],
-      "explanation": "2 + 6 + 12 = 20.",
+      "explanation": "18 + 2 = 20.",
       "source": "algo"
     },
     {
-      "id": "q-24d4c9a9f0",
-      "text": "10 + 2 + 4 = ?",
-      "answer": 16,
-      "level": 3,
-      "difficulty": 3,
+      "id": "q-d9e2d4ad07",
+      "text": "17 + 1 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
-        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "10 + 2 = 12, ועוד 4."
+        "אפשר לספור קדימה.",
+        "התחל/י מ-17 והוסף/י 1."
       ],
-      "explanation": "10 + 2 + 4 = 16.",
+      "explanation": "17 + 1 = 18.",
       "source": "algo"
     },
     {
-      "id": "q-31e236615a",
+      "id": "q-d93745dbae",
+      "text": "7 + 2 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-7 והוסף/י 2."
+      ],
+      "explanation": "7 + 2 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3fe8b8a464",
+      "text": "11 + 2 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-11 והוסף/י 2."
+      ],
+      "explanation": "11 + 2 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cb557929a6",
+      "text": "2 + 11 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-2 והוסף/י 11."
+      ],
+      "explanation": "2 + 11 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-627aee108b",
       "text": "6 + 1 = ?",
       "answer": 7,
       "level": 2,
@@ -1291,33 +147,20 @@
       "source": "algo"
     },
     {
-      "id": "q-87d1440d63",
-      "text": "10 + 7 + 2 = ?",
-      "answer": 19,
+      "id": "q-5760296515",
+      "text": "1 + 6 + 1 = ?",
+      "answer": 8,
       "level": 3,
       "difficulty": 3,
       "hints": [
         "מחברים שניים קודם, ואז מוסיפים את השלישי.",
-        "10 + 7 = 17, ועוד 2."
+        "1 + 6 = 7, ועוד 1."
       ],
-      "explanation": "10 + 7 + 2 = 19.",
+      "explanation": "1 + 6 + 1 = 8.",
       "source": "algo"
     },
     {
-      "id": "q-8b4af1322b",
-      "text": "0 + 3 = ?",
-      "answer": 3,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-0 והוסף/י 3."
-      ],
-      "explanation": "0 + 3 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0f14d80bb7",
+      "id": "q-f9395ea403",
       "text": "1 + 2 = ?",
       "answer": 3,
       "level": 1,
@@ -1330,20 +173,1281 @@
       "source": "algo"
     },
     {
-      "id": "q-bf9511587c",
-      "text": "1 + 0 = ?",
-      "answer": 1,
+      "id": "q-eb9009b8ab",
+      "text": "7 + 5 + 1 = ?",
+      "answer": 13,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "7 + 5 = 12, ועוד 1."
+      ],
+      "explanation": "7 + 5 + 1 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a2cb1afad5",
+      "text": "12 + 5 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-12 והוסף/י 5."
+      ],
+      "explanation": "12 + 5 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5aeb1d5017",
+      "text": "17 + 0 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-17 והוסף/י 0."
+      ],
+      "explanation": "17 + 0 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f11e4a99fa",
+      "text": "19 + 0 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-19 והוסף/י 0."
+      ],
+      "explanation": "19 + 0 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c97af41aa8",
+      "text": "2 + 6 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-2 והוסף/י 6."
+      ],
+      "explanation": "2 + 6 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f06fdf1fd0",
+      "text": "8 + 8 + 2 = ?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "8 + 8 = 16, ועוד 2."
+      ],
+      "explanation": "8 + 8 + 2 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fd7f72da74",
+      "text": "17 + 1 + 2 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "17 + 1 = 18, ועוד 2."
+      ],
+      "explanation": "17 + 1 + 2 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-651c65a1c4",
+      "text": "9 + 2 + 4 = ?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "9 + 2 = 11, ועוד 4."
+      ],
+      "explanation": "9 + 2 + 4 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-03485f6905",
+      "text": "9 + 4 + 2 = ?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "9 + 4 = 13, ועוד 2."
+      ],
+      "explanation": "9 + 4 + 2 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-16d9ffe26e",
+      "text": "11 + 6 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-11 והוסף/י 6."
+      ],
+      "explanation": "11 + 6 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-299e1fa9c6",
+      "text": "20 + 0 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-20 והוסף/י 0."
+      ],
+      "explanation": "20 + 0 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-93e743c96b",
+      "text": "1 + 15 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-1 והוסף/י 15."
+      ],
+      "explanation": "1 + 15 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3f34420cbb",
+      "text": "17 + 1 + 1 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "17 + 1 = 18, ועוד 1."
+      ],
+      "explanation": "17 + 1 + 1 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7dd20ae4e2",
+      "text": "12 + 6 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-12 והוסף/י 6."
+      ],
+      "explanation": "12 + 6 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5f67356912",
+      "text": "14 + 2 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-14 והוסף/י 2."
+      ],
+      "explanation": "14 + 2 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7dbeab33b1",
+      "text": "9 + 3 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-9 והוסף/י 3."
+      ],
+      "explanation": "9 + 3 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9c5d9b47a9",
+      "text": "6 + 4 + 4 = ?",
+      "answer": 14,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "6 + 4 = 10, ועוד 4."
+      ],
+      "explanation": "6 + 4 + 4 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8d86b7ec16",
+      "text": "13 + 7 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-13 והוסף/י 7."
+      ],
+      "explanation": "13 + 7 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-84af170b90",
+      "text": "11 + 7 + 2 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "11 + 7 = 18, ועוד 2."
+      ],
+      "explanation": "11 + 7 + 2 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8782b1da62",
+      "text": "15 + 3 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-15 והוסף/י 3."
+      ],
+      "explanation": "15 + 3 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8ac10a29d7",
+      "text": "17 + 3 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-17 והוסף/י 3."
+      ],
+      "explanation": "17 + 3 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-17df50d855",
+      "text": "12 + 3 = ?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-12 והוסף/י 3."
+      ],
+      "explanation": "12 + 3 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6123cd5f64",
+      "text": "3 + 16 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-3 והוסף/י 16."
+      ],
+      "explanation": "3 + 16 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-aeebc27b03",
+      "text": "8 + 8 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 8."
+      ],
+      "explanation": "8 + 8 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fc4f227f2d",
+      "text": "1 + 2 + 2 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "1 + 2 = 3, ועוד 2."
+      ],
+      "explanation": "1 + 2 + 2 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0f9123f6e7",
+      "text": "16 + 2 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-16 והוסף/י 2."
+      ],
+      "explanation": "16 + 2 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-76a8191e4b",
+      "text": "8 + 1 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 1."
+      ],
+      "explanation": "8 + 1 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1b41b511d2",
+      "text": "6 + 4 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-6 והוסף/י 4."
+      ],
+      "explanation": "6 + 4 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-67a56b6a3c",
+      "text": "4 + 4 + 2 = ?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "4 + 4 = 8, ועוד 2."
+      ],
+      "explanation": "4 + 4 + 2 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-13db08dca8",
+      "text": "8 + 4 + 6 = ?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "8 + 4 = 12, ועוד 6."
+      ],
+      "explanation": "8 + 4 + 6 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9eba66ca77",
+      "text": "8 + 9 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 9."
+      ],
+      "explanation": "8 + 9 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f4bf735cdb",
+      "text": "18 + 0 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-18 והוסף/י 0."
+      ],
+      "explanation": "18 + 0 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7d60ec21ba",
+      "text": "16 + 3 + 1 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "16 + 3 = 19, ועוד 1."
+      ],
+      "explanation": "16 + 3 + 1 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e893901dcb",
+      "text": "7 + 7 = ?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-7 והוסף/י 7."
+      ],
+      "explanation": "7 + 7 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e06ff88865",
+      "text": "15 + 4 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-15 והוסף/י 4."
+      ],
+      "explanation": "15 + 4 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cd5fb34292",
+      "text": "1 + 7 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-1 והוסף/י 7."
+      ],
+      "explanation": "1 + 7 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f831e01a94",
+      "text": "5 + 11 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-5 והוסף/י 11."
+      ],
+      "explanation": "5 + 11 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-14da6f3a40",
+      "text": "14 + 6 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-14 והוסף/י 6."
+      ],
+      "explanation": "14 + 6 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-08808f028b",
+      "text": "8 + 11 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 11."
+      ],
+      "explanation": "8 + 11 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3d3e315ec5",
+      "text": "1 + 8 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-1 והוסף/י 8."
+      ],
+      "explanation": "1 + 8 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a5af58a2f0",
+      "text": "11 + 7 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-11 והוסף/י 7."
+      ],
+      "explanation": "11 + 7 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f460662bed",
+      "text": "4 + 7 + 1 = ?",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "4 + 7 = 11, ועוד 1."
+      ],
+      "explanation": "4 + 7 + 1 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a5e4fcbece",
+      "text": "16 + 4 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-16 והוסף/י 4."
+      ],
+      "explanation": "16 + 4 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3191ee3eec",
+      "text": "12 + 2 + 5 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "12 + 2 = 14, ועוד 5."
+      ],
+      "explanation": "12 + 2 + 5 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8e852247be",
+      "text": "15 + 4 + 1 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "15 + 4 = 19, ועוד 1."
+      ],
+      "explanation": "15 + 4 + 1 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1b6620ac1d",
+      "text": "16 + 1 + 1 = ?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "16 + 1 = 17, ועוד 1."
+      ],
+      "explanation": "16 + 1 + 1 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a87c7843be",
+      "text": "14 + 5 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-14 והוסף/י 5."
+      ],
+      "explanation": "14 + 5 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-50f000ff6d",
+      "text": "1 + 17 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-1 והוסף/י 17."
+      ],
+      "explanation": "1 + 17 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-be3e63fcbb",
+      "text": "0 + 16 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-0 והוסף/י 16."
+      ],
+      "explanation": "0 + 16 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e41410e6d0",
+      "text": "15 + 0 = ?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-15 והוסף/י 0."
+      ],
+      "explanation": "15 + 0 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-80b63b2612",
+      "text": "12 + 0 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-12 והוסף/י 0."
+      ],
+      "explanation": "12 + 0 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-59b2deeb91",
+      "text": "2 + 15 + 1 = ?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "2 + 15 = 17, ועוד 1."
+      ],
+      "explanation": "2 + 15 + 1 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d716d793e4",
+      "text": "10 + 7 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-10 והוסף/י 7."
+      ],
+      "explanation": "10 + 7 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-391894197b",
+      "text": "8 + 3 = ?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 3."
+      ],
+      "explanation": "8 + 3 = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-83d0515c3e",
+      "text": "6 + 6 + 6 = ?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "6 + 6 = 12, ועוד 6."
+      ],
+      "explanation": "6 + 6 + 6 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1a6defc924",
+      "text": "17 + 2 + 1 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "17 + 2 = 19, ועוד 1."
+      ],
+      "explanation": "17 + 2 + 1 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6681a54049",
+      "text": "7 + 2 + 3 = ?",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "7 + 2 = 9, ועוד 3."
+      ],
+      "explanation": "7 + 2 + 3 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2592f9edd0",
+      "text": "14 + 5 + 1 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "14 + 5 = 19, ועוד 1."
+      ],
+      "explanation": "14 + 5 + 1 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-17e5b9666c",
+      "text": "5 + 9 = ?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-5 והוסף/י 9."
+      ],
+      "explanation": "5 + 9 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b74bc251ca",
+      "text": "5 + 4 + 10 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "5 + 4 = 9, ועוד 10."
+      ],
+      "explanation": "5 + 4 + 10 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cfe07a6825",
+      "text": "15 + 2 + 3 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "15 + 2 = 17, ועוד 3."
+      ],
+      "explanation": "15 + 2 + 3 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e496ab0a05",
+      "text": "3 + 10 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-3 והוסף/י 10."
+      ],
+      "explanation": "3 + 10 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f4891053b0",
+      "text": "14 + 4 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-14 והוסף/י 4."
+      ],
+      "explanation": "14 + 4 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-55b8d97f07",
+      "text": "13 + 0 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-13 והוסף/י 0."
+      ],
+      "explanation": "13 + 0 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cb73570d9c",
+      "text": "8 + 10 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 10."
+      ],
+      "explanation": "8 + 10 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-885b299f27",
+      "text": "13 + 1 + 1 = ?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "13 + 1 = 14, ועוד 1."
+      ],
+      "explanation": "13 + 1 + 1 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-093bc48a4d",
+      "text": "2 + 14 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-2 והוסף/י 14."
+      ],
+      "explanation": "2 + 14 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9cccf3edc2",
+      "text": "9 + 2 + 9 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "9 + 2 = 11, ועוד 9."
+      ],
+      "explanation": "9 + 2 + 9 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e6205d64f6",
+      "text": "6 + 0 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-6 והוסף/י 0."
+      ],
+      "explanation": "6 + 0 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c96e114b14",
+      "text": "15 + 2 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-15 והוסף/י 2."
+      ],
+      "explanation": "15 + 2 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d91dd640f8",
+      "text": "1 + 12 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-1 והוסף/י 12."
+      ],
+      "explanation": "1 + 12 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-de408b09e5",
+      "text": "3 + 3 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-3 והוסף/י 3."
+      ],
+      "explanation": "3 + 3 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3b53d973c0",
+      "text": "8 + 2 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 2."
+      ],
+      "explanation": "8 + 2 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-580363faff",
+      "text": "2 + 9 = ?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-2 והוסף/י 9."
+      ],
+      "explanation": "2 + 9 = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-94e291256f",
+      "text": "3 + 5 + 6 = ?",
+      "answer": 14,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "3 + 5 = 8, ועוד 6."
+      ],
+      "explanation": "3 + 5 + 6 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9f92134afa",
+      "text": "7 + 12 + 1 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "7 + 12 = 19, ועוד 1."
+      ],
+      "explanation": "7 + 12 + 1 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7d5aeea15e",
+      "text": "1 + 1 = ?",
+      "answer": 2,
       "level": 1,
       "difficulty": 1,
       "hints": [
         "אפשר לספור קדימה.",
-        "התחל/י מ-1 והוסף/י 0."
+        "התחל/י מ-1 והוסף/י 1."
       ],
-      "explanation": "1 + 0 = 1.",
+      "explanation": "1 + 1 = 2.",
       "source": "algo"
     },
     {
-      "id": "q-07557471cb",
+      "id": "q-a1fe258ed0",
+      "text": "12 + 5 + 1 = ?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "12 + 5 = 17, ועוד 1."
+      ],
+      "explanation": "12 + 5 + 1 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6938b7804f",
+      "text": "5 + 3 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-5 והוסף/י 3."
+      ],
+      "explanation": "5 + 3 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f9f7224080",
+      "text": "9 + 0 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-9 והוסף/י 0."
+      ],
+      "explanation": "9 + 0 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1dfb5e7831",
+      "text": "7 + 5 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-7 והוסף/י 5."
+      ],
+      "explanation": "7 + 5 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-019437caf2",
+      "text": "11 + 4 + 4 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "11 + 4 = 15, ועוד 4."
+      ],
+      "explanation": "11 + 4 + 4 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-92040d0644",
+      "text": "8 + 12 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 12."
+      ],
+      "explanation": "8 + 12 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-398f84c521",
+      "text": "8 + 5 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-8 והוסף/י 5."
+      ],
+      "explanation": "8 + 5 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7c7290e006",
+      "text": "9 + 1 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-9 והוסף/י 1."
+      ],
+      "explanation": "9 + 1 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7e6059f1a6",
+      "text": "16 + 0 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-16 והוסף/י 0."
+      ],
+      "explanation": "16 + 0 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-79f580ccb4",
+      "text": "6 + 1 + 7 = ?",
+      "answer": 14,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "6 + 1 = 7, ועוד 7."
+      ],
+      "explanation": "6 + 1 + 7 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a576e37022",
+      "text": "10 + 5 = ?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-10 והוסף/י 5."
+      ],
+      "explanation": "10 + 5 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-376357e884",
+      "text": "14 + 1 + 4 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "14 + 1 = 15, ועוד 4."
+      ],
+      "explanation": "14 + 1 + 4 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-030d71892b",
+      "text": "6 + 7 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-6 והוסף/י 7."
+      ],
+      "explanation": "6 + 7 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-28bd2a3461",
+      "text": "4 + 12 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-4 והוסף/י 12."
+      ],
+      "explanation": "4 + 12 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-155ca13542",
+      "text": "16 + 3 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-16 והוסף/י 3."
+      ],
+      "explanation": "16 + 3 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-410095b1a9",
+      "text": "15 + 1 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-15 והוסף/י 1."
+      ],
+      "explanation": "15 + 1 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f397a7e129",
+      "text": "10 + 8 + 2 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "10 + 8 = 18, ועוד 2."
+      ],
+      "explanation": "10 + 8 + 2 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-25daa80700",
+      "text": "17 + 2 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-17 והוסף/י 2."
+      ],
+      "explanation": "17 + 2 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-afb965efea",
+      "text": "16 + 1 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-16 והוסף/י 1."
+      ],
+      "explanation": "16 + 1 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-230625fa0e",
+      "text": "8 + 1 + 2 = ?",
+      "answer": 11,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "8 + 1 = 9, ועוד 2."
+      ],
+      "explanation": "8 + 1 + 2 = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0e9889651a",
+      "text": "2 + 18 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-2 והוסף/י 18."
+      ],
+      "explanation": "2 + 18 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-698845c2b2",
       "text": "0 + 2 = ?",
       "answer": 2,
       "level": 1,
@@ -1356,42 +1460,497 @@
       "source": "algo"
     },
     {
-      "id": "q-0c4256bfb2",
-      "text": "0 + 0 = ?",
-      "answer": 0,
-      "level": 1,
-      "difficulty": 1,
+      "id": "q-01d470a4f2",
+      "text": "13 + 5 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "אפשר לספור קדימה.",
-        "התחל/י מ-0 והוסף/י 0."
+        "התחל/י מ-13 והוסף/י 5."
       ],
-      "explanation": "0 + 0 = 0.",
+      "explanation": "13 + 5 = 18.",
       "source": "algo"
     },
     {
-      "id": "q-07bcf1a3d9",
-      "text": "2 + 1 = ?",
-      "answer": 3,
-      "level": 1,
-      "difficulty": 1,
+      "id": "q-f35ed08257",
+      "text": "14 + 4 + 1 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
       "hints": [
-        "אפשר לספור קדימה.",
-        "התחל/י מ-2 והוסף/י 1."
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "14 + 4 = 18, ועוד 1."
       ],
-      "explanation": "2 + 1 = 3.",
+      "explanation": "14 + 4 + 1 = 19.",
       "source": "algo"
     },
     {
-      "id": "q-f47bead6d0",
-      "text": "0 + 4 = ?",
+      "id": "q-db2f8c32f9",
+      "text": "1 + 17 + 2 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "1 + 17 = 18, ועוד 2."
+      ],
+      "explanation": "1 + 17 + 2 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8dc01421db",
+      "text": "0 + 10 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-0 והוסף/י 10."
+      ],
+      "explanation": "0 + 10 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-39a380a8ce",
+      "text": "9 + 9 + 1 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "9 + 9 = 18, ועוד 1."
+      ],
+      "explanation": "9 + 9 + 1 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2fa72e7c3e",
+      "text": "4 + 7 + 9 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "4 + 7 = 11, ועוד 9."
+      ],
+      "explanation": "4 + 7 + 9 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-42da697997",
+      "text": "6 + 5 = ?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-6 והוסף/י 5."
+      ],
+      "explanation": "6 + 5 = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0ed6ce1376",
+      "text": "9 + 2 + 7 = ?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "9 + 2 = 11, ועוד 7."
+      ],
+      "explanation": "9 + 2 + 7 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d23a2de12b",
+      "text": "16 + 2 + 2 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "16 + 2 = 18, ועוד 2."
+      ],
+      "explanation": "16 + 2 + 2 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7202a71048",
+      "text": "4 + 15 + 1 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "4 + 15 = 19, ועוד 1."
+      ],
+      "explanation": "4 + 15 + 1 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6dc094caf5",
+      "text": "1 + 4 + 10 = ?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "1 + 4 = 5, ועוד 10."
+      ],
+      "explanation": "1 + 4 + 10 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c385040bb1",
+      "text": "6 + 6 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-6 והוסף/י 6."
+      ],
+      "explanation": "6 + 6 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0f855d3c2d",
+      "text": "6 + 11 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-6 והוסף/י 11."
+      ],
+      "explanation": "6 + 11 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-afe810edd7",
+      "text": "10 + 3 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-10 והוסף/י 3."
+      ],
+      "explanation": "10 + 3 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6a01e563e9",
+      "text": "11 + 2 + 2 = ?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "11 + 2 = 13, ועוד 2."
+      ],
+      "explanation": "11 + 2 + 2 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c294be4742",
+      "text": "4 + 6 + 6 = ?",
+      "answer": 16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "4 + 6 = 10, ועוד 6."
+      ],
+      "explanation": "4 + 6 + 6 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cd1f658f7f",
+      "text": "5 + 5 + 2 = ?",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "5 + 5 = 10, ועוד 2."
+      ],
+      "explanation": "5 + 5 + 2 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e6d7963107",
+      "text": "5 + 11 + 3 = ?",
+      "answer": 19,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "5 + 11 = 16, ועוד 3."
+      ],
+      "explanation": "5 + 11 + 3 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fc2a46f5a7",
+      "text": "10 + 2 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-10 והוסף/י 2."
+      ],
+      "explanation": "10 + 2 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e9148c40d3",
+      "text": "6 + 11 + 3 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "6 + 11 = 17, ועוד 3."
+      ],
+      "explanation": "6 + 11 + 3 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e09f27443d",
+      "text": "7 + 8 + 3 = ?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "7 + 8 = 15, ועוד 3."
+      ],
+      "explanation": "7 + 8 + 3 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c817dd3d71",
+      "text": "10 + 9 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-10 והוסף/י 9."
+      ],
+      "explanation": "10 + 9 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5a457b4e32",
+      "text": "2 + 2 = ?",
       "answer": 4,
       "level": 1,
       "difficulty": 1,
       "hints": [
         "אפשר לספור קדימה.",
-        "התחל/י מ-0 והוסף/י 4."
+        "התחל/י מ-2 והוסף/י 2."
       ],
-      "explanation": "0 + 4 = 4.",
+      "explanation": "2 + 2 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-63cddb997f",
+      "text": "5 + 14 + 1 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "5 + 14 = 19, ועוד 1."
+      ],
+      "explanation": "5 + 14 + 1 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-32dc321c14",
+      "text": "10 + 2 + 4 = ?",
+      "answer": 16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "10 + 2 = 12, ועוד 4."
+      ],
+      "explanation": "10 + 2 + 4 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ec3bac3e07",
+      "text": "7 + 1 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-7 והוסף/י 1."
+      ],
+      "explanation": "7 + 1 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e8f67cfcad",
+      "text": "13 + 1 = ?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-13 והוסף/י 1."
+      ],
+      "explanation": "13 + 1 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3b0dfce5eb",
+      "text": "3 + 9 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-3 והוסף/י 9."
+      ],
+      "explanation": "3 + 9 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e03a7e28fd",
+      "text": "13 + 3 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-13 והוסף/י 3."
+      ],
+      "explanation": "13 + 3 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9f3489b42d",
+      "text": "7 + 0 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-7 והוסף/י 0."
+      ],
+      "explanation": "7 + 0 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d08bc04c56",
+      "text": "5 + 4 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-5 והוסף/י 4."
+      ],
+      "explanation": "5 + 4 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-86f6bca5d8",
+      "text": "9 + 6 + 2 = ?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "9 + 6 = 15, ועוד 2."
+      ],
+      "explanation": "9 + 6 + 2 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-09c61a9b54",
+      "text": "2 + 11 + 4 = ?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "2 + 11 = 13, ועוד 4."
+      ],
+      "explanation": "2 + 11 + 4 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6ce2b7039d",
+      "text": "14 + 3 + 3 = ?",
+      "answer": 20,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחברים שניים קודם, ואז מוסיפים את השלישי.",
+        "14 + 3 = 17, ועוד 3."
+      ],
+      "explanation": "14 + 3 + 3 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d80d28a77a",
+      "text": "7 + 8 = ?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-7 והוסף/י 8."
+      ],
+      "explanation": "7 + 8 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6469d8846e",
+      "text": "9 + 11 = ?",
+      "answer": 20,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-9 והוסף/י 11."
+      ],
+      "explanation": "9 + 11 = 20.",
+      "source": "algo"
+    },
+    {
+      "id": "q-06fb7e755b",
+      "text": "6 + 13 = ?",
+      "answer": 19,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-6 והוסף/י 13."
+      ],
+      "explanation": "6 + 13 = 19.",
+      "source": "algo"
+    },
+    {
+      "id": "q-46d9db38d5",
+      "text": "4 + 7 = ?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור קדימה.",
+        "התחל/י מ-4 והוסף/י 7."
+      ],
+      "explanation": "4 + 7 = 11.",
       "source": "algo"
     }
   ]

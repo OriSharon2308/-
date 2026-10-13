@@ -1,0 +1,3079 @@
+{
+  "grade": "ה׳",
+  "gradeNum": 5,
+  "topic": "השבר העשרוני — משמעות וערך מקום",
+  "questions": [
+    {
+      "id": "q-f8f7c816db",
+      "text": "6 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.66,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-6 מאיות = 0.66.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-58521ee55e",
+      "text": "4 עשיריות ועוד 0 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-0 מאיות = 0.4.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-e89dde830e",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 9,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "9 מתוך 10, כלומר 9/10 = 0.9.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 9,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-7a453f659f",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 16,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "16 מתוך 100 = 0.16.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 16,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-b35eb14e13",
+      "text": "6 עשיריות ועוד 9 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.69,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-9 מאיות = 0.69.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-cab4244e66",
+      "text": "3 עשיריות ועוד 1 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.31,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "3 עשיריות ו-1 מאיות = 0.31.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-a24ddcaa85",
+      "text": "2 עשיריות ועוד 7 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.27,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "2 עשיריות ו-7 מאיות = 0.27.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-c358740a71",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 6,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "6 מתוך 10, כלומר 6/10 = 0.6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 6,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-93df161093",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 53,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "53 מתוך 100 = 0.53.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 53,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-9a42455750",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 35,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "35 מתוך 100 = 0.35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 35,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-58d1391706",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 37,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "37 מתוך 100 = 0.37.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 37,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-a3afc98165",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 7,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "7 מתוך 10, כלומר 7/10 = 0.7.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 7,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-f72455c340",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "36 מתוך 100 = 0.36.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 36,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-715135cf04",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 5,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "5 מתוך 10, כלומר 5/10 = 0.5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 5,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-33f5204189",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "1 מתוך 10, כלומר 1/10 = 0.1.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 1,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-6c4e2bb4a1",
+      "text": "6 עשיריות ועוד 3 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.63,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-3 מאיות = 0.63.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-f58bde76c8",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 80,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "80 מתוך 100 = 0.80.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 80,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-ade4d1f06f",
+      "text": "5 עשיריות ועוד 4 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.54,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-4 מאיות = 0.54.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-2d2002ada9",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 61,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "61 מתוך 100 = 0.61.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 61,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-bd8dcd5549",
+      "text": "9 עשיריות ועוד 2 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.92,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "9 עשיריות ו-2 מאיות = 0.92.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-c789ef48e1",
+      "text": "2 עשיריות ועוד 8 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.28,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "2 עשיריות ו-8 מאיות = 0.28.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-e2b95691d7",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "2 מתוך 10, כלומר 2/10 = 0.2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 2,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-b9ae62d9d6",
+      "text": "6 עשיריות ועוד 1 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.61,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-1 מאיות = 0.61.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-d557083a6e",
+      "text": "1 עשיריות ועוד 9 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.19,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "1 עשיריות ו-9 מאיות = 0.19.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-20b8d29d56",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 3,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "3 מתוך 10, כלומר 3/10 = 0.3.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 3,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-66c2d81b07",
+      "text": "4 עשיריות ועוד 8 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.48,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-8 מאיות = 0.48.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-fe7f7b2652",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 56,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "56 מתוך 100 = 0.56.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 56,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-9408bdfb96",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 30,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "30 מתוך 100 = 0.30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 30,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-f19a4da9d9",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 60,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "60 מתוך 100 = 0.60.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 60,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-8946b5eca9",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 90,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "90 מתוך 100 = 0.90.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 90,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-734e5ad80b",
+      "text": "5 עשיריות ועוד 8 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.58,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-8 מאיות = 0.58.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-e2c63745b0",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 91,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "91 מתוך 100 = 0.91.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 91,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-14216f97da",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 55,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "55 מתוך 100 = 0.55.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 55,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-ba34a5fe7e",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 65,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "65 מתוך 100 = 0.65.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 65,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-82bc22b264",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 39,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "39 מתוך 100 = 0.39.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 39,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-b1990379ed",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 47,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "47 מתוך 100 = 0.47.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 47,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-8874bdfc3d",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 83,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "83 מתוך 100 = 0.83.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 83,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-1b30d90650",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 44,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "44 מתוך 100 = 0.44.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 44,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-67a352d30c",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 15,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "15 מתוך 100 = 0.15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 15,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-1e868e5172",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 99,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "99 מתוך 100 = 0.99.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 99,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-39183c7b5d",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 84,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "84 מתוך 100 = 0.84.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 84,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-ca6a3c97bc",
+      "text": "3 עשיריות ועוד 7 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.37,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "3 עשיריות ו-7 מאיות = 0.37.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-5110b11615",
+      "text": "4 עשיריות ועוד 7 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.47,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-7 מאיות = 0.47.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-cf66099920",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 52,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "52 מתוך 100 = 0.52.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 52,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-438f98b63a",
+      "text": "7 עשיריות ועוד 3 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.73,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "7 עשיריות ו-3 מאיות = 0.73.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-6f9e1c1206",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 72,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "72 מתוך 100 = 0.72.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 72,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-55e77bf19f",
+      "text": "9 עשיריות ועוד 3 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.93,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "9 עשיריות ו-3 מאיות = 0.93.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-4e82fa8464",
+      "text": "2 עשיריות ועוד 4 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.24,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "2 עשיריות ו-4 מאיות = 0.24.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-cfa643a9df",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 41,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "41 מתוך 100 = 0.41.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 41,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-b485affa09",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 42,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "42 מתוך 100 = 0.42.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 42,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-a1d509a551",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 85,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "85 מתוך 100 = 0.85.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 85,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-4afe80112f",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 70,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "70 מתוך 100 = 0.70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 70,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-0a5fab5457",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "4 מתוך 10, כלומר 4/10 = 0.4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 4,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-79d1a93915",
+      "text": "7 עשיריות ועוד 0 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "7 עשיריות ו-0 מאיות = 0.7.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-e1e5bb04c2",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 94,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "94 מתוך 100 = 0.94.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 94,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-48149c5d9e",
+      "text": "כמה עשיריות צבועות בציור?",
+      "answer": 8,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "השלם מחולק לעשרה חלקים — כל חלק הוא עשירית.",
+        "ספור/י רק את הצבועים."
+      ],
+      "explanation": "8 מתוך 10, כלומר 8/10 = 0.8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 1,
+          "filled": 8,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת עשיריות"
+      }
+    },
+    {
+      "id": "q-ae99d02076",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 77,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "77 מתוך 100 = 0.77.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 77,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-6937c39cf7",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 17,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "17 מתוך 100 = 0.17.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 17,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-6245f4226e",
+      "text": "8 עשיריות ועוד 1 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.81,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "8 עשיריות ו-1 מאיות = 0.81.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-1fc88e5386",
+      "text": "5 עשיריות ועוד 7 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.57,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-7 מאיות = 0.57.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-308b9fcc00",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 31,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "31 מתוך 100 = 0.31.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 31,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-cd7683ca29",
+      "text": "9 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.96,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "9 עשיריות ו-6 מאיות = 0.96.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-d86835e6c4",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 98,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "98 מתוך 100 = 0.98.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 98,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-15e97b69b7",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 71,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "71 מתוך 100 = 0.71.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 71,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-9dc12b4e3a",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 38,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "38 מתוך 100 = 0.38.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 38,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-72f76d4269",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 66,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "66 מתוך 100 = 0.66.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 66,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-873757188a",
+      "text": "2 עשיריות ועוד 3 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.23,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "2 עשיריות ו-3 מאיות = 0.23.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-2c3966f2e6",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 12,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "12 מתוך 100 = 0.12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 12,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-0f27be091e",
+      "text": "3 עשיריות ועוד 3 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.33,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "3 עשיריות ו-3 מאיות = 0.33.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-ef1ea1571d",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 28,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "28 מתוך 100 = 0.28.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 28,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-f64e48f7aa",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 68,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "68 מתוך 100 = 0.68.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 68,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-03c1b9605d",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 21,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "21 מתוך 100 = 0.21.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 21,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-685d6a8d64",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 24,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "24 מתוך 100 = 0.24.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 24,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-85effbfff6",
+      "text": "1 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.16,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "1 עשיריות ו-6 מאיות = 0.16.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-a47dc8f229",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 51,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "51 מתוך 100 = 0.51.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 51,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-159db61def",
+      "text": "5 עשיריות ועוד 5 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.55,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-5 מאיות = 0.55.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-b123a6e5f9",
+      "text": "3 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.36,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "3 עשיריות ו-6 מאיות = 0.36.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-db30855ec4",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 75,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "75 מתוך 100 = 0.75.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 75,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-8dfad2a867",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 58,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "58 מתוך 100 = 0.58.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 58,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-e1b27f250f",
+      "text": "6 עשיריות ועוד 4 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.64,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-4 מאיות = 0.64.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-ff41711c69",
+      "text": "3 עשיריות ועוד 5 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.35,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "3 עשיריות ו-5 מאיות = 0.35.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-56616ca2a8",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 54,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "54 מתוך 100 = 0.54.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 54,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-41d762b4aa",
+      "text": "8 עשיריות ועוד 5 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.85,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "8 עשיריות ו-5 מאיות = 0.85.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-a076870282",
+      "text": "5 עשיריות ועוד 9 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.59,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-9 מאיות = 0.59.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-c852ac2096",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 32,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "32 מתוך 100 = 0.32.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 32,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-05b5d25a98",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 96,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "96 מתוך 100 = 0.96.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 96,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-827d9447a2",
+      "text": "8 עשיריות ועוד 7 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.87,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "8 עשיריות ו-7 מאיות = 0.87.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-75ec68757e",
+      "text": "5 עשיריות ועוד 3 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.53,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-3 מאיות = 0.53.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-6e98af293e",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 76,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "76 מתוך 100 = 0.76.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 76,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-5fd31b36e0",
+      "text": "7 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.76,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "7 עשיריות ו-6 מאיות = 0.76.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-68daaa960a",
+      "text": "7 עשיריות ועוד 8 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.78,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "7 עשיריות ו-8 מאיות = 0.78.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-045a90690f",
+      "text": "3 עשיריות ועוד 0 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.3,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "3 עשיריות ו-0 מאיות = 0.3.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-b836386ad7",
+      "text": "7 עשיריות ועוד 7 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.77,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "7 עשיריות ו-7 מאיות = 0.77.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-2cd49451a3",
+      "text": "4 עשיריות ועוד 5 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.45,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-5 מאיות = 0.45.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-aef2a9e3d1",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 25,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "25 מתוך 100 = 0.25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 25,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-42aad599b8",
+      "text": "2 עשיריות ועוד 1 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.21,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "2 עשיריות ו-1 מאיות = 0.21.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-06aa57584e",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 14,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "14 מתוך 100 = 0.14.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 14,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-06ed7c653a",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 33,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "33 מתוך 100 = 0.33.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 33,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-931c0c0bee",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 29,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "29 מתוך 100 = 0.29.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 29,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-fd3d9ead7f",
+      "text": "6 עשיריות ועוד 5 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.65,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-5 מאיות = 0.65.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-4ab6f08ee2",
+      "text": "4 עשיריות ועוד 9 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.49,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-9 מאיות = 0.49.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-feede1fa4d",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 87,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "87 מתוך 100 = 0.87.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 87,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-003c46a2b4",
+      "text": "1 עשיריות ועוד 8 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.18,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "1 עשיריות ו-8 מאיות = 0.18.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-3b8db50f76",
+      "text": "3 עשיריות ועוד 9 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.39,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "3 עשיריות ו-9 מאיות = 0.39.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-485d659a9a",
+      "text": "8 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.86,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "8 עשיריות ו-6 מאיות = 0.86.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-1f4f4ce02a",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 26,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "26 מתוך 100 = 0.26.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 26,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-59cc626443",
+      "text": "6 עשיריות ועוד 7 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.67,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-7 מאיות = 0.67.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-159b26b942",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 62,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "62 מתוך 100 = 0.62.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 62,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-4c5425d286",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 27,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "27 מתוך 100 = 0.27.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 27,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-da965178b5",
+      "text": "3 עשיריות ועוד 8 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.38,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "3 עשיריות ו-8 מאיות = 0.38.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-08762d8e6c",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 67,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "67 מתוך 100 = 0.67.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 67,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-e126a65827",
+      "text": "7 עשיריות ועוד 1 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.71,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "7 עשיריות ו-1 מאיות = 0.71.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-5c900738a9",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 92,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "92 מתוך 100 = 0.92.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 92,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-7f29e44ea7",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 45,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "45 מתוך 100 = 0.45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 45,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-9d569ab122",
+      "text": "1 עשיריות ועוד 7 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.17,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "1 עשיריות ו-7 מאיות = 0.17.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-161b73da7d",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 50,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "50 מתוך 100 = 0.50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 50,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-f4895e6745",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 73,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "73 מתוך 100 = 0.73.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 73,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-57365fc4b0",
+      "text": "4 עשיריות ועוד 1 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.41,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-1 מאיות = 0.41.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-77a80ed203",
+      "text": "2 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.26,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "2 עשיריות ו-6 מאיות = 0.26.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-d1e2c65bcf",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 97,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "97 מתוך 100 = 0.97.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 97,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-630825e07a",
+      "text": "2 עשיריות ועוד 0 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "2 עשיריות ו-0 מאיות = 0.2.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-6bc6d8daf9",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 86,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "86 מתוך 100 = 0.86.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 86,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-2ae3b69688",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 89,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "89 מתוך 100 = 0.89.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 89,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-21c1d13554",
+      "text": "8 עשיריות ועוד 4 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.84,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "8 עשיריות ו-4 מאיות = 0.84.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-d34ec02758",
+      "text": "1 עשיריות ועוד 2 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.12,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "1 עשיריות ו-2 מאיות = 0.12.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-ec88372065",
+      "text": "5 עשיריות ועוד 0 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-0 מאיות = 0.5.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-e3f6745063",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 81,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "81 מתוך 100 = 0.81.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 81,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-58ae3eb972",
+      "text": "9 עשיריות ועוד 8 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.98,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "9 עשיריות ו-8 מאיות = 0.98.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-33bc4df22c",
+      "text": "4 עשיריות ועוד 3 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.43,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-3 מאיות = 0.43.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-a10825a9e1",
+      "text": "8 עשיריות ועוד 3 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.83,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "8 עשיריות ו-3 מאיות = 0.83.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-e77db5c363",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 46,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "46 מתוך 100 = 0.46.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 46,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-544759456f",
+      "text": "7 עשיריות ועוד 4 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.74,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "7 עשיריות ו-4 מאיות = 0.74.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-dbf138468a",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 22,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "22 מתוך 100 = 0.22.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 22,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-2ac8821605",
+      "text": "5 עשיריות ועוד 1 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.51,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-1 מאיות = 0.51.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-9254b18db4",
+      "text": "6 עשיריות ועוד 0 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-0 מאיות = 0.6.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-f67c846d2c",
+      "text": "7 עשיריות ועוד 5 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.75,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "7 עשיריות ו-5 מאיות = 0.75.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-76281fcbe7",
+      "text": "5 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.56,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "5 עשיריות ו-6 מאיות = 0.56.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-d982bae20d",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 64,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "64 מתוך 100 = 0.64.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 64,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-85e41cfc52",
+      "text": "6 עשיריות ועוד 2 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.62,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "6 עשיריות ו-2 מאיות = 0.62.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-ddc51cb52c",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 69,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "69 מתוך 100 = 0.69.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 69,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-e399403ad4",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 49,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "49 מתוך 100 = 0.49.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 49,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-36fd67578a",
+      "text": "2 עשיריות ועוד 9 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.29,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "2 עשיריות ו-9 מאיות = 0.29.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-60dd8cb11b",
+      "text": "4 עשיריות ועוד 4 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.44,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-4 מאיות = 0.44.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-a254ad37b7",
+      "text": "1 עשיריות ועוד 0 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.1,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "1 עשיריות ו-0 מאיות = 0.1.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-efb27db277",
+      "text": "4 עשיריות ועוד 6 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.46,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-6 מאיות = 0.46.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-1988728279",
+      "text": "4 עשיריות ועוד 2 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.42,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "4 עשיריות ו-2 מאיות = 0.42.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-d2b1bf368d",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 18,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "18 מתוך 100 = 0.18.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 18,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-08b058d0e4",
+      "text": "9 עשיריות ועוד 1 מאיות — כתוב/כתבי כמספר עשרוני.",
+      "answer": 0.91,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הספרה הראשונה אחרי הנקודה היא העשיריות.",
+        "השנייה אחריה היא המאיות."
+      ],
+      "explanation": "9 עשיריות ו-1 מאיות = 0.91.",
+      "source": "algo",
+      "answerKind": "decimal"
+    },
+    {
+      "id": "q-6a501211c1",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 23,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "23 מתוך 100 = 0.23.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 23,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    },
+    {
+      "id": "q-39299ceb19",
+      "text": "כמה מאיות צבועות בציור?",
+      "answer": 57,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "השלם מחולק ל-100 חלקים.",
+        "שורה מלאה היא 10 מאיות — ספור/י שורות מלאות ואז את השארית."
+      ],
+      "explanation": "57 מתוך 100 = 0.57.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "decimal_grid",
+        "params": {
+          "rows": 10,
+          "filled": 57,
+          "lock": true
+        },
+        "w": 340,
+        "h": 360,
+        "alt": "רשת מאיות"
+      }
+    }
+  ]
+}

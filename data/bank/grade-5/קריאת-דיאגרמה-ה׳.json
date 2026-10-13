@@ -1,0 +1,4057 @@
+{
+  "grade": "ה׳",
+  "gradeNum": 5,
+  "topic": "קריאת דיאגרמה ה׳",
+  "questions": [
+    {
+      "id": "q-10378311ec",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 4 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "4,4,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-551f05f8f2",
+      "text": "בכמה יותר ילדים בחרו אגס מאשר תפוח?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 4 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "4,8,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b4e26282d6",
+      "text": "כמה תלמידים בסך הכול בכל העמודות?",
+      "answer": 28,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "12 + 8 + 8 = 28.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "12,8,8",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f5b23e70ce",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 36,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "14 + 12 + 10 = 36.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "14,12,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0e721dd137",
+      "text": "בכמה יותר ילדים בחרו אגס מאשר תפוח?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 10 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "10,20,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-04cb865b6a",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כלב: 3 משבצות × 10 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "30,20,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f57b3639f8",
+      "text": "לכמה יותר ילדים יש חתול מאשר ארנב?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 30 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "30,35,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0a83431e5a",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 150,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "70 + 30 + 50 = 150.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "70,30,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-e306a9ccfd",
+      "text": "לכמה יותר ילדים יש חתול מאשר ארנב?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 4 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "6,10,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-7052d2d2cb",
+      "text": "בכמה יותר ילדים בחרו בננה מאשר אגס?",
+      "answer": 25,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 10 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "25,35,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-67d468f386",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 26,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "6 + 12 + 8 = 26.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,12,8",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-fba8c55860",
+      "text": "לכמה יותר ילדים יש חתול מאשר ארנב?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 10 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "20,30,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a0ccc09dfa",
+      "text": "לכמה יותר ילדים יש ארנב מאשר חתול?",
+      "answer": 40,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "70 פחות 30 = 40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "50,30,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cbb05c9b0c",
+      "text": "כמה תלמידים בסך הכול בכל העמודות?",
+      "answer": 55,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "15 + 25 + 15 = 55.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "15,25,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-50f0db0844",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 100,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 70 = 100.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "70,30,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-93b1aed606",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 32,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "14 + 6 + 12 = 32.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "14,6,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-10ad5f327f",
+      "text": "לכמה יותר ילדים יש ארנב מאשר חתול?",
+      "answer": 40,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "60 פחות 20 = 40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "20,20,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f902f9f4f0",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 25,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כדורסל: 5 משבצות × 5 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "25,25,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-3a40598c31",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 120,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "70 + 30 + 20 = 120.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "70,30,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c1f4f57580",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 40,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא בננה: 4 משבצות × 10 = 40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "20,40,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-3abdb77418",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 60,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא תפוח: 6 משבצות × 10 = 60.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "60,30,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-383f98ac37",
+      "text": "לכמה יותר ילדים יש כלב מאשר חתול?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "70 פחות 60 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "70,60,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-7f6b9ed3fb",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 50,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא תפוח: 5 משבצות × 10 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "50,40,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-e7788b5f34",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 35,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ריקוד: 7 משבצות × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "15,35,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8fcd905ee9",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 25,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא תפוח: 5 משבצות × 5 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "25,10,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b9d39eaea2",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא בננה: 5 משבצות × 2 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "8,10,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-96aef64d32",
+      "text": "בכמה יותר ילדים בחרו בננה מאשר תפוח?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 25 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "25,30,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-6427a3e02b",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 100,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "40 + 60 = 100.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "60,40,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b420344e57",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "10 + 35 + 25 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "10,35,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a8af6b8564",
+      "text": "בכמה יותר ילדים בחרו בננה מאשר אגס?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 10 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "10,14,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b1d30ea1dc",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 75,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "30 + 15 + 30 = 75.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "30,15,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-6444fe2f99",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 12,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ריקוד: 6 משבצות × 2 = 12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,12,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-76c74288d2",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג שחמט?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "50 פחות 20 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "50,50,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-55594861af",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג שחייה?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "60 פחות 30 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "30,50,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a792af31f8",
+      "text": "לכמה יותר ילדים יש חתול מאשר ארנב?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 15 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "15,35,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-17e31a7d25",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 90,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "20 + 40 + 30 = 90.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "20,40,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-689b421922",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר אגס?",
+      "answer": 25,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 10 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "35,30,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-e423e7575b",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 32,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "14 + 12 + 6 = 32.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "14,12,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8789d1f4af",
+      "text": "בכמה יותר ילדים בחרו אגס מאשר תפוח?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 10 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "10,15,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-72887a3c49",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג שחמט?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 4 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "10,6,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-699eaa072e",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 14,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 10 = 14.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,14,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-23e4bde745",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג ציור?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "60 פחות 30 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "60,30,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-eb206182a8",
+      "text": "בכמה יותר תלמידים בחוג ציור מאשר בחוג כדורסל?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 6 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "6,14,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-28cc9a03e1",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 70,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כדורסל: 7 משבצות × 10 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "70,60,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-992d4c5f57",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג ריקוד?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 4 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,4,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-e232e437d6",
+      "text": "לכמה יותר ילדים יש כלב מאשר ארנב?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "60 פחות 50 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "60,60,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-add514e3fb",
+      "text": "בכמה יותר ילדים בחוג ריקוד מאשר בחוג טניס?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 6 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,12,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0312ce04d8",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 50,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "20 + 30 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "30,20,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0935ac7b6f",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 150,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "60 + 50 + 40 = 150.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "60,50,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0ed037fc35",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 85,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "35 + 35 + 15 = 85.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "35,35,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4af516149a",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא שחמט: 6 משבצות × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "20,15,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-baa541fe3d",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 35,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כדורסל: 7 משבצות × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "35,35,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-7de998faed",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר בננה?",
+      "answer": 0,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "50 פחות 50 = 0.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "50,50,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5bbef9db6e",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 120,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "50 + 50 + 20 = 120.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "50,50,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8d8afa70a4",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג טניס?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "70 פחות 50 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "70,60,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4840149a01",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג ריקוד?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "70 פחות 40 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "70,40,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b1d87f1729",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 25,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "10 + 15 = 25.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "10,15,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f4d7a2c52d",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "6 + 6 = 12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "8,6,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-981437fe5d",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 50,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "20 + 30 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "40,20,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-894aa4f4a3",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "4 + 6 + 10 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "4,6,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f6eddaac42",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 35,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא תפוח: 7 משבצות × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "35,10,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-830bfc5e1b",
+      "text": "בכמה יותר ילדים בחרו בננה מאשר תפוח?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 8 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "8,14,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-22182a66bf",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 4 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "12,4,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9f8f4c2507",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 50,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "10 + 25 + 15 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,25,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f145665af7",
+      "text": "בכמה יותר תלמידים בחוג ציור מאשר בחוג שחמט?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 4 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "8,14,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-e1e5488385",
+      "text": "לכמה יותר ילדים יש חתול מאשר ארנב?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "20 פחות 15 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "15,20,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2e1c0489e1",
+      "text": "לכמה יותר ילדים יש חתול מאשר כלב?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 4 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "4,14,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4d8ded7a76",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 40 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "30,50,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0a87a4a9b4",
+      "text": "בכמה יותר תלמידים בחוג שחמט מאשר בחוג ציור?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 4 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "8,4,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-30d0d87f5a",
+      "text": "לכמה יותר ילדים יש ארנב מאשר כלב?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "25 פחות 10 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,15,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2beb599937",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר בננה?",
+      "answer": 0,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 10 = 0.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "10,10,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b9df14f1d5",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 80,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 50 = 80.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "30,70,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f7193c405e",
+      "text": "לכמה יותר ילדים יש כלב מאשר חתול?",
+      "answer": 40,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "70 פחות 30 = 40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "70,30,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a3f6f8de98",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג ריקוד?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 20 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "35,20,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ca2353e5f6",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 80,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "40 + 40 = 80.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "40,50,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-43b6b61a49",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג ריקוד?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 8 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "12,8,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ad72b52cc9",
+      "text": "לכמה יותר ילדים יש כלב מאשר חתול?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 4 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,4,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c671550266",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג ריקוד?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "25 פחות 10 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "25,10,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4f306bcd8f",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "6 + 14 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "14,14,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-585da1fd1a",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 40,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "15 + 15 + 10 = 40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "15,15,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-af172014f7",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 70,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא טניס: 7 משבצות × 10 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "40,40,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cdfd52e2bd",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג ציור?",
+      "answer": 0,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 35 = 0.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "35,35,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5f93d7a8c7",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ריקוד: 5 משבצות × 2 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "8,10,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-9b6a9e10b0",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא שחמט: 3 משבצות × 10 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "20,20,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-6f5a0d3895",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 40 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "50,40,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-1e71323f47",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 40,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "20 + 20 = 40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "35,20,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-3685efea1a",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "25 + 25 + 20 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "25,25,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4858053786",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "30 + 40 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "30,40,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ce8b5eac7b",
+      "text": "בכמה יותר ילדים בחרו אגס מאשר בננה?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 4 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "4,4,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cef74a40b7",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 100,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "40 + 60 = 100.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "60,60,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-fb4edc1959",
+      "text": "בכמה יותר תלמידים בחוג ציור מאשר בחוג כדורסל?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "50 פחות 20 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "20,50,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2fb8ecd404",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג שחמט?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "25 פחות 15 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "25,25,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c4c77ee637",
+      "text": "כמה תלמידים בסך הכול בכל העמודות?",
+      "answer": 130,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "40 + 70 + 20 = 130.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "40,70,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-54efbe207d",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג שחייה?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 15 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "15,20,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-1a1f70f401",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 30,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "8 + 12 + 10 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "8,12,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-c310d7aef1",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 35,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא חתול: 7 משבצות × 5 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,35,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-324ebdfb27",
+      "text": "לכמה יותר ילדים יש כלב מאשר חתול?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 6 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "12,6,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-1fe04302e1",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 4 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "4,4,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-d7f9e1fa3f",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 80,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "20 + 40 + 20 = 80.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "20,40,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-515bee445a",
+      "text": "לכמה יותר ילדים יש ארנב מאשר כלב?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 6 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "6,8,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ef523ded3a",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 75,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "30 + 15 + 30 = 75.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "30,15,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a6cbd36eab",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "8 + 12 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "12,14,8",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-377965200c",
+      "text": "בכמה יותר תלמידים בחוג ציור מאשר בחוג כדורסל?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 6 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "6,14,8",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-fa2fad4795",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 70,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ריקוד: 7 משבצות × 10 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "40,70,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-77b6066244",
+      "text": "בכמה יותר ילדים בחוג ריקוד מאשר בחוג טניס?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "25 פחות 10 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "10,25,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-6817c12f5e",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 150,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "60 + 70 + 20 = 150.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "60,70,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-2dfce96876",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג ריקוד?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "25 פחות 20 = 5.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,20,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4f46100702",
+      "text": "כמה תלמידים בשתי העמודות הנמוכות ביחד?",
+      "answer": 24,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "10 + 14 = 24.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "14,10,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-373a112f29",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 12,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כלב: 6 משבצות × 2 = 12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "12,10,8",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-76dfdea160",
+      "text": "לכמה יותר ילדים יש כלב מאשר ארנב?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 15 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "30,25,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8d4d432bf9",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג ציור?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 20 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "35,20,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8d83ce1ac8",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 60,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא חתול: 6 משבצות × 10 = 60.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "20,60,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-1ab54b8794",
+      "text": "לכמה יותר ילדים יש כלב מאשר חתול?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "60 פחות 30 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "60,30,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-76c363de4b",
+      "text": "כמה תלמידים בסך הכול בכל העמודות?",
+      "answer": 20,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "4 + 4 + 12 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "4,4,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4afe003578",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג טניס?",
+      "answer": 2,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "6 פחות 4 = 2.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,6,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-7c85e9f439",
+      "text": "בכמה יותר ילדים בחרו בננה מאשר אגס?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 15 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "25,30,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-deb138ae6c",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג שחייה?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 6 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,8,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-eba5f79ae6",
+      "text": "לכמה יותר ילדים יש חתול מאשר כלב?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "12 פחות 6 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "6,12,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-abd9d652be",
+      "text": "בכמה יותר ילדים בחרו בננה מאשר אגס?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "8 פחות 4 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "6,8,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-6d8d986711",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג שחמט?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "30 פחות 15 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "30,30,15",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-715edf3f5f",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 110,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "20 + 50 + 40 = 110.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,50,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-737a244907",
+      "text": "לכמה יותר ילדים יש כלב מאשר ארנב?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 4 = 6.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "10,8,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-eab845ff2c",
+      "text": "בכמה יותר תלמידים בחוג שחמט מאשר בחוג ציור?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "50 פחות 20 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "40,20,50",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a810c88917",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 150,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "60 + 70 + 20 = 150.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "60,70,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-70434677d0",
+      "text": "בכמה יותר ילדים בחוג שחייה מאשר בחוג טניס?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 6 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "10,10,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-4357bc7c1e",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא בננה: 6 משבצות × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "20,30,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a02df215d9",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 14,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא אגס: 7 משבצות × 2 = 14.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "6,6,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b32246aa4a",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 140,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "40 + 70 + 30 = 140.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "40,70,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-bbe8b374f0",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 4 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "10,4,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-779d4afa7a",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג שחמט?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "50 פחות 30 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "50,40,30",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-0f79729fa1",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 30,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא טניס: 6 משבצות × 5 = 30.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "25,20,30",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-09c646b7c2",
+      "text": "בכמה יותר תלמידים בחוג כדורסל מאשר בחוג ציור?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 15 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "35,15,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-00ec5b6c44",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 60,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כלב: 6 משבצות × 10 = 60.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "60,30,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f1476540e1",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 180,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "70 + 40 + 70 = 180.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "70,40,70",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-af56806820",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 12,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 8 = 12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "4,10,8",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-b3bc12c0ce",
+      "text": "לכמה יותר ילדים יש חתול מאשר ארנב?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "8 פחות 4 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "4,8,4",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5e20fb042f",
+      "text": "בכמה יותר ילדים בחרו אגס מאשר תפוח?",
+      "answer": 15,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 20 = 15.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "20,30,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-40482db3db",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 40,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא ריקוד: 4 משבצות × 10 = 40.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "30,40,40",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-d723c1943f",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "20 + 50 = 70.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "50,60,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-50699d713b",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 45,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "20 + 25 = 45.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "20,25,35",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-01aa9c9fc9",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 60,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כדורסל: 6 משבצות × 10 = 60.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "60,60,60",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ee502c4ca7",
+      "text": "בכמה יותר ילדים בחרו תפוח מאשר בננה?",
+      "answer": 20,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "35 פחות 15 = 20.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "35,15,25",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-cf07af661a",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "4 + 6 = 10.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כלב,חתול,ארנב",
+          "series": "4,14,6",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-52021699a4",
+      "text": "מה המספר בעמודה הגבוהה ביותר?",
+      "answer": 12,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "הגבוהה ביותר היא זו עם הכי הרבה משבצות.",
+        "מצאת אותה? עכשיו קרא/י אותה לפי הסולם — לא לפי מספר המשבצות."
+      ],
+      "explanation": "העמודה הגבוהה היא כדורסל: 6 משבצות × 2 = 12.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "12,6,12",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-25d603c002",
+      "text": "בכמה יותר ילדים בחרו אגס מאשר בננה?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "14 פחות 6 = 8.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "8,6,14",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-f52786438b",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 90,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "50 + 20 + 20 = 90.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "50,20,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-5fff561f31",
+      "text": "כמה ילדים בשתי העמודות הנמוכות ביחד?",
+      "answer": 35,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קודם מזהים איזו עמודה הכי נמוכה ואיזו אחריה.",
+        "קרא/י כל אחת לפי הסולם, ורק אז חבר/י."
+      ],
+      "explanation": "10 + 25 = 35.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "תפוח,בננה,אגס",
+          "series": "25,30,10",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-8d010feae8",
+      "text": "כמה ילדים בסך הכול בכל העמודות?",
+      "answer": 50,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "קרא/י כל עמודה בנפרד לפי הסולם.",
+        "רק אחרי שכתבת את שלושת המספרים — חבר/י אותם."
+      ],
+      "explanation": "15 + 15 + 20 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "15,15,20",
+          "step": 5,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-a648ff26cd",
+      "text": "בכמה יותר תלמידים בחוג ציור מאשר בחוג שחמט?",
+      "answer": 50,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "70 פחות 20 = 50.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "כדורסל,ציור,שחמט",
+          "series": "60,70,20",
+          "step": 10,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    },
+    {
+      "id": "q-ddd37e9ddc",
+      "text": "בכמה יותר ילדים בחוג טניס מאשר בחוג שחייה?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "'בכמה יותר' זה חיסור.",
+        "קרא/י כל עמודה בנפרד לפי הסולם, ורק אז חסר/י."
+      ],
+      "explanation": "10 פחות 6 = 4.",
+      "source": "algo",
+      "needsDiagram": true,
+      "diagramData": {
+        "type": "kit",
+        "widget": "bar_chart",
+        "params": {
+          "labels": "שחייה,ריקוד,טניס",
+          "series": "6,8,10",
+          "step": 2,
+          "unit": "squares"
+        },
+        "w": 400,
+        "h": 250,
+        "alt": "דיאגרמת עמודות"
+      }
+    }
+  ]
+}

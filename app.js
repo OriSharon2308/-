@@ -291,6 +291,41 @@ function parseTimeAnswer(s) {
   return h * 60 + min;
 }
 
+/**
+ * נרמול עברי לבדיקת תשובה חופשית: מוריד ניקוד, גרשיים, רווחים כפולים,
+ * ה״א הידיעה ו-ו״ו החיבור בתחילת מילה, ומאחד כתיב מלא/חסר של יו״ד.
+ * המטרה: "חרוט", "החרוט", "חרט" ו-"חֲרוּט" ייחשבו אותה תשובה — ילד בכיתה ג׳
+ * נבחן על המושג, לא על הכתיב.
+ */
+function normalizeHe(v) {
+  return String(v ?? "")
+    .replace(/[\u0591-\u05C7]/g, "")      // ניקוד וטעמים
+    .replace(/["'׳״`]/g, "")
+    .replace(/^[והבלכמש]-?/, "")            // אותיות שימוש בתחילת מילה
+    .replace(/[יו]/g, "")                    // כתיב מלא מול חסר (אמות קריאה)
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+/**
+ * תשובה חופשית נבדקת מול *רשימת-קבלה* שהמחולל הכין מראש — כל הניסוחים
+ * הסבירים שילד יכתוב. התאמה כאן נסגרת מקומית, באפס טוקנים; רק מה שלא
+ * נמצא ברשימה עובר למורה. זה הופך את המורה לגיבוי במקום לבודק-ברירת-מחדל.
+ */
+function matchesAccepted(givenText, p) {
+  const list = [];
+  if (p && Array.isArray(p.accept)) list.push(...p.accept);
+  if (p && p.answer != null) list.push(p.answer);
+  if (!list.length) return false;
+  const got = normalizeHe(givenText);
+  if (!got) return false;
+  return list.some((a) => {
+    const want = normalizeHe(a);
+    return want && (got === want || (want.length >= 4 && got.includes(want)));
+  });
+}
+
 function answersMatch(givenText, expected) {
   if (expected == null) return false;
   const expTime = parseTimeAnswer(expected);
@@ -1759,6 +1794,7 @@ async function main() {
         // בעיה רב-סעיפית — הילד עונה סעיף-סעיף, ו-_partIdx עוקב איפה הוא
         parts: Array.isArray(p.parts) ? p.parts : null,
         options: Array.isArray(p.options) ? p.options : null,
+        accept: Array.isArray(p.accept) ? p.accept : null,
         skill: p.skill || null,
         skillHe: p.skillHe || null,
         _partIdx: 0,
@@ -2910,7 +2946,10 @@ async function main() {
     // טעות ראשונה: רק "❌ לא נכון, נסה/י שוב". רק בטעות השנייה ברציפות המורה נכנס להבין למה.
     const expected = activeAnswer(p);
     if (p && expected != null) {
-      const correct = answersMatch(raw, expected);
+      // תשובה חופשית: קודם מול רשימת-הקבלה (מקומי, אפס טוקנים); רק אם
+      // אין התאמה ואין רשימה בכלל — נופלים למורה בהמשך הזרימה.
+      const isText = p.answerKind === "text" || Array.isArray(p.accept);
+      const correct = isText ? matchesAccepted(raw, p) : answersMatch(raw, expected);
       const part = currentPart(p);
       // תגית-המיומנות: של הסעיף אם זו בעיה רב-סעיפית, אחרת של השאלה עצמה.
       // כך האבחון ("נופל דווקא ב-X") עובד בכל הנושאים, לא רק ברב-סעיפי.

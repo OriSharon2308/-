@@ -1,0 +1,1957 @@
+{
+  "grade": "ד׳",
+  "gradeNum": 4,
+  "topic": "כפל רב-ספרתי",
+  "questions": [
+    {
+      "id": "q-441ae326a8",
+      "text": "20 × 8 = ?",
+      "answer": 160,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 20 פעמים 8."
+      ],
+      "explanation": "20 × 8 = 160.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b8bb467bfa",
+      "text": "26 × 6 = ?",
+      "answer": 156,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 26 פעמים 6."
+      ],
+      "explanation": "26 × 6 = 156.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a393a82a1a",
+      "text": "21 × 6 = ?",
+      "answer": 126,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 21 פעמים 6."
+      ],
+      "explanation": "21 × 6 = 126.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9ebb0dad11",
+      "text": "14 × 6 = ?",
+      "answer": 84,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 14 פעמים 6."
+      ],
+      "explanation": "14 × 6 = 84.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8d481878de",
+      "text": "17 × 9 = ?",
+      "answer": 153,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 17 פעמים 9."
+      ],
+      "explanation": "17 × 9 = 153.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5ad2a35340",
+      "text": "13 × 3 = ?",
+      "answer": 39,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 13 פעמים 3."
+      ],
+      "explanation": "13 × 3 = 39.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b9853e1919",
+      "text": "13 × 2 = ?",
+      "answer": 26,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 13 פעמים 2."
+      ],
+      "explanation": "13 × 2 = 26.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d1567686d7",
+      "text": "29 × 4 = ?",
+      "answer": 116,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 29 פעמים 4."
+      ],
+      "explanation": "29 × 4 = 116.",
+      "source": "algo"
+    },
+    {
+      "id": "q-12033e2c6e",
+      "text": "12 × 4 = ?",
+      "answer": 48,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 12 פעמים 4."
+      ],
+      "explanation": "12 × 4 = 48.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f928e20358",
+      "text": "22 × 6 = ?",
+      "answer": 132,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 22 פעמים 6."
+      ],
+      "explanation": "22 × 6 = 132.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cc1cc2c1c7",
+      "text": "25 × 2 = ?",
+      "answer": 50,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 25 פעמים 2."
+      ],
+      "explanation": "25 × 2 = 50.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7b65e1a17e",
+      "text": "29 × 6 = ?",
+      "answer": 174,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 29 פעמים 6."
+      ],
+      "explanation": "29 × 6 = 174.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6d4e657e57",
+      "text": "15 × 4 = ?",
+      "answer": 60,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 15 פעמים 4."
+      ],
+      "explanation": "15 × 4 = 60.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b2e53950ca",
+      "text": "17 × 3 = ?",
+      "answer": 51,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 17 פעמים 3."
+      ],
+      "explanation": "17 × 3 = 51.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bbeff104cc",
+      "text": "11 × 5 = ?",
+      "answer": 55,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 11 פעמים 5."
+      ],
+      "explanation": "11 × 5 = 55.",
+      "source": "algo"
+    },
+    {
+      "id": "q-55c4a8a968",
+      "text": "20 × 4 = ?",
+      "answer": 80,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 20 פעמים 4."
+      ],
+      "explanation": "20 × 4 = 80.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6c941b9fae",
+      "text": "29 × 9 = ?",
+      "answer": 261,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 29 פעמים 9."
+      ],
+      "explanation": "29 × 9 = 261.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fd1811fdbf",
+      "text": "11 × 4 = ?",
+      "answer": 44,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 11 פעמים 4."
+      ],
+      "explanation": "11 × 4 = 44.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5e3cfc7880",
+      "text": "29 × 5 = ?",
+      "answer": 145,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 29 פעמים 5."
+      ],
+      "explanation": "29 × 5 = 145.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a67f1c3db3",
+      "text": "14 × 8 = ?",
+      "answer": 112,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 14 פעמים 8."
+      ],
+      "explanation": "14 × 8 = 112.",
+      "source": "algo"
+    },
+    {
+      "id": "q-febb755c27",
+      "text": "26 × 3 = ?",
+      "answer": 78,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 26 פעמים 3."
+      ],
+      "explanation": "26 × 3 = 78.",
+      "source": "algo"
+    },
+    {
+      "id": "q-894ccc6fa1",
+      "text": "21 × 5 = ?",
+      "answer": 105,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 21 פעמים 5."
+      ],
+      "explanation": "21 × 5 = 105.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5b780c1cd3",
+      "text": "12 × 6 = ?",
+      "answer": 72,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 12 פעמים 6."
+      ],
+      "explanation": "12 × 6 = 72.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4542940e9a",
+      "text": "17 × 5 = ?",
+      "answer": 85,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 17 פעמים 5."
+      ],
+      "explanation": "17 × 5 = 85.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d4972ee0c4",
+      "text": "25 × 9 = ?",
+      "answer": 225,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 25 פעמים 9."
+      ],
+      "explanation": "25 × 9 = 225.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4f06ad6bff",
+      "text": "23 × 8 = ?",
+      "answer": 184,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 23 פעמים 8."
+      ],
+      "explanation": "23 × 8 = 184.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4ecc0bca28",
+      "text": "21 × 3 = ?",
+      "answer": 63,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 21 פעמים 3."
+      ],
+      "explanation": "21 × 3 = 63.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c4249bf8ed",
+      "text": "26 × 8 = ?",
+      "answer": 208,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 26 פעמים 8."
+      ],
+      "explanation": "26 × 8 = 208.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2924b59ade",
+      "text": "11 × 2 = ?",
+      "answer": 22,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 11 פעמים 2."
+      ],
+      "explanation": "11 × 2 = 22.",
+      "source": "algo"
+    },
+    {
+      "id": "q-be382b1154",
+      "text": "27 × 3 = ?",
+      "answer": 81,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 27 פעמים 3."
+      ],
+      "explanation": "27 × 3 = 81.",
+      "source": "algo"
+    },
+    {
+      "id": "q-33c1f8701b",
+      "text": "14 × 9 = ?",
+      "answer": 126,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 14 פעמים 9."
+      ],
+      "explanation": "14 × 9 = 126.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2cacbdf182",
+      "text": "25 × 3 = ?",
+      "answer": 75,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 25 פעמים 3."
+      ],
+      "explanation": "25 × 3 = 75.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d20c5ec37e",
+      "text": "28 × 2 = ?",
+      "answer": 56,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 28 פעמים 2."
+      ],
+      "explanation": "28 × 2 = 56.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f7723c6d26",
+      "text": "26 × 5 = ?",
+      "answer": 130,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 26 פעמים 5."
+      ],
+      "explanation": "26 × 5 = 130.",
+      "source": "algo"
+    },
+    {
+      "id": "q-33f081ed67",
+      "text": "30 × 5 = ?",
+      "answer": 150,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 30 פעמים 5."
+      ],
+      "explanation": "30 × 5 = 150.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9f99085450",
+      "text": "22 × 2 = ?",
+      "answer": 44,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 22 פעמים 2."
+      ],
+      "explanation": "22 × 2 = 44.",
+      "source": "algo"
+    },
+    {
+      "id": "q-de714a89e3",
+      "text": "25 × 4 = ?",
+      "answer": 100,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 25 פעמים 4."
+      ],
+      "explanation": "25 × 4 = 100.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6710cc97ef",
+      "text": "28 × 7 = ?",
+      "answer": 196,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 28 פעמים 7."
+      ],
+      "explanation": "28 × 7 = 196.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9c6054f093",
+      "text": "24 × 4 = ?",
+      "answer": 96,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 24 פעמים 4."
+      ],
+      "explanation": "24 × 4 = 96.",
+      "source": "algo"
+    },
+    {
+      "id": "q-44884b946a",
+      "text": "18 × 6 = ?",
+      "answer": 108,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 18 פעמים 6."
+      ],
+      "explanation": "18 × 6 = 108.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cab9068154",
+      "text": "16 × 4 = ?",
+      "answer": 64,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 16 פעמים 4."
+      ],
+      "explanation": "16 × 4 = 64.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c6c0656805",
+      "text": "24 × 6 = ?",
+      "answer": 144,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 24 פעמים 6."
+      ],
+      "explanation": "24 × 6 = 144.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8c5bfbe8c0",
+      "text": "30 × 7 = ?",
+      "answer": 210,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 30 פעמים 7."
+      ],
+      "explanation": "30 × 7 = 210.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2dce8a5af0",
+      "text": "28 × 8 = ?",
+      "answer": 224,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 28 פעמים 8."
+      ],
+      "explanation": "28 × 8 = 224.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5f42bd3632",
+      "text": "27 × 8 = ?",
+      "answer": 216,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 27 פעמים 8."
+      ],
+      "explanation": "27 × 8 = 216.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9ef4ad44f2",
+      "text": "13 × 4 = ?",
+      "answer": 52,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 13 פעמים 4."
+      ],
+      "explanation": "13 × 4 = 52.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a473294d21",
+      "text": "15 × 2 = ?",
+      "answer": 30,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 15 פעמים 2."
+      ],
+      "explanation": "15 × 2 = 30.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b7131b75ad",
+      "text": "14 × 5 = ?",
+      "answer": 70,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 14 פעמים 5."
+      ],
+      "explanation": "14 × 5 = 70.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ff9d808f0e",
+      "text": "23 × 4 = ?",
+      "answer": 92,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 23 פעמים 4."
+      ],
+      "explanation": "23 × 4 = 92.",
+      "source": "algo"
+    },
+    {
+      "id": "q-eff41a810c",
+      "text": "11 × 3 = ?",
+      "answer": 33,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 11 פעמים 3."
+      ],
+      "explanation": "11 × 3 = 33.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c9679b9971",
+      "text": "15 × 9 = ?",
+      "answer": 135,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 15 פעמים 9."
+      ],
+      "explanation": "15 × 9 = 135.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bac2544c15",
+      "text": "29 × 3 = ?",
+      "answer": 87,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 29 פעמים 3."
+      ],
+      "explanation": "29 × 3 = 87.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4ae403aeeb",
+      "text": "28 × 9 = ?",
+      "answer": 252,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 28 פעמים 9."
+      ],
+      "explanation": "28 × 9 = 252.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7f28911144",
+      "text": "27 × 7 = ?",
+      "answer": 189,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 27 פעמים 7."
+      ],
+      "explanation": "27 × 7 = 189.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e5da754f61",
+      "text": "16 × 8 = ?",
+      "answer": 128,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 16 פעמים 8."
+      ],
+      "explanation": "16 × 8 = 128.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4fb1358827",
+      "text": "30 × 6 = ?",
+      "answer": 180,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 30 פעמים 6."
+      ],
+      "explanation": "30 × 6 = 180.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a00446621b",
+      "text": "27 × 5 = ?",
+      "answer": 135,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 27 פעמים 5."
+      ],
+      "explanation": "27 × 5 = 135.",
+      "source": "algo"
+    },
+    {
+      "id": "q-473cb9e2a9",
+      "text": "13 × 8 = ?",
+      "answer": 104,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 13 פעמים 8."
+      ],
+      "explanation": "13 × 8 = 104.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ff98fcf65e",
+      "text": "11 × 7 = ?",
+      "answer": 77,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 11 פעמים 7."
+      ],
+      "explanation": "11 × 7 = 77.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d1e88bf5d2",
+      "text": "16 × 3 = ?",
+      "answer": 48,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 16 פעמים 3."
+      ],
+      "explanation": "16 × 3 = 48.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ef7b1b38e1",
+      "text": "19 × 6 = ?",
+      "answer": 114,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 19 פעמים 6."
+      ],
+      "explanation": "19 × 6 = 114.",
+      "source": "algo"
+    },
+    {
+      "id": "q-27b4062a89",
+      "text": "30 × 8 = ?",
+      "answer": 240,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 30 פעמים 8."
+      ],
+      "explanation": "30 × 8 = 240.",
+      "source": "algo"
+    },
+    {
+      "id": "q-eab68301b5",
+      "text": "12 × 9 = ?",
+      "answer": 108,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 12 פעמים 9."
+      ],
+      "explanation": "12 × 9 = 108.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c1438fbd96",
+      "text": "19 × 3 = ?",
+      "answer": 57,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 19 פעמים 3."
+      ],
+      "explanation": "19 × 3 = 57.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cc75c8918f",
+      "text": "22 × 3 = ?",
+      "answer": 66,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 22 פעמים 3."
+      ],
+      "explanation": "22 × 3 = 66.",
+      "source": "algo"
+    },
+    {
+      "id": "q-978b1b9a7d",
+      "text": "20 × 2 = ?",
+      "answer": 40,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 20 פעמים 2."
+      ],
+      "explanation": "20 × 2 = 40.",
+      "source": "algo"
+    },
+    {
+      "id": "q-17be942d03",
+      "text": "13 × 6 = ?",
+      "answer": 78,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 13 פעמים 6."
+      ],
+      "explanation": "13 × 6 = 78.",
+      "source": "algo"
+    },
+    {
+      "id": "q-60fa1498e8",
+      "text": "12 × 3 = ?",
+      "answer": 36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 12 פעמים 3."
+      ],
+      "explanation": "12 × 3 = 36.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c2931f7f14",
+      "text": "13 × 7 = ?",
+      "answer": 91,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 13 פעמים 7."
+      ],
+      "explanation": "13 × 7 = 91.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3ce084b6cb",
+      "text": "22 × 7 = ?",
+      "answer": 154,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 22 פעמים 7."
+      ],
+      "explanation": "22 × 7 = 154.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5d93d794a6",
+      "text": "17 × 2 = ?",
+      "answer": 34,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 17 פעמים 2."
+      ],
+      "explanation": "17 × 2 = 34.",
+      "source": "algo"
+    },
+    {
+      "id": "q-796c81cfaf",
+      "text": "24 × 3 = ?",
+      "answer": 72,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 24 פעמים 3."
+      ],
+      "explanation": "24 × 3 = 72.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3b9d8faeaf",
+      "text": "23 × 2 = ?",
+      "answer": 46,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 23 פעמים 2."
+      ],
+      "explanation": "23 × 2 = 46.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2598080dd2",
+      "text": "16 × 5 = ?",
+      "answer": 80,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 16 פעמים 5."
+      ],
+      "explanation": "16 × 5 = 80.",
+      "source": "algo"
+    },
+    {
+      "id": "q-75ce46d584",
+      "text": "25 × 7 = ?",
+      "answer": 175,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 25 פעמים 7."
+      ],
+      "explanation": "25 × 7 = 175.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c8fab6e29e",
+      "text": "29 × 2 = ?",
+      "answer": 58,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 29 פעמים 2."
+      ],
+      "explanation": "29 × 2 = 58.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b10acd8d1d",
+      "text": "18 × 7 = ?",
+      "answer": 126,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 18 פעמים 7."
+      ],
+      "explanation": "18 × 7 = 126.",
+      "source": "algo"
+    },
+    {
+      "id": "q-13b3fad701",
+      "text": "28 × 6 = ?",
+      "answer": 168,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 28 פעמים 6."
+      ],
+      "explanation": "28 × 6 = 168.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bed9cd00e4",
+      "text": "13 × 9 = ?",
+      "answer": 117,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 13 פעמים 9."
+      ],
+      "explanation": "13 × 9 = 117.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1e364f340e",
+      "text": "26 × 7 = ?",
+      "answer": 182,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 26 פעמים 7."
+      ],
+      "explanation": "26 × 7 = 182.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ca3bf4b8bb",
+      "text": "24 × 2 = ?",
+      "answer": 48,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 24 פעמים 2."
+      ],
+      "explanation": "24 × 2 = 48.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bf1ad1c10a",
+      "text": "22 × 9 = ?",
+      "answer": 198,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 22 פעמים 9."
+      ],
+      "explanation": "22 × 9 = 198.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c008f4434b",
+      "text": "27 × 2 = ?",
+      "answer": 54,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 27 פעמים 2."
+      ],
+      "explanation": "27 × 2 = 54.",
+      "source": "algo"
+    },
+    {
+      "id": "q-20507db0e8",
+      "text": "28 × 5 = ?",
+      "answer": 140,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 28 פעמים 5."
+      ],
+      "explanation": "28 × 5 = 140.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bf2341b8a1",
+      "text": "19 × 7 = ?",
+      "answer": 133,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 19 פעמים 7."
+      ],
+      "explanation": "19 × 7 = 133.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ce3c5986db",
+      "text": "17 × 4 = ?",
+      "answer": 68,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 17 פעמים 4."
+      ],
+      "explanation": "17 × 4 = 68.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4218f34738",
+      "text": "20 × 6 = ?",
+      "answer": 120,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 20 פעמים 6."
+      ],
+      "explanation": "20 × 6 = 120.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f34ccf9e35",
+      "text": "14 × 7 = ?",
+      "answer": 98,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 14 פעמים 7."
+      ],
+      "explanation": "14 × 7 = 98.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ad0b401d50",
+      "text": "21 × 4 = ?",
+      "answer": 84,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 21 פעמים 4."
+      ],
+      "explanation": "21 × 4 = 84.",
+      "source": "algo"
+    },
+    {
+      "id": "q-66c4d2b68d",
+      "text": "18 × 3 = ?",
+      "answer": 54,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 18 פעמים 3."
+      ],
+      "explanation": "18 × 3 = 54.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f1d7ab8001",
+      "text": "19 × 9 = ?",
+      "answer": 171,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 19 פעמים 9."
+      ],
+      "explanation": "19 × 9 = 171.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3c48a22e13",
+      "text": "20 × 3 = ?",
+      "answer": 60,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 20 פעמים 3."
+      ],
+      "explanation": "20 × 3 = 60.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dad7b364f6",
+      "text": "18 × 5 = ?",
+      "answer": 90,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 18 פעמים 5."
+      ],
+      "explanation": "18 × 5 = 90.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ecba7069a9",
+      "text": "19 × 8 = ?",
+      "answer": 152,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 19 פעמים 8."
+      ],
+      "explanation": "19 × 8 = 152.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f5fe8a90bd",
+      "text": "15 × 8 = ?",
+      "answer": 120,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 15 פעמים 8."
+      ],
+      "explanation": "15 × 8 = 120.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0627ececab",
+      "text": "24 × 8 = ?",
+      "answer": 192,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 24 פעמים 8."
+      ],
+      "explanation": "24 × 8 = 192.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a1f2e869f8",
+      "text": "30 × 3 = ?",
+      "answer": 90,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 30 פעמים 3."
+      ],
+      "explanation": "30 × 3 = 90.",
+      "source": "algo"
+    },
+    {
+      "id": "q-04632c3617",
+      "text": "25 × 8 = ?",
+      "answer": 200,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 25 פעמים 8."
+      ],
+      "explanation": "25 × 8 = 200.",
+      "source": "algo"
+    },
+    {
+      "id": "q-61e77a9b18",
+      "text": "19 × 4 = ?",
+      "answer": 76,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 19 פעמים 4."
+      ],
+      "explanation": "19 × 4 = 76.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0e96b55cb0",
+      "text": "22 × 4 = ?",
+      "answer": 88,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 22 פעמים 4."
+      ],
+      "explanation": "22 × 4 = 88.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7396c56d70",
+      "text": "18 × 9 = ?",
+      "answer": 162,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 18 פעמים 9."
+      ],
+      "explanation": "18 × 9 = 162.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dd3cecaac0",
+      "text": "21 × 9 = ?",
+      "answer": 189,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 21 פעמים 9."
+      ],
+      "explanation": "21 × 9 = 189.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b02c476808",
+      "text": "12 × 7 = ?",
+      "answer": 84,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 12 פעמים 7."
+      ],
+      "explanation": "12 × 7 = 84.",
+      "source": "algo"
+    },
+    {
+      "id": "q-30a1b52076",
+      "text": "23 × 7 = ?",
+      "answer": 161,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 23 פעמים 7."
+      ],
+      "explanation": "23 × 7 = 161.",
+      "source": "algo"
+    },
+    {
+      "id": "q-86a5bfca34",
+      "text": "15 × 7 = ?",
+      "answer": 105,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 15 פעמים 7."
+      ],
+      "explanation": "15 × 7 = 105.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bf668a3d9c",
+      "text": "21 × 8 = ?",
+      "answer": 168,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 21 פעמים 8."
+      ],
+      "explanation": "21 × 8 = 168.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2c4bc29ef7",
+      "text": "20 × 7 = ?",
+      "answer": 140,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 20 פעמים 7."
+      ],
+      "explanation": "20 × 7 = 140.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ef73c74188",
+      "text": "19 × 5 = ?",
+      "answer": 95,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 19 פעמים 5."
+      ],
+      "explanation": "19 × 5 = 95.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a2ebdfd51d",
+      "text": "16 × 2 = ?",
+      "answer": 32,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 16 פעמים 2."
+      ],
+      "explanation": "16 × 2 = 32.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4d91ed414f",
+      "text": "26 × 9 = ?",
+      "answer": 234,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 26 פעמים 9."
+      ],
+      "explanation": "26 × 9 = 234.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a4d82ba93a",
+      "text": "25 × 6 = ?",
+      "answer": 150,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 25 פעמים 6."
+      ],
+      "explanation": "25 × 6 = 150.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1481e1fdf2",
+      "text": "28 × 3 = ?",
+      "answer": 84,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 28 פעמים 3."
+      ],
+      "explanation": "28 × 3 = 84.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fe261e1647",
+      "text": "18 × 2 = ?",
+      "answer": 36,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 18 פעמים 2."
+      ],
+      "explanation": "18 × 2 = 36.",
+      "source": "algo"
+    },
+    {
+      "id": "q-74b9ee94c6",
+      "text": "27 × 4 = ?",
+      "answer": 108,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 27 פעמים 4."
+      ],
+      "explanation": "27 × 4 = 108.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7025a2a286",
+      "text": "30 × 9 = ?",
+      "answer": 270,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 30 פעמים 9."
+      ],
+      "explanation": "30 × 9 = 270.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8716e3bdc3",
+      "text": "19 × 2 = ?",
+      "answer": 38,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 19 פעמים 2."
+      ],
+      "explanation": "19 × 2 = 38.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dcb7122dcf",
+      "text": "30 × 4 = ?",
+      "answer": 120,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 30 פעמים 4."
+      ],
+      "explanation": "30 × 4 = 120.",
+      "source": "algo"
+    },
+    {
+      "id": "q-34ce9de9cc",
+      "text": "25 × 5 = ?",
+      "answer": 125,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 25 פעמים 5."
+      ],
+      "explanation": "25 × 5 = 125.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a91780829e",
+      "text": "24 × 7 = ?",
+      "answer": 168,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 24 פעמים 7."
+      ],
+      "explanation": "24 × 7 = 168.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bab41079da",
+      "text": "18 × 4 = ?",
+      "answer": 72,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 18 פעמים 4."
+      ],
+      "explanation": "18 × 4 = 72.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f15f041920",
+      "text": "17 × 8 = ?",
+      "answer": 136,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 17 פעמים 8."
+      ],
+      "explanation": "17 × 8 = 136.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4ac6703719",
+      "text": "24 × 5 = ?",
+      "answer": 120,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 24 פעמים 5."
+      ],
+      "explanation": "24 × 5 = 120.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bfb6ed33f7",
+      "text": "14 × 3 = ?",
+      "answer": 42,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 14 פעמים 3."
+      ],
+      "explanation": "14 × 3 = 42.",
+      "source": "algo"
+    },
+    {
+      "id": "q-61448e1729",
+      "text": "26 × 2 = ?",
+      "answer": 52,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 26 פעמים 2."
+      ],
+      "explanation": "26 × 2 = 52.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7a8373c37e",
+      "text": "29 × 8 = ?",
+      "answer": 232,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 29 פעמים 8."
+      ],
+      "explanation": "29 × 8 = 232.",
+      "source": "algo"
+    },
+    {
+      "id": "q-533487a76e",
+      "text": "24 × 9 = ?",
+      "answer": 216,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 24 פעמים 9."
+      ],
+      "explanation": "24 × 9 = 216.",
+      "source": "algo"
+    },
+    {
+      "id": "q-46b363ca0c",
+      "text": "30 × 2 = ?",
+      "answer": 60,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 30 פעמים 2."
+      ],
+      "explanation": "30 × 2 = 60.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6e8e3ee188",
+      "text": "16 × 9 = ?",
+      "answer": 144,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 16 פעמים 9."
+      ],
+      "explanation": "16 × 9 = 144.",
+      "source": "algo"
+    },
+    {
+      "id": "q-af07be78a6",
+      "text": "23 × 5 = ?",
+      "answer": 115,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 23 פעמים 5."
+      ],
+      "explanation": "23 × 5 = 115.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6cd21ddec9",
+      "text": "14 × 2 = ?",
+      "answer": 28,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 14 פעמים 2."
+      ],
+      "explanation": "14 × 2 = 28.",
+      "source": "algo"
+    },
+    {
+      "id": "q-afb6244611",
+      "text": "18 × 8 = ?",
+      "answer": 144,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 18 פעמים 8."
+      ],
+      "explanation": "18 × 8 = 144.",
+      "source": "algo"
+    },
+    {
+      "id": "q-89a1fba197",
+      "text": "12 × 2 = ?",
+      "answer": 24,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 12 פעמים 2."
+      ],
+      "explanation": "12 × 2 = 24.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3777ba01c3",
+      "text": "16 × 7 = ?",
+      "answer": 112,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 16 פעמים 7."
+      ],
+      "explanation": "16 × 7 = 112.",
+      "source": "algo"
+    },
+    {
+      "id": "q-96147a5ee8",
+      "text": "21 × 2 = ?",
+      "answer": 42,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 21 פעמים 2."
+      ],
+      "explanation": "21 × 2 = 42.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b185eb6c88",
+      "text": "11 × 6 = ?",
+      "answer": 66,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 11 פעמים 6."
+      ],
+      "explanation": "11 × 6 = 66.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f9cf5909ba",
+      "text": "11 × 9 = ?",
+      "answer": 99,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 11 פעמים 9."
+      ],
+      "explanation": "11 × 9 = 99.",
+      "source": "algo"
+    },
+    {
+      "id": "q-36417381fe",
+      "text": "17 × 6 = ?",
+      "answer": 102,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 17 פעמים 6."
+      ],
+      "explanation": "17 × 6 = 102.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2cff3fd4f3",
+      "text": "15 × 3 = ?",
+      "answer": 45,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 15 פעמים 3."
+      ],
+      "explanation": "15 × 3 = 45.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bc370c0ae4",
+      "text": "14 × 4 = ?",
+      "answer": 56,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 14 פעמים 4."
+      ],
+      "explanation": "14 × 4 = 56.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f429d69150",
+      "text": "27 × 6 = ?",
+      "answer": 162,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 27 פעמים 6."
+      ],
+      "explanation": "27 × 6 = 162.",
+      "source": "algo"
+    },
+    {
+      "id": "q-32987c2a53",
+      "text": "26 × 4 = ?",
+      "answer": 104,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 26 פעמים 4."
+      ],
+      "explanation": "26 × 4 = 104.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f6edd3cf09",
+      "text": "21 × 7 = ?",
+      "answer": 147,
+      "level": 9,
+      "difficulty": 9,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 21 פעמים 7."
+      ],
+      "explanation": "21 × 7 = 147.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b0d1c1565f",
+      "text": "23 × 6 = ?",
+      "answer": 138,
+      "level": 8,
+      "difficulty": 8,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 23 פעמים 6."
+      ],
+      "explanation": "23 × 6 = 138.",
+      "source": "algo"
+    },
+    {
+      "id": "q-930abd64a7",
+      "text": "20 × 9 = ?",
+      "answer": 180,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 20 פעמים 9."
+      ],
+      "explanation": "20 × 9 = 180.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6ee9ca365b",
+      "text": "12 × 8 = ?",
+      "answer": 96,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 12 פעמים 8."
+      ],
+      "explanation": "12 × 8 = 96.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ab9ca0de06",
+      "text": "23 × 9 = ?",
+      "answer": 207,
+      "level": 10,
+      "difficulty": 10,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 23 פעמים 9."
+      ],
+      "explanation": "23 × 9 = 207.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1a462867ad",
+      "text": "22 × 5 = ?",
+      "answer": 110,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 22 פעמים 5."
+      ],
+      "explanation": "22 × 5 = 110.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2d8b4c8340",
+      "text": "17 × 7 = ?",
+      "answer": 119,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 17 פעמים 7."
+      ],
+      "explanation": "17 × 7 = 119.",
+      "source": "algo"
+    },
+    {
+      "id": "q-accec2af98",
+      "text": "12 × 5 = ?",
+      "answer": 60,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 12 פעמים 5."
+      ],
+      "explanation": "12 × 5 = 60.",
+      "source": "algo"
+    },
+    {
+      "id": "q-92dc307e14",
+      "text": "23 × 3 = ?",
+      "answer": 69,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "כפל הוא חיבור חוזר.",
+        "חשב/י 23 פעמים 3."
+      ],
+      "explanation": "23 × 3 = 69.",
+      "source": "algo"
+    }
+  ]
+}

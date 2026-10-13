@@ -4,49 +4,7 @@
   "topic": "ציור צורות",
   "questions": [
     {
-      "id": "q-0c52ac146f",
-      "text": "צייר/י מצולע בעל 8 צלעות",
-      "answer": "מצולע בעל 8 צלעות",
-      "level": 7,
-      "difficulty": 7,
-      "hints": [
-        "לצורה הזו יש 8 צלעות.",
-        "אפשר אורכי צלעות שונים."
-      ],
-      "explanation": "כדי לצייר מצולע בעל 8 צלעות צריך 8 קודקודים.",
-      "source": "algo",
-      "interactive": "shape-create",
-      "shapeTarget": {
-        "type": "polygon",
-        "sides": 8,
-        "equal": false,
-        "right": false,
-        "label": "מצולע בעל 8 צלעות"
-      }
-    },
-    {
-      "id": "q-6a3f19f86e",
-      "text": "צייר/י משולש שווה-צלעות (כל הצלעות שוות!)",
-      "answer": "משולש שווה-צלעות",
-      "level": 5,
-      "difficulty": 5,
-      "hints": [
-        "לצורה הזו יש 3 צלעות.",
-        "שים/י לב שכל הצלעות יוצאות באותו אורך."
-      ],
-      "explanation": "כדי לצייר משולש שווה-צלעות צריך 3 קודקודים, וכל הצלעות באותו אורך.",
-      "source": "algo",
-      "interactive": "shape-create",
-      "shapeTarget": {
-        "type": "equilateral",
-        "sides": 3,
-        "equal": true,
-        "right": false,
-        "label": "משולש שווה-צלעות"
-      }
-    },
-    {
-      "id": "q-8a58113f80",
+      "id": "q-95cf1909c0",
       "text": "צייר/י משולש",
       "answer": "משולש",
       "level": 2,
@@ -67,28 +25,28 @@
       }
     },
     {
-      "id": "q-0598568f47",
-      "text": "צייר/י מצולע בעל 5 צלעות",
-      "answer": "מצולע בעל 5 צלעות",
-      "level": 4,
-      "difficulty": 4,
+      "id": "q-2b5b37dd49",
+      "text": "צייר/י ריבוע (כל הצלעות שוות וכל הזוויות ישרות!)",
+      "answer": "ריבוע",
+      "level": 5,
+      "difficulty": 5,
       "hints": [
-        "לצורה הזו יש 5 צלעות.",
-        "אפשר אורכי צלעות שונים."
+        "לצורה הזו יש 4 צלעות.",
+        "שים/י לב שכל הצלעות יוצאות באותו אורך."
       ],
-      "explanation": "כדי לצייר מצולע בעל 5 צלעות צריך 5 קודקודים.",
+      "explanation": "כדי לצייר ריבוע צריך 4 קודקודים, וכל הצלעות באותו אורך, וכל הזוויות ישרות (90°).",
       "source": "algo",
       "interactive": "shape-create",
       "shapeTarget": {
-        "type": "polygon",
-        "sides": 5,
-        "equal": false,
-        "right": false,
-        "label": "מצולע בעל 5 צלעות"
+        "type": "square",
+        "sides": 4,
+        "equal": true,
+        "right": true,
+        "label": "ריבוע"
       }
     },
     {
-      "id": "q-b2a99c1636",
+      "id": "q-6da8e291f5",
       "text": "צייר/י מלבן (כל הזוויות ישרות!)",
       "answer": "מלבן",
       "level": 4,
@@ -109,7 +67,7 @@
       }
     },
     {
-      "id": "q-d31bce6026",
+      "id": "q-fdb1fd385a",
       "text": "צייר/י מצולע בעל 7 צלעות",
       "answer": "מצולע בעל 7 צלעות",
       "level": 6,
@@ -130,28 +88,49 @@
       }
     },
     {
-      "id": "q-0c1a90a0e8",
-      "text": "צייר/י מרובע",
-      "answer": "מרובע",
-      "level": 2,
-      "difficulty": 2,
+      "id": "q-a2a66990ad",
+      "text": "צייר/י משולש שווה-צלעות (כל הצלעות שוות!)",
+      "answer": "משולש שווה-צלעות",
+      "level": 5,
+      "difficulty": 5,
       "hints": [
-        "לצורה הזו יש 4 צלעות.",
-        "אפשר אורכי צלעות שונים."
+        "לצורה הזו יש 3 צלעות.",
+        "שים/י לב שכל הצלעות יוצאות באותו אורך."
       ],
-      "explanation": "כדי לצייר מרובע צריך 4 קודקודים.",
+      "explanation": "כדי לצייר משולש שווה-צלעות צריך 3 קודקודים, וכל הצלעות באותו אורך.",
       "source": "algo",
       "interactive": "shape-create",
       "shapeTarget": {
-        "type": "quad",
-        "sides": 4,
-        "equal": false,
+        "type": "equilateral",
+        "sides": 3,
+        "equal": true,
         "right": false,
-        "label": "מרובע"
+        "label": "משולש שווה-צלעות"
       }
     },
     {
-      "id": "q-0d30c151f9",
+      "id": "q-dd3bf611c8",
+      "text": "צייר/י מצולע בעל 5 צלעות",
+      "answer": "מצולע בעל 5 צלעות",
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "לצורה הזו יש 5 צלעות.",
+        "אפשר אורכי צלעות שונים."
+      ],
+      "explanation": "כדי לצייר מצולע בעל 5 צלעות צריך 5 קודקודים.",
+      "source": "algo",
+      "interactive": "shape-create",
+      "shapeTarget": {
+        "type": "polygon",
+        "sides": 5,
+        "equal": false,
+        "right": false,
+        "label": "מצולע בעל 5 צלעות"
+      }
+    },
+    {
+      "id": "q-1545d56d85",
       "text": "צייר/י מצולע בעל 6 צלעות",
       "answer": "מצולע בעל 6 צלעות",
       "level": 5,
@@ -172,24 +151,45 @@
       }
     },
     {
-      "id": "q-5d4fa41a71",
-      "text": "צייר/י ריבוע (כל הצלעות שוות וכל הזוויות ישרות!)",
-      "answer": "ריבוע",
-      "level": 5,
-      "difficulty": 5,
+      "id": "q-18fe6d90ad",
+      "text": "צייר/י מצולע בעל 8 צלעות",
+      "answer": "מצולע בעל 8 צלעות",
+      "level": 7,
+      "difficulty": 7,
       "hints": [
-        "לצורה הזו יש 4 צלעות.",
-        "שים/י לב שכל הצלעות יוצאות באותו אורך."
+        "לצורה הזו יש 8 צלעות.",
+        "אפשר אורכי צלעות שונים."
       ],
-      "explanation": "כדי לצייר ריבוע צריך 4 קודקודים, וכל הצלעות באותו אורך, וכל הזוויות ישרות (90°).",
+      "explanation": "כדי לצייר מצולע בעל 8 צלעות צריך 8 קודקודים.",
       "source": "algo",
       "interactive": "shape-create",
       "shapeTarget": {
-        "type": "square",
+        "type": "polygon",
+        "sides": 8,
+        "equal": false,
+        "right": false,
+        "label": "מצולע בעל 8 צלעות"
+      }
+    },
+    {
+      "id": "q-767debe641",
+      "text": "צייר/י מרובע",
+      "answer": "מרובע",
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "לצורה הזו יש 4 צלעות.",
+        "אפשר אורכי צלעות שונים."
+      ],
+      "explanation": "כדי לצייר מרובע צריך 4 קודקודים.",
+      "source": "algo",
+      "interactive": "shape-create",
+      "shapeTarget": {
+        "type": "quad",
         "sides": 4,
-        "equal": true,
-        "right": true,
-        "label": "ריבוע"
+        "equal": false,
+        "right": false,
+        "label": "מרובע"
       }
     }
   ]

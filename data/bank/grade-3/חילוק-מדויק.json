@@ -1,0 +1,1177 @@
+{
+  "grade": "ג׳",
+  "gradeNum": 3,
+  "topic": "חילוק מדויק",
+  "questions": [
+    {
+      "id": "q-7a3a8d2122",
+      "text": "30 ÷ 5 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 30?"
+      ],
+      "explanation": "30 ÷ 5 = 6 (כי 5 × 6 = 30).",
+      "source": "algo"
+    },
+    {
+      "id": "q-6783604024",
+      "text": "72 ÷ 8 = ?",
+      "answer": 9,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 72?"
+      ],
+      "explanation": "72 ÷ 8 = 9 (כי 8 × 9 = 72).",
+      "source": "algo"
+    },
+    {
+      "id": "q-1cc70d7c0e",
+      "text": "36 ÷ 6 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 36?"
+      ],
+      "explanation": "36 ÷ 6 = 6 (כי 6 × 6 = 36).",
+      "source": "algo"
+    },
+    {
+      "id": "q-2aba1a9a8f",
+      "text": "7 ÷ 7 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 7?"
+      ],
+      "explanation": "7 ÷ 7 = 1 (כי 7 × 1 = 7).",
+      "source": "algo"
+    },
+    {
+      "id": "q-5be0e3b3a8",
+      "text": "40 ÷ 5 = ?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 40?"
+      ],
+      "explanation": "40 ÷ 5 = 8 (כי 5 × 8 = 40).",
+      "source": "algo"
+    },
+    {
+      "id": "q-301c79a15d",
+      "text": "10 ÷ 10 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 10?"
+      ],
+      "explanation": "10 ÷ 10 = 1 (כי 10 × 1 = 10).",
+      "source": "algo"
+    },
+    {
+      "id": "q-119048c2cf",
+      "text": "40 ÷ 4 = ?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 40?"
+      ],
+      "explanation": "40 ÷ 4 = 10 (כי 4 × 10 = 40).",
+      "source": "algo"
+    },
+    {
+      "id": "q-648f7395ea",
+      "text": "28 ÷ 7 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 28?"
+      ],
+      "explanation": "28 ÷ 7 = 4 (כי 7 × 4 = 28).",
+      "source": "algo"
+    },
+    {
+      "id": "q-fd19194a8a",
+      "text": "18 ÷ 3 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 18?"
+      ],
+      "explanation": "18 ÷ 3 = 6 (כי 3 × 6 = 18).",
+      "source": "algo"
+    },
+    {
+      "id": "q-82220f6fce",
+      "text": "100 ÷ 10 = ?",
+      "answer": 10,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 100?"
+      ],
+      "explanation": "100 ÷ 10 = 10 (כי 10 × 10 = 100).",
+      "source": "algo"
+    },
+    {
+      "id": "q-14b150653e",
+      "text": "30 ÷ 6 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 30?"
+      ],
+      "explanation": "30 ÷ 6 = 5 (כי 6 × 5 = 30).",
+      "source": "algo"
+    },
+    {
+      "id": "q-f74e994acd",
+      "text": "42 ÷ 6 = ?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 42?"
+      ],
+      "explanation": "42 ÷ 6 = 7 (כי 6 × 7 = 42).",
+      "source": "algo"
+    },
+    {
+      "id": "q-3b35d92dc2",
+      "text": "40 ÷ 10 = ?",
+      "answer": 4,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 40?"
+      ],
+      "explanation": "40 ÷ 10 = 4 (כי 10 × 4 = 40).",
+      "source": "algo"
+    },
+    {
+      "id": "q-5ba2dc2c7e",
+      "text": "14 ÷ 7 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 14?"
+      ],
+      "explanation": "14 ÷ 7 = 2 (כי 7 × 2 = 14).",
+      "source": "algo"
+    },
+    {
+      "id": "q-a9ca7cdf75",
+      "text": "56 ÷ 8 = ?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 56?"
+      ],
+      "explanation": "56 ÷ 8 = 7 (כי 8 × 7 = 56).",
+      "source": "algo"
+    },
+    {
+      "id": "q-5fcff04ef8",
+      "text": "12 ÷ 4 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 12?"
+      ],
+      "explanation": "12 ÷ 4 = 3 (כי 4 × 3 = 12).",
+      "source": "algo"
+    },
+    {
+      "id": "q-63ea9371e7",
+      "text": "40 ÷ 8 = ?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 40?"
+      ],
+      "explanation": "40 ÷ 8 = 5 (כי 8 × 5 = 40).",
+      "source": "algo"
+    },
+    {
+      "id": "q-1c76b8ee30",
+      "text": "64 ÷ 8 = ?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 64?"
+      ],
+      "explanation": "64 ÷ 8 = 8 (כי 8 × 8 = 64).",
+      "source": "algo"
+    },
+    {
+      "id": "q-2a9afac5ae",
+      "text": "60 ÷ 6 = ?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 60?"
+      ],
+      "explanation": "60 ÷ 6 = 10 (כי 6 × 10 = 60).",
+      "source": "algo"
+    },
+    {
+      "id": "q-03ec6b7785",
+      "text": "49 ÷ 7 = ?",
+      "answer": 7,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 49?"
+      ],
+      "explanation": "49 ÷ 7 = 7 (כי 7 × 7 = 49).",
+      "source": "algo"
+    },
+    {
+      "id": "q-278fa07d3e",
+      "text": "70 ÷ 7 = ?",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 70?"
+      ],
+      "explanation": "70 ÷ 7 = 10 (כי 7 × 10 = 70).",
+      "source": "algo"
+    },
+    {
+      "id": "q-aa02a5c466",
+      "text": "45 ÷ 9 = ?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 45?"
+      ],
+      "explanation": "45 ÷ 9 = 5 (כי 9 × 5 = 45).",
+      "source": "algo"
+    },
+    {
+      "id": "q-dbc4d218d2",
+      "text": "24 ÷ 4 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 24?"
+      ],
+      "explanation": "24 ÷ 4 = 6 (כי 4 × 6 = 24).",
+      "source": "algo"
+    },
+    {
+      "id": "q-97869a73c1",
+      "text": "8 ÷ 8 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 8?"
+      ],
+      "explanation": "8 ÷ 8 = 1 (כי 8 × 1 = 8).",
+      "source": "algo"
+    },
+    {
+      "id": "q-edc1fa46d0",
+      "text": "15 ÷ 3 = ?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 15?"
+      ],
+      "explanation": "15 ÷ 3 = 5 (כי 3 × 5 = 15).",
+      "source": "algo"
+    },
+    {
+      "id": "q-de7959f692",
+      "text": "16 ÷ 8 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 16?"
+      ],
+      "explanation": "16 ÷ 8 = 2 (כי 8 × 2 = 16).",
+      "source": "algo"
+    },
+    {
+      "id": "q-78decd5ee3",
+      "text": "5 ÷ 5 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 5?"
+      ],
+      "explanation": "5 ÷ 5 = 1 (כי 5 × 1 = 5).",
+      "source": "algo"
+    },
+    {
+      "id": "q-bf7d712356",
+      "text": "70 ÷ 10 = ?",
+      "answer": 7,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 70?"
+      ],
+      "explanation": "70 ÷ 10 = 7 (כי 10 × 7 = 70).",
+      "source": "algo"
+    },
+    {
+      "id": "q-8a587f8ed7",
+      "text": "9 ÷ 3 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 9?"
+      ],
+      "explanation": "9 ÷ 3 = 3 (כי 3 × 3 = 9).",
+      "source": "algo"
+    },
+    {
+      "id": "q-dbc633129a",
+      "text": "28 ÷ 4 = ?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 28?"
+      ],
+      "explanation": "28 ÷ 4 = 7 (כי 4 × 7 = 28).",
+      "source": "algo"
+    },
+    {
+      "id": "q-ae5657a15f",
+      "text": "32 ÷ 4 = ?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 32?"
+      ],
+      "explanation": "32 ÷ 4 = 8 (כי 4 × 8 = 32).",
+      "source": "algo"
+    },
+    {
+      "id": "q-2ed659d00d",
+      "text": "9 ÷ 9 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 9?"
+      ],
+      "explanation": "9 ÷ 9 = 1 (כי 9 × 1 = 9).",
+      "source": "algo"
+    },
+    {
+      "id": "q-27557e28a5",
+      "text": "36 ÷ 4 = ?",
+      "answer": 9,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 36?"
+      ],
+      "explanation": "36 ÷ 4 = 9 (כי 4 × 9 = 36).",
+      "source": "algo"
+    },
+    {
+      "id": "q-bfa4617f79",
+      "text": "18 ÷ 6 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 18?"
+      ],
+      "explanation": "18 ÷ 6 = 3 (כי 6 × 3 = 18).",
+      "source": "algo"
+    },
+    {
+      "id": "q-198b6e1ea7",
+      "text": "35 ÷ 5 = ?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 35?"
+      ],
+      "explanation": "35 ÷ 5 = 7 (כי 5 × 7 = 35).",
+      "source": "algo"
+    },
+    {
+      "id": "q-def7406314",
+      "text": "50 ÷ 10 = ?",
+      "answer": 5,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 50?"
+      ],
+      "explanation": "50 ÷ 10 = 5 (כי 10 × 5 = 50).",
+      "source": "algo"
+    },
+    {
+      "id": "q-c5fa9dc7b8",
+      "text": "14 ÷ 2 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 14?"
+      ],
+      "explanation": "14 ÷ 2 = 7 (כי 2 × 7 = 14).",
+      "source": "algo"
+    },
+    {
+      "id": "q-763fa01d24",
+      "text": "10 ÷ 2 = ?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 10?"
+      ],
+      "explanation": "10 ÷ 2 = 5 (כי 2 × 5 = 10).",
+      "source": "algo"
+    },
+    {
+      "id": "q-8f3139a613",
+      "text": "12 ÷ 2 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 12?"
+      ],
+      "explanation": "12 ÷ 2 = 6 (כי 2 × 6 = 12).",
+      "source": "algo"
+    },
+    {
+      "id": "q-f32e130bdb",
+      "text": "27 ÷ 3 = ?",
+      "answer": 9,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 27?"
+      ],
+      "explanation": "27 ÷ 3 = 9 (כי 3 × 9 = 27).",
+      "source": "algo"
+    },
+    {
+      "id": "q-a91303e1c9",
+      "text": "24 ÷ 6 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 24?"
+      ],
+      "explanation": "24 ÷ 6 = 4 (כי 6 × 4 = 24).",
+      "source": "algo"
+    },
+    {
+      "id": "q-e8c50166c3",
+      "text": "6 ÷ 2 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 6?"
+      ],
+      "explanation": "6 ÷ 2 = 3 (כי 2 × 3 = 6).",
+      "source": "algo"
+    },
+    {
+      "id": "q-0abdb7c86b",
+      "text": "42 ÷ 7 = ?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 42?"
+      ],
+      "explanation": "42 ÷ 7 = 6 (כי 7 × 6 = 42).",
+      "source": "algo"
+    },
+    {
+      "id": "q-ad0fe67c71",
+      "text": "48 ÷ 8 = ?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 48?"
+      ],
+      "explanation": "48 ÷ 8 = 6 (כי 8 × 6 = 48).",
+      "source": "algo"
+    },
+    {
+      "id": "q-3367913a4d",
+      "text": "20 ÷ 2 = ?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 20?"
+      ],
+      "explanation": "20 ÷ 2 = 10 (כי 2 × 10 = 20).",
+      "source": "algo"
+    },
+    {
+      "id": "q-4bcb154d63",
+      "text": "4 ÷ 4 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 4?"
+      ],
+      "explanation": "4 ÷ 4 = 1 (כי 4 × 1 = 4).",
+      "source": "algo"
+    },
+    {
+      "id": "q-bb130078e7",
+      "text": "72 ÷ 9 = ?",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 72?"
+      ],
+      "explanation": "72 ÷ 9 = 8 (כי 9 × 8 = 72).",
+      "source": "algo"
+    },
+    {
+      "id": "q-aa47d78239",
+      "text": "2 ÷ 2 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 2?"
+      ],
+      "explanation": "2 ÷ 2 = 1 (כי 2 × 1 = 2).",
+      "source": "algo"
+    },
+    {
+      "id": "q-db2fd4c475",
+      "text": "25 ÷ 5 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 25?"
+      ],
+      "explanation": "25 ÷ 5 = 5 (כי 5 × 5 = 25).",
+      "source": "algo"
+    },
+    {
+      "id": "q-25000caf1d",
+      "text": "48 ÷ 6 = ?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 48?"
+      ],
+      "explanation": "48 ÷ 6 = 8 (כי 6 × 8 = 48).",
+      "source": "algo"
+    },
+    {
+      "id": "q-542644ec52",
+      "text": "20 ÷ 5 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 20?"
+      ],
+      "explanation": "20 ÷ 5 = 4 (כי 5 × 4 = 20).",
+      "source": "algo"
+    },
+    {
+      "id": "q-0364e42a46",
+      "text": "35 ÷ 7 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 35?"
+      ],
+      "explanation": "35 ÷ 7 = 5 (כי 7 × 5 = 35).",
+      "source": "algo"
+    },
+    {
+      "id": "q-d821df2dae",
+      "text": "15 ÷ 5 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 15?"
+      ],
+      "explanation": "15 ÷ 5 = 3 (כי 5 × 3 = 15).",
+      "source": "algo"
+    },
+    {
+      "id": "q-c65de26d29",
+      "text": "80 ÷ 10 = ?",
+      "answer": 8,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 80?"
+      ],
+      "explanation": "80 ÷ 10 = 8 (כי 10 × 8 = 80).",
+      "source": "algo"
+    },
+    {
+      "id": "q-c8e6b9fc13",
+      "text": "16 ÷ 2 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 16?"
+      ],
+      "explanation": "16 ÷ 2 = 8 (כי 2 × 8 = 16).",
+      "source": "algo"
+    },
+    {
+      "id": "q-2b586b9806",
+      "text": "8 ÷ 4 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 8?"
+      ],
+      "explanation": "8 ÷ 4 = 2 (כי 4 × 2 = 8).",
+      "source": "algo"
+    },
+    {
+      "id": "q-2210a6c280",
+      "text": "80 ÷ 8 = ?",
+      "answer": 10,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 80?"
+      ],
+      "explanation": "80 ÷ 8 = 10 (כי 8 × 10 = 80).",
+      "source": "algo"
+    },
+    {
+      "id": "q-86b8bef6e3",
+      "text": "63 ÷ 9 = ?",
+      "answer": 7,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 63?"
+      ],
+      "explanation": "63 ÷ 9 = 7 (כי 9 × 7 = 63).",
+      "source": "algo"
+    },
+    {
+      "id": "q-ece287a1ec",
+      "text": "18 ÷ 9 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 18?"
+      ],
+      "explanation": "18 ÷ 9 = 2 (כי 9 × 2 = 18).",
+      "source": "algo"
+    },
+    {
+      "id": "q-4830152a67",
+      "text": "18 ÷ 2 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 18?"
+      ],
+      "explanation": "18 ÷ 2 = 9 (כי 2 × 9 = 18).",
+      "source": "algo"
+    },
+    {
+      "id": "q-0e69eac7f7",
+      "text": "12 ÷ 3 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 12?"
+      ],
+      "explanation": "12 ÷ 3 = 4 (כי 3 × 4 = 12).",
+      "source": "algo"
+    },
+    {
+      "id": "q-02182b58a6",
+      "text": "21 ÷ 3 = ?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 21?"
+      ],
+      "explanation": "21 ÷ 3 = 7 (כי 3 × 7 = 21).",
+      "source": "algo"
+    },
+    {
+      "id": "q-bdc70c0280",
+      "text": "27 ÷ 9 = ?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 27?"
+      ],
+      "explanation": "27 ÷ 9 = 3 (כי 9 × 3 = 27).",
+      "source": "algo"
+    },
+    {
+      "id": "q-a31a51580f",
+      "text": "10 ÷ 5 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 10?"
+      ],
+      "explanation": "10 ÷ 5 = 2 (כי 5 × 2 = 10).",
+      "source": "algo"
+    },
+    {
+      "id": "q-baca12901c",
+      "text": "50 ÷ 5 = ?",
+      "answer": 10,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 50?"
+      ],
+      "explanation": "50 ÷ 5 = 10 (כי 5 × 10 = 50).",
+      "source": "algo"
+    },
+    {
+      "id": "q-305648086f",
+      "text": "54 ÷ 6 = ?",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 54?"
+      ],
+      "explanation": "54 ÷ 6 = 9 (כי 6 × 9 = 54).",
+      "source": "algo"
+    },
+    {
+      "id": "q-64a0a11545",
+      "text": "20 ÷ 4 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 20?"
+      ],
+      "explanation": "20 ÷ 4 = 5 (כי 4 × 5 = 20).",
+      "source": "algo"
+    },
+    {
+      "id": "q-f179d84d35",
+      "text": "20 ÷ 10 = ?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 20?"
+      ],
+      "explanation": "20 ÷ 10 = 2 (כי 10 × 2 = 20).",
+      "source": "algo"
+    },
+    {
+      "id": "q-f657f0d1cc",
+      "text": "24 ÷ 3 = ?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 24?"
+      ],
+      "explanation": "24 ÷ 3 = 8 (כי 3 × 8 = 24).",
+      "source": "algo"
+    },
+    {
+      "id": "q-599233cc0a",
+      "text": "30 ÷ 10 = ?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 30?"
+      ],
+      "explanation": "30 ÷ 10 = 3 (כי 10 × 3 = 30).",
+      "source": "algo"
+    },
+    {
+      "id": "q-00e219de68",
+      "text": "54 ÷ 9 = ?",
+      "answer": 6,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 54?"
+      ],
+      "explanation": "54 ÷ 9 = 6 (כי 9 × 6 = 54).",
+      "source": "algo"
+    },
+    {
+      "id": "q-a9b65186c1",
+      "text": "90 ÷ 9 = ?",
+      "answer": 10,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 90?"
+      ],
+      "explanation": "90 ÷ 9 = 10 (כי 9 × 10 = 90).",
+      "source": "algo"
+    },
+    {
+      "id": "q-62d0f52816",
+      "text": "21 ÷ 7 = ?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 21?"
+      ],
+      "explanation": "21 ÷ 7 = 3 (כי 7 × 3 = 21).",
+      "source": "algo"
+    },
+    {
+      "id": "q-40564898af",
+      "text": "32 ÷ 8 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 32?"
+      ],
+      "explanation": "32 ÷ 8 = 4 (כי 8 × 4 = 32).",
+      "source": "algo"
+    },
+    {
+      "id": "q-543338a2b2",
+      "text": "30 ÷ 3 = ?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 30?"
+      ],
+      "explanation": "30 ÷ 3 = 10 (כי 3 × 10 = 30).",
+      "source": "algo"
+    },
+    {
+      "id": "q-c37f3f4902",
+      "text": "90 ÷ 10 = ?",
+      "answer": 9,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 90?"
+      ],
+      "explanation": "90 ÷ 10 = 9 (כי 10 × 9 = 90).",
+      "source": "algo"
+    },
+    {
+      "id": "q-ff703cbaf6",
+      "text": "63 ÷ 7 = ?",
+      "answer": 9,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 63?"
+      ],
+      "explanation": "63 ÷ 7 = 9 (כי 7 × 9 = 63).",
+      "source": "algo"
+    },
+    {
+      "id": "q-ba6f5f5149",
+      "text": "45 ÷ 5 = ?",
+      "answer": 9,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 5 נותן 45?"
+      ],
+      "explanation": "45 ÷ 5 = 9 (כי 5 × 9 = 45).",
+      "source": "algo"
+    },
+    {
+      "id": "q-dabc7c127a",
+      "text": "6 ÷ 6 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 6?"
+      ],
+      "explanation": "6 ÷ 6 = 1 (כי 6 × 1 = 6).",
+      "source": "algo"
+    },
+    {
+      "id": "q-be77918075",
+      "text": "4 ÷ 2 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 4?"
+      ],
+      "explanation": "4 ÷ 2 = 2 (כי 2 × 2 = 4).",
+      "source": "algo"
+    },
+    {
+      "id": "q-9c98ec0bc6",
+      "text": "6 ÷ 3 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 6?"
+      ],
+      "explanation": "6 ÷ 3 = 2 (כי 3 × 2 = 6).",
+      "source": "algo"
+    },
+    {
+      "id": "q-77bd98de68",
+      "text": "81 ÷ 9 = ?",
+      "answer": 9,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 81?"
+      ],
+      "explanation": "81 ÷ 9 = 9 (כי 9 × 9 = 81).",
+      "source": "algo"
+    },
+    {
+      "id": "q-2451279a10",
+      "text": "12 ÷ 6 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 6 נותן 12?"
+      ],
+      "explanation": "12 ÷ 6 = 2 (כי 6 × 2 = 12).",
+      "source": "algo"
+    },
+    {
+      "id": "q-07b84ef11f",
+      "text": "24 ÷ 8 = ?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 8 נותן 24?"
+      ],
+      "explanation": "24 ÷ 8 = 3 (כי 8 × 3 = 24).",
+      "source": "algo"
+    },
+    {
+      "id": "q-8de668a640",
+      "text": "56 ÷ 7 = ?",
+      "answer": 8,
+      "level": 4,
+      "difficulty": 4,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 7 נותן 56?"
+      ],
+      "explanation": "56 ÷ 7 = 8 (כי 7 × 8 = 56).",
+      "source": "algo"
+    },
+    {
+      "id": "q-62b6f026ee",
+      "text": "60 ÷ 10 = ?",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 10 נותן 60?"
+      ],
+      "explanation": "60 ÷ 10 = 6 (כי 10 × 6 = 60).",
+      "source": "algo"
+    },
+    {
+      "id": "q-b3883f60a5",
+      "text": "8 ÷ 2 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 2 נותן 8?"
+      ],
+      "explanation": "8 ÷ 2 = 4 (כי 2 × 4 = 8).",
+      "source": "algo"
+    },
+    {
+      "id": "q-062ca96a97",
+      "text": "16 ÷ 4 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 4 נותן 16?"
+      ],
+      "explanation": "16 ÷ 4 = 4 (כי 4 × 4 = 16).",
+      "source": "algo"
+    },
+    {
+      "id": "q-097a6039d6",
+      "text": "36 ÷ 9 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 9 נותן 36?"
+      ],
+      "explanation": "36 ÷ 9 = 4 (כי 9 × 4 = 36).",
+      "source": "algo"
+    },
+    {
+      "id": "q-dfcaa586c3",
+      "text": "3 ÷ 3 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "חילוק הוא ההפוך של כפל.",
+        "איזה מספר כפול 3 נותן 3?"
+      ],
+      "explanation": "3 ÷ 3 = 1 (כי 3 × 1 = 3).",
+      "source": "algo"
+    }
+  ]
+}

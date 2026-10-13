@@ -4,1346 +4,7 @@
   "topic": "חיסור תרגילים",
   "questions": [
     {
-      "id": "q-de09afe39e",
-      "text": "15 − 8 = ?",
-      "answer": 7,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-15 וחזור/י 8 צעדים."
-      ],
-      "explanation": "15 − 8 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7a7673dedd",
-      "text": "17 − 17 = ?",
-      "answer": 0,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-17 וחזור/י 17 צעדים."
-      ],
-      "explanation": "17 − 17 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-834b97b459",
-      "text": "11 − 4 − 1 = ?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "11 − 4 = 7, ופחות 1."
-      ],
-      "explanation": "11 − 4 − 1 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-53cd909061",
-      "text": "16 − 2 − 10 = ?",
-      "answer": 4,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "16 − 2 = 14, ופחות 10."
-      ],
-      "explanation": "16 − 2 − 10 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-08ecae8e45",
-      "text": "15 − 9 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-15 וחזור/י 9 צעדים."
-      ],
-      "explanation": "15 − 9 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-33c84a19af",
-      "text": "15 − 12 = ?",
-      "answer": 3,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-15 וחזור/י 12 צעדים."
-      ],
-      "explanation": "15 − 12 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-55fa5925bd",
-      "text": "7 − 2 = ?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-7 וחזור/י 2 צעדים."
-      ],
-      "explanation": "7 − 2 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7a4c63beee",
-      "text": "18 − 2 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-18 וחזור/י 2 צעדים."
-      ],
-      "explanation": "18 − 2 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-55c4655f35",
-      "text": "14 − 12 − 2 = ?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "14 − 12 = 2, ופחות 2."
-      ],
-      "explanation": "14 − 12 − 2 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-722a69de1d",
-      "text": "18 − 16 − 2 = ?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "18 − 16 = 2, ופחות 2."
-      ],
-      "explanation": "18 − 16 − 2 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0589b01c3c",
-      "text": "3 − 1 = ?",
-      "answer": 2,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-3 וחזור/י 1 צעדים."
-      ],
-      "explanation": "3 − 1 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d960d95b8d",
-      "text": "15 − 11 = ?",
-      "answer": 4,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-15 וחזור/י 11 צעדים."
-      ],
-      "explanation": "15 − 11 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-dc6ce29e08",
-      "text": "13 − 5 − 4 = ?",
-      "answer": 4,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "13 − 5 = 8, ופחות 4."
-      ],
-      "explanation": "13 − 5 − 4 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-82ff68a8de",
-      "text": "19 − 8 − 8 = ?",
-      "answer": 3,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "19 − 8 = 11, ופחות 8."
-      ],
-      "explanation": "19 − 8 − 8 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6cee9df9ae",
-      "text": "20 − 5 − 9 = ?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "20 − 5 = 15, ופחות 9."
-      ],
-      "explanation": "20 − 5 − 9 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-956e782ceb",
-      "text": "12 − 0 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-12 וחזור/י 0 צעדים."
-      ],
-      "explanation": "12 − 0 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-26c8466add",
-      "text": "19 − 8 = ?",
-      "answer": 11,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-19 וחזור/י 8 צעדים."
-      ],
-      "explanation": "19 − 8 = 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-74aa995fe6",
-      "text": "19 − 14 = ?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-19 וחזור/י 14 צעדים."
-      ],
-      "explanation": "19 − 14 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8b82d6e9e0",
-      "text": "2 − 1 = ?",
-      "answer": 1,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-2 וחזור/י 1 צעדים."
-      ],
-      "explanation": "2 − 1 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a39afbd528",
-      "text": "18 − 16 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-18 וחזור/י 16 צעדים."
-      ],
-      "explanation": "18 − 16 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8195d05979",
-      "text": "20 − 2 − 10 = ?",
-      "answer": 8,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "20 − 2 = 18, ופחות 10."
-      ],
-      "explanation": "20 − 2 − 10 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2013c176af",
-      "text": "19 − 2 − 14 = ?",
-      "answer": 3,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "19 − 2 = 17, ופחות 14."
-      ],
-      "explanation": "19 − 2 − 14 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-57088d9fd8",
-      "text": "17 − 1 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-17 וחזור/י 1 צעדים."
-      ],
-      "explanation": "17 − 1 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6fa5981bcc",
-      "text": "13 − 6 − 4 = ?",
-      "answer": 3,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "13 − 6 = 7, ופחות 4."
-      ],
-      "explanation": "13 − 6 − 4 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-91e2560ece",
-      "text": "7 − 5 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-7 וחזור/י 5 צעדים."
-      ],
-      "explanation": "7 − 5 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4ffe66b894",
-      "text": "9 − 3 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-9 וחזור/י 3 צעדים."
-      ],
-      "explanation": "9 − 3 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8389076612",
-      "text": "16 − 10 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 10 צעדים."
-      ],
-      "explanation": "16 − 10 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-461bd60b23",
-      "text": "6 − 4 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-6 וחזור/י 4 צעדים."
-      ],
-      "explanation": "6 − 4 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3e1910beb0",
-      "text": "11 − 10 = ?",
-      "answer": 1,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-11 וחזור/י 10 צעדים."
-      ],
-      "explanation": "11 − 10 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9f7d33cee8",
-      "text": "20 − 0 = ?",
-      "answer": 20,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-20 וחזור/י 0 צעדים."
-      ],
-      "explanation": "20 − 0 = 20.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1273017b21",
-      "text": "16 − 7 = ?",
-      "answer": 9,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 7 צעדים."
-      ],
-      "explanation": "16 − 7 = 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b8cc165df9",
-      "text": "14 − 10 = ?",
-      "answer": 4,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-14 וחזור/י 10 צעדים."
-      ],
-      "explanation": "14 − 10 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-659db49a61",
-      "text": "13 − 11 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-13 וחזור/י 11 צעדים."
-      ],
-      "explanation": "13 − 11 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-448da32a9c",
-      "text": "13 − 3 − 7 = ?",
-      "answer": 3,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "13 − 3 = 10, ופחות 7."
-      ],
-      "explanation": "13 − 3 − 7 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-793fe0b688",
-      "text": "11 − 7 − 2 = ?",
-      "answer": 2,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "11 − 7 = 4, ופחות 2."
-      ],
-      "explanation": "11 − 7 − 2 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1a4a171d9e",
-      "text": "18 − 1 − 8 = ?",
-      "answer": 9,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "18 − 1 = 17, ופחות 8."
-      ],
-      "explanation": "18 − 1 − 8 = 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a72b477798",
-      "text": "19 − 18 = ?",
-      "answer": 1,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-19 וחזור/י 18 צעדים."
-      ],
-      "explanation": "19 − 18 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-de9978b854",
-      "text": "9 − 6 = ?",
-      "answer": 3,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-9 וחזור/י 6 צעדים."
-      ],
-      "explanation": "9 − 6 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-a5406446fd",
-      "text": "17 − 2 − 13 = ?",
-      "answer": 2,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "17 − 2 = 15, ופחות 13."
-      ],
-      "explanation": "17 − 2 − 13 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-bd23161e86",
-      "text": "16 − 11 − 5 = ?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "16 − 11 = 5, ופחות 5."
-      ],
-      "explanation": "16 − 11 − 5 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5484fe8dc9",
-      "text": "18 − 14 − 3 = ?",
-      "answer": 1,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "18 − 14 = 4, ופחות 3."
-      ],
-      "explanation": "18 − 14 − 3 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6f17daeade",
-      "text": "10 − 5 = ?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-10 וחזור/י 5 צעדים."
-      ],
-      "explanation": "10 − 5 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-67bc4a5392",
-      "text": "10 − 1 − 3 = ?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "10 − 1 = 9, ופחות 3."
-      ],
-      "explanation": "10 − 1 − 3 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1ecf7a81eb",
-      "text": "11 − 0 = ?",
-      "answer": 11,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-11 וחזור/י 0 צעדים."
-      ],
-      "explanation": "11 − 0 = 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-99d0736305",
-      "text": "17 − 11 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-17 וחזור/י 11 צעדים."
-      ],
-      "explanation": "17 − 11 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3d61c3d2f9",
-      "text": "9 − 5 = ?",
-      "answer": 4,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-9 וחזור/י 5 צעדים."
-      ],
-      "explanation": "9 − 5 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-42f9191a99",
-      "text": "13 − 10 − 2 = ?",
-      "answer": 1,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "13 − 10 = 3, ופחות 2."
-      ],
-      "explanation": "13 − 10 − 2 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c83121675a",
-      "text": "20 − 20 = ?",
-      "answer": 0,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-20 וחזור/י 20 צעדים."
-      ],
-      "explanation": "20 − 20 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0df73c1682",
-      "text": "15 − 4 − 5 = ?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "15 − 4 = 11, ופחות 5."
-      ],
-      "explanation": "15 − 4 − 5 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-474888aa34",
-      "text": "19 − 8 − 3 = ?",
-      "answer": 8,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "19 − 8 = 11, ופחות 3."
-      ],
-      "explanation": "19 − 8 − 3 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0c9c85d81f",
-      "text": "3 − 0 = ?",
-      "answer": 3,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-3 וחזור/י 0 צעדים."
-      ],
-      "explanation": "3 − 0 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ea29ae9b96",
-      "text": "10 − 0 = ?",
-      "answer": 10,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-10 וחזור/י 0 צעדים."
-      ],
-      "explanation": "10 − 0 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0d8a856b7b",
-      "text": "18 − 11 − 5 = ?",
-      "answer": 2,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "18 − 11 = 7, ופחות 5."
-      ],
-      "explanation": "18 − 11 − 5 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e5b0a17eac",
-      "text": "12 − 2 − 7 = ?",
-      "answer": 3,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "12 − 2 = 10, ופחות 7."
-      ],
-      "explanation": "12 − 2 − 7 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-afaa9036c9",
-      "text": "16 − 5 − 4 = ?",
-      "answer": 7,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "16 − 5 = 11, ופחות 4."
-      ],
-      "explanation": "16 − 5 − 4 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c3063e9c26",
-      "text": "19 − 13 − 3 = ?",
-      "answer": 3,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "19 − 13 = 6, ופחות 3."
-      ],
-      "explanation": "19 − 13 − 3 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-212789d29c",
-      "text": "20 − 8 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-20 וחזור/י 8 צעדים."
-      ],
-      "explanation": "20 − 8 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-05ced5b259",
-      "text": "15 − 11 − 1 = ?",
-      "answer": 3,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "15 − 11 = 4, ופחות 1."
-      ],
-      "explanation": "15 − 11 − 1 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-5b002477f0",
-      "text": "13 − 7 = ?",
-      "answer": 6,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-13 וחזור/י 7 צעדים."
-      ],
-      "explanation": "13 − 7 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-1cebfa14af",
-      "text": "20 − 18 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-20 וחזור/י 18 צעדים."
-      ],
-      "explanation": "20 − 18 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-eabb22c88b",
-      "text": "16 − 4 = ?",
-      "answer": 12,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 4 צעדים."
-      ],
-      "explanation": "16 − 4 = 12.",
-      "source": "algo"
-    },
-    {
-      "id": "q-b2d51ffeba",
-      "text": "17 − 16 = ?",
-      "answer": 1,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-17 וחזור/י 16 צעדים."
-      ],
-      "explanation": "17 − 16 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ae1104510c",
-      "text": "13 − 6 = ?",
-      "answer": 7,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-13 וחזור/י 6 צעדים."
-      ],
-      "explanation": "13 − 6 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ac4aba9639",
-      "text": "15 − 4 = ?",
-      "answer": 11,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-15 וחזור/י 4 צעדים."
-      ],
-      "explanation": "15 − 4 = 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-251a97c6c5",
-      "text": "13 − 4 − 2 = ?",
-      "answer": 7,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "13 − 4 = 9, ופחות 2."
-      ],
-      "explanation": "13 − 4 − 2 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-8270c4321a",
-      "text": "19 − 5 − 4 = ?",
-      "answer": 10,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "19 − 5 = 14, ופחות 4."
-      ],
-      "explanation": "19 − 5 − 4 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-d1b64fd364",
-      "text": "16 − 8 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 8 צעדים."
-      ],
-      "explanation": "16 − 8 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-57b35f6015",
-      "text": "16 − 16 = ?",
-      "answer": 0,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 16 צעדים."
-      ],
-      "explanation": "16 − 16 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ea50ed62f6",
-      "text": "6 − 2 = ?",
-      "answer": 4,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-6 וחזור/י 2 צעדים."
-      ],
-      "explanation": "6 − 2 = 4.",
-      "source": "algo"
-    },
-    {
-      "id": "q-98a3ec677e",
-      "text": "16 − 3 − 2 = ?",
-      "answer": 11,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "16 − 3 = 13, ופחות 2."
-      ],
-      "explanation": "16 − 3 − 2 = 11.",
-      "source": "algo"
-    },
-    {
-      "id": "q-815c5a7dd1",
-      "text": "16 − 11 = ?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 11 צעדים."
-      ],
-      "explanation": "16 − 11 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-363fdf4dda",
-      "text": "12 − 9 − 3 = ?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "12 − 9 = 3, ופחות 3."
-      ],
-      "explanation": "12 − 9 − 3 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-59d745aa8b",
-      "text": "18 − 1 = ?",
-      "answer": 17,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-18 וחזור/י 1 צעדים."
-      ],
-      "explanation": "18 − 1 = 17.",
-      "source": "algo"
-    },
-    {
-      "id": "q-088e1d36a8",
-      "text": "12 − 11 = ?",
-      "answer": 1,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-12 וחזור/י 11 צעדים."
-      ],
-      "explanation": "12 − 11 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-2f7684e4e0",
-      "text": "6 − 1 = ?",
-      "answer": 5,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-6 וחזור/י 1 צעדים."
-      ],
-      "explanation": "6 − 1 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9560cfddf1",
-      "text": "20 − 6 − 4 = ?",
-      "answer": 10,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "20 − 6 = 14, ופחות 4."
-      ],
-      "explanation": "20 − 6 − 4 = 10.",
-      "source": "algo"
-    },
-    {
-      "id": "q-c52ad1978b",
-      "text": "14 − 0 = ?",
-      "answer": 14,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-14 וחזור/י 0 צעדים."
-      ],
-      "explanation": "14 − 0 = 14.",
-      "source": "algo"
-    },
-    {
-      "id": "q-0f8a36789a",
-      "text": "11 − 9 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-11 וחזור/י 9 צעדים."
-      ],
-      "explanation": "11 − 9 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-ec92b68dbe",
-      "text": "16 − 15 = ?",
-      "answer": 1,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 15 צעדים."
-      ],
-      "explanation": "16 − 15 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-af1d09326a",
-      "text": "12 − 4 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-12 וחזור/י 4 צעדים."
-      ],
-      "explanation": "12 − 4 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-4aec5f0df7",
-      "text": "8 − 0 = ?",
-      "answer": 8,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-8 וחזור/י 0 צעדים."
-      ],
-      "explanation": "8 − 0 = 8.",
-      "source": "algo"
-    },
-    {
-      "id": "q-cbe12284fa",
-      "text": "14 − 4 − 1 = ?",
-      "answer": 9,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "14 − 4 = 10, ופחות 1."
-      ],
-      "explanation": "14 − 4 − 1 = 9.",
-      "source": "algo"
-    },
-    {
-      "id": "q-60cc6738f9",
-      "text": "17 − 10 = ?",
-      "answer": 7,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-17 וחזור/י 10 צעדים."
-      ],
-      "explanation": "17 − 10 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-291c12c90f",
-      "text": "15 − 6 − 3 = ?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "15 − 6 = 9, ופחות 3."
-      ],
-      "explanation": "15 − 6 − 3 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-040899a223",
-      "text": "11 − 1 − 9 = ?",
-      "answer": 1,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "11 − 1 = 10, ופחות 9."
-      ],
-      "explanation": "11 − 1 − 9 = 1.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e451738aa2",
-      "text": "17 − 11 − 1 = ?",
-      "answer": 5,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "17 − 11 = 6, ופחות 1."
-      ],
-      "explanation": "17 − 11 − 1 = 5.",
-      "source": "algo"
-    },
-    {
-      "id": "q-673fe62289",
-      "text": "19 − 14 − 5 = ?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "19 − 14 = 5, ופחות 5."
-      ],
-      "explanation": "19 − 14 − 5 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-57d509d445",
-      "text": "16 − 14 = ?",
-      "answer": 2,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 14 צעדים."
-      ],
-      "explanation": "16 − 14 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-3898f0faa4",
-      "text": "10 − 3 = ?",
-      "answer": 7,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-10 וחזור/י 3 צעדים."
-      ],
-      "explanation": "10 − 3 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9c6e739483",
-      "text": "11 − 2 − 3 = ?",
-      "answer": 6,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "11 − 2 = 9, ופחות 3."
-      ],
-      "explanation": "11 − 2 − 3 = 6.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e228d6fd7d",
-      "text": "10 − 7 = ?",
-      "answer": 3,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-10 וחזור/י 7 צעדים."
-      ],
-      "explanation": "10 − 7 = 3.",
-      "source": "algo"
-    },
-    {
-      "id": "q-e3e7bed39b",
-      "text": "20 − 17 − 3 = ?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "20 − 17 = 3, ופחות 3."
-      ],
-      "explanation": "20 − 17 − 3 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-374ece7bd6",
-      "text": "18 − 8 − 3 = ?",
-      "answer": 7,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "18 − 8 = 10, ופחות 3."
-      ],
-      "explanation": "18 − 8 − 3 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-fa0ddba7a6",
-      "text": "17 − 10 − 7 = ?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "17 − 10 = 7, ופחות 7."
-      ],
-      "explanation": "17 − 10 − 7 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-6404d18609",
-      "text": "20 − 5 = ?",
-      "answer": 15,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-20 וחזור/י 5 צעדים."
-      ],
-      "explanation": "20 − 5 = 15.",
-      "source": "algo"
-    },
-    {
-      "id": "q-91e404a25d",
-      "text": "18 − 13 − 5 = ?",
-      "answer": 0,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "18 − 13 = 5, ופחות 5."
-      ],
-      "explanation": "18 − 13 − 5 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-9d55be4952",
-      "text": "17 − 8 − 7 = ?",
-      "answer": 2,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "17 − 8 = 9, ופחות 7."
-      ],
-      "explanation": "17 − 8 − 7 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-99894e8761",
-      "text": "2 − 0 = ?",
-      "answer": 2,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-2 וחזור/י 0 צעדים."
-      ],
-      "explanation": "2 − 0 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-63f9c9b4ce",
-      "text": "20 − 4 − 9 = ?",
-      "answer": 7,
-      "level": 3,
-      "difficulty": 3,
-      "hints": [
-        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
-        "20 − 4 = 16, ופחות 9."
-      ],
-      "explanation": "20 − 4 − 9 = 7.",
-      "source": "algo"
-    },
-    {
-      "id": "q-25cf5f691e",
-      "text": "16 − 0 = ?",
-      "answer": 16,
-      "level": 2,
-      "difficulty": 2,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-16 וחזור/י 0 צעדים."
-      ],
-      "explanation": "16 − 0 = 16.",
-      "source": "algo"
-    },
-    {
-      "id": "q-585fe5a4f7",
-      "text": "4 − 4 = ?",
-      "answer": 0,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-4 וחזור/י 4 צעדים."
-      ],
-      "explanation": "4 − 4 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-7523e60acf",
-      "text": "4 − 2 = ?",
-      "answer": 2,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-4 וחזור/י 2 צעדים."
-      ],
-      "explanation": "4 − 2 = 2.",
-      "source": "algo"
-    },
-    {
-      "id": "q-84bb0ffeb8",
-      "text": "1 − 1 = ?",
-      "answer": 0,
-      "level": 1,
-      "difficulty": 1,
-      "hints": [
-        "אפשר לספור אחורה.",
-        "התחל/י מ-1 וחזור/י 1 צעדים."
-      ],
-      "explanation": "1 − 1 = 0.",
-      "source": "algo"
-    },
-    {
-      "id": "q-395b48366f",
+      "id": "q-e1cd0ce9c7",
       "text": "4 − 3 = ?",
       "answer": 1,
       "level": 1,
@@ -1356,29 +17,1940 @@
       "source": "algo"
     },
     {
-      "id": "q-253c20f70d",
-      "text": "2 − 2 = ?",
-      "answer": 0,
-      "level": 1,
-      "difficulty": 1,
+      "id": "q-af04f15f4e",
+      "text": "19 − 3 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
       "hints": [
         "אפשר לספור אחורה.",
-        "התחל/י מ-2 וחזור/י 2 צעדים."
+        "התחל/י מ-19 וחזור/י 3 צעדים."
       ],
-      "explanation": "2 − 2 = 0.",
+      "explanation": "19 − 3 = 16.",
       "source": "algo"
     },
     {
-      "id": "q-b57b4c03c6",
-      "text": "0 − 0 = ?",
+      "id": "q-d9b019fc14",
+      "text": "14 − 12 − 2 = ?",
       "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 12 = 2, ופחות 2."
+      ],
+      "explanation": "14 − 12 − 2 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b76c9b1255",
+      "text": "17 − 13 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-17 וחזור/י 13 צעדים."
+      ],
+      "explanation": "17 − 13 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-75ab239c1b",
+      "text": "15 − 7 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-15 וחזור/י 7 צעדים."
+      ],
+      "explanation": "15 − 7 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b222a71baf",
+      "text": "13 − 12 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-13 וחזור/י 12 צעדים."
+      ],
+      "explanation": "13 − 12 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d1beaa84d6",
+      "text": "14 − 9 = ?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-14 וחזור/י 9 צעדים."
+      ],
+      "explanation": "14 − 9 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9cbaf72ad9",
+      "text": "11 − 11 = ?",
+      "answer": 0,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-11 וחזור/י 11 צעדים."
+      ],
+      "explanation": "11 − 11 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f2ba6f15d0",
+      "text": "12 − 6 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-12 וחזור/י 6 צעדים."
+      ],
+      "explanation": "12 − 6 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-36016b2678",
+      "text": "16 − 13 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-16 וחזור/י 13 צעדים."
+      ],
+      "explanation": "16 − 13 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e96bd91fd8",
+      "text": "15 − 9 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-15 וחזור/י 9 צעדים."
+      ],
+      "explanation": "15 − 9 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-afac94566a",
+      "text": "15 − 11 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-15 וחזור/י 11 צעדים."
+      ],
+      "explanation": "15 − 11 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0aca363ab2",
+      "text": "11 − 1 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-11 וחזור/י 1 צעדים."
+      ],
+      "explanation": "11 − 1 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6ce6313ab5",
+      "text": "9 − 7 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-9 וחזור/י 7 צעדים."
+      ],
+      "explanation": "9 − 7 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c61a565e4d",
+      "text": "7 − 6 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-7 וחזור/י 6 צעדים."
+      ],
+      "explanation": "7 − 6 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bb5f612f8b",
+      "text": "3 − 0 = ?",
+      "answer": 3,
       "level": 1,
       "difficulty": 1,
       "hints": [
         "אפשר לספור אחורה.",
-        "התחל/י מ-0 וחזור/י 0 צעדים."
+        "התחל/י מ-3 וחזור/י 0 צעדים."
       ],
-      "explanation": "0 − 0 = 0.",
+      "explanation": "3 − 0 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-89da5533a3",
+      "text": "15 − 1 − 14 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "15 − 1 = 14, ופחות 14."
+      ],
+      "explanation": "15 − 1 − 14 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6a63a4d5a4",
+      "text": "9 − 1 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-9 וחזור/י 1 צעדים."
+      ],
+      "explanation": "9 − 1 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-aab522c1a1",
+      "text": "14 − 4 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-14 וחזור/י 4 צעדים."
+      ],
+      "explanation": "14 − 4 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-092d3a417a",
+      "text": "12 − 0 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-12 וחזור/י 0 צעדים."
+      ],
+      "explanation": "12 − 0 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5b0de9ecbf",
+      "text": "20 − 6 = ?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 6 צעדים."
+      ],
+      "explanation": "20 − 6 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-326f05bf9d",
+      "text": "15 − 15 = ?",
+      "answer": 0,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-15 וחזור/י 15 צעדים."
+      ],
+      "explanation": "15 − 15 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7bd4420923",
+      "text": "13 − 7 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-13 וחזור/י 7 צעדים."
+      ],
+      "explanation": "13 − 7 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fdc86eb0df",
+      "text": "11 − 2 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-11 וחזור/י 2 צעדים."
+      ],
+      "explanation": "11 − 2 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-84201e1a01",
+      "text": "20 − 4 − 2 = ?",
+      "answer": 14,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "20 − 4 = 16, ופחות 2."
+      ],
+      "explanation": "20 − 4 − 2 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b0927958ae",
+      "text": "13 − 6 − 4 = ?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "13 − 6 = 7, ופחות 4."
+      ],
+      "explanation": "13 − 6 − 4 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-43958dce04",
+      "text": "11 − 5 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-11 וחזור/י 5 צעדים."
+      ],
+      "explanation": "11 − 5 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-80c7fbad7e",
+      "text": "15 − 5 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-15 וחזור/י 5 צעדים."
+      ],
+      "explanation": "15 − 5 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6cf197b3e9",
+      "text": "15 − 8 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-15 וחזור/י 8 צעדים."
+      ],
+      "explanation": "15 − 8 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-05f7658ffd",
+      "text": "17 − 15 − 2 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "17 − 15 = 2, ופחות 2."
+      ],
+      "explanation": "17 − 15 − 2 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3a2c4d6d46",
+      "text": "13 − 8 − 2 = ?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "13 − 8 = 5, ופחות 2."
+      ],
+      "explanation": "13 − 8 − 2 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2b197ed083",
+      "text": "14 − 6 − 8 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 6 = 8, ופחות 8."
+      ],
+      "explanation": "14 − 6 − 8 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-579a883a71",
+      "text": "15 − 2 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-15 וחזור/י 2 צעדים."
+      ],
+      "explanation": "15 − 2 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7c122d0ba2",
+      "text": "19 − 17 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-19 וחזור/י 17 צעדים."
+      ],
+      "explanation": "19 − 17 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5273ec31c1",
+      "text": "10 − 2 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-10 וחזור/י 2 צעדים."
+      ],
+      "explanation": "10 − 2 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-838077074e",
+      "text": "16 − 3 − 5 = ?",
+      "answer": 8,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "16 − 3 = 13, ופחות 5."
+      ],
+      "explanation": "16 − 3 − 5 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4dff511ad0",
+      "text": "14 − 8 − 5 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 8 = 6, ופחות 5."
+      ],
+      "explanation": "14 − 8 − 5 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-85a934f1f9",
+      "text": "13 − 3 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-13 וחזור/י 3 צעדים."
+      ],
+      "explanation": "13 − 3 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d81bb4665b",
+      "text": "19 − 15 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-19 וחזור/י 15 צעדים."
+      ],
+      "explanation": "19 − 15 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8d881a65f8",
+      "text": "19 − 1 − 12 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "19 − 1 = 18, ופחות 12."
+      ],
+      "explanation": "19 − 1 − 12 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-895007da45",
+      "text": "20 − 15 = ?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 15 צעדים."
+      ],
+      "explanation": "20 − 15 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5e070b343a",
+      "text": "3 − 2 = ?",
+      "answer": 1,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-3 וחזור/י 2 צעדים."
+      ],
+      "explanation": "3 − 2 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c0c2af66ba",
+      "text": "18 − 5 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 5 צעדים."
+      ],
+      "explanation": "18 − 5 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d3ea285dbb",
+      "text": "17 − 6 = ?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-17 וחזור/י 6 צעדים."
+      ],
+      "explanation": "17 − 6 = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e9ecc4d59f",
+      "text": "17 − 0 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-17 וחזור/י 0 צעדים."
+      ],
+      "explanation": "17 − 0 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-57e7346ab6",
+      "text": "5 − 3 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-5 וחזור/י 3 צעדים."
+      ],
+      "explanation": "5 − 3 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a72a65455d",
+      "text": "20 − 12 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 12 צעדים."
+      ],
+      "explanation": "20 − 12 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6031d36776",
+      "text": "20 − 3 = ?",
+      "answer": 17,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 3 צעדים."
+      ],
+      "explanation": "20 − 3 = 17.",
+      "source": "algo"
+    },
+    {
+      "id": "q-56092c0b06",
+      "text": "18 − 11 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 11 צעדים."
+      ],
+      "explanation": "18 − 11 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c4e6b763d9",
+      "text": "17 − 6 − 1 = ?",
+      "answer": 10,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "17 − 6 = 11, ופחות 1."
+      ],
+      "explanation": "17 − 6 − 1 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3ff8382f82",
+      "text": "13 − 6 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-13 וחזור/י 6 צעדים."
+      ],
+      "explanation": "13 − 6 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1b66f0f6fe",
+      "text": "11 − 7 − 2 = ?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "11 − 7 = 4, ופחות 2."
+      ],
+      "explanation": "11 − 7 − 2 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3a3761e320",
+      "text": "17 − 12 = ?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-17 וחזור/י 12 צעדים."
+      ],
+      "explanation": "17 − 12 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7c4a1273bc",
+      "text": "13 − 4 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-13 וחזור/י 4 צעדים."
+      ],
+      "explanation": "13 − 4 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-777395226c",
+      "text": "16 − 4 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-16 וחזור/י 4 צעדים."
+      ],
+      "explanation": "16 − 4 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8bbb9a4f6f",
+      "text": "15 − 11 − 4 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "15 − 11 = 4, ופחות 4."
+      ],
+      "explanation": "15 − 11 − 4 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b0679d79f7",
+      "text": "12 − 8 − 3 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "12 − 8 = 4, ופחות 3."
+      ],
+      "explanation": "12 − 8 − 3 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-28ac1f2eed",
+      "text": "15 − 4 − 4 = ?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "15 − 4 = 11, ופחות 4."
+      ],
+      "explanation": "15 − 4 − 4 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7f830402d3",
+      "text": "8 − 2 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-8 וחזור/י 2 צעדים."
+      ],
+      "explanation": "8 − 2 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8b75ae2bdd",
+      "text": "18 − 15 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 15 צעדים."
+      ],
+      "explanation": "18 − 15 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-aae1b14c98",
+      "text": "18 − 8 − 1 = ?",
+      "answer": 9,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "18 − 8 = 10, ופחות 1."
+      ],
+      "explanation": "18 − 8 − 1 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-499aa5d904",
+      "text": "7 − 5 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-7 וחזור/י 5 צעדים."
+      ],
+      "explanation": "7 − 5 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-764be12e1b",
+      "text": "20 − 7 = ?",
+      "answer": 13,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 7 צעדים."
+      ],
+      "explanation": "20 − 7 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-807e85b88f",
+      "text": "6 − 1 = ?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-6 וחזור/י 1 צעדים."
+      ],
+      "explanation": "6 − 1 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3185b00f54",
+      "text": "7 − 7 = ?",
+      "answer": 0,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-7 וחזור/י 7 צעדים."
+      ],
+      "explanation": "7 − 7 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3e10da6dc4",
+      "text": "18 − 0 = ?",
+      "answer": 18,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 0 צעדים."
+      ],
+      "explanation": "18 − 0 = 18.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a085d65392",
+      "text": "18 − 8 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 8 צעדים."
+      ],
+      "explanation": "18 − 8 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-85d633e6e6",
+      "text": "14 − 2 − 10 = ?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 2 = 12, ופחות 10."
+      ],
+      "explanation": "14 − 2 − 10 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dcfa7adf1a",
+      "text": "16 − 2 = ?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-16 וחזור/י 2 צעדים."
+      ],
+      "explanation": "16 − 2 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d6c19a43a1",
+      "text": "16 − 5 − 10 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "16 − 5 = 11, ופחות 10."
+      ],
+      "explanation": "16 − 5 − 10 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c4c843add0",
+      "text": "6 − 2 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-6 וחזור/י 2 צעדים."
+      ],
+      "explanation": "6 − 2 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-374191e43c",
+      "text": "10 − 7 − 2 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "10 − 7 = 3, ופחות 2."
+      ],
+      "explanation": "10 − 7 − 2 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c53b246be9",
+      "text": "19 − 12 − 4 = ?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "19 − 12 = 7, ופחות 4."
+      ],
+      "explanation": "19 − 12 − 4 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6ff2b75bd2",
+      "text": "18 − 9 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 9 צעדים."
+      ],
+      "explanation": "18 − 9 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-79be310e1a",
+      "text": "11 − 7 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-11 וחזור/י 7 צעדים."
+      ],
+      "explanation": "11 − 7 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cc367640b7",
+      "text": "12 − 7 = ?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-12 וחזור/י 7 צעדים."
+      ],
+      "explanation": "12 − 7 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3f2a6b47b8",
+      "text": "8 − 0 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-8 וחזור/י 0 צעדים."
+      ],
+      "explanation": "8 − 0 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-698f1669b9",
+      "text": "7 − 0 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-7 וחזור/י 0 צעדים."
+      ],
+      "explanation": "7 − 0 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-03ae3590bb",
+      "text": "6 − 3 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-6 וחזור/י 3 צעדים."
+      ],
+      "explanation": "6 − 3 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-04d662a813",
+      "text": "18 − 7 = ?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 7 צעדים."
+      ],
+      "explanation": "18 − 7 = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-91dcf7d22f",
+      "text": "16 − 5 − 4 = ?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "16 − 5 = 11, ופחות 4."
+      ],
+      "explanation": "16 − 5 − 4 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b66ed67dcb",
+      "text": "17 − 6 − 7 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "17 − 6 = 11, ופחות 7."
+      ],
+      "explanation": "17 − 6 − 7 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c9c6a272f5",
+      "text": "20 − 6 − 13 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "20 − 6 = 14, ופחות 13."
+      ],
+      "explanation": "20 − 6 − 13 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-52c613e191",
+      "text": "11 − 3 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-11 וחזור/י 3 צעדים."
+      ],
+      "explanation": "11 − 3 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b93067473a",
+      "text": "10 − 9 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-10 וחזור/י 9 צעדים."
+      ],
+      "explanation": "10 − 9 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cb0162d32a",
+      "text": "14 − 1 − 7 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 1 = 13, ופחות 7."
+      ],
+      "explanation": "14 − 1 − 7 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0987222075",
+      "text": "18 − 4 = ?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 4 צעדים."
+      ],
+      "explanation": "18 − 4 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-56a32f86c4",
+      "text": "17 − 1 = ?",
+      "answer": 16,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-17 וחזור/י 1 צעדים."
+      ],
+      "explanation": "17 − 1 = 16.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1d256b2014",
+      "text": "15 − 13 − 1 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "15 − 13 = 2, ופחות 1."
+      ],
+      "explanation": "15 − 13 − 1 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1093ca6c9c",
+      "text": "18 − 18 = ?",
+      "answer": 0,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 18 צעדים."
+      ],
+      "explanation": "18 − 18 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3da67f9975",
+      "text": "11 − 1 − 1 = ?",
+      "answer": 9,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "11 − 1 = 10, ופחות 1."
+      ],
+      "explanation": "11 − 1 − 1 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a16222674f",
+      "text": "20 − 5 − 2 = ?",
+      "answer": 13,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "20 − 5 = 15, ופחות 2."
+      ],
+      "explanation": "20 − 5 − 2 = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f6847a363f",
+      "text": "11 − 5 − 4 = ?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "11 − 5 = 6, ופחות 4."
+      ],
+      "explanation": "11 − 5 − 4 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b1815b29c5",
+      "text": "10 − 2 − 1 = ?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "10 − 2 = 8, ופחות 1."
+      ],
+      "explanation": "10 − 2 − 1 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4522b1f023",
+      "text": "18 − 10 = ?",
+      "answer": 8,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 10 צעדים."
+      ],
+      "explanation": "18 − 10 = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6414880b25",
+      "text": "9 − 6 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-9 וחזור/י 6 צעדים."
+      ],
+      "explanation": "9 − 6 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-028f8fa341",
+      "text": "12 − 5 − 5 = ?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "12 − 5 = 7, ופחות 5."
+      ],
+      "explanation": "12 − 5 − 5 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8e50c3379c",
+      "text": "16 − 12 − 4 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "16 − 12 = 4, ופחות 4."
+      ],
+      "explanation": "16 − 12 − 4 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2fa6c2b812",
+      "text": "18 − 8 − 5 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "18 − 8 = 10, ופחות 5."
+      ],
+      "explanation": "18 − 8 − 5 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-06ce05ee16",
+      "text": "14 − 10 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-14 וחזור/י 10 צעדים."
+      ],
+      "explanation": "14 − 10 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-be7743a78d",
+      "text": "12 − 9 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-12 וחזור/י 9 צעדים."
+      ],
+      "explanation": "12 − 9 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a0eea09721",
+      "text": "19 − 13 − 3 = ?",
+      "answer": 3,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "19 − 13 = 6, ופחות 3."
+      ],
+      "explanation": "19 − 13 − 3 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d1d943dc86",
+      "text": "15 − 6 − 3 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "15 − 6 = 9, ופחות 3."
+      ],
+      "explanation": "15 − 6 − 3 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4a1a451166",
+      "text": "20 − 16 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 16 צעדים."
+      ],
+      "explanation": "20 − 16 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-23609db15e",
+      "text": "16 − 12 − 3 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "16 − 12 = 4, ופחות 3."
+      ],
+      "explanation": "16 − 12 − 3 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bfc8d68502",
+      "text": "20 − 8 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 8 צעדים."
+      ],
+      "explanation": "20 − 8 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c71375704f",
+      "text": "13 − 2 − 11 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "13 − 2 = 11, ופחות 11."
+      ],
+      "explanation": "13 − 2 − 11 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3f42ff4166",
+      "text": "13 − 2 − 4 = ?",
+      "answer": 7,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "13 − 2 = 11, ופחות 4."
+      ],
+      "explanation": "13 − 2 − 4 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fb509341b5",
+      "text": "14 − 1 − 9 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 1 = 13, ופחות 9."
+      ],
+      "explanation": "14 − 1 − 9 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dcbe8ae386",
+      "text": "17 − 5 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-17 וחזור/י 5 צעדים."
+      ],
+      "explanation": "17 − 5 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6f848725f5",
+      "text": "11 − 2 − 5 = ?",
+      "answer": 4,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "11 − 2 = 9, ופחות 5."
+      ],
+      "explanation": "11 − 2 − 5 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a1c16dc10d",
+      "text": "14 − 5 − 3 = ?",
+      "answer": 6,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 5 = 9, ופחות 3."
+      ],
+      "explanation": "14 − 5 − 3 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fd2aadb423",
+      "text": "14 − 9 − 5 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 9 = 5, ופחות 5."
+      ],
+      "explanation": "14 − 9 − 5 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e02ba2edc2",
+      "text": "4 − 0 = ?",
+      "answer": 4,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-4 וחזור/י 0 צעדים."
+      ],
+      "explanation": "4 − 0 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-51f534767a",
+      "text": "19 − 4 − 1 = ?",
+      "answer": 14,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "19 − 4 = 15, ופחות 1."
+      ],
+      "explanation": "19 − 4 − 1 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a724b7fdcb",
+      "text": "19 − 9 = ?",
+      "answer": 10,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-19 וחזור/י 9 צעדים."
+      ],
+      "explanation": "19 − 9 = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5afec98fb0",
+      "text": "18 − 13 = ?",
+      "answer": 5,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-18 וחזור/י 13 צעדים."
+      ],
+      "explanation": "18 − 13 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-11a1113df8",
+      "text": "20 − 11 = ?",
+      "answer": 9,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 11 צעדים."
+      ],
+      "explanation": "20 − 11 = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a82332d3ca",
+      "text": "17 − 2 = ?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-17 וחזור/י 2 צעדים."
+      ],
+      "explanation": "17 − 2 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4c659d565a",
+      "text": "17 − 15 − 1 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "17 − 15 = 2, ופחות 1."
+      ],
+      "explanation": "17 − 15 − 1 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-131d6a5f3d",
+      "text": "13 − 4 − 8 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "13 − 4 = 9, ופחות 8."
+      ],
+      "explanation": "13 − 4 − 8 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-594752bd1e",
+      "text": "19 − 5 = ?",
+      "answer": 14,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-19 וחזור/י 5 צעדים."
+      ],
+      "explanation": "19 − 5 = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4a55544d07",
+      "text": "15 − 13 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-15 וחזור/י 13 צעדים."
+      ],
+      "explanation": "15 − 13 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-55d8d27e53",
+      "text": "14 − 13 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-14 וחזור/י 13 צעדים."
+      ],
+      "explanation": "14 − 13 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f629983d4b",
+      "text": "19 − 15 − 3 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "19 − 15 = 4, ופחות 3."
+      ],
+      "explanation": "19 − 15 − 3 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-90e13878a6",
+      "text": "19 − 8 = ?",
+      "answer": 11,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-19 וחזור/י 8 צעדים."
+      ],
+      "explanation": "19 − 8 = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-88c00d1c12",
+      "text": "20 − 10 − 5 = ?",
+      "answer": 5,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "20 − 10 = 10, ופחות 5."
+      ],
+      "explanation": "20 − 10 − 5 = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3d54989abc",
+      "text": "17 − 7 − 10 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "17 − 7 = 10, ופחות 10."
+      ],
+      "explanation": "17 − 7 − 10 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-79e0290173",
+      "text": "19 − 19 = ?",
+      "answer": 0,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-19 וחזור/י 19 צעדים."
+      ],
+      "explanation": "19 − 19 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-35e5b907a2",
+      "text": "14 − 2 = ?",
+      "answer": 12,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-14 וחזור/י 2 צעדים."
+      ],
+      "explanation": "14 − 2 = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5ecc3a040a",
+      "text": "11 − 8 − 3 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "11 − 8 = 3, ופחות 3."
+      ],
+      "explanation": "11 − 8 − 3 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1c1cd30330",
+      "text": "15 − 13 − 2 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "15 − 13 = 2, ופחות 2."
+      ],
+      "explanation": "15 − 13 − 2 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b0555eddb1",
+      "text": "12 − 8 − 4 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "12 − 8 = 4, ופחות 4."
+      ],
+      "explanation": "12 − 8 − 4 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f8a3b40850",
+      "text": "19 − 17 − 2 = ?",
+      "answer": 0,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "19 − 17 = 2, ופחות 2."
+      ],
+      "explanation": "19 − 17 − 2 = 0.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b63e28ae62",
+      "text": "14 − 9 − 4 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "14 − 9 = 5, ופחות 4."
+      ],
+      "explanation": "14 − 9 − 4 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f76f60ff7b",
+      "text": "12 − 8 − 2 = ?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "12 − 8 = 4, ופחות 2."
+      ],
+      "explanation": "12 − 8 − 2 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ca6dd9b042",
+      "text": "13 − 9 − 2 = ?",
+      "answer": 2,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "13 − 9 = 4, ופחות 2."
+      ],
+      "explanation": "13 − 9 − 2 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-aff2269bb8",
+      "text": "19 − 18 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-19 וחזור/י 18 צעדים."
+      ],
+      "explanation": "19 − 18 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d521cbc22b",
+      "text": "20 − 19 = ?",
+      "answer": 1,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 19 צעדים."
+      ],
+      "explanation": "20 − 19 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ad40eb03a7",
+      "text": "17 − 3 − 13 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "17 − 3 = 14, ופחות 13."
+      ],
+      "explanation": "17 − 3 − 13 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-15f0225997",
+      "text": "11 − 4 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-11 וחזור/י 4 צעדים."
+      ],
+      "explanation": "11 − 4 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b909ca6e51",
+      "text": "8 − 5 = ?",
+      "answer": 3,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-8 וחזור/י 5 צעדים."
+      ],
+      "explanation": "8 − 5 = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-08f23eb109",
+      "text": "16 − 10 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-16 וחזור/י 10 צעדים."
+      ],
+      "explanation": "16 − 10 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d61139a380",
+      "text": "12 − 1 − 10 = ?",
+      "answer": 1,
+      "level": 3,
+      "difficulty": 3,
+      "hints": [
+        "מחסרים את הראשון, ואז מחסרים שוב מהתוצאה.",
+        "12 − 1 = 11, ופחות 10."
+      ],
+      "explanation": "12 − 1 − 10 = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-382c5dd9bb",
+      "text": "14 − 7 = ?",
+      "answer": 7,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-14 וחזור/י 7 צעדים."
+      ],
+      "explanation": "14 − 7 = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5c83c99339",
+      "text": "19 − 4 = ?",
+      "answer": 15,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-19 וחזור/י 4 צעדים."
+      ],
+      "explanation": "19 − 4 = 15.",
+      "source": "algo"
+    },
+    {
+      "id": "q-866cc3b0fc",
+      "text": "4 − 2 = ?",
+      "answer": 2,
+      "level": 1,
+      "difficulty": 1,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-4 וחזור/י 2 צעדים."
+      ],
+      "explanation": "4 − 2 = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-25445f98a2",
+      "text": "12 − 8 = ?",
+      "answer": 4,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-12 וחזור/י 8 צעדים."
+      ],
+      "explanation": "12 − 8 = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-09953a178e",
+      "text": "20 − 14 = ?",
+      "answer": 6,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-20 וחזור/י 14 צעדים."
+      ],
+      "explanation": "20 − 14 = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f8cf29567d",
+      "text": "8 − 6 = ?",
+      "answer": 2,
+      "level": 2,
+      "difficulty": 2,
+      "hints": [
+        "אפשר לספור אחורה.",
+        "התחל/י מ-8 וחזור/י 6 צעדים."
+      ],
+      "explanation": "8 − 6 = 2.",
       "source": "algo"
     }
   ]

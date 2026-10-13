@@ -1,0 +1,1957 @@
+{
+  "grade": "ו׳",
+  "gradeNum": 6,
+  "topic": "מבוא לנעלם",
+  "questions": [
+    {
+      "id": "q-f73dcd6e6a",
+      "text": "3x + 6 = 15. מצא/י את x",
+      "answer": 3,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 6 = 15 → 3x = 9 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-90019c77e3",
+      "text": "3x + 1 = 31. מצא/י את x",
+      "answer": 10,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 1 = 31 → 3x = 30 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-db061913fb",
+      "text": "3x + 1 = 19. מצא/י את x",
+      "answer": 6,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 1 = 19 → 3x = 18 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cbe615ea83",
+      "text": "4x + 5 = 53. מצא/י את x",
+      "answer": 12,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 5 = 53 → 4x = 48 → x = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-89530ddbab",
+      "text": "6x + 10 = 22. מצא/י את x",
+      "answer": 2,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 10 = 22 → 6x = 12 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3b37d3e36d",
+      "text": "2x + 6 = 26. מצא/י את x",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 6 = 26 → 2x = 20 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-81ba836a2b",
+      "text": "6x + 10 = 88. מצא/י את x",
+      "answer": 13,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 10 = 88 → 6x = 78 → x = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9fa5f079a6",
+      "text": "4x + 8 = 44. מצא/י את x",
+      "answer": 9,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 8 = 44 → 4x = 36 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b6189de854",
+      "text": "5x + 2 = 37. מצא/י את x",
+      "answer": 7,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 2 = 37 → 5x = 35 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6da4132a9c",
+      "text": "2x + 7 = 31. מצא/י את x",
+      "answer": 12,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 7 = 31 → 2x = 24 → x = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-922bbb14b4",
+      "text": "7x + 1 = 64. מצא/י את x",
+      "answer": 9,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 1 = 64 → 7x = 63 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-54f3c06b03",
+      "text": "5x + 13 = 58. מצא/י את x",
+      "answer": 9,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 13 = 58 → 5x = 45 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1c3a863817",
+      "text": "5x + 6 = 11. מצא/י את x",
+      "answer": 1,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 6 = 11 → 5x = 5 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7ee780e104",
+      "text": "4x + 6 = 38. מצא/י את x",
+      "answer": 8,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 6 = 38 → 4x = 32 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7de92fefd6",
+      "text": "7x + 7 = 21. מצא/י את x",
+      "answer": 2,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 7 = 21 → 7x = 14 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-528370e6f8",
+      "text": "5x + 14 = 79. מצא/י את x",
+      "answer": 13,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 14 = 79 → 5x = 65 → x = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e19509e979",
+      "text": "2x + 11 = 37. מצא/י את x",
+      "answer": 13,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 11 = 37 → 2x = 26 → x = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2585085418",
+      "text": "2x + 11 = 27. מצא/י את x",
+      "answer": 8,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 11 = 27 → 2x = 16 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f58798371a",
+      "text": "2x + 8 = 14. מצא/י את x",
+      "answer": 3,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 8 = 14 → 2x = 6 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d12ff8603c",
+      "text": "4x + 8 = 24. מצא/י את x",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 8 = 24 → 4x = 16 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-854c14fab2",
+      "text": "6x + 10 = 82. מצא/י את x",
+      "answer": 12,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 10 = 82 → 6x = 72 → x = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0b251aa051",
+      "text": "4x + 3 = 47. מצא/י את x",
+      "answer": 11,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 3 = 47 → 4x = 44 → x = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-139bae13ed",
+      "text": "7x + 12 = 68. מצא/י את x",
+      "answer": 8,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 12 = 68 → 7x = 56 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-33846cb917",
+      "text": "6x + 14 = 98. מצא/י את x",
+      "answer": 14,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 14 = 98 → 6x = 84 → x = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-baae2108d6",
+      "text": "2x + 1 = 9. מצא/י את x",
+      "answer": 4,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 1 = 9 → 2x = 8 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-28ef9289b9",
+      "text": "5x + 5 = 35. מצא/י את x",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 5 = 35 → 5x = 30 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-03ca1dfa8f",
+      "text": "4x + 7 = 19. מצא/י את x",
+      "answer": 3,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 7 = 19 → 4x = 12 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3855344f86",
+      "text": "2x + 6 = 8. מצא/י את x",
+      "answer": 1,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 6 = 8 → 2x = 2 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-07d228b478",
+      "text": "4x + 3 = 43. מצא/י את x",
+      "answer": 10,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 3 = 43 → 4x = 40 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ab00fda544",
+      "text": "2x + 2 = 6. מצא/י את x",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 2 = 6 → 2x = 4 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4d76a3e3cf",
+      "text": "5x + 4 = 44. מצא/י את x",
+      "answer": 8,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 4 = 44 → 5x = 40 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-160710d299",
+      "text": "3x + 12 = 18. מצא/י את x",
+      "answer": 2,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 12 = 18 → 3x = 6 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0bb9773156",
+      "text": "6x + 11 = 35. מצא/י את x",
+      "answer": 4,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 11 = 35 → 6x = 24 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cb7c70494d",
+      "text": "6x + 6 = 54. מצא/י את x",
+      "answer": 8,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 6 = 54 → 6x = 48 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cf5a8138ce",
+      "text": "4x + 12 = 68. מצא/י את x",
+      "answer": 14,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 12 = 68 → 4x = 56 → x = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1e74c4f45a",
+      "text": "4x + 7 = 35. מצא/י את x",
+      "answer": 7,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 7 = 35 → 4x = 28 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d44e120324",
+      "text": "3x + 4 = 34. מצא/י את x",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 4 = 34 → 3x = 30 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-89bd819251",
+      "text": "4x + 3 = 11. מצא/י את x",
+      "answer": 2,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 3 = 11 → 4x = 8 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-43ebff6a1c",
+      "text": "2x + 6 = 24. מצא/י את x",
+      "answer": 9,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 6 = 24 → 2x = 18 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-1ad18208c3",
+      "text": "5x + 4 = 19. מצא/י את x",
+      "answer": 3,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 4 = 19 → 5x = 15 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-aa52415db9",
+      "text": "3x + 10 = 13. מצא/י את x",
+      "answer": 1,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 10 = 13 → 3x = 3 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b6b9f066f8",
+      "text": "3x + 7 = 34. מצא/י את x",
+      "answer": 9,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 7 = 34 → 3x = 27 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9c3efaf42d",
+      "text": "5x + 7 = 22. מצא/י את x",
+      "answer": 3,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 7 = 22 → 5x = 15 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-58d5117833",
+      "text": "4x + 2 = 14. מצא/י את x",
+      "answer": 3,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 2 = 14 → 4x = 12 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b19c1c9a89",
+      "text": "2x + 1 = 29. מצא/י את x",
+      "answer": 14,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 1 = 29 → 2x = 28 → x = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-feb7de2120",
+      "text": "5x + 5 = 25. מצא/י את x",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 5 = 25 → 5x = 20 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cff67ca5d0",
+      "text": "6x + 4 = 22. מצא/י את x",
+      "answer": 3,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 4 = 22 → 6x = 18 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ca91090ccf",
+      "text": "3x + 3 = 33. מצא/י את x",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 3 = 33 → 3x = 30 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-851ee382c4",
+      "text": "6x + 13 = 19. מצא/י את x",
+      "answer": 1,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 13 = 19 → 6x = 6 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6c5a3e976a",
+      "text": "6x + 8 = 32. מצא/י את x",
+      "answer": 4,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 8 = 32 → 6x = 24 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f167064b04",
+      "text": "4x + 6 = 18. מצא/י את x",
+      "answer": 3,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 6 = 18 → 4x = 12 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0f79107d21",
+      "text": "5x + 10 = 15. מצא/י את x",
+      "answer": 1,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 10 = 15 → 5x = 5 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b7dd6f9825",
+      "text": "4x + 5 = 33. מצא/י את x",
+      "answer": 7,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 5 = 33 → 4x = 28 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5bf54d5ff8",
+      "text": "4x + 7 = 43. מצא/י את x",
+      "answer": 9,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 7 = 43 → 4x = 36 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-31f1e28d7a",
+      "text": "5x + 7 = 37. מצא/י את x",
+      "answer": 6,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 7 = 37 → 5x = 30 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b158b22b66",
+      "text": "7x + 12 = 75. מצא/י את x",
+      "answer": 9,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 12 = 75 → 7x = 63 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-47d026e580",
+      "text": "2x + 13 = 21. מצא/י את x",
+      "answer": 4,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 13 = 21 → 2x = 8 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-dfc97569cc",
+      "text": "3x + 7 = 40. מצא/י את x",
+      "answer": 11,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 7 = 40 → 3x = 33 → x = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9845c967ad",
+      "text": "7x + 4 = 18. מצא/י את x",
+      "answer": 2,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 4 = 18 → 7x = 14 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d2bd11d83b",
+      "text": "3x + 11 = 14. מצא/י את x",
+      "answer": 1,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 11 = 14 → 3x = 3 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a6f0be9d47",
+      "text": "3x + 5 = 23. מצא/י את x",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 5 = 23 → 3x = 18 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6e80caddc2",
+      "text": "3x + 4 = 37. מצא/י את x",
+      "answer": 11,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 4 = 37 → 3x = 33 → x = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b3d317e8a4",
+      "text": "4x + 5 = 49. מצא/י את x",
+      "answer": 11,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 5 = 49 → 4x = 44 → x = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e1421e7afe",
+      "text": "6x + 7 = 61. מצא/י את x",
+      "answer": 9,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 7 = 61 → 6x = 54 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8adb86ee58",
+      "text": "7x + 2 = 30. מצא/י את x",
+      "answer": 4,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 2 = 30 → 7x = 28 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7f3192d201",
+      "text": "4x + 5 = 41. מצא/י את x",
+      "answer": 9,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 5 = 41 → 4x = 36 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3aa73afe68",
+      "text": "3x + 6 = 24. מצא/י את x",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 6 = 24 → 3x = 18 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0aac73b956",
+      "text": "2x + 6 = 14. מצא/י את x",
+      "answer": 4,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 6 = 14 → 2x = 8 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-bdc443c7d5",
+      "text": "3x + 8 = 20. מצא/י את x",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 8 = 20 → 3x = 12 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c2e983c286",
+      "text": "2x + 4 = 10. מצא/י את x",
+      "answer": 3,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 4 = 10 → 2x = 6 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5c1d44edd0",
+      "text": "2x + 9 = 17. מצא/י את x",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 9 = 17 → 2x = 8 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-851c672552",
+      "text": "6x + 9 = 27. מצא/י את x",
+      "answer": 3,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 9 = 27 → 6x = 18 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-2d1743f9ad",
+      "text": "6x + 6 = 60. מצא/י את x",
+      "answer": 9,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 6 = 60 → 6x = 54 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fdcdd9f826",
+      "text": "3x + 1 = 25. מצא/י את x",
+      "answer": 8,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 1 = 25 → 3x = 24 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fa224d50ec",
+      "text": "2x + 14 = 40. מצא/י את x",
+      "answer": 13,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 14 = 40 → 2x = 26 → x = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4af170e038",
+      "text": "3x + 2 = 29. מצא/י את x",
+      "answer": 9,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 2 = 29 → 3x = 27 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4e779bc6f5",
+      "text": "4x + 1 = 21. מצא/י את x",
+      "answer": 5,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 1 = 21 → 4x = 20 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-45543dc2d2",
+      "text": "2x + 6 = 12. מצא/י את x",
+      "answer": 3,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 6 = 12 → 2x = 6 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9bd33e3aca",
+      "text": "2x + 1 = 13. מצא/י את x",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 1 = 13 → 2x = 12 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-ea8f9ce20c",
+      "text": "3x + 3 = 9. מצא/י את x",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 3 = 9 → 3x = 6 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-febbe3e72c",
+      "text": "6x + 6 = 78. מצא/י את x",
+      "answer": 12,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 6 = 78 → 6x = 72 → x = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a0306c4efb",
+      "text": "3x + 7 = 37. מצא/י את x",
+      "answer": 10,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 7 = 37 → 3x = 30 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-23b220be80",
+      "text": "5x + 5 = 60. מצא/י את x",
+      "answer": 11,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 5 = 60 → 5x = 55 → x = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a50c6066a9",
+      "text": "4x + 9 = 53. מצא/י את x",
+      "answer": 11,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 9 = 53 → 4x = 44 → x = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fc06d6a4eb",
+      "text": "5x + 10 = 35. מצא/י את x",
+      "answer": 5,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 10 = 35 → 5x = 25 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0e1299b4ad",
+      "text": "4x + 3 = 27. מצא/י את x",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 3 = 27 → 4x = 24 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-48dab85cc0",
+      "text": "6x + 14 = 80. מצא/י את x",
+      "answer": 11,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 14 = 80 → 6x = 66 → x = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b90fec9d42",
+      "text": "3x + 1 = 10. מצא/י את x",
+      "answer": 3,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 1 = 10 → 3x = 9 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4af18eabbb",
+      "text": "5x + 5 = 10. מצא/י את x",
+      "answer": 1,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 5 = 10 → 5x = 5 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-412406a330",
+      "text": "5x + 11 = 61. מצא/י את x",
+      "answer": 10,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 11 = 61 → 5x = 50 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-241dc40b99",
+      "text": "3x + 5 = 20. מצא/י את x",
+      "answer": 5,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 5 = 20 → 3x = 15 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f7dccea4d5",
+      "text": "2x + 14 = 30. מצא/י את x",
+      "answer": 8,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 14 = 30 → 2x = 16 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d6013065b3",
+      "text": "2x + 3 = 7. מצא/י את x",
+      "answer": 2,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 3 = 7 → 2x = 4 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-3e1cea6d8c",
+      "text": "7x + 13 = 69. מצא/י את x",
+      "answer": 8,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 13 = 69 → 7x = 56 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c488296dff",
+      "text": "5x + 1 = 11. מצא/י את x",
+      "answer": 2,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 1 = 11 → 5x = 10 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f9f8923e2d",
+      "text": "5x + 7 = 47. מצא/י את x",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 7 = 47 → 5x = 40 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-12f4d7d02a",
+      "text": "2x + 3 = 17. מצא/י את x",
+      "answer": 7,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 3 = 17 → 2x = 14 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-32aa4a4a0b",
+      "text": "7x + 6 = 55. מצא/י את x",
+      "answer": 7,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 6 = 55 → 7x = 49 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f508eedd55",
+      "text": "6x + 2 = 44. מצא/י את x",
+      "answer": 7,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 2 = 44 → 6x = 42 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a275ff67dc",
+      "text": "2x + 4 = 20. מצא/י את x",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 4 = 20 → 2x = 16 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-59c28cc91a",
+      "text": "5x + 6 = 41. מצא/י את x",
+      "answer": 7,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 6 = 41 → 5x = 35 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-14c4f04159",
+      "text": "2x + 9 = 11. מצא/י את x",
+      "answer": 1,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 9 = 11 → 2x = 2 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a91cb8c663",
+      "text": "2x + 10 = 34. מצא/י את x",
+      "answer": 12,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 10 = 34 → 2x = 24 → x = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-8f3e66e056",
+      "text": "2x + 12 = 14. מצא/י את x",
+      "answer": 1,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 12 = 14 → 2x = 2 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e48a36f242",
+      "text": "3x + 6 = 36. מצא/י את x",
+      "answer": 10,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 6 = 36 → 3x = 30 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-f71e06fdc4",
+      "text": "3x + 7 = 13. מצא/י את x",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 7 = 13 → 3x = 6 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-77e961b566",
+      "text": "6x + 10 = 28. מצא/י את x",
+      "answer": 3,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 10 = 28 → 6x = 18 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-15a5f7cf10",
+      "text": "5x + 5 = 65. מצא/י את x",
+      "answer": 12,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 5 = 65 → 5x = 60 → x = 12.",
+      "source": "algo"
+    },
+    {
+      "id": "q-d8efc94ef3",
+      "text": "5x + 3 = 43. מצא/י את x",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 3 = 43 → 5x = 40 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e72c7cb6b3",
+      "text": "5x + 6 = 46. מצא/י את x",
+      "answer": 8,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 6 = 46 → 5x = 40 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e01d58af20",
+      "text": "5x + 7 = 17. מצא/י את x",
+      "answer": 2,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 7 = 17 → 5x = 10 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6a6ad72ece",
+      "text": "4x + 10 = 62. מצא/י את x",
+      "answer": 13,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 10 = 62 → 4x = 52 → x = 13.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a168f4ac04",
+      "text": "6x + 8 = 26. מצא/י את x",
+      "answer": 3,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 8 = 26 → 6x = 18 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-77926fcb5c",
+      "text": "3x + 3 = 6. מצא/י את x",
+      "answer": 1,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 3 = 6 → 3x = 3 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b52cbde83b",
+      "text": "4x + 8 = 64. מצא/י את x",
+      "answer": 14,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 8 = 64 → 4x = 56 → x = 14.",
+      "source": "algo"
+    },
+    {
+      "id": "q-64daae27d5",
+      "text": "2x + 9 = 27. מצא/י את x",
+      "answer": 9,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 9 = 27 → 2x = 18 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-a3072178cd",
+      "text": "4x + 7 = 23. מצא/י את x",
+      "answer": 4,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 7 = 23 → 4x = 16 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6d00813ac2",
+      "text": "3x + 5 = 26. מצא/י את x",
+      "answer": 7,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 5 = 26 → 3x = 21 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-aa6fb5e084",
+      "text": "4x + 4 = 8. מצא/י את x",
+      "answer": 1,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 4 = 8 → 4x = 4 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9b7ccfdb53",
+      "text": "6x + 1 = 19. מצא/י את x",
+      "answer": 3,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 1 = 19 → 6x = 18 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-709f425f31",
+      "text": "2x + 9 = 13. מצא/י את x",
+      "answer": 2,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 9 = 13 → 2x = 4 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4145f47f97",
+      "text": "5x + 9 = 54. מצא/י את x",
+      "answer": 9,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 9 = 54 → 5x = 45 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b524c59c49",
+      "text": "5x + 1 = 16. מצא/י את x",
+      "answer": 3,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 1 = 16 → 5x = 15 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-35c5b4b529",
+      "text": "6x + 3 = 39. מצא/י את x",
+      "answer": 6,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 3 = 39 → 6x = 36 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-4c853ca650",
+      "text": "7x + 12 = 89. מצא/י את x",
+      "answer": 11,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 12 = 89 → 7x = 77 → x = 11.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9fd218053f",
+      "text": "4x + 6 = 14. מצא/י את x",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 6 = 14 → 4x = 8 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-5c25e33c68",
+      "text": "3x + 3 = 21. מצא/י את x",
+      "answer": 6,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 3 = 21 → 3x = 18 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-825e25682a",
+      "text": "3x + 9 = 27. מצא/י את x",
+      "answer": 6,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 9 = 27 → 3x = 18 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-7cb569df38",
+      "text": "4x + 3 = 7. מצא/י את x",
+      "answer": 1,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 3 = 7 → 4x = 4 → x = 1.",
+      "source": "algo"
+    },
+    {
+      "id": "q-92913f2c88",
+      "text": "6x + 3 = 33. מצא/י את x",
+      "answer": 5,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 3 = 33 → 6x = 30 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-36ab5aa1de",
+      "text": "2x + 8 = 18. מצא/י את x",
+      "answer": 5,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 8 = 18 → 2x = 10 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-eb2135950b",
+      "text": "5x + 4 = 14. מצא/י את x",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 4 = 14 → 5x = 10 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-fbffac62b2",
+      "text": "3x + 9 = 33. מצא/י את x",
+      "answer": 8,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 9 = 33 → 3x = 24 → x = 8.",
+      "source": "algo"
+    },
+    {
+      "id": "q-974964b461",
+      "text": "4x + 10 = 30. מצא/י את x",
+      "answer": 5,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 10 = 30 → 4x = 20 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0613d54576",
+      "text": "4x + 8 = 36. מצא/י את x",
+      "answer": 7,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 8 = 36 → 4x = 28 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-601775341d",
+      "text": "5x + 8 = 23. מצא/י את x",
+      "answer": 3,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 8 = 23 → 5x = 15 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-88acc33d70",
+      "text": "4x + 4 = 12. מצא/י את x",
+      "answer": 2,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 4 = 12 → 4x = 8 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-e4cb04a4c2",
+      "text": "2x + 1 = 21. מצא/י את x",
+      "answer": 10,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 1 = 21 → 2x = 20 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-b14080bd98",
+      "text": "5x + 6 = 31. מצא/י את x",
+      "answer": 5,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 6 = 31 → 5x = 25 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-665a60f4f6",
+      "text": "6x + 9 = 51. מצא/י את x",
+      "answer": 7,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 9 = 51 → 6x = 42 → x = 7.",
+      "source": "algo"
+    },
+    {
+      "id": "q-6a9cdf4077",
+      "text": "2x + 4 = 14. מצא/י את x",
+      "answer": 5,
+      "level": 5,
+      "difficulty": 5,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 4 = 14 → 2x = 10 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-294f88a634",
+      "text": "7x + 5 = 75. מצא/י את x",
+      "answer": 10,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "7x + 5 = 75 → 7x = 70 → x = 10.",
+      "source": "algo"
+    },
+    {
+      "id": "q-cc5f5d7d2a",
+      "text": "2x + 9 = 19. מצא/י את x",
+      "answer": 5,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "2x + 9 = 19 → 2x = 10 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-c644469b8f",
+      "text": "5x + 3 = 33. מצא/י את x",
+      "answer": 6,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "5x + 3 = 33 → 5x = 30 → x = 6.",
+      "source": "algo"
+    },
+    {
+      "id": "q-40e6111b97",
+      "text": "6x + 5 = 35. מצא/י את x",
+      "answer": 5,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 5 = 35 → 6x = 30 → x = 5.",
+      "source": "algo"
+    },
+    {
+      "id": "q-9422b16f9f",
+      "text": "4x + 1 = 13. מצא/י את x",
+      "answer": 3,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 1 = 13 → 4x = 12 → x = 3.",
+      "source": "algo"
+    },
+    {
+      "id": "q-36a63497f5",
+      "text": "4x + 11 = 47. מצא/י את x",
+      "answer": 9,
+      "level": 7,
+      "difficulty": 7,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 11 = 47 → 4x = 36 → x = 9.",
+      "source": "algo"
+    },
+    {
+      "id": "q-0d481fc0c6",
+      "text": "4x + 8 = 16. מצא/י את x",
+      "answer": 2,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "4x + 8 = 16 → 4x = 8 → x = 2.",
+      "source": "algo"
+    },
+    {
+      "id": "q-40da15288e",
+      "text": "3x + 12 = 24. מצא/י את x",
+      "answer": 4,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "3x + 12 = 24 → 3x = 12 → x = 4.",
+      "source": "algo"
+    },
+    {
+      "id": "q-92bdbc6141",
+      "text": "6x + 7 = 49. מצא/י את x",
+      "answer": 7,
+      "level": 6,
+      "difficulty": 6,
+      "hints": [
+        "מחסירים את b משני הצדדים.",
+        "מחלקים ב-a."
+      ],
+      "explanation": "6x + 7 = 49 → 6x = 42 → x = 7.",
+      "source": "algo"
+    }
+  ]
+}
