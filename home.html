@@ -101,6 +101,20 @@
         gap: 14px;
         flex-wrap: wrap;
       }
+
+      /* בורר-כיתה (חשבון-בדיקה בלבד) — שקט בכוונה, לא חלק מהעיצוב הראשי */
+      .gradePick {
+        display: flex; align-items: center; gap: 10px;
+        margin-top: 14px; flex-wrap: wrap;
+      }
+      .gradePick__label { font-size: 14px; opacity: 0.72; }
+      .gradePick__select {
+        font: inherit; font-size: 15px; padding: 7px 12px;
+        border-radius: 999px; border: 1px solid rgba(0, 0, 0, 0.14);
+        background: rgba(255, 255, 255, 0.75); color: inherit; cursor: pointer;
+      }
+      .gradePick__select:disabled { opacity: 0.55; cursor: default; }
+      .gradePick__msg { font-size: 13px; opacity: 0.72; }
       .btnPrimary {
         display: inline-flex;
         align-items: center;
@@ -270,6 +284,20 @@
               </a>
               <a class="btnGhost" href="/learn" id="learnCard" style="text-decoration: none">📚 אזור הלמידה</a>
             </div>
+            <!-- בורר-כיתה: מוצג רק לחשבונות-בדיקה (canSwitchGrade מ-/api/me).
+                 ההרשאה נאכפת בשרת ב-/api/my-grade — זה רק הממשק. -->
+            <div class="gradePick" id="gradePick" hidden>
+              <label class="gradePick__label" for="gradeSelect">כיתה</label>
+              <select id="gradeSelect" class="gradePick__select">
+                <option value="כיתה א׳">כיתה א׳</option>
+                <option value="כיתה ב׳">כיתה ב׳</option>
+                <option value="כיתה ג׳">כיתה ג׳</option>
+                <option value="כיתה ד׳">כיתה ד׳</option>
+                <option value="כיתה ה׳">כיתה ה׳</option>
+                <option value="כיתה ו׳">כיתה ו׳</option>
+              </select>
+              <span class="gradePick__msg" id="gradeMsg" role="status" aria-live="polite"></span>
+            </div>
           </div>
 
           <div class="heroArt" aria-hidden="true">
@@ -337,10 +365,46 @@
           document.getElementById("userChip").hidden = false;
           renderHomeStats(data.user.id);
           writeGreeting(name);
+          if (data.canSwitchGrade) setupGradePicker(data.user.grade);
         } catch {
           window.location.href = "/auth";
         }
       })();
+
+      /* בורר-הכיתה (חשבון-בדיקה). שינוי כיתה מחליף את כל תכנית-הלימוד, ולכן
+         אחרי שמירה הדף נטען מחדש — כך כל מסך שומר עליו מידע לפי כיתה
+         (תרגול, אזור-למידה, גלקסיה) מתרענן יחד ולא נשאר עם נתוני הכיתה הישנה. */
+      function setupGradePicker(currentGrade) {
+        const wrap = document.getElementById("gradePick");
+        const sel = document.getElementById("gradeSelect");
+        const msg = document.getElementById("gradeMsg");
+        if (!wrap || !sel) return;
+        // התאמה סובלנית לגרש: בבסיס-הנתונים יש גם "כיתה א" וגם "כיתה א׳"
+        const letters = (v) => String(v || "").replace(/כיתה/g, "").replace(/[\s'’"׳״]/g, "").trim();
+        const cur = letters(currentGrade);
+        for (const o of sel.options) if (letters(o.value) === cur) o.selected = true;
+        wrap.hidden = false;
+
+        sel.addEventListener("change", async () => {
+          const grade = sel.value;
+          sel.disabled = true;
+          msg.textContent = "שומר…";
+          try {
+            const res = await fetch("/api/my-grade", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({ grade }),
+            });
+            const data = await res.json().catch(() => null);
+            if (!res.ok || !data || !data.ok) throw new Error((data && data.message) || "שמירה נכשלה");
+            msg.textContent = "הוחלף — טוען מחדש…";
+            window.location.reload();
+          } catch (e) {
+            sel.disabled = false;
+            msg.textContent = e.message || "שמירה נכשלה";
+          }
+        });
+      }
 
       function writeGreeting(name) {
         const h1 = document.querySelector(".home__greeting");

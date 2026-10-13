@@ -65,6 +65,12 @@ const TOPIC_IMAGE_SLUGS = [
 ];
 
 // ספק הדיבור מהסביבה — עמיד לרווחים/מרכאות שנדבקים בטעות בדשבורד של Render
+// חשבונות שמותר להם להחליף כיתה מתוך מסך-הבית. חשבון-בדיקה בלבד: כך אפשר
+// לעבור בין כיתות ולראות את הגלקסיה/התכנית של כל אחת בלי לפתוח חשבון חדש.
+// להרחבה — להוסיף שם משתמש לרשימה; לביטול — לרוקן אותה.
+const GRADE_SWITCH_USERS = ["galaxy1"];
+const GRADE_NUM_TO_LABEL = { 1: "א׳", 2: "ב׳", 3: "ג׳", 4: "ד׳", 5: "ה׳", 6: "ו׳" };
+
 function ttsProviderIsGoogle() {
   return String(process.env.TTS_PROVIDER || "azure").replace(/["']/g, "").trim().toLowerCase() === "google";
 }
@@ -155,6 +161,7 @@ const PUBLIC_FILES = new Set([
   "/board.js",
   "/widget-kit.js",
   "/plan.html",
+  "/mocks.html", // אינדקס המוקאפים
   "/journey-mock.html",
   "/climb-mock.html",
   "/space-mock.html", // מוקאפ זמני של מסע-הכיתה — להסרה אחרי ההחלטה
@@ -320,7 +327,34 @@ const server = http.createServer(async (req, res) => {
       const userId = sessions.currentUserId(req);
       const user = userId ? users.getUserById(userId) : null;
       if (!user) return json(res, 401, { ok: false });
-      return json(res, 200, { ok: true, user });
+      // canSwitchGrade — רק כדי שהדף יידע אם להציג את הבורר. ההרשאה עצמה נאכפת
+      // ב-/api/my-grade, לא כאן.
+      return json(res, 200, { ok: true, user, canSwitchGrade: GRADE_SWITCH_USERS.includes(user.username) });
+    }
+
+    /* ----- החלפת כיתה בידי המשתמש עצמו (חשבונות-בדיקה בלבד) -----
+       כיתה נקבעת בהרשמה ואינה שדה שילד אמור לשנות — שינוי כיתה מחליף את כל
+       תכנית-הלימוד וההתקדמות. לכן זה פתוח רק לחשבונות שברשימה הזאת, והבדיקה
+       נעשית כאן בשרת: הסתרת הכפתור ב-UI לבדה אינה הגנה. */
+    if (url.startsWith("/api/my-grade")) {
+      if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+      const userId = sessions.currentUserId(req);
+      if (!userId) return json(res, 401, { ok: false });
+      const me = users.getUserById(userId);
+      if (!me || !GRADE_SWITCH_USERS.includes(me.username)) {
+        return json(res, 403, { ok: false, error: "forbidden", message: "החשבון הזה אינו רשאי להחליף כיתה" });
+      }
+      const body = await readJsonBody(req, res);
+      if (!body) return;
+      const label = String(body.grade || "").trim();
+      const num = gradeToNum(label);
+      if (!num) return json(res, 400, { ok: false, error: "bad_grade", message: "כיתה לא תקינה" });
+      // נשמר תמיד בכתיב התקני ("כיתה ד׳") — כך אין וריאציות גרש בבסיס-הנתונים
+      const canonical = `כיתה ${GRADE_NUM_TO_LABEL[num]}`;
+      const updated = users.updateUserFields(userId, { grade: canonical });
+      if (!updated) return json(res, 500, { ok: false, error: "save_failed" });
+      logger.info(`כיתה הוחלפה ידנית`, `${me.username} → ${canonical}`);
+      return json(res, 200, { ok: true, grade: canonical, gradeNum: num });
     }
 
     if (url.startsWith("/api/delete-account")) {
