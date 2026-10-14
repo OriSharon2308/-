@@ -1372,41 +1372,111 @@ body.chat-collapsed main.study-v2.layout {
 .study-v2 .qNav--next { left: 6px; }
 
 /* הסרת שורת הפעולות (קודם/הבא/רמז) — ההנדלרים נשארים פעילים.
-   "הסבר" יצא מהשורה הזאת ויושב עכשיו מעל אזור-הכתיבה (.helpRow), ולכן
-   הוא כבר לא ברשימת המוסתרים. */
+   "הסבר" כבר לא כאן: הוא יושב אצל המורה (.teacherHelp) מחוץ לכרטיס. */
 .study-v2 .actions,
 .study-v2 #prevProblemBtn,
 .study-v2 #nextProblemBtn,
 .study-v2 #hintBtn { display: none; }
 
-/* שורת-העזרה מעל אזור-הכתיבה: נוכחת אבל שקטה — לא מתחרה ב"סיימתי" */
-.helpRow {
-  display: flex; justify-content: center;
-  margin: 0 0 10px;
+/* ──────────────────────────────────────────────────────────────
+   "הסבר" אצל המורה — משמאל לאזור-התשובה
+   הכפתור נצמד לראש המורה בפינה, וההסבר עולה ממנו כבועת-דיבור.
+   ככה זה קורא כמו *המורה מסביר*, ולא ככפתור מרחף בתוך הכרטיס.
+   ────────────────────────────────────────────────────────────── */
+.teacherHelp {
+  position: fixed;
+  left: 14px;           /* מיושר עם המורה, בעמודה השמאלית */
+  bottom: 142px;        /* מעל ראשו (128px) — לא נוגע ב"סיימתי" ובאזור-התשובה */
+  z-index: 19;
+  display: flex;
+  flex-direction: column;
+  /* הדף כולו RTL, ושם flex-start מיישר ימינה — וזה היה דוחף את הכפתור
+     אל מעל אזור-התשובה. direction:ltr כאן מיישר את הילדים לשמאל, אל המורה;
+     הטקסט עצמו חוזר ל-RTL בבועה. */
+  direction: ltr;
+  align-items: flex-start;
+  gap: 9px;
+  pointer-events: none; /* רק הכפתור והבועה לוכדים לחיצות */
+  width: min(30ch, 38vw);
 }
-.helpRow__btn {
-  min-height: 40px; padding: 8px 22px;
-  font-size: 16px; font-weight: 600;
+.teacherHelp__btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 7px 16px 7px 13px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0d9488;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgb(13 148 136 / 0.22);
   border-radius: 999px;
-  background: rgb(var(--accent-rgb) / 0.09);
-  border: 1px solid rgb(var(--accent-rgb) / 0.22);
-  color: var(--kid-teal-ink, currentColor);
+  box-shadow: 0 3px 12px rgb(13 148 136 / 0.16);
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
-.helpRow__btn:hover { background: rgb(var(--accent-rgb) / 0.16); }
-.helpRow__btn:active { transform: scale(0.96); }
+.teacherHelp__btn svg { width: 18px; height: 18px; display: block; }
+.teacherHelp__btn:hover {
+  background: #fff;
+  box-shadow: 0 5px 16px rgb(13 148 136 / 0.24);
+  transform: translateY(-1px);
+}
+.teacherHelp__btn:active { transform: scale(0.96); }
+.teacherHelp__btn:focus-visible { outline: 2px solid #0d9488; outline-offset: 2px; }
 
-/* ההסבר השמור, בתוך הכרטיס — קרוב לשאלה ולאזור-הכתיבה */
-.explainBox {
-  margin: 0 auto 12px;
-  max-width: 44ch;
-  padding: 12px 18px;
-  border-radius: 18px;
-  background: rgb(var(--accent-rgb) / 0.08);
-  border: 1px solid rgb(var(--accent-rgb) / 0.18);
-  font-size: 18px; line-height: 1.5; font-weight: 600;
-  text-align: center; white-space: pre-line;
+/* בועת-הדיבור: יוצאת מהמורה (זנב שמאל-תחתון) ונפתחת ברכות */
+.teacherHelp__bubble {
+  pointer-events: auto;
+  position: relative;
+  padding: 13px 17px;
+  border-radius: 18px 18px 18px 6px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgb(13 148 136 / 0.18);
+  box-shadow: 0 8px 26px rgb(15 59 54 / 0.13);
+  color: #0f3b36;
+  font-size: 16.5px;
+  line-height: 1.55;
+  font-weight: 500;
+  direction: rtl;
+  text-align: right;
+  white-space: pre-line;
+  max-height: min(32vh, 260px);
+  overflow-y: auto;
+  animation: teacherHelpIn 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-@media (max-width: 600px) { .explainBox { font-size: 16px; padding: 10px 14px; } }
+.teacherHelp__bubble::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: -7px;
+  width: 13px;
+  height: 13px;
+  background: inherit;
+  border-right: inherit;
+  border-bottom: inherit;
+  transform: rotate(45deg);
+  border-radius: 0 0 3px 0;
+}
+@keyframes teacherHelpIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .teacherHelp__bubble { animation: none; }
+  .teacherHelp__btn { transition: none; }
+}
+
+/* מסכים צרים: המורה קטן, אז הכפתור עובר מעליו והבועה נפרשת לרוחב */
+@media (max-width: 760px) {
+  .teacherHelp {
+    left: 12px;
+    bottom: 152px;              /* מעל "סיימתי" ואזור-התשובה */
+    width: calc(100vw - 24px);
+  }
+  .teacherHelp__bubble { font-size: 15.5px; max-height: 30vh; }
+}
 
 /* (11) השאלה למעלה, וההגשה נדחפת כמעט לתחתית המסגרת */
 .study-v2 .problem { margin-top: clamp(28px, 10vh, 120px); }
