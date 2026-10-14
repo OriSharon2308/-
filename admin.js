@@ -185,6 +185,7 @@
     if (view === "overview") renderOverview();
     else if (view === "students") renderStudents();
     else if (view === "content") renderContent();
+    else if (view === "backup") renderBackup();
   }
   // רענון-חי: תמיד נתונים עדכניים — בכל חזרה לחלון/לשונית, וכל 20 שניות (סקירה)
   function liveRefresh(fromInterval) {
@@ -199,10 +200,25 @@
   setInterval(() => liveRefresh(true), 20000);
 
   /* ---------------- סקירה ---------------- */
+  /** פס-אזהרה כשהנתונים לא שורדים פריסה. מוצג בסקירה — המסך שנפתח ראשון. */
+  async function persistenceBanner() {
+    try {
+      const { data } = await api("/api/admin/persistence");
+      if (data.cloud || data.dataDirEnvSet) return "";
+      return `<div class="note" style="border-color:#ef4444;background:#fef2f2;color:#7f1d1d">
+        <b>⚠ הנתונים לא שורדים עדכון של התוכנה.</b>
+        כרגע אין גיבוי-ענן מוגדר, ולכן כל פריסה חדשה מוחקת את החשבונות, ההתקדמות והזיכרון
+        (${data.files} קבצים). לפני כל עדכון — היכנס/י ללשונית <b>גיבוי</b> והורד/י עותק.
+        לפתרון קבוע ראו שם את ההסבר על Upstash.
+      </div>`;
+    } catch { return ""; }
+  }
+
   async function renderOverview() {
     const { data } = await api("/api/admin/overview");
     const o = data.overview || {};
-    main.innerHTML = `
+    const warn = await persistenceBanner();
+    main.innerHTML = warn + `
       <div class="viewHead"><h1>סקירה כללית</h1></div>
       <div class="statRow">
         ${stat("תלמידים רשומים", o.totalUsers ?? 0, "", true)}
@@ -213,6 +229,75 @@
       </div>
       <div class="note">בלשונית <b>תלמידים</b> מופיעה רשימת כל המשתמשים — לחיצה על תלמיד פותחת חלון עם כל הנתונים שלו: פרטים אישיים, גרף התקדמות, גרף זמן לימוד יומי וחוות דעת הצוות. בלשונית <b>תוכן</b> ניתן לערוך את חומר השאלות לכל כיתה ונושא.</div>`;
   }
+  /* ---------------- גיבוי ושחזור ---------------- */
+  async function renderBackup() {
+    const { data } = await api("/api/admin/persistence");
+    const safe = !!(data.cloud || data.dataDirEnvSet);
+    main.innerHTML = `
+      <div class="viewHead"><h1>גיבוי ושחזור</h1></div>
+      <div class="note" style="${safe ? "border-color:#22c55e;background:#f0fdf4;color:#14532d" : "border-color:#ef4444;background:#fef2f2;color:#7f1d1d"}">
+        <b>${safe ? "✓ הנתונים שורדים עדכון." : "⚠ הנתונים לא שורדים עדכון."}</b>
+        ${safe
+          ? (data.cloud ? "גיבוי-הענן (Upstash) פעיל — כל כתיבה מסונכרנת, והכול משוחזר בעליית השרת." : "מוגדר DATA_DIR על דיסק קבוע.")
+          : "כל פריסה חדשה של התוכנה מוחקת את החשבונות, ההתקדמות והזיכרון."}
+        <br><span style="opacity:.75">${data.files} קבצים חיים כרגע.</span>
+      </div>
+
+      <div class="statRow" style="margin-top:14px">
+        <div class="stat" style="flex:1;min-width:260px">
+          <div class="stat__label">לפני עדכון</div>
+          <div style="margin:10px 0 4px"><button class="btn" id="dlBackup">הורדת גיבוי</button></div>
+          <div class="stat__sub">קובץ אחד עם כל החשבונות, ההתקדמות, הפרופילים והזיכרון. מאגר השאלות לא נכלל — הוא עולה עם הקוד.</div>
+        </div>
+        <div class="stat" style="flex:1;min-width:260px">
+          <div class="stat__label">אחרי עדכון</div>
+          <div style="margin:10px 0 4px">
+            <input type="file" id="upBackup" accept="application/json,.json" style="display:none">
+            <button class="btn btn--ghost" id="pickBackup">שחזור מגיבוי</button>
+          </div>
+          <div class="stat__sub">בוחרים את הקובץ שהורד. קבצים שכבר קיימים וזהים — מדולגים.</div>
+          <div id="restoreMsg" style="margin-top:8px;font-size:13px"></div>
+        </div>
+      </div>
+
+      ${safe ? "" : `<div class="note" style="margin-top:14px">
+        <b>הפתרון הקבוע — חינמי, פעם אחת:</b>
+        <ol style="margin:8px 1.2em 0;padding:0;line-height:1.9">
+          <li>נכנסים ל-<code>console.upstash.com</code> ויוצרים מסד Redis חינמי.</li>
+          <li>מעתיקים משם את <code>UPSTASH_REDIS_REST_URL</code> ואת <code>UPSTASH_REDIS_REST_TOKEN</code>.</li>
+          <li>מדביקים את שניהם ב-Render תחת Environment, ושומרים.</li>
+        </ol>
+        מאותו רגע כל כתיבה מסונכרנת לענן והכול משוחזר לבד בכל עלייה — בלי להוריד ולהעלות קבצים.
+      </div>`}`;
+
+    document.getElementById("dlBackup").addEventListener("click", () => {
+      window.location.href = "/api/admin/backup";
+    });
+    const picker = document.getElementById("upBackup");
+    document.getElementById("pickBackup").addEventListener("click", () => picker.click());
+    picker.addEventListener("change", async () => {
+      const f = picker.files && picker.files[0];
+      if (!f) return;
+      const msg = document.getElementById("restoreMsg");
+      msg.textContent = "משחזר…";
+      try {
+        const snap = JSON.parse(await f.text());
+        const res = await fetch("/api/admin/restore", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ mode: "merge", snapshot: snap }),
+        });
+        const d = await res.json();
+        msg.innerHTML = d.ok
+          ? `<span style="color:#15803d">✓ שוחזרו ${d.written} קבצים (${d.skipped} כבר היו מעודכנים).</span>`
+          : `<span style="color:#b91c1c">✗ ${esc(d.error || "השחזור נכשל")}</span>`;
+      } catch (e) {
+        msg.innerHTML = `<span style="color:#b91c1c">✗ קובץ לא תקין</span>`;
+      }
+      picker.value = "";
+    });
+  }
+
   function stat(label, value, sub, accent) {
     return `<div class="stat"><div class="stat__label">${esc(label)}</div><div class="stat__value ${accent ? "accent" : ""}">${esc(value)}</div>${sub ? `<div class="stat__sub">${esc(sub)}</div>` : ""}</div>`;
   }

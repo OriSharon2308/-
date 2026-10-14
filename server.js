@@ -27,6 +27,7 @@ const googleTts = require("./lib/google-tts"); // TTS חלופי: Google Gemini 
 const googleStt = require("./lib/google-stt"); // STT: Google Speech-to-Text v2 (chirp_2) — אותן הרשאות
 const { CURRICULUM, gradeToNum, topicsForApi, leafTopics, findLeaf } = require("./lib/curriculum");
 const adminAuth = require("./lib/admin-auth"); // אימות אזור הניהול (נפרד מתלמידים)
+const backup = require("./lib/backup"); // גיבוי/שחזור של הנתונים החיים (רשת-ביטחון לפריסה)
 const analytics = require("./lib/analytics"); // סדרות-זמן + סיכומים לתלמיד
 const assess = require("./lib/assessments"); // הערכות מורה/פסיכולוג/מתמטיקאי (מטמון)
 const adminContent = require("./lib/admin-content"); // בקרת תוכן (בנק השאלות)
@@ -409,6 +410,41 @@ const server = http.createServer(async (req, res) => {
 
       const au = new URL(url, "http://localhost");
       const q = au.searchParams;
+
+      // ── גיבוי ושחזור ──────────────────────────────────────────────
+      // ב-Render free מערכת-הקבצים נמחקת בכל פריסה. כל עוד Upstash לא
+      // מוגדר, שתי הנקודות האלה הן ההבדל בין "עדכנתי את התוכנה" לבין
+      // "מחקתי לכל הילדים את החשבון".
+      if (au.pathname === "/api/admin/backup") {
+        if (method !== "GET") return json(res, 405, { error: "Method not allowed" });
+        const snap = backup.snapshot();
+        const stamp = snap.createdAt.slice(0, 19).replace(/[:T]/g, "-");
+        return send(res, 200, {
+          "content-type": "application/json; charset=utf-8",
+          "content-disposition": `attachment; filename="vela-backup-${stamp}.json"`,
+          "cache-control": "no-store",
+        }, JSON.stringify(snap));
+      }
+
+      if (au.pathname === "/api/admin/restore") {
+        if (method !== "POST") return json(res, 405, { error: "Method not allowed" });
+        // תקרה נדיבה: תמונת-מצב מלאה היא כמה מאות KB, לא מגה-בייטים
+        const body = await readJsonBody(req, res, 24 * 1024 * 1024);
+        if (!body) return;
+        const mode = body.mode === "replace" ? "replace" : "merge";
+        const r = backup.restore(body.snapshot || body, mode);
+        if (!r.ok) return json(res, 400, r);
+        return json(res, 200, { ok: true, mode, ...r });
+      }
+
+      if (au.pathname === "/api/admin/persistence") {
+        return json(res, 200, {
+          ok: true,
+          cloud: cloudStore.isEnabled(),
+          dataDirEnvSet: !!process.env.DATA_DIR,
+          files: backup.liveFiles().length,
+        });
+      }
 
       if (au.pathname === "/api/admin/overview") {
         const allU = users.getAllUsers();
